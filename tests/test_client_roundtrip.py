@@ -7,7 +7,15 @@ import httpx
 from muninn import db
 from muninn.api import app
 from muninn.client import MuninnClient
-from muninn.models import MemoryCandidate, Provenance, RehydrateRequest, WriteCandidatesRequest
+from muninn.models import (
+    ConfirmCandidatesRequest,
+    ListPendingRequest,
+    MemoryCandidate,
+    Provenance,
+    RehydrateRequest,
+    StageCandidatesRequest,
+    WriteCandidatesRequest,
+)
 
 
 class _SyncASGIClient:
@@ -70,5 +78,37 @@ def test_muninn_client_roundtrip_with_asgi_transport(tmp_path, monkeypatch) -> N
         debug_out = client.debug_vector_backend()
         assert "effective_backend" in debug_out
         assert "sqlite_vec_loaded" in debug_out
+
+        staged = client.stage_candidates(
+            StageCandidatesRequest(
+                namespace="default",
+                candidates=[
+                    MemoryCandidate(
+                        kind="preference",
+                        entity={"id": "ent_user", "kind": "user", "name": "Auston"},
+                        payload={"key": "health.note", "value": "private"},
+                        confidence=0.9,
+                        provenance=Provenance(source_type="user", source_id="roundtrip_stage"),
+                    )
+                ],
+            )
+        )
+        assert staged.pending == 1
+        assert len(staged.pending_ids) == 1
+
+        pending = client.list_pending(
+            ListPendingRequest(namespace="default", entity_id="ent_user", status="pending", limit=10)
+        )
+        assert len(pending.items) >= 1
+
+        confirm = client.confirm_candidates(
+            ConfirmCandidatesRequest(
+                namespace="default",
+                pending_ids=[staged.pending_ids[0]],
+                decision="reject",
+                decided_by="user:test",
+            )
+        )
+        assert confirm.processed == 1
     finally:
         http_client.close()

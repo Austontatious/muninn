@@ -7,6 +7,10 @@ All reads/writes are namespace-scoped at the DB layer. Always pass the correct `
 - `POST /v0/memory/rehydrate`
 - `POST /v0/memory/retrieve`
 - `POST /v0/memory/write_candidates`
+- `POST /v0/memory/stage_candidates`
+- `POST /v0/memory/list_pending`
+- `POST /v0/memory/confirm_candidates`
+- `GET /v0/memory/pending`
 - `POST /v0/memory/upsert_embeddings`
 - `POST /v0/memory/query_vector`
 - `GET /v0/memory/version`
@@ -46,6 +50,61 @@ Request:
       "provenance": {"source_type":"user","source_id":"chat_turn_123"}
     }
   ]
+}
+```
+
+`/v0/memory/write_candidates` is a direct write path for trusted callers.
+For user-facing flows, prefer the confirm-required workflow below.
+
+## Confirm-required workflow
+Use this for user-facing memory capture to avoid silently storing sensitive data.
+
+1) Call `/v0/memory/stage_candidates` with candidate memories.
+2) Muninn auto-writes benign candidates and queues sensitive ones as pending.
+3) Call `/v0/memory/list_pending` (or `GET /v0/memory/pending`) to show pending items.
+4) Ask the user/agent to confirm.
+5) Call `/v0/memory/confirm_candidates` with `decision=accept|reject`.
+
+### Stage candidates
+Request:
+```json
+{
+  "namespace": "lexi",
+  "ttl_seconds": 3600,
+  "candidates": [
+    {
+      "kind": "preference",
+      "entity": {"id":"ent_user","kind":"user","name":"Auston"},
+      "payload": {"key":"health.note","value":"sensitive"},
+      "confidence": 0.9,
+      "provenance": {"source_type":"user","source_id":"turn_123"}
+    }
+  ]
+}
+```
+
+Response shape:
+```json
+{
+  "accepted": 0,
+  "pending": 1,
+  "rejected": 0,
+  "accepted_ids": [],
+  "pending_ids": ["pend_..."],
+  "reject_reasons": [],
+  "pending_reasons": ["CONFIRM_REQUIRED: ..."]
+}
+```
+
+### Confirm candidates
+Request:
+```json
+{
+  "namespace": "lexi",
+  "pending_ids": ["pend_..."],
+  "decision": "accept",
+  "decided_by": "user:123",
+  "note": "approved"
 }
 ```
 
@@ -132,13 +191,16 @@ Response:
 Use tools:
 - `muninn_rehydrate(query, namespace, entity_id, k, profile, embedding_model?, query_embedding?)`
 - `muninn_write_candidates(namespace, candidates)`
+- `muninn_stage_candidates(namespace, candidates, ttl_seconds?)`
+- `muninn_list_pending(namespace, entity_id?, status?, limit?)`
+- `muninn_confirm_candidates(namespace, pending_ids, decision, decided_by, note?)`
 - `muninn_upsert_embeddings(namespace, items)`
 - `muninn_query_vector(namespace, model, query_vector, entity_id?, kinds?, k?)`
 
 Your agent should:
 - call `muninn_rehydrate` at the start of a turn
 - inject `<SYSTEM_MEMORY>` cards into the prompt
-- after answering, propose `0..N` memory candidates and call `muninn_write_candidates`
+- after answering, prefer `muninn_stage_candidates` then `muninn_confirm_candidates` for sensitive items
 - periodically upsert embeddings for new/updated memory records
 
 ## Claude tools (Anthropic-style)
@@ -189,4 +251,4 @@ Examples:
 2) Inject returned cards into a `<SYSTEM_MEMORY>` block.
 3) Generate the assistant response.
 4) Propose `0..N` write candidates (facts/preferences/episodes with provenance).
-5) Call write candidates (`/v0/memory/write_candidates`).
+5) Call stage/confirm (`/v0/memory/stage_candidates` + `/v0/memory/confirm_candidates`) or direct write for trusted flows.

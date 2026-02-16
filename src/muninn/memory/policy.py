@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
 from ..models import MemoryCandidate
 
@@ -8,6 +9,7 @@ from ..models import MemoryCandidate
 @dataclass(frozen=True)
 class Decision:
     accept: bool
+    action: Literal["accept", "reject", "confirm_required"]
     reason: str = ""
 
 
@@ -28,13 +30,21 @@ def decide_write(candidate: MemoryCandidate) -> Decision:
     blob = (" ".join([str(candidate.entity), str(candidate.payload)])).lower()
 
     if any(marker in blob for marker in BAD_MARKERS):
-        return Decision(False, "Rejected: possible instruction injection")
+        return Decision(
+            accept=False,
+            action="reject",
+            reason="Rejected: possible instruction injection",
+        )
 
     # Confirm-required: sensitivity heuristics
     if candidate.kind == "preference":
         key = str(candidate.payload.get("key", "")).lower()
         if any(key.startswith(sk) for sk in SENSITIVE_KEYS):
-            return Decision(False, "CONFIRM_REQUIRED: sensitive preference key")
+            return Decision(
+                accept=False,
+                action="confirm_required",
+                reason="CONFIRM_REQUIRED: sensitive preference key",
+            )
 
     if candidate.kind == "fact":
         pred = str(candidate.payload.get("predicate", "")).lower()
@@ -43,7 +53,11 @@ def decide_write(candidate: MemoryCandidate) -> Decision:
             sensitive in (pred + " " + obj)
             for sensitive in ["diagnosis", "medication", "political party", "religion"]
         ):
-            return Decision(False, "CONFIRM_REQUIRED: sensitive fact")
+            return Decision(
+                accept=False,
+                action="confirm_required",
+                reason="CONFIRM_REQUIRED: sensitive fact",
+            )
 
-    # v0.2: accept benign writes
-    return Decision(True, "Accepted")
+    # v0.2+: accept benign writes
+    return Decision(accept=True, action="accept", reason="Accepted")

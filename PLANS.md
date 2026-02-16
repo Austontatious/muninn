@@ -120,3 +120,20 @@ Add typed client and provider adapter glue so Muninn can be consumed as a plugin
 - [x] Update integration docs with provider adapter guidance
 - [x] Bump package/API versions to 0.6.0
 - [x] Run `ruff check .` and `pytest -q`
+
+---
+
+# Muninn v0.7 Confirm Workflow Plan
+
+## Objective
+Add a confirm-required memory workflow: stage candidates, list pending items, and confirm/reject decisions that control writeback.
+
+## Checklist
+- [x] Add pending workflow tables to `schema.sql` and add migration `0002_confirm_workflow.sql`
+- [x] Extend policy decision with machine-readable `action`
+- [x] Add pending workflow module (`stage_candidates`, `list_pending`, `confirm_candidates`)
+- [x] Add API endpoints for stage/list/confirm and keep `write_candidates` unchanged
+- [x] Update typed client/adapters/tool spec resources for new workflow tools
+- [x] Update integration/runbook/project-memory docs
+- [x] Add tests for stage/list/confirm accept/reject/ttl expiration
+- [x] Bump package/API versions to 0.7.0 and run lint/tests

@@ -7,17 +7,21 @@ from .provenance import normalize_provenance
 
 
 def write_candidates(
-    namespace: str, candidates: list[MemoryCandidate]
+    namespace: str,
+    candidates: list[MemoryCandidate],
+    *,
+    enforce_policy: bool = True,
 ) -> tuple[list[str], list[str]]:
     conn = db.connect()
     ids: list[str] = []
     reasons: list[str] = []
 
     for candidate in candidates:
-        decision = decide_write(candidate)
-        if not decision.accept:
-            reasons.append(decision.reason)
-            continue
+        if enforce_policy:
+            decision = decide_write(candidate)
+            if decision.action != "accept":
+                reasons.append(decision.reason)
+                continue
 
         prov = normalize_provenance(candidate.provenance)
         prov_json = prov.model_dump_json()

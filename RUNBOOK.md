@@ -43,3 +43,9 @@ curl -X POST http://127.0.0.1:8000/v0/admin/reindex_vectors \
 Notes:
 - Endpoint is under `/v0/admin/*`; protect it with network/auth controls in production.
 - If sqlite-vec is unavailable, response reports `backend_used=bruteforce` without failing.
+
+## Confirm-required workflow ops notes
+
+- Pending rows are durable in `pending_candidates` and namespace-scoped.
+- `stage_candidates` can set `ttl_seconds`; expired rows transition to `expired` on list/confirm.
+- Current release does not include cleanup pruning; plan periodic cleanup/retention policy.

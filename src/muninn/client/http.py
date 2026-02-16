@@ -5,6 +5,10 @@ from typing import Any
 import httpx
 
 from ..models import (
+    ConfirmCandidatesRequest,
+    ConfirmCandidatesResponse,
+    ListPendingRequest,
+    ListPendingResponse,
     QueryVectorRequest,
     QueryVectorResponse,
     RehydrateRequest,
@@ -15,6 +19,8 @@ from ..models import (
     RenderCardsResponse,
     RetrieveRequest,
     RetrieveResponse,
+    StageCandidatesRequest,
+    StageCandidatesResponse,
     UpsertEmbeddingsRequest,
     UpsertEmbeddingsResponse,
     WriteCandidatesRequest,
@@ -72,6 +78,18 @@ class MuninnClient:
     def write_candidates(self, req: WriteCandidatesRequest) -> WriteCandidatesResponse:
         data = self._request("POST", "/v0/memory/write_candidates", json_payload=req.model_dump())
         return WriteCandidatesResponse(**data)
+
+    def stage_candidates(self, req: StageCandidatesRequest) -> StageCandidatesResponse:
+        data = self._request("POST", "/v0/memory/stage_candidates", json_payload=req.model_dump())
+        return StageCandidatesResponse(**data)
+
+    def list_pending(self, req: ListPendingRequest) -> ListPendingResponse:
+        data = self._request("POST", "/v0/memory/list_pending", json_payload=req.model_dump())
+        return ListPendingResponse(**data)
+
+    def confirm_candidates(self, req: ConfirmCandidatesRequest) -> ConfirmCandidatesResponse:
+        data = self._request("POST", "/v0/memory/confirm_candidates", json_payload=req.model_dump())
+        return ConfirmCandidatesResponse(**data)
 
     def retrieve(self, req: RetrieveRequest) -> RetrieveResponse:
         data = self._request("POST", "/v0/memory/retrieve", json_payload=req.model_dump())

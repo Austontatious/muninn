@@ -6,11 +6,16 @@ from fastapi import FastAPI, Query
 
 from . import db
 from .config import max_vec_scan
+from .memory import pending as pending_memory
 from .memory.cards import render_cards
 from .memory.retrieval import retrieve
 from .memory.writeback import write_candidates
 from .migrations import apply_migrations
 from .models import (
+    ConfirmCandidatesRequest,
+    ConfirmCandidatesResponse,
+    ListPendingRequest,
+    ListPendingResponse,
     QueryVectorRequest,
     QueryVectorResponse,
     RehydrateRequest,
@@ -21,6 +26,8 @@ from .models import (
     RenderCardsResponse,
     RetrieveRequest,
     RetrieveResponse,
+    StageCandidatesRequest,
+    StageCandidatesResponse,
     UpsertEmbeddingsRequest,
     UpsertEmbeddingsResponse,
     WriteCandidatesRequest,
@@ -30,7 +37,7 @@ from .service import log_audit, memory_version
 from .vector import reindex as vector_reindex
 from .vector import store as vector_store
 
-app = FastAPI(title="Muninn", version="0.6.0")
+app = FastAPI(title="Muninn", version="0.7.0")
 
 
 @app.on_event("startup")
@@ -79,6 +86,101 @@ def api_write_candidates(req: WriteCandidatesRequest) -> WriteCandidatesResponse
     accepted = len(ids)
     rejected = max(0, len(req.candidates) - accepted)
     return WriteCandidatesResponse(accepted=accepted, rejected=rejected, ids=ids, reasons=reasons)
+
+
+@app.post("/v0/memory/stage_candidates", response_model=StageCandidatesResponse)
+def api_stage_candidates(req: StageCandidatesRequest) -> StageCandidatesResponse:
+    accepted_ids, pending_ids, rejected, pending_reasons = pending_memory.stage_candidates(
+        namespace=req.namespace,
+        candidates=req.candidates,
+        ttl_seconds=req.ttl_seconds,
+    )
+    reject_reasons = [reason for _, reason in rejected]
+    out = StageCandidatesResponse(
+        accepted=len(accepted_ids),
+        pending=len(pending_ids),
+        rejected=len(reject_reasons),
+        accepted_ids=accepted_ids,
+        pending_ids=pending_ids,
+        reject_reasons=reject_reasons,
+        pending_reasons=pending_reasons,
+    )
+    log_audit(
+        req.namespace,
+        "stage_candidates",
+        {
+            "namespace": req.namespace,
+            "accepted": out.accepted,
+            "pending": out.pending,
+            "rejected": out.rejected,
+            "ttl_seconds": req.ttl_seconds,
+        },
+    )
+    return out
+
+
+@app.post("/v0/memory/list_pending", response_model=ListPendingResponse)
+def api_list_pending(req: ListPendingRequest) -> ListPendingResponse:
+    items = pending_memory.list_pending(
+        namespace=req.namespace,
+        entity_id=req.entity_id,
+        status=req.status,
+        limit=req.limit,
+    )
+    log_audit(
+        req.namespace,
+        "list_pending",
+        {
+            "namespace": req.namespace,
+            "entity_id": req.entity_id,
+            "status": req.status,
+            "limit": req.limit,
+            "items": len(items),
+        },
+    )
+    return ListPendingResponse(items=items)
+
+
+@app.get("/v0/memory/pending", response_model=ListPendingResponse)
+def api_list_pending_get(
+    namespace: str = Query(default="default"),
+    entity_id: str | None = Query(default=None),
+    status: str = Query(default="pending"),
+    limit: int = Query(default=50),
+) -> ListPendingResponse:
+    items = pending_memory.list_pending(
+        namespace=namespace,
+        entity_id=entity_id,
+        status=status,
+        limit=limit,
+    )
+    return ListPendingResponse(items=items)
+
+
+@app.post("/v0/memory/confirm_candidates", response_model=ConfirmCandidatesResponse)
+def api_confirm_candidates(req: ConfirmCandidatesRequest) -> ConfirmCandidatesResponse:
+    out = pending_memory.confirm_candidates(
+        namespace=req.namespace,
+        pending_ids=req.pending_ids,
+        decision=req.decision,
+        decided_by=req.decided_by,
+        note=req.note,
+    )
+    log_audit(
+        req.namespace,
+        "confirm_candidates",
+        {
+            "namespace": req.namespace,
+            "decision": req.decision,
+            "pending_count": len(req.pending_ids),
+            "processed": out.processed,
+            "accepted_writes": out.accepted_writes,
+            "rejected": out.rejected,
+            "missing": out.missing,
+            "expired": out.expired,
+        },
+    )
+    return out
 
 
 @app.post("/v0/memory/upsert_embeddings", response_model=UpsertEmbeddingsResponse)

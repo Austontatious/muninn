@@ -7,8 +7,11 @@ from typing import Any
 
 from ..client import MuninnClient
 from ..models import (
+    ConfirmCandidatesRequest,
+    ListPendingRequest,
     QueryVectorRequest,
     RehydrateRequest,
+    StageCandidatesRequest,
     UpsertEmbeddingsRequest,
     WriteCandidatesRequest,
 )
@@ -16,6 +19,9 @@ from ..models import (
 PUBLIC_TOOL_NAMES = {
     "muninn_rehydrate",
     "muninn_write_candidates",
+    "muninn_stage_candidates",
+    "muninn_list_pending",
+    "muninn_confirm_candidates",
     "muninn_upsert_embeddings",
     "muninn_query_vector",
     "muninn_version",
@@ -53,6 +59,15 @@ def dispatch_tool_call(client: MuninnClient, tool_name: str, arguments: dict[str
 
     if tool_name == "muninn_write_candidates":
         return client.write_candidates(WriteCandidatesRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_stage_candidates":
+        return client.stage_candidates(StageCandidatesRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_list_pending":
+        return client.list_pending(ListPendingRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_confirm_candidates":
+        return client.confirm_candidates(ConfirmCandidatesRequest(**arguments)).model_dump()
 
     if tool_name == "muninn_upsert_embeddings":
         return client.upsert_embeddings(UpsertEmbeddingsRequest(**arguments)).model_dump()

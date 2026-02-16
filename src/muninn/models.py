@@ -34,6 +34,64 @@ class WriteCandidatesResponse(BaseModel):
     reasons: list[str] = []
 
 
+class PendingCandidate(BaseModel):
+    id: str
+    namespace: str
+    entity_id: str
+    candidate: MemoryCandidate
+    reason: str
+    status: str
+    created_at: float
+    expires_at: float | None = None
+
+
+class StageCandidatesRequest(BaseModel):
+    namespace: str = "default"
+    candidates: list[MemoryCandidate]
+    ttl_seconds: int | None = None
+
+
+class StageCandidatesResponse(BaseModel):
+    accepted: int
+    pending: int
+    rejected: int
+    accepted_ids: list[str]
+    pending_ids: list[str]
+    reject_reasons: list[str] = []
+    pending_reasons: list[str] = []
+
+
+class ListPendingRequest(BaseModel):
+    namespace: str = "default"
+    entity_id: str | None = None
+    status: str = "pending"
+    limit: int = 50
+
+
+class ListPendingResponse(BaseModel):
+    items: list[PendingCandidate]
+
+
+class ConfirmCandidatesRequest(BaseModel):
+    namespace: str = "default"
+    pending_ids: list[str]
+    decision: Literal["accept", "reject"]
+    decided_by: str
+    note: str | None = None
+
+
+class ConfirmCandidatesResponse(BaseModel):
+    namespace: str
+    decision: str
+    processed: int
+    accepted_writes: int
+    rejected: int
+    missing: int
+    expired: int
+    accepted_ids: list[str] = []
+    reasons: list[str] = []
+
+
 class RetrieveRequest(BaseModel):
     namespace: str = "default"
     query: str

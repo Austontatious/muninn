@@ -1,6 +1,6 @@
 {
   "name": "muninn",
-  "version": "0.4",
+  "version": "0.7",
   "base_url": "http://127.0.0.1:8000",
   "tools": [
     {
@@ -37,6 +37,54 @@
           "candidates": {"type": "array"}
         },
         "required": ["namespace", "candidates"]
+      }
+    },
+    {
+      "tool_name": "muninn_stage_candidates",
+      "method": "POST",
+      "path": "/v0/memory/stage_candidates",
+      "description": "Stage memory candidates: auto-write accepted candidates and queue confirm-required candidates.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "candidates": {"type": "array"},
+          "ttl_seconds": {"type": ["integer", "null"]}
+        },
+        "required": ["namespace", "candidates"]
+      }
+    },
+    {
+      "tool_name": "muninn_list_pending",
+      "method": "POST",
+      "path": "/v0/memory/list_pending",
+      "description": "List pending/accepted/rejected/expired staged candidates in a namespace.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "entity_id": {"type": ["string", "null"]},
+          "status": {"type": "string"},
+          "limit": {"type": "integer"}
+        },
+        "required": ["namespace"]
+      }
+    },
+    {
+      "tool_name": "muninn_confirm_candidates",
+      "method": "POST",
+      "path": "/v0/memory/confirm_candidates",
+      "description": "Confirm or reject pending candidates; accept triggers writeback.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "pending_ids": {"type": "array", "items": {"type": "string"}},
+          "decision": {"type": "string", "enum": ["accept", "reject"]},
+          "decided_by": {"type": "string"},
+          "note": {"type": ["string", "null"]}
+        },
+        "required": ["namespace", "pending_ids", "decision", "decided_by"]
       }
     },
     {

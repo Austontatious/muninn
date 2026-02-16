@@ -56,6 +56,9 @@ python examples/anthropic_tools_demo.py
 - `GET /health`
 - `GET /v0/memory/version` — lightweight memory hash for namespace/profile
 - `POST /v0/memory/write_candidates` — write proposed memory candidates (gated by policy)
+- `POST /v0/memory/stage_candidates` — write benign candidates + queue confirm-required ones
+- `POST /v0/memory/list_pending` — list staged pending/accepted/rejected/expired candidates
+- `POST /v0/memory/confirm_candidates` — accept/reject pending candidates
 - `POST /v0/memory/retrieve` — retrieve relevant records for a query/context
 - `POST /v0/memory/render_cards` — render retrieved records into memory cards
 - `POST /v0/memory/rehydrate` — retrieve + render in one call

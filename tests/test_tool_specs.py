@@ -7,6 +7,9 @@ from muninn.adapters.openai_tools import openai_tools_spec
 REQUIRED_TOOLS = {
     "muninn_rehydrate",
     "muninn_write_candidates",
+    "muninn_stage_candidates",
+    "muninn_list_pending",
+    "muninn_confirm_candidates",
     "muninn_upsert_embeddings",
     "muninn_query_vector",
     "muninn_version",
