@@ -9,6 +9,7 @@ Muninn is a memory harness you call over HTTP.
 - `POST /v0/memory/upsert_embeddings`
 - `POST /v0/memory/query_vector`
 - `GET /v0/memory/version`
+- `GET /v0/debug/vector_backend`
 - `GET /health`
 
 ## Tool calling (generic)
@@ -49,7 +50,7 @@ Request:
 
 ## Embeddings: caller-provided
 Muninn is model-agnostic. Callers compute embeddings and upsert them.
-Current vector search is brute-force over SQLite rows; future acceleration can swap in `sqlite-vec` behind the same API.
+Current vector search is brute-force over SQLite rows by default.
 
 Flow:
 1) Caller computes embeddings for each memory item text and upserts via `/v0/memory/upsert_embeddings`.
@@ -93,6 +94,24 @@ Request:
   "k": 8
 }
 ```
+
+## Vector acceleration (optional sqlite-vec)
+Muninn stays portable by default. `sqlite-vec` acceleration is best-effort and optional.
+
+- Default backend: brute-force (`embeddings` table scan)
+- Optional backend: sqlite-vec (`vec0` KNN) when available and enabled
+
+Environment variables:
+- `MUNINN_VEC_BACKEND=auto|bruteforce|sqlite_vec`
+- `MUNINN_SQLITE_VEC_ENABLED=1|0`
+- `MUNINN_SQLITE_VEC_PATH=/path/to/sqlite_vec.(so|dylib|dll)` (optional explicit extension path)
+- `MUNINN_VEC_TABLE_PREFIX=muninn_vec` (prefix for generated vec0 tables)
+
+Debug endpoint:
+- `GET /v0/debug/vector_backend` returns configured backend, sqlite-vec load state, and effective backend.
+
+macOS note:
+- System Python/SQLite builds may block extension loading. If so, use a Python/SQLite build that supports loadable extensions.
 
 Response:
 ```json

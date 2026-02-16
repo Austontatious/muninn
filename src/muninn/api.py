@@ -24,7 +24,7 @@ from .models import (
 from .service import log_audit, memory_version
 from .vector import store as vector_store
 
-app = FastAPI(title="Muninn", version="0.3.0")
+app = FastAPI(title="Muninn", version="0.4.0")
 
 
 @app.on_event("startup")
@@ -38,6 +38,16 @@ def health() -> dict[str, bool]:
     conn = db.connect()
     row = db.fetch_one(conn, "SELECT 1 as ok")
     return {"ok": bool(row and row["ok"] == 1)}
+
+
+@app.get("/v0/debug/vector_backend")
+def api_debug_vector_backend() -> dict[str, str | bool]:
+    backend_config, sqlite_loaded, effective = vector_store.effective_backend()
+    return {
+        "vec_backend_config": backend_config,
+        "sqlite_vec_loaded": sqlite_loaded,
+        "effective_backend": effective,
+    }
 
 
 @app.post("/v0/memory/write_candidates", response_model=WriteCandidatesResponse)

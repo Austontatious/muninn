@@ -120,3 +120,19 @@ CREATE TABLE IF NOT EXISTS embeddings (
 CREATE INDEX IF NOT EXISTS idx_embeddings_kind ON embeddings(kind);
 CREATE INDEX IF NOT EXISTS idx_embeddings_entity ON embeddings(entity_id);
 CREATE INDEX IF NOT EXISTS idx_embeddings_model ON embeddings(model);
+
+-- Mapping from item_id to vec0 rowid per (model, dim, table_name).
+CREATE TABLE IF NOT EXISTS embeddings_vec_index (
+    item_id TEXT PRIMARY KEY,
+    table_name TEXT NOT NULL,
+    rowid INTEGER NOT NULL,
+    model TEXT NOT NULL,
+    dim INTEGER NOT NULL,
+    kind TEXT NOT NULL,
+    entity_id TEXT NOT NULL,
+    updated_at REAL NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_vec_index_table_rowid ON embeddings_vec_index(table_name, rowid);
+CREATE INDEX IF NOT EXISTS idx_vec_index_model_dim ON embeddings_vec_index(model, dim);
+CREATE INDEX IF NOT EXISTS idx_vec_index_entity ON embeddings_vec_index(entity_id);

@@ -36,3 +36,41 @@ Out:
 - `ruff check .`
 - `pytest -q`
 - `./scripts/dev_run.sh` smoke test for `/docs`, `/v0/memory/upsert_embeddings`, and `/v0/memory/rehydrate` with `query_embedding`
+
+---
+
+# Muninn v0.4 Optional sqlite-vec Plan
+
+## Objective
+Add an optional sqlite-vec accelerator for vector search while preserving fallback-safe brute-force behavior on all platforms.
+
+## Scope
+In:
+- Optional sqlite-vec loading and backend selection
+- Per-model vec0 table management with rowid mapping
+- Fallback-safe query/upsert behavior and debug endpoint
+- Docs/tooling/test updates for optional acceleration
+
+Out:
+- Mandatory sqlite-vec dependency
+- Breaking API changes
+
+## Checklist
+- [x] Add vec backend config toggles
+- [x] Add sqlite-vec best-effort loader and DB integration
+- [x] Add embeddings vec-index mapping schema
+- [x] Implement sqlite-vec backend module (table ensure/upsert/query)
+- [x] Integrate backend selection into vector store upsert/query
+- [x] Add `/v0/debug/vector_backend` endpoint
+- [x] Update docs/runbook/readme/tool spec for optional accel
+- [x] Add portable tests (skip if sqlite-vec unavailable + fallback behavior)
+- [x] Run `ruff check .`, `pytest -q`, and smoke test endpoints
+
+## Rollback plan
+- Revert commit to keep brute-force-only backend
+- Existing canonical embeddings table remains authoritative
+
+## Test plan
+- `ruff check .`
+- `pytest -q`
+- `./scripts/dev_run.sh` smoke test for `/v0/debug/vector_backend`, `/v0/memory/upsert_embeddings`, `/v0/memory/query_vector`

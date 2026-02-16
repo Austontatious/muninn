@@ -6,6 +6,7 @@ from collections.abc import Iterable
 from pathlib import Path
 
 from .config import settings
+from .vector.sqlite_vec_loader import maybe_load_sqlite_vec
 
 
 def _ensure_parent_dir(path: str) -> None:
@@ -23,6 +24,7 @@ def connect() -> sqlite3.Connection:
     _ensure_parent_dir(db_path)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
+    maybe_load_sqlite_vec(conn)
     return conn
 
 

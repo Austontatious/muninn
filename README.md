@@ -51,6 +51,15 @@ python examples/cli_agent_demo.py
 - `POST /v0/memory/retrieve` — retrieve relevant records for a query/context
 - `POST /v0/memory/render_cards` — render retrieved records into memory cards
 - `POST /v0/memory/rehydrate` — retrieve + render in one call
+- `GET /v0/debug/vector_backend` — inspect effective vector backend (sqlite-vec vs brute-force)
+
+## Vector Backend
+
+Muninn uses portable brute-force vector search by default.
+Optional sqlite-vec acceleration is available with fallback safety:
+- `MUNINN_VEC_BACKEND=auto|bruteforce|sqlite_vec`
+- `MUNINN_SQLITE_VEC_ENABLED=1|0`
+- `MUNINN_SQLITE_VEC_PATH=/path/to/sqlite_vec.(so|dylib|dll)` (optional)
 
 ## Design Notes
 

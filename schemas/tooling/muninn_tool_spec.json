@@ -1,6 +1,6 @@
 {
   "name": "muninn",
-  "version": "0.3",
+  "version": "0.4",
   "base_url": "http://127.0.0.1:8000",
   "tools": [
     {
@@ -79,6 +79,12 @@
       "method": "GET",
       "path": "/v0/memory/version",
       "description": "Returns memory version hash for namespace+profile (and optional embedding model state for prefix caching)."
+    },
+    {
+      "tool_name": "muninn_debug_vector_backend",
+      "method": "GET",
+      "path": "/v0/debug/vector_backend",
+      "description": "Returns configured and effective vector backend state (sqlite-vec vs brute-force)."
     }
   ]
 }

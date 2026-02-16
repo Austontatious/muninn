@@ -13,6 +13,10 @@ class Settings(BaseModel):
     )
     rrf_k0: int = int(os.getenv("MUNINN_RRF_K0", "60"))
     max_vec_scan: int = int(os.getenv("MUNINN_MAX_VEC_SCAN", "5000"))
+    vec_backend: str = os.getenv("MUNINN_VEC_BACKEND", "auto")
+    sqlite_vec_path: str | None = os.getenv("MUNINN_SQLITE_VEC_PATH") or None
+    sqlite_vec_enabled: bool = os.getenv("MUNINN_SQLITE_VEC_ENABLED", "1") != "0"
+    vec_table_prefix: str = os.getenv("MUNINN_VEC_TABLE_PREFIX", "muninn_vec")
 
 
 settings = Settings()
@@ -41,3 +45,30 @@ def max_vec_scan() -> int:
     except ValueError:
         return settings.max_vec_scan
     return max(1, value)
+
+
+def vec_backend() -> Literal["auto", "bruteforce", "sqlite_vec"]:
+    raw = os.getenv("MUNINN_VEC_BACKEND", settings.vec_backend).strip().lower()
+    if raw in {"auto", "bruteforce", "sqlite_vec"}:
+        return raw
+    return "auto"
+
+
+def sqlite_vec_path() -> str | None:
+    value = os.getenv("MUNINN_SQLITE_VEC_PATH")
+    if value is not None:
+        value = value.strip()
+        return value or None
+    return settings.sqlite_vec_path
+
+
+def sqlite_vec_enabled() -> bool:
+    value = os.getenv("MUNINN_SQLITE_VEC_ENABLED")
+    if value is None:
+        return settings.sqlite_vec_enabled
+    return value.strip() != "0"
+
+
+def vec_table_prefix() -> str:
+    value = os.getenv("MUNINN_VEC_TABLE_PREFIX", settings.vec_table_prefix).strip()
+    return value or "muninn_vec"
