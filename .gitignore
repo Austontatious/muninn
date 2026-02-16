@@ -1,9 +1,67 @@
-.venv/
-.venv2/
-.venv311/
+# --- Python ---
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
 *.egg-info/
-data/
-*.db
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.log
+
+# --- Virtualenv / tooling ---
+.venv/
+.venv*/
+venv/
+ENV/
+env/
+.poetry/
+.pdm-python
+.python-version
+
+# --- Editors / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Local secrets / env ---
 .env
+.env.*
+*.key
+*.pem
+
+# --- Muninn local runtime artifacts ---
+# If you keep local DB/config under data/, ignore common runtime files.
+data/*.db
+data/*.db-*
+data/*.sqlite
+data/*.sqlite3
+data/*.wal
+data/*.shm
+data/*.jsonl
+data/*.json
+data/*.log
+data/cache/
+data/tmp/
+
+# If you generate exports or recordings locally
+exports/
+recordings/
+
+# --- MCP/tunnel local state ---
+.ngrok*
+cloudflared*
+tunnel*
