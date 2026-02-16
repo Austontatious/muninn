@@ -11,6 +11,7 @@
 ## v1 (Useful in production agents)
 
 - Hybrid retrieval (lexical + vector)
+- Lexical FTS5 retrieval done in v0.2; vector retrieval next
 - Entity linking + dedupe/merge
 - Contradiction ledger (coexist w/ confidence + provenance)
 - Sensitivity tiers + redaction rules

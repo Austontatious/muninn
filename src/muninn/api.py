@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 
 from . import db
 from .memory.cards import render_cards
@@ -16,9 +16,9 @@ from .models import (
     WriteCandidatesRequest,
     WriteCandidatesResponse,
 )
-from .service import log_audit
+from .service import log_audit, memory_version
 
-app = FastAPI(title="Muninn", version="0.1.0")
+app = FastAPI(title="Muninn", version="0.2.0")
 
 
 @app.on_event("startup")
@@ -93,3 +93,12 @@ def api_rehydrate(req: RehydrateRequest) -> RehydrateResponse:
         },
     )
     return RehydrateResponse(cards=cards, items=items)
+
+
+@app.get("/v0/memory/version")
+def api_memory_version(
+    namespace: str = Query(default="default"),
+    profile: str = Query(default="generic"),
+) -> dict[str, str]:
+    version = memory_version(namespace=namespace, profile=profile)
+    return {"namespace": namespace, "profile": profile, "version": version}

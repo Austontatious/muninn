@@ -1,0 +1,44 @@
+{
+  "name": "muninn",
+  "version": "0.2",
+  "base_url": "http://127.0.0.1:8000",
+  "tools": [
+    {
+      "tool_name": "muninn_rehydrate",
+      "method": "POST",
+      "path": "/v0/memory/rehydrate",
+      "description": "Retrieve and render conceptual memory cards relevant to a query.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "query": {"type": "string"},
+          "entity_id": {"type": ["string", "null"]},
+          "k": {"type": "integer"},
+          "profile": {"type": "string", "enum": ["generic", "lexi", "friday"]}
+        },
+        "required": ["namespace", "query", "k", "profile"]
+      }
+    },
+    {
+      "tool_name": "muninn_write_candidates",
+      "method": "POST",
+      "path": "/v0/memory/write_candidates",
+      "description": "Write memory candidates (facts/episodes/preferences) subject to write-gating policy.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "candidates": {"type": "array"}
+        },
+        "required": ["namespace", "candidates"]
+      }
+    },
+    {
+      "tool_name": "muninn_version",
+      "method": "GET",
+      "path": "/v0/memory/version",
+      "description": "Returns memory version hash for namespace+profile (for prefix caching)."
+    }
+  ]
+}

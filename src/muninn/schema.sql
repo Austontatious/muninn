@@ -48,3 +48,60 @@ CREATE TABLE IF NOT EXISTS audit_log (
     event_json TEXT NOT NULL,
     created_at REAL NOT NULL
 );
+
+-- Full-text search (FTS5)
+CREATE VIRTUAL TABLE IF NOT EXISTS facts_fts USING fts5(
+    id UNINDEXED,
+    subject_id UNINDEXED,
+    text
+);
+
+CREATE VIRTUAL TABLE IF NOT EXISTS episodes_fts USING fts5(
+    id UNINDEXED,
+    entity_id UNINDEXED,
+    summary
+);
+
+CREATE VIRTUAL TABLE IF NOT EXISTS preferences_fts USING fts5(
+    id UNINDEXED,
+    entity_id UNINDEXED,
+    text
+);
+
+-- Triggers: facts -> facts_fts
+CREATE TRIGGER IF NOT EXISTS facts_ai AFTER INSERT ON facts BEGIN
+    INSERT INTO facts_fts(id, subject_id, text)
+    VALUES (new.id, new.subject_id, new.predicate || ': ' || new.object);
+END;
+CREATE TRIGGER IF NOT EXISTS facts_ad AFTER DELETE ON facts BEGIN
+    DELETE FROM facts_fts WHERE id = old.id;
+END;
+CREATE TRIGGER IF NOT EXISTS facts_au AFTER UPDATE ON facts BEGIN
+    DELETE FROM facts_fts WHERE id = old.id;
+    INSERT INTO facts_fts(id, subject_id, text)
+    VALUES (new.id, new.subject_id, new.predicate || ': ' || new.object);
+END;
+
+-- Triggers: episodes -> episodes_fts
+CREATE TRIGGER IF NOT EXISTS episodes_ai AFTER INSERT ON episodes BEGIN
+    INSERT INTO episodes_fts(id, entity_id, summary) VALUES (new.id, new.entity_id, new.summary);
+END;
+CREATE TRIGGER IF NOT EXISTS episodes_ad AFTER DELETE ON episodes BEGIN
+    DELETE FROM episodes_fts WHERE id = old.id;
+END;
+CREATE TRIGGER IF NOT EXISTS episodes_au AFTER UPDATE ON episodes BEGIN
+    DELETE FROM episodes_fts WHERE id = old.id;
+    INSERT INTO episodes_fts(id, entity_id, summary) VALUES (new.id, new.entity_id, new.summary);
+END;
+
+-- Triggers: preferences -> preferences_fts
+CREATE TRIGGER IF NOT EXISTS preferences_ai AFTER INSERT ON preferences BEGIN
+    INSERT INTO preferences_fts(id, entity_id, text) VALUES (new.id, new.entity_id, new.key || '=' || new.value);
+END;
+CREATE TRIGGER IF NOT EXISTS preferences_ad AFTER DELETE ON preferences BEGIN
+    DELETE FROM preferences_fts WHERE id = old.id;
+END;
+CREATE TRIGGER IF NOT EXISTS preferences_au AFTER UPDATE ON preferences BEGIN
+    DELETE FROM preferences_fts WHERE id = old.id;
+    INSERT INTO preferences_fts(id, entity_id, text) VALUES (new.id, new.entity_id, new.key || '=' || new.value);
+END;

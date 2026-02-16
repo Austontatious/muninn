@@ -37,9 +37,16 @@ python scripts/init_db.py
 Service: http://127.0.0.1:8000  
 Docs: http://127.0.0.1:8000/docs
 
+## Demo
+
+```bash
+python examples/cli_agent_demo.py
+```
+
 ## API (v0)
 
 - `GET /health`
+- `GET /v0/memory/version` — lightweight memory hash for namespace/profile
 - `POST /v0/memory/write_candidates` — write proposed memory candidates (gated by policy)
 - `POST /v0/memory/retrieve` — retrieve relevant records for a query/context
 - `POST /v0/memory/render_cards` — render retrieved records into memory cards
