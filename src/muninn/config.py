@@ -8,6 +8,13 @@ class Settings(BaseModel):
     db_path: str = os.getenv("MUNINN_DB_PATH", "./data/muninn.db")
     host: str = os.getenv("MUNINN_HOST", "127.0.0.1")
     port: int = int(os.getenv("MUNINN_PORT", "8000"))
+    readonly: bool = os.getenv("MUNINN_READONLY", "0") == "1"
+    api_key: str | None = os.getenv("MUNINN_API_KEY") or None
+    require_api_key: bool = os.getenv("MUNINN_REQUIRE_API_KEY", "0") == "1"
+    api_key_header: str = os.getenv("MUNINN_API_KEY_HEADER", "X-API-Key")
+    pending_retention_days: int = int(os.getenv("MUNINN_PENDING_RETENTION_DAYS", "14"))
+    audit_retention_days: int = int(os.getenv("MUNINN_AUDIT_RETENTION_DAYS", "30"))
+    cleanup_batch_limit: int = int(os.getenv("MUNINN_CLEANUP_BATCH_LIMIT", "2000"))
     retrieval_mode: Literal["fts", "hybrid", "vector"] = os.getenv(
         "MUNINN_RETRIEVAL_MODE", "fts"
     )
@@ -27,6 +34,63 @@ def retrieval_mode() -> Literal["fts", "hybrid", "vector"]:
     if mode in {"fts", "hybrid", "vector"}:
         return mode
     return "fts"
+
+
+def readonly() -> bool:
+    value = os.getenv("MUNINN_READONLY")
+    if value is None:
+        return settings.readonly
+    return value.strip() == "1"
+
+
+def api_key() -> str | None:
+    value = os.getenv("MUNINN_API_KEY")
+    if value is not None:
+        value = value.strip()
+        return value or None
+    return settings.api_key
+
+
+def require_api_key() -> bool:
+    value = os.getenv("MUNINN_REQUIRE_API_KEY")
+    if value is None:
+        return settings.require_api_key
+    return value.strip() == "1"
+
+
+def api_key_header() -> str:
+    value = os.getenv("MUNINN_API_KEY_HEADER")
+    if value is None:
+        value = settings.api_key_header
+    value = value.strip()
+    return value or "X-API-Key"
+
+
+def pending_retention_days() -> int:
+    raw = os.getenv("MUNINN_PENDING_RETENTION_DAYS", str(settings.pending_retention_days))
+    try:
+        value = int(raw)
+    except ValueError:
+        return settings.pending_retention_days
+    return max(1, value)
+
+
+def audit_retention_days() -> int:
+    raw = os.getenv("MUNINN_AUDIT_RETENTION_DAYS", str(settings.audit_retention_days))
+    try:
+        value = int(raw)
+    except ValueError:
+        return settings.audit_retention_days
+    return max(1, value)
+
+
+def cleanup_batch_limit() -> int:
+    raw = os.getenv("MUNINN_CLEANUP_BATCH_LIMIT", str(settings.cleanup_batch_limit))
+    try:
+        value = int(raw)
+    except ValueError:
+        return settings.cleanup_batch_limit
+    return max(1, value)
 
 
 def rrf_k0() -> int:

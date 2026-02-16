@@ -2,16 +2,25 @@ from __future__ import annotations
 
 import sqlite3
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, HTTPException, Query
 
 from . import db
-from .config import max_vec_scan
+from .config import (
+    audit_retention_days,
+    cleanup_batch_limit,
+    max_vec_scan,
+    pending_retention_days,
+    readonly,
+)
 from .memory import pending as pending_memory
 from .memory.cards import render_cards
 from .memory.retrieval import retrieve
 from .memory.writeback import write_candidates
+from .middleware import ApiKeyMiddleware
 from .migrations import apply_migrations
 from .models import (
+    CleanupRequest,
+    CleanupResponse,
     ConfirmCandidatesRequest,
     ConfirmCandidatesResponse,
     ListPendingRequest,
@@ -33,11 +42,19 @@ from .models import (
     WriteCandidatesRequest,
     WriteCandidatesResponse,
 )
+from .ops import cleanup as ops_cleanup
+from .ops.stats import collect_stats
 from .service import log_audit, memory_version
 from .vector import reindex as vector_reindex
 from .vector import store as vector_store
 
-app = FastAPI(title="Muninn", version="0.7.0")
+app = FastAPI(title="Muninn", version="0.8.0")
+app.add_middleware(ApiKeyMiddleware)
+
+
+def require_writable() -> None:
+    if readonly():
+        raise HTTPException(status_code=503, detail="Muninn is in read-only mode")
 
 
 @app.on_event("startup")
@@ -71,8 +88,14 @@ def api_debug_vector_backend() -> dict[str, str | bool]:
     }
 
 
+@app.get("/v0/debug/stats")
+def api_debug_stats(namespace: str | None = Query(default=None)) -> dict:
+    return collect_stats(namespace=namespace, api_version=app.version)
+
+
 @app.post("/v0/memory/write_candidates", response_model=WriteCandidatesResponse)
 def api_write_candidates(req: WriteCandidatesRequest) -> WriteCandidatesResponse:
+    require_writable()
     ids, reasons = write_candidates(req.namespace, req.candidates)
     log_audit(
         req.namespace,
@@ -90,6 +113,7 @@ def api_write_candidates(req: WriteCandidatesRequest) -> WriteCandidatesResponse
 
 @app.post("/v0/memory/stage_candidates", response_model=StageCandidatesResponse)
 def api_stage_candidates(req: StageCandidatesRequest) -> StageCandidatesResponse:
+    require_writable()
     accepted_ids, pending_ids, rejected, pending_reasons = pending_memory.stage_candidates(
         namespace=req.namespace,
         candidates=req.candidates,
@@ -159,6 +183,7 @@ def api_list_pending_get(
 
 @app.post("/v0/memory/confirm_candidates", response_model=ConfirmCandidatesResponse)
 def api_confirm_candidates(req: ConfirmCandidatesRequest) -> ConfirmCandidatesResponse:
+    require_writable()
     out = pending_memory.confirm_candidates(
         namespace=req.namespace,
         pending_ids=req.pending_ids,
@@ -185,6 +210,7 @@ def api_confirm_candidates(req: ConfirmCandidatesRequest) -> ConfirmCandidatesRe
 
 @app.post("/v0/memory/upsert_embeddings", response_model=UpsertEmbeddingsResponse)
 def api_upsert_embeddings(req: UpsertEmbeddingsRequest) -> UpsertEmbeddingsResponse:
+    require_writable()
     upserted, rejected, reasons = vector_store.upsert_embeddings(req.namespace, req.items)
     models = sorted({item.model for item in req.items})
     log_audit(
@@ -228,6 +254,7 @@ def api_query_vector(req: QueryVectorRequest) -> QueryVectorResponse:
 
 @app.post("/v0/admin/reindex_vectors", response_model=ReindexVectorsResponse)
 def api_reindex_vectors(req: ReindexVectorsRequest) -> ReindexVectorsResponse:
+    require_writable()
     out = vector_reindex.reindex_vectors(
         namespace=req.namespace,
         model=req.model,
@@ -250,6 +277,103 @@ def api_reindex_vectors(req: ReindexVectorsRequest) -> ReindexVectorsResponse:
             "scanned": out.scanned,
             "reindexed": out.reindexed,
             "skipped": out.skipped,
+        },
+    )
+    return out
+
+
+@app.post("/v0/admin/cleanup", response_model=CleanupResponse)
+def api_admin_cleanup(req: CleanupRequest) -> CleanupResponse:
+    require_writable()
+    conn = db.connect()
+
+    limit = max(1, min(req.limit, cleanup_batch_limit()))
+    now_ts = db.now()
+    base_cutoff = now_ts - req.older_than_seconds if req.older_than_seconds is not None else None
+    targets = list(dict.fromkeys(req.targets))
+
+    deleted_pending = 0
+    deleted_decisions = 0
+    deleted_audit = 0
+    scanned = 0
+    reasons: list[str] = []
+
+    for target in targets:
+        if target == "pending":
+            statuses = req.statuses or ["accepted", "rejected", "expired"]
+            cutoff = base_cutoff
+            if cutoff is None:
+                cutoff = now_ts - (pending_retention_days() * 24 * 60 * 60)
+            deleted, seen = ops_cleanup.cleanup_pending(
+                conn=conn,
+                namespace=req.namespace,
+                statuses=statuses,
+                cutoff_ts=cutoff,
+                limit=limit,
+                dry_run=req.dry_run,
+            )
+            deleted_pending += deleted
+            scanned += seen
+            continue
+
+        if target == "decisions":
+            cutoff = base_cutoff
+            if cutoff is None:
+                cutoff = now_ts - (pending_retention_days() * 24 * 60 * 60)
+            deleted, seen = ops_cleanup.cleanup_decisions(
+                conn=conn,
+                namespace=req.namespace,
+                cutoff_ts=cutoff,
+                limit=limit,
+                dry_run=req.dry_run,
+            )
+            deleted_decisions += deleted
+            scanned += seen
+            continue
+
+        if target == "audit":
+            cutoff = base_cutoff
+            if cutoff is None:
+                cutoff = now_ts - (audit_retention_days() * 24 * 60 * 60)
+            deleted, seen = ops_cleanup.cleanup_audit(
+                conn=conn,
+                namespace=req.namespace,
+                cutoff_ts=cutoff,
+                limit=limit,
+                dry_run=req.dry_run,
+            )
+            deleted_audit += deleted
+            scanned += seen
+            continue
+
+        reasons.append(f"unknown_target:{target}")
+
+    conn.close()
+
+    out = CleanupResponse(
+        targets=targets,
+        namespace=req.namespace,
+        deleted_pending=deleted_pending,
+        deleted_decisions=deleted_decisions,
+        deleted_audit=deleted_audit,
+        scanned=scanned,
+        reasons=reasons,
+    )
+    log_audit(
+        req.namespace or "default",
+        "admin_cleanup",
+        {
+            "namespace": req.namespace,
+            "targets": targets,
+            "statuses": req.statuses,
+            "older_than_seconds": req.older_than_seconds,
+            "limit": limit,
+            "dry_run": req.dry_run,
+            "deleted_pending": deleted_pending,
+            "deleted_decisions": deleted_decisions,
+            "deleted_audit": deleted_audit,
+            "scanned": scanned,
+            "reasons": reasons,
         },
     )
     return out

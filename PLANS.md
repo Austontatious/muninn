@@ -137,3 +137,21 @@ Add a confirm-required memory workflow: stage candidates, list pending items, an
 - [x] Update integration/runbook/project-memory docs
 - [x] Add tests for stage/list/confirm accept/reject/ttl expiration
 - [x] Bump package/API versions to 0.7.0 and run lint/tests
+
+---
+
+# Muninn v0.8 Ops Hardening Plan
+
+## Objective
+Add operational hardening: retention cleanup, debug stats, readonly write kill-switch, and optional API key middleware.
+
+## Checklist
+- [x] Add config toggles for readonly/auth/retention defaults
+- [x] Add optional API key middleware and wire into FastAPI app
+- [x] Enforce readonly mode on write/admin endpoints
+- [x] Add `/v0/debug/stats` endpoint with migration/config/count summaries
+- [x] Add `/v0/admin/cleanup` endpoint with pending/decisions/audit cleanup support
+- [x] Extend typed client with `debug_stats` and `admin_cleanup`
+- [x] Update docs (README/RUNBOOK/PROJECT_MEMORY)
+- [x] Add tests for readonly, API key, stats, and cleanup behavior
+- [x] Bump versions to 0.8.0 and run lint/tests/smoke

@@ -31,6 +31,7 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 - Admin reindex path added to rebuild sqlite-vec mappings from canonical embeddings
 - Typed `MuninnClient` + OpenAI/Anthropic/local adapters added with contract tests (v0.6)
 - Confirm-required lifecycle added: stage/list/confirm with durable pending queues (v0.7)
+- Ops hardening added: cleanup endpoint, debug stats, readonly mode, optional API key middleware (v0.8)
 
 ## Key Constraints
 

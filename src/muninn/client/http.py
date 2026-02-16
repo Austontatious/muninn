@@ -5,6 +5,8 @@ from typing import Any
 import httpx
 
 from ..models import (
+    CleanupRequest,
+    CleanupResponse,
     ConfirmCandidatesRequest,
     ConfirmCandidatesResponse,
     ListPendingRequest,
@@ -125,6 +127,16 @@ class MuninnClient:
     def debug_vector_backend(self) -> dict[str, Any]:
         return self._request("GET", "/v0/debug/vector_backend")
 
+    def debug_stats(self, namespace: str | None = None) -> dict[str, Any]:
+        params: dict[str, Any] | None = None
+        if namespace is not None:
+            params = {"namespace": namespace}
+        return self._request("GET", "/v0/debug/stats", params=params)
+
     def admin_reindex_vectors(self, req: ReindexVectorsRequest) -> ReindexVectorsResponse:
         data = self._request("POST", "/v0/admin/reindex_vectors", json_payload=req.model_dump())
         return ReindexVectorsResponse(**data)
+
+    def admin_cleanup(self, req: CleanupRequest) -> CleanupResponse:
+        data = self._request("POST", "/v0/admin/cleanup", json_payload=req.model_dump())
+        return CleanupResponse(**data)

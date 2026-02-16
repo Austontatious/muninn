@@ -63,6 +63,8 @@ python examples/anthropic_tools_demo.py
 - `POST /v0/memory/render_cards` — render retrieved records into memory cards
 - `POST /v0/memory/rehydrate` — retrieve + render in one call
 - `GET /v0/debug/vector_backend` — inspect effective vector backend (sqlite-vec vs brute-force)
+- `GET /v0/debug/stats` — runtime/version/migration/count summary
+- `POST /v0/admin/cleanup` — retention cleanup for pending/decisions/audit
 
 ## Vector Backend
 
@@ -71,6 +73,14 @@ Optional sqlite-vec acceleration is available with fallback safety:
 - `MUNINN_VEC_BACKEND=auto|bruteforce|sqlite_vec`
 - `MUNINN_SQLITE_VEC_ENABLED=1|0`
 - `MUNINN_SQLITE_VEC_PATH=/path/to/sqlite_vec.(so|dylib|dll)` (optional)
+
+## Ops Guards
+
+- Read-only kill switch: `MUNINN_READONLY=1`
+- Optional API key protection:
+  - `MUNINN_REQUIRE_API_KEY=1`
+  - `MUNINN_API_KEY=<secret>`
+  - `MUNINN_API_KEY_HEADER=X-API-Key` (optional override)
 
 ## Design Notes
 

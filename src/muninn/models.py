@@ -171,6 +171,27 @@ class ReindexVectorsResponse(BaseModel):
     reasons: list[str] = []
 
 
+class CleanupRequest(BaseModel):
+    namespace: str | None = None
+    targets: list[Literal["pending", "decisions", "audit"]] = Field(
+        default_factory=lambda: ["pending"]
+    )
+    statuses: list[Literal["pending", "accepted", "rejected", "expired"]] | None = None
+    older_than_seconds: int | None = None
+    limit: int = 2000
+    dry_run: bool = False
+
+
+class CleanupResponse(BaseModel):
+    targets: list[str]
+    namespace: str | None
+    deleted_pending: int = 0
+    deleted_decisions: int = 0
+    deleted_audit: int = 0
+    scanned: int = 0
+    reasons: list[str] = []
+
+
 class MemoryCard(BaseModel):
     card_type: str
     title: str
