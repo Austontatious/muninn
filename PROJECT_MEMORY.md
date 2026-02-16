@@ -29,6 +29,7 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 - Optional sqlite-vec acceleration added with automatic fallback to brute-force
 - Namespace isolation enforced in storage/query paths (v0.5)
 - Admin reindex path added to rebuild sqlite-vec mappings from canonical embeddings
+- Typed `MuninnClient` + OpenAI/Anthropic/local adapters added with contract tests (v0.6)
 
 ## Key Constraints
 
@@ -44,4 +45,3 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 - Add background reindex flow for sqlite-vec mappings after long brute-force-only periods
 - Add contradiction ledger + merge/dedupe policies
 - Add sensitivity tiers + redaction filters
-- Add provider adapter examples (OpenAI/Anthropic tool schemas)

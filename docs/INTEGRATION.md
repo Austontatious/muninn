@@ -164,3 +164,29 @@ Admin vector reindex endpoint:
 
 This endpoint rebuilds sqlite-vec mappings from canonical `embeddings` rows for a namespace.
 It is intended for operational use only; protect behind network/auth controls in production.
+
+## Provider adapters (included)
+
+Muninn ships lightweight provider helpers without SDK lock-in:
+
+- OpenAI style:
+  - `muninn.adapters.openai_tools.openai_tools_spec`
+  - `muninn.adapters.openai_tools.dispatch_openai_tool_call`
+- Anthropic style:
+  - `muninn.adapters.anthropic_tools.anthropic_tools_spec`
+  - `muninn.adapters.anthropic_tools.dispatch_anthropic_tool_call`
+- Local typed client:
+  - `muninn.client.MuninnClient`
+
+Examples:
+- `examples/openai_tools_demo.py`
+- `examples/anthropic_tools_demo.py`
+- `examples/local_client_demo.py`
+
+## Minimal agent loop
+
+1) Call rehydrate (`/v0/memory/rehydrate`) with current message + namespace/entity.
+2) Inject returned cards into a `<SYSTEM_MEMORY>` block.
+3) Generate the assistant response.
+4) Propose `0..N` write candidates (facts/preferences/episodes with provenance).
+5) Call write candidates (`/v0/memory/write_candidates`).

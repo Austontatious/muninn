@@ -30,7 +30,7 @@ from .service import log_audit, memory_version
 from .vector import reindex as vector_reindex
 from .vector import store as vector_store
 
-app = FastAPI(title="Muninn", version="0.5.0")
+app = FastAPI(title="Muninn", version="0.6.0")
 
 
 @app.on_event("startup")

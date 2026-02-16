@@ -103,3 +103,20 @@ Out:
 - [x] Add namespace isolation + vector namespace + reindex tests
 - [x] Bump package/API versions to 0.5.0
 - [x] Run `ruff check .`, `pytest -q`, and smoke tests
+
+---
+
+# Muninn v0.6 Adapter/Client Plan
+
+## Objective
+Add typed client and provider adapter glue so Muninn can be consumed as a plugin/tool contract without provider SDK dependencies.
+
+## Checklist
+- [x] Add `MuninnClient` typed HTTP client
+- [x] Replace local/openai/anthropic adapter stubs with real tool-spec + dispatch helpers
+- [x] Package tool spec as runtime resource
+- [x] Add runnable integration examples
+- [x] Add tool contract and client roundtrip tests (ASGI transport)
+- [x] Update integration docs with provider adapter guidance
+- [x] Bump package/API versions to 0.6.0
+- [x] Run `ruff check .` and `pytest -q`

@@ -44,6 +44,13 @@ Docs: http://127.0.0.1:8000/docs
 python examples/cli_agent_demo.py
 ```
 
+Provider adapter demos:
+```bash
+python examples/local_client_demo.py
+python examples/openai_tools_demo.py
+python examples/anthropic_tools_demo.py
+```
+
 ## API (v0)
 
 - `GET /health`

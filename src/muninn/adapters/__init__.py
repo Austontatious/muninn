@@ -1,1 +1,13 @@
-"""Provider adapter stubs for mapping agent tool calls to Muninn HTTP APIs."""
+from .anthropic_tools import anthropic_tools_spec, dispatch_anthropic_tool_call
+from .local_tools import make_client_from_env, rehydrate, write_candidates
+from .openai_tools import dispatch_openai_tool_call, openai_tools_spec
+
+__all__ = [
+    "anthropic_tools_spec",
+    "dispatch_anthropic_tool_call",
+    "dispatch_openai_tool_call",
+    "make_client_from_env",
+    "openai_tools_spec",
+    "rehydrate",
+    "write_candidates",
+]

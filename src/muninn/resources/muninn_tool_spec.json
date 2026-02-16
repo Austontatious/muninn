@@ -1,0 +1,90 @@
+{
+  "name": "muninn",
+  "version": "0.4",
+  "base_url": "http://127.0.0.1:8000",
+  "tools": [
+    {
+      "tool_name": "muninn_rehydrate",
+      "method": "POST",
+      "path": "/v0/memory/rehydrate",
+      "description": "Retrieve and render conceptual memory cards relevant to a query.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "query": {"type": "string"},
+          "entity_id": {"type": ["string", "null"]},
+          "k": {"type": "integer"},
+          "profile": {"type": "string", "enum": ["generic", "lexi", "friday"]},
+          "embedding_model": {"type": ["string", "null"]},
+          "query_embedding": {
+            "type": ["array", "null"],
+            "items": {"type": "number"}
+          }
+        },
+        "required": ["namespace", "query", "k", "profile"]
+      }
+    },
+    {
+      "tool_name": "muninn_write_candidates",
+      "method": "POST",
+      "path": "/v0/memory/write_candidates",
+      "description": "Write memory candidates (facts/episodes/preferences) subject to write-gating policy.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "candidates": {"type": "array"}
+        },
+        "required": ["namespace", "candidates"]
+      }
+    },
+    {
+      "tool_name": "muninn_upsert_embeddings",
+      "method": "POST",
+      "path": "/v0/memory/upsert_embeddings",
+      "description": "Upsert caller-provided normalized embeddings for memory items.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "items": {"type": "array"}
+        },
+        "required": ["namespace", "items"]
+      }
+    },
+    {
+      "tool_name": "muninn_query_vector",
+      "method": "POST",
+      "path": "/v0/memory/query_vector",
+      "description": "Run vector similarity query over caller-upserted embeddings.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {"type": "string"},
+          "model": {"type": "string"},
+          "query_vector": {
+            "type": "array",
+            "items": {"type": "number"}
+          },
+          "entity_id": {"type": ["string", "null"]},
+          "kinds": {"type": ["array", "null"]},
+          "k": {"type": "integer"}
+        },
+        "required": ["namespace", "model", "query_vector"]
+      }
+    },
+    {
+      "tool_name": "muninn_version",
+      "method": "GET",
+      "path": "/v0/memory/version",
+      "description": "Returns memory version hash for namespace+profile (and optional embedding model state for prefix caching)."
+    },
+    {
+      "tool_name": "muninn_debug_vector_backend",
+      "method": "GET",
+      "path": "/v0/debug/vector_backend",
+      "description": "Returns configured and effective vector backend state (sqlite-vec vs brute-force)."
+    }
+  ]
+}
