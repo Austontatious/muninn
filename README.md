@@ -15,6 +15,64 @@ This repo scaffolds the first working slice:
 - Stubs for retrieval backends (vector/hybrid) and provider adapters
 - Namespace isolation enforced at the DB/query layer (v0.5.0)
 
+## High-Level Structure
+
+Muninn is organized as a small service with five layers:
+
+1) Ingestion and policy layer
+- Receives memory candidates from agents.
+- Applies write policy (accept, reject, confirm-required).
+- Supports staged confirmation workflow (`stage_candidates` -> `list_pending` -> `confirm_candidates`).
+
+2) Canonical storage layer
+- SQLite is the source of truth.
+- Core tables: `entities`, `facts`, `episodes`, `preferences`.
+- Supporting tables: `embeddings`, `pending_candidates`, `candidate_decisions`, `audit_log`.
+- Namespace is enforced in storage/query paths to prevent cross-tenant leakage.
+
+3) Retrieval layer
+- Lexical retrieval via FTS5.
+- Vector retrieval via caller-provided embeddings.
+- Hybrid retrieval via FTS + vectors using RRF fusion.
+- Recency fallback fills short result sets.
+
+4) Prompt composition layer
+- Retrieved items are transformed into compact memory cards.
+- Cards are intended for prompt injection as `<SYSTEM_MEMORY>...</SYSTEM_MEMORY>`.
+
+5) Ops and safety layer
+- Read-only kill switch (`MUNINN_READONLY=1`).
+- Optional API key middleware.
+- Debug endpoints (`/v0/debug/*`) and retention cleanup endpoint (`/v0/admin/cleanup`).
+- Migration runner and init scripts keep DBs up to date.
+
+## How It Works End-to-End
+
+Typical user-facing turn:
+
+1) Agent calls `/v0/memory/rehydrate` with current user message and namespace.
+2) Muninn retrieves relevant records (FTS/vector/hybrid) and returns cards + raw items.
+3) Agent answers user using memory cards in prompt context.
+4) Agent proposes candidate memories.
+5) Agent calls `/v0/memory/stage_candidates` (preferred) instead of direct write.
+6) Muninn writes benign candidates immediately and queues sensitive ones as pending.
+7) Agent/user confirms pending items through `/v0/memory/confirm_candidates`.
+
+Trusted internal flows can still call `/v0/memory/write_candidates` directly.
+
+## Repository Map
+
+- `src/muninn/api.py`: FastAPI routes and endpoint wiring
+- `src/muninn/models.py`: Pydantic request/response and domain models
+- `src/muninn/memory/`: write policy, writeback, pending workflow, retrieval, card rendering
+- `src/muninn/vector/`: embedding storage/query, optional sqlite-vec backend, reindex logic
+- `src/muninn/ops/`: debug stats and cleanup operations
+- `src/muninn/middleware/`: optional API key middleware
+- `src/muninn/schema.sql`: source-of-truth DB schema
+- `scripts/migrations/`: additive SQL migrations for existing DBs
+- `examples/`: local and provider-adapter integration demos
+- `docs/`: integration and runbook documentation
+
 ## Quickstart
 
 ### 1) Create venv + install

@@ -8,6 +8,63 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 - conceptual recall via compact memory cards
 - clean integration interfaces (HTTP + provider adapters)
 
+## Human Overview
+
+### What it is
+Muninn is an HTTP memory service for LLM applications. It sits beside your agent/orchestrator and provides durable memory operations without coupling to any specific model provider.
+
+### What it does
+- Stores canonical memory objects (facts, episodes, preferences) with provenance.
+- Retrieves relevant memories for the current turn (lexical, vector, or hybrid).
+- Renders compact memory cards for prompt context.
+- Applies safety gates for writes, including a confirm-required queue for sensitive candidates.
+- Exposes operational controls: migrations, debug stats, cleanup, readonly mode, optional API key protection.
+
+### How it is done
+- FastAPI service layer (`api.py`) exposes stable endpoints.
+- SQLite canonical store with additive migrations (`schema.sql` + `scripts/migrations`).
+- Retrieval pipeline combines FTS5, vector similarity, and RRF fusion.
+- Policy + writeback pipeline enforces guardrails and dedupe/merge behavior.
+- Pending workflow tables (`pending_candidates`, `candidate_decisions`) close the write lifecycle loop.
+- Ops modules provide cleanup and observability endpoints.
+
+## Architecture Map
+
+- Ingress/API:
+  - `src/muninn/api.py`
+- Domain models:
+  - `src/muninn/models.py`
+- Memory pipeline:
+  - `src/muninn/memory/policy.py`
+  - `src/muninn/memory/writeback.py`
+  - `src/muninn/memory/pending.py`
+  - `src/muninn/memory/retrieval.py`
+  - `src/muninn/memory/cards.py`
+- Vector subsystem:
+  - `src/muninn/vector/store.py`
+  - `src/muninn/vector/sqlite_vec_backend.py`
+  - `src/muninn/vector/reindex.py`
+- Ops/security:
+  - `src/muninn/ops/stats.py`
+  - `src/muninn/ops/cleanup.py`
+  - `src/muninn/middleware/auth.py`
+- Persistence:
+  - `src/muninn/schema.sql`
+  - `scripts/migrations/*.sql`
+  - `scripts/init_db.py`
+
+## Turn Lifecycle (high-level)
+
+1) Rehydrate: retrieve relevant memory and render cards for prompt injection.
+2) Respond: agent answers user.
+3) Stage: agent submits memory candidates.
+4) Decide:
+   - benign -> written to canonical tables
+   - sensitive -> queued pending confirmation
+   - unsafe/instruction-like -> rejected
+5) Confirm/reject pending candidates.
+6) Observe and maintain with debug stats and cleanup.
+
 ## Current Snapshot
 
 - Repo scaffold created (FastAPI + SQLite)
