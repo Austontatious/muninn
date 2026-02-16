@@ -12,22 +12,31 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 
 - Repo scaffold created (FastAPI + SQLite)
 - Schemas defined for core objects + memory cards
-- Minimal endpoints implemented:
+- Endpoints implemented:
   - health
   - write_candidates
   - retrieve
   - render_cards
   - rehydrate
+  - upsert_embeddings
+  - query_vector
+  - memory/version
+- Retrieval supports mode toggle:
+  - `fts` (default)
+  - `vector` (caller-provided query embedding)
+  - `hybrid` (FTS + vector fused with RRF)
+- Embeddings are caller-provided and stored in SQLite as normalized float32 blobs
 
 ## Key Constraints
 
 - Avoid storing raw transcripts as “memory”
 - Memory is facts/episodes/preferences with confidence + provenance
 - “Instruction injection” never stored (firewall)
+- Muninn stays model-agnostic (no built-in embedding model coupling)
 
 ## Next Steps (nearest)
 
-- Add hybrid retrieval (BM25 + vector) behind interface
+- Add ANN backend behind existing vector store interface (sqlite-vec / pgvector)
 - Add contradiction ledger + merge/dedupe policies
 - Add sensitivity tiers + redaction filters
 - Add provider adapter examples (OpenAI/Anthropic tool schemas)

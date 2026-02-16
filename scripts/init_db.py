@@ -33,6 +33,7 @@ def main() -> None:
     conn = db.connect()
     db.init_db(conn)
     backfill_fts(conn)
+    # Embeddings are caller-provided and written via API; no backfill required.
     print("Initialized DB")
 
 

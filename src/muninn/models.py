@@ -39,6 +39,8 @@ class RetrieveRequest(BaseModel):
     query: str
     entity_id: str | None = None
     k: int = 8
+    query_embedding: list[float] | None = None
+    embedding_model: str | None = None
 
 
 class RetrievedItem(BaseModel):
@@ -52,6 +54,45 @@ class RetrievedItem(BaseModel):
 
 class RetrieveResponse(BaseModel):
     items: list[RetrievedItem]
+
+
+class UpsertEmbeddingsItem(BaseModel):
+    item_id: str
+    kind: Literal["fact", "episode", "preference"]
+    entity_id: str
+    model: str
+    vector: list[float]
+
+
+class UpsertEmbeddingsRequest(BaseModel):
+    namespace: str = "default"
+    items: list[UpsertEmbeddingsItem]
+
+
+class UpsertEmbeddingsResponse(BaseModel):
+    upserted: int
+    rejected: int
+    reasons: list[str] = []
+
+
+class QueryVectorRequest(BaseModel):
+    namespace: str = "default"
+    model: str
+    query_vector: list[float]
+    entity_id: str | None = None
+    kinds: list[Literal["fact", "episode", "preference"]] | None = None
+    k: int = 8
+
+
+class VectorHit(BaseModel):
+    item_id: str
+    kind: Literal["fact", "episode", "preference"]
+    entity_id: str
+    score: float
+
+
+class QueryVectorResponse(BaseModel):
+    hits: list[VectorHit]
 
 
 class MemoryCard(BaseModel):
@@ -79,6 +120,8 @@ class RehydrateRequest(BaseModel):
     entity_id: str | None = None
     k: int = 8
     profile: Literal["generic", "lexi", "friday"] = "generic"
+    query_embedding: list[float] | None = None
+    embedding_model: str | None = None
 
 
 class RehydrateResponse(BaseModel):

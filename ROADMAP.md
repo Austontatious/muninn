@@ -12,6 +12,7 @@
 
 - Hybrid retrieval (lexical + vector)
 - Lexical FTS5 retrieval done in v0.2; vector retrieval next
+- Hybrid retrieval (FTS + vectors) with RRF fusion (SQLite brute-force v0; backend pluggable).
 - Entity linking + dedupe/merge
 - Contradiction ledger (coexist w/ confidence + provenance)
 - Sensitivity tiers + redaction rules

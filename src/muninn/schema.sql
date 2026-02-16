@@ -105,3 +105,18 @@ CREATE TRIGGER IF NOT EXISTS preferences_au AFTER UPDATE ON preferences BEGIN
     DELETE FROM preferences_fts WHERE id = old.id;
     INSERT INTO preferences_fts(id, entity_id, text) VALUES (new.id, new.entity_id, new.key || '=' || new.value);
 END;
+
+-- Embeddings (caller-provided). Store normalized float32 vectors as BLOB.
+CREATE TABLE IF NOT EXISTS embeddings (
+    item_id TEXT PRIMARY KEY,         -- references facts.id / episodes.id / preferences.id
+    kind TEXT NOT NULL,               -- "fact" | "episode" | "preference"
+    entity_id TEXT NOT NULL,
+    model TEXT NOT NULL,
+    dim INTEGER NOT NULL,
+    vector_blob BLOB NOT NULL,        -- float32 array, normalized
+    updated_at REAL NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_embeddings_kind ON embeddings(kind);
+CREATE INDEX IF NOT EXISTS idx_embeddings_entity ON embeddings(entity_id);
+CREATE INDEX IF NOT EXISTS idx_embeddings_model ON embeddings(model);
