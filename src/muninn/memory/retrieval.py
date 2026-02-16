@@ -41,6 +41,7 @@ def _safe_query(query: str) -> str:
 
 def _retrieve_fts(
     conn,
+    namespace: str,
     query: str,
     entity_id: str | None,
     k: int,
@@ -57,11 +58,11 @@ def _retrieve_fts(
                 SELECT e.id, e.entity_id, e.summary, e.confidence, e.provenance_json
                 FROM episodes_fts f
                 JOIN episodes e ON e.id = f.id
-                WHERE f.summary MATCH ? AND e.entity_id = ?
+                WHERE e.namespace = ? AND f.summary MATCH ? AND e.entity_id = ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, entity_id, k),
+                (namespace, fts_query, entity_id, k),
             )
         else:
             rows = db.fetch_all(
@@ -70,11 +71,11 @@ def _retrieve_fts(
                 SELECT e.id, e.entity_id, e.summary, e.confidence, e.provenance_json
                 FROM episodes_fts f
                 JOIN episodes e ON e.id = f.id
-                WHERE f.summary MATCH ?
+                WHERE e.namespace = ? AND f.summary MATCH ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, k),
+                (namespace, fts_query, k),
             )
         for row in rows:
             item = _row_to_item("episode", row)
@@ -88,11 +89,11 @@ def _retrieve_fts(
                 SELECT fa.id, fa.subject_id, fa.predicate, fa.object, fa.confidence, fa.provenance_json
                 FROM facts_fts f
                 JOIN facts fa ON fa.id = f.id
-                WHERE f.text MATCH ? AND fa.subject_id = ?
+                WHERE fa.namespace = ? AND f.text MATCH ? AND fa.subject_id = ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, entity_id, k),
+                (namespace, fts_query, entity_id, k),
             )
         else:
             rows = db.fetch_all(
@@ -101,11 +102,11 @@ def _retrieve_fts(
                 SELECT fa.id, fa.subject_id, fa.predicate, fa.object, fa.confidence, fa.provenance_json
                 FROM facts_fts f
                 JOIN facts fa ON fa.id = f.id
-                WHERE f.text MATCH ?
+                WHERE fa.namespace = ? AND f.text MATCH ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, k),
+                (namespace, fts_query, k),
             )
         for row in rows:
             item = _row_to_item("fact", row)
@@ -119,11 +120,11 @@ def _retrieve_fts(
                 SELECT p.id, p.entity_id, p.key, p.value, p.confidence, p.provenance_json
                 FROM preferences_fts f
                 JOIN preferences p ON p.id = f.id
-                WHERE f.text MATCH ? AND p.entity_id = ?
+                WHERE p.namespace = ? AND f.text MATCH ? AND p.entity_id = ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, entity_id, k),
+                (namespace, fts_query, entity_id, k),
             )
         else:
             rows = db.fetch_all(
@@ -132,11 +133,11 @@ def _retrieve_fts(
                 SELECT p.id, p.entity_id, p.key, p.value, p.confidence, p.provenance_json
                 FROM preferences_fts f
                 JOIN preferences p ON p.id = f.id
-                WHERE f.text MATCH ?
+                WHERE p.namespace = ? AND f.text MATCH ?
                 ORDER BY bm25(f) ASC
                 LIMIT ?
                 """,
-                (fts_query, k),
+                (namespace, fts_query, k),
             )
         for row in rows:
             item = _row_to_item("preference", row)
@@ -148,49 +149,91 @@ def _retrieve_fts(
     return list(hits.values())[:k]
 
 
-def _retrieve_recent(conn, entity_id: str | None, k: int) -> list[RetrievedItem]:
+def _retrieve_recent(conn, namespace: str, entity_id: str | None, k: int) -> list[RetrievedItem]:
     if k <= 0:
         return []
 
     hits: dict[str, RetrievedItem] = {}
-    params: list[str] = []
-    ent_filter = ""
     if entity_id:
-        ent_filter = "WHERE entity_id = ?"
-        params.append(entity_id)
-
-    rows = db.fetch_all(
-        conn,
-        (
-            "SELECT id, entity_id, summary, confidence, provenance_json "
-            f"FROM episodes {ent_filter} ORDER BY created_at DESC LIMIT ?"
-        ),
-        tuple(params + [k]),
-    )
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, entity_id, summary, confidence, provenance_json
+            FROM episodes
+            WHERE namespace = ? AND entity_id = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, entity_id, k),
+        )
+    else:
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, entity_id, summary, confidence, provenance_json
+            FROM episodes
+            WHERE namespace = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, k),
+        )
     for row in rows:
         item = _row_to_item("episode", row)
         hits.setdefault(item.id, item)
 
-    rows = db.fetch_all(
-        conn,
-        (
-            "SELECT id, subject_id, predicate, object, confidence, provenance_json FROM facts "
-            f"{'WHERE subject_id = ?' if entity_id else ''} ORDER BY created_at DESC LIMIT ?"
-        ),
-        tuple(([entity_id] if entity_id else []) + [k]),
-    )
+    if entity_id:
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, subject_id, predicate, object, confidence, provenance_json
+            FROM facts
+            WHERE namespace = ? AND subject_id = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, entity_id, k),
+        )
+    else:
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, subject_id, predicate, object, confidence, provenance_json
+            FROM facts
+            WHERE namespace = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, k),
+        )
     for row in rows:
         item = _row_to_item("fact", row)
         hits.setdefault(item.id, item)
 
-    rows = db.fetch_all(
-        conn,
-        (
-            "SELECT id, entity_id, key, value, confidence, provenance_json "
-            f"FROM preferences {ent_filter} ORDER BY created_at DESC LIMIT ?"
-        ),
-        tuple(params + [k]),
-    )
+    if entity_id:
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, entity_id, key, value, confidence, provenance_json
+            FROM preferences
+            WHERE namespace = ? AND entity_id = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, entity_id, k),
+        )
+    else:
+        rows = db.fetch_all(
+            conn,
+            """
+            SELECT id, entity_id, key, value, confidence, provenance_json
+            FROM preferences
+            WHERE namespace = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            """,
+            (namespace, k),
+        )
     for row in rows:
         item = _row_to_item("preference", row)
         hits.setdefault(item.id, item)
@@ -198,7 +241,7 @@ def _retrieve_recent(conn, entity_id: str | None, k: int) -> list[RetrievedItem]
     return list(hits.values())[:k]
 
 
-def _retrieve_by_ids(conn, ids: list[str]) -> list[RetrievedItem]:
+def _retrieve_by_ids(conn, namespace: str, ids: list[str]) -> list[RetrievedItem]:
     if not ids:
         return []
 
@@ -209,9 +252,9 @@ def _retrieve_by_ids(conn, ids: list[str]) -> list[RetrievedItem]:
         conn,
         (
             "SELECT id, entity_id, summary, confidence, provenance_json FROM episodes "
-            f"WHERE id IN ({placeholders})"
+            f"WHERE namespace = ? AND id IN ({placeholders})"
         ),
-        tuple(ids),
+        tuple([namespace] + ids),
     )
     for row in rows:
         by_id[row["id"]] = _row_to_item("episode", row)
@@ -220,9 +263,9 @@ def _retrieve_by_ids(conn, ids: list[str]) -> list[RetrievedItem]:
         conn,
         (
             "SELECT id, subject_id, predicate, object, confidence, provenance_json FROM facts "
-            f"WHERE id IN ({placeholders})"
+            f"WHERE namespace = ? AND id IN ({placeholders})"
         ),
-        tuple(ids),
+        tuple([namespace] + ids),
     )
     for row in rows:
         by_id[row["id"]] = _row_to_item("fact", row)
@@ -231,9 +274,9 @@ def _retrieve_by_ids(conn, ids: list[str]) -> list[RetrievedItem]:
         conn,
         (
             "SELECT id, entity_id, key, value, confidence, provenance_json FROM preferences "
-            f"WHERE id IN ({placeholders})"
+            f"WHERE namespace = ? AND id IN ({placeholders})"
         ),
-        tuple(ids),
+        tuple([namespace] + ids),
     )
     for row in rows:
         by_id[row["id"]] = _row_to_item("preference", row)
@@ -259,7 +302,7 @@ def retrieve(
     conn = db.connect()
     k = max(1, int(k))
 
-    fts_items = _retrieve_fts(conn, query=query, entity_id=entity_id, k=k)
+    fts_items = _retrieve_fts(conn, namespace=namespace, query=query, entity_id=entity_id, k=k)
     fts_ids = [item.id for item in fts_items]
 
     vec_ids: list[str] = []
@@ -283,11 +326,11 @@ def retrieve(
     else:
         selected_ids = fts_ids
 
-    items = _retrieve_by_ids(conn, selected_ids[:k])
+    items = _retrieve_by_ids(conn, namespace=namespace, ids=selected_ids[:k])
 
     if len(items) < k:
         seen = {item.id for item in items}
-        for item in _retrieve_recent(conn, entity_id=entity_id, k=k):
+        for item in _retrieve_recent(conn, namespace=namespace, entity_id=entity_id, k=k):
             if item.id in seen:
                 continue
             items.append(item)
@@ -295,4 +338,5 @@ def retrieve(
             if len(items) >= k:
                 break
 
+    conn.close()
     return items[:k]

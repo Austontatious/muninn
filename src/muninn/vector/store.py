@@ -74,7 +74,6 @@ def upsert_embeddings(
     items: list[UpsertEmbeddingsItem],
     now_ts: float | None = None,
 ) -> tuple[int, int, list[str]]:
-    _ = namespace
     conn = db.connect()
     ts = float(now_ts) if now_ts is not None else db.now()
     use_sqlite_vec = _should_use_sqlite_vec(conn)
@@ -98,12 +97,24 @@ def upsert_embeddings(
         try:
             normalized = l2_normalize(vec)
             canonical_blob = to_f32_blob(normalized)
+            existing = db.fetch_one(
+                conn,
+                "SELECT namespace FROM embeddings WHERE item_id = ?",
+                (item.item_id,),
+            )
+            if existing and existing["namespace"] != namespace:
+                rejected += 1
+                reasons.append(
+                    f"Rejected {item.item_id}: item_id already belongs to namespace '{existing['namespace']}'"
+                )
+                continue
 
             conn.execute(
                 """
-                INSERT INTO embeddings (item_id, kind, entity_id, model, dim, vector_blob, updated_at)
-                VALUES (?,?,?,?,?,?,?)
+                INSERT INTO embeddings (item_id, namespace, kind, entity_id, model, dim, vector_blob, updated_at)
+                VALUES (?,?,?,?,?,?,?,?)
                 ON CONFLICT(item_id) DO UPDATE SET
+                    namespace = excluded.namespace,
                     kind = excluded.kind,
                     entity_id = excluded.entity_id,
                     model = excluded.model,
@@ -111,7 +122,16 @@ def upsert_embeddings(
                     vector_blob = excluded.vector_blob,
                     updated_at = excluded.updated_at
                 """,
-                (item.item_id, item.kind, item.entity_id, item.model, dim, canonical_blob, ts),
+                (
+                    item.item_id,
+                    namespace,
+                    item.kind,
+                    item.entity_id,
+                    item.model,
+                    dim,
+                    canonical_blob,
+                    ts,
+                ),
             )
 
             if use_sqlite_vec:
@@ -119,6 +139,7 @@ def upsert_embeddings(
                     vec_blob = serialize_f32(normalized)
                     sqlite_vec_backend.upsert_vec(
                         conn=conn,
+                        namespace=namespace,
                         item_id=item.item_id,
                         model=item.model,
                         dim=dim,
@@ -134,7 +155,10 @@ def upsert_embeddings(
                     )
             else:
                 # Prevent stale sqlite-vec mappings from surfacing if backend was previously enabled.
-                conn.execute("DELETE FROM embeddings_vec_index WHERE item_id = ?", (item.item_id,))
+                conn.execute(
+                    "DELETE FROM embeddings_vec_index WHERE namespace = ? AND item_id = ?",
+                    (namespace, item.item_id),
+                )
 
             upserted += 1
         except ValueError as exc:
@@ -146,7 +170,9 @@ def upsert_embeddings(
     return upserted, rejected, reasons
 
 
-def _metadata_for_ids(conn: sqlite3.Connection, ordered_ids: list[str]) -> dict[str, tuple[str, str]]:
+def _metadata_for_ids(
+    conn: sqlite3.Connection, namespace: str, ordered_ids: list[str]
+) -> dict[str, tuple[str, str]]:
     if not ordered_ids:
         return {}
 
@@ -155,9 +181,9 @@ def _metadata_for_ids(conn: sqlite3.Connection, ordered_ids: list[str]) -> dict[
         conn,
         (
             "SELECT item_id, kind, entity_id FROM embeddings "
-            f"WHERE item_id IN ({placeholders})"
+            f"WHERE namespace = ? AND item_id IN ({placeholders})"
         ),
-        tuple(ordered_ids),
+        tuple([namespace] + ordered_ids),
     )
     out = {row["item_id"]: (row["kind"], row["entity_id"]) for row in rows}
 
@@ -168,9 +194,9 @@ def _metadata_for_ids(conn: sqlite3.Connection, ordered_ids: list[str]) -> dict[
             conn,
             (
                 "SELECT item_id, kind, entity_id FROM embeddings_vec_index "
-                f"WHERE item_id IN ({miss_ph})"
+                f"WHERE namespace = ? AND item_id IN ({miss_ph})"
             ),
-            tuple(missing),
+            tuple([namespace] + missing),
         )
         for row in rows:
             out[row["item_id"]] = (row["kind"], row["entity_id"])
@@ -180,6 +206,7 @@ def _metadata_for_ids(conn: sqlite3.Connection, ordered_ids: list[str]) -> dict[
 
 def _query_vector_bruteforce(
     conn: sqlite3.Connection,
+    namespace: str,
     model: str,
     query_norm: list[float],
     entity_id: str | None,
@@ -189,8 +216,8 @@ def _query_vector_bruteforce(
 ) -> list[VectorHit]:
     query_dim = len(query_norm)
 
-    where = ["model = ?"]
-    params: list[object] = [model]
+    where = ["namespace = ?", "model = ?"]
+    params: list[object] = [namespace, model]
 
     if entity_id:
         where.append("entity_id = ?")
@@ -244,7 +271,6 @@ def query_vector(
     k: int,
     max_scan: int,
 ) -> list[VectorHit]:
-    _ = namespace
     if not query_vec:
         return []
 
@@ -263,6 +289,7 @@ def query_vector(
             query_blob = serialize_f32(query_norm)
             ranked = sqlite_vec_backend.knn_query(
                 conn=conn,
+                namespace=namespace,
                 model=model,
                 dim=query_dim,
                 query_blob=query_blob,
@@ -273,7 +300,7 @@ def query_vector(
             if ranked:
                 ordered_ids = [item_id for item_id, _ in ranked]
                 score_by_id = {item_id: score for item_id, score in ranked}
-                metadata = _metadata_for_ids(conn, ordered_ids)
+                metadata = _metadata_for_ids(conn, namespace=namespace, ordered_ids=ordered_ids)
 
                 hits: list[VectorHit] = []
                 for item_id in ordered_ids:
@@ -297,6 +324,7 @@ def query_vector(
 
     hits = _query_vector_bruteforce(
         conn=conn,
+        namespace=namespace,
         model=model,
         query_norm=query_norm,
         entity_id=entity_id,

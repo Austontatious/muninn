@@ -1,6 +1,7 @@
 # Integration — Muninn
 
 Muninn is a memory harness you call over HTTP.
+All reads/writes are namespace-scoped at the DB layer. Always pass the correct `namespace`.
 
 ## Endpoints (v0)
 - `POST /v0/memory/rehydrate`
@@ -155,3 +156,11 @@ Recommended:
 ```
 
 Keep cards short. Do not paste raw transcripts.
+
+## Ops
+
+Admin vector reindex endpoint:
+- `POST /v0/admin/reindex_vectors`
+
+This endpoint rebuilds sqlite-vec mappings from canonical `embeddings` rows for a namespace.
+It is intended for operational use only; protect behind network/auth controls in production.

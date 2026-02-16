@@ -9,7 +9,6 @@ from .provenance import normalize_provenance
 def write_candidates(
     namespace: str, candidates: list[MemoryCandidate]
 ) -> tuple[list[str], list[str]]:
-    _ = namespace
     conn = db.connect()
     ids: list[str] = []
     reasons: list[str] = []
@@ -31,8 +30,8 @@ def write_candidates(
 
         db.execute_one(
             conn,
-            "INSERT OR IGNORE INTO entities (id, kind, name, created_at) VALUES (?,?,?,?)",
-            (ent_id, ent_kind, ent_name, db.now()),
+            "INSERT OR IGNORE INTO entities (id, namespace, kind, name, created_at) VALUES (?,?,?,?,?)",
+            (ent_id, namespace, ent_kind, ent_name, db.now()),
         )
 
         if candidate.kind == "fact":
@@ -44,18 +43,18 @@ def write_candidates(
                 conn,
                 """
                 SELECT id, confidence FROM facts
-                WHERE subject_id = ? AND predicate = ? AND object = ?
+                WHERE namespace = ? AND subject_id = ? AND predicate = ? AND object = ?
                 LIMIT 1
                 """,
-                (subject_id, predicate, obj),
+                (namespace, subject_id, predicate, obj),
             )
             if existing:
                 fact_id = existing["id"]
                 merged_conf = max(float(existing["confidence"]), conf)
                 db.execute_one(
                     conn,
-                    "UPDATE facts SET confidence = ?, provenance_json = ? WHERE id = ?",
-                    (merged_conf, prov_json, fact_id),
+                    "UPDATE facts SET confidence = ?, provenance_json = ? WHERE namespace = ? AND id = ?",
+                    (merged_conf, prov_json, namespace, fact_id),
                 )
                 ids.append(fact_id)
                 reasons.append("Accepted: fact_merged")
@@ -64,10 +63,10 @@ def write_candidates(
                 db.execute_one(
                     conn,
                     """
-                    INSERT INTO facts (id, subject_id, predicate, object, confidence, provenance_json, created_at)
-                    VALUES (?,?,?,?,?,?,?)
+                    INSERT INTO facts (id, namespace, subject_id, predicate, object, confidence, provenance_json, created_at)
+                    VALUES (?,?,?,?,?,?,?,?)
                     """,
-                    (fact_id, subject_id, predicate, obj, conf, prov_json, db.now()),
+                    (fact_id, namespace, subject_id, predicate, obj, conf, prov_json, db.now()),
                 )
                 ids.append(fact_id)
                 reasons.append("Accepted: fact")
@@ -81,10 +80,10 @@ def write_candidates(
             db.execute_one(
                 conn,
                 """
-                INSERT INTO episodes (id, entity_id, summary, start_ts, end_ts, confidence, provenance_json, created_at)
-                VALUES (?,?,?,?,?,?,?,?)
+                INSERT INTO episodes (id, namespace, entity_id, summary, start_ts, end_ts, confidence, provenance_json, created_at)
+                VALUES (?,?,?,?,?,?,?,?,?)
                 """,
-                (episode_id, ent_id, summary, start_ts, end_ts, conf, prov_json, db.now()),
+                (episode_id, namespace, ent_id, summary, start_ts, end_ts, conf, prov_json, db.now()),
             )
             ids.append(episode_id)
             reasons.append("Accepted: episode")
@@ -98,10 +97,10 @@ def write_candidates(
                 conn,
                 """
                 SELECT id, confidence FROM preferences
-                WHERE entity_id = ? AND key = ?
+                WHERE namespace = ? AND entity_id = ? AND key = ?
                 LIMIT 1
                 """,
-                (ent_id, key),
+                (namespace, ent_id, key),
             )
             if existing:
                 pref_id = existing["id"]
@@ -111,9 +110,9 @@ def write_candidates(
                     """
                     UPDATE preferences
                     SET value = ?, confidence = ?, decay_ts = ?, provenance_json = ?, created_at = ?
-                    WHERE id = ?
+                    WHERE namespace = ? AND id = ?
                     """,
-                    (value, merged_conf, decay_ts, prov_json, db.now(), pref_id),
+                    (value, merged_conf, decay_ts, prov_json, db.now(), namespace, pref_id),
                 )
                 ids.append(pref_id)
                 reasons.append("Accepted: preference_merged")
@@ -122,10 +121,10 @@ def write_candidates(
                 db.execute_one(
                     conn,
                     """
-                    INSERT INTO preferences (id, entity_id, key, value, confidence, decay_ts, provenance_json, created_at)
-                    VALUES (?,?,?,?,?,?,?,?)
+                    INSERT INTO preferences (id, namespace, entity_id, key, value, confidence, decay_ts, provenance_json, created_at)
+                    VALUES (?,?,?,?,?,?,?,?,?)
                     """,
-                    (pref_id, ent_id, key, value, conf, decay_ts, prov_json, db.now()),
+                    (pref_id, namespace, ent_id, key, value, conf, decay_ts, prov_json, db.now()),
                 )
                 ids.append(pref_id)
                 reasons.append("Accepted: preference")

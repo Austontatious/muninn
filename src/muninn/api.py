@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import sqlite3
+
 from fastapi import FastAPI, Query
 
 from . import db
@@ -7,11 +9,14 @@ from .config import max_vec_scan
 from .memory.cards import render_cards
 from .memory.retrieval import retrieve
 from .memory.writeback import write_candidates
+from .migrations import apply_migrations
 from .models import (
     QueryVectorRequest,
     QueryVectorResponse,
     RehydrateRequest,
     RehydrateResponse,
+    ReindexVectorsRequest,
+    ReindexVectorsResponse,
     RenderCardsRequest,
     RenderCardsResponse,
     RetrieveRequest,
@@ -22,14 +27,23 @@ from .models import (
     WriteCandidatesResponse,
 )
 from .service import log_audit, memory_version
+from .vector import reindex as vector_reindex
 from .vector import store as vector_store
 
-app = FastAPI(title="Muninn", version="0.4.0")
+app = FastAPI(title="Muninn", version="0.5.0")
 
 
 @app.on_event("startup")
 def startup() -> None:
     conn = db.connect()
+    try:
+        db.init_db(conn)
+    except sqlite3.OperationalError as exc:
+        # Existing pre-v0.5 DBs may fail schema apply before namespace migration.
+        if "no such column: namespace" not in str(exc).lower():
+            raise
+        conn.rollback()
+    apply_migrations(conn)
     db.init_db(conn)
 
 
@@ -54,6 +68,7 @@ def api_debug_vector_backend() -> dict[str, str | bool]:
 def api_write_candidates(req: WriteCandidatesRequest) -> WriteCandidatesResponse:
     ids, reasons = write_candidates(req.namespace, req.candidates)
     log_audit(
+        req.namespace,
         "write_candidates",
         {
             "namespace": req.namespace,
@@ -71,6 +86,7 @@ def api_upsert_embeddings(req: UpsertEmbeddingsRequest) -> UpsertEmbeddingsRespo
     upserted, rejected, reasons = vector_store.upsert_embeddings(req.namespace, req.items)
     models = sorted({item.model for item in req.items})
     log_audit(
+        req.namespace,
         "upsert_embeddings",
         {
             "namespace": req.namespace,
@@ -94,6 +110,7 @@ def api_query_vector(req: QueryVectorRequest) -> QueryVectorResponse:
         max_scan=max_vec_scan(),
     )
     log_audit(
+        req.namespace,
         "query_vector",
         {
             "namespace": req.namespace,
@@ -107,6 +124,35 @@ def api_query_vector(req: QueryVectorRequest) -> QueryVectorResponse:
     return QueryVectorResponse(hits=hits)
 
 
+@app.post("/v0/admin/reindex_vectors", response_model=ReindexVectorsResponse)
+def api_reindex_vectors(req: ReindexVectorsRequest) -> ReindexVectorsResponse:
+    out = vector_reindex.reindex_vectors(
+        namespace=req.namespace,
+        model=req.model,
+        dim=req.dim,
+        batch_size=req.batch_size,
+        dry_run=req.dry_run,
+        force_backend=req.force_backend,
+    )
+    log_audit(
+        req.namespace,
+        "reindex_vectors",
+        {
+            "namespace": req.namespace,
+            "model": req.model,
+            "dim": req.dim,
+            "batch_size": req.batch_size,
+            "dry_run": req.dry_run,
+            "force_backend": req.force_backend,
+            "backend_used": out.backend_used,
+            "scanned": out.scanned,
+            "reindexed": out.reindexed,
+            "skipped": out.skipped,
+        },
+    )
+    return out
+
+
 @app.post("/v0/memory/retrieve", response_model=RetrieveResponse)
 def api_retrieve(req: RetrieveRequest) -> RetrieveResponse:
     items = retrieve(
@@ -118,6 +164,7 @@ def api_retrieve(req: RetrieveRequest) -> RetrieveResponse:
         embedding_model=req.embedding_model,
     )
     log_audit(
+        req.namespace,
         "retrieve",
         {
             "namespace": req.namespace,
@@ -135,6 +182,7 @@ def api_retrieve(req: RetrieveRequest) -> RetrieveResponse:
 def api_render_cards(req: RenderCardsRequest) -> RenderCardsResponse:
     cards = render_cards(req.items, req.profile)
     log_audit(
+        req.namespace,
         "render_cards",
         {
             "namespace": req.namespace,
@@ -157,6 +205,7 @@ def api_rehydrate(req: RehydrateRequest) -> RehydrateResponse:
     )
     cards = render_cards(items, req.profile)
     log_audit(
+        req.namespace,
         "rehydrate",
         {
             "namespace": req.namespace,

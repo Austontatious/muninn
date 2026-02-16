@@ -13,6 +13,7 @@ This repo scaffolds the first working slice:
 - FastAPI service
 - Typed schemas and a minimal card pipeline
 - Stubs for retrieval backends (vector/hybrid) and provider adapters
+- Namespace isolation enforced at the DB/query layer (v0.5.0)
 
 ## Quickstart
 

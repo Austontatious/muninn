@@ -1,14 +1,23 @@
 PRAGMA journal_mode=WAL;
 
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    id TEXT PRIMARY KEY,
+    applied_at REAL NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS entities (
     id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     kind TEXT NOT NULL,
     name TEXT NOT NULL,
     created_at REAL NOT NULL
 );
+CREATE INDEX IF NOT EXISTS idx_entities_namespace ON entities(namespace);
+CREATE INDEX IF NOT EXISTS idx_entities_ns_id ON entities(namespace, id);
 
 CREATE TABLE IF NOT EXISTS facts (
     id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     subject_id TEXT NOT NULL,
     predicate TEXT NOT NULL,
     object TEXT NOT NULL,
@@ -17,9 +26,12 @@ CREATE TABLE IF NOT EXISTS facts (
     created_at REAL NOT NULL,
     FOREIGN KEY(subject_id) REFERENCES entities(id)
 );
+CREATE INDEX IF NOT EXISTS idx_facts_namespace ON facts(namespace);
+CREATE INDEX IF NOT EXISTS idx_facts_ns_subject ON facts(namespace, subject_id);
 
 CREATE TABLE IF NOT EXISTS episodes (
     id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     entity_id TEXT NOT NULL,
     summary TEXT NOT NULL,
     start_ts REAL,
@@ -29,9 +41,12 @@ CREATE TABLE IF NOT EXISTS episodes (
     created_at REAL NOT NULL,
     FOREIGN KEY(entity_id) REFERENCES entities(id)
 );
+CREATE INDEX IF NOT EXISTS idx_episodes_namespace ON episodes(namespace);
+CREATE INDEX IF NOT EXISTS idx_episodes_ns_entity ON episodes(namespace, entity_id);
 
 CREATE TABLE IF NOT EXISTS preferences (
     id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     entity_id TEXT NOT NULL,
     key TEXT NOT NULL,
     value TEXT NOT NULL,
@@ -41,13 +56,17 @@ CREATE TABLE IF NOT EXISTS preferences (
     created_at REAL NOT NULL,
     FOREIGN KEY(entity_id) REFERENCES entities(id)
 );
+CREATE INDEX IF NOT EXISTS idx_preferences_namespace ON preferences(namespace);
+CREATE INDEX IF NOT EXISTS idx_preferences_ns_entity_key ON preferences(namespace, entity_id, key);
 
 CREATE TABLE IF NOT EXISTS audit_log (
     id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     event_type TEXT NOT NULL,
     event_json TEXT NOT NULL,
     created_at REAL NOT NULL
 );
+CREATE INDEX IF NOT EXISTS idx_audit_namespace ON audit_log(namespace);
 
 -- Full-text search (FTS5)
 CREATE VIRTUAL TABLE IF NOT EXISTS facts_fts USING fts5(
@@ -109,6 +128,7 @@ END;
 -- Embeddings (caller-provided). Store normalized float32 vectors as BLOB.
 CREATE TABLE IF NOT EXISTS embeddings (
     item_id TEXT PRIMARY KEY,         -- references facts.id / episodes.id / preferences.id
+    namespace TEXT NOT NULL DEFAULT 'default',
     kind TEXT NOT NULL,               -- "fact" | "episode" | "preference"
     entity_id TEXT NOT NULL,
     model TEXT NOT NULL,
@@ -120,10 +140,14 @@ CREATE TABLE IF NOT EXISTS embeddings (
 CREATE INDEX IF NOT EXISTS idx_embeddings_kind ON embeddings(kind);
 CREATE INDEX IF NOT EXISTS idx_embeddings_entity ON embeddings(entity_id);
 CREATE INDEX IF NOT EXISTS idx_embeddings_model ON embeddings(model);
+CREATE INDEX IF NOT EXISTS idx_embeddings_namespace ON embeddings(namespace);
+CREATE INDEX IF NOT EXISTS idx_embeddings_ns_model ON embeddings(namespace, model);
+CREATE INDEX IF NOT EXISTS idx_embeddings_ns_entity ON embeddings(namespace, entity_id);
 
 -- Mapping from item_id to vec0 rowid per (model, dim, table_name).
 CREATE TABLE IF NOT EXISTS embeddings_vec_index (
     item_id TEXT PRIMARY KEY,
+    namespace TEXT NOT NULL DEFAULT 'default',
     table_name TEXT NOT NULL,
     rowid INTEGER NOT NULL,
     model TEXT NOT NULL,
@@ -136,3 +160,5 @@ CREATE TABLE IF NOT EXISTS embeddings_vec_index (
 CREATE UNIQUE INDEX IF NOT EXISTS idx_vec_index_table_rowid ON embeddings_vec_index(table_name, rowid);
 CREATE INDEX IF NOT EXISTS idx_vec_index_model_dim ON embeddings_vec_index(model, dim);
 CREATE INDEX IF NOT EXISTS idx_vec_index_entity ON embeddings_vec_index(entity_id);
+CREATE INDEX IF NOT EXISTS idx_vec_index_namespace ON embeddings_vec_index(namespace);
+CREATE INDEX IF NOT EXISTS idx_vec_index_ns_model_dim ON embeddings_vec_index(namespace, model, dim);

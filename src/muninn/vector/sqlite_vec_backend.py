@@ -31,6 +31,12 @@ def ensure_vec_table(conn: sqlite3.Connection, model: str, dim: int) -> str:
     return table
 
 
+def drop_vec_table(conn: sqlite3.Connection, model: str, dim: int) -> str:
+    table = table_name_for(model, dim)
+    conn.execute(f"DROP TABLE IF EXISTS {table}")
+    return table
+
+
 def _delete_vec_row(conn: sqlite3.Connection, table_name: str, rowid: int) -> None:
     try:
         conn.execute(f"DELETE FROM {table_name} WHERE rowid = ?", (int(rowid),))
@@ -41,6 +47,7 @@ def _delete_vec_row(conn: sqlite3.Connection, table_name: str, rowid: int) -> No
 
 def upsert_vec(
     conn: sqlite3.Connection,
+    namespace: str,
     item_id: str,
     model: str,
     dim: int,
@@ -53,8 +60,8 @@ def upsert_vec(
 
     existing = db.fetch_one(
         conn,
-        "SELECT table_name, rowid FROM embeddings_vec_index WHERE item_id = ?",
-        (item_id,),
+        "SELECT table_name, rowid FROM embeddings_vec_index WHERE namespace = ? AND item_id = ?",
+        (namespace, item_id),
     )
     if existing:
         _delete_vec_row(conn, existing["table_name"], int(existing["rowid"]))
@@ -64,9 +71,10 @@ def upsert_vec(
 
     conn.execute(
         """
-        INSERT INTO embeddings_vec_index(item_id, table_name, rowid, model, dim, kind, entity_id, updated_at)
-        VALUES (?,?,?,?,?,?,?,?)
+        INSERT INTO embeddings_vec_index(item_id, namespace, table_name, rowid, model, dim, kind, entity_id, updated_at)
+        VALUES (?,?,?,?,?,?,?,?,?)
         ON CONFLICT(item_id) DO UPDATE SET
+            namespace = excluded.namespace,
             table_name = excluded.table_name,
             rowid = excluded.rowid,
             model = excluded.model,
@@ -75,21 +83,22 @@ def upsert_vec(
             entity_id = excluded.entity_id,
             updated_at = excluded.updated_at
         """,
-        (item_id, table_name, new_rowid, model, dim, kind, entity_id, updated_at),
+        (item_id, namespace, table_name, new_rowid, model, dim, kind, entity_id, updated_at),
     )
 
     return table_name, new_rowid
 
 
 def _build_index_filters(
+    namespace: str,
     model: str,
     dim: int,
     table_name: str,
     entity_id: str | None,
     kinds: list[Literal["fact", "episode", "preference"]] | None,
 ) -> tuple[str, list[object]]:
-    where = ["model = ?", "dim = ?", "table_name = ?"]
-    params: list[object] = [model, int(dim), table_name]
+    where = ["namespace = ?", "model = ?", "dim = ?", "table_name = ?"]
+    params: list[object] = [namespace, model, int(dim), table_name]
 
     if entity_id:
         where.append("entity_id = ?")
@@ -105,6 +114,7 @@ def _build_index_filters(
 
 def knn_query(
     conn: sqlite3.Connection,
+    namespace: str,
     model: str,
     dim: int,
     query_blob: bytes,
@@ -116,7 +126,7 @@ def knn_query(
         return []
 
     table_name = ensure_vec_table(conn, model, dim)
-    where_sql, filter_params = _build_index_filters(model, dim, table_name, entity_id, kinds)
+    where_sql, filter_params = _build_index_filters(namespace, model, dim, table_name, entity_id, kinds)
     subquery = f"SELECT rowid FROM embeddings_vec_index WHERE {where_sql}"
     k_val = max(1, int(k))
 
@@ -168,9 +178,9 @@ def knn_query(
         conn,
         (
             "SELECT rowid, item_id FROM embeddings_vec_index "
-            f"WHERE table_name = ? AND rowid IN ({placeholders})"
+            f"WHERE namespace = ? AND table_name = ? AND rowid IN ({placeholders})"
         ),
-        tuple([table_name] + rowids),
+        tuple([namespace, table_name] + rowids),
     )
     item_by_rowid = {int(row["rowid"]): row["item_id"] for row in map_rows}
 

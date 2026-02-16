@@ -74,3 +74,32 @@ Out:
 - `ruff check .`
 - `pytest -q`
 - `./scripts/dev_run.sh` smoke test for `/v0/debug/vector_backend`, `/v0/memory/upsert_embeddings`, `/v0/memory/query_vector`
+
+---
+
+# Muninn v0.5 Namespace Isolation Plan
+
+## Objective
+Enforce namespace isolation at storage/query layers, add a lightweight migration runner, and add admin vector reindex support.
+
+## Scope
+In:
+- Migration framework and namespace migration
+- Namespace columns and query enforcement across write/retrieve/vector/audit/version
+- Admin endpoint for vector reindex from canonical embeddings
+- Tests proving namespace isolation and reindex behavior
+
+Out:
+- Full authz layer for admin operations
+- Pending-candidate confirmation lifecycle
+
+## Checklist
+- [x] Add migration runner and integrate into `scripts/init_db.py`
+- [x] Add `0001_add_namespace.sql` migration
+- [x] Update `schema.sql` to include namespace columns/indexes for new installs
+- [x] Enforce namespace in writeback/retrieval/vector/service queries
+- [x] Add vector reindex module + admin endpoint + models
+- [x] Update docs and runbook ops notes
+- [x] Add namespace isolation + vector namespace + reindex tests
+- [x] Bump package/API versions to 0.5.0
+- [x] Run `ruff check .`, `pytest -q`, and smoke tests

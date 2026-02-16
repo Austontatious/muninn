@@ -2,7 +2,7 @@
 
 ## Local dev
 
-- Init DB: `python scripts/init_db.py`
+- Init DB (+ migrations): `python scripts/init_db.py`
 - Run: `./scripts/dev_run.sh`
 - Tests: `pytest -q`
 
@@ -29,3 +29,17 @@ Debug current backend:
 Troubleshooting:
 - If `sqlite_vec_loaded=false`, Muninn automatically falls back to brute-force vector search.
 - On macOS, extension loading may be disabled in system Python/SQLite builds.
+
+## Admin reindex
+
+Rebuild sqlite-vec index rows from canonical embeddings:
+
+```bash
+curl -X POST http://127.0.0.1:8000/v0/admin/reindex_vectors \
+  -H 'content-type: application/json' \
+  -d '{"namespace":"default","force_backend":"auto"}'
+```
+
+Notes:
+- Endpoint is under `/v0/admin/*`; protect it with network/auth controls in production.
+- If sqlite-vec is unavailable, response reports `backend_used=bruteforce` without failing.

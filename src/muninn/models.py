@@ -95,6 +95,24 @@ class QueryVectorResponse(BaseModel):
     hits: list[VectorHit]
 
 
+class ReindexVectorsRequest(BaseModel):
+    namespace: str = "default"
+    model: str | None = None
+    dim: int | None = None
+    batch_size: int = 500
+    dry_run: bool = False
+    force_backend: Literal["auto", "sqlite_vec", "bruteforce"] = "auto"
+
+
+class ReindexVectorsResponse(BaseModel):
+    namespace: str
+    backend_used: str
+    scanned: int
+    reindexed: int
+    skipped: int
+    reasons: list[str] = []
+
+
 class MemoryCard(BaseModel):
     card_type: str
     title: str

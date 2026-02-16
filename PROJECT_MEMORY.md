@@ -27,6 +27,8 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
   - `hybrid` (FTS + vector fused with RRF)
 - Embeddings are caller-provided and stored in SQLite as normalized float32 blobs
 - Optional sqlite-vec acceleration added with automatic fallback to brute-force
+- Namespace isolation enforced in storage/query paths (v0.5)
+- Admin reindex path added to rebuild sqlite-vec mappings from canonical embeddings
 
 ## Key Constraints
 
@@ -38,6 +40,7 @@ Build a standalone, pluggable memory harness for LLM agents that supports:
 ## Next Steps (nearest)
 
 - Add ANN backend behind existing vector store interface (sqlite-vec / pgvector)
+- Add admin authz layer for `/v0/admin/*` endpoints
 - Add background reindex flow for sqlite-vec mappings after long brute-force-only periods
 - Add contradiction ledger + merge/dedupe policies
 - Add sensitivity tiers + redaction filters
