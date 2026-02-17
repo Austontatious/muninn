@@ -83,6 +83,16 @@ def _cmd_up(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_mcp_up(args: argparse.Namespace) -> int:
+    from .mcp_server import run_mcp_server
+
+    host = args.host or "127.0.0.1"
+    port = int(args.port or 8765)
+    base_url = args.base_url or os.getenv("MUNINN_BASE_URL", "http://127.0.0.1:8000")
+    run_mcp_server(host=host, port=port, base_url=base_url)
+    return 0
+
+
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="muninn",
@@ -123,6 +133,18 @@ def _build_parser() -> argparse.ArgumentParser:
         "--base-url",
         default=None,
         help="Base URL for running-instance checks (defaults to host:port)",
+    )
+
+    mcp = sub.add_parser("mcp", help="Run Muninn MCP wrapper server")
+    mcp_sub = mcp.add_subparsers(dest="mcp_command")
+
+    mcp_up = mcp_sub.add_parser("up", help="Start local MCP server (streamable HTTP)")
+    mcp_up.add_argument("--host", default="127.0.0.1", help="MCP bind host")
+    mcp_up.add_argument("--port", type=int, default=8765, help="MCP bind port")
+    mcp_up.add_argument(
+        "--base-url",
+        default=os.getenv("MUNINN_BASE_URL", "http://127.0.0.1:8000"),
+        help="Muninn HTTP base URL to forward requests to",
     )
 
     return parser
@@ -308,6 +330,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "doctor":
         return _cmd_doctor(args)
+
+    if args.command == "mcp":
+        if args.mcp_command == "up":
+            return _cmd_mcp_up(args)
+        parser.print_help()
+        return 1
 
     if args.command == "status":
         return _cmd_status(args.base_url, args.timeout)

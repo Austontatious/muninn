@@ -118,10 +118,12 @@ muninn --help
 muninn status
 muninn doctor
 muninn up
+muninn mcp up
 ```
 
 - `muninn up` initializes schema/migrations and starts the API server.
 - `muninn doctor` runs environment checks and prints PASS/FAIL with fixes.
+- `muninn mcp up` starts a local MCP wrapper at `http://127.0.0.1:8765/mcp` by default.
 
 ## API (v0)
 

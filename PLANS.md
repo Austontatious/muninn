@@ -155,3 +155,18 @@ Add operational hardening: retention cleanup, debug stats, readonly write kill-s
 - [x] Update docs (README/RUNBOOK/PROJECT_MEMORY)
 - [x] Add tests for readonly, API key, stats, and cleanup behavior
 - [x] Bump versions to 0.8.0 and run lint/tests/smoke
+
+---
+
+# Muninn Step 7 Local MCP Wrapper Plan
+
+## Objective
+Add a local-only MCP server wrapper (`muninn mcp up`) that forwards a small fixed tool set to Muninn HTTP endpoints.
+
+## Checklist
+- [x] Add MCP dependency and wrapper server module
+- [x] Expose only rehydrate/stage/list/confirm tools
+- [x] Wire `muninn mcp up` CLI command with host/port/base-url options
+- [x] Forward `MUNINN_API_KEY` when set
+- [x] Update README/PROJECT_MEMORY with MCP local mode notes
+- [x] Verify local MCP endpoint reachability and end-to-end tool calls
