@@ -92,6 +92,7 @@ Muninn is an HTTP memory service for LLM applications. It sits beside your agent
 - CLI baseline added for installability (`muninn up`, `muninn doctor`, `muninn status`)
 - Universal local run hardened: `muninn up` now auto-creates config/data dirs, initializes DB+migrations, prints startup banner, and reports actionable port conflicts
 - Local MCP wrapper added (`muninn mcp up`) with HTTP forwarding for core memory tools
+- ChatGPT connector prep added: `muninn enable-chatgpt` provisions API key config, ensures API+MCP background services, and prints local MCP endpoint/header/key
 
 ## Key Constraints
 

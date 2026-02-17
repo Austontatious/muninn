@@ -4,9 +4,12 @@ import argparse
 import importlib
 import json
 import os
+import secrets
 import socket
 import sqlite3
+import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -138,6 +141,278 @@ def _cmd_mcp_up(args: argparse.Namespace) -> int:
     return 0
 
 
+def _connector_config_path() -> Path:
+    return Path(config_dir()).expanduser() / "config.json"
+
+
+def _load_connector_config(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    return dict(payload)
+
+
+def _save_connector_config(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    try:
+        path.chmod(0o600)
+    except OSError:
+        pass
+
+
+def _ensure_connector_api_key(config_path: Path) -> tuple[str, str]:
+    payload = _load_connector_config(config_path)
+    header_name = (
+        os.getenv("MUNINN_API_KEY_HEADER") or str(payload.get("api_key_header") or "X-API-Key")
+    )
+    header_name = header_name.strip() or "X-API-Key"
+    api_key = os.getenv("MUNINN_API_KEY") or str(payload.get("api_key") or "")
+    api_key = api_key.strip()
+
+    changed = False
+    if not api_key:
+        api_key = f"sk_muninn_{secrets.token_urlsafe(32)}"
+        changed = True
+
+    if payload.get("api_key") != api_key:
+        payload["api_key"] = api_key
+        changed = True
+    if payload.get("api_key_header") != header_name:
+        payload["api_key_header"] = header_name
+        changed = True
+    if "updated_at" not in payload:
+        payload["updated_at"] = int(time.time())
+        changed = True
+
+    if changed:
+        payload["updated_at"] = int(time.time())
+        _save_connector_config(config_path, payload)
+
+    return api_key, header_name
+
+
+def _spawn_background(command: list[str], env: dict[str, str], log_path: Path) -> subprocess.Popen:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(log_path, "a", encoding="utf-8") as log_file:
+        log_file.write(
+            f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] starting: {' '.join(command)}\n"
+        )
+    with open(log_path, "a", encoding="utf-8") as log_file:
+        return subprocess.Popen(
+            command,
+            env=env,
+            stdout=log_file,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+
+
+def _is_api_healthy(base_url: str) -> bool:
+    health_url = f"{base_url.rstrip('/')}/health"
+    try:
+        response = httpx.get(health_url, timeout=2.0)
+    except Exception:
+        return False
+    return response.status_code == 200
+
+
+def _is_mcp_available(mcp_url: str, header_name: str, api_key: str) -> bool:
+    headers = {"accept": "text/event-stream", header_name: api_key}
+    try:
+        response = httpx.get(mcp_url, headers=headers, timeout=2.0)
+    except Exception:
+        return False
+    return response.status_code in {200, 400, 406}
+
+
+def _wait_until_ready(check_fn, timeout_s: float = 15.0, interval_s: float = 0.25) -> bool:
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        if check_fn():
+            return True
+        time.sleep(interval_s)
+    return False
+
+
+def _ensure_api_running(
+    host: str,
+    port: int,
+    api_key: str,
+    header_name: str,
+    resolved_config_dir: str,
+    resolved_data_dir: str,
+    resolved_db_path: str,
+) -> tuple[bool, bool]:
+    base_url = f"http://{host}:{port}"
+    if _is_api_healthy(base_url):
+        return True, False
+
+    log_path = Path(resolved_data_dir).expanduser() / "muninn-api.log"
+    env = os.environ.copy()
+    env["MUNINN_CONFIG_DIR"] = resolved_config_dir
+    env["MUNINN_DATA_DIR"] = resolved_data_dir
+    env["MUNINN_DB_PATH"] = resolved_db_path
+    env["MUNINN_API_KEY"] = api_key
+    env["MUNINN_API_KEY_HEADER"] = header_name
+    env["MUNINN_REQUIRE_API_KEY"] = "1"
+
+    process = _spawn_background(
+        [
+            sys.executable,
+            "-m",
+            "muninn.cli",
+            "up",
+            "--host",
+            host,
+            "--port",
+            str(port),
+        ],
+        env=env,
+        log_path=log_path,
+    )
+
+    if _wait_until_ready(lambda: _is_api_healthy(base_url), timeout_s=20.0):
+        return True, True
+
+    if process.poll() is not None:
+        print(f"Failed to start Muninn API. See log: {_display_path(str(log_path))}", file=sys.stderr)
+    else:
+        print(
+            f"Muninn API did not become healthy in time. See log: {_display_path(str(log_path))}",
+            file=sys.stderr,
+        )
+    print("Run: muninn up", file=sys.stderr)
+    return False, True
+
+
+def _ensure_mcp_running(
+    host: str,
+    port: int,
+    base_url: str,
+    api_key: str,
+    header_name: str,
+    resolved_data_dir: str,
+) -> tuple[bool, bool]:
+    mcp_url = f"http://{host}:{port}/mcp"
+    if _is_mcp_available(mcp_url, header_name, api_key):
+        return True, False
+
+    log_path = Path(resolved_data_dir).expanduser() / "muninn-mcp.log"
+    env = os.environ.copy()
+    env["MUNINN_BASE_URL"] = base_url
+    env["MUNINN_API_KEY"] = api_key
+    env["MUNINN_API_KEY_HEADER"] = header_name
+    env["MUNINN_MCP_REQUIRE_API_KEY"] = "1"
+
+    process = _spawn_background(
+        [
+            sys.executable,
+            "-m",
+            "muninn.cli",
+            "mcp",
+            "up",
+            "--host",
+            host,
+            "--port",
+            str(port),
+            "--base-url",
+            base_url,
+        ],
+        env=env,
+        log_path=log_path,
+    )
+
+    if _wait_until_ready(lambda: _is_mcp_available(mcp_url, header_name, api_key), timeout_s=20.0):
+        return True, True
+
+    if process.poll() is not None:
+        print(f"Failed to start Muninn MCP. See log: {_display_path(str(log_path))}", file=sys.stderr)
+    else:
+        print(
+            f"Muninn MCP did not become ready in time. See log: {_display_path(str(log_path))}",
+            file=sys.stderr,
+        )
+    print("Run: muninn mcp up", file=sys.stderr)
+    return False, True
+
+
+def _cmd_enable_chatgpt(args: argparse.Namespace) -> int:
+    api_host = "127.0.0.1"
+    mcp_host = "127.0.0.1"
+    api_port = int(args.api_port)
+    mcp_port = int(args.mcp_port)
+    resolved_config_dir = config_dir()
+    resolved_data_dir = data_dir()
+    resolved_db_path = db_path()
+
+    try:
+        _ensure_runtime_dirs(resolved_config_dir, resolved_data_dir, resolved_db_path)
+        _init_schema_and_migrations()
+    except Exception as exc:
+        print(f"Failed to prepare runtime: {exc}", file=sys.stderr)
+        print("Run: muninn up", file=sys.stderr)
+        return 1
+
+    config_path = _connector_config_path()
+    api_key, header_name = _ensure_connector_api_key(config_path)
+    base_url = f"http://{api_host}:{api_port}"
+    mcp_url = f"http://{mcp_host}:{mcp_port}/mcp"
+
+    api_ready, api_started = _ensure_api_running(
+        host=api_host,
+        port=api_port,
+        api_key=api_key,
+        header_name=header_name,
+        resolved_config_dir=resolved_config_dir,
+        resolved_data_dir=resolved_data_dir,
+        resolved_db_path=resolved_db_path,
+    )
+    if not api_ready:
+        return 1
+
+    mcp_ready, mcp_started = _ensure_mcp_running(
+        host=mcp_host,
+        port=mcp_port,
+        base_url=base_url,
+        api_key=api_key,
+        header_name=header_name,
+        resolved_data_dir=resolved_data_dir,
+    )
+    if not mcp_ready:
+        return 1
+
+    if api_started:
+        print("Started Muninn API in background.")
+    else:
+        print("Muninn API already running.")
+    if mcp_started:
+        print("Started Muninn MCP in background.")
+    else:
+        print("Muninn MCP already running.")
+
+    print()
+    print("MCP local endpoint:")
+    print(mcp_url)
+    print()
+    print("Header name:")
+    print(header_name)
+    print()
+    print("API key:")
+    print(api_key)
+    print()
+    print(f"Start tunnel to http://127.0.0.1:{mcp_port}")
+    print("Use resulting https://.../mcp in ChatGPT -> Settings -> Connectors")
+    print(f"Add header {header_name}: <key>")
+    print("Note: ChatGPT connector requires HTTPS.")
+    return 0
+
+
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="muninn",
@@ -191,6 +466,13 @@ def _build_parser() -> argparse.ArgumentParser:
         default=os.getenv("MUNINN_BASE_URL", "http://127.0.0.1:8000"),
         help="Muninn HTTP base URL to forward requests to",
     )
+
+    enable_chatgpt = sub.add_parser(
+        "enable-chatgpt",
+        help="Prepare local MCP connector info and provision API key",
+    )
+    enable_chatgpt.add_argument("--api-port", type=int, default=8000, help="Muninn API port")
+    enable_chatgpt.add_argument("--mcp-port", type=int, default=8765, help="Muninn MCP port")
 
     return parser
 
@@ -381,6 +663,9 @@ def main(argv: list[str] | None = None) -> int:
             return _cmd_mcp_up(args)
         parser.print_help()
         return 1
+
+    if args.command == "enable-chatgpt":
+        return _cmd_enable_chatgpt(args)
 
     if args.command == "status":
         return _cmd_status(args.base_url, args.timeout)

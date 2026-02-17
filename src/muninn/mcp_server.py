@@ -1,11 +1,15 @@
 from __future__ import annotations
 
-import asyncio
 import os
 from typing import Any
 
 import httpx
+import uvicorn
+from fastapi import Request
+from fastapi.responses import JSONResponse
 from mcp.server.fastmcp import FastMCP
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.responses import Response
 
 from .models import (
     ConfirmCandidatesRequest,
@@ -26,6 +30,37 @@ def _resolve_headers() -> dict[str, str]:
         header_name = os.getenv("MUNINN_API_KEY_HEADER", "X-API-Key")
         headers[header_name] = api_key
     return headers
+
+
+def _resolve_mcp_requires_api_key() -> bool:
+    value = os.getenv("MUNINN_MCP_REQUIRE_API_KEY")
+    if value is None:
+        return bool(os.getenv("MUNINN_API_KEY"))
+    return value.strip() == "1"
+
+
+def _resolve_mcp_api_key() -> str | None:
+    value = os.getenv("MUNINN_API_KEY")
+    if value is None:
+        return None
+    value = value.strip()
+    return value or None
+
+
+def _resolve_mcp_api_key_header() -> str:
+    value = os.getenv("MUNINN_API_KEY_HEADER", "X-API-Key").strip()
+    return value or "X-API-Key"
+
+
+class McpApiKeyMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next) -> Response:
+        if _resolve_mcp_requires_api_key() and request.url.path.startswith("/mcp"):
+            configured = _resolve_mcp_api_key()
+            header_name = _resolve_mcp_api_key_header()
+            provided = request.headers.get(header_name)
+            if not configured or provided != configured:
+                return JSONResponse(status_code=401, content={"detail": "Unauthorized"})
+        return await call_next(request)
 
 
 async def _post_json(path: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -129,11 +164,15 @@ def run_mcp_server(host: str = "127.0.0.1", port: int = 8765, base_url: str | No
         os.environ["MUNINN_BASE_URL"] = base_url
 
     server = create_mcp_server(host=host, port=port)
+    app = server.streamable_http_app()
+    if _resolve_mcp_requires_api_key():
+        app.add_middleware(McpApiKeyMiddleware)
     print("Muninn MCP up")
     print(f"  MCP URL: http://{host}:{port}/mcp")
     print(f"  Muninn Base URL: {_resolve_base_url()}")
     print(f"  API key header forwarding: {'enabled' if os.getenv('MUNINN_API_KEY') else 'disabled'}")
+    print(f"  MCP API key required: {'yes' if _resolve_mcp_requires_api_key() else 'no'}")
     try:
-        asyncio.run(server.run_streamable_http_async())
+        uvicorn.run(app, host=host, port=port, log_level="info")
     except KeyboardInterrupt:
         print("Muninn MCP stopped")
