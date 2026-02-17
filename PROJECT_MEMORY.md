@@ -90,6 +90,7 @@ Muninn is an HTTP memory service for LLM applications. It sits beside your agent
 - Confirm-required lifecycle added: stage/list/confirm with durable pending queues (v0.7)
 - Ops hardening added: cleanup endpoint, debug stats, readonly mode, optional API key middleware (v0.8)
 - CLI baseline added for installability (`muninn up`, `muninn doctor`, `muninn status`)
+- Universal local run hardened: `muninn up` now auto-creates config/data dirs, initializes DB+migrations, prints startup banner, and reports actionable port conflicts
 - Local MCP wrapper added (`muninn mcp up`) with HTTP forwarding for core memory tools
 
 ## Key Constraints

@@ -33,7 +33,7 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.setuptools.package-data]
-muninn = ["resources/*.json"]
+muninn = ["schema.sql", "resources/*.json", "resources/migrations/*.sql"]
 
 [tool.black]
 line-length = 100

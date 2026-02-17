@@ -96,6 +96,23 @@ python scripts/init_db.py
 Service: http://127.0.0.1:8000  
 Docs: http://127.0.0.1:8000/docs
 
+### Drop-in Local Run (After Install)
+
+Once installed (for example with `pipx install muninn`), one command starts a usable local service:
+
+```bash
+muninn up
+curl -sS http://127.0.0.1:8000/health
+```
+
+`muninn up` handles first-run setup automatically:
+- Creates config directory (`~/.config/muninn`) if missing
+- Creates data directory (`~/.local/share/muninn`) if missing
+- Creates/initializes DB (`~/.local/share/muninn/muninn.db`) and applies migrations
+- Starts API on `127.0.0.1:8000` by default
+- Prints startup banner with API URL, DB path, namespace default, and readonly state
+- Exits with an actionable message if port is already in use
+
 ## Demo
 
 ```bash

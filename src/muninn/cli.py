@@ -14,7 +14,7 @@ import httpx
 import uvicorn
 
 from . import __version__, db
-from .config import readonly, settings
+from .config import config_dir, data_dir, db_path, readonly, settings
 from .migrations import apply_migrations
 from .vector import store as vector_store
 
@@ -26,22 +26,27 @@ def _repo_root() -> Path:
 def _resolve_runtime_config(args: argparse.Namespace) -> dict[str, Any]:
     host = args.host or os.getenv("MUNINN_HOST", settings.host)
     port = int(args.port or int(os.getenv("MUNINN_PORT", str(settings.port))))
-    db_path = args.db_path or os.getenv("MUNINN_DB_PATH", settings.db_path)
+    resolved_db_path = args.db_path or os.getenv("MUNINN_DB_PATH") or db_path()
+    resolved_config_dir = config_dir()
+    resolved_data_dir = data_dir()
     namespace_default = os.getenv("MUNINN_NAMESPACE", "default")
-    if db_path:
-        os.environ["MUNINN_DB_PATH"] = db_path
+    if resolved_db_path:
+        os.environ["MUNINN_DB_PATH"] = resolved_db_path
     return {
         "host": host,
         "port": port,
-        "db_path": db_path,
+        "config_dir": resolved_config_dir,
+        "data_dir": resolved_data_dir,
+        "db_path": resolved_db_path,
         "namespace_default": namespace_default,
         "readonly": readonly(),
     }
 
 
-def _ensure_db_dir(db_path: str) -> None:
-    db_parent = Path(db_path).expanduser().resolve().parent
-    db_parent.mkdir(parents=True, exist_ok=True)
+def _ensure_runtime_dirs(config_dir_path: str, data_dir_path: str, db_path_value: str) -> None:
+    Path(config_dir_path).expanduser().mkdir(parents=True, exist_ok=True)
+    Path(data_dir_path).expanduser().mkdir(parents=True, exist_ok=True)
+    Path(db_path_value).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
 
 
 def _init_schema_and_migrations() -> None:
@@ -58,25 +63,65 @@ def _init_schema_and_migrations() -> None:
     conn.close()
 
 
+def _port_available(host: str, port: int) -> bool:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock.bind((host, port))
+        return True
+    except OSError:
+        return False
+    finally:
+        sock.close()
+
+
+def _display_path(path: str) -> str:
+    expanded = Path(path).expanduser().resolve()
+    home = Path.home().resolve()
+    try:
+        relative = expanded.relative_to(home)
+    except ValueError:
+        return str(expanded)
+    return f"~/{relative.as_posix()}"
+
+
 def _print_up_banner(config: dict[str, Any]) -> None:
     base_url = f"http://{config['host']}:{config['port']}"
-    print("Muninn up")
-    print(f"  Base URL: {base_url}")
-    print(f"  DB path: {config['db_path']}")
-    print(f"  Readonly: {config['readonly']}")
-    print(f"  Namespace default: {config['namespace_default']}")
+    print("Muninn running")
+    print(f"API: {base_url}")
+    print(f"DB:  {_display_path(str(config['db_path']))}")
+    print(f"Namespace default: {config['namespace_default']}")
+    print(f"Readonly: {str(config['readonly']).lower()}")
 
 
 def _cmd_up(args: argparse.Namespace) -> int:
     config = _resolve_runtime_config(args)
-    _ensure_db_dir(str(config["db_path"]))
-    _init_schema_and_migrations()
+    host = str(config["host"])
+    port = int(config["port"])
+
+    if not _port_available(host, port):
+        suggested_port = 8010 if port == 8000 else (port + 1)
+        print(f"Port {port} already in use.", file=sys.stderr)
+        print(f"Run: muninn up --port {suggested_port}", file=sys.stderr)
+        return 1
+
+    try:
+        _ensure_runtime_dirs(
+            str(config["config_dir"]),
+            str(config["data_dir"]),
+            str(config["db_path"]),
+        )
+        _init_schema_and_migrations()
+    except Exception as exc:
+        print(f"Failed to initialize Muninn: {exc}", file=sys.stderr)
+        print("Run: muninn doctor", file=sys.stderr)
+        return 1
+
     _print_up_banner(config)
 
     uvicorn.run(
         "muninn.api:app",
-        host=str(config["host"]),
-        port=int(config["port"]),
+        host=host,
+        port=port,
         reload=bool(args.reload),
         log_level=str(args.log_level),
     )

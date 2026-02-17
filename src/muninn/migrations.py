@@ -6,6 +6,13 @@ from pathlib import Path
 from . import db
 
 MIGRATIONS_DIR = Path(__file__).resolve().parents[2] / "scripts" / "migrations"
+PACKAGED_MIGRATIONS_DIR = Path(__file__).resolve().with_name("resources") / "migrations"
+
+
+def _default_migrations_dir() -> Path:
+    if MIGRATIONS_DIR.exists():
+        return MIGRATIONS_DIR
+    return PACKAGED_MIGRATIONS_DIR
 
 
 def ensure_schema_migrations(conn: sqlite3.Connection) -> None:
@@ -63,7 +70,7 @@ def _namespace_migration_already_reflected(conn: sqlite3.Connection) -> bool:
 
 
 def apply_migrations(conn: sqlite3.Connection, migrations_dir: Path | None = None) -> list[str]:
-    path = migrations_dir or MIGRATIONS_DIR
+    path = migrations_dir or _default_migrations_dir()
     ensure_schema_migrations(conn)
     applied = _already_applied(conn)
     applied_now: list[str] = []

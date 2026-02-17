@@ -1,11 +1,35 @@
 import os
+from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel
 
 
+def _default_config_dir() -> str:
+    raw = os.getenv("MUNINN_CONFIG_DIR")
+    if raw:
+        return str(Path(raw).expanduser())
+    return str(Path.home() / ".config" / "muninn")
+
+
+def _default_data_dir() -> str:
+    raw = os.getenv("MUNINN_DATA_DIR")
+    if raw:
+        return str(Path(raw).expanduser())
+    return str(Path.home() / ".local" / "share" / "muninn")
+
+
+def _default_db_path() -> str:
+    raw = os.getenv("MUNINN_DB_PATH")
+    if raw:
+        return str(Path(raw).expanduser())
+    return str(Path(_default_data_dir()) / "muninn.db")
+
+
 class Settings(BaseModel):
-    db_path: str = os.getenv("MUNINN_DB_PATH", "./data/muninn.db")
+    config_dir: str = _default_config_dir()
+    data_dir: str = _default_data_dir()
+    db_path: str = _default_db_path()
     host: str = os.getenv("MUNINN_HOST", "127.0.0.1")
     port: int = int(os.getenv("MUNINN_PORT", "8000"))
     readonly: bool = os.getenv("MUNINN_READONLY", "0") == "1"
@@ -34,6 +58,30 @@ def retrieval_mode() -> Literal["fts", "hybrid", "vector"]:
     if mode in {"fts", "hybrid", "vector"}:
         return mode
     return "fts"
+
+
+def config_dir() -> str:
+    value = os.getenv("MUNINN_CONFIG_DIR")
+    if value:
+        return str(Path(value).expanduser())
+    return settings.config_dir
+
+
+def data_dir() -> str:
+    value = os.getenv("MUNINN_DATA_DIR")
+    if value:
+        return str(Path(value).expanduser())
+    return settings.data_dir
+
+
+def db_path() -> str:
+    value = os.getenv("MUNINN_DB_PATH")
+    if value:
+        return str(Path(value).expanduser())
+    data_override = os.getenv("MUNINN_DATA_DIR")
+    if data_override:
+        return str(Path(data_override).expanduser() / "muninn.db")
+    return settings.db_path
 
 
 def readonly() -> bool:
