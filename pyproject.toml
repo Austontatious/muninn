@@ -22,6 +22,9 @@ dev = [
   "black>=24.0",
 ]
 
+[project.scripts]
+muninn = "muninn.cli:main"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
