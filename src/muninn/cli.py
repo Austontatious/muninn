@@ -4,12 +4,16 @@ import argparse
 import importlib
 import json
 import os
+import platform
+import re
 import secrets
+import shutil
 import socket
 import sqlite3
 import subprocess
 import sys
 import time
+import urllib.request
 from pathlib import Path
 from typing import Any
 
@@ -406,11 +410,95 @@ def _cmd_enable_chatgpt(args: argparse.Namespace) -> int:
     print("API key:")
     print(api_key)
     print()
-    print(f"Start tunnel to http://127.0.0.1:{mcp_port}")
-    print("Use resulting https://.../mcp in ChatGPT -> Settings -> Connectors")
-    print(f"Add header {header_name}: <key>")
+    if args.tunnel:
+        success, tunnel_url, reason = _start_cloudflared_tunnel(
+            mcp_port=mcp_port,
+            resolved_data_dir=resolved_data_dir,
+        )
+        if not success:
+            print(f"Cloudflared tunnel failed: {reason}", file=sys.stderr)
+            print(f"Run manually: cloudflared tunnel --url http://127.0.0.1:{mcp_port}", file=sys.stderr)
+            print("Install cloudflared manually if needed: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/")
+            return 1
+        print("MCP public endpoint:")
+        print(f"{tunnel_url}/mcp")
+        print()
+        print("Use this URL in ChatGPT -> Settings -> Connectors")
+    else:
+        print(f"Start tunnel to http://127.0.0.1:{mcp_port}")
+        print("Use resulting https://.../mcp in ChatGPT -> Settings -> Connectors")
+    print(f"Add header {header_name}: {api_key}")
     print("Note: ChatGPT connector requires HTTPS.")
     return 0
+
+
+def _cloudflared_download_url() -> str | None:
+    system_name = platform.system().lower()
+    machine = platform.machine().lower()
+    if system_name == "linux" and machine in {"x86_64", "amd64"}:
+        return "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"
+    if system_name == "linux" and machine in {"aarch64", "arm64"}:
+        return "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64"
+    return None
+
+
+def _resolve_cloudflared_binary(resolved_data_dir: str) -> tuple[str | None, str | None]:
+    existing = shutil.which("cloudflared")
+    if existing:
+        return existing, None
+
+    local_bin = Path(resolved_data_dir).expanduser() / "bin" / "cloudflared"
+    if local_bin.exists():
+        return str(local_bin), None
+
+    download_url = _cloudflared_download_url()
+    if not download_url:
+        return None, "cloudflared auto-download unsupported on this platform"
+
+    local_bin.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with urllib.request.urlopen(download_url, timeout=30) as response:
+            local_bin.write_bytes(response.read())
+        local_bin.chmod(0o755)
+    except Exception as exc:
+        return None, f"download failed ({exc})"
+
+    return str(local_bin), None
+
+
+def _extract_trycloudflare_url(text: str) -> str | None:
+    match = re.search(r"https://[a-zA-Z0-9-]+\.trycloudflare\.com", text)
+    if not match:
+        return None
+    return match.group(0)
+
+
+def _start_cloudflared_tunnel(mcp_port: int, resolved_data_dir: str) -> tuple[bool, str | None, str]:
+    cloudflared_bin, error = _resolve_cloudflared_binary(resolved_data_dir)
+    if not cloudflared_bin:
+        return False, None, error or "cloudflared unavailable"
+
+    log_path = Path(resolved_data_dir).expanduser() / "cloudflared.log"
+    command = [
+        cloudflared_bin,
+        "tunnel",
+        "--url",
+        f"http://127.0.0.1:{mcp_port}",
+        "--no-autoupdate",
+    ]
+    process = _spawn_background(command, env=os.environ.copy(), log_path=log_path)
+
+    deadline = time.time() + 25.0
+    while time.time() < deadline:
+        if process.poll() is not None:
+            return False, None, f"process exited early (code {process.poll()})"
+        if log_path.exists():
+            url = _extract_trycloudflare_url(log_path.read_text(encoding="utf-8", errors="ignore"))
+            if url:
+                return True, url, ""
+        time.sleep(0.25)
+
+    return False, None, "timed out waiting for tunnel URL"
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -473,6 +561,19 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     enable_chatgpt.add_argument("--api-port", type=int, default=8000, help="Muninn API port")
     enable_chatgpt.add_argument("--mcp-port", type=int, default=8765, help="Muninn MCP port")
+    enable_chatgpt.set_defaults(tunnel=True)
+    enable_chatgpt.add_argument(
+        "--tunnel",
+        dest="tunnel",
+        action="store_true",
+        help="Start Cloudflare quick tunnel (default)",
+    )
+    enable_chatgpt.add_argument(
+        "--no-tunnel",
+        dest="tunnel",
+        action="store_false",
+        help="Skip tunnel setup and print manual instructions",
+    )
 
     return parser
 

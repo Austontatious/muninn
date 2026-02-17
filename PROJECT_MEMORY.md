@@ -93,6 +93,7 @@ Muninn is an HTTP memory service for LLM applications. It sits beside your agent
 - Universal local run hardened: `muninn up` now auto-creates config/data dirs, initializes DB+migrations, prints startup banner, and reports actionable port conflicts
 - Local MCP wrapper added (`muninn mcp up`) with HTTP forwarding for core memory tools
 - ChatGPT connector prep added: `muninn enable-chatgpt` provisions API key config, ensures API+MCP background services, and prints local MCP endpoint/header/key
+- ChatGPT connector tunnel automation added: `enable-chatgpt` can download/use `cloudflared`, start quick tunnel, and print HTTPS `/mcp` URL
 
 ## Key Constraints
 

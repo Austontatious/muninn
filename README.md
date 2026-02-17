@@ -143,6 +143,7 @@ muninn enable-chatgpt
 - `muninn doctor` runs environment checks and prints PASS/FAIL with fixes.
 - `muninn mcp up` starts a local MCP wrapper at `http://127.0.0.1:8765/mcp` by default.
 - `muninn enable-chatgpt` provisions a local connector key, ensures API+MCP are running, and prints copy/paste connector values.
+  By default it also starts a Cloudflare quick tunnel and prints an HTTPS MCP endpoint.
 
 ## API (v0)
 
