@@ -109,6 +109,20 @@ python examples/openai_tools_demo.py
 python examples/anthropic_tools_demo.py
 ```
 
+## CLI
+
+Muninn ships a console command:
+
+```bash
+muninn --help
+muninn status
+muninn doctor
+muninn up
+```
+
+- `muninn up` initializes schema/migrations and starts the API server.
+- `muninn doctor` runs environment checks and prints PASS/FAIL with fixes.
+
 ## API (v0)
 
 - `GET /health`
