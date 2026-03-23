@@ -50,7 +50,7 @@ def test_admin_cleanup_dry_run_and_delete(tmp_path, monkeypatch) -> None:
         INSERT INTO candidate_decisions (id, namespace, pending_id, decision, decided_by, note, decided_at)
         VALUES (?, ?, ?, ?, ?, ?, ?)
         """,
-        (db.new_id("dec"), "default", db.new_id("pend_missing"), "accept", "user:test", None, old_ts),
+        (db.new_id("dec"), "default", pending_accepted, "accept", "user:test", None, old_ts),
     )
     db.execute_one(
         conn,
@@ -102,7 +102,8 @@ def test_admin_cleanup_dry_run_and_delete(tmp_path, monkeypatch) -> None:
     body = live.json()
     assert body["deleted_pending"] == 2
     assert body["deleted_decisions"] >= 1
-    assert body["deleted_audit"] == 1
+    assert body["deleted_audit"] == 0
+    assert "audit_append_only" in body["reasons"]
 
     remaining_pending = db.fetch_one(
         conn,

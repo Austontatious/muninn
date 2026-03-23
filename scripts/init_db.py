@@ -29,6 +29,24 @@ def backfill_fts(conn) -> None:
         SELECT id, entity_id, key || '=' || value FROM preferences
         """
     )
+
+    # Cardex cards
+    conn.execute("DELETE FROM cards_fts")
+    conn.execute(
+        """
+        INSERT INTO cards_fts(card_id, namespace, title, summary, tags)
+        SELECT card_id, namespace, title, summary, tags_json FROM cards
+        """
+    )
+
+    # Cardex artifacts
+    conn.execute("DELETE FROM artifacts_fts")
+    conn.execute(
+        """
+        INSERT INTO artifacts_fts(artifact_id, namespace, source_id, content_text)
+        SELECT artifact_id, namespace, source_id, COALESCE(content_text, '') FROM artifacts
+        """
+    )
     conn.commit()
 
 

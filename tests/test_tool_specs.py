@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import hashlib
+from pathlib import Path
+
 from muninn.adapters.anthropic_tools import anthropic_tools_spec
 from muninn.adapters.common import load_tool_spec, public_tools_from_spec
 from muninn.adapters.openai_tools import openai_tools_spec
@@ -14,6 +17,18 @@ REQUIRED_TOOLS = {
     "muninn_query_vector",
     "muninn_version",
     "muninn_debug_vector_backend",
+    "muninn_cardex_create_card",
+    "muninn_cardex_get_card",
+    "muninn_cardex_create_source",
+    "muninn_cardex_ingest",
+    "muninn_cardex_add_source_artifacts",
+    "muninn_cardex_link_refs",
+    "muninn_cardex_retrieve",
+    "muninn_cardex_promote",
+    "muninn_cardex_propose",
+    "muninn_cardex_confirm",
+    "muninn_cardex_reject",
+    "muninn_cardex_upsert_embedding",
 }
 
 
@@ -53,3 +68,18 @@ def test_provider_tool_schemas_align_with_tool_spec_source() -> None:
 
         assert source_properties.issubset(set(openai_schema.get("properties", {}).keys()))
         assert source_properties.issubset(set(anthropic_schema.get("properties", {}).keys()))
+
+
+def test_tool_spec_files_are_byte_identical() -> None:
+    root = Path(__file__).resolve().parents[1]
+    source = root / "schemas" / "tooling" / "muninn_tool_spec.json"
+    packaged = root / "src" / "muninn" / "resources" / "muninn_tool_spec.json"
+
+    source_bytes = source.read_bytes()
+    packaged_bytes = packaged.read_bytes()
+
+    source_sha = hashlib.sha256(source_bytes).hexdigest()
+    packaged_sha = hashlib.sha256(packaged_bytes).hexdigest()
+
+    assert source_sha == packaged_sha
+    assert source_bytes == packaged_bytes

@@ -1,21 +1,74 @@
 from __future__ import annotations
 
 import hashlib
+import sqlite3
+from contextvars import ContextVar, Token
+from typing import Any
 
 from . import db
 from .logging import audit_event, audit_event_json
 
+_AuditRow = tuple[str, str, str, str, float]
+_audit_buffer: ContextVar[list[_AuditRow] | None] = ContextVar("muninn_audit_buffer", default=None)
 
-def log_audit(namespace: str, event_type: str, payload: dict) -> None:
-    conn = db.connect()
+
+def begin_audit_buffer() -> Token[list[_AuditRow] | None]:
+    return _audit_buffer.set([])
+
+
+def end_audit_buffer(token: Token[list[_AuditRow] | None]) -> None:
+    _audit_buffer.reset(token)
+
+
+def flush_audit_buffer(conn: sqlite3.Connection | None = None) -> int:
+    buffered = _audit_buffer.get()
+    if not buffered:
+        return 0
+
+    rows = list(buffered)
+    buffered.clear()
+
+    close_conn = False
+    if conn is None:
+        conn = db.connect()
+        close_conn = True
+
+    try:
+        with db.transaction(conn):
+            db.execute_many(
+                conn,
+                "INSERT INTO audit_log (id, namespace, event_type, event_json, created_at) VALUES (?,?,?,?,?)",
+                rows,
+                commit=False,
+            )
+    finally:
+        if close_conn:
+            conn.close()
+    return len(rows)
+
+
+def log_audit(namespace: str, event_type: str, payload: dict[str, Any]) -> str:
     ev = audit_event(event_type, payload)
     ev_json = audit_event_json(ev)
     aid = db.new_id("audit")
-    db.execute_one(
-        conn,
-        "INSERT INTO audit_log (id, namespace, event_type, event_json, created_at) VALUES (?,?,?,?,?)",
-        (aid, namespace, event_type, ev_json, db.now()),
-    )
+    row: _AuditRow = (aid, namespace, event_type, ev_json, db.now())
+    buffered = _audit_buffer.get()
+    if buffered is not None:
+        buffered.append(row)
+        return aid
+
+    conn = db.connect()
+    try:
+        with db.transaction(conn):
+            db.execute_one(
+                conn,
+                "INSERT INTO audit_log (id, namespace, event_type, event_json, created_at) VALUES (?,?,?,?,?)",
+                row,
+                commit=False,
+            )
+    finally:
+        conn.close()
+    return aid
 
 
 def memory_version(namespace: str, profile: str, embedding_model: str | None = None) -> str:

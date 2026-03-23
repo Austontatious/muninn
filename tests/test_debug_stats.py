@@ -10,6 +10,7 @@ def test_debug_stats_returns_counts_and_migrations(tmp_path, monkeypatch) -> Non
     test_db = tmp_path / "muninn.db"
     monkeypatch.setenv("MUNINN_DB_PATH", str(test_db))
     monkeypatch.setenv("MUNINN_REQUIRE_API_KEY", "0")
+    monkeypatch.setenv("MUNINN_ALLOW_UNAUTH_NAMESPACE_OVERRIDE", "1")
     monkeypatch.delenv("MUNINN_READONLY", raising=False)
 
     conn = db.connect()

@@ -5,12 +5,29 @@ from typing import Any
 import httpx
 
 from ..models import (
+    CardCreateRequest,
+    CardCreateResponse,
+    CardEmbeddingUpsertRequest,
+    CardEmbeddingUpsertResponse,
+    CardexRetrieveRequest,
+    CardexRetrieveResponse,
+    CardRecord,
     CleanupRequest,
     CleanupResponse,
     ConfirmCandidatesRequest,
     ConfirmCandidatesResponse,
+    DecideProposalRequest,
+    DecideProposalResponse,
+    IngestRequest,
+    IngestResponse,
+    LinkCardRefsRequest,
+    LinkCardRefsResponse,
     ListPendingRequest,
     ListPendingResponse,
+    PromoteRequest,
+    PromoteResponse,
+    ProposeRequest,
+    ProposeResponse,
     QueryVectorRequest,
     QueryVectorResponse,
     RehydrateRequest,
@@ -21,6 +38,10 @@ from ..models import (
     RenderCardsResponse,
     RetrieveRequest,
     RetrieveResponse,
+    SourceArtifactsRequest,
+    SourceArtifactsResponse,
+    SourceCreateRequest,
+    SourceCreateResponse,
     StageCandidatesRequest,
     StageCandidatesResponse,
     UpsertEmbeddingsRequest,
@@ -76,6 +97,62 @@ class MuninnClient:
 
     def health(self) -> dict[str, Any]:
         return self._request("GET", "/health")
+
+    def create_card(self, req: CardCreateRequest) -> CardCreateResponse:
+        data = self._request("POST", "/cards", json_payload=req.model_dump())
+        return CardCreateResponse(**data)
+
+    def get_card(self, card_id: str, namespace: str = "default") -> CardRecord:
+        data = self._request("GET", f"/cards/{card_id}", params={"namespace": namespace})
+        return CardRecord(**data)
+
+    def create_source(self, req: SourceCreateRequest) -> SourceCreateResponse:
+        data = self._request("POST", "/sources", json_payload=req.model_dump())
+        return SourceCreateResponse(**data)
+
+    def ingest(self, req: IngestRequest) -> IngestResponse:
+        data = self._request("POST", "/ingest", json_payload=req.model_dump())
+        return IngestResponse(**data)
+
+    def add_source_artifacts(
+        self,
+        source_id: str,
+        req: SourceArtifactsRequest,
+    ) -> SourceArtifactsResponse:
+        data = self._request(
+            "POST",
+            f"/sources/{source_id}/artifacts",
+            json_payload=req.model_dump(),
+        )
+        return SourceArtifactsResponse(**data)
+
+    def link_card_refs(self, card_id: str, req: LinkCardRefsRequest) -> LinkCardRefsResponse:
+        data = self._request("POST", f"/cards/{card_id}/refs", json_payload=req.model_dump())
+        return LinkCardRefsResponse(**data)
+
+    def cardex_retrieve(self, req: CardexRetrieveRequest) -> CardexRetrieveResponse:
+        data = self._request("POST", "/retrieve", json_payload=req.model_dump())
+        return CardexRetrieveResponse(**data)
+
+    def promote(self, req: PromoteRequest) -> PromoteResponse:
+        data = self._request("POST", "/promote", json_payload=req.model_dump())
+        return PromoteResponse(**data)
+
+    def propose(self, req: ProposeRequest) -> ProposeResponse:
+        data = self._request("POST", "/propose", json_payload=req.model_dump())
+        return ProposeResponse(**data)
+
+    def confirm_proposal(self, proposal_id: str, req: DecideProposalRequest) -> DecideProposalResponse:
+        data = self._request("POST", f"/confirm/{proposal_id}", json_payload=req.model_dump())
+        return DecideProposalResponse(**data)
+
+    def reject_proposal(self, proposal_id: str, req: DecideProposalRequest) -> DecideProposalResponse:
+        data = self._request("POST", f"/reject/{proposal_id}", json_payload=req.model_dump())
+        return DecideProposalResponse(**data)
+
+    def upsert_card_embedding(self, req: CardEmbeddingUpsertRequest) -> CardEmbeddingUpsertResponse:
+        data = self._request("POST", "/embeddings", json_payload=req.model_dump())
+        return CardEmbeddingUpsertResponse(**data)
 
     def write_candidates(self, req: WriteCandidatesRequest) -> WriteCandidatesResponse:
         data = self._request("POST", "/v0/memory/write_candidates", json_payload=req.model_dump())

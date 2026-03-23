@@ -35,7 +35,12 @@ def cleanup_pending(
     status_placeholders = ",".join("?" for _ in statuses)
     sql = (
         "SELECT id FROM pending_candidates "
-        f"WHERE status IN ({status_placeholders}) AND created_at < ?"
+        f"WHERE status IN ({status_placeholders}) AND created_at < ? "
+        "AND NOT EXISTS ("
+        "SELECT 1 FROM candidate_decisions d "
+        "WHERE d.pending_id = pending_candidates.id "
+        "AND d.namespace = pending_candidates.namespace"
+        ")"
     )
     params: list[object] = [*statuses, cutoff_ts]
     if namespace is not None:
@@ -94,5 +99,5 @@ def cleanup_audit(
     sql += " ORDER BY created_at ASC"
 
     ids = _select_ids(conn, sql, tuple(params), limit)
-    deleted = _delete_by_ids(conn, "audit_log", ids, dry_run)
-    return deleted, len(ids)
+    # audit_log is append-only; never delete rows in normal operation.
+    return 0, len(ids)

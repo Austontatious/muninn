@@ -1,18 +1,20 @@
 from __future__ import annotations
 
+import sqlite3
+
 from .. import db
 from ..models import MemoryCandidate
 from .policy import decide_write
 from .provenance import normalize_provenance
 
 
-def write_candidates(
+def _write_candidates_on_conn(
+    conn: sqlite3.Connection,
     namespace: str,
     candidates: list[MemoryCandidate],
     *,
-    enforce_policy: bool = True,
+    enforce_policy: bool,
 ) -> tuple[list[str], list[str]]:
-    conn = db.connect()
     ids: list[str] = []
     reasons: list[str] = []
 
@@ -26,7 +28,6 @@ def write_candidates(
         prov = normalize_provenance(candidate.provenance)
         prov_json = prov.model_dump_json()
 
-        # Entity upsert (v0: require id or name; generate if missing).
         entity = candidate.entity
         ent_id = entity.get("id") or db.new_id("ent")
         ent_kind = entity.get("kind", "unknown")
@@ -36,6 +37,7 @@ def write_candidates(
             conn,
             "INSERT OR IGNORE INTO entities (id, namespace, kind, name, created_at) VALUES (?,?,?,?,?)",
             (ent_id, namespace, ent_kind, ent_name, db.now()),
+            commit=False,
         )
 
         if candidate.kind == "fact":
@@ -59,6 +61,7 @@ def write_candidates(
                     conn,
                     "UPDATE facts SET confidence = ?, provenance_json = ? WHERE namespace = ? AND id = ?",
                     (merged_conf, prov_json, namespace, fact_id),
+                    commit=False,
                 )
                 ids.append(fact_id)
                 reasons.append("Accepted: fact_merged")
@@ -71,6 +74,7 @@ def write_candidates(
                     VALUES (?,?,?,?,?,?,?,?)
                     """,
                     (fact_id, namespace, subject_id, predicate, obj, conf, prov_json, db.now()),
+                    commit=False,
                 )
                 ids.append(fact_id)
                 reasons.append("Accepted: fact")
@@ -88,6 +92,7 @@ def write_candidates(
                 VALUES (?,?,?,?,?,?,?,?,?)
                 """,
                 (episode_id, namespace, ent_id, summary, start_ts, end_ts, conf, prov_json, db.now()),
+                commit=False,
             )
             ids.append(episode_id)
             reasons.append("Accepted: episode")
@@ -117,6 +122,7 @@ def write_candidates(
                     WHERE namespace = ? AND id = ?
                     """,
                     (value, merged_conf, decay_ts, prov_json, db.now(), namespace, pref_id),
+                    commit=False,
                 )
                 ids.append(pref_id)
                 reasons.append("Accepted: preference_merged")
@@ -129,6 +135,7 @@ def write_candidates(
                     VALUES (?,?,?,?,?,?,?,?,?)
                     """,
                     (pref_id, namespace, ent_id, key, value, conf, decay_ts, prov_json, db.now()),
+                    commit=False,
                 )
                 ids.append(pref_id)
                 reasons.append("Accepted: preference")
@@ -137,3 +144,27 @@ def write_candidates(
             reasons.append("Rejected: unknown kind")
 
     return ids, reasons
+
+
+def write_candidates(
+    namespace: str,
+    candidates: list[MemoryCandidate],
+    *,
+    enforce_policy: bool = True,
+    conn: sqlite3.Connection | None = None,
+) -> tuple[list[str], list[str]]:
+    if conn is None:
+        with db.transaction() as tx_conn:
+            return _write_candidates_on_conn(
+                tx_conn,
+                namespace=namespace,
+                candidates=candidates,
+                enforce_policy=enforce_policy,
+            )
+    with db.transaction(conn):
+        return _write_candidates_on_conn(
+            conn,
+            namespace=namespace,
+            candidates=candidates,
+            enforce_policy=enforce_policy,
+        )

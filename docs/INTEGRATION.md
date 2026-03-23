@@ -1,9 +1,26 @@
 # Integration — Muninn
 
 Muninn is a memory harness you call over HTTP.
-All reads/writes are namespace-scoped at the DB layer. Always pass the correct `namespace`.
+All reads/writes are namespace-scoped at the DB layer.
+When API-key auth is enforced, the server resolves namespace from auth and rejects cross-namespace overrides.
+Client `namespace` fields are optional for compatibility.
+When auth is not enforced, namespace overrides are ignored by default unless `MUNINN_ALLOW_UNAUTH_NAMESPACE_OVERRIDE=1`.
+
+For human-first lens testing outside the existing Cardex API surface, a standalone core schema is available at `migrations/0001_init.sql` with helpers under `src/muninn/human_memory/`.
 
 ## Endpoints (v0)
+- `POST /cards`
+- `GET /cards/{card_id}`
+- `POST /ingest`
+- `POST /sources`
+- `POST /sources/{source_id}/artifacts`
+- `POST /cards/{card_id}/refs`
+- `POST /embeddings`
+- `POST /retrieve`
+- `POST /promote`
+- `POST /propose`
+- `POST /confirm/{proposal_id}`
+- `POST /reject/{proposal_id}`
 - `POST /v0/memory/rehydrate`
 - `POST /v0/memory/retrieve`
 - `POST /v0/memory/write_candidates`
@@ -16,6 +33,329 @@ All reads/writes are namespace-scoped at the DB layer. Always pass the correct `
 - `GET /v0/memory/version`
 - `GET /v0/debug/vector_backend`
 - `GET /health`
+
+## MCP Human-Memory Tool Surface (v1)
+The local MCP wrapper now exposes a lens-first human-memory tool set mapped to `src/muninn/human_memory/*`:
+
+- `muninn.spaces.resolve`
+- `muninn.cards.recent`
+- `muninn.cards.search`
+- `muninn.rehydrate.bundle`
+- `muninn.policy.learn`
+- `muninn.policy.inspect`
+- `muninn.cards.adaptation.query`
+- `muninn.cards.upsert`
+- `muninn.cards.supersede`
+- `muninn.cards.merge`
+- `muninn.system.ping`
+
+Deprecated aliases:
+- Slash aliases (`muninn/spaces.resolve`, `muninn/cards.recent`, `muninn/cards.search`, `muninn/cards.upsert`, `muninn/cards.supersede`, `muninn/cards.merge`, `muninn/system.ping`) are still accepted for compatibility and are scheduled for removal in `v0.12`.
+- Slash aliases also exist for adaptation query: `muninn/cards.adaptation.query` (deprecated; scheduled for removal in `v0.12`).
+
+Transport modes:
+- Primary: Streamable HTTP (`muninn mcp up`, default bind `127.0.0.1`).
+- Compatibility: STDIO (`muninn mcp stdio`).
+- Non-loopback HTTP binds are blocked unless auth is configured.
+
+Input contract:
+- Reads/writes accept a `lens` object.
+- `lens.space` supports `auto|global`.
+- `lens.space_key` can be used for explicit keys (`repo:*`, `path:*`, `cwd:*`, `global`).
+- `lens.cwd` is required when `lens.space="auto"`.
+- `lens.scope` supports `strict|soft`.
+- `strict` means canonical project space only.
+- `soft` means canonical project space first, then alias spaces, then `global`.
+- Legacy compatibility is preserved for nested `{"lens": {...}}`, single `kind`, string `limit`, comma-separated filters, and legacy `key:value` string lenses.
+
+Human-memory model:
+- `cards`: durable project/task memories such as decisions, constraints, interfaces, runbooks
+- `evidence`: files, diffs, commits, tests, logs, URLs, or user messages linked to cards
+- `policy-state`: scoped behavioral lessons stored as typed cards (`policy.directive`, `policy.preference`, `policy.anti_pattern`, `workflow.heuristic`, `tooling.preference`, `rehydration.priority`)
+- `interaction_events`: raw evaluative/directive traces used to promote policy-state without changing model weights
+
+Canonical `space_key` strategy:
+- prefer `repo:<sha(remote_norm)>` when a git remote is available
+- fall back to `path:<sha(repo_root)>` for git repos without remotes
+- fall back to `path:<sha(abs_cwd)>` for non-git paths
+- legacy `path:*` and `cwd:*` keys are tracked as aliases and can be searched during transition
+
+Rehydration flow:
+- `muninn.rehydrate.bundle` makes the intended session-start sequence explicit in one call
+- retrieval stages are:
+  1) strict search
+  2) recent strict
+  3) soft search
+  4) alias fallback
+  5) recent evidence-backed cards
+  6) global fallback when `scope=soft`
+- policy-state is retrieved in parallel and returned separately from facts/evidence
+
+Pseudo-RL / next-state adaptation:
+- `muninn.policy.learn` captures evaluative and directive signals from normal use
+- signals are stored first as interaction traces
+- repeated or directive-rich traces promote into scoped policy-state cards
+- future sessions retrieve those policy cards through `muninn.rehydrate.bundle` or `muninn.policy.inspect`
+- this is memory/state adaptation only; Muninn does not update model weights live
+
+Write behavior:
+- `muninn.cards.upsert` is intended for durable changes only.
+- Recommended cadence is 1-3 cards per meaningful task.
+- `summary` should remain concise (1-3 sentences); `body` holds full durable context.
+- Use `muninn.cards.supersede` and `muninn.cards.merge` to preserve card lineage instead of deleting/replacing in place.
+- write handlers enrich `context.provenance` with:
+  - `source_class`: `user_provided | tool_derived | model_inference | preference_or_instruction`
+  - `evidence_count`
+  - `evidence_types`
+  - `warning_codes`
+- `decision`, `constraint`, `interface`, `runbook`, and policy-state cards warn when evidence is missing
+- Soft write-rate limiting is enabled by default for new card creation in MCP upsert:
+  - `MUNINN_MCP_CARD_WRITE_LIMIT_PER_HOUR` (default `20`, set `0` to disable)
+  - `MUNINN_MCP_CARD_WRITE_WINDOW_SECONDS` (default `3600`)
+
+LAILA adaptation query behavior:
+- `muninn.cards.adaptation.query` provides deterministic retrieval for typed adaptation memories:
+  - direct preference (`preference.direct`)
+  - inferred preference (`preference.inferred`)
+  - scoped override (`override.scoped`)
+  - correction (`correction`)
+  - outcome (`outcome`)
+- Query supports filters for `subject_id`, `category`, `scope`, `persistence`, `session_id`, `source_type`, tags, and recency (`max_age_days`).
+- Query exposes preset views:
+  - `durable_preferences`
+  - `recent_overrides`
+  - `corrections`
+  - `outcomes`
+  - `prompt_state`
+- Response includes deterministic `counts` and `prompt_state` grouping by category.
+- See:
+  - `docs/laila_adaptation_memory.md`
+  - `docs/query_contracts.md`
+
+Error contract:
+```json
+{
+  "error": {
+    "code": "InvalidArguments|SpaceResolutionFailed|WriteRateLimited|DatabaseUnavailable|ConstraintViolation|InternalError",
+    "message": "Short actionable error",
+    "details": {}
+  }
+}
+```
+
+Validation/debug notes:
+- malformed legacy payloads degrade to `InvalidArguments` instead of `InternalError`
+- error details include best-effort `field` names when available
+- database lock/busy conditions surface as `DatabaseUnavailable` with `db_reason=locked`
+
+DB path:
+- Human-memory MCP tools initialize and use `MUNINN_HUMAN_MEMORY_DB_PATH` when set.
+- Default path is `~/.local/share/muninn/human_memory.db`.
+
+HTTP auth:
+- Namespace key map mode (recommended): `MUNINN_API_KEYS="keyA:nsA,keyB:nsB"` (or JSON object string)
+- Legacy single key mode: `MUNINN_API_KEY` (+ optional `MUNINN_API_KEY_HEADER`)
+- Bearer mode: `MUNINN_MCP_BEARER_TOKEN` (`Authorization: Bearer <token>`)
+- Invalid non-empty `MUNINN_API_KEYS` fails closed for protected routes (requests are unauthorized).
+- Slash alias controls:
+  - `MUNINN_MCP_ENABLE_SLASH_ALIASES=1|0` (default `1`)
+  - `MUNINN_MCP_SUPPRESS_ALIAS_WARNINGS=1|0` (default `1`; only applies when slash aliases are enabled)
+- Structured MCP telemetry (JSONL):
+  - `MUNINN_MCP_TELEMETRY_PATH=~/.local/share/muninn/mcp_telemetry.jsonl`
+  - `MUNINN_MCP_TELEMETRY_FLUSH=1` (optional immediate flush)
+  - `MUNINN_MCP_TELEMETRY_MAX_BYTES` (optional cap; no rotation in v0.11)
+  - telemetry captures operation name, caller, cwd/project context, canonicalized space key, summarized query/lens, result counts, warnings, DB target, and latency
+  - query text is summarized/redacted rather than dumped verbatim at full length
+
+CLI audit entrypoint:
+- `muninn audit --last 2h` (or `--since "2026-02-19 15:00"`)
+- Source priority:
+  1) telemetry JSONL file (when present)
+  2) `journalctl --user -u muninn-mcp.service` MCP_TOOL parsing fallback
+- audit now reports missing-evidence warnings for successful MCP upserts
+
+Inspection/debugging workflow:
+1. `muninn.system.ping`
+2. `muninn.spaces.resolve`
+3. `muninn.rehydrate.bundle` for task-start rehydration
+4. `muninn.policy.inspect` to see active directives, preferences, and recent policy signals
+5. `muninn audit --last 2h` to evaluate discipline, retrieval misses, and evidence hygiene
+
+Architecture sketch:
+
+```text
+User / Agent / Tool events
+        |
+        v
+interaction_events ----> policy.learn interpreter
+        |                        |
+        |                        v
+        |                  policy-state cards
+        |                        |
+        v                        v
+evidence + durable cards --> rehydrate.bundle --> facts | evidence | lessons | preferences
+```
+
+Codex config example:
+```toml
+[mcp_servers.muninn]
+url = "http://127.0.0.1:8765/mcp"
+enabled = true
+tool_timeout_sec = 60
+```
+
+Codex config file location:
+- `~/.codex/config.toml`
+- After edits, restart VS Code (or reload the Codex extension/session) so the MCP server config is reloaded.
+
+## Cardex v1 (card-centric multimodal-ready)
+Cardex introduces cards as the primary memory unit and keeps supporting artifacts/sources as references.
+
+### Create card (write-gated by default)
+`POST /cards` creates a proposal unless `trusted_mode=true`.
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "type": "place",
+  "title": "Belize restaurant mention",
+  "summary": "Possible restaurant in Belize connected to Bowie references.",
+  "tags_json": ["belize", "restaurant", "bowie"],
+  "trusted_mode": false,
+  "requested_by": "agent:lexi"
+}
+```
+
+### Create source (+ optional document/chunks/artifacts)
+`POST /sources` can ingest text now while keeping room for image/audio/video artifacts.
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "source_type": "web",
+  "uri": "https://example.com/bowie-belize",
+  "title": "Bowie Belize Notes",
+  "document_text": "Long text body ...",
+  "artifacts": [
+    {"artifact_type": "summary", "content_text": "Short source summary", "generator": "stub"}
+  ]
+}
+```
+
+### Deterministic ingestion (v1)
+`POST /ingest` is the preferred path for source ingestion. It normalizes text, generates stable IDs, emits searchable artifacts, and deterministic chunks.
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "source_type": "document",
+  "uri": "https://example.com/bowie-belize",
+  "title": "Bowie Belize notes",
+  "text": "Raw pasted content ...",
+  "user_tags": ["belize", "bowie"],
+  "chunk_target_tokens": 450,
+  "chunk_overlap_tokens": 80,
+  "card_mode": "none"
+}
+```
+
+Response includes:
+- deterministic `source_id`, `doc_id`, `chunk_ids`, `artifact_ids`
+- `artifact_type=extracted_text` for text inputs
+- pending artifacts for media/url/file stubs
+- heuristic tags and provenance metadata
+
+### Link refs to cards
+`POST /cards/{card_id}/refs`
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "refs": [
+    {"ref_type": "source", "ref_id": "src_123", "role": "evidence"},
+    {"ref_type": "chunk", "ref_id": "chunk_456", "role": "evidence"}
+  ]
+}
+```
+
+### Add artifacts to an existing source
+`POST /sources/{source_id}/artifacts`
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "artifacts": [
+    {"artifact_type": "caption", "content_text": "Street food stall in Belize", "generator": "stub"}
+  ]
+}
+```
+
+### Retrieve context pack
+`POST /retrieve` returns card summaries + evidence snippets + `audit_id`.
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "query": "restaurant in Belize that David Bowie mentioned",
+  "purpose": "assistant_answer",
+  "scope": ["cards", "evidence"],
+  "modalities": ["text", "image", "audio", "video"],
+  "sensitivity_ceiling": 1,
+  "k_cards": 20,
+  "k_evidence": 8
+}
+```
+
+Response includes:
+- `cards[]`
+- `evidence[]`
+- `audit_id`
+- `redactions[]` (tier blocks + content redaction events)
+
+Current retrieval behavior:
+- Searches `cards` first (FTS/keyword).
+- Uses `artifacts.content_text` as fallback signal.
+- Expands evidence via `card_refs` into chunks/docs/sources.
+- Applies sensitivity ceiling and basic redaction policy (`tiered_redaction_v1`).
+- Vector multimodal search is stubbed (`vector_search=stub_pending`).
+- Records access signals (`signals`, `coaccess_edges`) for returned cards/evidence.
+- Evaluates deterministic implicit promotion triggers and emits write-gated proposals.
+
+### Promote meaningful evidence
+`POST /promote` promotes an `artifact` or `chunk` into meaningful memory.
+
+Request:
+```json
+{
+  "namespace": "lexi",
+  "owner_type": "artifact",
+  "owner_id": "art_123",
+  "mode": "propose",
+  "card_type": "fact",
+  "card_title": "Belize Bowie lead",
+  "card_summary": "Promoted evidence summary",
+  "tags": ["belize", "bowie"],
+  "requested_by": "agent:lexi"
+}
+```
+
+Behavior:
+- `mode=propose`: creates a write-gated proposal that confirms into card + refs + promoted evidence state.
+- `mode=trusted`: auto-confirms only when allowed by tier policy; sensitive evidence falls back to proposal.
+- Promotion enqueues `index_jobs` for promoted evidence and active cards.
+
+### Propose / confirm / reject
+`POST /propose`, `POST /confirm/{proposal_id}`, and `POST /reject/{proposal_id}` manage write-gated mutations for:
+- `create_card`
+- `update_card`
+- `link_refs`
+- `add_source`
 
 ## Tool calling (generic)
 ### 1) Rehydrate memory for the current user message
@@ -226,6 +566,10 @@ Admin vector reindex endpoint:
 
 This endpoint rebuilds sqlite-vec mappings from canonical `embeddings` rows for a namespace.
 It is intended for operational use only; protect behind network/auth controls in production.
+
+Audit behavior:
+- Every request path writes an audit row on success or failure.
+- `audit_log` is append-only (update/delete blocked by DB triggers).
 
 ## Provider adapters (included)
 

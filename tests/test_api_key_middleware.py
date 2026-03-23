@@ -28,3 +28,20 @@ def test_api_key_middleware_enforces_when_enabled(tmp_path, monkeypatch) -> None
     with_key = client.get("/v0/memory/version", headers={"X-API-Key": "testkey"})
     assert with_key.status_code == 200
     assert "version" in with_key.json()
+
+
+def test_api_keys_env_invalid_fails_closed(tmp_path, monkeypatch) -> None:
+    test_db = tmp_path / "muninn.db"
+    monkeypatch.setenv("MUNINN_DB_PATH", str(test_db))
+    monkeypatch.setenv("MUNINN_REQUIRE_API_KEY", "1")
+    monkeypatch.setenv("MUNINN_API_KEYS", "{")
+    monkeypatch.setenv("MUNINN_API_KEY", "fallback-key")
+    monkeypatch.delenv("MUNINN_READONLY", raising=False)
+
+    conn = db.connect()
+    db.init_db(conn)
+    conn.close()
+
+    client = TestClient(app)
+    protected = client.get("/v0/memory/version", headers={"X-API-Key": "fallback-key"})
+    assert protected.status_code == 401

@@ -7,10 +7,20 @@ from typing import Any
 
 from ..client import MuninnClient
 from ..models import (
+    CardCreateRequest,
+    CardEmbeddingUpsertRequest,
+    CardexRetrieveRequest,
     ConfirmCandidatesRequest,
+    DecideProposalRequest,
+    IngestRequest,
+    LinkCardRefsRequest,
     ListPendingRequest,
+    PromoteRequest,
+    ProposeRequest,
     QueryVectorRequest,
     RehydrateRequest,
+    SourceArtifactsRequest,
+    SourceCreateRequest,
     StageCandidatesRequest,
     UpsertEmbeddingsRequest,
     WriteCandidatesRequest,
@@ -26,6 +36,18 @@ PUBLIC_TOOL_NAMES = {
     "muninn_query_vector",
     "muninn_version",
     "muninn_debug_vector_backend",
+    "muninn_cardex_create_card",
+    "muninn_cardex_get_card",
+    "muninn_cardex_create_source",
+    "muninn_cardex_ingest",
+    "muninn_cardex_add_source_artifacts",
+    "muninn_cardex_link_refs",
+    "muninn_cardex_retrieve",
+    "muninn_cardex_promote",
+    "muninn_cardex_propose",
+    "muninn_cardex_confirm",
+    "muninn_cardex_reject",
+    "muninn_cardex_upsert_embedding",
 }
 
 
@@ -84,5 +106,65 @@ def dispatch_tool_call(client: MuninnClient, tool_name: str, arguments: dict[str
 
     if tool_name == "muninn_debug_vector_backend":
         return client.debug_vector_backend()
+
+    if tool_name == "muninn_cardex_create_card":
+        return client.create_card(CardCreateRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_get_card":
+        card_id = str(arguments.get("card_id") or "").strip()
+        if not card_id:
+            raise ValueError("muninn_cardex_get_card requires card_id")
+        namespace = arguments.get("namespace", "default")
+        return client.get_card(card_id=card_id, namespace=namespace).model_dump()
+
+    if tool_name == "muninn_cardex_create_source":
+        return client.create_source(SourceCreateRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_ingest":
+        return client.ingest(IngestRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_add_source_artifacts":
+        source_id = str(arguments.get("source_id") or "").strip()
+        if not source_id:
+            raise ValueError("muninn_cardex_add_source_artifacts requires source_id")
+        payload = dict(arguments)
+        payload.pop("source_id", None)
+        return client.add_source_artifacts(source_id, SourceArtifactsRequest(**payload)).model_dump()
+
+    if tool_name == "muninn_cardex_link_refs":
+        card_id = str(arguments.get("card_id") or "").strip()
+        if not card_id:
+            raise ValueError("muninn_cardex_link_refs requires card_id")
+        payload = dict(arguments)
+        payload.pop("card_id", None)
+        return client.link_card_refs(card_id, LinkCardRefsRequest(**payload)).model_dump()
+
+    if tool_name == "muninn_cardex_retrieve":
+        return client.cardex_retrieve(CardexRetrieveRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_promote":
+        return client.promote(PromoteRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_propose":
+        return client.propose(ProposeRequest(**arguments)).model_dump()
+
+    if tool_name == "muninn_cardex_confirm":
+        proposal_id = str(arguments.get("proposal_id") or "").strip()
+        if not proposal_id:
+            raise ValueError("muninn_cardex_confirm requires proposal_id")
+        payload = dict(arguments)
+        payload.pop("proposal_id", None)
+        return client.confirm_proposal(proposal_id, DecideProposalRequest(**payload)).model_dump()
+
+    if tool_name == "muninn_cardex_reject":
+        proposal_id = str(arguments.get("proposal_id") or "").strip()
+        if not proposal_id:
+            raise ValueError("muninn_cardex_reject requires proposal_id")
+        payload = dict(arguments)
+        payload.pop("proposal_id", None)
+        return client.reject_proposal(proposal_id, DecideProposalRequest(**payload)).model_dump()
+
+    if tool_name == "muninn_cardex_upsert_embedding":
+        return client.upsert_card_embedding(CardEmbeddingUpsertRequest(**arguments)).model_dump()
 
     raise ValueError(f"Unknown Muninn tool: {tool_name}")

@@ -1,6 +1,6 @@
 {
   "name": "muninn",
-  "version": "0.7",
+  "version": "0.11",
   "base_url": "http://127.0.0.1:8000",
   "tools": [
     {
@@ -11,18 +11,50 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "query": {"type": "string"},
-          "entity_id": {"type": ["string", "null"]},
-          "k": {"type": "integer"},
-          "profile": {"type": "string", "enum": ["generic", "lexi", "friday"]},
-          "embedding_model": {"type": ["string", "null"]},
+          "namespace": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "k": {
+            "type": "integer"
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "generic",
+              "lexi",
+              "friday"
+            ]
+          },
+          "embedding_model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "query_embedding": {
-            "type": ["array", "null"],
-            "items": {"type": "number"}
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "number"
+            }
           }
         },
-        "required": ["namespace", "query", "k", "profile"]
+        "required": [
+          "query",
+          "k",
+          "profile"
+        ]
       }
     },
     {
@@ -33,10 +65,16 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "candidates": {"type": "array"}
+          "namespace": {
+            "type": "string"
+          },
+          "candidates": {
+            "type": "array"
+          }
         },
-        "required": ["namespace", "candidates"]
+        "required": [
+          "candidates"
+        ]
       }
     },
     {
@@ -47,11 +85,22 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "candidates": {"type": "array"},
-          "ttl_seconds": {"type": ["integer", "null"]}
+          "namespace": {
+            "type": "string"
+          },
+          "candidates": {
+            "type": "array"
+          },
+          "ttl_seconds": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
         },
-        "required": ["namespace", "candidates"]
+        "required": [
+          "candidates"
+        ]
       }
     },
     {
@@ -62,12 +111,23 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "entity_id": {"type": ["string", "null"]},
-          "status": {"type": "string"},
-          "limit": {"type": "integer"}
+          "namespace": {
+            "type": "string"
+          },
+          "entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
         },
-        "required": ["namespace"]
+        "required": []
       }
     },
     {
@@ -78,13 +138,37 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "pending_ids": {"type": "array", "items": {"type": "string"}},
-          "decision": {"type": "string", "enum": ["accept", "reject"]},
-          "decided_by": {"type": "string"},
-          "note": {"type": ["string", "null"]}
+          "namespace": {
+            "type": "string"
+          },
+          "pending_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "reject"
+            ]
+          },
+          "decided_by": {
+            "type": "string"
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "required": ["namespace", "pending_ids", "decision", "decided_by"]
+        "required": [
+          "pending_ids",
+          "decision",
+          "decided_by"
+        ]
       }
     },
     {
@@ -95,10 +179,16 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "items": {"type": "array"}
+          "namespace": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array"
+          }
         },
-        "required": ["namespace", "items"]
+        "required": [
+          "items"
+        ]
       }
     },
     {
@@ -109,17 +199,38 @@
       "request_schema": {
         "type": "object",
         "properties": {
-          "namespace": {"type": "string"},
-          "model": {"type": "string"},
+          "namespace": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
           "query_vector": {
             "type": "array",
-            "items": {"type": "number"}
+            "items": {
+              "type": "number"
+            }
           },
-          "entity_id": {"type": ["string", "null"]},
-          "kinds": {"type": ["array", "null"]},
-          "k": {"type": "integer"}
+          "entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kinds": {
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "k": {
+            "type": "integer"
+          }
         },
-        "required": ["namespace", "model", "query_vector"]
+        "required": [
+          "model",
+          "query_vector"
+        ]
       }
     },
     {
@@ -133,6 +244,632 @@
       "method": "GET",
       "path": "/v0/debug/vector_backend",
       "description": "Returns configured and effective vector backend state (sqlite-vec vs brute-force)."
+    },
+    {
+      "tool_name": "muninn_cardex_create_card",
+      "method": "POST",
+      "path": "/cards",
+      "description": "Create a card directly in trusted mode or stage it via proposal flow.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "details_json": {
+            "type": "object"
+          },
+          "tags_json": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "salience": {
+            "type": "number"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "sensitivity_tier": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "archived"
+            ]
+          },
+          "trusted_mode": {
+            "type": "boolean"
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "summary"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_get_card",
+      "method": "GET",
+      "path": "/cards/{card_id}",
+      "description": "Fetch a card by id.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "card_id": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "card_id"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_create_source",
+      "method": "POST",
+      "path": "/sources",
+      "description": "Create a source and optionally add document/chunks and derived artifacts.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "metadata_json": {
+            "type": "object"
+          },
+          "content_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sensitivity_tier": {
+            "type": "integer"
+          },
+          "document_text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chunk_size": {
+            "type": "integer"
+          },
+          "chunk_overlap": {
+            "type": "integer"
+          },
+          "artifacts": {
+            "type": "array"
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "source_type",
+          "uri",
+          "title"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_ingest",
+      "method": "POST",
+      "path": "/ingest",
+      "description": "Deterministic ingestion pipeline for source/document chunks and searchable artifacts.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "uri": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mime_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "file_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "metadata_json": {
+            "type": "object"
+          },
+          "user_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sensitivity_tier": {
+            "type": "integer"
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chunk_target_tokens": {
+            "type": "integer"
+          },
+          "chunk_overlap_tokens": {
+            "type": "integer"
+          },
+          "card_mode": {
+            "type": "string",
+            "enum": [
+              "none",
+              "propose",
+              "trusted"
+            ]
+          },
+          "card_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "source_type"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_add_source_artifacts",
+      "method": "POST",
+      "path": "/sources/{source_id}/artifacts",
+      "description": "Attach derived artifacts (caption/transcript/ocr/etc.) to an existing source.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "artifacts": {
+            "type": "array"
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "source_id",
+          "artifacts"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_link_refs",
+      "method": "POST",
+      "path": "/cards/{card_id}/refs",
+      "description": "Link card references to sources/docs/chunks/entities/external ids.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "card_id": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ref_type": {
+                  "type": "string"
+                },
+                "ref_id": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "ref_type",
+                "ref_id"
+              ]
+            }
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "card_id",
+          "refs"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_retrieve",
+      "method": "POST",
+      "path": "/retrieve",
+      "description": "Retrieve a compact card context pack plus evidence for assistant prompting.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "modalities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sensitivity_ceiling": {
+            "type": "integer"
+          },
+          "k_cards": {
+            "type": "integer"
+          },
+          "k_evidence": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_promote",
+      "method": "POST",
+      "path": "/promote",
+      "description": "Promote artifact/chunk evidence into meaningful memory via write-gated proposal flow.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "owner_type": {
+            "type": "string",
+            "enum": [
+              "artifact",
+              "chunk"
+            ]
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "propose",
+              "trusted"
+            ]
+          },
+          "card_type": {
+            "type": "string"
+          },
+          "card_title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "refs": {
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "owner_type",
+          "owner_id"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_propose",
+      "method": "POST",
+      "path": "/propose",
+      "description": "Create a proposal for create_card/update_card/link_refs/add_source and optionally auto-confirm in trusted mode.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "proposal_type": {
+            "type": "string",
+            "enum": [
+              "create_card",
+              "update_card",
+              "link_refs",
+              "add_source"
+            ]
+          },
+          "payload_json": {
+            "type": "object"
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trusted_mode": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "proposal_type",
+          "payload_json"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_confirm",
+      "method": "POST",
+      "path": "/confirm/{proposal_id}",
+      "description": "Confirm and apply a proposed cardex mutation.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "proposal_id": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "decided_by": {
+            "type": "string"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "proposal_id",
+          "decided_by"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_reject",
+      "method": "POST",
+      "path": "/reject/{proposal_id}",
+      "description": "Reject a proposed cardex mutation.",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "proposal_id": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "decided_by": {
+            "type": "string"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "proposal_id",
+          "decided_by"
+        ]
+      }
+    },
+    {
+      "tool_name": "muninn_cardex_upsert_embedding",
+      "method": "POST",
+      "path": "/embeddings",
+      "description": "Insert a multimodal embedding status row for card/source/chunk owners (vector optional for stubs).",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "owner_type": {
+            "type": "string",
+            "enum": [
+              "card",
+              "source",
+              "chunk"
+            ]
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ]
+          },
+          "model": {
+            "type": "string"
+          },
+          "dims": {
+            "type": "integer"
+          },
+          "vector": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "number"
+            }
+          },
+          "content_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "embed_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "ready",
+              "failed"
+            ]
+          },
+          "embed_error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requested_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "owner_type",
+          "owner_id",
+          "modality",
+          "model",
+          "dims"
+        ]
+      }
     }
   ]
 }
