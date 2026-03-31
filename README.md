@@ -181,13 +181,13 @@ Call muninn.cards.search with:
 
 scope: soft
 
-query: short summary of the task
+query: short, concrete noun-heavy summary of the task
 
 Use retrieved cards to inform reasoning before making changes.
 
 Optional one-call equivalent:
 
-Call muninn.rehydrate.bundle with the same lens and a short task query when the client supports the newer rehydration tool.
+Call muninn.rehydrate.bundle with the same lens and a short, concrete task query when the client supports the newer rehydration tool.
 
 On Meaningful Completion
 
@@ -238,6 +238,8 @@ Prefer strict scope unless cross-project knowledge is intentional.
 - `docs/`: integration and runbook documentation
   - `docs/laila_adaptation_memory.md`: adaptation memory type/tag/metadata contract for LAILA
   - `docs/query_contracts.md`: stable lens and adaptation query contracts
+  - `docs/CROSS_PROJECT_COMPATIBILITY.md`: Muninn/Mimir shared contract discipline and change flow
+  - `docs/contracts/muninn_mimir/v1/`: versioned shared schemas + fixtures
 
 ## Quickstart
 
@@ -281,7 +283,7 @@ curl -sS http://127.0.0.1:8000/health
 `muninn up` handles first-run setup automatically:
 - Creates config directory (`~/.config/muninn`) if missing
 - Creates data directory (`~/.local/share/muninn`) if missing
-- Creates/initializes DB (`~/.local/share/muninn/muninn.db`) and applies migrations
+- Creates/initializes the core API DB (`~/.local/share/muninn/muninn.db`) and applies migrations
 - Starts API on `127.0.0.1:8000` by default
 - Prints startup banner with API URL, DB path, namespace default, and readonly state
 - Exits with an actionable message if port is already in use
@@ -316,6 +318,12 @@ muninn audit --last 2h
 `muninn status` checks API `/health`, MCP `muninn.system.ping`, and prints active DB paths.
 `muninn audit` summarizes tool usage and memory-discipline adherence from telemetry JSONL or systemd journal fallback.
 
+DB split:
+- `~/.local/share/muninn/muninn.db` backs the core API/Cardex runtime started by `muninn up`.
+- `~/.local/share/muninn/human_memory.db` backs the MCP human-memory tool surface and the human-memory procedure routes.
+- When debugging `muninn.rehydrate.bundle`, `muninn.cards.*`, `muninn.policy.*`, or `muninn.spaces.resolve`, inspect `human_memory.db`.
+- Use `muninn status` to confirm the active core and human-memory DB paths when env vars override defaults.
+
 ### Codex (Optional)
 
 Muninn is MCP-native and works with many clients. Codex is one supported integration.
@@ -323,7 +331,7 @@ Muninn is MCP-native and works with many clients. Codex is one supported integra
 - Keep a repo-root `AGENTS.md` with your memory protocol (sample in this README).
 - Verification steps:
   - Confirm `muninn.system.ping` succeeds (via `muninn status` or MCP client call).
-  - Confirm task-start tool logs include `muninn.spaces.resolve`, `muninn.cards.recent`, and `muninn.cards.search`.
+  - Confirm task-start tool logs include either `muninn.spaces.resolve` -> `muninn.cards.recent` (optionally `muninn.cards.search`) or a single `muninn.rehydrate.bundle`.
   - Confirm completion writes 1-3 `muninn.cards.upsert` calls for durable outcomes.
 
 ### Advanced Linux (systemd)
@@ -360,7 +368,7 @@ muninn enable-chatgpt
 
 - `muninn up` initializes schema/migrations and starts the API server.
 - `muninn status` checks API health + MCP ping and prints DB paths.
-- `muninn audit` reports MCP tool usage discipline (`resolve -> recent strict -> search soft -> upsert hygiene`).
+- `muninn audit` reports MCP tool usage discipline (`resolve -> recent strict [-> search soft]` or `rehydrate.bundle`, then upsert hygiene).
   Reads `MUNINN_MCP_TELEMETRY_PATH` JSONL when present, else falls back to `journalctl --user -u muninn-mcp.service`.
   It also reports successful upserts that carried missing-evidence warnings.
 - `muninn heal` runs self-healing maintenance for human-memory cards:
@@ -378,12 +386,15 @@ muninn enable-chatgpt
   Alias toggles: `MUNINN_MCP_ENABLE_SLASH_ALIASES=1|0`, `MUNINN_MCP_SUPPRESS_ALIAS_WARNINGS=1|0`.
   Set `MUNINN_MCP_ENABLE_SLASH_ALIASES=0` now to test forward compatibility.
   These use `MUNINN_HUMAN_MEMORY_DB_PATH` (default `~/.local/share/muninn/human_memory.db`).
+  This is separate from the core API DB path `MUNINN_DB_PATH` (default `~/.local/share/muninn/muninn.db`).
 - `muninn.cards.upsert` soft limits new-card writes per client/space window (default `20` per `3600` seconds).
   Tune with `MUNINN_MCP_CARD_WRITE_LIMIT_PER_HOUR` and `MUNINN_MCP_CARD_WRITE_WINDOW_SECONDS`.
 - JSONL telemetry sink (optional):
   - `MUNINN_MCP_TELEMETRY_PATH=~/.local/share/muninn/mcp_telemetry.jsonl`
   - `MUNINN_MCP_TELEMETRY_FLUSH=1` to flush every line
-  - `MUNINN_MCP_TELEMETRY_MAX_BYTES` optional cap (no rotation in v0.11)
+  - `MUNINN_MCP_TELEMETRY_MAX_BYTES` optional rotation threshold in bytes
+  - `MUNINN_MCP_TELEMETRY_BACKUP_COUNT` retained rotated files (default `5`)
+  - when the active file crosses the threshold, it rotates to `.1` and older backups shift upward; `backup_count=0` truncates instead of retaining backups
   - records canonicalized space identity, summarized queries/lenses, result counts, warnings, DB target, and latency
 - For HTTP MCP auth, set either `MUNINN_API_KEY` (custom header) or `MUNINN_MCP_BEARER_TOKEN` (`Authorization: Bearer ...`).
 - Non-loopback binds (`0.0.0.0` or LAN IP) are blocked unless auth is explicitly configured.

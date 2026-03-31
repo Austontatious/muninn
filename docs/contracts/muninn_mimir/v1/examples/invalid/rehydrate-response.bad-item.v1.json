@@ -1,0 +1,23 @@
+{
+  "contract_version": "1.0.0",
+  "query": "test",
+  "result_count": 1,
+  "items": [
+    {
+      "contract_version": "1.0.0",
+      "stable_id": "card_bad",
+      "kind": "runbook",
+      "title": "Broken item",
+      "summary": "Lifecycle is missing and should fail.",
+      "confidence": {
+        "score": 0.6,
+        "trust_level": "medium"
+      },
+      "provenance": {
+        "source_type": "retrieval",
+        "source_id": "stage:strict_search"
+      }
+    }
+  ],
+  "confidence": "medium"
+}

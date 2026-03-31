@@ -1,0 +1,48 @@
+{
+  "contract_version": "1.0.0",
+  "query": "docker logs exact commands",
+  "result_count": 1,
+  "items": [
+    {
+      "contract_version": "1.0.0",
+      "stable_id": "card_123",
+      "kind": "runbook",
+      "title": "Use docker logs first",
+      "summary": "Start debugging with exact logs command.",
+      "lifecycle": {
+        "lifecycle_state": "active",
+        "status": "confirmed"
+      },
+      "confidence": {
+        "score": 0.83,
+        "trust_level": "high"
+      },
+      "provenance": {
+        "source_type": "retrieval",
+        "source_id": "stage:strict_search"
+      },
+      "topology_refs": [
+        {
+          "ref_kind": "file",
+          "ref_id": "docs/runbook.md",
+          "relation": "described_by"
+        }
+      ]
+    }
+  ],
+  "policy_items": [],
+  "stages": [
+    {
+      "stage": "strict_search",
+      "results": 1,
+      "attempted": true,
+      "skipped": false,
+      "skip_reason": null
+    }
+  ],
+  "confidence": "high",
+  "warnings": [],
+  "metadata": {
+    "space_key": "repo:example"
+  }
+}

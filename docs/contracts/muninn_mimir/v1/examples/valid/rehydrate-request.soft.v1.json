@@ -1,0 +1,20 @@
+{
+  "contract_version": "1.0.0",
+  "query": "docker logs exact commands",
+  "limit": 12,
+  "scope": "soft",
+  "kinds": [
+    "decision",
+    "constraint",
+    "runbook",
+    "interface"
+  ],
+  "include_body": false,
+  "include_policy": true,
+  "space": {
+    "strategy": "auto",
+    "cwd": "/mnt/data/Mimir"
+  },
+  "task_type": "troubleshooting",
+  "tool_name": "shell"
+}

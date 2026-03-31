@@ -1,0 +1,6 @@
+{
+  "contract_version": "1.0.0",
+  "query": "test",
+  "limit": 10,
+  "scope": "global-soft"
+}

@@ -31,3 +31,11 @@
 - Learned card compression (LoRA dataset logging)
 - Episodic memory replay experiments
 - Attention-native memory slots (model-dependent)
+
+## Developer Experience (Future Infrastructure)
+
+- Ambient Muninn integration when local service is healthy:
+  - Detect local Muninn availability in the developer environment.
+  - Default agent workflows to Muninn memory protocol without per-repo prompt drift.
+  - Enforce repo bootstrap of canonical `AGENTS.md` memory block at repo creation/normalization time.
+  - Add service-aware middleware/hooks so memory usage is default-on when `muninn.system.ping` succeeds.

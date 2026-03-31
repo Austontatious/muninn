@@ -39,6 +39,13 @@ from .policy import (
     policy_card_upsert,
     query_policy_cards,
 )
+from .procedures import (
+    PROCEDURE_KIND,
+    PROCEDURE_VALIDATION_VALUES,
+    ingest_procedure_reflection,
+    procedure_card_upsert,
+    query_procedure_cards,
+)
 from .rehydration import rehydrate_bundle
 from .heal import run_heal
 from .spaces import (
@@ -61,6 +68,8 @@ __all__ = [
     "GLOBAL_SPACE_KEY",
     "OUTCOME_TYPES",
     "POLICY_KINDS",
+    "PROCEDURE_KIND",
+    "PROCEDURE_VALIDATION_VALUES",
     "ResolvedSpace",
     "SIGNAL_TYPES",
     "adaptation_card_upsert",
@@ -83,11 +92,14 @@ __all__ = [
     "list_interaction_events",
     "open_db",
     "policy_card_upsert",
+    "procedure_card_upsert",
     "query_adaptation_cards",
     "query_policy_cards",
+    "query_procedure_cards",
     "record_interaction_event",
     "rehydrate_bundle",
     "resolve_space_from_cwd",
     "resolve_space_lookup_keys",
     "run_heal",
+    "ingest_procedure_reflection",
 ]

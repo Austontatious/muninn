@@ -22,6 +22,8 @@ For human-first lens testing outside the existing Cardex API surface, a standalo
 - `POST /confirm/{proposal_id}`
 - `POST /reject/{proposal_id}`
 - `POST /v0/memory/rehydrate`
+- `POST /v0/memory/procedures/retrieve`
+- `POST /v0/memory/procedures/reflect`
 - `POST /v0/memory/retrieve`
 - `POST /v0/memory/write_candidates`
 - `POST /v0/memory/stage_candidates`
@@ -146,11 +148,15 @@ Error contract:
 Validation/debug notes:
 - malformed legacy payloads degrade to `InvalidArguments` instead of `InternalError`
 - error details include best-effort `field` names when available
+- `lens.space="auto"` with missing or blank `lens.cwd` is rejected during lens validation before space resolution runs
 - database lock/busy conditions surface as `DatabaseUnavailable` with `db_reason=locked`
 
 DB path:
+- Core API/Cardex state uses `MUNINN_DB_PATH` (default `~/.local/share/muninn/muninn.db`).
 - Human-memory MCP tools initialize and use `MUNINN_HUMAN_MEMORY_DB_PATH` when set.
 - Default path is `~/.local/share/muninn/human_memory.db`.
+- Debug MCP reads/writes (`muninn.spaces.resolve`, `muninn.cards.*`, `muninn.rehydrate.bundle`, `muninn.policy.*`) against `human_memory.db`, not `muninn.db`.
+- The human-memory procedure routes (`/v0/memory/procedures/retrieve` and `/v0/memory/procedures/reflect`) also use `human_memory.db`.
 
 HTTP auth:
 - Namespace key map mode (recommended): `MUNINN_API_KEYS="keyA:nsA,keyB:nsB"` (or JSON object string)
@@ -163,7 +169,9 @@ HTTP auth:
 - Structured MCP telemetry (JSONL):
   - `MUNINN_MCP_TELEMETRY_PATH=~/.local/share/muninn/mcp_telemetry.jsonl`
   - `MUNINN_MCP_TELEMETRY_FLUSH=1` (optional immediate flush)
-  - `MUNINN_MCP_TELEMETRY_MAX_BYTES` (optional cap; no rotation in v0.11)
+  - `MUNINN_MCP_TELEMETRY_MAX_BYTES` (optional rotation threshold in bytes)
+  - `MUNINN_MCP_TELEMETRY_BACKUP_COUNT` (optional retained rotated files; default `5`)
+  - when the active file crosses the threshold it rotates to `.1`, older backups shift upward, and `backup_count=0` truncates instead of keeping backups
   - telemetry captures operation name, caller, cwd/project context, canonicalized space key, summarized query/lens, result counts, warnings, DB target, and latency
   - query text is summarized/redacted rather than dumped verbatim at full length
 

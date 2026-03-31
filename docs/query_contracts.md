@@ -21,6 +21,7 @@ Canonical lens shape for `muninn.cards.recent`, `muninn.cards.search`, `muninn.r
 
 Rules:
 - `space=auto` requires `cwd` unless `space_key` is provided.
+- blank `cwd` is treated as missing and rejected during lens validation before tool execution.
 - `space_key` is canonicalized through alias lookup before read/write.
 - `scope=strict` means canonical project space only.
 - `scope=soft` means canonical project space, then alias spaces, then `global`.

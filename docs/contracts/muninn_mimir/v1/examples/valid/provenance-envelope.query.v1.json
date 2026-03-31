@@ -1,0 +1,15 @@
+{
+  "source_type": "retrieval",
+  "source_id": "stage:strict_search",
+  "captured_at": "2026-03-31T00:00:00Z",
+  "evidence_count": 1,
+  "evidence": [
+    {
+      "type": "query",
+      "ref": "checkpoint c batching"
+    }
+  ],
+  "metadata": {
+    "space_key": "repo:example"
+  }
+}

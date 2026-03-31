@@ -11,6 +11,28 @@ It is responsible for:
 
 Muninn is not an orchestrator or agent. It is a **state system**.
 
+## 1.1) Canonical Muninn Memory Protocol (for integrating agents)
+Repositories that integrate Muninn should use this workflow as operational policy:
+
+On task start (before substantial edits):
+- Call `muninn.spaces.resolve` with current `cwd`.
+- Preferred: call `muninn.rehydrate.bundle` with:
+  - `lens`: `{space:"auto", cwd:"<abs-path>", scope:"soft", kinds:["decision","constraint","runbook","interface"], limit:12}`
+  - `query`: short task summary.
+- Compatibility sequence (when bundle is unavailable):
+  - `muninn.cards.recent` with `scope:"strict"` and the same kinds.
+  - `muninn.cards.search` with `scope:"soft"` and short task query.
+- Use retrieved memory before implementation decisions.
+
+On meaningful completion:
+- Persist durable outcomes with `muninn.cards.upsert` (`1-3` cards per meaningful task).
+- Prefer `muninn.cards.supersede` / `muninn.cards.merge` when refining existing threads.
+- Include concise `summary`, durable `body`, and evidence refs when available (file path, test, commit, log).
+
+Memory hygiene:
+- Do not persist transient reasoning, scratch notes, or speculative output.
+- Prefer `strict` scope by default; use `soft` only when cross-project recall is intentional.
+
 ---
 
 ## 2) Precedence and Global Standards
@@ -53,6 +75,15 @@ These MUST NOT be conflated.
 
 ### 3.5 Backward compatibility
 - Existing query paths and contracts MUST NOT be broken without explicit migration handling.
+
+### 3.6 Cross-project contract discipline (Muninn <-> Mimir)
+- Shared contract surfaces are interface surfaces; contract changes are interface changes.
+- Treat tool inputs/outputs, query envelopes, retrieval semantics, and startup patterns as contract surfaces.
+- Any shared-contract change MUST update:
+  - shared artifacts/docs in both repos (`docs/CROSS_PROJECT_COMPATIBILITY.md`, `docs/contracts/muninn_mimir/v1`)
+  - compatibility tests in both repos
+- Any shared-contract change MUST include explicit sibling-project compatibility review.
+- If downstream compatibility work is deferred, record it explicitly in the same change with scope and follow-up note.
 
 ---
 
@@ -152,3 +183,6 @@ All changes MUST include a summary stating:
 - what was intentionally not changed
 - any risks introduced
 - whether `ARCHITECTURE_CHECKPOINT.md` was updated or reviewed
+
+## Cross-Project Atlas Check
+For cross-project architecture, ownership, capability placement, duplication risk, or boundary questions, consult Bifrost (`/mnt/data/Bifrost`) before making substantial changes.

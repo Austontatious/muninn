@@ -1,6 +1,6 @@
 # Architecture Checkpoint
 
-Last updated: 2026-03-22
+Last updated: 2026-03-31
 
 This document is the stable runtime map for Muninn as it exists in the local repo now. It is descriptive, not aspirational. It should match the code that is actually on the critical path today.
 
@@ -59,6 +59,8 @@ Core runtime responsibilities are split as follows:
   - owns deterministic staged retrieval for session resume
 - `human_memory/policy.py`
   - owns policy-state query/write behavior and promotion rules
+- `human_memory/procedures.py`
+  - owns structured procedure-card schema, ranking, reflection-driven updates, and structured evidence normalization for procedure reflections
 - `human_memory/interactions.py`
   - owns raw interaction event capture and promoted/unpromoted linkage
 - `cli.py`
@@ -75,12 +77,13 @@ Old vs new, in practical terms:
   - canonical project identity with alias migration
   - deterministic rehydration bundle
   - policy-state learning through memory updates, not weight updates
-  - structured telemetry across MCP, bootstrap, rehydration, policy learning, and CLI
+  - structured telemetry across MCP, bootstrap, rehydration, policy learning, and CLI with file rotation/backups
   - policy inspection from CLI
 
 ## Canonical data model
 
 The human-memory runtime is backed by `human_memory.db`.
+The core API/Cardex runtime remains backed by `muninn.db`.
 
 ### Core relational objects
 
@@ -121,6 +124,14 @@ The human-memory runtime is backed by `human_memory.db`.
   - `workflow.heuristic`
   - `tooling.preference`
   - `rehydration.priority`
+- procedural memory
+  - `procedure.card`
+- atlas memory (cross-project boundary mapping)
+  - `atlas.project`
+  - `atlas.capability`
+  - `atlas.relationship`
+  - `atlas.risk`
+  - `atlas.active_direction`
 
 ### JSON metadata conventions
 
@@ -128,6 +139,12 @@ The human-memory runtime is backed by `human_memory.db`.
   - provenance class, evidence counts, evidence types, warning codes
 - `context_json.policy_state`
   - structured behavior guidance used at retrieval time
+- `context_json.procedure`
+  - structured reusable procedure guidance with triggers, steps, pitfalls, checks, confidence, and lineage hints
+  - reflection writebacks may attach evidence via `metadata.structured_evidence` (`type`, optional `ref`/`excerpt`/`meta`) with strict validation and explicit warning codes for malformed entries
+- `context_json.atlas`
+  - stable atlas references for ownership and boundary retrieval
+  - key fields include `entity_type`, `entity_id`, `owner_project`, `project`, `capability`, `source`, `target`, `projects`, `capabilities`
 
 ### Space resolution rules (canonical)
 
@@ -148,6 +165,7 @@ The stabilized ingestion path for human-memory writes is:
 
 1. MCP or CLI receives an operation.
 2. Request shape is validated and normalized.
+   - invalid `lens.space='auto'` requests without a non-empty `cwd` are rejected at contract-validation time
 3. Space identity is resolved into a canonical `space_key`.
 4. Human-memory DB init/bootstrap is run if needed.
 5. Evidence refs are normalized.
@@ -174,6 +192,7 @@ Basic lexical retrieval remains card-centric:
 
 - `muninn.cards.recent`
 - `muninn.cards.search`
+- `muninn.cards.atlas.query` (atlas-kind focused retrieval with stable ref filters)
 
 Scope semantics are:
 

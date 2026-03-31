@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/provenance-envelope.v1.schema.json",
+  "title": "Muninn-Mimir Provenance Envelope Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_type",
+    "source_id"
+  ],
+  "properties": {
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant",
+        "tool",
+        "document",
+        "system",
+        "repo_scan",
+        "retrieval",
+        "derived",
+        "api"
+      ]
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note": {
+      "type": "string"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "ref"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "chat",
+              "log",
+              "diff",
+              "file",
+              "url",
+              "commit",
+              "test",
+              "query",
+              "artifact",
+              "card",
+              "api",
+              "stage"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "excerpt": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

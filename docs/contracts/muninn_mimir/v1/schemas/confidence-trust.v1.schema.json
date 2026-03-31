@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/confidence-trust.v1.schema.json",
+  "title": "Muninn-Mimir Confidence/Trust Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "score",
+    "trust_level"
+  ],
+  "properties": {
+    "score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "trust_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "rationale": {
+      "type": "string"
+    }
+  }
+}

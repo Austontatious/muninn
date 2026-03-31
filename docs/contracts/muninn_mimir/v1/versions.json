@@ -1,0 +1,74 @@
+{
+  "contract_set": "muninn-mimir-shared",
+  "current_version": "1.0.0",
+  "schema_family": "v1",
+  "compatibility_policy": {
+    "backward_compatible": [
+      "Add optional fields only.",
+      "Add enum values only when both repos can safely ignore unknown values.",
+      "Add new examples and tests without changing required semantics."
+    ],
+    "breaking": [
+      "Remove or rename required fields.",
+      "Narrow enum values or change existing value meaning.",
+      "Change envelope meaning without a new contract version."
+    ],
+    "required_on_change": [
+      "Update schemas and examples in both repos.",
+      "Update CROSS_PROJECT_COMPATIBILITY docs in both repos.",
+      "Update compatibility tests in both repos.",
+      "Record deferred downstream compatibility impact explicitly if not addressed now."
+    ]
+  },
+  "schemas": {
+    "card_envelope": "schemas/card-envelope.v1.schema.json",
+    "lifecycle_state": "schemas/lifecycle-state.v1.schema.json",
+    "provenance_envelope": "schemas/provenance-envelope.v1.schema.json",
+    "confidence_trust": "schemas/confidence-trust.v1.schema.json",
+    "rehydrate_request": "schemas/rehydrate-request.v1.schema.json",
+    "rehydrate_response": "schemas/rehydrate-response.v1.schema.json",
+    "topology_ref": "schemas/topology-ref.v1.schema.json"
+  },
+  "examples": {
+    "valid": {
+      "card_envelope": [
+        "examples/valid/card-envelope.basic.v1.json"
+      ],
+      "lifecycle_state": [
+        "examples/valid/lifecycle-state.active.v1.json"
+      ],
+      "provenance_envelope": [
+        "examples/valid/provenance-envelope.query.v1.json"
+      ],
+      "confidence_trust": [
+        "examples/valid/confidence-trust.medium.v1.json"
+      ],
+      "topology_ref": [
+        "examples/valid/topology-ref.anchor.v1.json"
+      ],
+      "rehydrate_request": [
+        "examples/valid/rehydrate-request.soft.v1.json"
+      ],
+      "rehydrate_response": [
+        "examples/valid/rehydrate-response.basic.v1.json"
+      ]
+    },
+    "invalid": {
+      "card_envelope": [
+        "examples/invalid/card-envelope.missing-provenance.v1.json"
+      ],
+      "lifecycle_state": [
+        "examples/invalid/lifecycle-state.bad-value.v1.json"
+      ],
+      "topology_ref": [
+        "examples/invalid/topology-ref.missing-relation.v1.json"
+      ],
+      "rehydrate_request": [
+        "examples/invalid/rehydrate-request.bad-scope.v1.json"
+      ],
+      "rehydrate_response": [
+        "examples/invalid/rehydrate-response.bad-item.v1.json"
+      ]
+    }
+  }
+}

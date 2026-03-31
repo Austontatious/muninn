@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/rehydrate-request.v1.schema.json",
+  "title": "Muninn-Mimir Rehydration Request Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "query",
+    "limit",
+    "scope"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "query": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "strict",
+        "soft",
+        "repo_local"
+      ]
+    },
+    "kinds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "include_body": {
+      "type": "boolean"
+    },
+    "include_policy": {
+      "type": "boolean"
+    },
+    "space": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy"
+      ],
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "global",
+            "repo_local",
+            "explicit"
+          ]
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cwd": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "space": {
+            "properties": {
+              "strategy": {
+                "const": "explicit"
+              }
+            },
+            "required": [
+              "strategy"
+            ]
+          }
+        },
+        "required": [
+          "space"
+        ]
+      },
+      "then": {
+        "properties": {
+          "space": {
+            "required": [
+              "key"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "space": {
+            "properties": {
+              "strategy": {
+                "const": "auto"
+              }
+            },
+            "required": [
+              "strategy"
+            ]
+          }
+        },
+        "required": [
+          "space"
+        ]
+      },
+      "then": {
+        "properties": {
+          "space": {
+            "required": [
+              "cwd"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

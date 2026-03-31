@@ -21,6 +21,7 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator, model_validator
+from pydantic_core import PydanticCustomError
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response
 
@@ -354,6 +355,9 @@ _EVIDENCE_PREFERRED_KINDS = frozenset(
     }
 )
 _TOOL_DERIVED_EVIDENCE_TYPES = frozenset({"file", "diff", "commit", "test", "log"})
+ATLAS_KIND_PREFIX = "atlas."
+ATLAS_ENTITY_TYPES = ("project", "capability", "relationship", "risk", "active_direction")
+ATLAS_KINDS = tuple(f"{ATLAS_KIND_PREFIX}{entity_type}" for entity_type in ATLAS_ENTITY_TYPES)
 
 
 def _summarize_text(value: str | None, *, max_chars: int = 120) -> str | None:
@@ -475,6 +479,35 @@ def _normalize_token(value: Any) -> str:
     return " ".join(str(value or "").strip().lower().split())
 
 
+def _dedupe_string_list(values: list[str] | None) -> list[str] | None:
+    if not values:
+        return None
+    out: list[str] = []
+    seen: set[str] = set()
+    for raw in values:
+        item = str(raw).strip()
+        if not item or item in seen:
+            continue
+        seen.add(item)
+        out.append(item)
+    return out or None
+
+
+def _atlas_kind_from_entity_type(entity_type: str) -> str:
+    normalized = _normalize_token(entity_type).replace(" ", "_")
+    return f"{ATLAS_KIND_PREFIX}{normalized}"
+
+
+def _atlas_entity_type_from_kind(kind: str) -> str | None:
+    normalized = _normalize_token(kind)
+    if not normalized.startswith(ATLAS_KIND_PREFIX):
+        return None
+    entity_type = normalized.removeprefix(ATLAS_KIND_PREFIX).strip()
+    if entity_type in set(ATLAS_ENTITY_TYPES):
+        return entity_type
+    return None
+
+
 def _build_evidence_refs(
     evidence: list["EvidenceInput"] | None,
 ) -> tuple[list[dict[str, Any]], list[str], list[str]]:
@@ -567,6 +600,112 @@ def _merge_card_context(
     muninn_meta["write_operation"] = operation
     merged["muninn"] = muninn_meta
     return merged
+
+
+def _atlas_context_from_card(card: CardInput) -> dict[str, Any] | None:
+    if card.atlas is None:
+        entity_type = _atlas_entity_type_from_kind(card.kind)
+        if entity_type is None:
+            return None
+        return {"entity_type": entity_type}
+    return {
+        "entity_type": card.atlas.entity_type,
+        "entity_id": card.atlas.entity_id,
+        "owner_project": card.atlas.owner_project,
+        "project": card.atlas.project,
+        "capability": card.atlas.capability,
+        "source": card.atlas.source,
+        "target": card.atlas.target,
+        "projects": list(card.atlas.projects or []),
+        "capabilities": list(card.atlas.capabilities or []),
+    }
+
+
+def _merge_card_context_with_atlas(
+    *,
+    card: CardInput,
+    context_json: dict[str, Any],
+) -> dict[str, Any]:
+    atlas_context = _atlas_context_from_card(card)
+    if atlas_context is None:
+        return context_json
+    merged = dict(context_json)
+    merged["atlas"] = atlas_context
+    return merged
+
+
+def _merge_tags_with_atlas(card: CardInput) -> list[str] | None:
+    merged = _dedupe_string_list(card.tags)
+    entity_type = _atlas_entity_type_from_kind(card.kind)
+    if entity_type is None:
+        return merged
+    base = list(merged or [])
+    base.extend(["atlas", f"atlas:{entity_type}"])
+    if card.atlas is not None:
+        base.append(f"atlas:id:{card.atlas.entity_id}")
+    return _dedupe_string_list(base)
+
+
+def _normalize_context_json(value: Any) -> dict[str, Any]:
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return {}
+        try:
+            loaded = json.loads(text)
+        except json.JSONDecodeError:
+            return {}
+        if isinstance(loaded, dict):
+            return loaded
+    return {}
+
+
+def _atlas_value_matches(actual: Any, expected: str | None) -> bool:
+    if expected is None:
+        return True
+    return str(actual or "").strip() == expected
+
+
+def _atlas_card_matches(card: dict[str, Any], query: AtlasQueryInput) -> bool:
+    atlas_meta = card.get("atlas")
+    if not isinstance(atlas_meta, dict):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("entity_id"), query.entity_id):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("owner_project"), query.owner_project):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("project"), query.project):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("capability"), query.capability):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("source"), query.source):
+        return False
+    if not _atlas_value_matches(atlas_meta.get("target"), query.target):
+        return False
+    return True
+
+
+def _normalize_atlas_result_row(row: dict[str, Any], *, include_body: bool) -> dict[str, Any]:
+    context = _normalize_context_json(row.get("context_json"))
+    atlas_meta = context.get("atlas") if isinstance(context.get("atlas"), dict) else {}
+    normalized = {
+        "id": str(row.get("id", "")),
+        "space_key": str(row.get("space_key", "")),
+        "kind": str(row.get("kind", "")),
+        "entity_type": str(atlas_meta.get("entity_type") or ""),
+        "entity_id": atlas_meta.get("entity_id"),
+        "title": str(row.get("title", "")),
+        "summary": str(row.get("summary", "")),
+        "updated_at": _iso8601_utc(row.get("updated_at")),
+        "tags": [str(v) for v in (row.get("tags") or [])],
+        "atlas": atlas_meta,
+        "score": _normalize_score(row.get("score")) if row.get("score") is not None else None,
+    }
+    if include_body:
+        normalized["body"] = row.get("body")
+    return normalized
 
 
 def _space_log_context(
@@ -760,7 +899,7 @@ def _resolve_human_memory_db_path() -> Path:
 
 
 class LensInput(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", validate_default=True)
 
     space: Literal["auto", "global"] = Field(
         default="auto",
@@ -806,6 +945,30 @@ class LensInput(BaseModel):
             if not text:
                 raise ValueError("invalid_limit:empty")
             return int(text)
+        return value
+
+    @field_validator("space_key", "cwd", mode="before")
+    @classmethod
+    def _normalize_optional_text_fields(cls, value: Any) -> Any:
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
+
+    @field_validator("cwd")
+    @classmethod
+    def _validate_auto_space_cwd(
+        cls,
+        value: str | None,
+        info: Any,
+    ) -> str | None:
+        space = str(info.data.get("space") or "auto")
+        space_key = str(info.data.get("space_key") or "").strip()
+        if space == "auto" and not space_key and not value:
+            raise PydanticCustomError(
+                "missing_auto_space_cwd",
+                "lens.cwd is required when lens.space='auto'.",
+            )
         return value
 
     @field_validator("kinds", "tags")
@@ -1086,6 +1249,46 @@ class AdaptationQueryInput(BaseModel):
         return normalized or None
 
 
+class AtlasCardInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    entity_type: Literal["project", "capability", "relationship", "risk", "active_direction"]
+    entity_id: str = Field(min_length=1)
+    owner_project: str | None = None
+    project: str | None = None
+    capability: str | None = None
+    source: str | None = None
+    target: str | None = None
+    projects: list[str] | None = None
+    capabilities: list[str] | None = None
+
+    @field_validator(
+        "entity_id",
+        "owner_project",
+        "project",
+        "capability",
+        "source",
+        "target",
+        mode="before",
+    )
+    @classmethod
+    def _strip_text_fields(cls, value: Any) -> Any:
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
+
+    @field_validator("projects", "capabilities", mode="before")
+    @classmethod
+    def _coerce_list_fields(cls, value: Any) -> Any:
+        return _coerce_string_list(value, field_name="atlas_refs")
+
+    @field_validator("projects", "capabilities")
+    @classmethod
+    def _normalize_list_fields(cls, value: list[str] | None) -> list[str] | None:
+        return _dedupe_string_list(value)
+
+
 class CardInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -1110,6 +1313,79 @@ class CardInput(BaseModel):
         default=None,
         description="Optional provenance context (files, commits, tests).",
     )
+    atlas: AtlasCardInput | None = Field(
+        default=None,
+        description="Optional first-class atlas metadata for atlas.* cards.",
+    )
+
+    @model_validator(mode="after")
+    def _validate_atlas_alignment(self) -> "CardInput":
+        kind_entity_type = _atlas_entity_type_from_kind(self.kind)
+        if kind_entity_type is None:
+            if self.atlas is not None:
+                raise ValueError("atlas metadata requires kind=atlas.<entity_type>")
+            return self
+        if self.atlas is None:
+            return self
+        if self.atlas.entity_type != kind_entity_type:
+            raise ValueError(
+                f"atlas entity_type '{self.atlas.entity_type}' does not match kind '{self.kind}'"
+            )
+        return self
+
+
+class AtlasQueryInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    query: str | None = None
+    entity_types: list[Literal["project", "capability", "relationship", "risk", "active_direction"]] | None = None
+    entity_id: str | None = None
+    owner_project: str | None = None
+    project: str | None = None
+    capability: str | None = None
+    source: str | None = None
+    target: str | None = None
+    include_body: bool = False
+    limit: int = Field(default=20, ge=1, le=100)
+
+    @field_validator(
+        "query",
+        "entity_id",
+        "owner_project",
+        "project",
+        "capability",
+        "source",
+        "target",
+        mode="before",
+    )
+    @classmethod
+    def _strip_text_fields(cls, value: Any) -> Any:
+        if value is None:
+            return None
+        text = " ".join(str(value).strip().split())
+        return text or None
+
+    @field_validator("entity_types", mode="before")
+    @classmethod
+    def _coerce_entity_types(cls, value: Any) -> Any:
+        return _coerce_string_list(value, field_name="atlas_entity_types")
+
+    @field_validator("entity_types")
+    @classmethod
+    def _normalize_entity_types(
+        cls, value: list[str] | None
+    ) -> list[Literal["project", "capability", "relationship", "risk", "active_direction"]] | None:
+        if value is None:
+            return None
+        normalized: list[str] = []
+        seen: set[str] = set()
+        for raw in value:
+            item = _normalize_token(raw).replace(" ", "_")
+            if not item or item in seen:
+                continue
+            seen.add(item)
+            normalized.append(item)
+        return normalized or None
 
 
 class EvidenceInput(BaseModel):
@@ -2137,6 +2413,154 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
             _log_tool_invocation(canonical, **log_payload)
             return err
 
+    async def _handle_cards_atlas_query(
+        lens: LensInput,
+        query: AtlasQueryInput,
+        invoked_as: str,
+    ) -> dict[str, Any]:
+        canonical = "muninn.cards.atlas.query"
+        started = time.perf_counter()
+        request_id = _new_request_id()
+        scope_details: dict[str, Any] | None = None
+        primary_space_key: str | None = None
+        query_text = str(query.query or "").strip()
+        _log_request_ingress(
+            canonical,
+            request_id=request_id,
+            invoked_as=invoked_as,
+            lens=lens,
+            query=query_text or None,
+            input_type="atlas_query",
+            extra={
+                "entity_types": list(query.entity_types or []),
+                "entity_id": query.entity_id,
+                "owner_project": query.owner_project,
+                "project": query.project,
+                "capability": query.capability,
+            },
+        )
+        try:
+            with _human_memory_conn(correlation_id=request_id) as conn:
+                scoped, scope_details = _scope_space_keys_with_details(conn, lens)
+                primary_space_key = scoped[0] if scoped else None
+                _log_space_resolution(
+                    request_id=request_id,
+                    operation=canonical,
+                    conn=conn,
+                    details=scope_details,
+                )
+                effective_entity_types = list(query.entity_types or ATLAS_ENTITY_TYPES)
+                effective_kinds = [_atlas_kind_from_entity_type(entity_type) for entity_type in effective_entity_types]
+                if lens.kinds:
+                    allowed = set(lens.kinds)
+                    effective_kinds = [kind for kind in effective_kinds if kind in allowed]
+
+                rows: list[dict[str, Any]] = []
+                seen: set[str] = set()
+                for space_key in scoped:
+                    if len(rows) >= query.limit:
+                        break
+                    if query_text:
+                        candidate_rows = cards_search(
+                            conn,
+                            user_id=DEFAULT_USER_ID,
+                            space_key=space_key,
+                            query=query_text,
+                            kinds=effective_kinds or None,
+                            status=lens.status,
+                            tags=lens.tags,
+                            limit=query.limit,
+                            include_body=query.include_body,
+                            include_context=True,
+                        )
+                    else:
+                        candidate_rows = cards_recent(
+                            conn,
+                            user_id=DEFAULT_USER_ID,
+                            space_key=space_key,
+                            kinds=effective_kinds or None,
+                            status=lens.status,
+                            tags=lens.tags,
+                            limit=query.limit,
+                            include_body=query.include_body,
+                            include_context=True,
+                        )
+                    for raw_row in candidate_rows:
+                        card_id = str(raw_row.get("id", ""))
+                        if not card_id or card_id in seen:
+                            continue
+                        normalized = _normalize_atlas_result_row(raw_row, include_body=query.include_body)
+                        if not _atlas_card_matches(normalized, query):
+                            continue
+                        rows.append(normalized)
+                        seen.add(card_id)
+                        if len(rows) >= query.limit:
+                            break
+
+                payload = {
+                    "space": {
+                        "key": primary_space_key,
+                        "lookup_keys": scoped,
+                    },
+                    "filters": {
+                        "entity_types": effective_entity_types,
+                        "entity_id": query.entity_id,
+                        "owner_project": query.owner_project,
+                        "project": query.project,
+                        "capability": query.capability,
+                        "source": query.source,
+                        "target": query.target,
+                        "query": query_text or None,
+                    },
+                    "cards": rows,
+                }
+                log_payload: dict[str, Any] = {
+                    "status": "ok",
+                    "request_id": request_id,
+                    "scope": lens.scope,
+                    "space_key": primary_space_key,
+                    "space_keys": scoped,
+                    "query_summary": _summarize_query_for_log(query_text) if query_text else None,
+                    "result_count": len(rows),
+                    "entity_types": effective_entity_types,
+                    "filters_applied": bool(
+                        query.entity_id
+                        or query.owner_project
+                        or query.project
+                        or query.capability
+                        or query.source
+                        or query.target
+                    ),
+                    **(scope_details or {}),
+                    **_space_log_context(conn, space_key=primary_space_key),
+                    "duration_ms": _elapsed_ms(started),
+                }
+                if invoked_as != canonical:
+                    log_payload["invoked_as"] = invoked_as
+                    log_payload["deprecated_alias"] = True
+                _log_tool_invocation(canonical, **log_payload)
+                return payload
+        except Exception as exc:
+            err = _handle_tool_exception(exc)
+            error_code = ((err.get("error") or {}).get("code")) if isinstance(err, dict) else None
+            log_payload = {
+                "status": "error",
+                "request_id": request_id,
+                "scope": lens.scope,
+                "error_code": error_code,
+                "lens": _summarize_lens_for_log(lens),
+                "query_summary": _summarize_query_for_log(query_text) if query_text else None,
+                **(scope_details or {}),
+                **_space_log_context(None, space_key=primary_space_key),
+                **_error_log_details(exc, err),
+                "duration_ms": _elapsed_ms(started),
+            }
+            if invoked_as != canonical:
+                log_payload["invoked_as"] = invoked_as
+                log_payload["deprecated_alias"] = True
+            _log_tool_invocation(canonical, **log_payload)
+            return err
+
     async def _handle_cards_adaptation_query(
         lens: LensInput,
         query: AdaptationQueryInput,
@@ -2670,6 +3094,8 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     warnings=warnings,
                     operation=canonical,
                 )
+                context_json = _merge_card_context_with_atlas(card=card, context_json=context_json)
+                merged_tags = _merge_tags_with_atlas(card)
 
                 card_id = card_upsert(
                     conn,
@@ -2681,7 +3107,7 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     body=card.body,
                     status=card.status,
                     salience=card.salience,
-                    tags=card.tags,
+                    tags=merged_tags,
                     created_by_client_name=DEFAULT_CLIENT_NAME,
                     context_json=context_json,
                     card_id=card.id,
@@ -2807,6 +3233,8 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     warnings=warnings,
                     operation=canonical,
                 )
+                context_json = _merge_card_context_with_atlas(card=card, context_json=context_json)
+                merged_tags = _merge_tags_with_atlas(card)
                 result = card_supersede(
                     conn,
                     user_id=DEFAULT_USER_ID,
@@ -2818,7 +3246,7 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     body=card.body,
                     status=card.status,
                     salience=card.salience,
-                    tags=card.tags,
+                    tags=merged_tags,
                     created_by_client_name=DEFAULT_CLIENT_NAME,
                     context_json=context_json,
                     source_confidence=None,
@@ -2925,6 +3353,8 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     warnings=warnings,
                     operation=canonical,
                 )
+                context_json = _merge_card_context_with_atlas(card=card, context_json=context_json)
+                merged_tags = _merge_tags_with_atlas(card)
                 result = cards_merge(
                     conn,
                     user_id=DEFAULT_USER_ID,
@@ -2936,7 +3366,7 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
                     body=card.body,
                     status=card.status,
                     salience=card.salience,
-                    tags=card.tags,
+                    tags=merged_tags,
                     created_by_client_name=DEFAULT_CLIENT_NAME,
                     context_json=context_json,
                     source_confidence=None,
@@ -3058,6 +3488,19 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8765) -> FastMCP:
             lens: LensInput,
         ) -> dict[str, Any]:
             return await _handle_cards_search(query, lens, "muninn/cards.search")
+
+    @mcp.tool(
+        name="muninn.cards.atlas.query",
+        description=(
+            "Query atlas.* cards with stable ownership and boundary refs "
+            "(project/capability/source/target/entity_id)."
+        ),
+    )
+    async def muninn_cards_atlas_query(
+        lens: LensInput,
+        query: AtlasQueryInput,
+    ) -> dict[str, Any]:
+        return await _handle_cards_atlas_query(lens, query, "muninn.cards.atlas.query")
 
     @mcp.tool(
         name="muninn.rehydrate.bundle",

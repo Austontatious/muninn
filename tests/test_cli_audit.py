@@ -86,7 +86,92 @@ def test_audit_uses_jsonl_when_present(tmp_path, capsys) -> None:
     assert payload["source"] == "jsonl"
     assert payload["events_analyzed"] == 4
     assert payload["discipline"]["ordered_start_rate"] == 1.0
+    assert payload["discipline"]["staged_start_rate"] == 1.0
+    assert payload["discipline"]["bundle_first_rate"] == 0.0
+    assert payload["summary"]["staged_start_sessions"] == 1
+    assert payload["summary"]["bundle_first_sessions"] == 0
     assert payload["write_hygiene"]["missing_evidence_warning_count"] == 1
+
+
+def test_audit_counts_bundle_first_session_as_compliant(tmp_path, capsys) -> None:
+    telemetry_path = tmp_path / "mcp_telemetry.jsonl"
+    now = time.time()
+    rows = [
+        {
+            "ts": now,
+            "event": "tool_call",
+            "tool": "muninn.rehydrate.bundle",
+            "status": "ok",
+            "scope": "soft",
+            "duration_ms": 18,
+            "result_count": 4,
+        },
+        {
+            "ts": now + 1,
+            "event": "tool_call",
+            "tool": "muninn.cards.upsert",
+            "status": "ok",
+            "scope": "strict",
+            "space_key": "repo:abc",
+            "card_id": "card-2",
+            "summary_chars": 96,
+            "duration_ms": 12,
+        },
+    ]
+    telemetry_path.write_text(
+        "\n".join(json.dumps(row) for row in rows) + "\n",
+        encoding="utf-8",
+    )
+
+    code = cli._cmd_audit(_make_args(telemetry_path=telemetry_path))
+    captured = capsys.readouterr()
+    assert code == 0
+    payload = json.loads(captured.out)
+    assert payload["discipline"]["ordered_start_rate"] == 1.0
+    assert payload["discipline"]["staged_start_rate"] == 0.0
+    assert payload["discipline"]["bundle_first_rate"] == 1.0
+    assert payload["summary"]["ordered_start_sessions"] == 1
+    assert payload["summary"]["bundle_first_sessions"] == 1
+    assert payload["summary"]["partial_start_sessions"] == 0
+
+
+def test_audit_partial_start_session_remains_non_compliant(tmp_path, capsys) -> None:
+    telemetry_path = tmp_path / "mcp_partial_telemetry.jsonl"
+    now = time.time()
+    rows = [
+        {
+            "ts": now,
+            "event": "tool_call",
+            "tool": "muninn.spaces.resolve",
+            "status": "ok",
+            "duration_ms": 10,
+            "space_key": "repo:abc",
+        },
+        {
+            "ts": now + 1,
+            "event": "tool_call",
+            "tool": "muninn.cards.search",
+            "status": "ok",
+            "scope": "soft",
+            "query": "repo constraints",
+            "total_matches": 1,
+            "top_score": 0.66,
+            "duration_ms": 14,
+        },
+    ]
+    telemetry_path.write_text(
+        "\n".join(json.dumps(row) for row in rows) + "\n",
+        encoding="utf-8",
+    )
+
+    code = cli._cmd_audit(_make_args(telemetry_path=telemetry_path))
+    captured = capsys.readouterr()
+    assert code == 0
+    payload = json.loads(captured.out)
+    assert payload["discipline"]["ordered_start_rate"] == 0.0
+    assert payload["discipline"]["staged_start_rate"] == 0.0
+    assert payload["discipline"]["bundle_first_rate"] == 0.0
+    assert payload["summary"]["partial_start_sessions"] == 1
 
 
 def test_audit_falls_back_to_journal(monkeypatch, tmp_path, capsys) -> None:
@@ -127,6 +212,7 @@ def test_audit_falls_back_to_journal(monkeypatch, tmp_path, capsys) -> None:
     payload = json.loads(captured.out)
     assert payload["source"] == "journalctl"
     assert payload["events_analyzed"] == 2
+    assert payload["discipline"]["ordered_start_rate"] == 0.0
 
 
 def test_audit_prints_actionable_message_when_no_source(monkeypatch, tmp_path, capsys) -> None:

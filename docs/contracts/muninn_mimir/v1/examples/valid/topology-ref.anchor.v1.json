@@ -1,0 +1,10 @@
+{
+  "ref_kind": "anchor",
+  "ref_id": "anc_123",
+  "relation": "bound_to",
+  "path": "src/example.py",
+  "symbol": "example_fn",
+  "line_start": 12,
+  "line_end": 18,
+  "confidence": 0.93
+}

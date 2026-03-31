@@ -1,0 +1,38 @@
+{
+  "contract_version": "1.0.0",
+  "stable_id": "card_123",
+  "kind": "decision",
+  "title": "Use deterministic contract fixtures",
+  "summary": "Both repos validate the same contract artifacts.",
+  "lifecycle": {
+    "lifecycle_state": "active",
+    "status": "confirmed"
+  },
+  "confidence": {
+    "score": 0.88,
+    "trust_level": "high"
+  },
+  "provenance": {
+    "source_type": "api",
+    "source_id": "muninn.cards.get",
+    "evidence": [
+      {
+        "type": "api",
+        "ref": "/cards/card_123"
+      }
+    ]
+  },
+  "topology_refs": [
+    {
+      "ref_kind": "source",
+      "ref_id": "src_456",
+      "relation": "evidence"
+    }
+  ],
+  "payload": {
+    "tags": [
+      "contract",
+      "compatibility"
+    ]
+  }
+}

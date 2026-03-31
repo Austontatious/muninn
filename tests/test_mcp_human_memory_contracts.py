@@ -56,6 +56,23 @@ def test_lens_input_accepts_nested_object_and_legacy_string_shapes() -> None:
     assert legacy.limit == 3
 
 
+@pytest.mark.parametrize("cwd_value", [None, "", "   "])
+def test_lens_input_rejects_auto_space_without_cwd(cwd_value) -> None:
+    with pytest.raises(ValidationError) as exc_info:
+        LensInput.model_validate({"space": "auto", "cwd": cwd_value})
+
+    err = _handle_tool_exception(exc_info.value)
+    assert err["error"]["code"] == "InvalidArguments"
+    assert err["error"]["details"]["field"] == "cwd"
+    assert "lens.cwd is required when lens.space='auto'." in err["error"]["details"]["error"]
+
+
+def test_lens_input_accepts_auto_space_with_trimmed_cwd() -> None:
+    lens = LensInput.model_validate({"space": "auto", "cwd": "  /tmp/example  "})
+
+    assert lens.cwd == "/tmp/example"
+
+
 def test_search_query_input_accepts_legacy_shapes() -> None:
     assert SearchQueryInput.model_validate("docker logs").resolved_text() == "docker logs"
     assert SearchQueryInput.model_validate(["docker", "logs"]).resolved_text() == "docker logs"

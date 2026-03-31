@@ -226,6 +226,54 @@ class RehydrateResponse(BaseModel):
     items: list[RetrievedItem]
 
 
+class ProcedureRetrieveRequest(BaseModel):
+    namespace: str | None = None
+    space_key: str = "global"
+    task_label: str
+    context_summary: str = ""
+    task_type: str | None = None
+    tool_names: list[str] = Field(default_factory=list)
+    limit: int = Field(default=3, ge=1, le=20)
+
+
+class ProcedureRetrieveResponse(BaseModel):
+    procedures: list[dict[str, Any]] = Field(default_factory=list)
+    compact: list[dict[str, Any]] = Field(default_factory=list)
+    diagnostics: dict[str, Any] = Field(default_factory=dict)
+
+
+class ProcedureReflectionRequest(BaseModel):
+    namespace: str | None = None
+    space_key: str = "global"
+    task_label: str
+    context_summary: str = ""
+    actions_taken: list[str] = Field(default_factory=list)
+    outcome_status: Literal["success", "partial_success", "failure"] = "partial_success"
+    what_worked: str = ""
+    what_failed: str = ""
+    changed_outcome: str = ""
+    reusable: bool = False
+    candidate_procedure_id: str | None = None
+    task_type: str | None = None
+    workflow_type: str | None = None
+    tool_requirements: list[str] = Field(default_factory=list)
+    verification_checks: list[str] = Field(default_factory=list)
+    metadata: dict[str, Any] = Field(default_factory=dict)
+    actor: str = "laila"
+
+
+class ProcedureReflectionResponse(BaseModel):
+    action: str
+    procedure_card_id: str | None = None
+    outcome_status: str
+    confidence: float | None = None
+    validation_status: str | None = None
+    reason: str | None = None
+    evidence_count: int = 0
+    warning_codes: list[str] = Field(default_factory=list)
+    warnings: list[dict[str, str]] = Field(default_factory=list)
+
+
 CardType = Literal[
     "contact",
     "recipe",

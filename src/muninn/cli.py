@@ -1272,11 +1272,30 @@ def _build_audit_report(
                 continue
             first_tool = name
             break
+        resolve_ok_idx = next(
+            (
+                pos
+                for pos, event in enumerate(session)
+                if str(event.get("tool", "")) == "muninn.spaces.resolve"
+                and str(event.get("status", "")).lower() == "ok"
+            ),
+            None,
+        )
         resolve_idx = next(
             (
                 pos
                 for pos, event in enumerate(session)
                 if str(event.get("tool", "")) == "muninn.spaces.resolve"
+            ),
+            None,
+        )
+        recent_strict_ok_idx = next(
+            (
+                pos
+                for pos, event in enumerate(session)
+                if str(event.get("tool", "")) == "muninn.cards.recent"
+                and str(event.get("scope", "")) == "strict"
+                and str(event.get("status", "")).lower() == "ok"
             ),
             None,
         )
@@ -1289,6 +1308,16 @@ def _build_audit_report(
             ),
             None,
         )
+        search_soft_ok_idx = next(
+            (
+                pos
+                for pos, event in enumerate(session)
+                if str(event.get("tool", "")) == "muninn.cards.search"
+                and str(event.get("scope", "")) == "soft"
+                and str(event.get("status", "")).lower() == "ok"
+            ),
+            None,
+        )
         search_idx = next(
             (
                 pos
@@ -1298,12 +1327,42 @@ def _build_audit_report(
             ),
             None,
         )
-        ordered_start = (
-            resolve_idx is not None
-            and recent_idx is not None
-            and search_idx is not None
-            and resolve_idx < recent_idx < search_idx
+        bundle_ok_idx = next(
+            (
+                pos
+                for pos, event in enumerate(session)
+                if str(event.get("tool", "")) == "muninn.rehydrate.bundle"
+                and str(event.get("status", "")).lower() == "ok"
+            ),
+            None,
         )
+        staged_start = (
+            first_tool == "muninn.spaces.resolve"
+            and resolve_ok_idx is not None
+            and recent_strict_ok_idx is not None
+            and resolve_ok_idx < recent_strict_ok_idx
+            and (
+                search_soft_ok_idx is None
+                or recent_strict_ok_idx < search_soft_ok_idx
+            )
+        )
+        bundle_first_start = (
+            first_tool == "muninn.rehydrate.bundle"
+            and bundle_ok_idx is not None
+        )
+        ordered_start = staged_start or bundle_first_start
+        start_mode = "none"
+        if staged_start:
+            start_mode = "staged"
+        elif bundle_first_start:
+            start_mode = "bundle_first"
+        elif (
+            resolve_idx is not None
+            or recent_idx is not None
+            or search_idx is not None
+            or bundle_ok_idx is not None
+        ):
+            start_mode = "partial"
         upserts_ok = sum(
             1
             for event in session
@@ -1322,7 +1381,11 @@ def _build_audit_report(
                 "resolve_first": first_tool == "muninn.spaces.resolve",
                 "has_recent_strict": recent_idx is not None,
                 "has_search_soft": search_idx is not None,
+                "has_bundle_first": bundle_ok_idx is not None,
+                "staged_start": staged_start,
+                "bundle_first_start": bundle_first_start,
                 "ordered_start": ordered_start,
+                "start_mode": start_mode,
                 "upserts_ok": upserts_ok,
                 "rate_limit_hits": rate_limit_hits,
             }
@@ -1330,6 +1393,9 @@ def _build_audit_report(
 
     sessions_total = len(session_reports)
     ordered_sessions = sum(1 for item in session_reports if item["ordered_start"])
+    staged_start_sessions = sum(1 for item in session_reports if item["staged_start"])
+    bundle_first_sessions = sum(1 for item in session_reports if item["bundle_first_start"])
+    partial_start_sessions = sum(1 for item in session_reports if item["start_mode"] == "partial")
     resolve_first_sessions = sum(1 for item in session_reports if item["resolve_first"])
     upserts_per_session = [int(item["upserts_ok"]) for item in session_reports]
     sessions_with_upserts = sum(1 for value in upserts_per_session if value > 0)
@@ -1391,13 +1457,9 @@ def _build_audit_report(
     flags: list[str] = []
     if sessions_total and (ordered_sessions / sessions_total) < 0.8:
         flags.append(
-            f"Task-start discipline sequence resolve->recent(strict)->search(soft) met in only "
-            f"{ordered_sessions}/{sessions_total} sessions."
-        )
-    if sessions_total and (resolve_first_sessions / sessions_total) < 0.8:
-        flags.append(
-            f"muninn.spaces.resolve was first meaningful call in only "
-            f"{resolve_first_sessions}/{sessions_total} sessions."
+            "Documented task-start protocol "
+            "(resolve->recent(strict)[->search(soft)] or rehydrate.bundle) "
+            f"met in only {ordered_sessions}/{sessions_total} sessions."
         )
     if total_matches_values:
         zero_rate = zero_match_count / max(1, len(total_matches_values))
@@ -1431,8 +1493,9 @@ def _build_audit_report(
     recommendations: list[str] = []
     if sessions_total and ordered_sessions < sessions_total:
         recommendations.append(
-            "AGENTS.md: require ordered task-start calls "
-            "(muninn.spaces.resolve -> muninn.cards.recent strict -> muninn.cards.search soft)."
+            "AGENTS.md: require a documented task-start call path "
+            "(muninn.spaces.resolve -> muninn.cards.recent strict [-> muninn.cards.search soft] "
+            "or muninn.rehydrate.bundle)."
         )
     if sessions_upsert_over_3 > 0 or rate_limit_hits_total > 0:
         recommendations.append(
@@ -1458,11 +1521,16 @@ def _build_audit_report(
         "summary": {
             "tool_counts": tool_summary,
             "resolve_first_sessions": resolve_first_sessions,
+            "staged_start_sessions": staged_start_sessions,
+            "bundle_first_sessions": bundle_first_sessions,
+            "partial_start_sessions": partial_start_sessions,
             "ordered_start_sessions": ordered_sessions,
         },
         "discipline": {
             "sessions_total": sessions_total,
             "resolve_first_rate": (resolve_first_sessions / sessions_total) if sessions_total else None,
+            "staged_start_rate": (staged_start_sessions / sessions_total) if sessions_total else None,
+            "bundle_first_rate": (bundle_first_sessions / sessions_total) if sessions_total else None,
             "ordered_start_rate": (ordered_sessions / sessions_total) if sessions_total else None,
             "sessions_with_upserts": sessions_with_upserts,
             "sessions_upsert_1_3": sessions_upsert_1_3,
@@ -1508,7 +1576,9 @@ def _print_audit_text(report: dict[str, Any]) -> None:
     discipline = report["discipline"]
     print("Discipline:")
     print(
-        f"- ordered_start_rate={discipline['ordered_start_rate']} "
+        f"- compliant_start_rate={discipline['ordered_start_rate']} "
+        f"staged_start_rate={discipline['staged_start_rate']} "
+        f"bundle_first_rate={discipline['bundle_first_rate']} "
         f"resolve_first_rate={discipline['resolve_first_rate']}"
     )
     print(

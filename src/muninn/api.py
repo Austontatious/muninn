@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import sqlite3
+from contextlib import contextmanager
+from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query, Request
@@ -49,6 +52,10 @@ from .models import (
     ListPendingResponse,
     PromoteRequest,
     PromoteResponse,
+    ProcedureReflectionRequest,
+    ProcedureReflectionResponse,
+    ProcedureRetrieveRequest,
+    ProcedureRetrieveResponse,
     ProposeRequest,
     ProposeResponse,
     QueryVectorRequest,
@@ -78,9 +85,47 @@ from .service import begin_audit_buffer, end_audit_buffer, flush_audit_buffer, l
 from .telemetry import emit_event as emit_telemetry_event, telemetry_context
 from .vector import reindex as vector_reindex
 from .vector import store as vector_store
+from .human_memory.bootstrap import (
+    DEFAULT_USER_ID,
+    apply_init_schema as human_apply_init_schema,
+    bootstrap_defaults as human_bootstrap_defaults,
+    open_db as human_open_db,
+)
+from .human_memory.procedures import ingest_procedure_reflection, query_procedure_cards
+from .human_memory.spaces import ResolvedSpace, get_or_create_space
 
 app = FastAPI(title="Muninn", version="0.11.0")
 app.add_middleware(ApiKeyMiddleware)
+
+
+def _resolve_human_memory_db_path() -> Path:
+    configured = os.getenv("MUNINN_HUMAN_MEMORY_DB_PATH", "").strip()
+    if configured:
+        return Path(configured).expanduser().resolve()
+    return Path("~/.local/share/muninn/human_memory.db").expanduser().resolve()
+
+
+@contextmanager
+def _human_memory_conn() -> sqlite3.Connection:
+    db_path = _resolve_human_memory_db_path()
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = human_open_db(str(db_path))
+    try:
+        human_apply_init_schema(conn)
+        human_bootstrap_defaults(conn)
+        yield conn
+    finally:
+        conn.close()
+
+
+def _ensure_human_space(conn: sqlite3.Connection, *, space_key: str) -> None:
+    normalized = str(space_key or "").strip() or "global"
+    resolved = ResolvedSpace(
+        key=normalized,
+        label=normalized,
+        meta_json=json.dumps({"identity": "api_explicit_space", "space_key": normalized}, separators=(",", ":")),
+    )
+    get_or_create_space(conn, user_id=DEFAULT_USER_ID, resolved=resolved)
 
 
 def require_writable() -> None:
@@ -1142,6 +1187,102 @@ def api_rehydrate(req: RehydrateRequest, request: Request) -> RehydrateResponse:
         },
     )
     return RehydrateResponse(cards=cards, items=items)
+
+
+@app.post("/v0/memory/procedures/retrieve", response_model=ProcedureRetrieveResponse)
+def api_retrieve_procedures(req: ProcedureRetrieveRequest, request: Request) -> ProcedureRetrieveResponse:
+    namespace = _resolve_namespace(request, req.namespace)
+    space_key = str(req.space_key or "").strip() or "global"
+    with _human_memory_conn() as conn:
+        _ensure_human_space(conn, space_key=space_key)
+        payload = query_procedure_cards(
+            conn,
+            user_id=DEFAULT_USER_ID,
+            space_key=space_key,
+            task_label=req.task_label,
+            context_summary=req.context_summary,
+            task_type=req.task_type,
+            tool_names=req.tool_names,
+            limit=req.limit,
+        )
+    log_audit(
+        namespace,
+        "procedure_retrieve",
+        {
+            "namespace": namespace,
+            "space_key": space_key,
+            "task_label": req.task_label,
+            "task_type": req.task_type,
+            "tool_names": req.tool_names,
+            "limit": req.limit,
+            "returned": len(payload.get("procedures", [])),
+        },
+    )
+    return ProcedureRetrieveResponse(
+        procedures=list(payload.get("procedures", [])),
+        compact=list(payload.get("compact", [])),
+        diagnostics=dict(payload.get("diagnostics", {})),
+    )
+
+
+@app.post("/v0/memory/procedures/reflect", response_model=ProcedureReflectionResponse)
+def api_reflect_procedure(req: ProcedureReflectionRequest, request: Request) -> ProcedureReflectionResponse:
+    require_writable()
+    namespace = _resolve_namespace(request, req.namespace)
+    space_key = str(req.space_key or "").strip() or "global"
+    reflection_payload = {
+        "task_label": req.task_label,
+        "context_summary": req.context_summary,
+        "actions_taken": list(req.actions_taken),
+        "outcome_status": req.outcome_status,
+        "what_worked": req.what_worked,
+        "what_failed": req.what_failed,
+        "changed_outcome": req.changed_outcome,
+        "reusable": bool(req.reusable),
+        "candidate_procedure_id": req.candidate_procedure_id,
+        "task_type": req.task_type,
+        "workflow_type": req.workflow_type,
+        "tool_requirements": list(req.tool_requirements),
+        "verification_checks": list(req.verification_checks),
+        "metadata": dict(req.metadata),
+    }
+    with _human_memory_conn() as conn:
+        _ensure_human_space(conn, space_key=space_key)
+        result = ingest_procedure_reflection(
+            conn,
+            user_id=DEFAULT_USER_ID,
+            space_key=space_key,
+            reflection=reflection_payload,
+            actor=req.actor,
+        )
+    log_audit(
+        namespace,
+        "procedure_reflect",
+        {
+            "namespace": namespace,
+            "space_key": space_key,
+            "task_label": req.task_label,
+            "outcome_status": req.outcome_status,
+            "reusable": req.reusable,
+            "action": result.get("action"),
+            "procedure_card_id": result.get("procedure_card_id"),
+        },
+    )
+    return ProcedureReflectionResponse(
+        action=str(result.get("action", "")),
+        procedure_card_id=result.get("procedure_card_id"),
+        outcome_status=str(result.get("outcome_status", req.outcome_status)),
+        confidence=result.get("confidence"),
+        validation_status=result.get("validation_status"),
+        reason=result.get("reason"),
+        evidence_count=int(result.get("evidence_count") or 0),
+        warning_codes=[str(item) for item in list(result.get("warning_codes") or [])],
+        warnings=[
+            {"code": str(item.get("code") or ""), "message": str(item.get("message") or "")}
+            for item in list(result.get("warnings") or [])
+            if isinstance(item, dict)
+        ],
+    )
 
 
 @app.get("/v0/memory/version")

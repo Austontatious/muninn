@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/lifecycle-state.v1.schema.json",
+  "title": "Muninn-Mimir Lifecycle/Status Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lifecycle_state",
+    "status"
+  ],
+  "properties": {
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "active",
+        "observed",
+        "resolved",
+        "remapped",
+        "drifted",
+        "unresolved",
+        "superseded",
+        "archived",
+        "deprecated",
+        "stale",
+        "deleted"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "confirmed",
+        "active",
+        "superseded",
+        "archived",
+        "deprecated"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

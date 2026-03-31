@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/card-envelope.v1.schema.json",
+  "title": "Muninn-Mimir Shared Card Envelope Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "stable_id",
+    "kind",
+    "title",
+    "summary",
+    "lifecycle",
+    "confidence",
+    "provenance"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "stable_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string"
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lifecycle_state",
+        "status"
+      ],
+      "properties": {
+        "lifecycle_state": {
+          "type": "string",
+          "enum": [
+            "active",
+            "observed",
+            "resolved",
+            "remapped",
+            "drifted",
+            "unresolved",
+            "superseded",
+            "archived",
+            "deprecated",
+            "stale",
+            "deleted"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "candidate",
+            "confirmed",
+            "active",
+            "superseded",
+            "archived",
+            "deprecated"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "trust_level"
+      ],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "trust_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "source_id"
+      ],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "user",
+            "assistant",
+            "tool",
+            "document",
+            "system",
+            "repo_scan",
+            "retrieval",
+            "derived",
+            "api"
+          ]
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "ref"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "chat",
+                  "log",
+                  "diff",
+                  "file",
+                  "url",
+                  "commit",
+                  "test",
+                  "query",
+                  "artifact",
+                  "card",
+                  "api",
+                  "stage"
+                ]
+              },
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "excerpt": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    },
+    "topology_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ref_kind",
+          "ref_id",
+          "relation"
+        ],
+        "properties": {
+          "ref_kind": {
+            "type": "string",
+            "enum": [
+              "anchor",
+              "card",
+              "node",
+              "edge",
+              "source",
+              "chunk",
+              "entity",
+              "symbol",
+              "file",
+              "space",
+              "policy"
+            ]
+          },
+          "ref_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "line_start": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "line_end": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "dependentRequired": {
+          "line_end": [
+            "line_start"
+          ]
+        }
+      }
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "contract_version": "1.0.0",
+  "stable_id": "card_bad",
+  "kind": "decision",
+  "title": "Invalid card",
+  "summary": "Missing provenance should fail.",
+  "lifecycle": {
+    "lifecycle_state": "active",
+    "status": "confirmed"
+  },
+  "confidence": {
+    "score": 0.8,
+    "trust_level": "high"
+  }
+}
