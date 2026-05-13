@@ -11,41 +11,84 @@ It is responsible for:
 
 Muninn is not an orchestrator or agent. It is a **state system**.
 
-## 1.1) Canonical Muninn Memory Protocol (for integrating agents)
+## 1.1) Current v1/v2 Operating Posture
+This root-level `AGENTS.md` is the canonical repo instruction sheet for Codex, VS Code, and other integrating agents.
+
+Muninn v1 remains the active production memory system for Codex-facing workflows:
+- v1 owns live MCP/Codex behavior, durable human-memory cards, evidence, spaces, policy/adaptation state, and deterministic rehydration.
+- v1 changes require extra scrutiny, explicit task scope, focused tests, and an `ARCHITECTURE_CHECKPOINT.md` update when behavior, schema, retrieval, or MCP contracts change.
+- Do not change live MCP/Codex defaults, production DB paths, or v1 schema behavior without explicit user instruction.
+
+Muninn v2 is adjacent, opt-in substrate work:
+- v2 development belongs under `src/muninn/v2` unless a task explicitly says otherwise.
+- v2 must not run automatic migration, cutover, MCP route replacement, or production DB writes on import/startup.
+- v2 should provide explicit adapters, dry-run pilots, export/import paths, and parity reports before any live adoption discussion.
+- New substrate work should bias toward v2, while v1 remains the active/live branch of use unless the task explicitly says to modify v1.
+
+Current v2 milestone order:
+1. record-existence parity
+2. retrieval parity measurement
+3. retrieval design
+4. explicit cutover planning only after evidence supports it
+
+## 1.2) Canonical Muninn Memory Protocol (for integrating agents)
 Repositories that integrate Muninn should use this workflow as operational policy:
 
 On task start (before substantial edits):
-- Call `muninn.spaces.resolve` with current `cwd`.
+- Call `muninn.spaces.resolve` with current absolute `cwd`.
+- Use the returned `space.key` as `<resolved-space-key>` for retrieval calls.
 - Preferred: call `muninn.rehydrate.bundle` with:
-  - `lens`: `{space:"auto", cwd:"<abs-path>", scope:"soft", kinds:["decision","constraint","runbook","interface"], limit:12}`
+  - `lens`: `{space_key:"<resolved-space-key>", scope:"soft", kinds:["decision","constraint","runbook","interface"], limit:12}`
   - `query`: short task summary.
 - Compatibility sequence (when bundle is unavailable):
-  - `muninn.cards.recent` with `scope:"strict"` and the same kinds.
-  - `muninn.cards.search` with `scope:"soft"` and short task query.
+  - `muninn.cards.recent` with `lens`: `{space_key:"<resolved-space-key>", scope:"strict", kinds:["decision","constraint","runbook","interface"], limit:12}`
+  - `muninn.cards.search` with `lens`: `{space_key:"<resolved-space-key>", scope:"soft", kinds:["decision","constraint","runbook","interface"], limit:12}` and short task query.
+- If `space_key` is unavailable, pass a full lens with `space:"auto"` and absolute `cwd`.
 - Use retrieved memory before implementation decisions.
 
 On meaningful completion:
 - Persist durable outcomes with `muninn.cards.upsert` (`1-3` cards per meaningful task).
+- Send object-shaped upsert arguments only (never prose strings for `card`).
+- Canonical upsert payload:
+
+```json
+{
+  "lens": {
+    "space_key": "<resolved-space-key>",
+    "scope": "strict"
+  },
+  "card": {
+    "kind": "decision",
+    "title": "Summarize the durable decision",
+    "summary": "One to three sentences with the durable outcome.",
+    "body": "Durable details that should survive future sessions."
+  },
+  "evidence": [
+    {"type": "file", "ref": "/abs/path/file.py:42"}
+  ]
+}
+```
+
+- For `decision`, `constraint`, `interface`, and `runbook`, include at least one evidence ref whenever applicable.
+- If evidence is unavailable, do not fabricate it; delay the durable write or mark explicit follow-up and treat it as non-compliant until evidence is added.
 - Prefer `muninn.cards.supersede` / `muninn.cards.merge` when refining existing threads.
-- Include concise `summary`, durable `body`, and evidence refs when available (file path, test, commit, log).
 
 Memory hygiene:
 - Do not persist transient reasoning, scratch notes, or speculative output.
 - Prefer `strict` scope by default; use `soft` only when cross-project recall is intentional.
-
----
+- Regression gate command:
+  - `cd /mnt/data/Muninn && PYTHONPATH=src python3 -m muninn.cli audit --last 24h --json --gate`
 
 ## 2) Precedence and Global Standards
-This repo follows global standards defined at:
+This repo follows the canonical global baseline:
 
-- `/mnt/data/GLOBAL_STANDARDS.md`
-- `/mnt/data/AGENTS_CORE.md`
+- `/home/unix/codex-standards/BASELINE.md`
 
 Precedence order:
 1. Direct user instruction
 2. This file (`AGENTS.md`)
-3. Global standards
-4. Core agent baseline
+3. `/home/unix/codex-standards/BASELINE.md`
+4. `/home/unix/.codex/AGENTS.md` bootstrap pointer
 
 Any deviation from global standards MUST be explicitly documented below.
 
@@ -160,6 +203,7 @@ This repo MUST maintain:
 
 The following MUST NOT occur:
 - task sheets in root
+- stale root `PLANS.md` files treated as live direction
 - architecture defined in multiple conflicting docs
 - untracked canonical guidance files
 

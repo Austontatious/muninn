@@ -1,3 +1,5 @@
+Status: completed
+
 ## Objective
 Eliminate recurring structured-evidence warnings by hardening caller-side evidence construction and validation for Friday lifecycle/procedure writeback, while keeping Muninn evidence schema strict.
 
