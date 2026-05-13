@@ -1,0 +1,14 @@
+{
+  "queries": [
+    "Campaign 007A post-reacquisition belief stabilization",
+    "Campaign 006A early active ping reacquisition",
+    "Campaign 005A fire-control state normalization",
+    "Campaign 004A duplicate same-primary torpedo suppression",
+    "fire control ready but hold count",
+    "torpedo wasted shot rate",
+    "sonar clutter wrong binding rate",
+    "acoustic clutter wrong binding rate",
+    "reacquisition failure taxonomy",
+    "ReadyPlayer1 next campaign recommendation"
+  ]
+}

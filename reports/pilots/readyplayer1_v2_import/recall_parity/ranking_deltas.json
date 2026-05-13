@@ -1,0 +1,88 @@
+{
+  "records": [
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "rank_delta_v2_minus_v1": 0,
+      "v1_rank": 1,
+      "v2_rank": 1
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "Campaign 006A early active ping reacquisition",
+      "rank_delta_v2_minus_v1": 0,
+      "v1_rank": 1,
+      "v2_rank": 1
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "Campaign 005A fire-control state normalization",
+      "rank_delta_v2_minus_v1": 0,
+      "v1_rank": 1,
+      "v2_rank": 1
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "torpedo wasted shot rate",
+      "rank_delta_v2_minus_v1": 1,
+      "v1_rank": 1,
+      "v2_rank": 2
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "torpedo wasted shot rate",
+      "rank_delta_v2_minus_v1": -1,
+      "v1_rank": 2,
+      "v2_rank": 1
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "torpedo wasted shot rate",
+      "rank_delta_v2_minus_v1": 2,
+      "v1_rank": 3,
+      "v2_rank": 5
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "torpedo wasted shot rate",
+      "rank_delta_v2_minus_v1": 2,
+      "v1_rank": 4,
+      "v2_rank": 6
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "sonar clutter wrong binding rate",
+      "rank_delta_v2_minus_v1": 1,
+      "v1_rank": 1,
+      "v2_rank": 2
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "sonar clutter wrong binding rate",
+      "rank_delta_v2_minus_v1": 6,
+      "v1_rank": 4,
+      "v2_rank": 10
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "acoustic clutter wrong binding rate",
+      "rank_delta_v2_minus_v1": 9,
+      "v1_rank": 1,
+      "v2_rank": 10
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "acoustic clutter wrong binding rate",
+      "rank_delta_v2_minus_v1": 3,
+      "v1_rank": 3,
+      "v2_rank": 6
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "reacquisition failure taxonomy",
+      "rank_delta_v2_minus_v1": 7,
+      "v1_rank": 1,
+      "v2_rank": 8
+    }
+  ]
+}

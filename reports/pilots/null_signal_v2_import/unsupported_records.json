@@ -1,0 +1,26 @@
+{
+  "total_unsupported_records": 0,
+  "unsupported_record_types": [
+    {
+      "count": 0,
+      "reason": "v1 behavioral interaction stream is not mapped in the pilot slice.",
+      "record_type": "interaction_events",
+      "table": "interaction_events",
+      "table_present": true
+    },
+    {
+      "count": 0,
+      "reason": "v1 vector blobs are derived indexes, not canonical v2 truth.",
+      "record_type": "card_vectors",
+      "table": "card_vectors",
+      "table_present": true
+    },
+    {
+      "count": 0,
+      "reason": "v1 vector index state is store-local operational metadata.",
+      "record_type": "vector_index_state",
+      "table": "vector_index_state",
+      "table_present": true
+    }
+  ]
+}

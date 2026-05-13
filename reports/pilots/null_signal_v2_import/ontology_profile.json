@@ -1,0 +1,36 @@
+{
+  "ontology_profiles": [
+    {
+      "association_types": [
+        "supersedes",
+        "duplicates",
+        "contradicts",
+        "refines"
+      ],
+      "card_kinds": [],
+      "created_at": "1970-01-01T00:00:00Z",
+      "description": "Read-only v1 space profile projected for Muninn v2 pilot imports.",
+      "entity_types": [
+        "space",
+        "card",
+        "evidence"
+      ],
+      "id": "v1-space:repo:8086caa7ff98deef",
+      "metadata": {
+        "source_system": "muninn_v1",
+        "space_key": "repo:8086caa7ff98deef",
+        "space_label": "Null_Signal",
+        "space_meta": {
+          "git_remote": "https://github.com/Austontatious/Null_Signal.git",
+          "git_remote_norm": "https://github.com/austontatious/null_signal",
+          "root_path": "/mnt/data/Null_Signal"
+        }
+      },
+      "name": "muninn-v1-space:repo:8086caa7ff98deef",
+      "record_type": "ontology_profile",
+      "schema_version": "muninn.v2.foundation.v1",
+      "updated_at": "1970-01-01T00:00:00Z",
+      "version": "v1"
+    }
+  ]
+}

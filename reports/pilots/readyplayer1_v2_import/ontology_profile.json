@@ -1,0 +1,38 @@
+{
+  "ontology_profiles": [
+    {
+      "association_types": [
+        "supersedes",
+        "duplicates",
+        "contradicts",
+        "refines"
+      ],
+      "card_kinds": [
+        "decision",
+        "interface",
+        "runbook"
+      ],
+      "created_at": "1970-01-01T00:00:00Z",
+      "description": "Read-only v1 space profile projected for Muninn v2 pilot imports.",
+      "entity_types": [
+        "space",
+        "card",
+        "evidence"
+      ],
+      "id": "v1-space:repo:5059f410815720ea",
+      "metadata": {
+        "source_system": "muninn_v1",
+        "space_key": "repo:5059f410815720ea",
+        "space_label": "repo:5059f410815720ea",
+        "space_meta": {
+          "source": "explicit_space_key"
+        }
+      },
+      "name": "muninn-v1-space:repo:5059f410815720ea",
+      "record_type": "ontology_profile",
+      "schema_version": "muninn.v2.foundation.v1",
+      "updated_at": "1970-01-01T00:00:00Z",
+      "version": "v1"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "ambiguous_records": [],
+  "artifacts": {
+    "ambiguous_records": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/ambiguous_records.json",
+    "evidence_refs": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/evidence_refs.jsonl",
+    "migrated_associations": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/migrated_associations.jsonl",
+    "migrated_cards": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/migrated_cards.jsonl",
+    "migrated_entities": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/migrated_entities.jsonl",
+    "migrated_events": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/migrated_events.jsonl",
+    "ontology_profile": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/ontology_profile.json",
+    "pilot_import_report_json": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/pilot_import_report.json",
+    "pilot_import_report_md": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/pilot_import_report.md",
+    "unsupported_records": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/unsupported_records.json",
+    "v1_row_count_before_after": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/v1_row_count_before_after.json",
+    "v2_export_bundle": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/v2_export_bundle.json",
+    "v2_export_jsonl": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/v2_export_bundle.jsonl"
+  },
+  "counts": {
+    "ambiguous_records": 0,
+    "created_entities": 1,
+    "created_ontology_profiles": 1,
+    "errors": 0,
+    "migrated_associations": 0,
+    "migrated_cards": 0,
+    "migrated_events": 0,
+    "migrated_evidence_refs": 0,
+    "scanned_cards": 0,
+    "scanned_records": 0,
+    "skipped_records": 0,
+    "unsupported_record_types": 0
+  },
+  "dry_run": true,
+  "errors": [],
+  "mode": "dry_run",
+  "out_dir": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import",
+  "project_identity": {
+    "expected_alias_keys": [
+      "path:6f5fd142abbe3df7"
+    ],
+    "expected_space_key": "repo:8086caa7ff98deef",
+    "git_remote": "https://github.com/Austontatious/Null_Signal.git",
+    "git_remote_norm": "https://github.com/austontatious/null_signal",
+    "identity": "repo_remote",
+    "label": "Null_Signal",
+    "project_path": "/mnt/data/Null_Signal",
+    "root_path": "/mnt/data/Null_Signal"
+  },
+  "project_path": "/mnt/data/Null_Signal",
+  "record_type": "muninn_v2_pilot_import_report",
+  "schema_version": "muninn.v2.foundation.v1",
+  "space": {
+    "created_at": "2026-02-19 23:23:38",
+    "id": "4cf33bf6-59dc-5f1b-9217-2aea42d7e8c1",
+    "key": "repo:8086caa7ff98deef",
+    "label": "Null_Signal",
+    "meta": {
+      "git_remote": "https://github.com/Austontatious/Null_Signal.git",
+      "git_remote_norm": "https://github.com/austontatious/null_signal",
+      "root_path": "/mnt/data/Null_Signal"
+    },
+    "updated_at": "2026-02-19 23:24:10",
+    "user_id": "ent_local_user"
+  },
+  "space_key_canonical": "repo:8086caa7ff98deef",
+  "space_key_requested": "repo:8086caa7ff98deef",
+  "unsupported_records": {
+    "total_unsupported_records": 0,
+    "unsupported_record_types": [
+      {
+        "count": 0,
+        "reason": "v1 behavioral interaction stream is not mapped in the pilot slice.",
+        "record_type": "interaction_events",
+        "table": "interaction_events",
+        "table_present": true
+      },
+      {
+        "count": 0,
+        "reason": "v1 vector blobs are derived indexes, not canonical v2 truth.",
+        "record_type": "card_vectors",
+        "table": "card_vectors",
+        "table_present": true
+      },
+      {
+        "count": 0,
+        "reason": "v1 vector index state is store-local operational metadata.",
+        "record_type": "vector_index_state",
+        "table": "vector_index_state",
+        "table_present": true
+      }
+    ]
+  },
+  "v1_db": "/home/unix/.local/share/muninn/human_memory.db",
+  "v1_row_counts": [
+    {
+      "after": 1369,
+      "before": 1369,
+      "changed": false,
+      "table": "card_evidence"
+    },
+    {
+      "after": 5,
+      "before": 5,
+      "changed": false,
+      "table": "card_relations"
+    },
+    {
+      "after": 535,
+      "before": 535,
+      "changed": false,
+      "table": "card_tags"
+    },
+    {
+      "after": 0,
+      "before": 0,
+      "changed": false,
+      "table": "card_vectors"
+    },
+    {
+      "after": 506,
+      "before": 506,
+      "changed": false,
+      "table": "cards"
+    },
+    {
+      "after": 506,
+      "before": 506,
+      "changed": false,
+      "table": "cards_fts"
+    },
+    {
+      "after": 1,
+      "before": 1,
+      "changed": false,
+      "table": "cards_fts_config"
+    },
+    {
+      "after": 73,
+      "before": 73,
+      "changed": false,
+      "table": "cards_fts_data"
+    },
+    {
+      "after": 506,
+      "before": 506,
+      "changed": false,
+      "table": "cards_fts_docsize"
+    },
+    {
+      "after": 71,
+      "before": 71,
+      "changed": false,
+      "table": "cards_fts_idx"
+    },
+    {
+      "after": 1,
+      "before": 1,
+      "changed": false,
+      "table": "clients"
+    },
+    {
+      "after": 1369,
+      "before": 1369,
+      "changed": false,
+      "table": "evidence"
+    },
+    {
+      "after": 2,
+      "before": 2,
+      "changed": false,
+      "table": "interaction_events"
+    },
+    {
+      "after": 14,
+      "before": 14,
+      "changed": false,
+      "table": "space_aliases"
+    },
+    {
+      "after": 33,
+      "before": 33,
+      "changed": false,
+      "table": "spaces"
+    },
+    {
+      "after": 252,
+      "before": 252,
+      "changed": false,
+      "table": "tags"
+    },
+    {
+      "after": 1,
+      "before": 1,
+      "changed": false,
+      "table": "users"
+    },
+    {
+      "after": 0,
+      "before": 0,
+      "changed": false,
+      "table": "vector_index_state"
+    }
+  ],
+  "v1_row_counts_changed": false,
+  "v2_db_requested": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/null_signal_v2.db",
+  "v2_db_written": "/mnt/data/Muninn/reports/pilots/null_signal_v2_import/scratch_v2.db",
+  "write_v2": false
+}

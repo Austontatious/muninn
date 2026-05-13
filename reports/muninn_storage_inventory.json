@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-05-13",
+  "scope": "inspection_only",
+  "storage_planes": [
+    {
+      "name": "human_memory",
+      "default_path": "~/.local/share/muninn/human_memory.db",
+      "schema_file": "migrations/0001_init.sql",
+      "connection_module": "src/muninn/human_memory/bootstrap.py",
+      "sqlite_pragmas": ["foreign_keys=ON", "journal_mode=WAL", "synchronous=NORMAL"],
+      "portability": "high for SQLite export/import; medium semantic portability due to JSON metadata conventions",
+      "append_only_elements": ["interaction_events"],
+      "mutable_elements": ["cards", "spaces", "evidence", "card_relations", "tags", "card_vectors", "vector_index_state"],
+      "fts_indexes": ["cards_fts"],
+      "vector_storage": ["card_vectors", "optional sqlite-vec virtual tables"],
+      "graph_storage": ["card_relations"],
+      "graph_limitations": ["lineage relation enum only", "no edge confidence", "no edge provenance", "no arbitrary entity edges"],
+      "migration_friendliness": "good for card/evidence/event export; requires typed decoders for context_json"
+    },
+    {
+      "name": "legacy_v0_cardex",
+      "default_path": "data/muninn.db or ~/.local/share/muninn/muninn.db",
+      "schema_file": "src/muninn/schema.sql",
+      "connection_module": "src/muninn/db.py",
+      "sqlite_pragmas": ["foreign_keys=ON", "journal_mode=WAL", "synchronous=NORMAL", "busy_timeout=5000", "temp_store=MEMORY"],
+      "portability": "medium; schema is explicit but semantics are split across v0 memory and Cardex",
+      "append_only_elements": ["audit_log enforced by update/delete triggers"],
+      "mutable_elements": ["entities", "facts", "episodes", "preferences", "cards", "sources", "documents", "chunks", "artifacts", "proposals", "signals", "coaccess_edges"],
+      "fts_indexes": ["facts_fts", "episodes_fts", "preferences_fts", "cards_fts", "artifacts_fts"],
+      "vector_storage": ["embeddings", "embeddings_vec_index", "card_embeddings"],
+      "graph_storage": ["coaccess_edges", "card_refs"],
+      "graph_limitations": ["coaccess is behavior-derived only", "card_refs are typed refs not a general graph"],
+      "migration_friendliness": "mixed; rich multimodal structures are valuable but need projection into one v2 model"
+    },
+    {
+      "name": "telemetry_jsonl",
+      "default_path": "environment/config dependent",
+      "schema_file": null,
+      "connection_module": "src/muninn/telemetry.py and src/muninn/mcp_server.py",
+      "portability": "high as JSONL",
+      "append_only_elements": ["runtime events"],
+      "migration_friendliness": "useful as evidence/observability input, not durable memory source of truth"
+    },
+    {
+      "name": "mimir_local_artifacts",
+      "default_path": ".mimir/index.db and .mimir/deferred_artifacts/pending.jsonl",
+      "schema_file": null,
+      "connection_module": "outside Muninn substrate",
+      "portability": "out of scope for Muninn v2 migration",
+      "note": "present in repository working tree but belongs to Mimir tooling, not Muninn storage"
+    }
+  ],
+  "sqlite_suitability": {
+    "assessment": "SQLite remains suitable for local-first Muninn v2 if the substrate contract is explicit and export/import is first-class.",
+    "strengths": [
+      "portable file storage",
+      "FTS5 availability",
+      "transactional semantics",
+      "easy backup/export",
+      "works for local agents and development"
+    ],
+    "risks": [
+      "large multimodal assets should not live directly in core tables",
+      "graph traversal and salience propagation may outgrow simple relational queries",
+      "sqlite-vec availability differs by environment",
+      "schema evolution needs formal migrations rather than self-healing patches only"
+    ]
+  },
+  "jsonl_compatibility": {
+    "assessment": "Good for event streams, telemetry, migration manifests, and export ledgers; insufficient alone for queryable substrate state.",
+    "recommended_uses": [
+      "migration ledger",
+      "recall event export",
+      "telemetry",
+      "append-only audit stream",
+      "portable backup manifests"
+    ]
+  },
+  "future_proofing_gaps": [
+    "No unified export/import format.",
+    "No first-class migration ledger.",
+    "No general association table shared by all memory types.",
+    "No recall history table in human-memory.",
+    "No first-class entity table in human-memory.",
+    "Multimodal assets are in Cardex, not unified with active human-memory."
+  ],
+  "recommended_storage_direction": "Keep SQLite as the first v2 backend, but design v2 around stable contracts and explicit export/import manifests so other backends can be added later."
+}

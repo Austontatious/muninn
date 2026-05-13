@@ -1,0 +1,283 @@
+{
+  "records": [
+    {
+      "query": "fire control ready but hold count",
+      "records": [
+        {
+          "body": "Campaign 006A made no SubSim torpedo physics changes. ReadyPlayer1 belief_baseline uses normalized Campaign 005A fire-control/contact state to allow earlier reacquire pings only for credible lost/recoverable tracks, while rejecting clutter-like/high-risk contacts. Metrics now report post-loss reacquisition attempt/ping/success, clutter rebind, belief drift after loss, and valid-fire ready-but-hold rate. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic heldout clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0. Taxonomy remained honest: timidity_indecision dropped, belief_drift and reacquisition_failure remain where fixed replay still does not recover contact.",
+          "evidence": [
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_comparison.json",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "21f79e08-e73f-449d-b074-ecc10c1e69af",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_promotion_decision.md",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "f5a27605-9617-4229-b771-ac1b93b6e0ab",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            }
+          ],
+          "evidence_count": 4,
+          "explanation": {
+            "has_evidence": true,
+            "retrieval_path": "v1_fts_cards_search",
+            "score_semantics": "bm25 lower-is-better"
+          },
+          "id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "kind": "decision",
+          "rank": 1,
+          "score": -16.664116990101675,
+          "source": "v1",
+          "summary": "Campaign 006A promoted a bounded ReadyPlayer1 policy and metrics change for post-shot/post-loss reacquisition. The belief_baseline now performs an evidence-gated early active ping for credible lost tracks, improving post-loss probe behavior while preserving duplicate-shot, wasted-shot, sonar clutter, and acoustic clutter gates.",
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ]
+    },
+    {
+      "query": "sonar clutter wrong binding rate",
+      "records": [
+        {
+          "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+          "evidence": [
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "84a71d72-829d-4bf1-8214-c145269df127",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            }
+          ],
+          "evidence_count": 4,
+          "explanation": {
+            "has_evidence": true,
+            "retrieval_path": "v1_fts_cards_search",
+            "score_semantics": "bm25 lower-is-better"
+          },
+          "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "kind": "decision",
+          "rank": 2,
+          "score": -20.967534971501305,
+          "source": "v1",
+          "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "body": "Campaign 006A made no SubSim torpedo physics changes. ReadyPlayer1 belief_baseline uses normalized Campaign 005A fire-control/contact state to allow earlier reacquire pings only for credible lost/recoverable tracks, while rejecting clutter-like/high-risk contacts. Metrics now report post-loss reacquisition attempt/ping/success, clutter rebind, belief drift after loss, and valid-fire ready-but-hold rate. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic heldout clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0. Taxonomy remained honest: timidity_indecision dropped, belief_drift and reacquisition_failure remain where fixed replay still does not recover contact.",
+          "evidence": [
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_comparison.json",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "21f79e08-e73f-449d-b074-ecc10c1e69af",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_promotion_decision.md",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+              "created_at": "2026-05-07 17:32:36",
+              "excerpt": null,
+              "id": "f5a27605-9617-4229-b771-ac1b93b6e0ab",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            }
+          ],
+          "evidence_count": 4,
+          "explanation": {
+            "has_evidence": true,
+            "retrieval_path": "v1_fts_cards_search",
+            "score_semantics": "bm25 lower-is-better"
+          },
+          "id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "kind": "decision",
+          "rank": 3,
+          "score": -20.601439322276526,
+          "source": "v1",
+          "summary": "Campaign 006A promoted a bounded ReadyPlayer1 policy and metrics change for post-shot/post-loss reacquisition. The belief_baseline now performs an evidence-gated early active ping for credible lost tracks, improving post-loss probe behavior while preserving duplicate-shot, wasted-shot, sonar clutter, and acoustic clutter gates.",
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ]
+    },
+    {
+      "query": "acoustic clutter wrong binding rate",
+      "records": [
+        {
+          "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+          "evidence": [
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "84a71d72-829d-4bf1-8214-c145269df127",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            },
+            {
+              "blob_path": null,
+              "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+              "created_at": "2026-05-07 17:52:40",
+              "excerpt": null,
+              "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+              "metadata": {},
+              "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+              "source_system": "muninn_v1",
+              "source_table": "evidence",
+              "type": "file"
+            }
+          ],
+          "evidence_count": 4,
+          "explanation": {
+            "has_evidence": true,
+            "retrieval_path": "v1_fts_cards_search",
+            "score_semantics": "bm25 lower-is-better"
+          },
+          "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "kind": "decision",
+          "rank": 2,
+          "score": -21.14123503721917,
+          "source": "v1",
+          "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        }
+      ]
+    }
+  ]
+}

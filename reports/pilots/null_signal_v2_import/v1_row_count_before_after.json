@@ -1,0 +1,110 @@
+[
+  {
+    "after": 1369,
+    "before": 1369,
+    "changed": false,
+    "table": "card_evidence"
+  },
+  {
+    "after": 5,
+    "before": 5,
+    "changed": false,
+    "table": "card_relations"
+  },
+  {
+    "after": 535,
+    "before": 535,
+    "changed": false,
+    "table": "card_tags"
+  },
+  {
+    "after": 0,
+    "before": 0,
+    "changed": false,
+    "table": "card_vectors"
+  },
+  {
+    "after": 506,
+    "before": 506,
+    "changed": false,
+    "table": "cards"
+  },
+  {
+    "after": 506,
+    "before": 506,
+    "changed": false,
+    "table": "cards_fts"
+  },
+  {
+    "after": 1,
+    "before": 1,
+    "changed": false,
+    "table": "cards_fts_config"
+  },
+  {
+    "after": 73,
+    "before": 73,
+    "changed": false,
+    "table": "cards_fts_data"
+  },
+  {
+    "after": 506,
+    "before": 506,
+    "changed": false,
+    "table": "cards_fts_docsize"
+  },
+  {
+    "after": 71,
+    "before": 71,
+    "changed": false,
+    "table": "cards_fts_idx"
+  },
+  {
+    "after": 1,
+    "before": 1,
+    "changed": false,
+    "table": "clients"
+  },
+  {
+    "after": 1369,
+    "before": 1369,
+    "changed": false,
+    "table": "evidence"
+  },
+  {
+    "after": 2,
+    "before": 2,
+    "changed": false,
+    "table": "interaction_events"
+  },
+  {
+    "after": 14,
+    "before": 14,
+    "changed": false,
+    "table": "space_aliases"
+  },
+  {
+    "after": 33,
+    "before": 33,
+    "changed": false,
+    "table": "spaces"
+  },
+  {
+    "after": 252,
+    "before": 252,
+    "changed": false,
+    "table": "tags"
+  },
+  {
+    "after": 1,
+    "before": 1,
+    "changed": false,
+    "table": "users"
+  },
+  {
+    "after": 0,
+    "before": 0,
+    "changed": false,
+    "table": "vector_index_state"
+  }
+]

@@ -1,0 +1,739 @@
+{
+  "checks": [
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "a96ab62a-70da-46f5-b38c-390e73fbe43a",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "Campaign 006A early active ping reacquisition",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "934bc660-bb2c-43b5-8026-7c936ec89977",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+      "query": "Campaign 005A fire-control state normalization",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "fire control ready but hold count",
+      "status": "missing_from_v2",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": null
+    },
+    {
+      "card_id": "1b486cc7-508f-47f3-aaf0-87ecddea8c1d",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "57514758-5e32-41bd-bcb8-85d6af042a1d",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "934bc660-bb2c-43b5-8026-7c936ec89977",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "a914d42e-7e4e-4fc1-9a5b-be9c8f9df89f",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "c988cfd8-1974-49dc-98a1-ad3776726fcb",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+      "query": "fire control ready but hold count",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "torpedo wasted shot rate",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "torpedo wasted shot rate",
+      "status": "ok",
+      "v1_evidence_count": 5,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "torpedo wasted shot rate",
+      "status": "ok",
+      "v1_evidence_count": 3,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "torpedo wasted shot rate",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "85fa6620-c20e-4e01-b52e-e2f9613f1bcf",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 7
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "96dc449d-9f8a-4536-a60f-c1c8a97b889f",
+      "query": "torpedo wasted shot rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "sonar clutter wrong binding rate",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "sonar clutter wrong binding rate",
+      "status": "ok",
+      "v1_evidence_count": 5,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "sonar clutter wrong binding rate",
+      "status": "missing_from_v2",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": null
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "sonar clutter wrong binding rate",
+      "status": "missing_from_v2",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": null
+    },
+    {
+      "card_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "sonar clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "ok",
+      "v1_evidence_count": 5,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "missing_from_v2",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": null
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+      "query": "acoustic clutter wrong binding rate",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "reacquisition failure taxonomy",
+      "status": "ok",
+      "v1_evidence_count": 4,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "a96ab62a-70da-46f5-b38c-390e73fbe43a",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+      "query": "reacquisition failure taxonomy",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "719fafb5-b25b-4460-a549-987799432a6c",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 5
+    },
+    {
+      "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 3
+    },
+    {
+      "card_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    },
+    {
+      "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "status": "extra_from_v2",
+      "v1_evidence_count": null,
+      "v2_evidence_count": 4
+    }
+  ],
+  "record_type": "muninn_v2_evidence_parity_report",
+  "schema_version": "muninn.v2.foundation.v1",
+  "summary": {
+    "checks": 104,
+    "mismatches": 92,
+    "ok": 12
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-05-13",
+  "scope": "inspection_only",
+  "schemas": [
+    {
+      "name": "human_memory",
+      "source_file": "migrations/0001_init.sql",
+      "runtime_db": "~/.local/share/muninn/human_memory.db",
+      "owner_modules": [
+        "src/muninn/human_memory/bootstrap.py",
+        "src/muninn/human_memory/cards.py",
+        "src/muninn/human_memory/spaces.py",
+        "src/muninn/human_memory/rehydration.py",
+        "src/muninn/human_memory/vector_store.py"
+      ],
+      "tables": [
+        {"name": "users", "role": "local namespace owner", "durability": "substrate"},
+        {"name": "clients", "role": "caller identity", "durability": "substrate"},
+        {"name": "spaces", "role": "canonical scope/project/global identity", "durability": "substrate"},
+        {"name": "space_aliases", "role": "alias to canonical scope mapping", "durability": "substrate"},
+        {"name": "cards", "role": "durable memory unit", "durability": "substrate"},
+        {"name": "cards_fts", "role": "FTS5 index for card title/summary/body", "durability": "derived"},
+        {"name": "evidence", "role": "provenance refs and evidence payload metadata", "durability": "substrate"},
+        {"name": "card_evidence", "role": "card to evidence join", "durability": "substrate"},
+        {"name": "card_relations", "role": "lineage edges", "durability": "substrate"},
+        {"name": "tags", "role": "tag dictionary", "durability": "substrate"},
+        {"name": "card_tags", "role": "card to tag join", "durability": "substrate"},
+        {"name": "interaction_events", "role": "raw behavioral/directive/outcome event log", "durability": "substrate"},
+        {"name": "card_vectors", "role": "additive durable-card vector metadata and vector blobs", "durability": "optional_index"},
+        {"name": "vector_index_state", "role": "operator-visible vector rebuild/status metadata", "durability": "operational"}
+      ],
+      "key_constraints": {
+        "cards.status": ["active", "superseded", "archived"],
+        "cards.salience": "0.0..1.0",
+        "cards.source_confidence": "nullable 0.0..1.0",
+        "evidence.type": ["chat", "log", "diff", "file", "url", "commit", "test"],
+        "card_relations.relation_type": ["supersedes", "duplicates", "contradicts", "refines"]
+      },
+      "json_metadata": [
+        "cards.context_json.provenance",
+        "cards.context_json.policy_state",
+        "cards.context_json.procedure",
+        "cards.context_json.atlas",
+        "cards.context_json.adaptation",
+        "evidence.meta_json",
+        "interaction_events.payload_json"
+      ],
+      "retrieval_structures": [
+        "cards_fts",
+        "idx_cards_lens",
+        "idx_evidence_lens",
+        "idx_interaction_events_lens",
+        "idx_interaction_events_signal",
+        "card_vectors",
+        "vector_index_state"
+      ],
+      "vector_assumptions": {
+        "eligible_kinds": ["decision", "constraint", "interface", "runbook"],
+        "default_model": "human-memory-hash-v1",
+        "default_dimension": 96,
+        "backend": "sqlite-vec when available, deterministic brute-force fallback otherwise",
+        "runtime_default": "vector_mode=off"
+      },
+      "durable_primitives": [
+        "space",
+        "space alias",
+        "card",
+        "evidence",
+        "card/evidence join",
+        "lineage relation",
+        "interaction event",
+        "tag",
+        "optional vector record"
+      ],
+      "overfit_primitives": [
+        "repo/path/cwd dominant space identity",
+        "project-memory default kinds",
+        "Codex client default",
+        "policy/adaptation kinds embedded as card kinds"
+      ],
+      "missing_primitives": [
+        "general entity registry",
+        "general association graph",
+        "first-class recall history",
+        "salience signal ledger",
+        "multimodal asset model",
+        "typed metadata schema registry",
+        "migration ledger"
+      ]
+    },
+    {
+      "name": "legacy_v0_and_cardex",
+      "source_file": "src/muninn/schema.sql",
+      "runtime_db": "data/muninn.db or MUNINN_DB_PATH",
+      "owner_modules": [
+        "src/muninn/db.py",
+        "src/muninn/memory/*",
+        "src/muninn/cardex/*",
+        "src/muninn/vector/*",
+        "src/muninn/core/v0_runtime.py"
+      ],
+      "tables": [
+        {"name": "schema_migrations", "role": "legacy migration ledger", "durability": "operational"},
+        {"name": "entities", "role": "general entity records", "durability": "substrate_candidate"},
+        {"name": "facts", "role": "entity assertions", "durability": "substrate_candidate"},
+        {"name": "episodes", "role": "entity-scoped event/episode summaries", "durability": "substrate_candidate"},
+        {"name": "preferences", "role": "entity preference state with optional decay", "durability": "substrate_candidate"},
+        {"name": "audit_log", "role": "append-only event log", "durability": "substrate_candidate"},
+        {"name": "facts_fts", "role": "FTS5 fact index", "durability": "derived"},
+        {"name": "episodes_fts", "role": "FTS5 episode index", "durability": "derived"},
+        {"name": "preferences_fts", "role": "FTS5 preference index", "durability": "derived"},
+        {"name": "embeddings", "role": "legacy fact/episode/preference vector blobs", "durability": "optional_index"},
+        {"name": "embeddings_vec_index", "role": "sqlite-vec row mapping", "durability": "optional_index"},
+        {"name": "pending_candidates", "role": "guarded candidate review queue", "durability": "workflow"},
+        {"name": "candidate_decisions", "role": "candidate review decisions", "durability": "workflow"},
+        {"name": "cards", "role": "Cardex multimodal-ready card", "durability": "substrate_candidate"},
+        {"name": "sources", "role": "source asset metadata", "durability": "substrate_candidate"},
+        {"name": "documents", "role": "source text documents", "durability": "substrate_candidate"},
+        {"name": "chunks", "role": "document chunks", "durability": "substrate_candidate"},
+        {"name": "card_refs", "role": "card to source/doc/chunk/entity/external refs", "durability": "substrate_candidate"},
+        {"name": "artifacts", "role": "derived multimodal artifacts", "durability": "substrate_candidate"},
+        {"name": "card_embeddings", "role": "Cardex multimodal embeddings", "durability": "optional_index"},
+        {"name": "proposals", "role": "Cardex proposal workflow", "durability": "workflow"},
+        {"name": "evidence_state", "role": "candidate/promoted evidence state", "durability": "workflow"},
+        {"name": "signals", "role": "access signals", "durability": "salience_candidate"},
+        {"name": "coaccess_edges", "role": "coaccess association edges", "durability": "association_candidate"},
+        {"name": "index_jobs", "role": "embedding/index work queue", "durability": "operational"},
+        {"name": "cards_fts", "role": "FTS5 Cardex card index", "durability": "derived"},
+        {"name": "artifacts_fts", "role": "FTS5 artifact index", "durability": "derived"}
+      ],
+      "key_constraints": {
+        "MemoryCandidate.kind": ["fact", "episode", "preference"],
+        "cards.type": ["contact", "recipe", "paper", "fact", "place", "media", "thread", "collection", "custom"],
+        "sources.source_type": ["document", "web", "note", "image", "audio", "video", "file", "email", "chat", "other"],
+        "card_embeddings.modality": ["text", "image", "audio", "video"],
+        "proposals.status": ["proposed", "confirmed", "rejected", "expired"]
+      },
+      "durable_primitives": [
+        "entity",
+        "fact",
+        "episode",
+        "preference",
+        "audit event",
+        "source",
+        "document",
+        "chunk",
+        "artifact",
+        "card ref",
+        "embedding",
+        "access signal",
+        "coaccess edge"
+      ],
+      "overfit_primitives": [
+        "v0 fact/episode/preference API surface",
+        "Cardex-specific card type enum",
+        "candidate workflow tied to legacy write path"
+      ],
+      "missing_primitives": [
+        "unified relation to human-memory cards",
+        "shared lifecycle enum",
+        "shared evidence contract",
+        "unified recall ledger",
+        "migration mapping to v2 envelopes"
+      ]
+    }
+  ],
+  "assessment": {
+    "generalized_entity_support": "partial and split across v0 entities, Cardex cards, and human-memory metadata",
+    "association_graph_support": "partial via card_relations and coaccess_edges; no unified graph contract",
+    "recall_history_support": "weak in human-memory, partial in Cardex signals/coaccess",
+    "salience_decay_support": "salience fields and preference decay exist, but propagation/decay are not first-class contracts",
+    "multimodal_asset_support": "stronger in Cardex than in active human-memory path",
+    "migration_friendliness": "moderate; table structures are explicit SQLite, but semantic mapping is split"
+  }
+}
