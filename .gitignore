@@ -65,3 +65,8 @@ recordings/
 .ngrok*
 cloudflared*
 tunnel*
+
+# --- Local topology cache / enterprise artifacts ---
+.mimir/
+artifacts/
+evals/reports/
