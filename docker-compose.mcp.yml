@@ -1,0 +1,43 @@
+services:
+  muninn-mcp:
+    container_name: muninn-mcp
+    image: muninn-mcp:local
+    build:
+      context: ./apps/muninn_mcp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MUNINN_BASE_URL: http://friday-muninn-1:8000
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL, for example https://api.example.com}
+      MCP_PUBLIC_PATH_PREFIX: ${MCP_PUBLIC_PATH_PREFIX:?set MCP_PUBLIC_PATH_PREFIX, for example /mcp-long-secret}
+    expose:
+      - "8000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=edge"
+      - "traefik.http.routers.muninn-mcp.rule=Host(`${MUNINN_MCP_HOST:?set MUNINN_MCP_HOST}`) && PathPrefix(`${MCP_PUBLIC_PATH_PREFIX:?set MCP_PUBLIC_PATH_PREFIX}`)"
+      - "traefik.http.routers.muninn-mcp.entrypoints=${MUNINN_MCP_TRAEFIK_ENTRYPOINT:-websecure}"
+      - "traefik.http.routers.muninn-mcp.tls=true"
+      - "traefik.http.routers.muninn-mcp-web.rule=Host(`${MUNINN_MCP_HOST:?set MUNINN_MCP_HOST}`) && PathPrefix(`${MCP_PUBLIC_PATH_PREFIX:?set MCP_PUBLIC_PATH_PREFIX}`)"
+      - "traefik.http.routers.muninn-mcp-web.entrypoints=web"
+      - "traefik.http.routers.muninn-mcp-web.middlewares=muninn-mcp-strip"
+      - "traefik.http.routers.muninn-mcp-web.service=muninn-mcp"
+      - "traefik.http.middlewares.muninn-mcp-strip.stripprefix.prefixes=${MCP_PUBLIC_PATH_PREFIX:?set MCP_PUBLIC_PATH_PREFIX}"
+      - "traefik.http.routers.muninn-mcp.middlewares=muninn-mcp-strip"
+      - "traefik.http.services.muninn-mcp.loadbalancer.server.port=8000"
+    networks:
+      - friday_net
+      - edge
+
+networks:
+  friday_net:
+    external: true
+    name: friday_net
+  edge:
+    external: true
+    name: edge
