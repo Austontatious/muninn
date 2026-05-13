@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn-mimir.dev/v1/mimir-memory-proposal-batch.v1.schema.json",
+  "title": "Mimir Memory Proposal Batch",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "world_id",
+    "task",
+    "proposals"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "mimir.muninn_memory_proposal_batch.v1"
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_system": {
+      "type": "string",
+      "const": "mimir"
+    },
+    "world_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_by_command": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_required": {
+      "type": "boolean"
+    },
+    "writes_to_muninn": {
+      "type": "boolean",
+      "const": false
+    },
+    "writes_durable_memory": {
+      "type": "boolean",
+      "const": false
+    },
+    "write_behavior": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "writes_to_muninn": {
+          "type": "boolean",
+          "const": false
+        },
+        "writes_durable_memory": {
+          "type": "boolean",
+          "const": false
+        },
+        "review_required_for_all_proposals": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "proposal_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "proposal_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/proposal_type"
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/proposal"
+      }
+    },
+    "skipped_or_downgraded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "reason_id",
+          "reason",
+          "count"
+        ],
+        "properties": {
+          "reason_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "confidence": {
+            "$ref": "#/$defs/confidence"
+          },
+          "durable_memory_proposal_created": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "proposal_type": {
+      "type": "string",
+      "enum": [
+        "project_boundary",
+        "durable_decision",
+        "current_state_checkpoint",
+        "known_risk",
+        "confirmed_alignment",
+        "next_step",
+        "guardrail"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "source_path"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "root_id": {
+          "type": "string"
+        },
+        "authority_tier": {
+          "type": "string"
+        },
+        "freshness": {
+          "type": "string"
+        },
+        "excerpt": {
+          "type": "string"
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "proposal_id",
+        "world_id",
+        "memory_type",
+        "title",
+        "summary",
+        "evidence",
+        "source_paths",
+        "confidence",
+        "why_durable",
+        "review_required"
+      ],
+      "properties": {
+        "proposal_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "world_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "memory_type": {
+          "$ref": "#/$defs/proposal_type"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "source_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "authority_tier": {
+          "type": "string"
+        },
+        "freshness": {
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "suggested_namespace": {
+          "type": "string"
+        },
+        "suggested_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "why_durable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_required": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
+}

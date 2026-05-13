@@ -42,6 +42,12 @@ from .human_memory.spaces import (
     resolve_space_from_cwd as human_memory_resolve_space_from_cwd,
 )
 from .migrations import apply_migrations
+from .mimir_proposals import (
+    approve_proposal_batch as mimir_proposals_approve_batch,
+    load_proposal_batch as mimir_proposals_load_batch,
+    preview_proposal_batch as mimir_proposals_preview_batch,
+    validate_proposal_batch as mimir_proposals_validate_batch,
+)
 from .telemetry import emit_event as emit_telemetry_event, telemetry_context
 from .vector import store as vector_store
 
@@ -719,6 +725,31 @@ def _build_parser() -> argparse.ArgumentParser:
     policy_events.add_argument("--limit", type=int, default=20, help="Maximum events to return.")
     policy_events.add_argument("--json", action="store_true", dest="as_json", help="Emit JSON.")
 
+    proposals = sub.add_parser(
+        "proposals",
+        help="Validate and preview guarded external memory proposal batches",
+    )
+    proposals_sub = proposals.add_subparsers(dest="proposals_command")
+
+    proposals_validate = proposals_sub.add_parser("validate", help="Validate a Mimir proposal batch without writing")
+    proposals_validate.add_argument("--proposal-batch", required=True, help="Path to Mimir proposal batch JSON")
+    proposals_validate.add_argument("--json", action="store_true", dest="as_json", help="Emit JSON.")
+
+    proposals_preview = proposals_sub.add_parser("preview", help="Map a Mimir proposal batch to candidate card envelopes without writing")
+    proposals_preview.add_argument("--proposal-batch", required=True, help="Path to Mimir proposal batch JSON")
+    proposals_preview.add_argument("--namespace", default="default", help="Target namespace for mapped cards")
+    proposals_preview.add_argument("--proposal-id", action="append", default=None, help="Limit preview to one proposal id; repeatable")
+    proposals_preview.add_argument("--json", action="store_true", dest="as_json", help="Emit JSON.")
+
+    proposals_approve = proposals_sub.add_parser("approve", help="Dry-run approval mapping for selected Mimir proposals")
+    proposals_approve.add_argument("--proposal-batch", required=True, help="Path to Mimir proposal batch JSON")
+    proposals_approve.add_argument("--namespace", default="default", help="Target namespace for mapped cards")
+    proposals_approve.add_argument("--proposal-id", action="append", default=None, help="Approve one proposal id; repeatable")
+    proposals_approve.add_argument("--all", action="store_true", dest="approve_all", help="Approve all proposals in dry-run mode")
+    proposals_approve.add_argument("--dry-run", action="store_true", default=True, help="Preview approval without writing; this is the default")
+    proposals_approve.add_argument("--write", action="store_true", help="Attempt actual write mode; currently rejected by this contract slice")
+    proposals_approve.add_argument("--json", action="store_true", dest="as_json", help="Emit JSON.")
+
     up = sub.add_parser("up", help="Start Muninn API server")
     up.add_argument("--host", default=None, help="Host bind (default from MUNINN_HOST or config)")
     up.add_argument("--port", type=int, default=None, help="Port (default from MUNINN_PORT or config)")
@@ -814,6 +845,84 @@ def _emit_cli_command_event(command: str, *, request_id: str, status: str, **pay
         stream_prefix="MUNINN_CLI",
         stream="stderr",
     )
+
+def _print_proposal_validation(payload: dict[str, Any]) -> None:
+    print(f"ok: {str(payload.get('ok')).lower()}")
+    print(f"batch_id: {payload.get('batch_id')}")
+    print(f"source_system: {payload.get('source_system')}")
+    print(f"world_id: {payload.get('world_id')}")
+    print(f"proposal_count: {payload.get('proposal_count')}")
+    if payload.get("proposal_types"):
+        print(f"proposal_types: {', '.join(payload.get('proposal_types', []))}")
+    for warning in payload.get("warnings", []):
+        print(f"warning: {warning}")
+    for error in payload.get("errors", []):
+        print(f"error: {error}")
+
+
+def _print_proposal_preview(payload: dict[str, Any]) -> None:
+    print(f"ok: {str(payload.get('ok')).lower()}")
+    print(f"batch_id: {payload.get('batch_id')}")
+    print(f"namespace: {payload.get('namespace')}")
+    print(f"selected_count: {payload.get('selected_count')}")
+    print(f"would_write: {str(payload.get('would_write')).lower()}")
+    print(f"wrote: {str(payload.get('wrote', False)).lower()}")
+    for error in payload.get("errors", []):
+        print(f"error: {error}")
+    for card in payload.get("cards", [])[:12]:
+        if isinstance(card, dict):
+            print(f"- {card.get('stable_id')} [{card.get('kind')}] {card.get('title')}")
+
+
+def _cmd_proposals(args: argparse.Namespace) -> int:
+    if args.proposals_command is None:
+        return 1
+    try:
+        batch = mimir_proposals_load_batch(args.proposal_batch)
+    except Exception as exc:
+        payload = {"ok": False, "errors": [str(exc)], "warnings": []}
+        if getattr(args, "as_json", False):
+            print(json.dumps(payload, indent=2))
+        else:
+            _print_proposal_validation(payload)
+        return 1
+
+    if args.proposals_command == "validate":
+        payload = mimir_proposals_validate_batch(batch)
+        payload.pop("normalized_batch", None)
+        if args.as_json:
+            print(json.dumps(payload, indent=2))
+        else:
+            _print_proposal_validation(payload)
+        return 0 if payload.get("ok") else 1
+
+    if args.proposals_command == "preview":
+        payload = mimir_proposals_preview_batch(
+            batch,
+            namespace=str(args.namespace or "default"),
+            proposal_ids=list(args.proposal_id or []),
+        )
+        if args.as_json:
+            print(json.dumps(payload, indent=2))
+        else:
+            _print_proposal_preview(payload)
+        return 0 if payload.get("ok") else 1
+
+    if args.proposals_command == "approve":
+        payload = mimir_proposals_approve_batch(
+            batch,
+            namespace=str(args.namespace or "default"),
+            proposal_ids=list(args.proposal_id or []),
+            approve_all=bool(args.approve_all),
+            write=bool(args.write),
+        )
+        if args.as_json:
+            print(json.dumps(payload, indent=2))
+        else:
+            _print_proposal_preview(payload)
+        return 0 if payload.get("ok") else 1
+
+    return 1
 
 
 def _open_human_memory_conn_with_init(
@@ -2225,6 +2334,8 @@ def main(argv: list[str] | None = None) -> int:
             return _cmd_policy_events(args)
         parser.print_help()
         return 1
+    if args.command == "proposals":
+        return _cmd_proposals(args)
 
     parser.print_help()
     return 0

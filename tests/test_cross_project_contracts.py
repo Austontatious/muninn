@@ -269,6 +269,7 @@ def test_versions_file_declares_expected_schema_keys() -> None:
     assert set(versions["schemas"].keys()) == {
         "card_envelope",
         "lifecycle_state",
+        "mimir_memory_proposal_batch",
         "provenance_envelope",
         "confidence_trust",
         "rehydrate_request",

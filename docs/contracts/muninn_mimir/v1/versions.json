@@ -27,7 +27,8 @@
     "confidence_trust": "schemas/confidence-trust.v1.schema.json",
     "rehydrate_request": "schemas/rehydrate-request.v1.schema.json",
     "rehydrate_response": "schemas/rehydrate-response.v1.schema.json",
-    "topology_ref": "schemas/topology-ref.v1.schema.json"
+    "topology_ref": "schemas/topology-ref.v1.schema.json",
+    "mimir_memory_proposal_batch": "schemas/mimir-memory-proposal-batch.v1.schema.json"
   },
   "examples": {
     "valid": {
@@ -51,6 +52,9 @@
       ],
       "rehydrate_response": [
         "examples/valid/rehydrate-response.basic.v1.json"
+      ],
+      "mimir_memory_proposal_batch": [
+        "examples/valid/mimir-memory-proposal-batch.basic.v1.json"
       ]
     },
     "invalid": {
@@ -68,6 +72,9 @@
       ],
       "rehydrate_response": [
         "examples/invalid/rehydrate-response.bad-item.v1.json"
+      ],
+      "mimir_memory_proposal_batch": [
+        "examples/invalid/mimir-memory-proposal-batch.missing-evidence.v1.json"
       ]
     }
   }

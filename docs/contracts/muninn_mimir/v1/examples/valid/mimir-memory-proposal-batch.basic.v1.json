@@ -1,0 +1,60 @@
+{
+  "schema_version": "mimir.muninn_memory_proposal_batch.v1",
+  "batch_id": "mimir-proposals-example",
+  "source_system": "mimir",
+  "world_id": "local_ai_ecosystem",
+  "task": "continue developing Mimir as a declared-world state manager",
+  "generated_by_command": "mimir world propose-memory",
+  "review_required": true,
+  "writes_to_muninn": false,
+  "writes_durable_memory": false,
+  "proposal_count": 1,
+  "proposal_types": [
+    "guardrail"
+  ],
+  "proposals": [
+    {
+      "proposal_id": "mem-proposal-001-muninn-remains-memory-owner",
+      "world_id": "local_ai_ecosystem",
+      "project_id": "muninn",
+      "scope": "world:local_ai_ecosystem:project:muninn",
+      "memory_type": "guardrail",
+      "title": "Muninn remains the durable memory owner",
+      "summary": "Mimir proposal exports are review-required artifacts and do not write durable memory.",
+      "evidence": [
+        {
+          "source_path": "/mnt/data/Bifrost/atlas/exports/mimir_worlds/local_ai_ecosystem.json",
+          "source_type": "bifrost_world_export",
+          "project_id": "bifrost",
+          "authority_tier": "atlas_authority",
+          "freshness": "read current export before import",
+          "excerpt": "Muninn owns durable memory."
+        }
+      ],
+      "source_paths": [
+        "/mnt/data/Bifrost/atlas/exports/mimir_worlds/local_ai_ecosystem.json"
+      ],
+      "authority_tier": "atlas_authority",
+      "freshness": "read current export before import",
+      "confidence": "high",
+      "suggested_namespace": "world:local_ai_ecosystem:memory_proposals",
+      "suggested_tags": [
+        "muninn",
+        "durable-memory",
+        "guardrail"
+      ],
+      "why_durable": "The boundary prevents Mimir from becoming a second durable memory substrate.",
+      "review_required": true
+    }
+  ],
+  "skipped_or_downgraded": [
+    {
+      "reason_id": "skip-ambiguous-boundary-signals",
+      "source": "drift.ambiguous_signals",
+      "reason": "Ambiguous signals require review before durable import.",
+      "count": 0,
+      "confidence": "low",
+      "durable_memory_proposal_created": false
+    }
+  ]
+}

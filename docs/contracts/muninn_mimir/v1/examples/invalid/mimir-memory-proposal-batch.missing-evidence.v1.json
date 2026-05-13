@@ -1,0 +1,27 @@
+{
+  "schema_version": "mimir.muninn_memory_proposal_batch.v1",
+  "batch_id": "mimir-proposals-invalid",
+  "source_system": "mimir",
+  "world_id": "local_ai_ecosystem",
+  "task": "continue developing Mimir as a declared-world state manager",
+  "generated_by_command": "mimir world propose-memory",
+  "review_required": true,
+  "writes_to_muninn": false,
+  "writes_durable_memory": false,
+  "proposals": [
+    {
+      "proposal_id": "mem-proposal-invalid",
+      "world_id": "local_ai_ecosystem",
+      "memory_type": "guardrail",
+      "title": "Missing evidence should fail",
+      "summary": "This proposal lacks evidence.",
+      "evidence": [],
+      "source_paths": [
+        "/tmp/example.md"
+      ],
+      "confidence": "high",
+      "why_durable": "Evidence is required.",
+      "review_required": true
+    }
+  ]
+}

@@ -8,13 +8,21 @@ Rules:
 - This is a build/test-time compatibility layer only. It does not create a runtime dependency between repos.
 - Both repos validate these schemas and fixtures and check sibling parity when both repos are present.
 
+Current contract version:
+- `1.0.0`
+
 Locked v1 surfaces:
 - Card-like envelope projection
 - Lifecycle/status semantics projection
 - Provenance envelope
 - Confidence/trust envelope
 - Rehydration request/response projection
-- Topology/binding reference envelope
+- Topology or binding reference envelope
+- Mimir declared-world memory proposal batch projection
+
+Golden example fixtures:
+- valid: `examples/valid/*.v1.json`
+- invalid: `examples/invalid/*.v1.json`
 
 Authoritative locations:
 - `/mnt/data/Mimir/docs/contracts/muninn_mimir/v1`
