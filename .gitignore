@@ -56,6 +56,8 @@ data/*.json
 data/*.log
 data/cache/
 data/tmp/
+reports/pilots/**/*.db
+reports/pilots/**/*.db-*
 
 # If you generate exports or recordings locally
 exports/
