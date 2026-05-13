@@ -270,6 +270,13 @@ def _extract_procedure(row: dict[str, Any]) -> dict[str, Any] | None:
         return None
 
     trigger_conditions = _normalize_text_list(raw_procedure.get("trigger_conditions"), lower=True)
+    intent_tags = _normalize_text_list(raw_procedure.get("intent_tags"), lower=True)
+    preconditions = _normalize_text_list(raw_procedure.get("preconditions"))
+    expected_outcomes = _normalize_text_list(raw_procedure.get("expected_outcomes"))
+    failure_modes = _normalize_text_list(raw_procedure.get("failure_modes"))
+    fallbacks = _normalize_text_list(raw_procedure.get("fallbacks"))
+    when_not_to_use = _normalize_text_list(raw_procedure.get("when_not_to_use"))
+    retrieval_roles = _normalize_text_list(raw_procedure.get("retrieval_roles"), lower=True)
     steps = _normalize_text_list(raw_procedure.get("steps"))
     if not steps:
         return None
@@ -282,6 +289,13 @@ def _extract_procedure(row: dict[str, Any]) -> dict[str, Any] | None:
         "title": title,
         "summary": summary,
         "trigger_conditions": trigger_conditions,
+        "intent_tags": intent_tags,
+        "preconditions": preconditions,
+        "expected_outcomes": expected_outcomes,
+        "failure_modes": failure_modes,
+        "fallbacks": fallbacks,
+        "when_not_to_use": when_not_to_use,
+        "retrieval_roles": retrieval_roles,
         "scope": _normalize_scope(raw_procedure.get("scope")),
         "steps": steps,
         "tool_requirements": _normalize_text_list(raw_procedure.get("tool_requirements"), lower=True),
@@ -361,6 +375,7 @@ def _procedure_tags(
     validation_status: ProcedureValidationStatus,
     scope_type: str,
     task_types: list[str],
+    retrieval_roles: list[str],
     tags: list[str] | None,
 ) -> list[str]:
     merged = [
@@ -368,6 +383,7 @@ def _procedure_tags(
         f"procedure.validation.{validation_status}",
         f"scope.{scope_type}",
         *task_types,
+        *retrieval_roles,
         *(_normalize_text_list(tags, lower=True) if tags else []),
     ]
     return _normalize_text_list(merged, lower=True)
@@ -381,14 +397,21 @@ def procedure_card_upsert(
     title: str,
     summary: str,
     trigger_conditions: list[str],
+    intent_tags: list[str] | None = None,
+    preconditions: list[str] | None = None,
     scope: dict[str, Any] | str | None,
     steps: list[str],
+    expected_outcomes: list[str] | None = None,
+    failure_modes: list[str] | None = None,
+    fallbacks: list[str] | None = None,
+    when_not_to_use: list[str] | None = None,
     tool_requirements: list[str] | None = None,
     pitfalls: list[str] | None = None,
     verification_checks: list[str] | None = None,
     confidence: float = 0.65,
     validation_status: str = "candidate",
     task_types: list[str] | None = None,
+    retrieval_roles: list[str] | None = None,
     provenance: dict[str, Any] | None = None,
     supersedes_card_id: str | None = None,
     tags: list[str] | None = None,
@@ -404,7 +427,12 @@ def procedure_card_upsert(
     normalized_title = _normalize_text(title)
     normalized_summary = _normalize_text(summary)
     normalized_steps = _normalize_text_list(steps)
-    normalized_triggers = _normalize_text_list(trigger_conditions, lower=True)
+    normalized_intent_tags = _normalize_text_list(intent_tags, lower=True)
+    normalized_preconditions = _normalize_text_list(preconditions)
+    normalized_triggers = _normalize_text_list(
+        list(trigger_conditions or []) + normalized_intent_tags + normalized_preconditions,
+        lower=True,
+    )
     if not normalized_title:
         raise ValueError("invalid_procedure_title")
     if not normalized_summary:
@@ -418,6 +446,11 @@ def procedure_card_upsert(
     normalized_pitfalls = _normalize_text_list(pitfalls)
     normalized_checks = _normalize_text_list(verification_checks)
     normalized_task_types = _normalize_text_list(task_types, lower=True)
+    normalized_roles = _normalize_text_list(retrieval_roles, lower=True)
+    normalized_expected = _normalize_text_list(expected_outcomes)
+    normalized_failure_modes = _normalize_text_list(failure_modes)
+    normalized_fallbacks = _normalize_text_list(fallbacks)
+    normalized_when_not = _normalize_text_list(when_not_to_use)
     normalized_confidence = _coerce_confidence(confidence)
 
     normalized_body = _normalize_text(body)
@@ -428,14 +461,21 @@ def procedure_card_upsert(
         "procedure": {
             "schema_version": 1,
             "trigger_conditions": normalized_triggers,
+            "intent_tags": normalized_intent_tags,
+            "preconditions": normalized_preconditions,
             "scope": normalized_scope,
             "steps": normalized_steps,
+            "expected_outcomes": normalized_expected,
+            "failure_modes": normalized_failure_modes,
+            "fallbacks": normalized_fallbacks,
+            "when_not_to_use": normalized_when_not,
             "tool_requirements": normalized_tools,
             "pitfalls": normalized_pitfalls,
             "verification_checks": normalized_checks,
             "confidence": normalized_confidence,
             "validation_status": normalized_validation,
             "task_types": normalized_task_types,
+            "retrieval_roles": normalized_roles,
             "provenance": dict(provenance or {}),
             "supersedes_card_id": _normalize_text(supersedes_card_id) or None,
             "superseded_by_card_id": None,
@@ -446,6 +486,7 @@ def procedure_card_upsert(
         validation_status=normalized_validation,
         scope_type=str(normalized_scope.get("type") or "global"),
         task_types=normalized_task_types,
+        retrieval_roles=normalized_roles,
         tags=tags,
     )
 
@@ -539,6 +580,13 @@ def query_procedure_cards(
             continue
         task_types = procedure.get("task_types") or []
         required_tools = procedure.get("tool_requirements") or []
+        intent_tags = procedure.get("intent_tags") or []
+        preconditions = procedure.get("preconditions") or []
+        expected_outcomes = procedure.get("expected_outcomes") or []
+        failure_modes = procedure.get("failure_modes") or []
+        fallbacks = procedure.get("fallbacks") or []
+        when_not_to_use = procedure.get("when_not_to_use") or []
+        retrieval_roles = procedure.get("retrieval_roles") or []
         scope = dict(procedure.get("scope") or {"type": "global", "id": None})
 
         lexical = _token_overlap_score(
@@ -546,11 +594,19 @@ def query_procedure_cards(
             row.get("title"),
             row.get("summary"),
             " ".join(procedure.get("trigger_conditions") or []),
+            " ".join(intent_tags),
+            " ".join(preconditions),
+            " ".join(expected_outcomes),
+            " ".join(failure_modes),
+            " ".join(fallbacks),
+            " ".join(when_not_to_use),
+            " ".join(retrieval_roles),
             " ".join(task_types),
             " ".join(required_tools),
             " ".join(procedure.get("pitfalls") or []),
         )
         task_type_bonus = 0.14 if normalized_task_type and normalized_task_type in task_types else 0.0
+        role_bonus = 0.12 if normalized_task_type and normalized_task_type in retrieval_roles else 0.0
         tool_bonus = 0.0
         if normalized_tools and required_tools:
             overlap = len(set(normalized_tools).intersection(set(required_tools)))
@@ -565,6 +621,7 @@ def query_procedure_cards(
             + _validation_bonus(validation_status)
             + lexical
             + task_type_bonus
+            + role_bonus
             + tool_bonus
             + _scope_bonus(scope)
             - _staleness_penalty(row.get("updated_at"), stale_after_days=stale_after_days)
@@ -581,6 +638,8 @@ def query_procedure_cards(
             reasons.append(f"lexical={lexical:.2f}")
         if task_type_bonus > 0.0:
             reasons.append("task_type_match")
+        if role_bonus > 0.0:
+            reasons.append("role_match")
         if tool_bonus > 0.0:
             reasons.append("tool_overlap")
         if _scope_bonus(scope) > 0.0:
@@ -596,17 +655,27 @@ def query_procedure_cards(
                 "title": str(row.get("title", "")),
                 "summary": str(row.get("summary", "")),
                 "when_to_apply": list(procedure.get("trigger_conditions") or []),
+                "intent_tags": list(intent_tags),
+                "preconditions": list(preconditions),
                 "scope": scope,
                 "steps": list(procedure.get("steps") or []),
+                "expected_outcomes": list(expected_outcomes),
+                "failure_modes": list(failure_modes),
+                "fallbacks": list(fallbacks),
+                "when_not_to_use": list(when_not_to_use),
                 "tool_requirements": list(required_tools),
                 "pitfalls": list(procedure.get("pitfalls") or []),
                 "verification_checks": list(procedure.get("verification_checks") or []),
                 "confidence": confidence,
                 "validation_status": validation_status,
+                "status": row.get("status"),
                 "task_types": list(task_types),
+                "retrieval_roles": list(retrieval_roles),
                 "updated_at": row.get("updated_at"),
                 "provenance": dict(procedure.get("provenance") or {}),
                 "failure_count": _failure_count(procedure.get("provenance")),
+                "evidence_count": int(row.get("evidence_count") or 0),
+                "has_evidence": bool(row.get("has_evidence")),
                 "selection_reasons": reasons,
                 "score": round(score, 6),
             }
@@ -646,6 +715,7 @@ def query_procedure_cards(
             "pitfalls": item["pitfalls"][:3],
             "confidence": item["confidence"],
             "validation_status": item["validation_status"],
+            "evidence_count": item.get("evidence_count", 0),
             "selection_reasons": list(item.get("selection_reasons", [])),
             "score": item["score"],
         }
@@ -819,14 +889,21 @@ def ingest_procedure_reflection(
             title=str(existing.get("title")),
             summary=str(existing.get("summary")),
             trigger_conditions=list(existing.get("when_to_apply") or []),
+            intent_tags=list(existing.get("intent_tags") or []),
+            preconditions=list(existing.get("preconditions") or []),
             scope=existing.get("scope") or {"type": "global", "id": None},
             steps=updated_steps,
+            expected_outcomes=list(existing.get("expected_outcomes") or []),
+            failure_modes=list(updated_pitfalls),
+            fallbacks=list(existing.get("fallbacks") or []),
+            when_not_to_use=list(existing.get("when_not_to_use") or []),
             tool_requirements=list(existing.get("tool_requirements") or []),
             pitfalls=updated_pitfalls,
             verification_checks=list(existing.get("verification_checks") or []),
             confidence=updated_confidence,
             validation_status=updated_validation,
             task_types=list(existing.get("task_types") or ([task_type] if task_type else [])),
+            retrieval_roles=list(existing.get("retrieval_roles") or []),
             provenance=event_enriched_provenance,
             body="\n".join(updated_steps),
             supersedes_card_id=str(existing.get("id")) if should_supersede else None,
@@ -902,14 +979,18 @@ def ingest_procedure_reflection(
         title=title,
         summary=" ".join(part for part in summary_parts if part),
         trigger_conditions=[context_summary or task_label or "similar task context"],
+        intent_tags=[task_type] if task_type else None,
         scope={"type": "project", "id": None},
         steps=actions_taken,
+        expected_outcomes=[item for item in [what_worked, changed_outcome] if item],
+        failure_modes=[item for item in [what_failed] if item],
         tool_requirements=tool_requirements,
         pitfalls=[item for item in [what_failed, changed_outcome] if item],
         verification_checks=_normalize_text_list(reflection.get("verification_checks")),
         confidence=new_confidence,
         validation_status=validation,
         task_types=[task_type] if task_type else None,
+        retrieval_roles=[task_type] if task_type else None,
         provenance={"events": [{**provenance_event, "what_worked": what_worked, "what_failed": what_failed}]},
         body="\n".join(actions_taken),
         dedupe_by_fingerprint=True,

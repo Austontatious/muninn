@@ -1,15 +1,14 @@
-from .core import (
-    AppPack,
-    AppSpec,
-    BundleSpec,
+from .config import MuninnConfig
+from .contracts import (
+    BundleExplanation,
+    BundleResult,
     BundleStageDecision,
     BundleStageResult,
     EvidenceRef,
     MemoryEvent,
     MemoryItem,
-    MemorySpec,
-    Muninn,
-    MuninnConfig,
+)
+from .procedures import (
     ProcedureBundleResult,
     ProcedureProjectionKind,
     ProcedureQueryResult,
@@ -19,11 +18,16 @@ from .core import (
     ProcedureSpec,
     ProcedureStageDepth,
 )
+from .registry import AppRegistry
+from .sdk import Muninn
+from .specs import AppPack, AppSpec, BundleSpec, MemorySpec
 
 __all__ = [
-    "__version__",
     "AppPack",
+    "AppRegistry",
     "AppSpec",
+    "BundleExplanation",
+    "BundleResult",
     "BundleSpec",
     "BundleStageDecision",
     "BundleStageResult",
@@ -42,4 +46,3 @@ __all__ = [
     "ProcedureSpec",
     "ProcedureStageDepth",
 ]
-__version__ = "0.11.0"

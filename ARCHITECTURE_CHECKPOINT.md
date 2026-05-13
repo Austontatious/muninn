@@ -31,6 +31,7 @@ The critical v1 runtime remains centered on:
 - `src/muninn/mcp_server.py`
 - `src/muninn/cli.py`
 - `src/muninn/api.py`
+- `src/muninn/core`
 - `src/muninn/human_memory/bootstrap.py`
 - `src/muninn/human_memory/spaces.py`
 - `src/muninn/human_memory/cards.py`
@@ -38,6 +39,13 @@ The critical v1 runtime remains centered on:
 - `src/muninn/human_memory/policy.py`
 - `src/muninn/human_memory/interactions.py`
 - `migrations/0001_init.sql`
+
+The current v1 SDK/runtime wrapper posture is:
+
+- `src/muninn/core` provides SDK-facing envelopes, app packs, procedure models, and storage adapters around the existing human-memory plane.
+- `src/muninn/core/v0_runtime.py` is a compatibility wrapper for existing `/v0/*` API behavior.
+- `src/muninn/runtime` contains thin import wrappers for HTTP, MCP, and CLI entrypoints.
+- This SDK layer does not change default DB paths, MCP defaults, or production cutover posture.
 
 Any v1 change needs explicit scope and extra scrutiny when it touches:
 

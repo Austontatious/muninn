@@ -17,17 +17,7 @@ from .cardex import proposals as cardex_proposals
 from .cardex import retrieval as cardex_retrieval
 from .cardex import signals as cardex_signals
 from .cardex import store as cardex_store
-from .config import (
-    audit_retention_days,
-    cleanup_batch_limit,
-    max_vec_scan,
-    pending_retention_days,
-    readonly,
-)
-from .memory import pending as pending_memory
-from .memory.cards import render_cards
-from .memory.retrieval import retrieve
-from .memory.writeback import write_candidates
+from .config import readonly
 from .middleware import ApiKeyMiddleware
 from .migrations import apply_migrations
 from .models import (
@@ -79,20 +69,14 @@ from .models import (
     WriteCandidatesRequest,
     WriteCandidatesResponse,
 )
-from .ops import cleanup as ops_cleanup
 from .ops.stats import collect_stats
 from .service import begin_audit_buffer, end_audit_buffer, flush_audit_buffer, log_audit, memory_version
 from .telemetry import emit_event as emit_telemetry_event, telemetry_context
-from .vector import reindex as vector_reindex
-from .vector import store as vector_store
-from .human_memory.bootstrap import (
-    DEFAULT_USER_ID,
-    apply_init_schema as human_apply_init_schema,
-    bootstrap_defaults as human_bootstrap_defaults,
-    open_db as human_open_db,
-)
-from .human_memory.procedures import ingest_procedure_reflection, query_procedure_cards
-from .human_memory.spaces import ResolvedSpace, get_or_create_space
+from .core.config import MuninnConfig
+from .core.procedures import ProcedureReflection, ProcedureStore
+from .core.storage import HumanMemoryStore
+from .core.v0_runtime import V0Runtime
+from .human_memory.bootstrap import DEFAULT_USER_ID
 
 app = FastAPI(title="Muninn", version="0.11.0")
 app.add_middleware(ApiKeyMiddleware)
@@ -105,27 +89,32 @@ def _resolve_human_memory_db_path() -> Path:
     return Path("~/.local/share/muninn/human_memory.db").expanduser().resolve()
 
 
+def _human_store() -> HumanMemoryStore:
+    return HumanMemoryStore(
+        MuninnConfig(
+            db_path=str(_resolve_human_memory_db_path()),
+            user_id=DEFAULT_USER_ID,
+        )
+    )
+
+
+_HUMAN_STORE = _human_store()
+_V0_RUNTIME = V0Runtime()
+
+
+def _procedure_store() -> ProcedureStore:
+    return ProcedureStore(_human_store(), MuninnConfig())
+
+
 @contextmanager
 def _human_memory_conn() -> sqlite3.Connection:
-    db_path = _resolve_human_memory_db_path()
-    db_path.parent.mkdir(parents=True, exist_ok=True)
-    conn = human_open_db(str(db_path))
-    try:
-        human_apply_init_schema(conn)
-        human_bootstrap_defaults(conn)
+    with _HUMAN_STORE.connect() as conn:
         yield conn
-    finally:
-        conn.close()
 
 
-def _ensure_human_space(conn: sqlite3.Connection, *, space_key: str) -> None:
+def _ensure_human_space(conn: sqlite3.Connection, *, space_key: str) -> str:
     normalized = str(space_key or "").strip() or "global"
-    resolved = ResolvedSpace(
-        key=normalized,
-        label=normalized,
-        meta_json=json.dumps({"identity": "api_explicit_space", "space_key": normalized}, separators=(",", ":")),
-    )
-    get_or_create_space(conn, user_id=DEFAULT_USER_ID, resolved=resolved)
+    return _HUMAN_STORE.ensure_space_key(conn, space_key=normalized, cwd=None)
 
 
 def require_writable() -> None:
@@ -353,7 +342,7 @@ def health() -> dict[str, bool]:
 
 @app.get("/v0/debug/vector_backend")
 def api_debug_vector_backend() -> dict[str, str | bool]:
-    backend_config, sqlite_loaded, effective = vector_store.effective_backend()
+    backend_config, sqlite_loaded, effective = _V0_RUNTIME.vector_backend_info()
     return {
         "vec_backend_config": backend_config,
         "sqlite_vec_loaded": sqlite_loaded,
@@ -815,7 +804,7 @@ def api_reject_proposal(
 def api_write_candidates(req: WriteCandidatesRequest, request: Request) -> WriteCandidatesResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    ids, reasons = write_candidates(namespace, req.candidates)
+    ids, reasons = _V0_RUNTIME.write_candidates(namespace, req.candidates)
     log_audit(
         namespace,
         "write_candidates",
@@ -834,7 +823,7 @@ def api_write_candidates(req: WriteCandidatesRequest, request: Request) -> Write
 def api_stage_candidates(req: StageCandidatesRequest, request: Request) -> StageCandidatesResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    accepted_ids, pending_ids, rejected, pending_reasons = pending_memory.stage_candidates(
+    accepted_ids, pending_ids, rejected, pending_reasons = _V0_RUNTIME.stage_candidates(
         namespace=namespace,
         candidates=req.candidates,
         ttl_seconds=req.ttl_seconds,
@@ -866,7 +855,7 @@ def api_stage_candidates(req: StageCandidatesRequest, request: Request) -> Stage
 @app.post("/v0/memory/list_pending", response_model=ListPendingResponse)
 def api_list_pending(req: ListPendingRequest, request: Request) -> ListPendingResponse:
     namespace = _resolve_namespace(request, req.namespace)
-    items = pending_memory.list_pending(
+    items = _V0_RUNTIME.list_pending(
         namespace=namespace,
         entity_id=req.entity_id,
         status=req.status,
@@ -895,7 +884,7 @@ def api_list_pending_get(
     limit: int = Query(default=50),
 ) -> ListPendingResponse:
     resolved_namespace = _resolve_namespace(request, namespace)
-    items = pending_memory.list_pending(
+    items = _V0_RUNTIME.list_pending(
         namespace=resolved_namespace,
         entity_id=entity_id,
         status=status,
@@ -911,7 +900,7 @@ def api_confirm_candidates(
 ) -> ConfirmCandidatesResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    out = pending_memory.confirm_candidates(
+    out = _V0_RUNTIME.confirm_candidates(
         namespace=namespace,
         pending_ids=req.pending_ids,
         decision=req.decision,
@@ -939,7 +928,7 @@ def api_confirm_candidates(
 def api_upsert_embeddings(req: UpsertEmbeddingsRequest, request: Request) -> UpsertEmbeddingsResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    upserted, rejected, reasons = vector_store.upsert_embeddings(namespace, req.items)
+    upserted, rejected, reasons = _V0_RUNTIME.upsert_embeddings(namespace, req.items)
     models = sorted({item.model for item in req.items})
     log_audit(
         namespace,
@@ -957,14 +946,13 @@ def api_upsert_embeddings(req: UpsertEmbeddingsRequest, request: Request) -> Ups
 @app.post("/v0/memory/query_vector", response_model=QueryVectorResponse)
 def api_query_vector(req: QueryVectorRequest, request: Request) -> QueryVectorResponse:
     namespace = _resolve_namespace(request, req.namespace)
-    hits = vector_store.query_vector(
+    hits = _V0_RUNTIME.query_vector(
         namespace=namespace,
         model=req.model,
-        query_vec=req.query_vector,
+        query_vector=req.query_vector,
         entity_id=req.entity_id,
         kinds=req.kinds,
         k=req.k,
-        max_scan=max_vec_scan(),
     )
     log_audit(
         namespace,
@@ -985,7 +973,7 @@ def api_query_vector(req: QueryVectorRequest, request: Request) -> QueryVectorRe
 def api_reindex_vectors(req: ReindexVectorsRequest, request: Request) -> ReindexVectorsResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    out = vector_reindex.reindex_vectors(
+    out = _V0_RUNTIME.reindex_vectors(
         namespace=namespace,
         model=req.model,
         dim=req.dim,
@@ -1016,105 +1004,38 @@ def api_reindex_vectors(req: ReindexVectorsRequest, request: Request) -> Reindex
 def api_admin_cleanup(req: CleanupRequest, request: Request) -> CleanupResponse:
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
-    conn = db.connect()
-
-    limit = max(1, min(req.limit, cleanup_batch_limit()))
-    now_ts = db.now()
-    base_cutoff = now_ts - req.older_than_seconds if req.older_than_seconds is not None else None
-    targets = list(dict.fromkeys(req.targets))
-    ordered_targets: list[str] = []
-    for preferred in ["decisions", "pending", "audit"]:
-        if preferred in targets:
-            ordered_targets.append(preferred)
-    for target in targets:
-        if target not in ordered_targets:
-            ordered_targets.append(target)
-    targets = ordered_targets
-
-    deleted_pending = 0
-    deleted_decisions = 0
-    deleted_audit = 0
-    scanned = 0
-    reasons: list[str] = []
-
-    for target in targets:
-        if target == "pending":
-            statuses = req.statuses or ["accepted", "rejected", "expired"]
-            cutoff = base_cutoff
-            if cutoff is None:
-                cutoff = now_ts - (pending_retention_days() * 24 * 60 * 60)
-            deleted, seen = ops_cleanup.cleanup_pending(
-                conn=conn,
-                namespace=namespace,
-                statuses=statuses,
-                cutoff_ts=cutoff,
-                limit=limit,
-                dry_run=req.dry_run,
-            )
-            deleted_pending += deleted
-            scanned += seen
-            continue
-
-        if target == "decisions":
-            cutoff = base_cutoff
-            if cutoff is None:
-                cutoff = now_ts - (pending_retention_days() * 24 * 60 * 60)
-            deleted, seen = ops_cleanup.cleanup_decisions(
-                conn=conn,
-                namespace=namespace,
-                cutoff_ts=cutoff,
-                limit=limit,
-                dry_run=req.dry_run,
-            )
-            deleted_decisions += deleted
-            scanned += seen
-            continue
-
-        if target == "audit":
-            cutoff = base_cutoff
-            if cutoff is None:
-                cutoff = now_ts - (audit_retention_days() * 24 * 60 * 60)
-            deleted, seen = ops_cleanup.cleanup_audit(
-                conn=conn,
-                namespace=namespace,
-                cutoff_ts=cutoff,
-                limit=limit,
-                dry_run=req.dry_run,
-            )
-            deleted_audit += deleted
-            scanned += seen
-            if not req.dry_run:
-                reasons.append("audit_append_only")
-            continue
-
-        reasons.append(f"unknown_target:{target}")
-
-    conn.close()
-
-    out = CleanupResponse(
-        targets=targets,
+    cleanup = _V0_RUNTIME.cleanup(
         namespace=namespace,
-        deleted_pending=deleted_pending,
-        deleted_decisions=deleted_decisions,
-        deleted_audit=deleted_audit,
-        scanned=scanned,
-        reasons=reasons,
+        targets=list(dict.fromkeys(req.targets)),
+        statuses=req.statuses,
+        older_than_seconds=req.older_than_seconds,
+        limit=req.limit,
+        dry_run=req.dry_run,
+    )
+    out = CleanupResponse(
+        targets=cleanup["targets"],
+        namespace=cleanup["namespace"],
+        deleted_pending=cleanup["deleted_pending"],
+        deleted_decisions=cleanup["deleted_decisions"],
+        deleted_audit=cleanup["deleted_audit"],
+        scanned=cleanup["scanned"],
+        reasons=cleanup["reasons"],
     )
     log_audit(
         namespace,
         "admin_cleanup",
         {
             "namespace": namespace,
-            "targets": targets,
+            "targets": out.targets,
             "statuses": req.statuses,
             "older_than_seconds": req.older_than_seconds,
-            "limit": limit,
+            "limit": req.limit,
             "dry_run": req.dry_run,
-            "deleted_pending": deleted_pending,
-            "deleted_decisions": deleted_decisions,
-            "deleted_audit": deleted_audit,
-            "scanned": scanned,
-            "reasons": reasons,
+            "deleted_pending": out.deleted_pending,
+            "deleted_decisions": out.deleted_decisions,
+            "deleted_audit": out.deleted_audit,
+            "scanned": out.scanned,
+            "reasons": out.reasons,
         },
     )
     return out
@@ -1123,7 +1044,7 @@ def api_admin_cleanup(req: CleanupRequest, request: Request) -> CleanupResponse:
 @app.post("/v0/memory/retrieve", response_model=RetrieveResponse)
 def api_retrieve(req: RetrieveRequest, request: Request) -> RetrieveResponse:
     namespace = _resolve_namespace(request, req.namespace)
-    items = retrieve(
+    items = _V0_RUNTIME.retrieve(
         namespace=namespace,
         query=req.query,
         entity_id=req.entity_id,
@@ -1149,7 +1070,7 @@ def api_retrieve(req: RetrieveRequest, request: Request) -> RetrieveResponse:
 @app.post("/v0/memory/render_cards", response_model=RenderCardsResponse)
 def api_render_cards(req: RenderCardsRequest, request: Request) -> RenderCardsResponse:
     namespace = _resolve_namespace(request, req.namespace)
-    cards = render_cards(req.items, req.profile)
+    cards = _V0_RUNTIME.render_cards(req.items, req.profile)
     log_audit(
         namespace,
         "render_cards",
@@ -1165,15 +1086,17 @@ def api_render_cards(req: RenderCardsRequest, request: Request) -> RenderCardsRe
 @app.post("/v0/memory/rehydrate", response_model=RehydrateResponse)
 def api_rehydrate(req: RehydrateRequest, request: Request) -> RehydrateResponse:
     namespace = _resolve_namespace(request, req.namespace)
-    items = retrieve(
+    payload = _V0_RUNTIME.rehydrate(
         namespace=namespace,
         query=req.query,
         entity_id=req.entity_id,
         k=req.k,
         query_embedding=req.query_embedding,
         embedding_model=req.embedding_model,
+        profile=req.profile,
     )
-    cards = render_cards(items, req.profile)
+    items = payload["items"]
+    cards = payload["cards"]
     log_audit(
         namespace,
         "rehydrate",
@@ -1193,18 +1116,15 @@ def api_rehydrate(req: RehydrateRequest, request: Request) -> RehydrateResponse:
 def api_retrieve_procedures(req: ProcedureRetrieveRequest, request: Request) -> ProcedureRetrieveResponse:
     namespace = _resolve_namespace(request, req.namespace)
     space_key = str(req.space_key or "").strip() or "global"
-    with _human_memory_conn() as conn:
-        _ensure_human_space(conn, space_key=space_key)
-        payload = query_procedure_cards(
-            conn,
-            user_id=DEFAULT_USER_ID,
-            space_key=space_key,
-            task_label=req.task_label,
-            context_summary=req.context_summary,
-            task_type=req.task_type,
-            tool_names=req.tool_names,
-            limit=req.limit,
-        )
+    procedure_store = _procedure_store()
+    payload = procedure_store.query(
+        space_key=space_key,
+        task_label=req.task_label,
+        context_summary=req.context_summary,
+        task_type=req.task_type,
+        tool_names=req.tool_names,
+        limit=req.limit,
+    )
     log_audit(
         namespace,
         "procedure_retrieve",
@@ -1215,13 +1135,13 @@ def api_retrieve_procedures(req: ProcedureRetrieveRequest, request: Request) -> 
             "task_type": req.task_type,
             "tool_names": req.tool_names,
             "limit": req.limit,
-            "returned": len(payload.get("procedures", [])),
+            "returned": len(payload.procedures),
         },
     )
     return ProcedureRetrieveResponse(
-        procedures=list(payload.get("procedures", [])),
-        compact=list(payload.get("compact", [])),
-        diagnostics=dict(payload.get("diagnostics", {})),
+        procedures=[item.model_dump() for item in payload.procedures],
+        compact=list(payload.compact),
+        diagnostics=dict(payload.diagnostics),
     )
 
 
@@ -1230,31 +1150,28 @@ def api_reflect_procedure(req: ProcedureReflectionRequest, request: Request) -> 
     require_writable()
     namespace = _resolve_namespace(request, req.namespace)
     space_key = str(req.space_key or "").strip() or "global"
-    reflection_payload = {
-        "task_label": req.task_label,
-        "context_summary": req.context_summary,
-        "actions_taken": list(req.actions_taken),
-        "outcome_status": req.outcome_status,
-        "what_worked": req.what_worked,
-        "what_failed": req.what_failed,
-        "changed_outcome": req.changed_outcome,
-        "reusable": bool(req.reusable),
-        "candidate_procedure_id": req.candidate_procedure_id,
-        "task_type": req.task_type,
-        "workflow_type": req.workflow_type,
-        "tool_requirements": list(req.tool_requirements),
-        "verification_checks": list(req.verification_checks),
-        "metadata": dict(req.metadata),
-    }
-    with _human_memory_conn() as conn:
-        _ensure_human_space(conn, space_key=space_key)
-        result = ingest_procedure_reflection(
-            conn,
-            user_id=DEFAULT_USER_ID,
-            space_key=space_key,
-            reflection=reflection_payload,
-            actor=req.actor,
-        )
+    reflection = ProcedureReflection(
+        task_label=req.task_label,
+        context_summary=req.context_summary,
+        actions_taken=list(req.actions_taken),
+        outcome_status=req.outcome_status,
+        what_worked=req.what_worked,
+        what_failed=req.what_failed,
+        changed_outcome=req.changed_outcome,
+        reusable=bool(req.reusable),
+        candidate_procedure_id=req.candidate_procedure_id,
+        task_type=req.task_type,
+        workflow_type=req.workflow_type,
+        tool_requirements=list(req.tool_requirements),
+        verification_checks=list(req.verification_checks),
+        metadata=dict(req.metadata),
+        actor=req.actor,
+    )
+    procedure_store = _procedure_store()
+    result = procedure_store.reflect(
+        reflection=reflection,
+        space_key=space_key,
+    )
     log_audit(
         namespace,
         "procedure_reflect",
@@ -1264,25 +1181,11 @@ def api_reflect_procedure(req: ProcedureReflectionRequest, request: Request) -> 
             "task_label": req.task_label,
             "outcome_status": req.outcome_status,
             "reusable": req.reusable,
-            "action": result.get("action"),
-            "procedure_card_id": result.get("procedure_card_id"),
+            "action": result.action,
+            "procedure_card_id": result.procedure_card_id,
         },
     )
-    return ProcedureReflectionResponse(
-        action=str(result.get("action", "")),
-        procedure_card_id=result.get("procedure_card_id"),
-        outcome_status=str(result.get("outcome_status", req.outcome_status)),
-        confidence=result.get("confidence"),
-        validation_status=result.get("validation_status"),
-        reason=result.get("reason"),
-        evidence_count=int(result.get("evidence_count") or 0),
-        warning_codes=[str(item) for item in list(result.get("warning_codes") or [])],
-        warnings=[
-            {"code": str(item.get("code") or ""), "message": str(item.get("message") or "")}
-            for item in list(result.get("warnings") or [])
-            if isinstance(item, dict)
-        ],
-    )
+    return ProcedureReflectionResponse(**result.model_dump())
 
 
 @app.get("/v0/memory/version")
