@@ -23,6 +23,13 @@ from .core.models import (
     MemoryEvent,
     OntologyProfile,
 )
+from .diagnostics import build_index_health_report, write_index_health_reports
+from .eval import (
+    load_retrieval_fixture as load_v2_retrieval_fixture,
+    run_retrieval_eval as run_v2_retrieval_eval,
+    write_retrieval_eval_reports,
+)
+from .indexes import SQLiteDerivedIndexProvider, load_v2_cards
 from .storage import SQLiteMemoryStore
 
 
@@ -95,6 +102,11 @@ def _connect_v2_readonly(db_path: Path) -> sqlite3.Connection:
     conn.execute("PRAGMA query_only=ON;")
     conn.execute("PRAGMA foreign_keys=ON;")
     return conn
+
+
+def _require_existing_v2_db(db_path: Path) -> None:
+    if not db_path.exists():
+        raise RecallParityError(f"v2_db_not_found:{db_path}")
 
 
 def _table_exists(conn: sqlite3.Connection, table_name: str) -> bool:
@@ -1905,6 +1917,70 @@ def run_pilot_import(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def run_index_health(args: argparse.Namespace) -> dict[str, Any]:
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    records = load_v2_cards(v2_db)
+    report = build_index_health_report(v2_db=v2_db, records=records)
+    report["artifacts"] = write_index_health_reports(report, out_dir)
+    return report
+
+
+def run_index_rebuild(args: argparse.Namespace) -> dict[str, Any]:
+    if args.dry_run and args.write_index:
+        raise RecallParityError("choose either --dry-run or --write-index, not both")
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    records = load_v2_cards(v2_db)
+    provider = SQLiteDerivedIndexProvider(v2_db, records=records)
+    report = provider.rebuild(records, dry_run=not bool(args.write_index))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "index_rebuild_report.json"
+    md_path = out_dir / "index_rebuild_report.md"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    md_path.write_text(_render_index_rebuild_markdown(report, v2_db=v2_db), encoding="utf-8")
+    report["v2_db"] = str(v2_db)
+    report["out_dir"] = str(out_dir)
+    report["artifacts"] = {"json": str(json_path), "markdown": str(md_path)}
+    return report
+
+
+def _render_index_rebuild_markdown(report: dict[str, Any], *, v2_db: Path) -> str:
+    after = report["after"]
+    lines = [
+        "# Muninn v2 Derived Index Rebuild",
+        "",
+        f"- v2 DB: `{v2_db}`",
+        f"- Dry run: `{str(report['dry_run']).lower()}`",
+        f"- Planned upserts: {report['planned_upserts']}",
+        f"- Planned deletes: {report['planned_deletes']}",
+        f"- Written upserts: {report['written_upserts']}",
+        f"- Deleted records: {report['deleted_records']}",
+        f"- Indexed records after: {after['indexed_records']}",
+        f"- Missing records after: {after['missing_records']}",
+        f"- Stale records after: {after['stale_records']}",
+        "",
+        "Persistent index writes require explicit `--write-index`.",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def run_v2_retrieval_eval_command(args: argparse.Namespace) -> dict[str, Any]:
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    records = load_v2_cards(v2_db)
+    fixture = load_v2_retrieval_fixture(args.fixture)
+    provider = SQLiteDerivedIndexProvider(v2_db, records=records)
+    report = run_v2_retrieval_eval(records=records, fixture=fixture, provider=provider)
+    report["v2_db"] = str(v2_db)
+    report["out_dir"] = str(out_dir)
+    report["artifacts"] = write_retrieval_eval_reports(report, out_dir)
+    return report
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m muninn.v2.cli",
@@ -1966,6 +2042,41 @@ def build_parser() -> argparse.ArgumentParser:
     parity.add_argument("--include-ranking", action="store_true", help="Include ranking deltas for overlapping cards.")
     parity.add_argument("--include-explanations", action="store_true", help="Include retrieval explanation notes.")
     parity.set_defaults(func=run_recall_parity)
+
+    index_health = subparsers.add_parser(
+        "index-health",
+        help="Report opt-in v2 derived index health for an explicit v2 DB.",
+    )
+    index_health.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    index_health.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    index_health.set_defaults(func=run_index_health)
+
+    index_rebuild = subparsers.add_parser(
+        "index-rebuild",
+        help="Dry-run or explicitly write the optional v2 derived vector index.",
+    )
+    index_rebuild.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    index_rebuild.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    index_rebuild.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Kept for operator clarity; dry-run is the default unless --write-index is passed.",
+    )
+    index_rebuild.add_argument(
+        "--write-index",
+        action="store_true",
+        help="Persist derived index rows into the explicit v2 DB.",
+    )
+    index_rebuild.set_defaults(func=run_index_rebuild)
+
+    retrieval_eval = subparsers.add_parser(
+        "retrieval-eval",
+        help="Run diagnostic v2 retrieval eval against a fixed query fixture.",
+    )
+    retrieval_eval.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    retrieval_eval.add_argument("--fixture", required=True, help="Retrieval eval fixture JSON.")
+    retrieval_eval.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    retrieval_eval.set_defaults(func=run_v2_retrieval_eval_command)
     return parser
 
 
@@ -1991,6 +2102,32 @@ def main(argv: Sequence[str] | None = None) -> int:
             "aggregate": report["aggregate"],
             "v1_row_counts_changed": report["v1_row_counts_changed"],
             "v2_row_counts_changed": report["v2_row_counts_changed"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_index_health_report":
+        payload = {
+            "status": "ok",
+            "mode": "index_health",
+            "v2_db": report["v2_db"],
+            "index_status": report["status"],
+            "out_dir": str(Path(report["artifacts"]["json"]).parent),
+        }
+    elif report["record_type"] == "muninn_v2_index_rebuild_report":
+        payload = {
+            "status": "ok",
+            "mode": "index_rebuild",
+            "v2_db": report["v2_db"],
+            "dry_run": report["dry_run"],
+            "planned_upserts": report["planned_upserts"],
+            "written_upserts": report["written_upserts"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_retrieval_eval_report":
+        payload = {
+            "status": "ok",
+            "mode": "retrieval_eval",
+            "v2_db": report["v2_db"],
+            "summary": report["summary"],
             "out_dir": report["out_dir"],
         }
     else:

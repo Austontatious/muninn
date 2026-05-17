@@ -73,6 +73,7 @@ The v2 checkpoint currently provides:
 - dry-run pilot import tooling
 - migration ledger/checksum/fidelity reporting
 - opt-in recall parity measurement
+- optional derived-index diagnostics and retrieval-eval helpers
 
 v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
 
@@ -117,6 +118,8 @@ The v2 model is substrate-oriented:
 
 Vector indexes, salience propagation, cognition loops, and interpreter/runtime behavior are not canonical truth in v2 core. They can be optional derived layers or future Mimir/Hrafnar work.
 
+The optional v2 derived-index layer is diagnostic infrastructure only. It can create explicit `v2_vector_indexes` and `v2_index_state` tables in a caller-provided v2 SQLite DB during `muninn.v2.cli index-rebuild --write-index`; dry-run and health checks do not create those tables. The index is rebuildable from canonical v2 cards and may degrade to a labeled lexical/hash fallback when sqlite_vec is unavailable.
+
 ## Current Retrieval Truth
 
 Production v1 retrieval remains the live behavior:
@@ -128,6 +131,8 @@ Production v1 retrieval remains the live behavior:
 - policy/adaptation cards retrieved through v1 paths
 
 The v2 recall-parity command is measurement only. Its provisional v2 lexical matcher is not final retrieval design and must not be tuned to fake parity.
+
+The v2 retrieval-eval command is also measurement only. It scores fixed query fixtures, distinguishes record absence from retrieval mismatch, and writes JSON/Markdown reports without changing production routing.
 
 ## Migration And Cutover Posture
 
