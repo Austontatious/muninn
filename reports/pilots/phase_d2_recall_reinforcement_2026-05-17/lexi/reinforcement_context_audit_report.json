@@ -1,0 +1,212 @@
+{
+  "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+  "counts": {
+    "accepted_fixture_ids": 7,
+    "boosted": 7,
+    "decayed": 0,
+    "eligible_cards": 77,
+    "neutral": 0,
+    "preserved": 69,
+    "recall_events": 1,
+    "recalled_fixture_ids": 8,
+    "suppressed": 1,
+    "suppressed_fixture_ids": 1
+  },
+  "decision": "pass_with_residual_context_risk",
+  "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi/event/recall_event_record_report.json",
+  "fixture_event_id": "phase_d2_lexi_resume",
+  "phase_c_audit": "reports/pilots/phase_c_closeout_2026-05-17/agent_context_audit_lexi_final/agent_context_audit_report.json",
+  "project": "Lexi",
+  "query": "resume Lexi current production audit and runtime modernization state and next steps",
+  "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi/replay/recall_reinforcement_replay_report.json",
+  "retrieval_comparison": {
+    "baseline_accepted_average_rank": 3.25,
+    "baseline_accepted_top12": 4,
+    "baseline_suppressed_top12": 0,
+    "baseline_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+        "score": 111.169944,
+        "title": "Lexi production audit verdict 2026-05-17"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+        "score": 56.914544,
+        "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+        "score": 53.664851,
+        "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 4,
+        "record_id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+        "score": 51.67465,
+        "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 5,
+        "record_id": "82f73be8-e791-410b-b873-05dd572d061e",
+        "score": 50.929072,
+        "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 6,
+        "record_id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+        "score": 48.44157,
+        "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model"
+      },
+      {
+        "classification": "accepted",
+        "rank": 7,
+        "record_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+        "score": 45.914973,
+        "title": "Phase 5 runtime smoke proof completed for Lex modernization"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 8,
+        "record_id": "6b93f328-be1a-4420-a852-b2733cdd0a87",
+        "score": 42.181485,
+        "title": "Run shadow specialized-lane live validation with completeness audit"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 9,
+        "record_id": "ee6b8b6a-ad7d-4db0-8a42-5498afc22719",
+        "score": 35.650501,
+        "title": "TP=1 DP=8 expert-parallel experiment for Qwen3.5 failed and Lexi was reverted to original Qwen-Lex 3 runtime"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 10,
+        "record_id": "2451b992-1817-417b-8382-c616c00b4237",
+        "score": 35.006375,
+        "title": "Lex memory audit baseline after auth+Google rollout"
+      }
+    ],
+    "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+    "reinforced_accepted_average_rank": 5.857,
+    "reinforced_accepted_top12": 7,
+    "reinforced_suppressed_top12": 0,
+    "reinforced_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+        "score": 126.159816,
+        "title": "Lexi production audit verdict 2026-05-17"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+        "score": 72.304416,
+        "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+        "score": 68.654723,
+        "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+        "score": 60.904845,
+        "title": "Phase 5 runtime smoke proof completed for Lex modernization"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 5,
+        "record_id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+        "score": 57.47465,
+        "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 6,
+        "record_id": "82f73be8-e791-410b-b873-05dd572d061e",
+        "score": 56.329072,
+        "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 7,
+        "record_id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+        "score": 54.64157,
+        "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 8,
+        "record_id": "6b93f328-be1a-4420-a852-b2733cdd0a87",
+        "score": 48.181485,
+        "title": "Run shadow specialized-lane live validation with completeness audit"
+      },
+      {
+        "classification": "accepted",
+        "rank": 9,
+        "record_id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+        "score": 44.938747,
+        "title": "Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates"
+      },
+      {
+        "classification": "accepted",
+        "rank": 10,
+        "record_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+        "score": 42.731736,
+        "title": "Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 11,
+        "record_id": "ee6b8b6a-ad7d-4db0-8a42-5498afc22719",
+        "score": 41.850501,
+        "title": "TP=1 DP=8 expert-parallel experiment for Qwen3.5 failed and Lexi was reverted to original Qwen-Lex 3 runtime"
+      },
+      {
+        "classification": "accepted",
+        "rank": 12,
+        "record_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+        "score": 40.527009,
+        "title": "Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline"
+      }
+    ],
+    "reinforced_unclassified_top12_count": 5
+  },
+  "safety": {
+    "adaptive_scoring_default_enabled": false,
+    "canonical_card_mutation": false,
+    "generated_shadow_db_committable": false,
+    "live_mcp_integration": false,
+    "v1_db_access": false,
+    "v1_mutation": false
+  },
+  "source_shadow_db": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+  "space_key": "repo:0c321b2a6f183a95",
+  "state_counts": {
+    "after": 77,
+    "before": 0,
+    "written": 77
+  },
+  "state_validation": {
+    "accepted_boosted": 7,
+    "accepted_unboosted_ids": [],
+    "boosted_not_accepted_ids": [],
+    "false_suppression_ids": [],
+    "suppression_miss_ids": []
+  }
+}

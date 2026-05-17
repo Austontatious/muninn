@@ -8,6 +8,7 @@ from muninn.v2.retrieval import hybrid_recall
 from muninn.v2.retrieval.reinforcement import (
     REINFORCEMENT_SCHEMA_VERSION,
     ReinforcementWeights,
+    apply_reinforcement_state_to_score,
     replay_reinforcement,
 )
 
@@ -300,11 +301,21 @@ def test_hybrid_retrieval_can_apply_reinforcement_state_without_default_change()
     )
 
     assert [item["record_id"] for item in baseline["results"]] == ["noisy", "useful"]
-    assert [item["record_id"] for item in adjusted["results"]] == ["useful", "noisy"]
+    assert [item["record_id"] for item in adjusted["results"]] == ["useful"]
     useful_explanation = adjusted["results"][0]["explanation"]
-    noisy_explanation = adjusted["results"][1]["explanation"]
     assert "reinforcement_effective_boost" in useful_explanation["score_components"]
-    assert "reinforcement_suppressed_memory" in noisy_explanation["penalties"]
+
+
+def test_reinforcement_suppression_can_remove_high_lexical_match() -> None:
+    adjusted, _components, penalties, state = apply_reinforcement_state_to_score(
+        "noisy",
+        120.0,
+        {"noisy": {"record_id": "noisy", "status": "suppressed", "effective_score": -1.0}},
+    )
+
+    assert state is not None
+    assert adjusted < 35.0
+    assert penalties["reinforcement_suppressed_memory"] <= -140.0
 
 
 def test_phase_d_cli_does_not_use_v1_connector(tmp_path, monkeypatch, capsys) -> None:

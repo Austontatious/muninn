@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "recall_events_after": 1,
+    "recall_events_before": 0,
+    "recall_events_changed": true
+  },
+  "event": {
+    "accepted_ids": [
+      "d0510e00-574e-4960-87b1-ad33a99e6546",
+      "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+      "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+      "849362c5-ed42-43a2-9084-897ecf2c7de1",
+      "6c7f8245-1952-4464-8998-79725736746e"
+    ],
+    "actor": "phase_d2_offline_audit",
+    "created_at": "2026-05-17T23:10:00Z",
+    "id": "phase_d2_friday_resume",
+    "metadata": {
+      "canonical_card_mutation": false,
+      "live_integration": false,
+      "offline_only": true,
+      "phase": "muninn_v2_phase_d2",
+      "project": "Friday",
+      "signals": {
+        "negative": [
+          "phase_c_over_included",
+          "web_wrapper_contrast_only",
+          "background_only"
+        ],
+        "positive": [
+          "accepted_current_state",
+          "accepted_operational_runbook",
+          "accepted_project_boundary"
+        ]
+      },
+      "source_phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "suppression_scope": "repo_scope_phase_c_overincluded_or_confusing"
+    },
+    "query": "resume Friday project current state and next steps",
+    "recalled_ids": [
+      "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+      "d0510e00-574e-4960-87b1-ad33a99e6546",
+      "c1907668-82e4-4e07-908d-69250a58e825",
+      "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+      "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+      "849362c5-ed42-43a2-9084-897ecf2c7de1",
+      "6c7f8245-1952-4464-8998-79725736746e",
+      "ecc7842e-8058-4603-b3a0-633970ad4db5"
+    ],
+    "record_type": "recall_event",
+    "schema_version": "muninn.v2.foundation.v1",
+    "scope_key": "repo:f8cc7f64d3636a4e",
+    "suppressed_ids": [
+      "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+      "c1907668-82e4-4e07-908d-69250a58e825",
+      "ecc7842e-8058-4603-b3a0-633970ad4db5"
+    ]
+  },
+  "mode": "offline_recall_event_record",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday/event",
+  "record_type": "muninn_v2_recall_event_record_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+  "write_event": true
+}

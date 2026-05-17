@@ -104,7 +104,7 @@ Reports include command mode, explicit source DB, counts, safety markers, derive
 
 ## Retrieval Application
 
-Hybrid retrieval can accept a reinforcement state map in v2 code paths. The default remains unchanged. When state is supplied, boosted/preserved records receive transparent score components and suppressed records receive transparent penalties.
+Hybrid retrieval can accept a reinforcement state map in v2 code paths. The default remains unchanged. When state is supplied, boosted/preserved records receive transparent score components and suppressed records receive transparent penalties. Explicitly suppressed records receive a strong deterministic penalty so a high lexical match cannot keep reappearing as a top result after an audited suppress/confusing signal.
 
 This hook is for offline experiments and evaluation only. It must not be wired into live MCP, live Codex context, or v1 retrieval defaults without a later explicit cutover plan.
 

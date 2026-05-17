@@ -152,7 +152,7 @@ def apply_reinforcement_state_to_score(
     elif effective < 0:
         penalties["reinforcement_effective_penalty"] = round(effective * multiplier, 6)
     if status == "suppressed":
-        penalties["reinforcement_suppressed_memory"] = -8.0
+        penalties["reinforcement_suppressed_memory"] = round(-max(40.0, abs(base_score) + 20.0), 6)
     elif status == "preserved":
         components["reinforcement_preservation_floor"] = 2.0
     adjusted = base_score + sum(components.values()) + sum(penalties.values())

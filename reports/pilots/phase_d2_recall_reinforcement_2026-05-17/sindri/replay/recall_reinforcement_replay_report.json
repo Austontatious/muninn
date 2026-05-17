@@ -1,0 +1,1088 @@
+{
+  "as_of": "2026-05-18T00:00:00Z",
+  "counts": {
+    "boosted": 8,
+    "decayed": 0,
+    "eligible_cards": 26,
+    "neutral": 0,
+    "preserved": 17,
+    "recall_events": 1,
+    "suppressed": 1
+  },
+  "dry_run": false,
+  "mode": "offline_replay",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/replay",
+  "record_type": "muninn_v2_recall_reinforcement_replay_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "scope_key": "path:316f4f67d061cbdd",
+  "state_counts": {
+    "after": 26,
+    "before": 0,
+    "written": 26
+  },
+  "states": [
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:54:22",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Trust regression surface helper command for wrapper-lane calibration",
+        "updated_at": "2026-04-05 00:54:22"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 01:53:40",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 10 graduation validation sequence for wrapper lane",
+        "updated_at": "2026-04-05 01:53:40"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 02:30:26",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 11 transfer validation sequence",
+        "updated_at": "2026-04-05 02:30:26"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 01:53:33",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 10 graduates wrapper lane with explicit criteria gate",
+        "updated_at": "2026-04-05 01:53:33"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 23:25:04",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane",
+        "updated_at": "2026-04-04 23:25:04"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 01:24:18",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 9 manifest-first calibration validation and execution path",
+        "updated_at": "2026-04-05 01:24:18"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 01:24:11",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 9 narrows manifest-first override friction with handoff-first calibration",
+        "updated_at": "2026-04-05 01:24:11"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 02:30:20",
+        "evidence_count": 2,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 11 adjacent-lane transfer verdict is partial",
+        "updated_at": "2026-04-05 02:30:20"
+      },
+      "components": {
+        "accepted_boost": 1.998492,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.697413,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 21:53:59",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 3.5 confirms boundary-calibration as primary defect class",
+        "updated_at": "2026-04-04 21:53:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.09 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.087512,
+      "record_id": "126202aa-64ce-4784-86ce-90483298a63a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 23:25:10",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Pilot wrapper-lane eval runbook for machine-gated trust",
+        "updated_at": "2026-04-04 23:25:10"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.02 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.02419,
+      "record_id": "40912dad-173e-4d7c-84db-0061e56dce95",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 22:15:27",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 4 generalization and flagship-lane execution commands",
+        "updated_at": "2026-04-04 22:15:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.07 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.072604,
+      "record_id": "435c9aff-9a5c-4168-80ef-f6986ae0d87b",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:16:36",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 7 validation and burden-eval command path",
+        "updated_at": "2026-04-05 00:16:36"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 42.99 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 42.988472,
+      "record_id": "47ce04d1-aa39-4341-be83-0ccc1b8658e4",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 20:16:28",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Sindri Phase 1 local validation commands",
+        "updated_at": "2026-04-04 20:16:28"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.16 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.155231,
+      "record_id": "4cf0bd9c-784f-4241-a163-128f2346724c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 21:54:06",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 3.5 fault-isolation execution sequence",
+        "updated_at": "2026-04-04 21:54:06"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.09 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.087431,
+      "record_id": "4ed2089d-0d7a-4598-92a2-050d121aa9b3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 21:21:47",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 3 pressure-test baseline committed with mixed benchmark outcomes",
+        "updated_at": "2026-04-04 21:21:47"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.11 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.109873,
+      "record_id": "5e7ca309-8ae7-4def-a4bf-720627498645",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 21:21:53",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 3 pressure-test execution commands",
+        "updated_at": "2026-04-04 21:21:53"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.11 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.109803,
+      "record_id": "6aa97802-f7c3-4fce-adb6-dd7c2414c08a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 23:51:11",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 6 pilot-ops run sequence for wrapper lane",
+        "updated_at": "2026-04-04 23:51:11"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.01 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.006123,
+      "record_id": "8819e89f-15a9-4a28-aebc-a873b7580a49",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 20:16:21",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Sindri Phase 1 implemented as bounded standalone forge",
+        "updated_at": "2026-04-04 20:16:21"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.16 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.155313,
+      "record_id": "9b85b8e6-d23c-4e73-8540-0c97bf9e03c1",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 20:45:10",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Sindri Phase 2 validation and smoke commands",
+        "updated_at": "2026-04-04 20:45:10"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.14 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.135301,
+      "record_id": "acfb3fa1-6561-4b92-b6fc-b0801b0cf066",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 22:15:27",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 4 confirms calibration generalizes and flagship lane is pilot-ready",
+        "updated_at": "2026-04-04 22:15:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.07 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.072604,
+      "record_id": "b3ac4697-88c2-499e-9cbb-8b883cc91888",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:16:28",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 7 focuses on reviewer burden reduction in flagship wrapper lane",
+        "updated_at": "2026-04-05 00:16:28"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 42.99 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 42.988565,
+      "record_id": "c05edc42-46de-4637-ab7f-263a9f74fdc2",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 20:45:04",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Sindri Phase 2 adds bounded evidence-guided synthesis",
+        "updated_at": "2026-04-04 20:45:04"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.14 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.13537,
+      "record_id": "d45b80ae-66dd-468e-92e8-1f66b6de803b",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 23:51:03",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 6 operationalizes wrapper-lane pilot telemetry and calibration signals",
+        "updated_at": "2026-04-04 23:51:03"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.01 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.006215,
+      "record_id": "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:49:00",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 8 calibrates targeted-review overrides via disagreement-health and handoff fields",
+        "updated_at": "2026-04-05 00:49:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 42.97 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 42.965972,
+      "record_id": "ebafdc59-b748-4df8-a9ee-1a8234741860",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:49:11",
+        "evidence_count": 2,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Phase 8 targeted-review calibration validation commands",
+        "updated_at": "2026-04-05 00:49:11"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 42.97 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 42.965845,
+      "record_id": "e7f21da8-5a23-46ce-ab62-f093960a7ff5",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-05 00:54:08",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 8.5 adopts harness discipline surfaces without widening Sindri scope",
+        "updated_at": "2026-04-05 00:54:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000816,
+        "recall_boost": 0.349736,
+        "suppression": -2.997738
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.248818,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_sindri_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:13:00Z",
+      "quiet_days": 0.032639,
+      "record_id": "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "path:316f4f67d061cbdd",
+      "status": "suppressed"
+    }
+  ],
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri_phase_d2_shadow_v2.db",
+  "weights": {
+    "accepted": 2.0,
+    "decay": 0.75,
+    "durable_preserve": 0.75,
+    "evidence_preserve_cap": 0.5,
+    "half_life_days": 30.0,
+    "max_score": 12.0,
+    "min_score": -8.0,
+    "preserve_floor": 0.5,
+    "recall": 0.35,
+    "suppressed": 3.0
+  },
+  "write_state": true
+}

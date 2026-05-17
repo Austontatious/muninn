@@ -1,0 +1,170 @@
+{
+  "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim_phase_d2_shadow_v2.db",
+  "counts": {
+    "accepted_fixture_ids": 7,
+    "boosted": 7,
+    "decayed": 0,
+    "eligible_cards": 18,
+    "neutral": 3,
+    "preserved": 6,
+    "recall_events": 1,
+    "recalled_fixture_ids": 9,
+    "suppressed": 2,
+    "suppressed_fixture_ids": 2
+  },
+  "decision": "pass_with_residual_context_risk",
+  "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim/event/recall_event_record_report.json",
+  "fixture_event_id": "phase_d2_subsim_resume",
+  "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+  "project": "SubSim",
+  "query": "resume SubSim current ReadyPlayer1 campaign integration state and next steps",
+  "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim/replay/recall_reinforcement_replay_report.json",
+  "retrieval_comparison": {
+    "baseline_accepted_average_rank": 4.333,
+    "baseline_accepted_top12": 6,
+    "baseline_suppressed_top12": 1,
+    "baseline_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+        "score": 81.304641,
+        "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003"
+      },
+      {
+        "classification": "suppressed",
+        "rank": 2,
+        "record_id": "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+        "score": 73.437779,
+        "title": "SubSim x ReadyPlayer1 preflight documented and Campaign 001 selected"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+        "score": 73.038259,
+        "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+        "score": 72.510241,
+        "title": "Campaign 004A leaves SubSim fire-control physics unchanged"
+      },
+      {
+        "classification": "accepted",
+        "rank": 5,
+        "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+        "score": 52.247678,
+        "title": "SubSim fire_control observation contract v1"
+      },
+      {
+        "classification": "accepted",
+        "rank": 6,
+        "record_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+        "score": 45.81474,
+        "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring"
+      },
+      {
+        "classification": "accepted",
+        "rank": 7,
+        "record_id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+        "score": 40.732459,
+        "title": "SubSim sonar tracks expose explicit lifecycle state"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 8,
+        "record_id": "12583c95-c343-4350-bae7-0b882ed70d96",
+        "score": 39.839156,
+        "title": "Campaign 001 sonar clutter readability producer behavior"
+      }
+    ],
+    "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+    "reinforced_accepted_average_rank": 4.143,
+    "reinforced_accepted_top12": 7,
+    "reinforced_suppressed_top12": 0,
+    "reinforced_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+        "score": 96.294069,
+        "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+        "score": 88.027687,
+        "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+        "score": 87.699669,
+        "title": "Campaign 004A leaves SubSim fire-control physics unchanged"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+        "score": 67.437106,
+        "title": "SubSim fire_control observation contract v1"
+      },
+      {
+        "classification": "accepted",
+        "rank": 5,
+        "record_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+        "score": 60.804168,
+        "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring"
+      },
+      {
+        "classification": "accepted",
+        "rank": 6,
+        "record_id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+        "score": 55.721887,
+        "title": "SubSim sonar tracks expose explicit lifecycle state"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 7,
+        "record_id": "12583c95-c343-4350-bae7-0b882ed70d96",
+        "score": 44.402448,
+        "title": "Campaign 001 sonar clutter readability producer behavior"
+      },
+      {
+        "classification": "accepted",
+        "rank": 8,
+        "record_id": "5e260af6-8b17-427f-832d-028fae69d295",
+        "score": 40.567853,
+        "title": "Hydrophone fixed eval and acoustic fixtures"
+      }
+    ],
+    "reinforced_unclassified_top12_count": 1
+  },
+  "safety": {
+    "adaptive_scoring_default_enabled": false,
+    "canonical_card_mutation": false,
+    "generated_shadow_db_committable": false,
+    "live_mcp_integration": false,
+    "v1_db_access": false,
+    "v1_mutation": false
+  },
+  "source_shadow_db": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+  "space_key": "repo:363c13a65e92ef58",
+  "state_counts": {
+    "after": 18,
+    "before": 0,
+    "written": 18
+  },
+  "state_validation": {
+    "accepted_boosted": 7,
+    "accepted_unboosted_ids": [],
+    "boosted_not_accepted_ids": [],
+    "false_suppression_ids": [],
+    "suppression_miss_ids": []
+  }
+}

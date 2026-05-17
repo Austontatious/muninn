@@ -1,0 +1,920 @@
+{
+  "decision": {
+    "live_agent_context": "NO_GO",
+    "optional_adaptive_scoring_experiment": "GO_WITH_RESIDUAL_CONTEXT_RISK",
+    "phase_d2_replay_state": "GO",
+    "phase_d3": "GO_WITH_CONSTRAINTS"
+  },
+  "fixture": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/phase_d2_recall_event_fixture.json",
+  "generated_at": "2026-05-17T22:28:26.229156Z",
+  "interpretation": [
+    "All accepted fixture records became boosted and no accepted record was suppressed.",
+    "All scoped suppression fixture records became suppressed in derived state.",
+    "With explicit reinforcement state supplied, all suppressed fixture records dropped out of top-12 diagnostic hybrid retrieval.",
+    "No boosted state appeared outside accepted fixture IDs, so the replay did not create an echo loop in this audit.",
+    "Residual unclassified top-12 results remain in ReadyPlayer1, SubSim, Sindri, and Lexi diagnostic retrieval; Phase D3 should audit whether those are useful continuity or recency/context sludge before any adaptive context use."
+  ],
+  "mode": "offline_v2_only",
+  "projects": [
+    {
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+      "counts": {
+        "accepted_fixture_ids": 5,
+        "boosted": 5,
+        "decayed": 1,
+        "eligible_cards": 47,
+        "neutral": 0,
+        "preserved": 38,
+        "recall_events": 1,
+        "recalled_fixture_ids": 8,
+        "suppressed": 3,
+        "suppressed_fixture_ids": 3
+      },
+      "decision": "pass_with_watch",
+      "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday/event/recall_event_record_report.json",
+      "fixture_event_id": "phase_d2_friday_resume",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "project": "Friday",
+      "query": "resume Friday project current state and next steps",
+      "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday/replay/recall_reinforcement_replay_report.json",
+      "retrieval_comparison": {
+        "baseline_accepted_average_rank": 2,
+        "baseline_accepted_top12": 1,
+        "baseline_suppressed_top12": 2,
+        "baseline_top12": [
+          {
+            "classification": "suppressed",
+            "rank": 1,
+            "record_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "score": 43.811699,
+            "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "score": 43.72079,
+            "title": "Run Friday corpus runner in dry-run, smoke, and resume modes"
+          },
+          {
+            "classification": "suppressed",
+            "rank": 3,
+            "record_id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "score": 40.386406,
+            "title": "Friday mobile client uses native Android Compose project under android/"
+          }
+        ],
+        "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+        "reinforced_accepted_average_rank": 1.5,
+        "reinforced_accepted_top12": 2,
+        "reinforced_suppressed_top12": 0,
+        "reinforced_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "score": 58.909778,
+            "title": "Run Friday corpus runner in dry-run, smoke, and resume modes"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "score": 37.131431,
+            "title": "Althing memory audit identifies bridge/direct split and missing private whiteboard"
+          }
+        ],
+        "reinforced_unclassified_top12_count": 0
+      },
+      "safety": {
+        "adaptive_scoring_default_enabled": false,
+        "canonical_card_mutation": false,
+        "generated_shadow_db_committable": false,
+        "live_mcp_integration": false,
+        "v1_db_access": false,
+        "v1_mutation": false
+      },
+      "source_shadow_db": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "space_key": "repo:f8cc7f64d3636a4e",
+      "state_counts": {
+        "after": 47,
+        "before": 0,
+        "written": 47
+      },
+      "state_validation": {
+        "accepted_boosted": 5,
+        "accepted_unboosted_ids": [],
+        "boosted_not_accepted_ids": [],
+        "false_suppression_ids": [],
+        "suppression_miss_ids": []
+      }
+    },
+    {
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "counts": {
+        "accepted_fixture_ids": 7,
+        "boosted": 7,
+        "decayed": 0,
+        "eligible_cards": 48,
+        "neutral": 2,
+        "preserved": 36,
+        "recall_events": 1,
+        "recalled_fixture_ids": 10,
+        "suppressed": 3,
+        "suppressed_fixture_ids": 3
+      },
+      "decision": "pass_with_residual_context_risk",
+      "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1/event/recall_event_record_report.json",
+      "fixture_event_id": "phase_d2_readyplayer1_resume",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "project": "ReadyPlayer1",
+      "query": "resume ReadyPlayer1 current campaign state and next steps",
+      "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1/replay/recall_reinforcement_replay_report.json",
+      "retrieval_comparison": {
+        "baseline_accepted_average_rank": 3.5,
+        "baseline_accepted_top12": 6,
+        "baseline_suppressed_top12": 1,
+        "baseline_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "score": 79.673883,
+            "title": "Phase 2 canonical current-state pointers and onboarding source consolidation"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "score": 77.97923,
+            "title": "Campaign 005A promoted fire-control state normalization"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "score": 69.738916,
+            "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "score": 56.663088,
+            "title": "Campaign 007A promoted post-reacquisition stabilization"
+          },
+          {
+            "classification": "accepted",
+            "rank": 5,
+            "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "score": 56.620535,
+            "title": "Campaign 006A promoted post-loss recovery probe"
+          },
+          {
+            "classification": "accepted",
+            "rank": 6,
+            "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+            "score": 56.535428,
+            "title": "Campaign 004A fire-control loop promoted"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 7,
+            "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+            "score": 54.134396,
+            "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 8,
+            "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+            "score": 53.977638,
+            "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 9,
+            "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+            "score": 52.87372,
+            "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 10,
+            "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+            "score": 50.025641,
+            "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 11,
+            "record_id": "8564b6a1-ddf1-4150-a709-d4b485db1893",
+            "score": 48.913068,
+            "title": "RSSM v2 canonical lane baseline pinned to 6 validated / 1 monitored and registry-driven defaults"
+          },
+          {
+            "classification": "suppressed",
+            "rank": 12,
+            "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+            "score": 48.04812,
+            "title": "Campaign 003 promoted for SubSim clutter binding"
+          }
+        ],
+        "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+        "reinforced_accepted_average_rank": 4.286,
+        "reinforced_accepted_top12": 7,
+        "reinforced_suppressed_top12": 0,
+        "reinforced_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "score": 95.663091,
+            "title": "Phase 2 canonical current-state pointers and onboarding source consolidation"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "score": 93.168438,
+            "title": "Campaign 005A promoted fire-control state normalization"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "score": 84.728124,
+            "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+            "score": 71.924636,
+            "title": "Campaign 004A fire-control loop promoted"
+          },
+          {
+            "classification": "accepted",
+            "rank": 5,
+            "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "score": 71.852296,
+            "title": "Campaign 007A promoted post-reacquisition stabilization"
+          },
+          {
+            "classification": "accepted",
+            "rank": 6,
+            "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "score": 71.809743,
+            "title": "Campaign 006A promoted post-loss recovery probe"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 7,
+            "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+            "score": 60.534396,
+            "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 8,
+            "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+            "score": 60.377638,
+            "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+          },
+          {
+            "classification": "accepted",
+            "rank": 9,
+            "record_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+            "score": 58.722863,
+            "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 10,
+            "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+            "score": 57.438632,
+            "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 11,
+            "record_id": "8564b6a1-ddf1-4150-a709-d4b485db1893",
+            "score": 55.113068,
+            "title": "RSSM v2 canonical lane baseline pinned to 6 validated / 1 monitored and registry-driven defaults"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 12,
+            "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+            "score": 54.588933,
+            "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+          }
+        ],
+        "reinforced_unclassified_top12_count": 5
+      },
+      "safety": {
+        "adaptive_scoring_default_enabled": false,
+        "canonical_card_mutation": false,
+        "generated_shadow_db_committable": false,
+        "live_mcp_integration": false,
+        "v1_db_access": false,
+        "v1_mutation": false
+      },
+      "source_shadow_db": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "space_key": "repo:5059f410815720ea",
+      "state_counts": {
+        "after": 48,
+        "before": 0,
+        "written": 48
+      },
+      "state_validation": {
+        "accepted_boosted": 7,
+        "accepted_unboosted_ids": [],
+        "boosted_not_accepted_ids": [],
+        "false_suppression_ids": [],
+        "suppression_miss_ids": []
+      }
+    },
+    {
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim_phase_d2_shadow_v2.db",
+      "counts": {
+        "accepted_fixture_ids": 7,
+        "boosted": 7,
+        "decayed": 0,
+        "eligible_cards": 18,
+        "neutral": 3,
+        "preserved": 6,
+        "recall_events": 1,
+        "recalled_fixture_ids": 9,
+        "suppressed": 2,
+        "suppressed_fixture_ids": 2
+      },
+      "decision": "pass_with_residual_context_risk",
+      "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim/event/recall_event_record_report.json",
+      "fixture_event_id": "phase_d2_subsim_resume",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+      "project": "SubSim",
+      "query": "resume SubSim current ReadyPlayer1 campaign integration state and next steps",
+      "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim/replay/recall_reinforcement_replay_report.json",
+      "retrieval_comparison": {
+        "baseline_accepted_average_rank": 4.333,
+        "baseline_accepted_top12": 6,
+        "baseline_suppressed_top12": 1,
+        "baseline_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "score": 81.304641,
+            "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003"
+          },
+          {
+            "classification": "suppressed",
+            "rank": 2,
+            "record_id": "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+            "score": 73.437779,
+            "title": "SubSim x ReadyPlayer1 preflight documented and Campaign 001 selected"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+            "score": 73.038259,
+            "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "score": 72.510241,
+            "title": "Campaign 004A leaves SubSim fire-control physics unchanged"
+          },
+          {
+            "classification": "accepted",
+            "rank": 5,
+            "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "score": 52.247678,
+            "title": "SubSim fire_control observation contract v1"
+          },
+          {
+            "classification": "accepted",
+            "rank": 6,
+            "record_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "score": 45.81474,
+            "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring"
+          },
+          {
+            "classification": "accepted",
+            "rank": 7,
+            "record_id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+            "score": 40.732459,
+            "title": "SubSim sonar tracks expose explicit lifecycle state"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 8,
+            "record_id": "12583c95-c343-4350-bae7-0b882ed70d96",
+            "score": 39.839156,
+            "title": "Campaign 001 sonar clutter readability producer behavior"
+          }
+        ],
+        "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+        "reinforced_accepted_average_rank": 4.143,
+        "reinforced_accepted_top12": 7,
+        "reinforced_suppressed_top12": 0,
+        "reinforced_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "score": 96.294069,
+            "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+            "score": 88.027687,
+            "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "score": 87.699669,
+            "title": "Campaign 004A leaves SubSim fire-control physics unchanged"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "score": 67.437106,
+            "title": "SubSim fire_control observation contract v1"
+          },
+          {
+            "classification": "accepted",
+            "rank": 5,
+            "record_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "score": 60.804168,
+            "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring"
+          },
+          {
+            "classification": "accepted",
+            "rank": 6,
+            "record_id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+            "score": 55.721887,
+            "title": "SubSim sonar tracks expose explicit lifecycle state"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 7,
+            "record_id": "12583c95-c343-4350-bae7-0b882ed70d96",
+            "score": 44.402448,
+            "title": "Campaign 001 sonar clutter readability producer behavior"
+          },
+          {
+            "classification": "accepted",
+            "rank": 8,
+            "record_id": "5e260af6-8b17-427f-832d-028fae69d295",
+            "score": 40.567853,
+            "title": "Hydrophone fixed eval and acoustic fixtures"
+          }
+        ],
+        "reinforced_unclassified_top12_count": 1
+      },
+      "safety": {
+        "adaptive_scoring_default_enabled": false,
+        "canonical_card_mutation": false,
+        "generated_shadow_db_committable": false,
+        "live_mcp_integration": false,
+        "v1_db_access": false,
+        "v1_mutation": false
+      },
+      "source_shadow_db": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+      "space_key": "repo:363c13a65e92ef58",
+      "state_counts": {
+        "after": 18,
+        "before": 0,
+        "written": 18
+      },
+      "state_validation": {
+        "accepted_boosted": 7,
+        "accepted_unboosted_ids": [],
+        "boosted_not_accepted_ids": [],
+        "false_suppression_ids": [],
+        "suppression_miss_ids": []
+      }
+    },
+    {
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri_phase_d2_shadow_v2.db",
+      "counts": {
+        "accepted_fixture_ids": 8,
+        "boosted": 8,
+        "decayed": 0,
+        "eligible_cards": 26,
+        "neutral": 0,
+        "preserved": 17,
+        "recall_events": 1,
+        "recalled_fixture_ids": 9,
+        "suppressed": 1,
+        "suppressed_fixture_ids": 1
+      },
+      "decision": "pass_with_residual_context_risk",
+      "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/event/recall_event_record_report.json",
+      "fixture_event_id": "phase_d2_sindri_resume",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+      "project": "Sindri",
+      "query": "resume Sindri current wrapper-lane trust calibration state and next steps",
+      "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/replay/recall_reinforcement_replay_report.json",
+      "retrieval_comparison": {
+        "baseline_accepted_average_rank": 2,
+        "baseline_accepted_top12": 3,
+        "baseline_suppressed_top12": 1,
+        "baseline_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+            "score": 58.959371,
+            "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+            "score": 55.304568,
+            "title": "Trust regression surface helper command for wrapper-lane calibration"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+            "score": 45.485947,
+            "title": "Phase 10 graduates wrapper lane with explicit criteria gate"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 4,
+            "record_id": "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+            "score": 41.570377,
+            "title": "Phase 6 operationalizes wrapper-lane pilot telemetry and calibration signals"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 5,
+            "record_id": "40912dad-173e-4d7c-84db-0061e56dce95",
+            "score": 38.524289,
+            "title": "Pilot wrapper-lane eval runbook for machine-gated trust"
+          },
+          {
+            "classification": "suppressed",
+            "rank": 6,
+            "record_id": "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c",
+            "score": 37.045345,
+            "title": "Phase 8.5 adopts harness discipline surfaces without widening Sindri scope"
+          }
+        ],
+        "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+        "reinforced_accepted_average_rank": 4.857,
+        "reinforced_accepted_top12": 7,
+        "reinforced_suppressed_top12": 0,
+        "reinforced_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+            "score": 73.949023,
+            "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+            "score": 70.29422,
+            "title": "Trust regression surface helper command for wrapper-lane calibration"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+            "score": 60.475599,
+            "title": "Phase 10 graduates wrapper lane with explicit criteria gate"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+            "score": 49.24099,
+            "title": "Phase 9 manifest-first calibration validation and execution path"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 5,
+            "record_id": "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+            "score": 47.570377,
+            "title": "Phase 6 operationalizes wrapper-lane pilot telemetry and calibration signals"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 6,
+            "record_id": "40912dad-173e-4d7c-84db-0061e56dce95",
+            "score": 44.524289,
+            "title": "Pilot wrapper-lane eval runbook for machine-gated trust"
+          },
+          {
+            "classification": "accepted",
+            "rank": 7,
+            "record_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+            "score": 43.50374,
+            "title": "Phase 10 graduation validation sequence for wrapper lane"
+          },
+          {
+            "classification": "accepted",
+            "rank": 8,
+            "record_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+            "score": 39.212436,
+            "title": "Phase 9 narrows manifest-first override friction with handoff-first calibration"
+          },
+          {
+            "classification": "accepted",
+            "rank": 9,
+            "record_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+            "score": 36.939777,
+            "title": "Phase 11 adjacent-lane transfer verdict is partial"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 10,
+            "record_id": "b3ac4697-88c2-499e-9cbb-8b883cc91888",
+            "score": 35.364446,
+            "title": "Phase 4 confirms calibration generalizes and flagship lane is pilot-ready"
+          }
+        ],
+        "reinforced_unclassified_top12_count": 3
+      },
+      "safety": {
+        "adaptive_scoring_default_enabled": false,
+        "canonical_card_mutation": false,
+        "generated_shadow_db_committable": false,
+        "live_mcp_integration": false,
+        "v1_db_access": false,
+        "v1_mutation": false
+      },
+      "source_shadow_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+      "space_key": "path:316f4f67d061cbdd",
+      "state_counts": {
+        "after": 26,
+        "before": 0,
+        "written": 26
+      },
+      "state_validation": {
+        "accepted_boosted": 8,
+        "accepted_unboosted_ids": [],
+        "boosted_not_accepted_ids": [],
+        "false_suppression_ids": [],
+        "suppression_miss_ids": []
+      }
+    },
+    {
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "counts": {
+        "accepted_fixture_ids": 7,
+        "boosted": 7,
+        "decayed": 0,
+        "eligible_cards": 77,
+        "neutral": 0,
+        "preserved": 69,
+        "recall_events": 1,
+        "recalled_fixture_ids": 8,
+        "suppressed": 1,
+        "suppressed_fixture_ids": 1
+      },
+      "decision": "pass_with_residual_context_risk",
+      "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi/event/recall_event_record_report.json",
+      "fixture_event_id": "phase_d2_lexi_resume",
+      "phase_c_audit": "reports/pilots/phase_c_closeout_2026-05-17/agent_context_audit_lexi_final/agent_context_audit_report.json",
+      "project": "Lexi",
+      "query": "resume Lexi current production audit and runtime modernization state and next steps",
+      "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi/replay/recall_reinforcement_replay_report.json",
+      "retrieval_comparison": {
+        "baseline_accepted_average_rank": 3.25,
+        "baseline_accepted_top12": 4,
+        "baseline_suppressed_top12": 0,
+        "baseline_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "score": 111.169944,
+            "title": "Lexi production audit verdict 2026-05-17"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+            "score": 56.914544,
+            "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "score": 53.664851,
+            "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 4,
+            "record_id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+            "score": 51.67465,
+            "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 5,
+            "record_id": "82f73be8-e791-410b-b873-05dd572d061e",
+            "score": 50.929072,
+            "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 6,
+            "record_id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+            "score": 48.44157,
+            "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model"
+          },
+          {
+            "classification": "accepted",
+            "rank": 7,
+            "record_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "score": 45.914973,
+            "title": "Phase 5 runtime smoke proof completed for Lex modernization"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 8,
+            "record_id": "6b93f328-be1a-4420-a852-b2733cdd0a87",
+            "score": 42.181485,
+            "title": "Run shadow specialized-lane live validation with completeness audit"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 9,
+            "record_id": "ee6b8b6a-ad7d-4db0-8a42-5498afc22719",
+            "score": 35.650501,
+            "title": "TP=1 DP=8 expert-parallel experiment for Qwen3.5 failed and Lexi was reverted to original Qwen-Lex 3 runtime"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 10,
+            "record_id": "2451b992-1817-417b-8382-c616c00b4237",
+            "score": 35.006375,
+            "title": "Lex memory audit baseline after auth+Google rollout"
+          }
+        ],
+        "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+        "reinforced_accepted_average_rank": 5.857,
+        "reinforced_accepted_top12": 7,
+        "reinforced_suppressed_top12": 0,
+        "reinforced_top12": [
+          {
+            "classification": "accepted",
+            "rank": 1,
+            "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "score": 126.159816,
+            "title": "Lexi production audit verdict 2026-05-17"
+          },
+          {
+            "classification": "accepted",
+            "rank": 2,
+            "record_id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+            "score": 72.304416,
+            "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau"
+          },
+          {
+            "classification": "accepted",
+            "rank": 3,
+            "record_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "score": 68.654723,
+            "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+          },
+          {
+            "classification": "accepted",
+            "rank": 4,
+            "record_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "score": 60.904845,
+            "title": "Phase 5 runtime smoke proof completed for Lex modernization"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 5,
+            "record_id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+            "score": 57.47465,
+            "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 6,
+            "record_id": "82f73be8-e791-410b-b873-05dd572d061e",
+            "score": 56.329072,
+            "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 7,
+            "record_id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+            "score": 54.64157,
+            "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 8,
+            "record_id": "6b93f328-be1a-4420-a852-b2733cdd0a87",
+            "score": 48.181485,
+            "title": "Run shadow specialized-lane live validation with completeness audit"
+          },
+          {
+            "classification": "accepted",
+            "rank": 9,
+            "record_id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+            "score": 44.938747,
+            "title": "Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates"
+          },
+          {
+            "classification": "accepted",
+            "rank": 10,
+            "record_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "score": 42.731736,
+            "title": "Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling"
+          },
+          {
+            "classification": "unclassified",
+            "rank": 11,
+            "record_id": "ee6b8b6a-ad7d-4db0-8a42-5498afc22719",
+            "score": 41.850501,
+            "title": "TP=1 DP=8 expert-parallel experiment for Qwen3.5 failed and Lexi was reverted to original Qwen-Lex 3 runtime"
+          },
+          {
+            "classification": "accepted",
+            "rank": 12,
+            "record_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "score": 40.527009,
+            "title": "Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline"
+          }
+        ],
+        "reinforced_unclassified_top12_count": 5
+      },
+      "safety": {
+        "adaptive_scoring_default_enabled": false,
+        "canonical_card_mutation": false,
+        "generated_shadow_db_committable": false,
+        "live_mcp_integration": false,
+        "v1_db_access": false,
+        "v1_mutation": false
+      },
+      "source_shadow_db": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+      "space_key": "repo:0c321b2a6f183a95",
+      "state_counts": {
+        "after": 77,
+        "before": 0,
+        "written": 77
+      },
+      "state_validation": {
+        "accepted_boosted": 7,
+        "accepted_unboosted_ids": [],
+        "boosted_not_accepted_ids": [],
+        "false_suppression_ids": [],
+        "suppression_miss_ids": []
+      }
+    }
+  ],
+  "record_type": "muninn_v2_phase_d2_multi_pilot_recall_reinforcement_audit",
+  "safety": {
+    "adaptive_scoring_default_enabled": false,
+    "canonical_card_mutation": false,
+    "generated_shadow_dbs_committed": false,
+    "live_codex_context_integration": false,
+    "live_mcp_integration": false,
+    "v1_db_access": false,
+    "v1_mutation": false
+  },
+  "schema_version": "muninn.v2.phase_d2_recall_reinforcement_audit.v1",
+  "summary": {
+    "boosted_not_accepted_total": 0,
+    "fail": 0,
+    "false_suppression_total": 0,
+    "pass": 1,
+    "pass_with_residual_context_risk": 4,
+    "projects": 5,
+    "reinforced_suppressed_top12_total": 0,
+    "reinforced_unclassified_top12_total": 14,
+    "suppression_miss_total": 0,
+    "total_boosted": 34,
+    "total_decayed": 1,
+    "total_eligible_cards": 216,
+    "total_neutral": 5,
+    "total_preserved": 166,
+    "total_recall_events": 5,
+    "total_suppressed": 10
+  }
+}

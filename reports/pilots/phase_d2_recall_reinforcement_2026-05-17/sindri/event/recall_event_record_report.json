@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "recall_events_after": 1,
+    "recall_events_before": 0,
+    "recall_events_changed": true
+  },
+  "event": {
+    "accepted_ids": [
+      "e4dccb72-35fa-461b-9208-b08a9c28507d",
+      "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+      "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+      "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+      "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+      "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+      "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543"
+    ],
+    "actor": "phase_d2_offline_audit",
+    "created_at": "2026-05-17T23:13:00Z",
+    "id": "phase_d2_sindri_resume",
+    "metadata": {
+      "canonical_card_mutation": false,
+      "live_integration": false,
+      "offline_only": true,
+      "phase": "muninn_v2_phase_d2",
+      "project": "Sindri",
+      "signals": {
+        "negative": [
+          "background_only_prior_harness_context"
+        ],
+        "positive": [
+          "accepted_current_trust_calibration",
+          "accepted_wrapper_lane_boundary",
+          "accepted_transfer_validation_context"
+        ]
+      },
+      "source_phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+      "suppression_scope": "repo_scope_background_only_prior_context"
+    },
+    "query": "resume Sindri current wrapper-lane trust calibration state and next steps",
+    "recalled_ids": [
+      "e4dccb72-35fa-461b-9208-b08a9c28507d",
+      "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+      "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+      "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+      "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+      "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+      "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+      "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c"
+    ],
+    "record_type": "recall_event",
+    "schema_version": "muninn.v2.foundation.v1",
+    "scope_key": "path:316f4f67d061cbdd",
+    "suppressed_ids": [
+      "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c"
+    ]
+  },
+  "mode": "offline_recall_event_record",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/event",
+  "record_type": "muninn_v2_recall_event_record_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri_phase_d2_shadow_v2.db",
+  "write_event": true
+}

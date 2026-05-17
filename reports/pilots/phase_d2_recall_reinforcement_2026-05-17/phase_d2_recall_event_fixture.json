@@ -1,0 +1,265 @@
+{
+  "schema_version": "muninn.v2.phase_d2_recall_fixture.v1",
+  "record_type": "muninn_v2_phase_d2_recall_event_fixture",
+  "date": "2026-05-17",
+  "mode": "offline_v2_only",
+  "source": {
+    "phase": "Phase D2 multi-pilot recall/reinforcement audit",
+    "basis": "Phase C shadow rehydration and agent-context audit artifacts",
+    "v1_mutation": false,
+    "live_integration": false,
+    "canonical_card_mutation": false
+  },
+  "pilots": [
+    {
+      "project": "Friday",
+      "space_key": "repo:f8cc7f64d3636a4e",
+      "source_shadow_db": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "event": {
+        "event_id": "phase_d2_friday_resume",
+        "created_at": "2026-05-17T23:10:00Z",
+        "query": "resume Friday project current state and next steps",
+        "actor": "phase_d2_offline_audit",
+        "recalled_ids": [
+          "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+          "d0510e00-574e-4960-87b1-ad33a99e6546",
+          "c1907668-82e4-4e07-908d-69250a58e825",
+          "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+          "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+          "849362c5-ed42-43a2-9084-897ecf2c7de1",
+          "6c7f8245-1952-4464-8998-79725736746e",
+          "ecc7842e-8058-4603-b3a0-633970ad4db5"
+        ],
+        "accepted_ids": [
+          "d0510e00-574e-4960-87b1-ad33a99e6546",
+          "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+          "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+          "849362c5-ed42-43a2-9084-897ecf2c7de1",
+          "6c7f8245-1952-4464-8998-79725736746e"
+        ],
+        "suppressed_ids": [
+          "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+          "c1907668-82e4-4e07-908d-69250a58e825",
+          "ecc7842e-8058-4603-b3a0-633970ad4db5"
+        ],
+        "signals": {
+          "positive": [
+            "accepted_current_state",
+            "accepted_operational_runbook",
+            "accepted_project_boundary"
+          ],
+          "negative": [
+            "phase_c_over_included",
+            "web_wrapper_contrast_only",
+            "background_only"
+          ]
+        },
+        "suppression_scope": "repo_scope_phase_c_overincluded_or_confusing",
+        "notes": "Suppression is scoped to the Friday resume task and Phase C audit findings; it is not a global deletion or canonical mutation."
+      }
+    },
+    {
+      "project": "ReadyPlayer1",
+      "space_key": "repo:5059f410815720ea",
+      "source_shadow_db": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "event": {
+        "event_id": "phase_d2_readyplayer1_resume",
+        "created_at": "2026-05-17T23:11:00Z",
+        "query": "resume ReadyPlayer1 current campaign state and next steps",
+        "actor": "phase_d2_offline_audit",
+        "recalled_ids": [
+          "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+          "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "719fafb5-b25b-4460-a549-987799432a6c",
+          "8db59c21-0224-4ef0-b628-f336867bf591",
+          "2656c35f-79af-403d-9128-e98fc72663d6",
+          "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+          "c7a9d5cf-187b-4d6d-9637-f6d191b512f3"
+        ],
+        "accepted_ids": [
+          "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+          "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "719fafb5-b25b-4460-a549-987799432a6c",
+          "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2"
+        ],
+        "suppressed_ids": [
+          "8db59c21-0224-4ef0-b628-f336867bf591",
+          "2656c35f-79af-403d-9128-e98fc72663d6",
+          "c7a9d5cf-187b-4d6d-9637-f6d191b512f3"
+        ],
+        "signals": {
+          "positive": [
+            "accepted_current_campaign_state",
+            "accepted_required_campaign_hit",
+            "accepted_evaluation_contract"
+          ],
+          "negative": [
+            "phase_c_over_included",
+            "stale_model_serving_trial",
+            "background_only_prior_campaign"
+          ]
+        },
+        "suppression_scope": "repo_scope_phase_c_overincluded_or_stale_operational_detail",
+        "notes": "Campaign 003 and Qwen/vLLM details are scoped suppressions for current ReadyPlayer1 campaign resume, not global erasure."
+      }
+    },
+    {
+      "project": "SubSim",
+      "space_key": "repo:363c13a65e92ef58",
+      "source_shadow_db": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim_phase_d2_shadow_v2.db",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+      "event": {
+        "event_id": "phase_d2_subsim_resume",
+        "created_at": "2026-05-17T23:12:00Z",
+        "query": "resume SubSim current ReadyPlayer1 campaign integration state and next steps",
+        "actor": "phase_d2_offline_audit",
+        "recalled_ids": [
+          "8d0704f3-2903-44df-937c-c80902b20f64",
+          "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+          "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+          "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+          "66312a31-2eca-4931-8f28-ae75a2dc7411",
+          "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+          "5e260af6-8b17-427f-832d-028fae69d295",
+          "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+          "14d4b7a7-b338-4ede-bdad-36278a07392e"
+        ],
+        "accepted_ids": [
+          "8d0704f3-2903-44df-937c-c80902b20f64",
+          "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+          "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+          "66312a31-2eca-4931-8f28-ae75a2dc7411",
+          "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+          "5e260af6-8b17-427f-832d-028fae69d295",
+          "fb91d94b-b9e2-4bd8-a970-ff315747cd2d"
+        ],
+        "suppressed_ids": [
+          "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+          "14d4b7a7-b338-4ede-bdad-36278a07392e"
+        ],
+        "signals": {
+          "positive": [
+            "accepted_current_campaign_ledger",
+            "accepted_fire_control_contract",
+            "accepted_acoustic_fixture_context"
+          ],
+          "negative": [
+            "phase_c_over_included",
+            "older_preflight_background",
+            "godot_mobile_controls_contrast_only"
+          ]
+        },
+        "suppression_scope": "repo_scope_phase_c_overincluded_or_confusing_contrast",
+        "notes": "The Godot mobile-controls card is included as a scoped confusing-context suppression because Phase C identified mobile-controls contrast as non-blocking noise for this task."
+      }
+    },
+    {
+      "project": "Sindri",
+      "space_key": "path:316f4f67d061cbdd",
+      "source_shadow_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri_phase_d2_shadow_v2.db",
+      "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+      "event": {
+        "event_id": "phase_d2_sindri_resume",
+        "created_at": "2026-05-17T23:13:00Z",
+        "query": "resume Sindri current wrapper-lane trust calibration state and next steps",
+        "actor": "phase_d2_offline_audit",
+        "recalled_ids": [
+          "e4dccb72-35fa-461b-9208-b08a9c28507d",
+          "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+          "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+          "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+          "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+          "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+          "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+          "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+          "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c"
+        ],
+        "accepted_ids": [
+          "e4dccb72-35fa-461b-9208-b08a9c28507d",
+          "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+          "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+          "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+          "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+          "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+          "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+          "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543"
+        ],
+        "suppressed_ids": [
+          "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c"
+        ],
+        "signals": {
+          "positive": [
+            "accepted_current_trust_calibration",
+            "accepted_wrapper_lane_boundary",
+            "accepted_transfer_validation_context"
+          ],
+          "negative": [
+            "background_only_prior_harness_context"
+          ]
+        },
+        "suppression_scope": "repo_scope_background_only_prior_context",
+        "notes": "Phase 8.5 harness-discipline context is scoped down for current wrapper-lane trust calibration; this does not remove its historical value."
+      }
+    },
+    {
+      "project": "Lexi",
+      "space_key": "repo:0c321b2a6f183a95",
+      "source_shadow_db": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+      "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "phase_c_audit": "reports/pilots/phase_c_closeout_2026-05-17/agent_context_audit_lexi_final/agent_context_audit_report.json",
+      "event": {
+        "event_id": "phase_d2_lexi_resume",
+        "created_at": "2026-05-17T23:14:00Z",
+        "query": "resume Lexi current production audit and runtime modernization state and next steps",
+        "actor": "phase_d2_offline_audit",
+        "recalled_ids": [
+          "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+          "6e97a92a-84e7-423f-844c-927bd48a7d21",
+          "6f25a3c0-676d-4e64-8351-213b18040f93",
+          "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+          "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+          "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+          "650e57d3-d07d-42c5-888d-28a0160fb224",
+          "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f"
+        ],
+        "accepted_ids": [
+          "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+          "6e97a92a-84e7-423f-844c-927bd48a7d21",
+          "6f25a3c0-676d-4e64-8351-213b18040f93",
+          "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+          "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+          "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+          "650e57d3-d07d-42c5-888d-28a0160fb224"
+        ],
+        "suppressed_ids": [
+          "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f"
+        ],
+        "signals": {
+          "positive": [
+            "accepted_current_audit_verdict",
+            "accepted_runtime_modernization_state",
+            "accepted_resilience_checkpoint"
+          ],
+          "negative": [
+            "phase_c_over_included",
+            "background_only_prior_review"
+          ]
+        },
+        "suppression_scope": "repo_scope_phase_c_overincluded_background",
+        "notes": "The older end-to-end review is suppressed only for current Lexi production-audit resume context."
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "counts": {
+    "recall_events_after": 1,
+    "recall_events_before": 0,
+    "recall_events_changed": true
+  },
+  "event": {
+    "accepted_ids": [
+      "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+      "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "719fafb5-b25b-4460-a549-987799432a6c",
+      "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2"
+    ],
+    "actor": "phase_d2_offline_audit",
+    "created_at": "2026-05-17T23:11:00Z",
+    "id": "phase_d2_readyplayer1_resume",
+    "metadata": {
+      "canonical_card_mutation": false,
+      "live_integration": false,
+      "offline_only": true,
+      "phase": "muninn_v2_phase_d2",
+      "project": "ReadyPlayer1",
+      "signals": {
+        "negative": [
+          "phase_c_over_included",
+          "stale_model_serving_trial",
+          "background_only_prior_campaign"
+        ],
+        "positive": [
+          "accepted_current_campaign_state",
+          "accepted_required_campaign_hit",
+          "accepted_evaluation_contract"
+        ]
+      },
+      "source_phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+      "suppression_scope": "repo_scope_phase_c_overincluded_or_stale_operational_detail"
+    },
+    "query": "resume ReadyPlayer1 current campaign state and next steps",
+    "recalled_ids": [
+      "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+      "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+      "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+      "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "fbcac688-f952-477f-87ca-ea7860c4f396",
+      "719fafb5-b25b-4460-a549-987799432a6c",
+      "8db59c21-0224-4ef0-b628-f336867bf591",
+      "2656c35f-79af-403d-9128-e98fc72663d6",
+      "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+      "c7a9d5cf-187b-4d6d-9637-f6d191b512f3"
+    ],
+    "record_type": "recall_event",
+    "schema_version": "muninn.v2.foundation.v1",
+    "scope_key": "repo:5059f410815720ea",
+    "suppressed_ids": [
+      "8db59c21-0224-4ef0-b628-f336867bf591",
+      "2656c35f-79af-403d-9128-e98fc72663d6",
+      "c7a9d5cf-187b-4d6d-9637-f6d191b512f3"
+    ]
+  },
+  "mode": "offline_recall_event_record",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1/event",
+  "record_type": "muninn_v2_recall_event_record_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+  "write_event": true
+}

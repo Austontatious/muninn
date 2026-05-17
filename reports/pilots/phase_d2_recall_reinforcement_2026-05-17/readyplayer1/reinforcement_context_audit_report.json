@@ -1,0 +1,226 @@
+{
+  "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+  "counts": {
+    "accepted_fixture_ids": 7,
+    "boosted": 7,
+    "decayed": 0,
+    "eligible_cards": 48,
+    "neutral": 2,
+    "preserved": 36,
+    "recall_events": 1,
+    "recalled_fixture_ids": 10,
+    "suppressed": 3,
+    "suppressed_fixture_ids": 3
+  },
+  "decision": "pass_with_residual_context_risk",
+  "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1/event/recall_event_record_report.json",
+  "fixture_event_id": "phase_d2_readyplayer1_resume",
+  "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_friday_rp1_regression/agent_context_audit_report.json",
+  "project": "ReadyPlayer1",
+  "query": "resume ReadyPlayer1 current campaign state and next steps",
+  "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1/replay/recall_reinforcement_replay_report.json",
+  "retrieval_comparison": {
+    "baseline_accepted_average_rank": 3.5,
+    "baseline_accepted_top12": 6,
+    "baseline_suppressed_top12": 1,
+    "baseline_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+        "score": 79.673883,
+        "title": "Phase 2 canonical current-state pointers and onboarding source consolidation"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "score": 77.97923,
+        "title": "Campaign 005A promoted fire-control state normalization"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "score": 69.738916,
+        "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "score": 56.663088,
+        "title": "Campaign 007A promoted post-reacquisition stabilization"
+      },
+      {
+        "classification": "accepted",
+        "rank": 5,
+        "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "score": 56.620535,
+        "title": "Campaign 006A promoted post-loss recovery probe"
+      },
+      {
+        "classification": "accepted",
+        "rank": 6,
+        "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+        "score": 56.535428,
+        "title": "Campaign 004A fire-control loop promoted"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 7,
+        "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+        "score": 54.134396,
+        "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 8,
+        "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "score": 53.977638,
+        "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 9,
+        "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "score": 52.87372,
+        "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 10,
+        "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "score": 50.025641,
+        "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 11,
+        "record_id": "8564b6a1-ddf1-4150-a709-d4b485db1893",
+        "score": 48.913068,
+        "title": "RSSM v2 canonical lane baseline pinned to 6 validated / 1 monitored and registry-driven defaults"
+      },
+      {
+        "classification": "suppressed",
+        "rank": 12,
+        "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+        "score": 48.04812,
+        "title": "Campaign 003 promoted for SubSim clutter binding"
+      }
+    ],
+    "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+    "reinforced_accepted_average_rank": 4.286,
+    "reinforced_accepted_top12": 7,
+    "reinforced_suppressed_top12": 0,
+    "reinforced_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+        "score": 95.663091,
+        "title": "Phase 2 canonical current-state pointers and onboarding source consolidation"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "score": 93.168438,
+        "title": "Campaign 005A promoted fire-control state normalization"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "score": 84.728124,
+        "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+        "score": 71.924636,
+        "title": "Campaign 004A fire-control loop promoted"
+      },
+      {
+        "classification": "accepted",
+        "rank": 5,
+        "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "score": 71.852296,
+        "title": "Campaign 007A promoted post-reacquisition stabilization"
+      },
+      {
+        "classification": "accepted",
+        "rank": 6,
+        "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "score": 71.809743,
+        "title": "Campaign 006A promoted post-loss recovery probe"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 7,
+        "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+        "score": 60.534396,
+        "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 8,
+        "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "score": 60.377638,
+        "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+      },
+      {
+        "classification": "accepted",
+        "rank": 9,
+        "record_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+        "score": 58.722863,
+        "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 10,
+        "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "score": 57.438632,
+        "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 11,
+        "record_id": "8564b6a1-ddf1-4150-a709-d4b485db1893",
+        "score": 55.113068,
+        "title": "RSSM v2 canonical lane baseline pinned to 6 validated / 1 monitored and registry-driven defaults"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 12,
+        "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "score": 54.588933,
+        "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+      }
+    ],
+    "reinforced_unclassified_top12_count": 5
+  },
+  "safety": {
+    "adaptive_scoring_default_enabled": false,
+    "canonical_card_mutation": false,
+    "generated_shadow_db_committable": false,
+    "live_mcp_integration": false,
+    "v1_db_access": false,
+    "v1_mutation": false
+  },
+  "source_shadow_db": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+  "space_key": "repo:5059f410815720ea",
+  "state_counts": {
+    "after": 48,
+    "before": 0,
+    "written": 48
+  },
+  "state_validation": {
+    "accepted_boosted": 7,
+    "accepted_unboosted_ids": [],
+    "boosted_not_accepted_ids": [],
+    "false_suppression_ids": [],
+    "suppression_miss_ids": []
+  }
+}

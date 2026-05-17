@@ -1,0 +1,1905 @@
+{
+  "as_of": "2026-05-18T00:00:00Z",
+  "counts": {
+    "boosted": 5,
+    "decayed": 1,
+    "eligible_cards": 47,
+    "neutral": 0,
+    "preserved": 38,
+    "recall_events": 1,
+    "suppressed": 3
+  },
+  "dry_run": false,
+  "mode": "offline_replay",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday/replay",
+  "record_type": "muninn_v2_recall_reinforcement_replay_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "scope_key": "repo:f8cc7f64d3636a4e",
+  "state_counts": {
+    "after": 47,
+    "before": 0,
+    "written": 47
+  },
+  "states": [
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 17:54:48",
+        "evidence_count": 5,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday bridge and tools now expose read-only /mnt/data workspace access",
+        "updated_at": "2026-04-19 17:54:48"
+      },
+      "components": {
+        "accepted_boost": 1.998396,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.847247,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-15 01:27:02",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Althing memory audit identifies bridge/direct split and missing private whiteboard",
+        "updated_at": "2026-04-15 01:27:02"
+      },
+      "components": {
+        "accepted_boost": 1.998396,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797247,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "6c7f8245-1952-4464-8998-79725736746e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 17:30:26",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday direct chat now auto-routes code prompts to coder and injects repo file context end-to-end",
+        "updated_at": "2026-04-19 17:30:26"
+      },
+      "components": {
+        "accepted_boost": 1.998396,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797247,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-15 01:59:50",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday root now has explicit Mimir repo-cognition entrypoints separated from runtime memory",
+        "updated_at": "2026-04-15 01:59:50"
+      },
+      "components": {
+        "accepted_boost": 1.998396,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797247,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 15:03:49",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run Friday corpus runner in dry-run, smoke, and resume modes",
+        "updated_at": "2026-04-14 15:03:49"
+      },
+      "components": {
+        "accepted_boost": 1.998396,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797247,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 01:23:24",
+        "evidence_count": 6,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday root compose wrapper plus dedicated coder service wiring",
+        "updated_at": "2026-03-30 01:23:24"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.05,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.15,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.94 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.942083,
+      "record_id": "596c1020-e868-4fc7-80a4-3d67b2893b71",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 02:34:28",
+        "evidence_count": 5,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday coder runtime hardening: volume-init ownership fix, coder health route, and fallback checks",
+        "updated_at": "2026-03-30 02:34:28"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.1,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.89 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.892731,
+      "record_id": "9e2eb8de-7ecf-4939-9352-ef6ed159603e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 09:20:38",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday Android verification pass confirmed persistence and non-streaming mobile routes",
+        "updated_at": "2026-04-12 09:20:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.61 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.610671,
+      "record_id": "26a394bd-c6f2-4aef-85b7-8929bbafaca4",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 15:03:40",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday eval execution now uses a recorder-only corpus runner with resumable JSONL artifacts",
+        "updated_at": "2026-04-14 15:03:40"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.37 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.372454,
+      "record_id": "440c39d5-5839-4722-b5eb-2c7761df4781",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 18:33:27",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday remediation v1 validation artifacts and rerun IDs",
+        "updated_at": "2026-04-14 18:33:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.226771,
+      "record_id": "5ba9d678-421f-4264-bfed-249375da8adb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 14:42:58",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday eval corpus v1 uses frozen 50-task gold set plus generated 300-variant extension",
+        "updated_at": "2026-04-14 14:42:58"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.39 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.386829,
+      "record_id": "5f79c511-c602-4b38-9c76-f4e7ebee9f95",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 14:43:06",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Regenerate Friday corpus_v1 from gold_tasks_v1 with strict validation gates",
+        "updated_at": "2026-04-14 14:43:06"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.39 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.386736,
+      "record_id": "8abb22ae-9318-4e39-94d3-86e92361d958",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 02:45:40",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday ops handoff: keep stack off when idle and restart on demand",
+        "updated_at": "2026-03-30 02:45:40"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.88 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.884954,
+      "record_id": "8e0dcce0-e508-47f3-ad31-39f947f5eb09",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 16:34:49",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday now has a post-run analysis layer that separates heuristic triage from optional OpenAI diagnosis",
+        "updated_at": "2026-04-14 16:34:49"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.31 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.309155,
+      "record_id": "a30b9683-26cc-44fa-ac63-05c0816d6fcb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-15 01:16:24",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run Friday optimizer v1 with persisted splits and staged candidate trials",
+        "updated_at": "2026-04-15 01:16:24"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 32.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 32.946944,
+      "record_id": "c9da15a8-7aa4-4471-a717-d7379249fa7f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-15 01:16:17",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday now has a bounded synthetic optimizer harness v1 over safe policy surfaces",
+        "updated_at": "2026-04-15 01:16:17"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 32.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 32.947025,
+      "record_id": "d5f1c931-3233-46df-96f3-5c5645bfc86c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-15 01:58:15",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Hard-gate trial for routing_001 traceback guard set to manual_review",
+        "updated_at": "2026-04-15 01:58:15"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 32.92 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 32.917882,
+      "record_id": "da270af3-a737-4ad5-a652-92751cb57de2",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 09:03:54",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday Android Phase 2 response UX uses typing placeholder and progressive render without backend stream protocol changes",
+        "updated_at": "2026-04-12 09:03:54"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.62 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.622292,
+      "record_id": "da6fa96c-b204-4036-8b71-f8ceac0aa05f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 18:33:19",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday runtime now applies pre-dispatch token budgeting with truthful context-window errors",
+        "updated_at": "2026-04-14 18:33:19"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.226863,
+      "record_id": "ed79d474-0488-4603-8a70-5a5d6a78e4bc",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 01:23:15",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "Friday frontend now supports Althing and Direct Friday entry modes",
+        "updated_at": "2026-04-12 01:23:15"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.94 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.942188,
+      "record_id": "fc28f323-beff-474b-a860-a76b31f8b567",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 01:47:08",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Prompt-layer upgrade validation gate for Friday",
+        "updated_at": "2026-04-13 01:47:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.925602,
+      "record_id": "06702d71-73e2-4a4e-a487-2d29808b7bb5",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 01:46:46",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday prompt assembly now uses layered tier-aware core/mode/lane/task composition",
+        "updated_at": "2026-04-13 01:46:46"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.925856,
+      "record_id": "0e1b0b0f-7f3f-40e8-9e18-e0960236d745",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 01:47:00",
+        "evidence_count": 3,
+        "kind": "interface",
+        "status": "active",
+        "title": "Althing bridge now prepends Friday routed-mode system prompt layer",
+        "updated_at": "2026-04-13 01:47:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.925694,
+      "record_id": "0f92e2ce-9f2e-48f2-8f7f-f67f267bc2cb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 01:35:31",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday UI bridge to Althing requires shared Docker network attachment",
+        "updated_at": "2026-04-12 01:35:31"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.933669,
+      "record_id": "225899b7-75a9-462c-8e66-ade4c2a20465",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 22:23:59",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lexi smoke + throughput baseline path",
+        "updated_at": "2026-03-27 22:23:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.07 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.066678,
+      "record_id": "5ecfb237-190f-4d57-9940-eaaee3416266",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 08:43:31",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Build and install Friday Android debug APK from android/",
+        "updated_at": "2026-04-12 08:43:31"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.64 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.636447,
+      "record_id": "6c22b4f9-e0e5-4567-819b-7212dbd66c30",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 16:57:53",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run Friday OpenAI analysis on combined_full_v1 with resumable artifacts",
+        "updated_at": "2026-04-14 16:57:53"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.29 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.293137,
+      "record_id": "6ed13b8f-aa4f-470b-941e-610548b03f9c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 20:21:31",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday remediation v2 rerun and delta artifacts for failed/borderline and full corpus",
+        "updated_at": "2026-04-14 20:21:31"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.15 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.151725,
+      "record_id": "7c366fc3-ec1f-455f-8c7a-3d2ea90ff178",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 02:09:42",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday coder service stabilized on V100 via Lex-derived custom image profile",
+        "updated_at": "2026-03-30 02:09:42"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.91 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.909931,
+      "record_id": "92585711-c53e-4b93-9014-034a5a596fc3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-28 01:05:53",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Calibration harness v3 fixed precision-capture reliability",
+        "updated_at": "2026-03-28 01:05:53"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 50.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 50.954248,
+      "record_id": "af64753d-59f5-4a59-b5c5-4482fa1b90b1",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 23:11:30",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Runtime-path A/B shows Mimir not yet validated in Friday",
+        "updated_at": "2026-03-27 23:11:30"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.033681,
+      "record_id": "b6901ac9-2cab-45ec-ba08-4094ba0ecb0d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 22:46:29",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Mimir A/B navigation validation harness for Friday",
+        "updated_at": "2026-03-27 22:46:29"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.05 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.051053,
+      "record_id": "b9df2d37-ca80-452d-8f59-7fc66f2ebcc9",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-28 00:02:38",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "First-target alignment fix changed tight runtime A/B outcome",
+        "updated_at": "2026-03-28 00:02:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.00 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 50.998171,
+      "record_id": "bcf04753-8780-4083-981c-735cb1e9ce29",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 09:03:45",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday Android persists transcript with Room conversation/message schema",
+        "updated_at": "2026-04-12 09:03:45"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.62 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.622396,
+      "record_id": "d998d967-765b-41c6-9055-4f417a340d8a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 01:15:27",
+        "evidence_count": 3,
+        "kind": "interface",
+        "status": "active",
+        "title": "Friday exposes native typed /api/handoff execution boundary",
+        "updated_at": "2026-04-12 01:15:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.947604,
+      "record_id": "db201498-2020-44a8-92c4-6d11bf689f64",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 20:21:22",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday chat runtime now uses adaptive lane-aware budgeting before LLM dispatch",
+        "updated_at": "2026-04-14 20:21:22"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.15 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.151829,
+      "record_id": "f51f3e42-5ede-42fa-840c-c546c9562bb1",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 23:38:51",
+        "evidence_count": 2,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lens-repair smoke: friday resolve->recent/search->writeback succeeds",
+        "updated_at": "2026-04-03 23:38:51"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.01 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.014688,
+      "record_id": "394617c1-1f1e-4a62-bfa1-d76652781b07",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 01:35:31",
+        "evidence_count": 2,
+        "kind": "constraint",
+        "status": "active",
+        "title": "Friday backend image must include top-level core and prompts packages",
+        "updated_at": "2026-04-12 01:35:31"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.933669,
+      "record_id": "5e195f61-d9fb-4a58-aed5-51596a3a5236",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 16:58:00",
+        "evidence_count": 2,
+        "kind": "decision",
+        "status": "active",
+        "title": "combined_full_v1 analysis indicates runtime/token-budget instability is primary blocker before semantic tuning",
+        "updated_at": "2026-04-14 16:58:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 33.29 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 33.293056,
+      "record_id": "7dd7365c-7511-4526-a3e4-c761ba11004c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 21:14:48",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi verifies directly; friday_up LLM autodiscovery needed strict /v1/models check",
+        "updated_at": "2026-03-27 21:14:48"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.11 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.114722,
+      "record_id": "86503305-c636-48f1-ae19-90b2c1ac33f7",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 20:57:38",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Enable and inspect procedural overlay + Mimir telemetry",
+        "updated_at": "2026-03-27 20:57:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.13 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.126644,
+      "record_id": "961ba1b9-9f28-4f2c-973b-b38868d53e3c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 20:57:38",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Bounded procedural overlay integrated behind feature flags",
+        "updated_at": "2026-03-27 20:57:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.13 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.126644,
+      "record_id": "97e5ca1d-ee2a-47ad-88f7-2d4f2ecc9bf6",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-27 22:23:32",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 1 hardening: prompt accounting and procedure diagnostics are now first-class runtime metadata",
+        "updated_at": "2026-03-27 22:23:32"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 51.07 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 51.066991,
+      "record_id": "bb939010-552a-460f-b440-c3539a2b9e59",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 16:34:57",
+        "evidence_count": 4,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks",
+        "updated_at": "2026-04-14 16:34:57"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -2.997594
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.198743,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "suppressed"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 08:43:25",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday mobile client uses native Android Compose project under android/",
+        "updated_at": "2026-04-12 08:43:25"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -2.997594
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.248743,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "c1907668-82e4-4e07-908d-69250a58e825",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "suppressed"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-14 21:57:29",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "V3 routing+prompt pass completed with targeted and full reruns",
+        "updated_at": "2026-04-14 21:57:29"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000868,
+        "recall_boost": 0.349719,
+        "suppression": -2.997594
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.248743,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_friday_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:10:00Z",
+      "quiet_days": 0.034722,
+      "record_id": "ecc7842e-8058-4603-b3a0-633970ad4db5",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "suppressed"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-02-20 01:40:09",
+        "evidence_count": 1,
+        "kind": "note",
+        "status": "active",
+        "title": "Timeout smoke card",
+        "updated_at": "2026-02-20 01:40:09"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -2.173261,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.673261,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=decayed",
+        "quiet for 86.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 86.930451,
+      "record_id": "672aa7bb-d396-402f-b9f7-e07137f0758c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "status": "decayed"
+    }
+  ],
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+  "weights": {
+    "accepted": 2.0,
+    "decay": 0.75,
+    "durable_preserve": 0.75,
+    "evidence_preserve_cap": 0.5,
+    "half_life_days": 30.0,
+    "max_score": 12.0,
+    "min_score": -8.0,
+    "preserve_floor": 0.5,
+    "recall": 0.35,
+    "suppressed": 3.0
+  },
+  "write_state": true
+}

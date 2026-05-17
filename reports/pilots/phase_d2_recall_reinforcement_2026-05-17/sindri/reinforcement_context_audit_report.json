@@ -1,0 +1,170 @@
+{
+  "copied_shadow_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri_phase_d2_shadow_v2.db",
+  "counts": {
+    "accepted_fixture_ids": 8,
+    "boosted": 8,
+    "decayed": 0,
+    "eligible_cards": 26,
+    "neutral": 0,
+    "preserved": 17,
+    "recall_events": 1,
+    "recalled_fixture_ids": 9,
+    "suppressed": 1,
+    "suppressed_fixture_ids": 1
+  },
+  "decision": "pass_with_residual_context_risk",
+  "event_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/event/recall_event_record_report.json",
+  "fixture_event_id": "phase_d2_sindri_resume",
+  "phase_c_audit": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened/agent_context_audit_report.json",
+  "project": "Sindri",
+  "query": "resume Sindri current wrapper-lane trust calibration state and next steps",
+  "replay_report": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/sindri/replay/recall_reinforcement_replay_report.json",
+  "retrieval_comparison": {
+    "baseline_accepted_average_rank": 2,
+    "baseline_accepted_top12": 3,
+    "baseline_suppressed_top12": 1,
+    "baseline_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "score": 58.959371,
+        "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "score": 55.304568,
+        "title": "Trust regression surface helper command for wrapper-lane calibration"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "score": 45.485947,
+        "title": "Phase 10 graduates wrapper lane with explicit criteria gate"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 4,
+        "record_id": "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+        "score": 41.570377,
+        "title": "Phase 6 operationalizes wrapper-lane pilot telemetry and calibration signals"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 5,
+        "record_id": "40912dad-173e-4d7c-84db-0061e56dce95",
+        "score": 38.524289,
+        "title": "Pilot wrapper-lane eval runbook for machine-gated trust"
+      },
+      {
+        "classification": "suppressed",
+        "rank": 6,
+        "record_id": "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c",
+        "score": 37.045345,
+        "title": "Phase 8.5 adopts harness discipline surfaces without widening Sindri scope"
+      }
+    ],
+    "mode": "diagnostic_optional_hybrid_with_explicit_reinforcement_state",
+    "reinforced_accepted_average_rank": 4.857,
+    "reinforced_accepted_top12": 7,
+    "reinforced_suppressed_top12": 0,
+    "reinforced_top12": [
+      {
+        "classification": "accepted",
+        "rank": 1,
+        "record_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "score": 73.949023,
+        "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane"
+      },
+      {
+        "classification": "accepted",
+        "rank": 2,
+        "record_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "score": 70.29422,
+        "title": "Trust regression surface helper command for wrapper-lane calibration"
+      },
+      {
+        "classification": "accepted",
+        "rank": 3,
+        "record_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "score": 60.475599,
+        "title": "Phase 10 graduates wrapper lane with explicit criteria gate"
+      },
+      {
+        "classification": "accepted",
+        "rank": 4,
+        "record_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "score": 49.24099,
+        "title": "Phase 9 manifest-first calibration validation and execution path"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 5,
+        "record_id": "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+        "score": 47.570377,
+        "title": "Phase 6 operationalizes wrapper-lane pilot telemetry and calibration signals"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 6,
+        "record_id": "40912dad-173e-4d7c-84db-0061e56dce95",
+        "score": 44.524289,
+        "title": "Pilot wrapper-lane eval runbook for machine-gated trust"
+      },
+      {
+        "classification": "accepted",
+        "rank": 7,
+        "record_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "score": 43.50374,
+        "title": "Phase 10 graduation validation sequence for wrapper lane"
+      },
+      {
+        "classification": "accepted",
+        "rank": 8,
+        "record_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "score": 39.212436,
+        "title": "Phase 9 narrows manifest-first override friction with handoff-first calibration"
+      },
+      {
+        "classification": "accepted",
+        "rank": 9,
+        "record_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+        "score": 36.939777,
+        "title": "Phase 11 adjacent-lane transfer verdict is partial"
+      },
+      {
+        "classification": "unclassified",
+        "rank": 10,
+        "record_id": "b3ac4697-88c2-499e-9cbb-8b883cc91888",
+        "score": 35.364446,
+        "title": "Phase 4 confirms calibration generalizes and flagship lane is pilot-ready"
+      }
+    ],
+    "reinforced_unclassified_top12_count": 3
+  },
+  "safety": {
+    "adaptive_scoring_default_enabled": false,
+    "canonical_card_mutation": false,
+    "generated_shadow_db_committable": false,
+    "live_mcp_integration": false,
+    "v1_db_access": false,
+    "v1_mutation": false
+  },
+  "source_shadow_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+  "space_key": "path:316f4f67d061cbdd",
+  "state_counts": {
+    "after": 26,
+    "before": 0,
+    "written": 26
+  },
+  "state_validation": {
+    "accepted_boosted": 8,
+    "accepted_unboosted_ids": [],
+    "boosted_not_accepted_ids": [],
+    "false_suppression_ids": [],
+    "suppression_miss_ids": []
+  }
+}

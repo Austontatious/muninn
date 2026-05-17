@@ -1,0 +1,777 @@
+{
+  "as_of": "2026-05-18T00:00:00Z",
+  "counts": {
+    "boosted": 7,
+    "decayed": 0,
+    "eligible_cards": 18,
+    "neutral": 3,
+    "preserved": 6,
+    "recall_events": 1,
+    "suppressed": 2
+  },
+  "dry_run": false,
+  "mode": "offline_replay",
+  "out_dir": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim/replay",
+  "record_type": "muninn_v2_recall_reinforcement_replay_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "scope_key": "repo:363c13a65e92ef58",
+  "state_counts": {
+    "after": 18,
+    "before": 0,
+    "written": 18
+  },
+  "states": [
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 17:05:15",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "SubSim fire_control observation contract v1",
+        "updated_at": "2026-05-07 17:05:15"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 16:14:11",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "Hydrophone fixed eval and acoustic fixtures",
+        "updated_at": "2026-05-07 16:14:11"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "5e260af6-8b17-427f-832d-028fae69d295",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 16:43:30",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "Campaign 004A leaves SubSim fire-control physics unchanged",
+        "updated_at": "2026-05-07 16:43:30"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.797357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 16:33:57",
+        "evidence_count": 3,
+        "kind": "interface",
+        "status": "active",
+        "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring",
+        "updated_at": "2026-05-07 16:33:57"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 16:01:24",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003",
+        "updated_at": "2026-05-07 16:01:24"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 16:18:10",
+        "evidence_count": 3,
+        "kind": "interface",
+        "status": "active",
+        "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy",
+        "updated_at": "2026-05-07 16:18:10"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 15:34:51",
+        "evidence_count": 3,
+        "kind": "interface",
+        "status": "active",
+        "title": "SubSim sonar tracks expose explicit lifecycle state",
+        "updated_at": "2026-05-07 15:34:51"
+      },
+      "components": {
+        "accepted_boost": 1.99846,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 3.747357,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 01:43:01",
+        "evidence_count": 8,
+        "kind": "decision",
+        "status": "active",
+        "title": "Renderer Params v1 and first hybrid acoustic renderer implemented from hydrophone analysis",
+        "updated_at": "2026-04-24 01:43:01"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.15,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.25,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.93 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.928461,
+      "record_id": "518a6ff0-75ef-4daa-86c2-a3dd7c6a8be6",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 15:59:36",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "Hydrophone corpus expansion v2",
+        "updated_at": "2026-05-07 15:59:36"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.25834,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.19166,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=neutral",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 10.33 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 10.333611,
+      "record_id": "a4659ce9-bcf2-4615-9c37-4c09601943ab",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "neutral"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 15:34:42",
+        "evidence_count": 4,
+        "kind": "interface",
+        "status": "active",
+        "title": "Bounded hydrophone pipeline",
+        "updated_at": "2026-05-07 15:34:42"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.258773,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.191227,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=neutral",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 10.35 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 10.350903,
+      "record_id": "1fff427d-0f12-44cd-a002-56f1516745fb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "neutral"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 17:51:57",
+        "evidence_count": 6,
+        "kind": "decision",
+        "status": "active",
+        "title": "Add isolated machine-readable sonar console module for AI playtesting",
+        "updated_at": "2026-04-19 17:51:57"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.05,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.15,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.26 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.25559,
+      "record_id": "bf3358a7-1331-40f4-8943-778fb2a179c6",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 02:09:40",
+        "evidence_count": 6,
+        "kind": "decision",
+        "status": "active",
+        "title": "Desktop runtime now uses HybridAcousticRendererV1 with preset-pack control",
+        "updated_at": "2026-04-24 02:09:40"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.05,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.15,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.91 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.909954,
+      "record_id": "ec85f42c-c39b-4c01-97f8-675ec09a8a73",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 15:11:24",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Campaign 001 sonar clutter readability producer behavior",
+        "updated_at": "2026-05-07 15:11:24"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.259177,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.140823,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=neutral",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 10.37 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 10.367083,
+      "record_id": "12583c95-c343-4350-bae7-0b882ed70d96",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "neutral"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 00:37:10",
+        "evidence_count": 5,
+        "kind": "decision",
+        "status": "active",
+        "title": "Hydrophone dataset pull and acoustic category analyzer v1 added under dataset/hydrophone",
+        "updated_at": "2026-04-24 00:37:10"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.1,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.97 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.97419,
+      "record_id": "4c854c8c-ecc2-4a2d-b2c8-bfb1131847ca",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 17:26:03",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "SubSim playability hardening: packaging and quit key conflict",
+        "updated_at": "2026-04-19 17:26:03"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.27 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.273576,
+      "record_id": "4bf1d1ea-82e4-487a-8ece-c9bcc4eb25b2",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 00:07:58",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Acoustic Substrate Completion v1 aligned across desktop, Godot, and playtester surfaces",
+        "updated_at": "2026-04-24 00:07:58"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.99 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.994468,
+      "record_id": "9a022028-43d8-4040-8dd6-12cc53e6f829",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 02:45:57",
+        "evidence_count": 6,
+        "kind": "decision",
+        "status": "active",
+        "title": "Godot mobile controls now include explicit Ping and gameplay-effective Fire",
+        "updated_at": "2026-04-24 02:45:57"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.05,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -2.99769
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.098793,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "14d4b7a7-b338-4ede-bdad-36278a07392e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "suppressed"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-07 14:39:41",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "SubSim x ReadyPlayer1 preflight documented and Campaign 001 selected",
+        "updated_at": "2026-05-07 14:39:41"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.000833,
+        "recall_boost": 0.349731,
+        "suppression": -2.99769
+      },
+      "computed_at": "2026-05-18T00:00:00Z",
+      "effective_score": -1.198793,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "phase_d2_subsim_resume"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.03 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T23:12:00Z",
+      "quiet_days": 0.033333,
+      "record_id": "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:363c13a65e92ef58",
+      "status": "suppressed"
+    }
+  ],
+  "v2_db": "reports/pilots/phase_d2_recall_reinforcement_2026-05-17/subsim_phase_d2_shadow_v2.db",
+  "weights": {
+    "accepted": 2.0,
+    "decay": 0.75,
+    "durable_preserve": 0.75,
+    "evidence_preserve_cap": 0.5,
+    "half_life_days": 30.0,
+    "max_score": 12.0,
+    "min_score": -8.0,
+    "preserve_floor": 0.5,
+    "recall": 0.35,
+    "suppressed": 3.0
+  },
+  "write_state": true
+}
