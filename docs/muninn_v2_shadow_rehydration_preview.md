@@ -63,7 +63,18 @@ The top `primary_limit` non-duplicate cards are primary matches. Explanations ar
 
 ### Stage B: Recent In-Scope Supplement
 
-Unless disabled, the command selects recent active cards from the same filtered v2 record set. These cards are continuity supplements, not query hits. They are sorted deterministically by `updated_at` descending and card id ascending, exclude primary duplicates, and are limited by `recent_limit` and the overall `limit`.
+Unless disabled, the command selects recent active cards from the same filtered v2 record set. These cards are continuity supplements, not primary query hits. They are sorted deterministically by `updated_at` descending, relevance score, and card id ascending, exclude primary duplicates, and are limited by `recent_limit` and the overall `limit`.
+
+Supplements must carry an explicit reason code in `selected_memory.cards[].selection.reason`:
+
+- `recent_campaign_or_numeric_token_overlap`: the card matched meaningful numeric, campaign, version, or phase-like query tokens.
+- `recent_query_token_overlap`: the card matched at least two non-generic query tokens.
+- `recent_query_primary_domain_overlap`: the card matched both the query and terms from primary results.
+- `recent_primary_domain_overlap`: the card matched enough primary-result domain terms to support continuity.
+- `recent_project_boundary_or_contract`: the card preserves a project boundary, contract, canonical entrypoint, or runtime-memory separation that matched the project/query or primary domain.
+- `recent_same_scope_continuity_fallback`: non-strict mode only; a small cap for recent same-scope cards when stronger supplements are sparse.
+
+Strict previews do not fill remaining budget with weak recency alone. Background-only or contrast-only cards, such as process notes that merely mention the topic while documenting deferred or non-current work, are penalized and omitted from strict supplements unless they have a stronger numeric/campaign match.
 
 ### Stage C: Evidence Attachment
 

@@ -10,6 +10,7 @@ from ..core.models import EvidenceRef, MemoryCard, utc_now
 from ..indexes import DerivedIndexProvider
 from .hybrid_recall import hybrid_recall
 from .lexical_recall import lexical_recall
+from .scoring import card_search_text, normalize_tokens
 from .vector_recall import recall_with_fallback
 
 
@@ -18,6 +19,38 @@ REHYDRATE_RESPONSE_SCHEMA_NAME = "RehydrateResponseV1"
 REHYDRATE_RESPONSE_CONTRACT_VERSION = "1.0.0"
 REHYDRATE_RESPONSE_SCHEMA_VERSION = "muninn.v2.rehydrate_response.v1"
 REHYDRATE_RESPONSE_SCHEMA_URI = "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json"
+SUPPLEMENT_RECENT_CAP_OFFSET = 2
+SUPPLEMENT_FALLBACK_CAP = 2
+SUPPLEMENT_GENERIC_TOKENS = {
+    "current",
+    "context",
+    "project",
+    "repo",
+    "resume",
+    "state",
+    "steps",
+    "task",
+}
+SUPPLEMENT_BACKGROUND_MARKERS = (
+    "background",
+    "background-only",
+    "contrast-only",
+    "deferred automation",
+    "hard-gate",
+    "manual_review",
+    "optimizer",
+    "process artifacts",
+    "revisit conditions",
+    "trial",
+)
+SUPPLEMENT_BOUNDARY_MARKERS = (
+    "boundary",
+    "canonical",
+    "contract",
+    "entrypoint",
+    "entrypoints",
+    "runtime memory",
+)
 
 
 class ShadowPreviewError(RuntimeError):
@@ -39,6 +72,16 @@ class ShadowPreviewOptions:
     max_chars: int | None = None
     recent_supplement: bool = True
     strict: bool = False
+
+
+@dataclass(frozen=True)
+class SupplementCandidate:
+    card: MemoryCard
+    reason: str
+    score: float
+    matched_tokens: tuple[str, ...]
+    candidate_sources: tuple[str, ...]
+    penalties: dict[str, float]
 
 
 def build_shadow_rehydrate_preview(
@@ -89,14 +132,16 @@ def build_shadow_rehydrate_preview(
     if options.recent_supplement and len(primary_candidates) < limit:
         recent_cards = _recent_cards(filtered, exclude_ids=primary_ids)
         duplicate_supplements = len(filtered) - len(primary_ids) - len(recent_cards)
-        supplement_candidates = [
-            _supplement_entry(
-                card,
-                include_evidence=options.include_evidence,
-                include_explanations=options.include_explanations,
-            )
-            for card in recent_cards[: min(recent_limit, limit - len(primary_candidates))]
-        ]
+        supplement_limit = min(recent_limit, limit - len(primary_candidates))
+        supplement_candidates = _supplement_entries(
+            recent_cards,
+            query=query,
+            primary_results=primary_candidates,
+            limit=supplement_limit,
+            strict=options.strict,
+            include_evidence=options.include_evidence,
+            include_explanations=options.include_explanations,
+        )
 
     budgeted = _apply_budget(
         primary_candidates,
@@ -369,28 +414,160 @@ def _primary_entries(
     return out
 
 
-def _supplement_entry(
+def _supplement_entries(
+    recent_cards: Sequence[MemoryCard],
+    *,
+    query: str,
+    primary_results: Sequence[dict[str, Any]],
+    limit: int,
+    strict: bool,
+    include_evidence: bool,
+    include_explanations: bool,
+) -> list[dict[str, Any]]:
+    query_tokens = set(normalize_tokens(query))
+    focus_tokens = _supplement_focus_tokens(query_tokens)
+    primary_tokens = _primary_domain_tokens(primary_results)
+    strong_cap = min(int(limit), max(SUPPLEMENT_FALLBACK_CAP, len(primary_results) + SUPPLEMENT_RECENT_CAP_OFFSET))
+    strong: list[SupplementCandidate] = []
+    fallback: list[SupplementCandidate] = []
+    for card in recent_cards:
+        candidate = _score_supplement_candidate(
+            card,
+            focus_tokens=focus_tokens,
+            query_tokens=query_tokens,
+            primary_tokens=primary_tokens,
+        )
+        if candidate.reason == "exclude_background_or_weak_supplement":
+            continue
+        if candidate.reason == "recent_same_scope_continuity_fallback":
+            if not strict:
+                fallback.append(candidate)
+            continue
+        strong.append(candidate)
+
+    _sort_supplement_candidates(strong)
+    _sort_supplement_candidates(fallback)
+    selected = strong[:strong_cap]
+    selected_ids = {candidate.card.id for candidate in selected}
+    if not any(candidate.reason == "recent_project_boundary_or_contract" for candidate in selected):
+        boundary_candidates = [
+            candidate
+            for candidate in strong
+            if candidate.reason == "recent_project_boundary_or_contract" and candidate.card.id not in selected_ids
+        ]
+        _sort_boundary_supplement_candidates(boundary_candidates)
+        for candidate in boundary_candidates[:1]:
+            if len(selected) >= int(limit):
+                break
+            selected.append(candidate)
+            selected_ids.add(candidate.card.id)
+    if not strict and len(selected) < int(limit):
+        selected.extend(fallback[: min(SUPPLEMENT_FALLBACK_CAP, int(limit) - len(selected))])
+    return [
+        _supplement_entry(
+            candidate,
+            include_evidence=include_evidence,
+            include_explanations=include_explanations,
+        )
+        for candidate in selected[: int(limit)]
+    ]
+
+
+def _score_supplement_candidate(
     card: MemoryCard,
+    *,
+    focus_tokens: set[str],
+    query_tokens: set[str],
+    primary_tokens: set[str],
+) -> SupplementCandidate:
+    text = card_search_text(card)
+    tokens = set(normalize_tokens(text))
+    title_summary_tokens = set(normalize_tokens(" ".join([card.title, card.summary])))
+    query_hits = sorted(focus_tokens & tokens)
+    title_query_hits = sorted(focus_tokens & title_summary_tokens)
+    primary_hits = sorted(primary_tokens & tokens)
+    numeric_hits = sorted(_supplement_numeric_tokens(query_tokens) & tokens)
+    background_hits = _background_markers(text)
+    boundary_hits = _boundary_markers(text)
+    score = (
+        (4.0 * len(numeric_hits))
+        + (3.0 * len(query_hits))
+        + (1.25 * min(len(primary_hits), 8))
+        + (1.5 * len(title_query_hits))
+    )
+    penalties: dict[str, float] = {}
+    if background_hits:
+        penalties["background_or_contrast_only_signal"] = -12.0
+        score -= 12.0
+
+    reason = "recent_same_scope_continuity_fallback"
+    if numeric_hits:
+        reason = "recent_campaign_or_numeric_token_overlap"
+    elif len(query_hits) >= 2:
+        reason = "recent_query_token_overlap"
+    elif len(query_hits) >= 1 and len(primary_hits) >= 2:
+        reason = "recent_query_primary_domain_overlap"
+    elif len(primary_hits) >= 3:
+        reason = "recent_primary_domain_overlap"
+    if boundary_hits and (query_hits or len(primary_hits) >= 2):
+        reason = "recent_project_boundary_or_contract"
+        score += 8.0
+
+    if background_hits and reason != "recent_campaign_or_numeric_token_overlap":
+        reason = "exclude_background_or_weak_supplement"
+    elif reason == "recent_query_primary_domain_overlap" and score < 10.0:
+        reason = "exclude_background_or_weak_supplement"
+    elif reason == "recent_same_scope_continuity_fallback" and score < 5.0:
+        reason = "recent_same_scope_continuity_fallback"
+    elif score < 4.0:
+        reason = "exclude_background_or_weak_supplement"
+
+    matched_tokens = tuple(sorted(set(query_hits + primary_hits + numeric_hits)))
+    sources: list[str] = []
+    if query_hits:
+        sources.append("query_tokens")
+    if title_query_hits:
+        sources.append("title_summary_tokens")
+    if primary_hits:
+        sources.append("primary_result_domain_tokens")
+    if numeric_hits:
+        sources.append("numeric_tokens")
+    if not sources:
+        sources.append("recent_same_scope")
+    return SupplementCandidate(
+        card=card,
+        reason=reason,
+        score=round(float(score), 6),
+        matched_tokens=matched_tokens,
+        candidate_sources=tuple(sources),
+        penalties=penalties,
+    )
+
+
+def _supplement_entry(
+    candidate: SupplementCandidate,
     *,
     include_evidence: bool,
     include_explanations: bool,
 ) -> dict[str, Any]:
+    card = candidate.card
     explanation = None
     if include_explanations:
         explanation = {
             "retrieval_path": "recent_in_scope_shadow_supplement",
-            "score_semantics": "continuity supplement, not query relevance",
-            "candidate_sources": ["scope_key", "status", "updated_at"],
-            "matched_tokens": [],
-            "score_components": {"recent_active_project_card": 1.0},
-            "penalties": {},
+            "reason_code": candidate.reason,
+            "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+            "candidate_sources": list(candidate.candidate_sources),
+            "matched_tokens": list(candidate.matched_tokens),
+            "score_components": {"supplement_relevance": candidate.score},
+            "penalties": dict(candidate.penalties),
             "vector_used": False,
         }
     return _card_entry(
         card,
         stage="recent_in_scope_supplement",
-        reason="recent_in_scope_supplement",
-        score=None,
+        reason=candidate.reason,
+        score=candidate.score,
         retrieval_rank=None,
         explanation=explanation,
         include_evidence=include_evidence,
@@ -485,6 +662,72 @@ def _recent_cards(cards: Sequence[MemoryCard], *, exclude_ids: set[str]) -> list
     out.sort(key=lambda card: str(card.id))
     out.sort(key=lambda card: str(card.updated_at or ""), reverse=True)
     return out
+
+
+def _supplement_focus_tokens(query_tokens: set[str]) -> set[str]:
+    return {
+        token
+        for token in query_tokens
+        if len(token) >= 4 and token not in SUPPLEMENT_GENERIC_TOKENS
+    }
+
+
+def _primary_domain_tokens(primary_results: Sequence[dict[str, Any]]) -> set[str]:
+    tokens: set[str] = set()
+    for item in primary_results:
+        text = " ".join(
+            [
+                str(item.get("title") or ""),
+                str(item.get("summary") or ""),
+                str(item.get("body_excerpt") or ""),
+                " ".join(str(tag) for tag in item.get("tags", [])),
+            ]
+        )
+        tokens.update(normalize_tokens(text))
+        explanation = item.get("explanation")
+        if isinstance(explanation, dict):
+            tokens.update(str(token) for token in explanation.get("matched_tokens", []))
+    return {
+        token
+        for token in tokens
+        if len(token) >= 4 and token not in SUPPLEMENT_GENERIC_TOKENS
+    }
+
+
+def _background_markers(text: str) -> tuple[str, ...]:
+    normalized = " ".join(str(text or "").lower().split())
+    return tuple(marker for marker in SUPPLEMENT_BACKGROUND_MARKERS if marker in normalized)
+
+
+def _boundary_markers(text: str) -> tuple[str, ...]:
+    normalized = " ".join(str(text or "").lower().split())
+    return tuple(marker for marker in SUPPLEMENT_BOUNDARY_MARKERS if marker in normalized)
+
+
+def _supplement_numeric_tokens(query_tokens: set[str]) -> set[str]:
+    out: set[str] = set()
+    for token in query_tokens:
+        if not any(ch.isdigit() for ch in token):
+            continue
+        if token.startswith(("campaign", "phase")):
+            out.add(token)
+        elif token.startswith("v") and token[1:].isdigit():
+            out.add(token)
+        elif token[0].isdigit():
+            out.add(token)
+    return out
+
+
+def _sort_supplement_candidates(candidates: list[SupplementCandidate]) -> None:
+    candidates.sort(key=lambda candidate: str(candidate.card.id))
+    candidates.sort(key=lambda candidate: -candidate.score)
+    candidates.sort(key=lambda candidate: str(candidate.card.updated_at or ""), reverse=True)
+
+
+def _sort_boundary_supplement_candidates(candidates: list[SupplementCandidate]) -> None:
+    candidates.sort(key=lambda candidate: str(candidate.card.id))
+    candidates.sort(key=lambda candidate: str(candidate.card.updated_at or ""), reverse=True)
+    candidates.sort(key=lambda candidate: -candidate.score)
 
 
 def _filter_cards(
@@ -814,7 +1057,7 @@ def _markdown_card(item: dict[str, Any], *, include_score: bool) -> list[str]:
     lines = [
         f"- `{item['id']}` {item['title']}",
         (
-            f"  - stage: `{selection.get('stage')}` kind: `{item['kind']}` "
+            f"  - stage: `{selection.get('stage')}` reason: `{selection.get('reason')}` kind: `{item['kind']}` "
             f"updated: `{item.get('updated_at')}`{score}"
         ),
         f"  - summary: {item['summary']}",

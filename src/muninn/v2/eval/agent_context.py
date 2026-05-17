@@ -544,7 +544,10 @@ def _render_cards(cards: Sequence[dict[str, Any]]) -> list[str]:
         lines.extend(
             [
                 f"- [{card.get('id')}] {card.get('title')}",
-                f"  kind: {card.get('kind')} status: {card.get('status')} stage: {selection.get('stage')}",
+                (
+                    f"  kind: {card.get('kind')} status: {card.get('status')} "
+                    f"stage: {selection.get('stage')} reason: {selection.get('reason')}"
+                ),
                 f"  score: {selection.get('score')} rank: {selection.get('retrieval_rank')}",
                 f"  summary: {card.get('summary')}",
             ]

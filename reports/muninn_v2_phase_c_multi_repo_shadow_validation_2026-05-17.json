@@ -1,0 +1,125 @@
+{
+  "schema_version": "muninn.v2.phase_c_shadow_validation.v1",
+  "record_type": "muninn_v2_phase_c_multi_repo_shadow_validation_report",
+  "date": "2026-05-17",
+  "scope": "v2_shadow_only_no_live_integration",
+  "projects": {
+    "subsim": {
+      "project_path": "/mnt/data/subsim",
+      "space_key": "repo:363c13a65e92ef58",
+      "shadow_db": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+      "import": {
+        "migrated_cards": 18,
+        "migrated_evidence_refs": 74,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "fidelity_records_checked": 94,
+        "fidelity_failures": 0,
+        "unsupported_record_types": 0,
+        "ambiguous_records": 0,
+        "v1_row_counts_changed": false
+      },
+      "index_health_post_write": {
+        "backend": "json_vector_fallback",
+        "backend_available": true,
+        "eligible_records": 18,
+        "indexed_records": 18,
+        "missing_records": 0,
+        "stale_records": 0,
+        "degraded": true,
+        "reason": ["sqlite_vec_unavailable_using_json_vector_fallback"]
+      },
+      "initial_preview_counts": {"primary": 3, "supplements": 9, "total": 12},
+      "tightened_preview_counts": {"primary": 3, "supplements": 5, "total": 8}
+    },
+    "sindri": {
+      "project_path": "/mnt/data/Sindri",
+      "space_key": "path:316f4f67d061cbdd",
+      "shadow_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+      "import": {
+        "migrated_cards": 26,
+        "migrated_evidence_refs": 76,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "fidelity_records_checked": 104,
+        "fidelity_failures": 0,
+        "unsupported_record_types": 0,
+        "ambiguous_records": 0,
+        "v1_row_counts_changed": false
+      },
+      "index_health_post_write": {
+        "backend": "json_vector_fallback",
+        "backend_available": true,
+        "eligible_records": 26,
+        "indexed_records": 26,
+        "missing_records": 0,
+        "stale_records": 0,
+        "degraded": true,
+        "reason": ["sqlite_vec_unavailable_using_json_vector_fallback"]
+      },
+      "initial_preview_counts": {"primary": 3, "supplements": 9, "total": 12},
+      "tightened_preview_counts": {"primary": 3, "supplements": 5, "total": 8}
+    }
+  },
+  "audits": {
+    "subsim_sindri_initial": {
+      "cases": 2,
+      "go_cases": 2,
+      "no_go_cases": 0,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 2,
+      "over_included_card_total": 9
+    },
+    "subsim_sindri_tightened": {
+      "cases": 2,
+      "go_cases": 2,
+      "no_go_cases": 0,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 0,
+      "over_included_card_total": 1
+    },
+    "friday_readyplayer1_regression_tightened": {
+      "cases": 2,
+      "go_cases": 2,
+      "no_go_cases": 0,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 1,
+      "over_included_card_total": 5
+    }
+  },
+  "supplement_selection_changes": {
+    "implemented": true,
+    "reason_codes": [
+      "recent_campaign_or_numeric_token_overlap",
+      "recent_query_token_overlap",
+      "recent_query_primary_domain_overlap",
+      "recent_primary_domain_overlap",
+      "recent_project_boundary_or_contract",
+      "recent_same_scope_continuity_fallback"
+    ],
+    "strict_mode": "does_not_fill_remaining_budget_with_weak_recency_alone",
+    "background_penalties": ["background", "contrast-only", "hard-gate", "manual_review", "optimizer", "trial"],
+    "boundary_contract_preservation": "adds at most one older boundary/contract supplement when the capped recent set would otherwise omit all such cards"
+  },
+  "safety": {
+    "v1_db": "/home/unix/.local/share/muninn/human_memory.db",
+    "v1_counts_after": {
+      "cards": 515,
+      "evidence": 1405,
+      "card_evidence": 1405,
+      "interaction_events": 2
+    },
+    "live_mcp_defaults_changed": false,
+    "live_v1_schema_changed": false,
+    "project_repos_modified": false,
+    "generated_shadow_dbs_committable": false
+  },
+  "decision": {
+    "phase_c_c1": "go",
+    "phase_c_c2": "go_with_residual_primary_noise",
+    "live_agent_context": "no_go"
+  }
+}

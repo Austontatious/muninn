@@ -1,0 +1,122 @@
+{
+  "schema_version": "muninn.v2.agent_context_audit_fixture.v1",
+  "name": "Friday and ReadyPlayer1 Phase C tightened regression audit",
+  "version": 1,
+  "defaults": {
+    "min_coverage": 0.85,
+    "require_all_required": true,
+    "ignored_overinclude_terms": [
+      "friday",
+      "readyplayer1",
+      "subsim",
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "campaign",
+      "resume"
+    ]
+  },
+  "cases": [
+    {
+      "id": "friday-resume-current-state",
+      "project": "Friday",
+      "task": "resume Friday project current state and next steps",
+      "response_path": "../friday_v2_shadow_2026-05-17/shadow_rehydrate_preview_phase_c_tightened/shadow_rehydrate_preview.json",
+      "v1_context": [
+        "Friday direct chat auto-routes code prompts to coder and injects repo file context.",
+        "Friday bridge exposes read-only /mnt/data workspace access for direct Friday and Althing-mode path prompts.",
+        "Friday root has explicit Mimir repo-cognition entrypoints separated from runtime memory without runtime coupling.",
+        "Friday corpus runner supports resume mode with stable IDs and emits evals/runs artifacts."
+      ],
+      "expected_needs": [
+        {
+          "id": "direct-code-route",
+          "description": "Agent knows Friday direct chat routes code prompts to coder with repo file context.",
+          "all_terms": ["direct chat", "coder"],
+          "any_terms": ["repo file context", "repo-local context", "file-path prompts"]
+        },
+        {
+          "id": "workspace-read-access",
+          "description": "Agent knows Friday can inspect read-only workspace paths under /mnt/data.",
+          "all_terms": ["read-only", "/mnt/data"],
+          "any_terms": ["direct Friday", "Althing-mode", "workspace paths"]
+        },
+        {
+          "id": "mimir-navigation-boundary",
+          "description": "Agent knows Mimir is the repo-cognition path and is separated from runtime memory.",
+          "all_terms": ["mimir", "repo-cognition"],
+          "any_terms": ["without creating runtime coupling", "separated from runtime memory"]
+        },
+        {
+          "id": "runner-resume-state",
+          "description": "Agent knows the Friday corpus runner and resume-mode artifact state.",
+          "all_terms": ["corpus runner", "resume mode"],
+          "any_terms": ["stable IDs", "evals/runs"]
+        }
+      ],
+      "confusing_terms": [
+        {
+          "term": "web-wrapper",
+          "reason": "Appears only as contrast in Android card; should not imply the current frontend is a web wrapper.",
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "readyplayer1-resume-current-campaign",
+      "project": "ReadyPlayer1",
+      "task": "resume ReadyPlayer1 current campaign state and next steps",
+      "response_path": "../readyplayer1_v2_shadow_2026-05-17/shadow_rehydrate_preview_phase_c_tightened/shadow_rehydrate_preview.json",
+      "v1_context": [
+        "ReadyPlayer1 current-state consumption uses runs/current pointer artifacts.",
+        "Campaign 007A promoted post-reacquisition stabilization.",
+        "Campaign 006A promoted early active ping post-loss recovery probe.",
+        "Campaign 005A promoted fire-control readiness and solution-state visibility.",
+        "Campaign 004A suppresses duplicate same-primary torpedo commits.",
+        "SubSim evaluation contract records failure taxonomy and promotion decision."
+      ],
+      "expected_needs": [
+        {
+          "id": "current-state-pointers",
+          "description": "Agent knows current-state consumption uses runs/current pointers.",
+          "all_terms": ["current-state", "runs/current"]
+        },
+        {
+          "id": "campaign-007a",
+          "description": "Agent knows Campaign 007A post-reacquisition stabilization state.",
+          "all_terms": ["campaign 007a", "post-reacquisition"]
+        },
+        {
+          "id": "campaign-006a",
+          "description": "Agent knows Campaign 006A early active ping recovery state.",
+          "all_terms": ["campaign 006a", "early active ping"]
+        },
+        {
+          "id": "campaign-005a",
+          "description": "Agent knows Campaign 005A fire-control state normalization.",
+          "all_terms": ["campaign 005a", "fire-control"]
+        },
+        {
+          "id": "campaign-004a",
+          "description": "Agent knows Campaign 004A duplicate torpedo suppression.",
+          "all_terms": ["campaign 004a", "duplicate same-primary torpedo"]
+        },
+        {
+          "id": "subsim-evaluation-contract",
+          "description": "Agent knows the SubSim evaluation contract and failure taxonomy are present.",
+          "all_terms": ["subsim", "evaluation contract"],
+          "any_terms": ["failure taxonomy", "promotion decision"]
+        }
+      ],
+      "confusing_terms": [
+        {
+          "term": "Qwen3.6",
+          "reason": "Unrelated model-serving trial appears as a recent supplement and should not steer ReadyPlayer1 campaign work.",
+          "blocking": false
+        }
+      ]
+    }
+  ]
+}

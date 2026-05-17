@@ -1,0 +1,331 @@
+{
+  "cases": [
+    {
+      "comparison": {
+        "coverage_delta_v2_minus_v1": 0.4,
+        "regressions": [],
+        "same_good_decision_supported": true,
+        "v1_context_provided": true
+      },
+      "confusing": [],
+      "context_block_chars": 17626,
+      "decision": "go",
+      "id": "subsim-readyplayer1-campaign-integration",
+      "need_results": [
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "Campaign 003",
+            "recommended next"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the SubSim/ReadyPlayer1 ledger state and Campaign 004A recommendation.",
+          "id": "campaign-ledger-through-003",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "did not change SubSim gameplay",
+            "preserved gameplay"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Campaign 004A did not change SubSim producer gameplay or torpedo physics.",
+          "id": "campaign-004a-producer-safety",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "fire_control_ready",
+            "fire_control_solution_state",
+            "hold reason"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows fire-control observation data is exposed for ReadyPlayer1 Campaign 005A.",
+          "id": "fire-control-observation-contract",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "heldout_source_eval",
+            "readyplayer1_acoustic_eval_cases"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows hydrophone fixtures feed acoustic clutter evaluation.",
+          "id": "hydrophone-fixtures",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows sonar tracks expose explicit lifecycle state.",
+          "id": "sonar-lifecycle-state",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        }
+      ],
+      "over_included_cards": [
+        {
+          "id": "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "primary_retrieval",
+          "title": "SubSim x ReadyPlayer1 preflight documented and Campaign 001 selected"
+        }
+      ],
+      "project": "SubSim",
+      "response_path": "/mnt/data/Muninn/reports/pilots/subsim_v2_shadow_2026-05-17/shadow_rehydrate_preview_tightened/shadow_rehydrate_preview.json",
+      "selected_cards": [
+        {
+          "id": "8d0704f3-2903-44df-937c-c80902b20f64",
+          "stage": "primary_retrieval",
+          "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003"
+        },
+        {
+          "id": "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+          "stage": "primary_retrieval",
+          "title": "SubSim Campaign 004A preserved gameplay while ReadyPlayer1 improved fire-control policy"
+        },
+        {
+          "id": "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+          "stage": "primary_retrieval",
+          "title": "SubSim x ReadyPlayer1 preflight documented and Campaign 001 selected"
+        },
+        {
+          "id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+          "stage": "recent_in_scope_supplement",
+          "title": "SubSim fire_control observation contract v1"
+        },
+        {
+          "id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 004A leaves SubSim fire-control physics unchanged"
+        },
+        {
+          "id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+          "stage": "recent_in_scope_supplement",
+          "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring"
+        },
+        {
+          "id": "5e260af6-8b17-427f-832d-028fae69d295",
+          "stage": "recent_in_scope_supplement",
+          "title": "Hydrophone fixed eval and acoustic fixtures"
+        },
+        {
+          "id": "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+          "stage": "recent_in_scope_supplement",
+          "title": "SubSim sonar tracks expose explicit lifecycle state"
+        }
+      ],
+      "stale": [],
+      "task": "resume SubSim current ReadyPlayer1 campaign integration state and next steps",
+      "v1_style_context": {
+        "coverage_score": 0.6,
+        "covered_required": 3,
+        "missing_required": [
+          "campaign-004a-producer-safety",
+          "sonar-lifecycle-state"
+        ],
+        "pass": false,
+        "provided": true,
+        "required_needs": 5
+      },
+      "v2_context": {
+        "coverage_score": 1.0,
+        "covered_required": 5,
+        "missing_required": [],
+        "pass": true,
+        "required_needs": 5
+      }
+    },
+    {
+      "comparison": {
+        "coverage_delta_v2_minus_v1": 0.0,
+        "regressions": [],
+        "same_good_decision_supported": true,
+        "v1_context_provided": true
+      },
+      "confusing": [],
+      "context_block_chars": 17006,
+      "decision": "go",
+      "id": "sindri-wrapper-lane-trust-calibration",
+      "need_results": [
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "safe operator summaries",
+            "posture"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the wrapper lane emits machine-gated trust outputs.",
+          "id": "machine-gated-trust",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "scripts/run_trust_regression_check.sh",
+            "trust regression surface"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the canonical trust regression helper command.",
+          "id": "trust-regression-helper",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "explicit criteria",
+            "trust guardrails"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Phase 10 graduates the wrapper lane under explicit criteria.",
+          "id": "phase-10-graduation",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "wrapper lane retained",
+            "stable control"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Phase 11 transfer remains partial and wrapper lane is the control.",
+          "id": "phase-11-transfer-partial",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "override friction",
+            "handoff-first calibration"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Phase 9 manifest-first calibration remains part of the current trust path.",
+          "id": "phase-9-manifest-calibration",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        }
+      ],
+      "over_included_cards": [],
+      "project": "Sindri",
+      "response_path": "/mnt/data/Muninn/reports/pilots/sindri_v2_shadow_2026-05-17/shadow_rehydrate_preview_tightened/shadow_rehydrate_preview.json",
+      "selected_cards": [
+        {
+          "id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+          "stage": "primary_retrieval",
+          "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane"
+        },
+        {
+          "id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+          "stage": "primary_retrieval",
+          "title": "Trust regression surface helper command for wrapper-lane calibration"
+        },
+        {
+          "id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+          "stage": "primary_retrieval",
+          "title": "Phase 10 graduates wrapper lane with explicit criteria gate"
+        },
+        {
+          "id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 11 transfer validation sequence"
+        },
+        {
+          "id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 11 adjacent-lane transfer verdict is partial"
+        },
+        {
+          "id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 10 graduation validation sequence for wrapper lane"
+        },
+        {
+          "id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 9 manifest-first calibration validation and execution path"
+        },
+        {
+          "id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 9 narrows manifest-first override friction with handoff-first calibration"
+        }
+      ],
+      "stale": [],
+      "task": "resume Sindri current wrapper-lane trust calibration state and next steps",
+      "v1_style_context": {
+        "coverage_score": 1.0,
+        "covered_required": 5,
+        "missing_required": [],
+        "pass": true,
+        "provided": true,
+        "required_needs": 5
+      },
+      "v2_context": {
+        "coverage_score": 1.0,
+        "covered_required": 5,
+        "missing_required": [],
+        "pass": true,
+        "required_needs": 5
+      }
+    }
+  ],
+  "fixture": {
+    "name": "SubSim and Sindri Phase C tightened agent-context audit",
+    "source_path": "/mnt/data/Muninn/reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_phase_c_tightened_fixture.json",
+    "version": 1
+  },
+  "generated_at": "2026-05-17T21:11:22.301566Z",
+  "out_dir": "reports/pilots/phase_c_multi_repo_2026-05-17/agent_context_audit_tightened",
+  "record_type": "muninn_v2_agent_context_audit_report",
+  "safety": {
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_read_only",
+    "v1_writes": false
+  },
+  "schema_version": "muninn.v2.agent_context_audit.v1",
+  "summary": {
+    "average_v2_coverage_score": 1.0,
+    "cases": 2,
+    "cases_with_v1_comparison": 2,
+    "confusing_flag_total": 0,
+    "go_cases": 2,
+    "missing_required_total": 0,
+    "no_go_cases": 0,
+    "over_included_card_total": 1,
+    "same_good_decision_supported_count": 2,
+    "stale_flag_total": 0
+  }
+}

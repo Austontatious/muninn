@@ -1,0 +1,27 @@
+{
+  "canonical_records": {
+    "active_cards": 26,
+    "cards_loaded": 26
+  },
+  "derived_index_contract": {
+    "canonical_truth": "v2 cards/events/entities/associations/evidence remain canonical",
+    "index_role": "optional derived diagnostic retrieval assist",
+    "rebuild": "explicit"
+  },
+  "generated_at": "2026-05-17T20:54:25.322757Z",
+  "record_type": "muninn_v2_index_health_report",
+  "schema_version": "muninn.v2.derived_indexes.v1",
+  "status": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 26,
+    "indexed_records": 26,
+    "missing_records": 0,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "stale_records": 0
+  },
+  "v2_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db"
+}

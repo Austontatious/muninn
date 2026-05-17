@@ -1,0 +1,65 @@
+{
+  "after": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 26,
+    "indexed_records": 26,
+    "missing_records": 0,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "stale_records": 0
+  },
+  "backend": "json_vector_fallback",
+  "before": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 26,
+    "indexed_records": 0,
+    "missing_records": 26,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback",
+      "index_table_missing",
+      "rebuild_required"
+    ],
+    "stale_records": 0
+  },
+  "deleted_record_ids": [],
+  "deleted_records": 0,
+  "dry_run": false,
+  "planned_deletes": 0,
+  "planned_record_ids": [
+    "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+    "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+    "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+    "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+    "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+    "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+    "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+    "0bc6cc14-39e3-4eb4-bbaf-8c90c8387f3c",
+    "e7f21da8-5a23-46ce-ab62-f093960a7ff5",
+    "ebafdc59-b748-4df8-a9ee-1a8234741860",
+    "47ce04d1-aa39-4341-be83-0ccc1b8658e4",
+    "c05edc42-46de-4637-ab7f-263a9f74fdc2",
+    "8819e89f-15a9-4a28-aebc-a873b7580a49",
+    "d5bf9668-d420-41c7-a7e4-0943e10d74cb",
+    "40912dad-173e-4d7c-84db-0061e56dce95",
+    "e4dccb72-35fa-461b-9208-b08a9c28507d",
+    "435c9aff-9a5c-4168-80ef-f6986ae0d87b",
+    "b3ac4697-88c2-499e-9cbb-8b883cc91888",
+    "4ed2089d-0d7a-4598-92a2-050d121aa9b3",
+    "126202aa-64ce-4784-86ce-90483298a63a",
+    "6aa97802-f7c3-4fce-adb6-dd7c2414c08a",
+    "5e7ca309-8ae7-4def-a4bf-720627498645",
+    "acfb3fa1-6561-4b92-b6fc-b0801b0cf066",
+    "d45b80ae-66dd-468e-92e8-1f66b6de803b",
+    "4cf0bd9c-784f-4241-a163-128f2346724c",
+    "9b85b8e6-d23c-4e73-8540-0c97bf9e03c1"
+  ],
+  "planned_upserts": 26,
+  "record_type": "muninn_v2_index_rebuild_report",
+  "write_index": true,
+  "written_upserts": 26
+}

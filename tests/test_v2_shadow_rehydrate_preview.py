@@ -47,7 +47,7 @@ def _seed_shadow_db(tmp_path):
                 id="recent-a",
                 kind="runbook",
                 title="Friday stack start stop",
-                summary="Use docker compose up and down for explicit stack lifecycle.",
+                summary="Use docker compose up and down for direct coder route stack lifecycle.",
                 scope_key="repo:test",
                 updated_at="2026-05-17T12:00:00Z",
                 evidence=[EvidenceRef(evidence_type="file", ref="/repo/RUNBOOK.md:4")],
@@ -58,7 +58,7 @@ def _seed_shadow_db(tmp_path):
                 id="recent-b",
                 kind="interface",
                 title="Friday Althing bridge",
-                summary="Althing and Direct Friday modes use explicit UI routes.",
+                summary="Althing and Direct Friday coder route modes use explicit UI routes.",
                 scope_key="repo:test",
                 updated_at="2026-05-17T12:00:00Z",
             )
@@ -167,6 +167,14 @@ def test_shadow_preview_cli_writes_json_and_markdown_with_evidence_and_explanati
     assert report["retrieval_provenance"]["degraded"] is True
     assert report["fallbacks"]
     assert len(supplement_cards) == 2
+    assert {item["selection"]["reason"] for item in supplement_cards} <= {
+        "recent_query_token_overlap",
+        "recent_query_primary_domain_overlap",
+        "recent_primary_domain_overlap",
+        "recent_campaign_or_numeric_token_overlap",
+        "recent_project_boundary_or_contract",
+    }
+    assert all(item["explanation"]["reason_code"] == item["selection"]["reason"] for item in supplement_cards)
     assert "Recent In-Scope Supplements" in markdown
 
 
@@ -295,6 +303,141 @@ def test_shadow_preview_recent_order_is_deterministic_for_ties() -> None:
         "a-supplement",
         "b-supplement",
     ]
+
+
+def test_shadow_preview_strict_supplements_require_reason_codes() -> None:
+    primary = MemoryCard(
+        id="primary",
+        kind="decision",
+        title="Sindri wrapper lane trust calibration",
+        summary="Primary current wrapper lane trust calibration state.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T10:00:00Z",
+    )
+    relevant = MemoryCard(
+        id="relevant",
+        kind="runbook",
+        title="Phase 11 wrapper lane trust validation",
+        summary="Run trust regression checks before accepting transfer_partial outcomes.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T12:00:00Z",
+    )
+    unrelated = MemoryCard(
+        id="unrelated",
+        kind="runbook",
+        title="Unrelated mobile controls",
+        summary="Godot mobile controls and touch targets belong to a separate UI surface.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T13:00:00Z",
+    )
+
+    report = build_shadow_rehydrate_preview(
+        [unrelated, relevant, primary],
+        options=ShadowPreviewOptions(
+            v2_db="/tmp/test.db",
+            query="resume Sindri wrapper lane trust calibration",
+            space_key="repo:test",
+            limit=3,
+            primary_limit=1,
+            recent_limit=2,
+            strict=True,
+            include_explanations=True,
+        ),
+    )
+
+    supplements = _cards_by_stage(report, "recent_in_scope_supplement")
+    assert [item["id"] for item in supplements] == ["relevant"]
+    assert supplements[0]["selection"]["reason"] == "recent_query_token_overlap"
+    assert supplements[0]["explanation"]["reason_code"] == "recent_query_token_overlap"
+
+
+def test_shadow_preview_strict_penalizes_background_only_supplements() -> None:
+    primary = MemoryCard(
+        id="primary",
+        kind="decision",
+        title="Sindri wrapper lane trust calibration",
+        summary="Primary current wrapper lane trust calibration state.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T10:00:00Z",
+    )
+    background = MemoryCard(
+        id="background",
+        kind="decision",
+        title="Phase 8.5 adopts harness discipline surfaces without widening Sindri scope",
+        summary="Process artifacts and deferred automation notes mention wrapper-lane trust calibration.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T12:00:00Z",
+    )
+
+    report = build_shadow_rehydrate_preview(
+        [background, primary],
+        options=ShadowPreviewOptions(
+            v2_db="/tmp/test.db",
+            query="resume Sindri wrapper lane trust calibration",
+            space_key="repo:test",
+            limit=2,
+            primary_limit=1,
+            recent_limit=1,
+            strict=True,
+            include_explanations=True,
+        ),
+    )
+
+    assert _cards_by_stage(report, "recent_in_scope_supplement") == []
+
+
+def test_shadow_preview_preserves_project_boundary_contract_supplement() -> None:
+    primary = MemoryCard(
+        id="primary",
+        kind="decision",
+        title="Friday current runner state",
+        summary="Friday corpus runner supports resume mode and emits eval artifacts.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T10:00:00Z",
+    )
+    recent_a = MemoryCard(
+        id="recent-a",
+        kind="runbook",
+        title="Friday current route A",
+        summary="Friday route current state.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T12:00:00Z",
+    )
+    recent_b = MemoryCard(
+        id="recent-b",
+        kind="runbook",
+        title="Friday current route B",
+        summary="Friday route current state.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T11:00:00Z",
+    )
+    boundary = MemoryCard(
+        id="boundary",
+        kind="decision",
+        title="Friday Mimir repo-cognition boundary",
+        summary="Mimir remains repo cognition, not runtime memory.",
+        scope_key="repo:test",
+        updated_at="2026-05-16T10:00:00Z",
+    )
+
+    report = build_shadow_rehydrate_preview(
+        [recent_a, recent_b, boundary, primary],
+        options=ShadowPreviewOptions(
+            v2_db="/tmp/test.db",
+            query="resume Friday project current state and next steps",
+            space_key="repo:test",
+            limit=4,
+            primary_limit=1,
+            recent_limit=3,
+            strict=True,
+            include_explanations=True,
+        ),
+    )
+
+    supplements = _cards_by_stage(report, "recent_in_scope_supplement")
+    assert "boundary" in [item["id"] for item in supplements]
+    boundary_item = next(item for item in supplements if item["id"] == "boundary")
+    assert boundary_item["selection"]["reason"] == "recent_project_boundary_or_contract"
 
 
 def test_shadow_preview_empty_db_fails_clearly(tmp_path, capsys) -> None:

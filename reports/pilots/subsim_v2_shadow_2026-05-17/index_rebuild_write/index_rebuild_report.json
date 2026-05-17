@@ -1,0 +1,57 @@
+{
+  "after": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 18,
+    "indexed_records": 18,
+    "missing_records": 0,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "stale_records": 0
+  },
+  "backend": "json_vector_fallback",
+  "before": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 18,
+    "indexed_records": 0,
+    "missing_records": 18,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback",
+      "index_table_missing",
+      "rebuild_required"
+    ],
+    "stale_records": 0
+  },
+  "deleted_record_ids": [],
+  "deleted_records": 0,
+  "dry_run": false,
+  "planned_deletes": 0,
+  "planned_record_ids": [
+    "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+    "66312a31-2eca-4931-8f28-ae75a2dc7411",
+    "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+    "f94af521-4f75-4f42-b9d6-8a10b66d4a0d",
+    "5e260af6-8b17-427f-832d-028fae69d295",
+    "8d0704f3-2903-44df-937c-c80902b20f64",
+    "a4659ce9-bcf2-4615-9c37-4c09601943ab",
+    "fb91d94b-b9e2-4bd8-a970-ff315747cd2d",
+    "1fff427d-0f12-44cd-a002-56f1516745fb",
+    "12583c95-c343-4350-bae7-0b882ed70d96",
+    "b97c8e3f-2a41-4031-946f-2f57b87f2bc2",
+    "14d4b7a7-b338-4ede-bdad-36278a07392e",
+    "ec85f42c-c39b-4c01-97f8-675ec09a8a73",
+    "518a6ff0-75ef-4daa-86c2-a3dd7c6a8be6",
+    "4c854c8c-ecc2-4a2d-b2c8-bfb1131847ca",
+    "9a022028-43d8-4040-8dd6-12cc53e6f829",
+    "bf3358a7-1331-40f4-8943-778fb2a179c6",
+    "4bf1d1ea-82e4-487a-8ece-c9bcc4eb25b2"
+  ],
+  "planned_upserts": 18,
+  "record_type": "muninn_v2_index_rebuild_report",
+  "write_index": true,
+  "written_upserts": 18
+}

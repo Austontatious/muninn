@@ -1,0 +1,2053 @@
+{
+  "agent_briefing": {
+    "bullets": [
+      "Primary match: Phase 5 adds machine-gated trust outputs for flagship wrapper lane - Sindri now emits structured promotion-gate results and safe operator summaries for wrapper-lane jobs, and uses calibrated posture mapping to distinguish caveat, patch-before, abstain, and blocking outcomes.",
+      "Primary match: Trust regression surface helper command for wrapper-lane calibration - Phase 8.5 adds a single helper command to run lint/tests and trust check runners required for non-regressive calibration passes.",
+      "Primary match: Phase 10 graduates wrapper lane with explicit criteria gate - Sindri Phase 10 adds explicit graduation criteria and a dedicated assessment slice for capability_wrapper_scaffold, yielding a graduate_lane verdict while preserving trust guardrails.",
+      "Continuity: Phase 11 transfer validation sequence - Phase 11 transfer proving requires full trust regression checks plus the dedicated phase11 runner check/run.",
+      "Continuity: Phase 11 adjacent-lane transfer verdict is partial - Adjacent parser/transform lane transfer passes safety and containment but remains burden-heavy. Verdict is transfer_partial with wrapper lane retained as stable control.",
+      "Continuity: Phase 10 graduation validation sequence for wrapper lane - Phase10 validation extends the trust suite with phase10 check/run commands and script while keeping prior phase checks intact.",
+      "Continuity: Phase 9 manifest-first calibration validation and execution path - Phase 9 requires running baseline lint/tests/checks, pilot/phase7/phase8/phase9 runners, trust regression helper, and lane scripts to regenerate deterministic manifest-first analysis artifacts.",
+      "Continuity: Phase 9 narrows manifest-first override friction with handoff-first calibration - Phase 9 adds manifest-first cluster analysis, manifest-specific override reasons, and first-inspection handoff refinement to reduce targeted-review overrides without widening scope. Safety posture stays intact with unsafe promotion and incorrect abstention at 0.0 on the phase9 slice.",
+      "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "method": "deterministic_card_title_summary_projection",
+    "usable": true
+  },
+  "budget": {
+    "candidate_cards": 26,
+    "duplicates_removed": 0,
+    "limit": 12,
+    "max_chars": null,
+    "omitted_for_budget": 0,
+    "omitted_for_limit": 0,
+    "primary_limit": 3,
+    "primary_selected": 3,
+    "recent_limit": 9,
+    "selected_total": 8,
+    "supplement_selected": 5,
+    "used_chars": 6389
+  },
+  "composition": {
+    "limit": 12,
+    "max_chars": null,
+    "primary_limit": 3,
+    "recent_limit": 9,
+    "retrieval_mode": "hybrid",
+    "stage_a": "primary_retrieval",
+    "stage_b": "recent_in_scope_supplement",
+    "stage_c": "evidence_attachment",
+    "stage_d": "limit_only",
+    "stage_e": "deterministic_agent_briefing",
+    "strategy": "hybrid_primary_plus_recent_supplement"
+  },
+  "contract_version": "1.0.0",
+  "explanations": {
+    "cards": [
+      {
+        "card_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "details": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "calibration",
+              "next",
+              "state",
+              "trust"
+            ],
+            "evidence": [
+              "sindri"
+            ],
+            "summary": [
+              "lane",
+              "sindri",
+              "wrapper"
+            ],
+            "title": [
+              "lane",
+              "trust",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "calibration",
+            "lane",
+            "next",
+            "sindri",
+            "state",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {},
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 14.197486,
+            "evidence_token_overlap": 0.45,
+            "project_space_match": 3.0,
+            "recency_boost": 0.75,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.959785,
+            "title_token_overlap": 26.6021,
+            "vector_similarity_rescue": 1.95493
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.390986,
+          "vector_used": true
+        },
+        "reason": "query_match",
+        "retrieval_rank": 1,
+        "score": 60.914301,
+        "stage": "primary_retrieval"
+      },
+      {
+        "card_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "details": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "tags",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "trust"
+            ],
+            "evidence": [
+              "sindri",
+              "trust"
+            ],
+            "summary": [
+              "calibration",
+              "trust"
+            ],
+            "tags": [
+              "trust"
+            ],
+            "title": [
+              "calibration",
+              "lane",
+              "trust",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "calibration",
+            "lane",
+            "sindri",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {
+            "broad_token_match": -8.0
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 2.423243,
+            "evidence_token_overlap": 1.228899,
+            "project_space_match": 3.0,
+            "recency_boost": 1.5,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.700902,
+            "tags_token_overlap": 3.461775,
+            "title_token_overlap": 37.989749,
+            "vector_similarity_rescue": 1.55946
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.311892,
+          "vector_used": true
+        },
+        "reason": "query_match",
+        "retrieval_rank": 2,
+        "score": 56.864028,
+        "stage": "primary_retrieval"
+      },
+      {
+        "card_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "details": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "tags",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "lane",
+              "wrapper"
+            ],
+            "evidence": [
+              "sindri"
+            ],
+            "summary": [
+              "lane",
+              "sindri",
+              "trust",
+              "wrapper"
+            ],
+            "tags": [
+              "lane",
+              "trust",
+              "wrapper"
+            ],
+            "title": [
+              "lane",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "lane",
+            "sindri",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {
+            "broad_token_match": -8.0,
+            "low_specificity_match": -0.6
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 3.783914,
+            "evidence_token_overlap": 0.45,
+            "project_space_match": 3.0,
+            "recency_boost": 1.75,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 19.017891,
+            "tags_token_overlap": 8.867367,
+            "title_token_overlap": 16.216775,
+            "vector_similarity_rescue": 1.939525
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.387905,
+          "vector_used": true
+        },
+        "reason": "query_match",
+        "retrieval_rank": 3,
+        "score": 47.425472,
+        "stage": "primary_retrieval"
+      },
+      {
+        "card_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "details": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "adjacent",
+            "baseline",
+            "before",
+            "check",
+            "checks",
+            "dedicated",
+            "eval",
+            "full",
+            "graduation",
+            "lane",
+            "lint",
+            "make",
+            "phase",
+            "phase10",
+            "preserving",
+            "proving",
+            "regression",
+            "scripts",
+            "sindri",
+            "transfer",
+            "trust",
+            "verdict",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 23.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "reason": "recent_query_token_overlap",
+        "retrieval_rank": null,
+        "score": 23.5,
+        "stage": "recent_in_scope_supplement"
+      },
+      {
+        "card_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+        "details": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "abstention",
+            "adjacent",
+            "bounded",
+            "burden",
+            "cases",
+            "containment",
+            "criteria",
+            "first",
+            "full",
+            "incorrect",
+            "lane",
+            "passes",
+            "phase",
+            "promotion",
+            "remains",
+            "results",
+            "reviewer",
+            "safety",
+            "scope",
+            "sindri",
+            "slice",
+            "transfer",
+            "trust",
+            "unsafe",
+            "verdict",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 25.0
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "reason": "recent_query_token_overlap",
+        "retrieval_rank": null,
+        "score": 25.0,
+        "stage": "recent_in_scope_supplement"
+      },
+      {
+        "card_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "details": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "check",
+            "checks",
+            "eval",
+            "full",
+            "graduation",
+            "lane",
+            "lint",
+            "make",
+            "outputs",
+            "phase",
+            "phase10",
+            "phase35",
+            "phase4",
+            "phase7",
+            "phase8",
+            "pilot",
+            "regression",
+            "results",
+            "runbook",
+            "scripts",
+            "sindri",
+            "trust",
+            "while",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_project_boundary_or_contract",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 34.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "reason": "recent_project_boundary_or_contract",
+        "retrieval_rank": null,
+        "score": 34.5,
+        "stage": "recent_in_scope_supplement"
+      },
+      {
+        "card_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "details": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "baseline",
+            "burden",
+            "calibration",
+            "check",
+            "checks",
+            "deterministic",
+            "eval",
+            "first",
+            "full",
+            "helper",
+            "lane",
+            "lint",
+            "make",
+            "outputs",
+            "phase",
+            "phase35",
+            "phase4",
+            "phase7",
+            "phase8",
+            "pilot",
+            "regression",
+            "results",
+            "review",
+            "reviewer",
+            "runbook",
+            "runners",
+            "scripts",
+            "sindri",
+            "tests",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_project_boundary_or_contract",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 37.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "reason": "recent_project_boundary_or_contract",
+        "retrieval_rank": null,
+        "score": 37.5,
+        "stage": "recent_in_scope_supplement"
+      },
+      {
+        "card_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "details": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "abstention",
+            "adds",
+            "ambiguity",
+            "artifact",
+            "blocker",
+            "calibration",
+            "check",
+            "dedicated",
+            "disagreement",
+            "eval",
+            "first",
+            "guardrails",
+            "handoff",
+            "helper",
+            "implemented",
+            "incorrect",
+            "inspection",
+            "lane",
+            "narrow",
+            "passed",
+            "phase",
+            "phase8",
+            "posture",
+            "preserving",
+            "promotion",
+            "reduce",
+            "reference",
+            "regression",
+            "results",
+            "review",
+            "safety",
+            "scope",
+            "sindri",
+            "slice",
+            "trust",
+            "unsafe",
+            "while",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 26.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "reason": "recent_query_token_overlap",
+        "retrieval_rank": null,
+        "score": 26.5,
+        "stage": "recent_in_scope_supplement"
+      }
+    ],
+    "format": "muninn.v2.retrieval_explanation.v1",
+    "included": true,
+    "notes": []
+  },
+  "fallbacks": [
+    {
+      "active": true,
+      "degraded": true,
+      "name": "derived_vector_backend",
+      "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+    },
+    {
+      "active": false,
+      "degraded": false,
+      "name": "lexical_fallback",
+      "reason": null
+    }
+  ],
+  "generated_at": "2026-05-17T21:11:00.244515Z",
+  "record_type": "muninn_v2_rehydrate_response",
+  "request": {
+    "options": {
+      "include_evidence": true,
+      "include_explanations": true,
+      "limit": 12,
+      "max_chars": null,
+      "primary_limit": 3,
+      "recent_limit": 9,
+      "recent_supplement": true,
+      "retrieval_mode": "hybrid",
+      "strict": true
+    },
+    "output": {
+      "json_report": null,
+      "md_report": null,
+      "out_dir": "reports/pilots/sindri_v2_shadow_2026-05-17/shadow_rehydrate_preview_tightened"
+    },
+    "query": {
+      "text": "resume Sindri current wrapper-lane trust calibration state and next steps"
+    },
+    "source": {
+      "active_scope_keys": [
+        "path:316f4f67d061cbdd"
+      ],
+      "project_path": null,
+      "space_key": "path:316f4f67d061cbdd",
+      "v2_db": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db"
+    }
+  },
+  "response_id": "rehydrate_bbd314ab2691c94f",
+  "response_kind": "shadow_rehydrate_preview",
+  "retrieval_provenance": {
+    "backend": "hybrid",
+    "candidate_source": "explicit_v2_shadow_db",
+    "degradation_reasons": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "degraded": true,
+    "fallback_used": false,
+    "mode": "hybrid",
+    "provider_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 26,
+      "indexed_records": 26,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "query_profile": {
+      "campaign_tokens": [],
+      "numeric_tokens": [],
+      "phrase": "resume sindri current wrapper lane trust calibration state next steps",
+      "raw": "resume Sindri current wrapper-lane trust calibration state and next steps",
+      "tokens": [
+        "resume",
+        "sindri",
+        "current",
+        "wrapper",
+        "lane",
+        "trust",
+        "calibration",
+        "state",
+        "next",
+        "steps"
+      ],
+      "unique_tokens": [
+        "resume",
+        "sindri",
+        "current",
+        "wrapper",
+        "lane",
+        "trust",
+        "calibration",
+        "state",
+        "next",
+        "steps"
+      ]
+    },
+    "result_count": 7,
+    "retrieval_paths": [
+      "v2_hybrid_recall"
+    ]
+  },
+  "schema": {
+    "name": "RehydrateResponseV1",
+    "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+    "schema_version": "muninn.v2.rehydrate_response.v1",
+    "version": "1.0.0"
+  },
+  "schema_version": "muninn.v2.rehydrate_response.v1",
+  "selected_memory": {
+    "cards": [
+      {
+        "body_excerpt": "Implemented bounded machine-gated trust in Phase 5 by extending promotion decisions with gate outputs (artifact completeness, risk flags, unresolved gaps, patchability, blockers, readiness, posture, safe summary, next action, operator attention). Orchestrator, job records, promotion_decision artifact, decision trace, and review bundle now carry this structured state. Calibration was adjusted to avoid false host-mutation abstentions when non-mutation intent is explicit and to reduce brittle evidence-quality rejection for flagship local-reference cases.",
+        "confidence": 0.5,
+        "created_at": "2026-04-04 23:25:04",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-04 23:25:04",
+            "excerpt": null,
+            "id": "513eeb80-4ed0-4c7b-92c6-f864b485b425",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/sindri/review.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-04 23:25:04",
+            "excerpt": null,
+            "id": "a60d844e-c40f-4bd8-8a06-239904fcd4eb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/sindri/orchestrator.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-04 23:25:04",
+            "excerpt": null,
+            "id": "e2a2e278-5a00-4231-9921-e7f9cfb4dacd",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/sindri/review_bundle.py",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "513eeb80-4ed0-4c7b-92c6-f864b485b425",
+          "a60d844e-c40f-4bd8-8a06-239904fcd4eb",
+          "e2a2e278-5a00-4231-9921-e7f9cfb4dacd"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "calibration",
+              "next",
+              "state",
+              "trust"
+            ],
+            "evidence": [
+              "sindri"
+            ],
+            "summary": [
+              "lane",
+              "sindri",
+              "wrapper"
+            ],
+            "title": [
+              "lane",
+              "trust",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "calibration",
+            "lane",
+            "next",
+            "sindri",
+            "state",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {},
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 14.197486,
+            "evidence_token_overlap": 0.45,
+            "project_space_match": 3.0,
+            "recency_boost": 0.75,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.959785,
+            "title_token_overlap": 26.6021,
+            "vector_similarity_rescue": 1.95493
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.390986,
+          "vector_used": true
+        },
+        "id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "query_match",
+          "retrieval_rank": 1,
+          "score": 60.914301,
+          "stage": "primary_retrieval"
+        },
+        "status": "active",
+        "summary": "Sindri now emits structured promotion-gate results and safe operator summaries for wrapper-lane jobs, and uses calibrated posture mapping to distinguish caveat, patch-before, abstain, and blocking outcomes.",
+        "tags": [],
+        "title": "Phase 5 adds machine-gated trust outputs for flagship wrapper lane",
+        "updated_at": "2026-04-04 23:25:04"
+      },
+      {
+        "body_excerpt": "Use `make trust_regression_check` or `bash scripts/run_trust_regression_check.sh` to execute the baseline trust regression surface checks (lint, tests, eval scaffold checks for phase35/phase4/pilot/phase7/phase8).",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 00:54:22",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 00:54:22",
+            "excerpt": null,
+            "id": "153c21ec-5dc4-4693-b8a9-0663a1bf07e6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/Makefile",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 00:54:22",
+            "excerpt": null,
+            "id": "4b5c1a4d-c873-4f1e-a9f1-c576869d883f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 00:54:22",
+            "excerpt": null,
+            "id": "e75baeae-b62c-4650-b2ab-b03a622e9d9e",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/TRUST_REGRESSION_SURFACE.md",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "153c21ec-5dc4-4693-b8a9-0663a1bf07e6",
+          "4b5c1a4d-c873-4f1e-a9f1-c576869d883f",
+          "e75baeae-b62c-4650-b2ab-b03a622e9d9e"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "tags",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "trust"
+            ],
+            "evidence": [
+              "sindri",
+              "trust"
+            ],
+            "summary": [
+              "calibration",
+              "trust"
+            ],
+            "tags": [
+              "trust"
+            ],
+            "title": [
+              "calibration",
+              "lane",
+              "trust",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "calibration",
+            "lane",
+            "sindri",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {
+            "broad_token_match": -8.0
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 2.423243,
+            "evidence_token_overlap": 1.228899,
+            "project_space_match": 3.0,
+            "recency_boost": 1.5,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.700902,
+            "tags_token_overlap": 3.461775,
+            "title_token_overlap": 37.989749,
+            "vector_similarity_rescue": 1.55946
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.311892,
+          "vector_used": true
+        },
+        "id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "query_match",
+          "retrieval_rank": 2,
+          "score": 56.864028,
+          "stage": "primary_retrieval"
+        },
+        "status": "active",
+        "summary": "Phase 8.5 adds a single helper command to run lint/tests and trust check runners required for non-regressive calibration passes.",
+        "tags": [
+          "phase85",
+          "runbook",
+          "trust_checks"
+        ],
+        "title": "Trust regression surface helper command for wrapper-lane calibration",
+        "updated_at": "2026-04-05 00:54:22"
+      },
+      {
+        "body_excerpt": "Phase10 introduces deterministic graduation scoring over safety, abstention quality, reviewer burden, disagreement quality, handoff sufficiency, patch boundedness, scope containment, and blocker/ambiguity preservation. The graduation slice passed all criteria with unsafe_promotion_rate=0.0, incorrect_abstention_rate=0.0, and full_manual_inspection_rate=0.0. Wrapper lane is now framed as the first reference-quality narrow pilot lane; adjacent-lane transfer remains deferred to a separate proving phase.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 01:53:33",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 01:53:33",
+            "excerpt": null,
+            "id": "36f42b21-c01a-40e0-a44d-9881b53503e7",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase10_pilot_graduation/last_results.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:53:33",
+            "excerpt": null,
+            "id": "5a93aa8f-d14e-4f9d-9336-95d48c6b4a54",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase10_pilot_graduation_report.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:53:33",
+            "excerpt": null,
+            "id": "a529444a-0832-4a08-9a81-2321b5ec12c3",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "61214ba",
+            "source_id": null,
+            "type": "commit"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "36f42b21-c01a-40e0-a44d-9881b53503e7",
+          "5a93aa8f-d14e-4f9d-9336-95d48c6b4a54",
+          "a529444a-0832-4a08-9a81-2321b5ec12c3"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "tags",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "lane",
+              "wrapper"
+            ],
+            "evidence": [
+              "sindri"
+            ],
+            "summary": [
+              "lane",
+              "sindri",
+              "trust",
+              "wrapper"
+            ],
+            "tags": [
+              "lane",
+              "trust",
+              "wrapper"
+            ],
+            "title": [
+              "lane",
+              "wrapper"
+            ]
+          },
+          "matched_tokens": [
+            "lane",
+            "sindri",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {
+            "broad_token_match": -8.0,
+            "low_specificity_match": -0.6
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 3.783914,
+            "evidence_token_overlap": 0.45,
+            "project_space_match": 3.0,
+            "recency_boost": 1.75,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 19.017891,
+            "tags_token_overlap": 8.867367,
+            "title_token_overlap": 16.216775,
+            "vector_similarity_rescue": 1.939525
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.387905,
+          "vector_used": true
+        },
+        "id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 2,
+            "evidence_types": [
+              "commit",
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "query_match",
+          "retrieval_rank": 3,
+          "score": 47.425472,
+          "stage": "primary_retrieval"
+        },
+        "status": "active",
+        "summary": "Sindri Phase 10 adds explicit graduation criteria and a dedicated assessment slice for capability_wrapper_scaffold, yielding a graduate_lane verdict while preserving trust guardrails.",
+        "tags": [
+          "graduation",
+          "phase10",
+          "trust",
+          "wrapper_lane"
+        ],
+        "title": "Phase 10 graduates wrapper lane with explicit criteria gate",
+        "updated_at": "2026-04-05 01:53:33"
+      },
+      {
+        "body_excerpt": "For adjacent-lane transfer work, run make lint/test, trust regression checks, baseline eval check surfaces, and phase11 runner check+run. Keep wrapper lane as control by preserving phase10 graduation stability and running make trust_regression_check before accepting any transfer verdict.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 02:30:26",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "excerpt": null,
+            "id": "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "excerpt": null,
+            "id": "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase11_transfer_plan.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "excerpt": null,
+            "id": "e2be8a09-90c0-4fc4-9a4d-154c023a08e0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/runner.py",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+          "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+          "e2be8a09-90c0-4fc4-9a4d-154c023a08e0"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "adjacent",
+            "baseline",
+            "before",
+            "check",
+            "checks",
+            "dedicated",
+            "eval",
+            "full",
+            "graduation",
+            "lane",
+            "lint",
+            "make",
+            "phase",
+            "phase10",
+            "preserving",
+            "proving",
+            "regression",
+            "scripts",
+            "sindri",
+            "transfer",
+            "trust",
+            "verdict",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 23.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "recent_query_token_overlap",
+          "retrieval_rank": null,
+          "score": 23.5,
+          "stage": "recent_in_scope_supplement"
+        },
+        "status": "active",
+        "summary": "Phase 11 transfer proving requires full trust regression checks plus the dedicated phase11 runner check/run.",
+        "tags": [],
+        "title": "Phase 11 transfer validation sequence",
+        "updated_at": "2026-04-05 02:30:26"
+      },
+      {
+        "body_excerpt": "Phase 11 introduced an adjacent lane transfer slice (8 cases) using wrapper-lane trust surfaces with bounded specialization. Core safety remained intact (unsafe promotion 0.0, incorrect abstention 0.0, scope containment 1.0), but reviewer burden criteria and manifest-first targeted density missed thresholds, so transfer is partial rather than full success.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 02:30:20",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 02:30:20",
+            "excerpt": null,
+            "id": "48a06fcc-d074-457e-82cf-d938c7ef3662",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/last_results.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 02:30:20",
+            "excerpt": null,
+            "id": "7f851bcb-4245-4517-8e65-5f33278cb92e",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase11_adjacent_lane_transfer_report.md",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 2,
+        "evidence_ids": [
+          "48a06fcc-d074-457e-82cf-d938c7ef3662",
+          "7f851bcb-4245-4517-8e65-5f33278cb92e"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "abstention",
+            "adjacent",
+            "bounded",
+            "burden",
+            "cases",
+            "containment",
+            "criteria",
+            "first",
+            "full",
+            "incorrect",
+            "lane",
+            "passes",
+            "phase",
+            "promotion",
+            "remains",
+            "results",
+            "reviewer",
+            "safety",
+            "scope",
+            "sindri",
+            "slice",
+            "transfer",
+            "trust",
+            "unsafe",
+            "verdict",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 25.0
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "recent_query_token_overlap",
+          "retrieval_rank": null,
+          "score": 25.0,
+          "stage": "recent_in_scope_supplement"
+        },
+        "status": "active",
+        "summary": "Adjacent parser/transform lane transfer passes safety and containment but remains burden-heavy. Verdict is transfer_partial with wrapper lane retained as stable control.",
+        "tags": [],
+        "title": "Phase 11 adjacent-lane transfer verdict is partial",
+        "updated_at": "2026-04-05 02:30:20"
+      },
+      {
+        "body_excerpt": "Canonical sequence now includes: make lint; make test; eval checks for runner/phase35/phase4/pilot/phase7/phase8/phase9/phase10; full runs for pilot/phase7/phase8/phase9/phase10; make trust_regression_check; make eval; wrapper scripts for pilot through phase10 in --check and run modes. The phase10 outputs are evals/phase10_pilot_graduation/last_results.json and docs/phase10_pilot_graduation_report.md.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 01:53:40",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 01:53:40",
+            "excerpt": null,
+            "id": "0efa934b-dc28-42c1-9b66-e7fbc85c71c9",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:53:40",
+            "excerpt": null,
+            "id": "36d774e4-8ead-410f-aa9b-9cee100e2d87",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_phase10_pilot_graduation.sh",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:53:40",
+            "excerpt": null,
+            "id": "4e403201-5c7c-4dd8-a38f-b2fea61c4c8f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase10_pilot_graduation/runner.py",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "0efa934b-dc28-42c1-9b66-e7fbc85c71c9",
+          "36d774e4-8ead-410f-aa9b-9cee100e2d87",
+          "4e403201-5c7c-4dd8-a38f-b2fea61c4c8f"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "check",
+            "checks",
+            "eval",
+            "full",
+            "graduation",
+            "lane",
+            "lint",
+            "make",
+            "outputs",
+            "phase",
+            "phase10",
+            "phase35",
+            "phase4",
+            "phase7",
+            "phase8",
+            "pilot",
+            "regression",
+            "results",
+            "runbook",
+            "scripts",
+            "sindri",
+            "trust",
+            "while",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_project_boundary_or_contract",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 34.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "recent_project_boundary_or_contract",
+          "retrieval_rank": null,
+          "score": 34.5,
+          "stage": "recent_in_scope_supplement"
+        },
+        "status": "active",
+        "summary": "Phase10 validation extends the trust suite with phase10 check/run commands and script while keeping prior phase checks intact.",
+        "tags": [
+          "phase10",
+          "runbook",
+          "trust_regression",
+          "validation"
+        ],
+        "title": "Phase 10 graduation validation sequence for wrapper lane",
+        "updated_at": "2026-04-05 01:53:40"
+      },
+      {
+        "body_excerpt": "Core run sequence: make lint; make test; phase check runners for evals/runner.py, phase35, phase4, pilot wrapper, phase7, phase8, phase9; run make trust_regression_check; run make eval; run scripts/run_pilot_wrapper_lane.sh, scripts/run_phase7_reviewer_burden.sh, scripts/run_phase8_targeted_review_calibration.sh, scripts/run_phase9_manifest_first_calibration.sh in --check and full modes. Canonical outputs include evals/phase9_manifest_first_calibration/last_results.json and docs/phase9_manifest_first_calibration_report.md.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 01:24:18",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 01:24:18",
+            "excerpt": null,
+            "id": "3aebb40f-bdb7-45bb-ac35-7671168172c9",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase9_manifest_first_calibration/runner.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:24:18",
+            "excerpt": null,
+            "id": "8e940b8d-3777-46c2-a750-0d5520f169a5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:24:18",
+            "excerpt": null,
+            "id": "8f588389-c95f-41ab-9add-8bf972a85729",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_phase9_manifest_first_calibration.sh",
+            "source_id": null,
+            "type": "file"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "3aebb40f-bdb7-45bb-ac35-7671168172c9",
+          "8e940b8d-3777-46c2-a750-0d5520f169a5",
+          "8f588389-c95f-41ab-9add-8bf972a85729"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "baseline",
+            "burden",
+            "calibration",
+            "check",
+            "checks",
+            "deterministic",
+            "eval",
+            "first",
+            "full",
+            "helper",
+            "lane",
+            "lint",
+            "make",
+            "outputs",
+            "phase",
+            "phase35",
+            "phase4",
+            "phase7",
+            "phase8",
+            "pilot",
+            "regression",
+            "results",
+            "review",
+            "reviewer",
+            "runbook",
+            "runners",
+            "scripts",
+            "sindri",
+            "tests",
+            "trust",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_project_boundary_or_contract",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 37.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "recent_project_boundary_or_contract",
+          "retrieval_rank": null,
+          "score": 37.5,
+          "stage": "recent_in_scope_supplement"
+        },
+        "status": "active",
+        "summary": "Phase 9 requires running baseline lint/tests/checks, pilot/phase7/phase8/phase9 runners, trust regression helper, and lane scripts to regenerate deterministic manifest-first analysis artifacts.",
+        "tags": [
+          "phase9",
+          "runbook",
+          "trust_regression",
+          "validation"
+        ],
+        "title": "Phase 9 manifest-first calibration validation and execution path",
+        "updated_at": "2026-04-05 01:24:18"
+      },
+      {
+        "body_excerpt": "Implemented a narrow calibration against the dominant manifest-first targeted-review disagreement residue. Added dedicated phase9 eval corpus and runner, manifest-first cluster artifact generation, and review/verifier refinements focused on manifest.json first-check clarity. Validation suite including trust regression helper passed end-to-end. Phase9 slice reports disagreement and override-heavy rates reduced versus phase8 reference while preserving blocker/ambiguity guardrails.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 01:24:11",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 01:24:11",
+            "excerpt": null,
+            "id": "4731dfee-f312-4b40-81dd-127beb1ef8be",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase9_manifest_first_calibration/last_results.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:24:11",
+            "excerpt": null,
+            "id": "bc193b79-f6f7-4668-b5a8-ac11000c52dc",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase9_manifest_first_calibration_report.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "created_at": "2026-04-05 01:24:11",
+            "excerpt": null,
+            "id": "e9727fe3-45f4-401a-8b20-9584268957c5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "1810311",
+            "source_id": null,
+            "type": "commit"
+          }
+        ],
+        "evidence_count": 3,
+        "evidence_ids": [
+          "4731dfee-f312-4b40-81dd-127beb1ef8be",
+          "bc193b79-f6f7-4668-b5a8-ac11000c52dc",
+          "e9727fe3-45f4-401a-8b20-9584268957c5"
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "query_tokens",
+            "title_summary_tokens",
+            "primary_result_domain_tokens"
+          ],
+          "matched_tokens": [
+            "abstention",
+            "adds",
+            "ambiguity",
+            "artifact",
+            "blocker",
+            "calibration",
+            "check",
+            "dedicated",
+            "disagreement",
+            "eval",
+            "first",
+            "guardrails",
+            "handoff",
+            "helper",
+            "implemented",
+            "incorrect",
+            "inspection",
+            "lane",
+            "narrow",
+            "passed",
+            "phase",
+            "phase8",
+            "posture",
+            "preserving",
+            "promotion",
+            "reduce",
+            "reference",
+            "regression",
+            "results",
+            "review",
+            "safety",
+            "scope",
+            "sindri",
+            "slice",
+            "trust",
+            "unsafe",
+            "while",
+            "wrapper"
+          ],
+          "penalties": {},
+          "reason_code": "recent_query_token_overlap",
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_components": {
+            "supplement_relevance": 26.5
+          },
+          "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+          "vector_used": false
+        },
+        "id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 2,
+            "evidence_types": [
+              "commit",
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "selection": {
+          "reason": "recent_query_token_overlap",
+          "retrieval_rank": null,
+          "score": 26.5,
+          "stage": "recent_in_scope_supplement"
+        },
+        "status": "active",
+        "summary": "Phase 9 adds manifest-first cluster analysis, manifest-specific override reasons, and first-inspection handoff refinement to reduce targeted-review overrides without widening scope. Safety posture stays intact with unsafe promotion and incorrect abstention at 0.0 on the phase9 slice.",
+        "tags": [
+          "manifest_first",
+          "phase9",
+          "trust",
+          "wrapper_lane"
+        ],
+        "title": "Phase 9 narrows manifest-first override friction with handoff-first calibration",
+        "updated_at": "2026-04-05 01:24:11"
+      }
+    ],
+    "events": [],
+    "evidence": [
+      {
+        "card_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "created_at": "2026-04-05 00:54:22",
+        "excerpt": null,
+        "id": "153c21ec-5dc4-4693-b8a9-0663a1bf07e6",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/Makefile",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "created_at": "2026-04-05 00:54:22",
+        "excerpt": null,
+        "id": "4b5c1a4d-c873-4f1e-a9f1-c576869d883f",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "092f7e10-b6ab-43d2-9cbf-49ce08ff0b32",
+        "created_at": "2026-04-05 00:54:22",
+        "excerpt": null,
+        "id": "e75baeae-b62c-4650-b2ab-b03a622e9d9e",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/docs/TRUST_REGRESSION_SURFACE.md",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "created_at": "2026-04-05 01:53:40",
+        "excerpt": null,
+        "id": "0efa934b-dc28-42c1-9b66-e7fbc85c71c9",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "created_at": "2026-04-05 01:53:40",
+        "excerpt": null,
+        "id": "36d774e4-8ead-410f-aa9b-9cee100e2d87",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_phase10_pilot_graduation.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "created_at": "2026-04-05 01:53:40",
+        "excerpt": null,
+        "id": "4e403201-5c7c-4dd8-a38f-b2fea61c4c8f",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase10_pilot_graduation/runner.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "created_at": "2026-04-05 02:30:26",
+        "excerpt": null,
+        "id": "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "created_at": "2026-04-05 02:30:26",
+        "excerpt": null,
+        "id": "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/docs/phase11_transfer_plan.md",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "created_at": "2026-04-05 02:30:26",
+        "excerpt": null,
+        "id": "e2be8a09-90c0-4fc4-9a4d-154c023a08e0",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/runner.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+        "created_at": "2026-04-05 02:30:20",
+        "excerpt": null,
+        "id": "48a06fcc-d074-457e-82cf-d938c7ef3662",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/last_results.json",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "6383fd96-30ca-4cfc-ab54-5c8fa7dd447a",
+        "created_at": "2026-04-05 02:30:20",
+        "excerpt": null,
+        "id": "7f851bcb-4245-4517-8e65-5f33278cb92e",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/docs/phase11_adjacent_lane_transfer_report.md",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "created_at": "2026-04-05 01:53:33",
+        "excerpt": null,
+        "id": "36f42b21-c01a-40e0-a44d-9881b53503e7",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase10_pilot_graduation/last_results.json",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "created_at": "2026-04-05 01:53:33",
+        "excerpt": null,
+        "id": "5a93aa8f-d14e-4f9d-9336-95d48c6b4a54",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/docs/phase10_pilot_graduation_report.md",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "a2f4cb59-71d2-4131-8b7b-b030b8eaa342",
+        "created_at": "2026-04-05 01:53:33",
+        "excerpt": null,
+        "id": "a529444a-0832-4a08-9a81-2321b5ec12c3",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "61214ba",
+        "source_id": null,
+        "type": "commit"
+      },
+      {
+        "card_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "created_at": "2026-04-04 23:25:04",
+        "excerpt": null,
+        "id": "513eeb80-4ed0-4c7b-92c6-f864b485b425",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/sindri/review.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "created_at": "2026-04-04 23:25:04",
+        "excerpt": null,
+        "id": "a60d844e-c40f-4bd8-8a06-239904fcd4eb",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/sindri/orchestrator.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "e4dccb72-35fa-461b-9208-b08a9c28507d",
+        "created_at": "2026-04-04 23:25:04",
+        "excerpt": null,
+        "id": "e2a2e278-5a00-4231-9921-e7f9cfb4dacd",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/sindri/review_bundle.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "created_at": "2026-04-05 01:24:18",
+        "excerpt": null,
+        "id": "3aebb40f-bdb7-45bb-ac35-7671168172c9",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase9_manifest_first_calibration/runner.py",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "created_at": "2026-04-05 01:24:18",
+        "excerpt": null,
+        "id": "8e940b8d-3777-46c2-a750-0d5520f169a5",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "ed1e4d35-42c5-4824-86c4-42d06a29a95a",
+        "created_at": "2026-04-05 01:24:18",
+        "excerpt": null,
+        "id": "8f588389-c95f-41ab-9add-8bf972a85729",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/scripts/run_phase9_manifest_first_calibration.sh",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "created_at": "2026-04-05 01:24:11",
+        "excerpt": null,
+        "id": "4731dfee-f312-4b40-81dd-127beb1ef8be",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/evals/phase9_manifest_first_calibration/last_results.json",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "created_at": "2026-04-05 01:24:11",
+        "excerpt": null,
+        "id": "bc193b79-f6f7-4668-b5a8-ac11000c52dc",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "/mnt/data/Sindri/docs/phase9_manifest_first_calibration_report.md",
+        "source_id": null,
+        "type": "file"
+      },
+      {
+        "card_id": "f87a7fb3-fdb2-4baf-bed2-4d03d6aaf543",
+        "created_at": "2026-04-05 01:24:11",
+        "excerpt": null,
+        "id": "e9727fe3-45f4-401a-8b20-9584268957c5",
+        "metadata": {
+          "source_system": "muninn_v1"
+        },
+        "record_type": "evidence",
+        "ref": "1810311",
+        "source_id": null,
+        "type": "commit"
+      }
+    ]
+  },
+  "uncertainty": {
+    "context_gaps": [
+      "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "usable": true,
+    "warnings": [
+      "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+      "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  }
+}
