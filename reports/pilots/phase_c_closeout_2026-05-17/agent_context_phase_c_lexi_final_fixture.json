@@ -1,0 +1,152 @@
+{
+  "schema_version": "muninn.v2.agent_context_audit_fixture.v1",
+  "name": "phase c final independent Lexi pilot",
+  "version": 1,
+  "defaults": {
+    "min_coverage": 1.0,
+    "require_all_required": true,
+    "ignored_overinclude_terms": [
+      "lex",
+      "lexi",
+      "project",
+      "resume",
+      "current",
+      "runtime",
+      "modernization",
+      "state",
+      "next",
+      "steps",
+      "phase"
+    ]
+  },
+  "cases": [
+    {
+      "id": "lexi-runtime-modernization-resume",
+      "project": "Lexi",
+      "task": "resume Lexi current production audit and runtime modernization state and next steps",
+      "response_path": "../lexi_v2_shadow_2026-05-17_final/shadow_rehydrate_preview/shadow_rehydrate_preview.json",
+      "v1_context": [
+        "Lexi should be presented as a deployed production-facing alpha/prototype, not production-ready, until the production audit blockers are fixed.",
+        "Current Lexi production audit blockers include public /lexi/readyz 503, disabled avatar_edit/img2img, divergent backend source trees, repo-root pytest import failure, telemetry/logging claim mismatch, streaming sanitizer NameError, and alpha session memory not recording /process.",
+        "Lex Phase 6 hardened runtime preflight with writable-path enforcement, bounded summarizer fallback behavior, and FastAPI lifespan startup handling.",
+        "Phase 6 runtime resilience checkpoint committed on top of the Phase 1-5 baseline, with generated eval/avatar files intentionally left uncommitted.",
+        "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening, route uniqueness, eval runner, frontend build, backend startup smoke, auth/session, Google CSRF behavior, and prompt trust-boundary probes.",
+        "Lex modernization phases 2A-4 added Google CSRF double-submit checks, trusted-proxy IP resolution, untrusted-context prompt framing, route inventory, and machine-graded eval cases.",
+        "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated saturation because replay minlen: 10 skips short episodes."
+      ],
+      "expected_needs": [
+        {
+          "id": "production-audit-verdict",
+          "description": "Agent knows Lexi is alpha/prototype and not production-ready until blockers are fixed.",
+          "all_terms": [
+            "production-facing alpha/prototype",
+            "not production-ready"
+          ],
+          "any_terms": [
+            "Production audit completed",
+            "audit blockers"
+          ]
+        },
+        {
+          "id": "production-audit-blockers",
+          "description": "Agent knows the current production-audit blocker categories.",
+          "all_terms": [
+            "public /lexi/readyz 503",
+            "disabled avatar_edit/img2img"
+          ],
+          "any_terms": [
+            "divergent backend source trees",
+            "repo-root pytest import failure",
+            "streaming sanitizer NameError",
+            "alpha session memory"
+          ]
+        },
+        {
+          "id": "phase-6-runtime-resilience",
+          "description": "Agent knows the latest Lexi phase is runtime resilience work, including runtime preflight and startup lifecycle handling.",
+          "all_terms": [
+            "Phase 6",
+            "runtime preflight"
+          ],
+          "any_terms": [
+            "summarizer fallback",
+            "bounded summarizer fallback",
+            "FastAPI lifespan",
+            "lifespan startup"
+          ]
+        },
+        {
+          "id": "phase-1-5-modernization-baseline",
+          "description": "Agent knows the prior modernization baseline and validation gates that Phase 6 built on.",
+          "all_terms": [
+            "phases 1-5",
+            "auth/prompt/eval"
+          ],
+          "any_terms": [
+            "route uniqueness",
+            "eval runner",
+            "frontend build",
+            "Google CSRF"
+          ]
+        },
+        {
+          "id": "auth-prompt-eval-boundaries",
+          "description": "Agent knows Lexi's auth and prompt-trust boundary hardening work.",
+          "all_terms": [
+            "Google CSRF",
+            "untrusted-context"
+          ],
+          "any_terms": [
+            "trusted-proxy IP resolution",
+            "machine-graded eval cases",
+            "prompt trust-boundary"
+          ]
+        },
+        {
+          "id": "dreamerv2-sidecar-limitation",
+          "description": "Agent knows the DreamerV2 sidecar is active but currently limited by replay gating rather than total inactivity.",
+          "all_terms": [
+            "DreamerV2",
+            "replay-gated saturation"
+          ],
+          "any_terms": [
+            "Skipping short episode",
+            "minlen: 10"
+          ]
+        },
+        {
+          "id": "generated-artifact-cleanliness",
+          "description": "Agent knows generated runtime artifacts should remain uncommitted.",
+          "all_terms": [
+            "generated eval/avatar files",
+            "intentionally left uncommitted"
+          ],
+          "any_terms": [
+            "runtime artifacts",
+            "clean Phase 6 checkpoint",
+            "generated eval/avatar files"
+          ]
+        }
+      ],
+      "confusing_terms": [
+        {
+          "term": "WorldCoder",
+          "reason": "Would shift the task toward a different Lexi planning thread.",
+          "blocking": true
+        },
+        {
+          "term": "production cutover",
+          "reason": "This pilot is shadow-only and should not imply live integration.",
+          "blocking": true
+        }
+      ],
+      "stale_terms": [
+        {
+          "term": "Phase 1 only",
+          "reason": "Would imply the modernization state predates the current Phase 6 checkpoint.",
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

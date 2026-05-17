@@ -1,0 +1,27 @@
+{
+  "canonical_records": {
+    "active_cards": 77,
+    "cards_loaded": 79
+  },
+  "derived_index_contract": {
+    "canonical_truth": "v2 cards/events/entities/associations/evidence remain canonical",
+    "index_role": "optional derived diagnostic retrieval assist",
+    "rebuild": "explicit"
+  },
+  "generated_at": "2026-05-17T21:28:06.306703Z",
+  "record_type": "muninn_v2_index_health_report",
+  "schema_version": "muninn.v2.derived_indexes.v1",
+  "status": {
+    "backend": "json_vector_fallback",
+    "backend_available": true,
+    "degraded": true,
+    "eligible_records": 77,
+    "indexed_records": 77,
+    "missing_records": 0,
+    "reason": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "stale_records": 0
+  },
+  "v2_db": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db"
+}

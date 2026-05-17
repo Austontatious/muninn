@@ -1,0 +1,157 @@
+{
+  "schema_version": "muninn.v2.phase_c_closeout.v1",
+  "record_type": "muninn_v2_phase_c_closeout_report",
+  "date": "2026-05-17",
+  "scope": "v2_shadow_only_no_live_integration",
+  "final_independent_pilot": {
+    "project": "Lexi",
+    "project_path": "/mnt/data/Lex",
+    "space_key": "repo:0c321b2a6f183a95",
+    "selection_reason": "Lexi had richer v1 coverage than LAILA for the final independent pilot and a clear repo-remote identity.",
+    "shadow_dir": "reports/pilots/lexi_v2_shadow_2026-05-17_final",
+    "shadow_db": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+    "import": {
+      "migrated_cards": 79,
+      "migrated_evidence_refs": 155,
+      "migrated_associations": 2,
+      "created_entities": 1,
+      "created_ontology_profiles": 1,
+      "fidelity_records_checked": 238,
+      "fidelity_failures": 0,
+      "unsupported_record_types": 0,
+      "ambiguous_records": 0,
+      "v1_row_counts_changed": false
+    },
+    "index_health_post_write": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "eligible_records": 77,
+      "indexed_records": 77,
+      "missing_records": 0,
+      "stale_records": 0,
+      "degraded": true,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ]
+    },
+    "preview": {
+      "query": "resume Lexi current production audit and runtime modernization state and next steps",
+      "primary": 3,
+      "supplements": 5,
+      "total": 8,
+      "top_primary": [
+        "Lexi production audit verdict 2026-05-17",
+        "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau",
+        "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+      ]
+    },
+    "agent_context_audit": {
+      "cases": 1,
+      "go_cases": 1,
+      "no_go_cases": 0,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "stale_flag_total": 0,
+      "confusing_flag_total": 0,
+      "over_included_card_total": 1,
+      "same_good_decision_supported_count": 1
+    }
+  },
+  "comparison": {
+    "readyplayer1_friday_regression_tightened": {
+      "cases": 2,
+      "go_cases": 2,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 1,
+      "over_included_card_total": 5
+    },
+    "subsim_sindri_tightened": {
+      "cases": 2,
+      "go_cases": 2,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 0,
+      "over_included_card_total": 1
+    },
+    "lexi_final": {
+      "cases": 1,
+      "go_cases": 1,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 0,
+      "over_included_card_total": 1
+    },
+    "phase_c_total_after_tightening": {
+      "cases": 5,
+      "go_cases": 5,
+      "average_v2_coverage_score": 1.0,
+      "missing_required_total": 0,
+      "confusing_flag_total": 1,
+      "over_included_card_total": 7
+    }
+  },
+  "v1_safety": {
+    "v1_db": "/home/unix/.local/share/muninn/human_memory.db",
+    "initial_lexi_baseline_observed_before_external_write": {
+      "size_bytes": 2260992,
+      "mtime_epoch": 1779051173,
+      "mtime_local": "2026-05-17 13:52:53.710812595 -0700",
+      "counts": {
+        "cards": 515,
+        "evidence": 1405,
+        "card_evidence": 1405,
+        "interaction_events": 2
+      }
+    },
+    "external_write_observed": {
+      "observed": true,
+      "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "title": "Lexi production audit verdict 2026-05-17",
+      "created_at_utc": "2026-05-17 21:24:31",
+      "effect": {
+        "cards_delta": 1,
+        "evidence_delta": 3,
+        "card_evidence_delta": 3
+      },
+      "handled_by": "fresh final Lexi shadow import after re-baselining"
+    },
+    "final_pilot_baseline_and_after": {
+      "size_bytes": 2265088,
+      "mtime_epoch": 1779053071,
+      "mtime_local": "2026-05-17 14:24:31.655443750 -0700",
+      "counts": {
+        "cards": 516,
+        "evidence": 1408,
+        "card_evidence": 1408,
+        "interaction_events": 2
+      },
+      "unchanged_during_final_import_index_preview_audit": true
+    },
+    "completion_card_written": false,
+    "live_mcp_defaults_changed": false,
+    "live_v1_schema_changed": false,
+    "project_repos_modified": false
+  },
+  "decision": {
+    "phase_c_closeout": "go",
+    "phase_d_offline_recall_reinforcement_mechanics": "go_with_constraints",
+    "live_agent_context": "no_go",
+    "bridge_or_cutover": "no_go"
+  },
+  "phase_d_entry_criteria": [
+    "Use only offline/shadow v2 artifacts and explicit v2 DB paths.",
+    "Do not change live MCP, Codex defaults, v1 schema, or production DBs.",
+    "Preserve RehydrateResponseV1 and agent-context-audit contracts.",
+    "Measure recall/reinforcement mechanics against fixed expected-needs fixtures before using them for agent context.",
+    "Treat sqlite_vec absence as degraded optional derived-index state, not as a blocker."
+  ],
+  "phase_d_stop_criteria": [
+    "Any pilot has v2 coverage below 0.85 or missing required needs.",
+    "Any blocking stale/confusing term appears in rendered agent context.",
+    "Recall/reinforcement code requires v1 writes or changes live defaults.",
+    "Supplement noise increases materially without an explainable general reason.",
+    "Generated artifacts or shadow DBs become staged for commit."
+  ],
+  "recommendation": "Proceed to Phase D as offline recall/reinforcement mechanics only. Do not start live bridge or cutover work."
+}

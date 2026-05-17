@@ -1,0 +1,220 @@
+{
+  "cases": [
+    {
+      "comparison": {
+        "coverage_delta_v2_minus_v1": 0.0,
+        "regressions": [],
+        "same_good_decision_supported": true,
+        "v1_context_provided": true
+      },
+      "confusing": [],
+      "context_block_chars": 19821,
+      "decision": "go",
+      "id": "lexi-runtime-modernization-resume",
+      "need_results": [
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "Production audit completed",
+            "audit blockers"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Lexi is alpha/prototype and not production-ready until blockers are fixed.",
+          "id": "production-audit-verdict",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "divergent backend source trees",
+            "repo-root pytest import failure",
+            "streaming sanitizer NameError",
+            "alpha session memory"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the current production-audit blocker categories.",
+          "id": "production-audit-blockers",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "summarizer fallback",
+            "bounded summarizer fallback",
+            "FastAPI lifespan",
+            "lifespan startup"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the latest Lexi phase is runtime resilience work, including runtime preflight and startup lifecycle handling.",
+          "id": "phase-6-runtime-resilience",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "route uniqueness",
+            "eval runner",
+            "frontend build",
+            "Google CSRF"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the prior modernization baseline and validation gates that Phase 6 built on.",
+          "id": "phase-1-5-modernization-baseline",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "trusted-proxy IP resolution",
+            "machine-graded eval cases",
+            "prompt trust-boundary"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Lexi's auth and prompt-trust boundary hardening work.",
+          "id": "auth-prompt-eval-boundaries",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "Skipping short episode",
+            "minlen: 10"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the DreamerV2 sidecar is active but currently limited by replay gating rather than total inactivity.",
+          "id": "dreamerv2-sidecar-limitation",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "runtime artifacts",
+            "clean Phase 6 checkpoint",
+            "generated eval/avatar files"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows generated runtime artifacts should remain uncommitted.",
+          "id": "generated-artifact-cleanliness",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        }
+      ],
+      "over_included_cards": [
+        {
+          "id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Lex end-to-end review: prioritize auth hardening, side-effect removal, and real eval gating"
+        }
+      ],
+      "project": "Lexi",
+      "response_path": "/mnt/data/Muninn/reports/pilots/lexi_v2_shadow_2026-05-17_final/shadow_rehydrate_preview/shadow_rehydrate_preview.json",
+      "selected_cards": [
+        {
+          "id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+          "stage": "primary_retrieval",
+          "title": "Lexi production audit verdict 2026-05-17"
+        },
+        {
+          "id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+          "stage": "primary_retrieval",
+          "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau"
+        },
+        {
+          "id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+          "stage": "primary_retrieval",
+          "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening"
+        },
+        {
+          "id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline"
+        },
+        {
+          "id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling"
+        },
+        {
+          "id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+          "stage": "recent_in_scope_supplement",
+          "title": "Phase 5 runtime smoke proof completed for Lex modernization"
+        },
+        {
+          "id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+          "stage": "recent_in_scope_supplement",
+          "title": "Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates"
+        },
+        {
+          "id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+          "stage": "recent_in_scope_supplement",
+          "title": "Lex end-to-end review: prioritize auth hardening, side-effect removal, and real eval gating"
+        }
+      ],
+      "stale": [],
+      "task": "resume Lexi current production audit and runtime modernization state and next steps",
+      "v1_style_context": {
+        "coverage_score": 1.0,
+        "covered_required": 7,
+        "missing_required": [],
+        "pass": true,
+        "provided": true,
+        "required_needs": 7
+      },
+      "v2_context": {
+        "coverage_score": 1.0,
+        "covered_required": 7,
+        "missing_required": [],
+        "pass": true,
+        "required_needs": 7
+      }
+    }
+  ],
+  "fixture": {
+    "name": "phase c final independent Lexi pilot",
+    "source_path": "/mnt/data/Muninn/reports/pilots/phase_c_closeout_2026-05-17/agent_context_phase_c_lexi_final_fixture.json",
+    "version": 1
+  },
+  "generated_at": "2026-05-17T21:29:23.263374Z",
+  "out_dir": "reports/pilots/phase_c_closeout_2026-05-17/agent_context_audit_lexi_final",
+  "record_type": "muninn_v2_agent_context_audit_report",
+  "safety": {
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_read_only",
+    "v1_writes": false
+  },
+  "schema_version": "muninn.v2.agent_context_audit.v1",
+  "summary": {
+    "average_v2_coverage_score": 1.0,
+    "cases": 1,
+    "cases_with_v1_comparison": 1,
+    "confusing_flag_total": 0,
+    "go_cases": 1,
+    "missing_required_total": 0,
+    "no_go_cases": 0,
+    "over_included_card_total": 1,
+    "same_good_decision_supported_count": 1,
+    "stale_flag_total": 0
+  }
+}
