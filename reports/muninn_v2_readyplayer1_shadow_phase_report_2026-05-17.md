@@ -214,3 +214,11 @@ Reason: the v2 shadow data is complete, but retrieval quality is not yet reliabl
 ## Next Recommended Task
 
 Analyze the five failing retrieval-eval cases and compare derived-vector scoring, lexical fallback scoring, and v1 FTS/BM25 results side by side. The next task should produce a retrieval-design recommendation, not tune live v1 or change production defaults.
+
+## Retrieval Design Addendum
+
+Follow-up retrieval design work is recorded in `reports/muninn_v2_readyplayer1_retrieval_design_report_2026-05-17.md`.
+
+That work implemented v2-only explainable hybrid retrieval for diagnostic/eval paths. ReadyPlayer1 retrieval-eval improved from 12/22 hits and mean recall@10 `0.666667` to 22/22 hits and mean recall@10 `1.0`, with retrieval mismatches reduced from 10 to 0 and extra results reduced from 88 to 35.
+
+Updated decision: **GO with constraints** for ReadyPlayer1 v2 shadow rehydration preview/evaluation only. This remains non-production, requires explicit v2 shadow DB paths, and does not change live v1 retrieval or MCP/Codex defaults.

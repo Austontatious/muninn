@@ -130,9 +130,9 @@ Production v1 retrieval remains the live behavior:
 - evidence-aware ranking inputs
 - policy/adaptation cards retrieved through v1 paths
 
-The v2 recall-parity command is measurement only. Its provisional v2 lexical matcher is not final retrieval design and must not be tuned to fake parity.
+The v2 recall-parity command is measurement only. It can compare v1 FTS with a provisional v2 lexical matcher or the v2 hybrid matcher, but neither path is a live recall engine and neither should be tuned to fake parity.
 
-The v2 retrieval-eval command is also measurement only. It scores fixed query fixtures, distinguishes record absence from retrieval mismatch, and writes JSON/Markdown reports without changing production routing.
+The v2 retrieval-eval command is also measurement only. It scores fixed query fixtures, distinguishes record absence from retrieval mismatch, and writes JSON/Markdown reports without changing production routing. Its default diagnostic mode is now explainable hybrid retrieval: deterministic title/body/evidence/metric scoring with optional derived-vector rescue, explicit score components, and stable ranking. This remains shadow/evaluation infrastructure only.
 
 ## Migration And Cutover Posture
 

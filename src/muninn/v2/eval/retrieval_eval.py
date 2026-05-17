@@ -7,7 +7,9 @@ from typing import Any, Sequence
 
 from ..core.models import MemoryCard, utc_now
 from ..indexes import SQLiteDerivedIndexProvider
-from ..retrieval import recall_with_fallback
+from ..retrieval import hybrid_recall, lexical_recall, recall_with_fallback
+
+RETRIEVAL_MODES = {"hybrid", "lexical", "vector"}
 
 
 @dataclass(frozen=True)
@@ -74,7 +76,9 @@ def run_retrieval_eval(
     records: Sequence[MemoryCard],
     fixture: RetrievalEvalFixture,
     provider: SQLiteDerivedIndexProvider | None = None,
+    retrieval_mode: str = "hybrid",
 ) -> dict[str, Any]:
+    mode = _retrieval_mode(retrieval_mode)
     cards_by_id = {card.id: card for card in records}
     case_reports: list[dict[str, Any]] = []
     total_expected = 0
@@ -83,12 +87,13 @@ def run_retrieval_eval(
     retrieval_mismatch = 0
     extra_results = 0
     for case in fixture.cases:
-        recall = recall_with_fallback(
+        recall = _recall(
             records,
             case.query,
             provider=provider,
             limit=case.limit,
             scope_key=case.space_key,
+            retrieval_mode=mode,
         )
         results = list(recall["results"])
         result_ids = [str(item.get("record_id") or "") for item in results]
@@ -130,6 +135,7 @@ def run_retrieval_eval(
                 "fallback_used": bool(recall["fallback_used"]),
                 "expected_card_ids": expected_ids,
                 "top_ids": result_ids,
+                "top_results": [_compact_result(item) for item in results],
                 "hits": hits,
                 "missing_expected": missing_expected,
                 "extra_result_ids": extras,
@@ -155,6 +161,7 @@ def run_retrieval_eval(
             "version": fixture.version,
             "source_path": fixture.source_path,
         },
+        "retrieval_mode": mode,
         "summary": {
             "cases": len(case_reports),
             "scored_cases": len(scored),
@@ -185,6 +192,7 @@ def _render_markdown(report: dict[str, Any]) -> str:
         "# Muninn v2 Retrieval Eval",
         "",
         f"- Fixture: `{report['fixture']['name']}`",
+        f"- Retrieval mode: `{report.get('retrieval_mode', 'unknown')}`",
         f"- Cases: {summary['cases']}",
         f"- Mean recall at limit: `{summary['mean_recall_at_limit']}`",
         f"- Record absent count: {summary['record_absent_count']}",
@@ -206,6 +214,48 @@ def _render_markdown(report: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines) + "\n"
+
+
+def _retrieval_mode(value: str) -> str:
+    mode = str(value or "hybrid").strip().lower()
+    if mode not in RETRIEVAL_MODES:
+        raise ValueError(f"unsupported retrieval mode: {value}")
+    return mode
+
+
+def _recall(
+    records: Sequence[MemoryCard],
+    query: str,
+    *,
+    provider: SQLiteDerivedIndexProvider | None,
+    limit: int,
+    scope_key: str | None,
+    retrieval_mode: str,
+) -> dict[str, Any]:
+    if retrieval_mode == "hybrid":
+        return hybrid_recall(records, query, provider=provider, limit=limit, scope_key=scope_key)
+    if retrieval_mode == "lexical":
+        return {
+            "backend": "lexical_fallback",
+            "fallback_used": True,
+            "status": None,
+            "results": lexical_recall(records, query, limit=limit, scope_key=scope_key),
+        }
+    return recall_with_fallback(records, query, provider=provider, limit=limit, scope_key=scope_key)
+
+
+def _compact_result(item: dict[str, Any]) -> dict[str, Any]:
+    record = item.get("record") if isinstance(item.get("record"), dict) else {}
+    explanation = item.get("explanation") if isinstance(item.get("explanation"), dict) else {}
+    return {
+        "record_id": str(item.get("record_id") or ""),
+        "rank": item.get("rank"),
+        "score": item.get("score"),
+        "backend": item.get("backend"),
+        "title": record.get("title"),
+        "kind": record.get("kind"),
+        "explanation": explanation,
+    }
 
 
 def _dedupe(values: Any) -> list[str]:

@@ -22,7 +22,8 @@ PYTHONPATH=src python3 -m muninn.v2.cli recall-parity \
   --strict \
   --include-evidence \
   --include-ranking \
-  --include-explanations
+  --include-explanations \
+  --retrieval-mode lexical
 ```
 
 ## Safety Contract
@@ -45,7 +46,7 @@ v1 uses the existing human-memory card search path:
 - FTS5 `cards_fts`
 - BM25 scoring where lower scores are better
 
-v2 uses a provisional lexical matcher over imported v2 `MemoryCard` records:
+By default, v2 uses a provisional lexical matcher over imported v2 `MemoryCard` records:
 
 - title
 - summary
@@ -53,7 +54,9 @@ v2 uses a provisional lexical matcher over imported v2 `MemoryCard` records:
 - tags
 - evidence ref/excerpt text
 
-The v2 matcher is intentionally simple and explainable. It is not a final recall engine and is not Mimir salience/cognition.
+For diagnostic comparison, `--retrieval-mode hybrid` can use the explainable hybrid matcher documented in `docs/muninn_v2_retrieval_contract.md`.
+
+Both v2 matchers are intentionally measurement-only. Neither is a production recall engine or Mimir salience/cognition.
 
 ## Metrics
 

@@ -30,6 +30,7 @@ from .eval import (
     write_retrieval_eval_reports,
 )
 from .indexes import SQLiteDerivedIndexProvider, load_v2_cards
+from .retrieval import hybrid_recall
 from .storage import SQLiteMemoryStore
 
 
@@ -1383,8 +1384,37 @@ def _v2_recall(
     limit: int,
     include_evidence: bool,
     include_explanations: bool,
+    retrieval_mode: str = "lexical",
 ) -> tuple[list[dict[str, Any]], list[str]]:
     cards = _load_v2_cards_readonly(conn, space_key=space_key)
+    mode = str(retrieval_mode or "lexical").strip().lower()
+    if mode == "hybrid":
+        recall = hybrid_recall(cards, query, limit=limit, scope_key=space_key)
+        results: list[dict[str, Any]] = []
+        for row in recall["results"]:
+            record = row.get("record") if isinstance(row.get("record"), dict) else {}
+            card = MemoryCard.from_dict(record)
+            item = _result_payload(
+                card_id=card.id,
+                rank=int(row.get("rank") or 0),
+                score=float(row.get("score") or 0.0),
+                title=card.title,
+                summary=card.summary,
+                kind=card.kind,
+                evidence_count=len(card.evidence),
+                source="v2",
+                body=card.body,
+                explanation=(row.get("explanation") if include_explanations else None),
+            )
+            if include_evidence:
+                item["evidence"] = [evidence.to_dict() for evidence in card.evidence]
+            results.append(item)
+        return results, [
+            "v2 retrieval path: explainable hybrid matcher over title, summary, body, tags, evidence, and optional vector rescue; higher score is better.",
+            "v2 retrieval is measurement-only and not a live recall engine.",
+        ]
+    if mode != "lexical":
+        raise RecallParityError(f"unsupported_v2_retrieval_mode:{retrieval_mode}")
     scored: list[tuple[float, dict[str, Any], MemoryCard]] = []
     for card in cards:
         score, explanation = _score_v2_card(card, query)
@@ -1615,6 +1645,7 @@ def run_recall_parity(args: argparse.Namespace) -> dict[str, Any]:
                 limit=limit,
                 include_evidence=bool(args.include_evidence),
                 include_explanations=bool(args.include_explanations),
+                retrieval_mode=str(getattr(args, "retrieval_mode", "lexical")),
             )
             results.append(
                 _compare_recall_result(
@@ -1667,7 +1698,12 @@ def run_recall_parity(args: argparse.Namespace) -> dict[str, Any]:
         "schema_version": SCHEMA_VERSION,
         "record_type": "muninn_v2_recall_parity_report",
         "mode": "measurement_only",
-        "retrieval_parity_definition": "v1 FTS cards_search compared with provisional v2 lexical MemoryCard matcher; overlap ratio is Jaccard over returned card IDs.",
+        "v2_retrieval_mode": str(getattr(args, "retrieval_mode", "lexical")),
+        "retrieval_parity_definition": (
+            "v1 FTS cards_search compared with measurement-only v2 "
+            f"{str(getattr(args, 'retrieval_mode', 'lexical'))} MemoryCard matcher; "
+            "overlap ratio is Jaccard over returned card IDs."
+        ),
         "v1_db": str(v1_db),
         "v2_db": str(v2_db),
         "out_dir": str(out_dir),
@@ -1974,7 +2010,12 @@ def run_v2_retrieval_eval_command(args: argparse.Namespace) -> dict[str, Any]:
     records = load_v2_cards(v2_db)
     fixture = load_v2_retrieval_fixture(args.fixture)
     provider = SQLiteDerivedIndexProvider(v2_db, records=records)
-    report = run_v2_retrieval_eval(records=records, fixture=fixture, provider=provider)
+    report = run_v2_retrieval_eval(
+        records=records,
+        fixture=fixture,
+        provider=provider,
+        retrieval_mode=str(args.retrieval_mode),
+    )
     report["v2_db"] = str(v2_db)
     report["out_dir"] = str(out_dir)
     report["artifacts"] = write_retrieval_eval_reports(report, out_dir)
@@ -2041,6 +2082,12 @@ def build_parser() -> argparse.ArgumentParser:
     parity.add_argument("--include-evidence", action="store_true", help="Include evidence availability details.")
     parity.add_argument("--include-ranking", action="store_true", help="Include ranking deltas for overlapping cards.")
     parity.add_argument("--include-explanations", action="store_true", help="Include retrieval explanation notes.")
+    parity.add_argument(
+        "--retrieval-mode",
+        choices=["lexical", "hybrid"],
+        default="lexical",
+        help="v2 recall mode for measurement only. Default preserves the prior lexical parity path.",
+    )
     parity.set_defaults(func=run_recall_parity)
 
     index_health = subparsers.add_parser(
@@ -2076,6 +2123,12 @@ def build_parser() -> argparse.ArgumentParser:
     retrieval_eval.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
     retrieval_eval.add_argument("--fixture", required=True, help="Retrieval eval fixture JSON.")
     retrieval_eval.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    retrieval_eval.add_argument(
+        "--retrieval-mode",
+        choices=["hybrid", "lexical", "vector"],
+        default="hybrid",
+        help="Diagnostic v2 retrieval mode. Default is explainable hybrid retrieval.",
+    )
     retrieval_eval.set_defaults(func=run_v2_retrieval_eval_command)
     return parser
 
@@ -2098,6 +2151,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         payload = {
             "status": "ok",
             "mode": report["mode"],
+            "retrieval_mode": report["v2_retrieval_mode"],
             "space_key": report["space_key_canonical"],
             "aggregate": report["aggregate"],
             "v1_row_counts_changed": report["v1_row_counts_changed"],
@@ -2126,6 +2180,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         payload = {
             "status": "ok",
             "mode": "retrieval_eval",
+            "retrieval_mode": report["retrieval_mode"],
             "v2_db": report["v2_db"],
             "summary": report["summary"],
             "out_dir": report["out_dir"],

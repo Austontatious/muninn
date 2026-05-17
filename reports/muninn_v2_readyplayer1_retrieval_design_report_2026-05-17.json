@@ -1,0 +1,376 @@
+{
+  "baseline_metrics": {
+    "cases": 10,
+    "expected_records": 22,
+    "extra_result_count": 88,
+    "hit_records": 12,
+    "mean_recall_at_limit": 0.666667,
+    "record_absent_count": 0,
+    "retrieval_mismatch_count": 10,
+    "scored_cases": 10
+  },
+  "baseline_recall_parity": {
+    "average_overlap_ratio": 0.11484848484848487,
+    "evidence_mismatches": 92,
+    "likely_causes_of_mismatch": [
+      "v2 provisional lexical scoring differs from v1 FTS bm25 ranking/windowing",
+      "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+      "some overlapping or one-sided records have evidence availability differences"
+    ],
+    "queries_with_full_overlap": 0,
+    "queries_with_partial_overlap": 7,
+    "queries_with_zero_overlap": 3,
+    "total_extra_from_v2": 88,
+    "total_missing_from_v2": 4,
+    "total_queries": 10
+  },
+  "case_results": [
+    {
+      "expected": 1,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 1
+      },
+      "hits": 1,
+      "id": "campaign-007a-post-reacquisition-stabilization",
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea"
+      ]
+    },
+    {
+      "expected": 1,
+      "expected_ranks": {
+        "fbcac688-f952-477f-87ca-ea7860c4f396": 1
+      },
+      "hits": 1,
+      "id": "campaign-006a-early-active-ping-reacquisition",
+      "query": "Campaign 006A early active ping reacquisition",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "719fafb5-b25b-4460-a549-987799432a6c"
+      ]
+    },
+    {
+      "expected": 1,
+      "expected_ranks": {
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44": 1
+      },
+      "hits": 1,
+      "id": "campaign-005a-fire-control-state-normalization",
+      "query": "Campaign 005A fire-control state normalization",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+      ]
+    },
+    {
+      "expected": 2,
+      "expected_ranks": {
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0": 1,
+        "719fafb5-b25b-4460-a549-987799432a6c": 2
+      },
+      "hits": 2,
+      "id": "campaign-004a-duplicate-same-primary-torpedo-suppression",
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "8db59c21-0224-4ef0-b628-f336867bf591"
+      ]
+    },
+    {
+      "expected": 2,
+      "expected_ranks": {
+        "719fafb5-b25b-4460-a549-987799432a6c": 1,
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44": 3
+      },
+      "hits": 2,
+      "id": "fire-control-ready-but-hold-count",
+      "query": "fire control ready but hold count",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "fbcac688-f952-477f-87ca-ea7860c4f396"
+      ]
+    },
+    {
+      "expected": 4,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 3,
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0": 4,
+        "719fafb5-b25b-4460-a549-987799432a6c": 1,
+        "fbcac688-f952-477f-87ca-ea7860c4f396": 2
+      },
+      "hits": 4,
+      "id": "torpedo-wasted-shot-rate",
+      "query": "torpedo wasted shot rate",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+      ]
+    },
+    {
+      "expected": 3,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 2,
+        "2656c35f-79af-403d-9128-e98fc72663d6": 1,
+        "fbcac688-f952-477f-87ca-ea7860c4f396": 3
+      },
+      "hits": 3,
+      "id": "sonar-clutter-wrong-binding-rate",
+      "query": "sonar clutter wrong binding rate",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+        "ab7fcfef-f55e-43dc-82a7-f080bdab083d"
+      ]
+    },
+    {
+      "expected": 3,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 5,
+        "719fafb5-b25b-4460-a549-987799432a6c": 2,
+        "8db59c21-0224-4ef0-b628-f336867bf591": 1
+      },
+      "hits": 3,
+      "id": "acoustic-clutter-wrong-binding-rate",
+      "query": "acoustic clutter wrong binding rate",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+        "ab7fcfef-f55e-43dc-82a7-f080bdab083d"
+      ]
+    },
+    {
+      "expected": 3,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 2,
+        "e1959e49-bc15-43ce-ac02-163ce98ea423": 1,
+        "fbcac688-f952-477f-87ca-ea7860c4f396": 3
+      },
+      "hits": 3,
+      "id": "reacquisition-failure-taxonomy",
+      "query": "reacquisition failure taxonomy",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "e1959e49-bc15-43ce-ac02-163ce98ea423",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "fbcac688-f952-477f-87ca-ea7860c4f396"
+      ]
+    },
+    {
+      "expected": 2,
+      "expected_ranks": {
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e": 5,
+        "fbcac688-f952-477f-87ca-ea7860c4f396": 2
+      },
+      "hits": 2,
+      "id": "readyplayer1-next-campaign-recommendation",
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "recall_at_limit": 1.0,
+      "status": "pass",
+      "top_ids": [
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2"
+      ]
+    }
+  ],
+  "constraints": [
+    "shadow/evaluation use only",
+    "no live v1 or MCP default changes",
+    "use explicit v2 DB and retrieval-eval/retrieve diagnostics only",
+    "do not treat v2 hybrid parity as production cutover evidence without more projects"
+  ],
+  "failure_analysis_summary": {
+    "record_absent_count": 0,
+    "retrieval_mismatch_count": 10,
+    "root_cause": "vector-only eval path and weak hash-vector fallback displaced precise lexical/title/body/metric matches; snake_case metric tokens were not normalized into natural language tokens; broad domain tokens flooded top-10 windows."
+  },
+  "final_metrics": {
+    "cases": 10,
+    "expected_records": 22,
+    "extra_result_count": 35,
+    "hit_records": 22,
+    "mean_recall_at_limit": 1.0,
+    "record_absent_count": 0,
+    "retrieval_mismatch_count": 0,
+    "scored_cases": 10
+  },
+  "final_recall_parity": {
+    "average_overlap_ratio": 0.3211904761904762,
+    "evidence_mismatches": 41,
+    "likely_causes_of_mismatch": [
+      "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+      "some overlapping or one-sided records have evidence availability differences"
+    ],
+    "queries_with_full_overlap": 1,
+    "queries_with_partial_overlap": 7,
+    "queries_with_zero_overlap": 2,
+    "total_extra_from_v2": 41,
+    "total_missing_from_v2": 0,
+    "total_queries": 10
+  },
+  "go_no_go": "GO_WITH_CONSTRAINTS",
+  "implemented_changes": [
+    "Added deterministic token normalization that splits snake_case and hyphenated metric names while preserving campaign/numeric tokens.",
+    "Added explainable hybrid scoring with title/body/evidence/metric/space/recency/salience components and broad-match penalties.",
+    "Changed retrieval-eval default diagnostic mode to hybrid while keeping lexical/vector modes selectable.",
+    "Added optional hybrid mode to recall-parity measurement while preserving lexical default.",
+    "Added compact top-result explanations to retrieval-eval reports."
+  ],
+  "iteration_history": [
+    {
+      "iteration": "baseline_vector_eval",
+      "recall_parity": {
+        "average_overlap_ratio": 0.11484848484848487,
+        "evidence_mismatches": 92,
+        "likely_causes_of_mismatch": [
+          "v2 provisional lexical scoring differs from v1 FTS bm25 ranking/windowing",
+          "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+          "some overlapping or one-sided records have evidence availability differences"
+        ],
+        "queries_with_full_overlap": 0,
+        "queries_with_partial_overlap": 7,
+        "queries_with_zero_overlap": 3,
+        "total_extra_from_v2": 88,
+        "total_missing_from_v2": 4,
+        "total_queries": 10
+      },
+      "retrieval_eval": {
+        "cases": 10,
+        "expected_records": 22,
+        "extra_result_count": 88,
+        "hit_records": 12,
+        "mean_recall_at_limit": 0.666667,
+        "record_absent_count": 0,
+        "retrieval_mismatch_count": 10,
+        "scored_cases": 10
+      }
+    },
+    {
+      "iteration": "hybrid_iter_1_min_score_20",
+      "recall_parity": {
+        "average_overlap_ratio": 0.22968253968253965,
+        "evidence_mismatches": 71,
+        "likely_causes_of_mismatch": [
+          "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+          "some overlapping or one-sided records have evidence availability differences"
+        ],
+        "queries_with_full_overlap": 1,
+        "queries_with_partial_overlap": 7,
+        "queries_with_zero_overlap": 2,
+        "total_extra_from_v2": 71,
+        "total_missing_from_v2": 0,
+        "total_queries": 10
+      },
+      "retrieval_eval": {
+        "cases": 10,
+        "expected_records": 22,
+        "extra_result_count": 65,
+        "hit_records": 22,
+        "mean_recall_at_limit": 1.0,
+        "record_absent_count": 0,
+        "retrieval_mismatch_count": 0,
+        "scored_cases": 10
+      }
+    },
+    {
+      "iteration": "hybrid_iter_2_min_score_35",
+      "recall_parity": {
+        "average_overlap_ratio": 0.3211904761904762,
+        "evidence_mismatches": 41,
+        "likely_causes_of_mismatch": [
+          "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+          "some overlapping or one-sided records have evidence availability differences"
+        ],
+        "queries_with_full_overlap": 1,
+        "queries_with_partial_overlap": 7,
+        "queries_with_zero_overlap": 2,
+        "total_extra_from_v2": 41,
+        "total_missing_from_v2": 0,
+        "total_queries": 10
+      },
+      "retrieval_eval": {
+        "cases": 10,
+        "expected_records": 22,
+        "extra_result_count": 35,
+        "hit_records": 22,
+        "mean_recall_at_limit": 1.0,
+        "record_absent_count": 0,
+        "retrieval_mismatch_count": 0,
+        "scored_cases": 10
+      },
+      "zero_overlap_queries_with_nonempty_v1": 0
+    }
+  ],
+  "next_recommended_task": "Run the same hybrid retrieval contract against at least one additional migrated repo and add a small shadow rehydration preview command that renders top-N hybrid results without changing Codex defaults.",
+  "remaining_failure_cases": [],
+  "retrieval_contract_summary": {
+    "boundary": "retrieval diagnostics only; no Mimir cognition or live v1 changes",
+    "candidate_sources": [
+      "title",
+      "summary",
+      "body",
+      "tags",
+      "evidence",
+      "space",
+      "recency",
+      "salience",
+      "derived_vector_rescue"
+    ],
+    "mode": "hybrid",
+    "ranking": "deterministic additive score with explicit score components and penalties"
+  },
+  "schema_version": "muninn.v2.readyplayer1.retrieval_design_report.v1",
+  "zero_overlap_queries_with_nonempty_v1": 0
+}

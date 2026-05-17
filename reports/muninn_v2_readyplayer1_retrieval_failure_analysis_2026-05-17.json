@@ -1,0 +1,2472 @@
+{
+  "cases": [
+    {
+      "case_id": "campaign-007a-post-reacquisition-stabilization",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 2
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "b045f7d1-a009-4883-b194-935622d7cd12",
+        "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+        "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+        "6a914585-ec21-4d1c-9b5b-be6d52952863"
+      ],
+      "failure_classification": [
+        "pass"
+      ],
+      "hits": [
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+      ],
+      "misses": [],
+      "query": "Campaign 007A post-reacquisition belief stabilization",
+      "ranking_deltas": [
+        {
+          "actual_rank": 2,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": 1,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        }
+      ],
+      "recall_at_limit": 1.0,
+      "retrieval_eval_status": "pass",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": -36.14575184801745,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 51.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 28.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 18.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 16.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 13.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 12.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 11.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 10.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 9.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "runbook",
+          "rank": 10,
+          "record_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+          "score": 5.0,
+          "title": "Subsim sonar replay regression path in ReadyPlayer1"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.21899,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 0.148878,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+          "score": 0.133464,
+          "title": "RSSM v2 supervisor rerun completed 30/30 cycles with per-cycle clutter threshold policy"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 0.09085,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+          "score": 0.0764,
+          "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 0.067155,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 0.065131,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 0.052317,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+          "score": 0.043417,
+          "title": "RSSM v2 broader staged progression now uses tier-gated expansion with per-stage drift monitoring"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 0.03556,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        }
+      ]
+    },
+    {
+      "case_id": "campaign-006a-early-active-ping-reacquisition",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "title": "Campaign 006A promoted post-loss recovery probe",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 1
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "c988cfd8-1974-49dc-98a1-ad3776726fcb",
+        "703b5352-17df-45b9-8016-a80c56023c3c",
+        "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+        "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+        "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+      ],
+      "failure_classification": [
+        "pass"
+      ],
+      "hits": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396"
+      ],
+      "misses": [],
+      "query": "Campaign 006A early active ping reacquisition",
+      "ranking_deltas": [
+        {
+          "actual_rank": 1,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": 0,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        }
+      ],
+      "recall_at_limit": 1.0,
+      "retrieval_eval_status": "pass",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -29.98934376576925,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 34.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 19.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 11.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 10.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 10.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 10.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 10.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 9.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "a96ab62a-70da-46f5-b38c-390e73fbe43a",
+          "score": 7.0,
+          "title": "Lane soak early-stop logic is now trust-aware with bounded monitored-failure handling"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 7.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.316713,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 0.179527,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 0.165679,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.121058,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 0.106546,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "c988cfd8-1974-49dc-98a1-ad3776726fcb",
+          "score": 0.09103,
+          "title": "Real RSSM v2 guarded medium-soak run failed closed at cycle 1 on scenario non-pass threshold"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 0.07605,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 0.073851,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+          "score": 0.072825,
+          "title": "RSSM v2 broader staged progression now uses tier-gated expansion with per-stage drift monitoring"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 0.066637,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        }
+      ]
+    },
+    {
+      "case_id": "campaign-005a-fire-control-state-normalization",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "title": "Campaign 005A promoted fire-control state normalization",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 2
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "6a914585-ec21-4d1c-9b5b-be6d52952863",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "703b5352-17df-45b9-8016-a80c56023c3c",
+        "934bc660-bb2c-43b5-8026-7c936ec89977",
+        "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "8db59c21-0224-4ef0-b628-f336867bf591"
+      ],
+      "failure_classification": [
+        "pass"
+      ],
+      "hits": [
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44"
+      ],
+      "misses": [],
+      "query": "Campaign 005A fire-control state normalization",
+      "ranking_deltas": [
+        {
+          "actual_rank": 2,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": 1,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44"
+        }
+      ],
+      "recall_at_limit": 1.0,
+      "retrieval_eval_status": "pass",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": -31.7340132113395,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 52.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 30.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 29.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 14.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 13.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 11.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+          "score": 10.0,
+          "title": "Subsim experimental control lane uses one-way baseline rescue"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 10.0,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 10.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "interface",
+          "rank": 10,
+          "record_id": "934bc660-bb2c-43b5-8026-7c936ec89977",
+          "score": 9.0,
+          "title": "Subsim suite now supports baseline, shadow, and experimental control modes"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 0.493612,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 0.471203,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.324945,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.260756,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 0.164366,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 0.151998,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 0.148046,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "interface",
+          "rank": null,
+          "record_id": "934bc660-bb2c-43b5-8026-7c936ec89977",
+          "score": 0.147984,
+          "title": "Subsim suite now supports baseline, shadow, and experimental control modes"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 0.140095,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 0.13979,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        }
+      ]
+    },
+    {
+      "case_id": "campaign-004a-duplicate-same-primary-torpedo-suppression",
+      "evidence_availability": [
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        },
+        {
+          "evidence_count": 3,
+          "exists_in_v2": true,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "title": "Campaign 004A fire-control loop promoted",
+          "v2_lexical_rank": 2,
+          "v2_vector_rank": 3
+        },
+        {
+          "evidence_count": 3,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 1
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "81ffce0a-e048-4838-85bd-1ce6a7458fb8",
+        "a44681f9-c236-4053-9924-ffdb6aba27d1",
+        "5af5de69-2804-4427-a539-db2c12c8aad9",
+        "6a914585-ec21-4d1c-9b5b-be6d52952863",
+        "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+        "2656c35f-79af-403d-9128-e98fc72663d6"
+      ],
+      "failure_classification": [
+        "pass"
+      ],
+      "hits": [
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+      ],
+      "misses": [],
+      "query": "Campaign 004A duplicate same-primary torpedo suppression",
+      "ranking_deltas": [
+        {
+          "actual_rank": 3,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": 2,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        },
+        {
+          "actual_rank": 1,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": -1,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+        }
+      ],
+      "recall_at_limit": 1.0,
+      "retrieval_eval_status": "pass",
+      "v1_top10": [],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 34.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 32.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 20.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 16.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 13.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 11.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 11.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 10.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 9.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 8.0,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 0.389533,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 0.287824,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.277614,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.122731,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "81ffce0a-e048-4838-85bd-1ce6a7458fb8",
+          "score": 0.095811,
+          "title": "RSSM v2 continuation now gates on replay/live drift summary outcomes"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+          "score": 0.095182,
+          "title": "Subsim sonar replay regression path in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5af5de69-2804-4427-a539-db2c12c8aad9",
+          "score": 0.091395,
+          "title": "Replay/live parity cleanup applies tick-order and truncation done-reason normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 0.087232,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+          "score": 0.080202,
+          "title": "Canonical Subsim suite regression gate in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 0.076154,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        }
+      ]
+    },
+    {
+      "case_id": "fire-control-ready-but-hold-count",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44"
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "title": "Campaign 005A promoted fire-control state normalization",
+          "v2_lexical_rank": 3,
+          "v2_vector_rank": 3
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "title": "Campaign 004A fire-control loop promoted",
+          "v2_lexical_rank": 2,
+          "v2_vector_rank": 2
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "2cc8e63b-8f7a-424a-89ba-22813c770653",
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+        "e1959e49-bc15-43ce-ac02-163ce98ea423",
+        "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+        "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+        "6c405f42-8fb5-4735-8bad-fcd2f5b71908"
+      ],
+      "failure_classification": [
+        "pass"
+      ],
+      "hits": [
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "719fafb5-b25b-4460-a549-987799432a6c"
+      ],
+      "misses": [],
+      "query": "fire control ready but hold count",
+      "ranking_deltas": [
+        {
+          "actual_rank": 3,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": 2,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44"
+        },
+        {
+          "actual_rank": 2,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": 0,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        }
+      ],
+      "recall_at_limit": 1.0,
+      "retrieval_eval_status": "pass",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -16.687098327296244,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 29.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 26.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 23.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+          "score": 14.0,
+          "title": "Subsim experimental control lane uses one-way baseline rescue"
+        },
+        {
+          "kind": "runbook",
+          "rank": 5,
+          "record_id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+          "score": 14.0,
+          "title": "Qwen3.6-27B isolated vLLM trial on V100 (sm_70) parses but fails to reach API-ready state"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "1b486cc7-508f-47f3-aaf0-87ecddea8c1d",
+          "score": 11.0,
+          "title": "ReadyPlayer1 now evaluates Subsim sonar via a deterministic scenario pack and comparative suite runner"
+        },
+        {
+          "kind": "interface",
+          "rank": 7,
+          "record_id": "934bc660-bb2c-43b5-8026-7c936ec89977",
+          "score": 11.0,
+          "title": "Subsim suite now supports baseline, shadow, and experimental control modes"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "c988cfd8-1974-49dc-98a1-ad3776726fcb",
+          "score": 11.0,
+          "title": "Real RSSM v2 guarded medium-soak run failed closed at cycle 1 on scenario non-pass threshold"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "57514758-5e32-41bd-bcb8-85d6af042a1d",
+          "score": 10.0,
+          "title": "ReadyPlayer1 now consumes Subsim sonar console through a dedicated adapter boundary"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "a914d42e-7e4e-4fc1-9a5b-be9c8f9df89f",
+          "score": 10.0,
+          "title": "Rerun soak with scenario non-pass threshold 1 progressed to cycle 2 then stopped on repeated pathology gate"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 0.425788,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.267649,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 0.267607,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "2cc8e63b-8f7a-424a-89ba-22813c770653",
+          "score": 0.206651,
+          "title": "Recurrent architecture upgrade lane added for Dreamer continuity ablation"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.156693,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+          "score": 0.143832,
+          "title": "Qwen3.6-27B isolated vLLM trial on V100 (sm_70) parses but fails to reach API-ready state"
+        },
+        {
+          "kind": "interface",
+          "rank": null,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+          "score": 0.131902,
+          "title": "Failure taxonomy is now a first-class report surface for sonar runs"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+          "score": 0.121384,
+          "title": "Canonical Subsim suite regression gate in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+          "score": 0.118809,
+          "title": "Repo drift hygiene report v1 establishes registry-first operational authority"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 0.117988,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        }
+      ]
+    },
+    {
+      "case_id": "torpedo-wasted-shot-rate",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        },
+        {
+          "evidence_count": 3,
+          "exists_in_v2": true,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": 6,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "title": "Campaign 006A promoted post-loss recovery probe",
+          "v2_lexical_rank": 2,
+          "v2_vector_rank": 1
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "title": "Campaign 004A fire-control loop promoted",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 9
+        },
+        {
+          "evidence_count": 3,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch",
+          "v2_lexical_rank": 5,
+          "v2_vector_rank": null
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+        "39a11e88-2748-4cb9-a920-1c21614d6140",
+        "96dc449d-9f8a-4536-a60f-c1c8a97b889f",
+        "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "b6db9c8b-8d29-4ca0-9801-aa09e2093f0d",
+        "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4"
+      ],
+      "failure_classification": [
+        "broad token flood",
+        "vector fallback too weak",
+        "missing numeric/token handling"
+      ],
+      "hits": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "719fafb5-b25b-4460-a549-987799432a6c"
+      ],
+      "misses": [
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+        }
+      ],
+      "query": "torpedo wasted shot rate",
+      "ranking_deltas": [
+        {
+          "actual_rank": null,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "actual_rank": 1,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": -1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "actual_rank": 9,
+          "expected_rank": 3,
+          "rank_delta_actual_minus_expected": 6,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        },
+        {
+          "actual_rank": null,
+          "expected_rank": 4,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0"
+        }
+      ],
+      "recall_at_limit": 0.5,
+      "retrieval_eval_status": "fail",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -21.48440025863667,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": -18.070422791661912,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": -17.6259482685159,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": -17.127603437750118,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 13.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 10.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 8.0,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "85fa6620-c20e-4e01-b52e-e2f9613f1bcf",
+          "score": 7.0,
+          "title": "Monitored-to-validated advancement workflow v1 added for adversarial_or_degenerate with explicit validation rubric and governance artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 7.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 7.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+          "score": 6.0,
+          "title": "Frontier governed expansion executed on adversarial_or_degenerate with validated protection and persistent clutter limitation"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "96dc449d-9f8a-4536-a60f-c1c8a97b889f",
+          "score": 5.0,
+          "title": "Frontier graduation workflow v1 added for adversarial_or_degenerate with explicit rubric and governance update artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 5.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 4.0,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.164192,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+          "score": 0.113401,
+          "title": "RSSM v2 broader staged progression now uses tier-gated expansion with per-stage drift monitoring"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "39a11e88-2748-4cb9-a920-1c21614d6140",
+          "score": 0.065995,
+          "title": "Governed supervisor loop v1 added for RSSM v2 with bounded policy stops"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "96dc449d-9f8a-4536-a60f-c1c8a97b889f",
+          "score": 0.049925,
+          "title": "Frontier graduation workflow v1 added for adversarial_or_degenerate with explicit rubric and governance update artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 0.036425,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "b6db9c8b-8d29-4ca0-9801-aa09e2093f0d",
+          "score": 0.02656,
+          "title": "ReadyPlayer1 now ships lane-generic onboarding, guarded soak, and dashboard workflows"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 0.02331,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "interface",
+          "rank": null,
+          "record_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+          "score": 0.017501,
+          "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.015643,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 0.015562,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        }
+      ]
+    },
+    {
+      "case_id": "sonar-clutter-wrong-binding-rate",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": null,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "title": "Campaign 006A promoted post-loss recovery probe",
+          "v2_lexical_rank": null,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "title": "Campaign 003 promoted for SubSim clutter binding",
+          "v2_lexical_rank": 2,
+          "v2_vector_rank": null
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+        "e1959e49-bc15-43ce-ac02-163ce98ea423",
+        "a44681f9-c236-4053-9924-ffdb6aba27d1",
+        "caff839c-3401-43d1-8ead-aa24a9bb1d56",
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "703b5352-17df-45b9-8016-a80c56023c3c",
+        "b045f7d1-a009-4883-b194-935622d7cd12",
+        "85fa6620-c20e-4e01-b52e-e2f9613f1bcf",
+        "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "96dc449d-9f8a-4536-a60f-c1c8a97b889f"
+      ],
+      "failure_classification": [
+        "broad token flood",
+        "body underweighted",
+        "title underweighted",
+        "vector fallback too weak",
+        "missing numeric/token handling"
+      ],
+      "hits": [],
+      "misses": [
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6"
+        }
+      ],
+      "query": "sonar clutter wrong binding rate",
+      "ranking_deltas": [
+        {
+          "actual_rank": null,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "actual_rank": null,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "actual_rank": null,
+          "expected_rank": 3,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6"
+        }
+      ],
+      "recall_at_limit": 0.0,
+      "retrieval_eval_status": "fail",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": -25.7625460619216,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": -21.001419306061678,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -20.63452236626874,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": -16.892341410789445,
+          "title": "Campaign 004A fire-control loop promoted"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 26.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 21.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 18.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 17.0,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+          "score": 16.0,
+          "title": "Frontier governed expansion executed on adversarial_or_degenerate with validated protection and persistent clutter limitation"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+          "score": 15.0,
+          "title": "Targeted clutter improvement loop did not clear monitored-failure soak stop condition"
+        },
+        {
+          "kind": "runbook",
+          "rank": 7,
+          "record_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+          "score": 13.0,
+          "title": "Subsim sonar replay regression path in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 13.0,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 13.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 13.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 0.210433,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "interface",
+          "rank": null,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+          "score": 0.125501,
+          "title": "Failure taxonomy is now a first-class report surface for sonar runs"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "a44681f9-c236-4053-9924-ffdb6aba27d1",
+          "score": 0.081414,
+          "title": "Subsim sonar replay regression path in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "caff839c-3401-43d1-8ead-aa24a9bb1d56",
+          "score": 0.061376,
+          "title": "Continuous clutter-health scoring v1 added to RSSM v2 supervisor and dashboard surfaces"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 0.050777,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 0.049814,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+          "score": 0.048111,
+          "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "85fa6620-c20e-4e01-b52e-e2f9613f1bcf",
+          "score": 0.044827,
+          "title": "Monitored-to-validated advancement workflow v1 added for adversarial_or_degenerate with explicit validation rubric and governance artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 0.042012,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "96dc449d-9f8a-4536-a60f-c1c8a97b889f",
+          "score": 0.021965,
+          "title": "Frontier graduation workflow v1 added for adversarial_or_degenerate with explicit rubric and governance update artifacts"
+        }
+      ]
+    },
+    {
+      "case_id": "acoustic-clutter-wrong-binding-rate",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591"
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": null,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "title": "Campaign 003 acoustic clutter binding integrated",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": 1
+        },
+        {
+          "evidence_count": 5,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "title": "Campaign 004A fire-control loop promoted",
+          "v2_lexical_rank": 6,
+          "v2_vector_rank": null
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+        "703b5352-17df-45b9-8016-a80c56023c3c",
+        "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+        "85927e0f-bb29-433a-80f1-4e554f3f998e",
+        "b045f7d1-a009-4883-b194-935622d7cd12",
+        "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+        "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+        "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+        "e1959e49-bc15-43ce-ac02-163ce98ea423"
+      ],
+      "failure_classification": [
+        "broad token flood",
+        "body underweighted",
+        "vector fallback too weak",
+        "missing numeric/token handling"
+      ],
+      "hits": [
+        "8db59c21-0224-4ef0-b628-f336867bf591"
+      ],
+      "misses": [
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        }
+      ],
+      "query": "acoustic clutter wrong binding rate",
+      "ranking_deltas": [
+        {
+          "actual_rank": null,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "actual_rank": 1,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": -1,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591"
+        },
+        {
+          "actual_rank": null,
+          "expected_rank": 3,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c"
+        }
+      ],
+      "recall_at_limit": 0.333333,
+      "retrieval_eval_status": "fail",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -21.509263512896958,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": -21.17310109020352,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": -19.776927333742037,
+          "title": "Campaign 004A fire-control loop promoted"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 36.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 20.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 17.0,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+          "score": 16.0,
+          "title": "Frontier governed expansion executed on adversarial_or_degenerate with validated protection and persistent clutter limitation"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+          "score": 15.0,
+          "title": "Targeted clutter improvement loop did not clear monitored-failure soak stop condition"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 15.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 13.0,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 12.0,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+          "score": 12.0,
+          "title": "RSSM v2 supervisor rerun completed 30/30 cycles with per-cycle clutter threshold policy"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 11.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 0.30477,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 0.300731,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 0.145781,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+          "score": 0.117549,
+          "title": "Repo drift hygiene report v1 establishes registry-first operational authority"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "85927e0f-bb29-433a-80f1-4e554f3f998e",
+          "score": 0.091291,
+          "title": "RSSM v2 30-cycle supervisor soak pauses at clutter recurrence budget"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "b045f7d1-a009-4883-b194-935622d7cd12",
+          "score": 0.088459,
+          "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "ab7fcfef-f55e-43dc-82a7-f080bdab083d",
+          "score": 0.087421,
+          "title": "RSSM v2 supervisor rerun completed 30/30 cycles with per-cycle clutter threshold policy"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 0.087248,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+          "score": 0.083268,
+          "title": "Qwen3.6-27B isolated vLLM trial on V100 (sm_70) parses but fails to reach API-ready state"
+        },
+        {
+          "kind": "interface",
+          "rank": null,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+          "score": 0.068211,
+          "title": "Failure taxonomy is now a first-class report surface for sonar runs"
+        }
+      ]
+    },
+    {
+      "case_id": "reacquisition-failure-taxonomy",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": 3,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "title": "Campaign 006A promoted post-loss recovery probe",
+          "v2_lexical_rank": 8,
+          "v2_vector_rank": 5
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "interface",
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+          "title": "Failure taxonomy is now a first-class report surface for sonar runs",
+          "v2_lexical_rank": 1,
+          "v2_vector_rank": null
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+        "703b5352-17df-45b9-8016-a80c56023c3c",
+        "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+        "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+        "6a914585-ec21-4d1c-9b5b-be6d52952863",
+        "8db59c21-0224-4ef0-b628-f336867bf591",
+        "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+        "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+        "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4"
+      ],
+      "failure_classification": [
+        "broad token flood",
+        "vector fallback too weak",
+        "title underweighted",
+        "body underweighted"
+      ],
+      "hits": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396"
+      ],
+      "misses": [
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423"
+        }
+      ],
+      "query": "reacquisition failure taxonomy",
+      "ranking_deltas": [
+        {
+          "actual_rank": null,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "actual_rank": 5,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": 3,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        },
+        {
+          "actual_rank": null,
+          "expected_rank": 3,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423"
+        }
+      ],
+      "recall_at_limit": 0.333333,
+      "retrieval_eval_status": "fail",
+      "v1_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": -11.239637469287253,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        }
+      ],
+      "v2_lexical_top10": [
+        {
+          "kind": "interface",
+          "rank": 1,
+          "record_id": "e1959e49-bc15-43ce-ac02-163ce98ea423",
+          "score": 20.0,
+          "title": "Failure taxonomy is now a first-class report surface for sonar runs"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 11.0,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 10.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "a96ab62a-70da-46f5-b38c-390e73fbe43a",
+          "score": 9.0,
+          "title": "Lane soak early-stop logic is now trust-aware with bounded monitored-failure handling"
+        },
+        {
+          "kind": "runbook",
+          "rank": 5,
+          "record_id": "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+          "score": 7.0,
+          "title": "Canonical Subsim suite regression gate in ReadyPlayer1"
+        },
+        {
+          "kind": "interface",
+          "rank": 6,
+          "record_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+          "score": 7.0,
+          "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 6.0,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 6.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 9,
+          "record_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+          "score": 5.0,
+          "title": "Targeted clutter improvement loop did not clear monitored-failure soak stop condition"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 2.0,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "runbook",
+          "rank": null,
+          "record_id": "2b2f8c21-b9f9-4eae-b384-3ebfe9528c47",
+          "score": 0.14585,
+          "title": "Canonical Subsim suite regression gate in ReadyPlayer1"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "703b5352-17df-45b9-8016-a80c56023c3c",
+          "score": 0.09379,
+          "title": "Supervisor clutter pause now uses per-cycle threshold (>=2) with recurrence pause disabled by default"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "ec3b5350-7e67-4b50-b6a6-6a0f16def362",
+          "score": 0.093127,
+          "title": "Repo drift hygiene report v1 establishes registry-first operational authority"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "9379dfbe-d2fc-41b2-aec7-63ebf0c74437",
+          "score": 0.080517,
+          "title": "Targeted clutter improvement loop did not clear monitored-failure soak stop condition"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.068498,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6a914585-ec21-4d1c-9b5b-be6d52952863",
+          "score": 0.05968,
+          "title": "Focused RSSM v2 remediation pass now isolates duplicate clutter failures and emits checkpoint artifacts"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 0.039235,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+          "score": 0.029543,
+          "title": "RSSM v2 broader staged progression now uses tier-gated expansion with per-stage drift monitoring"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4c81a807-fbb5-43ec-aeca-6dd8e09bdfbc",
+          "score": 0.026987,
+          "title": "Supervisor now tolerates monitored clutter recurrence within configurable budget"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "5dc2dbe5-b2f5-401f-8028-a11fd6ee41d4",
+          "score": 0.026249,
+          "title": "Clutter-focused remediation pass added diagnostics, guardrail, and hard decision artifact"
+        }
+      ]
+    },
+    {
+      "case_id": "readyplayer1-next-campaign-recommendation",
+      "evidence_availability": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        }
+      ],
+      "expected_records": [
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "title": "Campaign 007A promoted post-reacquisition stabilization",
+          "v2_lexical_rank": 5,
+          "v2_vector_rank": null
+        },
+        {
+          "evidence_count": 4,
+          "exists_in_v2": true,
+          "kind": "decision",
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "title": "Campaign 006A promoted post-loss recovery probe",
+          "v2_lexical_rank": 4,
+          "v2_vector_rank": 6
+        }
+      ],
+      "expected_records_exist_in_v2": true,
+      "extras": [
+        "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+        "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+        "405c83a3-30db-43a8-b5e5-8ae765addb99",
+        "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "2656c35f-79af-403d-9128-e98fc72663d6",
+        "79b74025-1022-4f3b-975f-10a2b2370b7d",
+        "719fafb5-b25b-4460-a549-987799432a6c",
+        "4be809aa-731f-420c-8dc1-99cb5813c0ea"
+      ],
+      "failure_classification": [
+        "broad token flood",
+        "body underweighted",
+        "vector fallback too weak"
+      ],
+      "hits": [
+        "fbcac688-f952-477f-87ca-ea7860c4f396"
+      ],
+      "misses": [
+        {
+          "classification": "retrieval_mismatch",
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        }
+      ],
+      "query": "ReadyPlayer1 next campaign recommendation",
+      "ranking_deltas": [
+        {
+          "actual_rank": null,
+          "expected_rank": 1,
+          "rank_delta_actual_minus_expected": null,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e"
+        },
+        {
+          "actual_rank": 6,
+          "expected_rank": 2,
+          "rank_delta_actual_minus_expected": 4,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396"
+        }
+      ],
+      "recall_at_limit": 0.5,
+      "retrieval_eval_status": "fail",
+      "v1_top10": [],
+      "v2_lexical_top10": [
+        {
+          "kind": "decision",
+          "rank": 1,
+          "record_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "score": 21.0,
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "kind": "decision",
+          "rank": 2,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 15.0,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": 3,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 15.0,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": 4,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 15.0,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": 5,
+          "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "score": 15.0,
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "kind": "decision",
+          "rank": 6,
+          "record_id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "score": 14.0,
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "kind": "decision",
+          "rank": 7,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 14.0,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "kind": "decision",
+          "rank": 8,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 14.0,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "interface",
+          "rank": 9,
+          "record_id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+          "score": 13.0,
+          "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+        },
+        {
+          "kind": "decision",
+          "rank": 10,
+          "record_id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "score": 11.0,
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        }
+      ],
+      "v2_vector_top10": [
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "34bc2a67-fe24-46a0-b747-4282a3c6beac",
+          "score": 0.374676,
+          "title": "RSSM v2 broader staged progression now uses tier-gated expansion with per-stage drift monitoring"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+          "score": 0.354525,
+          "title": "State-space continuity refinement v3 added as canonical RL ablation lane"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fcdf1422-e309-4e34-822e-3eaee2fc8f39",
+          "score": 0.33281,
+          "title": "Subsim experimental control lane uses one-way baseline rescue"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "405c83a3-30db-43a8-b5e5-8ae765addb99",
+          "score": 0.32058,
+          "title": "Frontier governed expansion executed on adversarial_or_degenerate with validated protection and persistent clutter limitation"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "score": 0.315635,
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "score": 0.308178,
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "score": 0.305008,
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "79b74025-1022-4f3b-975f-10a2b2370b7d",
+          "score": 0.303405,
+          "title": "Clutter is now locked as persistent monitored limitation while frontier expansion continues"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "score": 0.300382,
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "kind": "decision",
+          "rank": null,
+          "record_id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "score": 0.29915,
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        }
+      ]
+    }
+  ],
+  "schema_version": "muninn.v2.readyplayer1.retrieval_failure_analysis.v1",
+  "summary": {
+    "baseline": {
+      "cases": 10,
+      "expected_records": 22,
+      "extra_result_count": 88,
+      "hit_records": 12,
+      "mean_recall_at_limit": 0.666667,
+      "record_absent_count": 0,
+      "retrieval_mismatch_count": 10,
+      "scored_cases": 10
+    },
+    "recall_parity": {
+      "average_overlap_ratio": 0.11484848484848487,
+      "evidence_mismatches": 92,
+      "likely_causes_of_mismatch": [
+        "v2 provisional lexical scoring differs from v1 FTS bm25 ranking/windowing",
+        "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+        "some overlapping or one-sided records have evidence availability differences"
+      ],
+      "queries_with_full_overlap": 0,
+      "queries_with_partial_overlap": 7,
+      "queries_with_zero_overlap": 3,
+      "total_extra_from_v2": 88,
+      "total_missing_from_v2": 4,
+      "total_queries": 10
+    },
+    "root_causes": [
+      "v2 eval used vector-only results whenever a derived index existed, so precise lexical/title hits could be displaced by hash-vector similarity.",
+      "The fallback vector index is deterministic but too weak for short metric/taxonomy queries and campaign-specific variants.",
+      "Broad domain tokens such as sonar, clutter, reacquisition, rate, and ReadyPlayer1 flood top-10 windows without enough specificity penalty.",
+      "Campaign/numeric/version tokens and title phrase matches need stronger explicit boosts."
+    ],
+    "weakest_cases": [
+      {
+        "case_id": "sonar-clutter-wrong-binding-rate",
+        "classification": [
+          "broad token flood",
+          "body underweighted",
+          "title underweighted",
+          "vector fallback too weak",
+          "missing numeric/token handling"
+        ],
+        "query": "sonar clutter wrong binding rate",
+        "recall_at_limit": 0.0
+      },
+      {
+        "case_id": "acoustic-clutter-wrong-binding-rate",
+        "classification": [
+          "broad token flood",
+          "body underweighted",
+          "vector fallback too weak",
+          "missing numeric/token handling"
+        ],
+        "query": "acoustic clutter wrong binding rate",
+        "recall_at_limit": 0.333333
+      },
+      {
+        "case_id": "reacquisition-failure-taxonomy",
+        "classification": [
+          "broad token flood",
+          "vector fallback too weak",
+          "title underweighted",
+          "body underweighted"
+        ],
+        "query": "reacquisition failure taxonomy",
+        "recall_at_limit": 0.333333
+      },
+      {
+        "case_id": "torpedo-wasted-shot-rate",
+        "classification": [
+          "broad token flood",
+          "vector fallback too weak",
+          "missing numeric/token handling"
+        ],
+        "query": "torpedo wasted shot rate",
+        "recall_at_limit": 0.5
+      },
+      {
+        "case_id": "readyplayer1-next-campaign-recommendation",
+        "classification": [
+          "broad token flood",
+          "body underweighted",
+          "vector fallback too weak"
+        ],
+        "query": "ReadyPlayer1 next campaign recommendation",
+        "recall_at_limit": 0.5
+      }
+    ]
+  }
+}
