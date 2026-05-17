@@ -1,0 +1,81 @@
+{
+  "schema_version": "muninn.v2.phase_d_recall_reinforcement_report.v1",
+  "record_type": "muninn_v2_phase_d_recall_reinforcement_report",
+  "date": "2026-05-17",
+  "scope": "v2_shadow_only_no_live_integration",
+  "implementation": {
+    "derived_state_table": "v2_reinforcement_state",
+    "recall_event_table": "v2_recall_events",
+    "commands": [
+      "recall-event-record",
+      "recall-reinforcement-replay"
+    ],
+    "default_retrieval_changed": false,
+    "optional_hybrid_scoring_hook": true,
+    "llm_salience_required": false,
+    "canonical_card_mutation": false
+  },
+  "mechanics": {
+    "boosted_by": [
+      "accepted recall ids",
+      "recalled exposure"
+    ],
+    "suppressed_by": [
+      "suppressed recall ids"
+    ],
+    "preserved_by": [
+      "durable card kinds",
+      "evidence-bearing project-state records"
+    ],
+    "decayed_by": [
+      "quiet period since last recall event or card update"
+    ],
+    "replay_determinism": "same cards, recall events, weights, scope, and as_of timestamp produce the same state report"
+  },
+  "lexi_smoke": {
+    "source_shadow_db_copy": "reports/pilots/phase_d_recall_reinforcement_2026-05-17/lexi_phase_d_shadow_v2.db",
+    "source_project": "Lexi",
+    "scope_key": "repo:0c321b2a6f183a95",
+    "recall_event": {
+      "event_id": "recall_84d31bcb69d613c1",
+      "accepted": 3,
+      "suppressed": 1,
+      "write_event": true
+    },
+    "replay": {
+      "as_of": "2026-05-17T23:00:00Z",
+      "write_state": true,
+      "eligible_cards": 77,
+      "recall_events": 1,
+      "boosted": 3,
+      "suppressed": 1,
+      "preserved": 73,
+      "decayed": 0,
+      "neutral": 0,
+      "state_rows_written": 77
+    },
+    "interpretation": "Phase D boosted the production-audit and Phase 6 runtime cards, suppressed the older broad review card, and preserved durable project-state memories. The high preserved count is expected for Lexi because most migrated cards are durable decision/constraint/runbook records; future Phase D fixtures should test narrower preservation thresholds before any live use."
+  },
+  "safety": {
+    "phase_d_commands_v1_db_access": false,
+    "v1_writes": false,
+    "final_v1_row_counts": {
+      "cards": 516,
+      "evidence": 1408,
+      "card_evidence": 1408,
+      "interaction_events": 2
+    },
+    "final_v1_note": "Row counts and latest records stayed unchanged from Phase C closeout; DB mtime advanced during the broader session, so the report treats v1 content as not mutated by Phase D commands.",
+    "live_mcp_defaults_changed": false,
+    "live_agent_context_integration": false,
+    "project_repos_modified": false,
+    "generated_shadow_dbs_committable": false
+  },
+  "decision": {
+    "phase_d_initial_layer": "implemented",
+    "offline_recall_reinforcement": "go_for_fixture_expansion",
+    "live_agent_context": "no_go",
+    "phase_e_cutover": "no_go"
+  },
+  "next_task": "Build multi-pilot Phase D reinforcement fixtures for Friday, ReadyPlayer1, SubSim, Sindri, and Lexi, then tune preservation/suppression thresholds only from offline audit evidence."
+}

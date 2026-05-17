@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Sequence
+from typing import Any, Mapping, Sequence
 
 from ..core.models import MemoryCard
 from ..indexes import DerivedIndexProvider
@@ -13,6 +13,7 @@ from .scoring import (
     normalized_text,
     query_profile,
 )
+from .reinforcement import apply_reinforcement_state_to_score
 
 DEFAULT_MIN_SCORE = 35.0
 
@@ -47,6 +48,7 @@ def hybrid_recall(
     query: str,
     *,
     provider: DerivedIndexProvider | None = None,
+    reinforcement_state: Mapping[str, Mapping[str, Any]] | None = None,
     limit: int = 10,
     scope_key: str | None = None,
     min_score: float = DEFAULT_MIN_SCORE,
@@ -89,6 +91,7 @@ def hybrid_recall(
             vector_score=vector_scores.get(card.id),
             recency_boost=recency_boosts.get(card.id, 0.0),
             scope_matched=bool(scope_key and card.scope_key == scope_key),
+            reinforcement_state=reinforcement_state,
         )
         if item.score >= float(min_score):
             scored.append(item)
@@ -112,6 +115,7 @@ def _score_card(
     vector_score: float | None,
     recency_boost: float,
     scope_matched: bool,
+    reinforcement_state: Mapping[str, Mapping[str, Any]] | None,
 ) -> HybridScore:
     item = HybridScore(card=card, score=0.0, vector_score=vector_score)
     query_tokens = set(profile.unique_tokens)
@@ -195,6 +199,16 @@ def _score_card(
         item.add_penalty("evidence_only_weak_match", 8.0)
     if not scope_matched and card.scope_key:
         item.add_penalty("missing_project_space_match", 6.0)
+    adjusted_score, reinforcement_components, reinforcement_penalties, state = apply_reinforcement_state_to_score(
+        card.id,
+        item.score,
+        reinforcement_state,
+    )
+    if state is not None:
+        item.score = adjusted_score
+        item.components.update(reinforcement_components)
+        item.penalties.update(reinforcement_penalties)
+        item.candidate_sources.add("reinforcement_state")
     return item
 
 

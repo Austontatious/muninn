@@ -1,0 +1,47 @@
+{
+  "counts": {
+    "recall_events_after": 1,
+    "recall_events_before": 0,
+    "recall_events_changed": true
+  },
+  "event": {
+    "accepted_ids": [
+      "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+      "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e"
+    ],
+    "actor": "offline",
+    "created_at": "2026-05-17T22:00:00Z",
+    "id": "recall_84d31bcb69d613c1",
+    "metadata": {
+      "offline_only": true,
+      "phase": "muninn_v2_phase_d"
+    },
+    "query": "resume Lexi current production audit and runtime modernization state and next steps",
+    "recalled_ids": [
+      "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+      "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+      "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f"
+    ],
+    "record_type": "recall_event",
+    "schema_version": "muninn.v2.foundation.v1",
+    "scope_key": "repo:0c321b2a6f183a95",
+    "suppressed_ids": [
+      "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f"
+    ]
+  },
+  "mode": "offline_recall_event_record",
+  "out_dir": "reports/pilots/phase_d_recall_reinforcement_2026-05-17/lexi_event",
+  "record_type": "muninn_v2_recall_event_record_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "v2_db": "reports/pilots/phase_d_recall_reinforcement_2026-05-17/lexi_phase_d_shadow_v2.db",
+  "write_event": true
+}

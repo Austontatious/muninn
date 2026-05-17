@@ -22,6 +22,8 @@ from .core.models import (
     MemoryEntity,
     MemoryEvent,
     OntologyProfile,
+    RecallEvent,
+    utc_now,
 )
 from .diagnostics import build_index_health_report, write_index_health_reports
 from .eval import (
@@ -40,6 +42,14 @@ from .retrieval import (
     build_shadow_rehydrate_preview,
     hybrid_recall,
     write_shadow_rehydrate_preview_reports,
+)
+from .retrieval.reinforcement import (
+    REINFORCEMENT_SCHEMA_VERSION,
+    ReinforcementWeights,
+    build_recall_event_record_report,
+    replay_reinforcement,
+    write_recall_event_record_reports,
+    write_reinforcement_replay_reports,
 )
 from .storage import SQLiteMemoryStore
 
@@ -2080,6 +2090,101 @@ def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def _id_list(values: Sequence[str] | None) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for raw in values or []:
+        value = str(raw or "").strip()
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        out.append(value)
+    return out
+
+
+def run_recall_event_record(args: argparse.Namespace) -> dict[str, Any]:
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    recalled_ids = _id_list(args.recalled_id)
+    accepted_ids = _id_list(args.accepted_id)
+    suppressed_ids = _id_list(args.suppressed_id)
+    recalled_ids = _id_list([*recalled_ids, *accepted_ids, *suppressed_ids])
+    if not recalled_ids:
+        raise RecallParityError("recall_event_requires_at_least_one_record_id")
+    metadata = _json_dict(args.metadata_json)
+    metadata.setdefault("phase", "muninn_v2_phase_d")
+    metadata.setdefault("offline_only", True)
+    created_at = str(args.created_at or "").strip() or utc_now()
+    event = RecallEvent(
+        id=str(args.event_id or "").strip()
+        or f"recall_{_sha16(created_at + ':' + str(args.query) + ':' + ','.join(recalled_ids))}",
+        query=str(args.query),
+        actor=str(args.actor or "offline"),
+        scope_key=args.scope_key,
+        recalled_ids=recalled_ids,
+        accepted_ids=accepted_ids,
+        suppressed_ids=suppressed_ids,
+        metadata=metadata,
+        created_at=created_at,
+    )
+    store = SQLiteMemoryStore(v2_db)
+    before = len(store.list_recalls(scope_key=args.scope_key))
+    if args.write_event:
+        store.log_recall(event)
+    after = len(store.list_recalls(scope_key=args.scope_key))
+    report = build_recall_event_record_report(
+        event=event,
+        v2_db=v2_db,
+        out_dir=out_dir,
+        write_event=bool(args.write_event),
+        existing_event_count_before=before,
+        existing_event_count_after=after,
+    )
+    report["artifacts"] = write_recall_event_record_reports(report, out_dir)
+    return report
+
+
+def run_recall_reinforcement_replay(args: argparse.Namespace) -> dict[str, Any]:
+    if args.dry_run and args.write_state:
+        raise RecallParityError("choose either --dry-run or --write-state, not both")
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    store = SQLiteMemoryStore(v2_db)
+    before_state = store.list_reinforcement_state(scope_key=args.scope_key)
+    weights = ReinforcementWeights(half_life_days=float(args.decay_half_life_days))
+    report = replay_reinforcement(
+        cards=store.list_cards(),
+        recall_events=store.list_recalls(scope_key=args.scope_key),
+        as_of=args.as_of,
+        scope_key=args.scope_key,
+        weights=weights,
+    )
+    written = 0
+    if args.write_state:
+        for state in report["states"]:
+            store.upsert_reinforcement_state(state)
+            written += 1
+    after_state = store.list_reinforcement_state(scope_key=args.scope_key)
+    report.update(
+        {
+            "record_type": "muninn_v2_recall_reinforcement_replay_report",
+            "v2_db": str(v2_db),
+            "out_dir": str(out_dir),
+            "dry_run": not bool(args.write_state),
+            "write_state": bool(args.write_state),
+            "state_counts": {
+                "before": len(before_state),
+                "after": len(after_state),
+                "written": written,
+            },
+        }
+    )
+    report["artifacts"] = write_reinforcement_replay_reports(report, out_dir)
+    return report
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m muninn.v2.cli",
@@ -2239,6 +2344,54 @@ def build_parser() -> argparse.ArgumentParser:
         help="Fail on ambiguous multi-space DBs or empty filtered inputs.",
     )
     shadow_preview.set_defaults(func=run_shadow_rehydrate_preview)
+
+    recall_event = subparsers.add_parser(
+        "recall-event-record",
+        help="Dry-run or explicitly record an offline v2 recall/reinforcement event.",
+    )
+    recall_event.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    recall_event.add_argument("--query", required=True, help="Recall query or task text.")
+    recall_event.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    recall_event.add_argument("--event-id", help="Optional stable event id. Defaults to a query/id digest.")
+    recall_event.add_argument("--actor", default="offline", help="Offline actor label.")
+    recall_event.add_argument("--scope-key", help="Optional v2 scope key.")
+    recall_event.add_argument("--recalled-id", action="append", default=[], help="Recalled card id. Repeatable.")
+    recall_event.add_argument("--accepted-id", action="append", default=[], help="Accepted/useful card id. Repeatable.")
+    recall_event.add_argument("--suppressed-id", action="append", default=[], help="Confusing/irrelevant card id. Repeatable.")
+    recall_event.add_argument("--metadata-json", default="{}", help="Optional JSON object metadata.")
+    recall_event.add_argument("--created-at", help="Optional deterministic event timestamp.")
+    recall_event.add_argument(
+        "--write-event",
+        action="store_true",
+        help="Persist the recall event into the explicit v2 DB. Omitted means dry-run.",
+    )
+    recall_event.set_defaults(func=run_recall_event_record)
+
+    reinforcement = subparsers.add_parser(
+        "recall-reinforcement-replay",
+        help="Replay v2 recall history into derived reinforcement state.",
+    )
+    reinforcement.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    reinforcement.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    reinforcement.add_argument("--scope-key", help="Optional v2 scope key filter.")
+    reinforcement.add_argument("--as-of", help="Optional deterministic replay timestamp.")
+    reinforcement.add_argument(
+        "--decay-half-life-days",
+        type=float,
+        default=30.0,
+        help="Half-life for deterministic recall event decay. Default: 30.",
+    )
+    reinforcement.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Kept for operator clarity; dry-run is the default unless --write-state is passed.",
+    )
+    reinforcement.add_argument(
+        "--write-state",
+        action="store_true",
+        help="Persist derived reinforcement state into the explicit v2 DB.",
+    )
+    reinforcement.set_defaults(func=run_recall_reinforcement_replay)
     return parser
 
 
@@ -2322,6 +2475,29 @@ def main(argv: Sequence[str] | None = None) -> int:
             },
             "usable": report["agent_briefing"]["usable"],
             "out_dir": report["request"]["output"]["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_recall_event_record_report":
+        payload = {
+            "status": "ok",
+            "mode": report["mode"],
+            "schema_version": report["schema_version"],
+            "v2_db": report["v2_db"],
+            "write_event": report["write_event"],
+            "event_id": report["event"]["id"],
+            "counts": report["counts"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_recall_reinforcement_replay_report":
+        payload = {
+            "status": "ok",
+            "mode": report["mode"],
+            "schema_version": report["schema_version"],
+            "v2_db": report["v2_db"],
+            "dry_run": report["dry_run"],
+            "write_state": report["write_state"],
+            "counts": report["counts"],
+            "state_counts": report["state_counts"],
+            "out_dir": report["out_dir"],
         }
     else:
         payload = {

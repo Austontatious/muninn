@@ -1,0 +1,3062 @@
+{
+  "as_of": "2026-05-17T23:00:00Z",
+  "counts": {
+    "boosted": 3,
+    "decayed": 0,
+    "eligible_cards": 77,
+    "neutral": 0,
+    "preserved": 73,
+    "recall_events": 1,
+    "suppressed": 1
+  },
+  "dry_run": false,
+  "mode": "offline_replay",
+  "out_dir": "reports/pilots/phase_d_recall_reinforcement_2026-05-17/lexi_replay",
+  "record_type": "muninn_v2_recall_reinforcement_replay_report",
+  "safety": {
+    "canonical_card_mutation": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_v2_only",
+    "v1_db_access": false
+  },
+  "schema_version": "muninn.v2.recall_reinforcement.v1",
+  "scope_key": "repo:0c321b2a6f183a95",
+  "state_counts": {
+    "after": 77,
+    "before": 0,
+    "written": 77
+  },
+  "states": [
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-01 17:53:15",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline",
+        "updated_at": "2026-05-01 17:53:15"
+      },
+      "components": {
+        "accepted_boost": 1.998076,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.001042,
+        "recall_boost": 0.349663,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 3.746697,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "recall_84d31bcb69d613c1"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.04 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T22:00:00Z",
+      "quiet_days": 0.041667,
+      "record_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-01 17:47:21",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling",
+        "updated_at": "2026-05-01 17:47:21"
+      },
+      "components": {
+        "accepted_boost": 1.998076,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.001042,
+        "recall_boost": 0.349663,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 3.746697,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "recall_84d31bcb69d613c1"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.04 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T22:00:00Z",
+      "quiet_days": 0.041667,
+      "record_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-17 21:24:31",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi production audit verdict 2026-05-17",
+        "updated_at": "2026-05-17 21:24:31"
+      },
+      "components": {
+        "accepted_boost": 1.998076,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.001042,
+        "recall_boost": 0.349663,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 3.746697,
+      "event_counts": {
+        "accepted": 1,
+        "recalled": 1,
+        "suppressed": 0
+      },
+      "event_ids": [
+        "recall_84d31bcb69d613c1"
+      ],
+      "explanation": [
+        "status=boosted",
+        "accepted 1 time(s), producing deterministic reinforcement",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.04 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T22:00:00Z",
+      "quiet_days": 0.041667,
+      "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "boosted"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-07 21:39:35",
+        "evidence_count": 6,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex vLLM service constrained to GPUs 0 and 1 with reduced context for stable startup",
+        "updated_at": "2026-04-07 21:39:35"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.05,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.15,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 40.06 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 40.055845,
+      "record_id": "a4acf04b-a974-4320-8656-0546edc000f3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 19:31:02",
+        "evidence_count": 5,
+        "kind": "decision",
+        "status": "active",
+        "title": "Adaptive Dreamer Curriculum v1 is the canonical DreamerV2 sidecar path",
+        "updated_at": "2026-04-19 19:31:02"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.1,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.15 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.145116,
+      "record_id": "0734933b-cd2c-48ee-b6d4-d10114131382",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-28 16:54:37",
+        "evidence_count": 5,
+        "kind": "constraint",
+        "status": "active",
+        "title": "Lex live avatar generation is queue-saturated and not using durable per-user avatar ownership",
+        "updated_at": "2026-04-28 16:54:37"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.1,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 19.25 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 19.253738,
+      "record_id": "6b4c21ae-25bc-4b56-81c4-4eaa0750afdb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 18:54:41",
+        "evidence_count": 5,
+        "kind": "constraint",
+        "status": "active",
+        "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau",
+        "updated_at": "2026-04-19 18:54:41"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.1,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.17 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.170359,
+      "record_id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 18:20:08",
+        "evidence_count": 4,
+        "kind": "constraint",
+        "status": "active",
+        "title": "DreamerV2 GPU-3 sidecar is running but appears replay-stalled and missing ffmpeg for summaries",
+        "updated_at": "2026-04-19 18:20:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.19 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.194352,
+      "record_id": "58fff1bd-db2d-497e-a028-510fd79d2d0c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 20:14:29",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex added a shadow-only bounded world-model harness around /lexi/process",
+        "updated_at": "2026-04-08 20:14:29"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.11 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.114942,
+      "record_id": "796edb34-b4e0-4b79-b161-f715bd837228",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:02:42",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Althing/Friday router evaluation chose custom minimal harness now, with Harbor as later outer-runner path",
+        "updated_at": "2026-04-12 03:02:42"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.83 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.831458,
+      "record_id": "cff2e813-64c0-485a-b7e5-f41941f13b94",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 14:51:35",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model",
+        "updated_at": "2026-04-24 14:51:35"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.34 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.339178,
+      "record_id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-07 01:56:08",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "TP=1 DP=8 expert-parallel experiment for Qwen3.5 failed and Lexi was reverted to original Qwen-Lex 3 runtime",
+        "updated_at": "2026-04-07 01:56:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 40.88 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 40.877685,
+      "record_id": "ee6b8b6a-ad7d-4db0-8a42-5498afc22719",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:31:09",
+        "evidence_count": 4,
+        "kind": "decision",
+        "status": "active",
+        "title": "Router harness now supports dedicated live Althing and Friday adapters with fixture-reference divergence checks",
+        "updated_at": "2026-04-12 03:31:09"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.95,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.05,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.81 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.811701,
+      "record_id": "fc113a25-8eab-4c01-97cb-5bf6a7077a96",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 04:02:51",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Router isolation ladder shows live degradation dominated by transport and adapter-contract gaps",
+        "updated_at": "2026-04-12 04:02:51"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.79 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.789687,
+      "record_id": "31c66bda-f26b-4511-8297-7e331ad57bae",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 05:54:56",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run capped Althing router recovery sprint and generate go/no-go decision artifacts",
+        "updated_at": "2026-04-12 05:54:56"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.71 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.711852,
+      "record_id": "363de742-d186-49c0-8e17-60bae730216f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 04:34:17",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Reproduce timeout45 and contract-clean router isolation follow-up",
+        "updated_at": "2026-04-12 04:34:17"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.77 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.767859,
+      "record_id": "42f530a8-4141-488e-84b1-3d215941f8e2",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 03:06:43",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Shadow-lane cleanup keeps SSM stable and improves world-model schema reliability without gibberish",
+        "updated_at": "2026-04-13 03:06:43"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.83 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.828669,
+      "record_id": "561d2b0e-6071-478d-abdb-6d5f6dc1de55",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:02:54",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run first Althing router slice and compare baseline vs tightened policy",
+        "updated_at": "2026-04-12 03:02:54"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.83 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.831319,
+      "record_id": "61bad3c0-f51c-4c88-bf80-5eb301248fdb",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 03:06:59",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run shadow specialized-lane live validation with completeness audit",
+        "updated_at": "2026-04-13 03:06:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.83 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.828484,
+      "record_id": "6b93f328-be1a-4420-a852-b2733cdd0a87",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-05-01 17:29:31",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening",
+        "updated_at": "2026-05-01 17:29:31"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 16.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 16.229502,
+      "record_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 04:03:01",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Execute router isolation eval with artifacts and attribution report",
+        "updated_at": "2026-04-12 04:03:01"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.79 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.789572,
+      "record_id": "70d7fd03-f945-455c-b4b1-718165a364e3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 05:02:20",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Althing trailing Friday is dominated by T3 route-policy misses after T1/T2 cleanup",
+        "updated_at": "2026-04-12 05:02:20"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.75 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.74838,
+      "record_id": "750bccaf-6728-4bca-8b83-56bd54ab08ec",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 16:47:17",
+        "evidence_count": 3,
+        "kind": "constraint",
+        "status": "active",
+        "title": "WorldCoder synthesis path is brittle against dependency drift and unbounded chat completions",
+        "updated_at": "2026-04-08 16:47:17"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.26 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.258831,
+      "record_id": "764644b9-4dbd-4677-8f0c-b87b8a95412e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 02:06:19",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Althing harness now supports explicit SSM and world-model lane contracts",
+        "updated_at": "2026-04-13 02:06:19"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.87 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.870613,
+      "record_id": "7c4499d7-47fa-433d-8a79-eff85e76b8a3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:36:51",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run live Althing vs Friday router harness slice",
+        "updated_at": "2026-04-12 03:36:51"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.81 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.807743,
+      "record_id": "8e266d92-05c4-4d54-a261-daaa122cf431",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 04:34:08",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Timeout and verification-contract cleanup shifted router eval bottleneck from T1/T2 contamination to T3 policy misses",
+        "updated_at": "2026-04-12 04:34:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.77 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.767963,
+      "record_id": "8e6d5d34-b1f4-4b52-8c5b-3b2ef846d940",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-06 17:02:03",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Avatar ownership resolved via auth_user_id in persona routes",
+        "updated_at": "2026-04-06 17:02:03"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 41.25 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 41.248576,
+      "record_id": "99bc12f0-1139-4e0d-b941-91a907bde514",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:36:58",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Keep custom router harness and iterate on live behavior before Harbor migration",
+        "updated_at": "2026-04-12 03:36:58"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.81 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.807662,
+      "record_id": "9d6a2d45-942e-438b-812f-42821f80606a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-13 02:06:19",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Run Althing specialized-lane contract checks and characterization",
+        "updated_at": "2026-04-13 02:06:19"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 34.87 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 34.870613,
+      "record_id": "9db8ccb5-b394-482e-8ecd-5db0b9d0c0ce",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 03:31:20",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Execute live first-slice router evaluation against Althing and Friday endpoints",
+        "updated_at": "2026-04-12 03:31:20"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.81 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.811574,
+      "record_id": "9ea275c7-6145-4d0d-9084-c41e1c7ff2df",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 20:14:38",
+        "evidence_count": 3,
+        "kind": "constraint",
+        "status": "active",
+        "title": "Persistent DreamerV2 GPU-3 sidecar consumes near-full V100 memory",
+        "updated_at": "2026-04-08 20:14:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.11 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.114838,
+      "record_id": "afdd57ad-597f-47ce-84d0-70b43340d87b",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 17:43:19",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "DreamerV2 probe is runnable but operationally heavy and research-only",
+        "updated_at": "2026-04-08 17:43:19"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.22 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.219919,
+      "record_id": "be401a3b-ae0c-40c0-a33a-5cfc75dc828c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-30 21:53:11",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Phase 5 runtime smoke proof completed for Lex modernization",
+        "updated_at": "2026-04-30 21:53:11"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 17.05 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 17.0464,
+      "record_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 05:02:32",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Router policy fault-isolation workflow for Althing vs Friday",
+        "updated_at": "2026-04-12 05:02:32"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.75 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.748241,
+      "record_id": "c5f56631-e558-46ac-b8c1-1f8c0f359c12",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-07 01:35:27",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi Qwen3.5-35B-A3B remains inference-unstable on 8x V100 under vLLM 0.17.0",
+        "updated_at": "2026-04-07 01:35:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 40.89 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 40.892049,
+      "record_id": "c9bab4fd-960e-4ae5-8a3b-be0b866d4778",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 15:00:55",
+        "evidence_count": 3,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Recreate Lex vLLM service to restore default Lexi-Qwen serving",
+        "updated_at": "2026-04-24 15:00:55"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.33 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.332697,
+      "record_id": "ccbcfb81-0344-477e-b56c-1a1435b2d4fe",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-19 00:28:53",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex repo-local Codex guidance now defaults structural work to modular-monolith boundary discipline",
+        "updated_at": "2026-04-19 00:28:53"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 28.94 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 28.938275,
+      "record_id": "e37b6601-ed8f-4e0b-86c8-62c947b9c7d6",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-24 14:10:09",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi vLLM runtime is on Qwen3 MoE merged checkpoint, not Qwen2.5",
+        "updated_at": "2026-04-24 14:10:09"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 23.37 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 23.367951,
+      "record_id": "e9d5b1a3-741c-4b9d-a975-4d1a050f253f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 05:54:48",
+        "evidence_count": 3,
+        "kind": "decision",
+        "status": "active",
+        "title": "Capped three-pass Althing router recovery sprint did not clear demonstrable reliability bar",
+        "updated_at": "2026-04-12 05:54:48"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.9,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 1.0,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.71 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.711944,
+      "record_id": "f858de0d-6267-40c6-91a1-4d67c165f06d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 17:43:19",
+        "evidence_count": 2,
+        "kind": "constraint",
+        "status": "active",
+        "title": "DreamerV2 TF2 runtime on Lex effectively monopolizes a V100",
+        "updated_at": "2026-04-08 17:43:19"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.22 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.219919,
+      "record_id": "203564ac-f353-4674-86fb-cb7a056c0d69",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-30 19:22:48",
+        "evidence_count": 2,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Count Google-login users from Lex Auth SQLite",
+        "updated_at": "2026-04-30 19:22:48"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 17.15 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 17.150833,
+      "record_id": "2bdc82ce-a45c-4f15-bd0f-119eee1715f5",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-07 00:52:44",
+        "evidence_count": 2,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi Qwen3.5 vLLM on V100 needs multimodal profiling disabled for healthy startup",
+        "updated_at": "2026-04-07 00:52:44"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 40.92 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 40.921713,
+      "record_id": "a92199c2-70f8-4021-85c0-ce8e57a27e4f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-07 01:35:27",
+        "evidence_count": 2,
+        "kind": "constraint",
+        "status": "active",
+        "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime",
+        "updated_at": "2026-04-07 01:35:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 40.89 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 40.892049,
+      "record_id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-12 07:34:07",
+        "evidence_count": 2,
+        "kind": "decision",
+        "status": "active",
+        "title": "Router surface isolation localized Althing defect surface outside Lex harness files",
+        "updated_at": "2026-04-12 07:34:07"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 35.64 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 35.642975,
+      "record_id": "c7b9510e-400f-4bc8-9b9b-d688ce51b133",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-08 16:47:17",
+        "evidence_count": 2,
+        "kind": "decision",
+        "status": "active",
+        "title": "WorldCoder cold-start probe classified as runnable but benchmark-bound",
+        "updated_at": "2026-04-08 16:47:17"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.85,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.95,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 39.26 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 39.258831,
+      "record_id": "e49461c0-40ba-42aa-a619-d7bd31b98492",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 17:29:32",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex phase8 memory UI preserved and live smoke-validated; phase9 semantic retrieval scoped",
+        "updated_at": "2026-04-03 17:29:32"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.229491,
+      "record_id": "0415d16a-5af0-4af0-8eeb-b9247abe6ce4",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 18:30:45",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory final deployment verification pass found local deploy-path blockers despite passing trust-control E2E",
+        "updated_at": "2026-04-03 18:30:45"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.19 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.186979,
+      "record_id": "1596e682-f9e9-4060-8afe-d6c57e9ff525",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 15:21:17",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory phases 0-3 implemented with Postgres schema, RLS, and event capture hooks",
+        "updated_at": "2026-04-03 15:21:17"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.32 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.318553,
+      "record_id": "17dfea66-5887-4ba6-a170-60c39cd62f77",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-29 23:59:33",
+        "evidence_count": 0,
+        "kind": "interface",
+        "status": "active",
+        "title": "Lexi backend model-routing contract uses host vLLM gateway",
+        "updated_at": "2026-03-29 23:59:33"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.96 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.958646,
+      "record_id": "1a63c40a-6a11-4a25-8cc5-3b1fa93001c4",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 16:49:00",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory phase 8 frontend review and controls surface implemented",
+        "updated_at": "2026-04-03 16:49:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.26 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.257639,
+      "record_id": "202a4a95-0b16-4f1f-94e4-1ccb59d25d7e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-29 19:03:30",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lexi vLLM INT4 GPTQ attempt blocked by supervisor permissions",
+        "updated_at": "2026-03-29 19:03:30"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 49.16 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 49.164236,
+      "record_id": "23c5ac99-635b-4c04-92d2-d38041232872",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 14:08:47",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory audit baseline after auth+Google rollout",
+        "updated_at": "2026-04-03 14:08:47"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.37 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.3689,
+      "record_id": "2451b992-1817-417b-8382-c616c00b4237",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-01 20:52:03",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex account flow is identifier-first pseudo-login without external auth",
+        "updated_at": "2026-04-01 20:52:03"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 46.09 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 46.088854,
+      "record_id": "2c52da82-3793-4010-98dc-460014b064da",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:15:59",
+        "evidence_count": 0,
+        "kind": "interface",
+        "status": "active",
+        "title": "Lexi/Friday host vLLM port separation contract",
+        "updated_at": "2026-03-30 00:15:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.947234,
+      "record_id": "332bdc82-1c4e-43d5-ae24-5d19fcc20e72",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:29:36",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex frontend share-modal compatibility shim for stale asset references",
+        "updated_at": "2026-03-30 00:29:36"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.94 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.937778,
+      "record_id": "39e0005b-cb2e-4f37-8298-6e31430b98fa",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-02 19:53:08",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex Google OAuth credentials staged in env/runtime config while provider remains stubbed",
+        "updated_at": "2026-04-02 19:53:08"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.13 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.129769,
+      "record_id": "4e8dd0ae-3d97-4072-8a9b-a2d0b7391132",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-02 16:57:13",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex disclaimer divergence: auth login path bypasses conversational legal gate",
+        "updated_at": "2026-04-02 16:57:13"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.25 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.251933,
+      "record_id": "511e764b-618a-4cb3-80fa-6297086889ac",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-02 00:57:20",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex Auth V2 rollout readiness includes secure reset flow and guarded operator script",
+        "updated_at": "2026-04-02 00:57:20"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.92 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.918519,
+      "record_id": "5623fbe1-bfea-4037-8327-ecd67643ddda",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 06:01:55",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex Google sign-in unavailable due stale frontend API base plus Cloudflare cache",
+        "updated_at": "2026-04-04 06:01:55"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.71 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.707002,
+      "record_id": "5c62732b-1700-405f-b8b5-f55d4b0ef7b3",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-30 21:01:33",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates",
+        "updated_at": "2026-04-30 21:01:33"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 17.08 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 17.082257,
+      "record_id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 17:26:25",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory hardening sprint: explicit auth-vs-legacy boundary and projection trust metadata",
+        "updated_at": "2026-04-04 17:26:25"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.231655,
+      "record_id": "7251c69d-cc2f-4d7d-bd67-c163920e3744",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 15:54:42",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory phases 4-6 implemented with bounded extraction, consolidation, and hybrid retrieval",
+        "updated_at": "2026-04-03 15:54:42"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.30 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.295347,
+      "record_id": "79949849-15aa-4a5c-a16a-c013765dc734",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:15:59",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Detect and prevent Lexi partial compose startup from host-port collision",
+        "updated_at": "2026-03-30 00:15:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.947234,
+      "record_id": "7cf1b649-560c-4fd2-9788-de8956795d61",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 17:31:21",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence",
+        "updated_at": "2026-04-04 17:31:21"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.23 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.228229,
+      "record_id": "82f73be8-e791-410b-b873-05dd572d061e",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-29 23:59:40",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Diagnose Lexi canned fallback caused by backend DNS drift to vllm service name",
+        "updated_at": "2026-03-29 23:59:40"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.96 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.958565,
+      "record_id": "86aa88c6-610f-42b0-a539-20b2702dbb26",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 16:22:48",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory phase 7 trust controls implemented after checkpoint commit",
+        "updated_at": "2026-04-03 16:22:48"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.28 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.275833,
+      "record_id": "881d2bc0-ec8e-47c2-8893-2ffd9a096642",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:02:00",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Diagnose Lexi canned fallback caused by backend DNS drift to vllm service name",
+        "updated_at": "2026-03-30 00:02:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.96 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.956944,
+      "record_id": "88ef4218-38d9-4139-85a4-295544ae172a",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-02 17:11:59",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex chat auth flow now restores conversational legal yes/no gate",
+        "updated_at": "2026-04-02 17:11:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.24 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.241678,
+      "record_id": "98c2ff84-7d95-4be0-9a7d-76d7ef1e469b",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:02:00",
+        "evidence_count": 0,
+        "kind": "interface",
+        "status": "active",
+        "title": "Lexi backend model-routing contract uses host vLLM gateway",
+        "updated_at": "2026-03-30 00:02:00"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.96 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.956944,
+      "record_id": "9921dcc0-4d02-49fd-a445-493d4bd9439c",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-02 21:05:39",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex Google sign-in unavailable caused by backend CORS override mismatch",
+        "updated_at": "2026-04-02 21:05:39"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.08 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.07941,
+      "record_id": "9e033ee7-0fda-405e-a134-82e9f0b243a0",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 17:52:38",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex avatar ownership canonicalized to auth-owned user_avatars",
+        "updated_at": "2026-04-04 17:52:38"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.21 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.213449,
+      "record_id": "a6172b79-6f6c-44f0-98e1-69c823e2c556",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-01 20:38:03",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Deterministic Lex user dedupe script with bot-filtered counts",
+        "updated_at": "2026-04-01 20:38:03"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 46.10 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 46.098576,
+      "record_id": "d8c3915e-6631-4f36-9760-a06c49a116dc",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-03-30 00:15:59",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lexi LLM runtime mode is explicit: host or compose",
+        "updated_at": "2026-03-30 00:15:59"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 48.95 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 48.947234,
+      "record_id": "dbfe6113-064f-4067-87b4-8f797c7b4b79",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-01 23:33:27",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex Auth V2 hardening landed with session auth and legacy spoof blocks",
+        "updated_at": "2026-04-01 23:33:27"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 45.98 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 45.976771,
+      "record_id": "e07a90e7-7a65-4383-a903-a15110e2d495",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-04 17:12:37",
+        "evidence_count": 0,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex authenticated memory canonicalization: memory-v2 cover sheet + topical continuity",
+        "updated_at": "2026-04-04 17:12:37"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 43.24 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 43.241238,
+      "record_id": "e971ba92-5141-4754-87ca-ac5c3392795d",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-03 18:01:57",
+        "evidence_count": 0,
+        "kind": "runbook",
+        "status": "active",
+        "title": "Lex memory deployment gate hardening added bootstrap script, route degradation handling, and readiness docs",
+        "updated_at": "2026-04-03 18:01:57"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 0.75,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.4,
+        "recall_boost": 0.0,
+        "suppression": -0.0
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": 0.85,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 0,
+        "suppressed": 0
+      },
+      "event_ids": [],
+      "explanation": [
+        "status=preserved",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 44.21 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": null,
+      "quiet_days": 44.206979,
+      "record_id": "f102698b-e103-4488-a207-df5291335534",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "preserved"
+    },
+    {
+      "base_salience": 0.5,
+      "card": {
+        "created_at": "2026-04-30 20:05:44",
+        "evidence_count": 5,
+        "kind": "decision",
+        "status": "active",
+        "title": "Lex end-to-end review: prioritize auth hardening, side-effect removal, and real eval gating",
+        "updated_at": "2026-04-30 20:05:44"
+      },
+      "components": {
+        "accepted_boost": 0.0,
+        "durable_preservation": 1.0,
+        "preservation_floor_applied": false,
+        "quiet_decay": -0.001042,
+        "recall_boost": 0.349663,
+        "suppression": -2.997113
+      },
+      "computed_at": "2026-05-17T23:00:00Z",
+      "effective_score": -1.148492,
+      "event_counts": {
+        "accepted": 0,
+        "recalled": 1,
+        "suppressed": 1
+      },
+      "event_ids": [
+        "recall_84d31bcb69d613c1"
+      ],
+      "explanation": [
+        "status=suppressed",
+        "recalled 1 time(s), producing a smaller exposure boost",
+        "suppressed 1 time(s), applying deterministic suppression",
+        "durable card kind receives preservation against quiet-period decay",
+        "quiet for 0.04 day(s), decay applied from replay clock"
+      ],
+      "last_event_at": "2026-05-17T22:00:00Z",
+      "quiet_days": 0.041667,
+      "record_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+      "record_type": "muninn_v2_reinforcement_state",
+      "schema_version": "muninn.v2.recall_reinforcement.v1",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "status": "suppressed"
+    }
+  ],
+  "v2_db": "reports/pilots/phase_d_recall_reinforcement_2026-05-17/lexi_phase_d_shadow_v2.db",
+  "weights": {
+    "accepted": 2.0,
+    "decay": 0.75,
+    "durable_preserve": 0.75,
+    "evidence_preserve_cap": 0.5,
+    "half_life_days": 30.0,
+    "max_score": 12.0,
+    "min_score": -8.0,
+    "preserve_floor": 0.5,
+    "recall": 0.35,
+    "suppressed": 3.0
+  },
+  "write_state": true
+}

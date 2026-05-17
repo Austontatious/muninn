@@ -91,6 +91,18 @@ CREATE TABLE IF NOT EXISTS v2_ontology_profiles (
   record_json TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_v2_ontology_name_version ON v2_ontology_profiles(name, version);
+
+CREATE TABLE IF NOT EXISTS v2_reinforcement_state (
+  record_id TEXT PRIMARY KEY,
+  scope_key TEXT,
+  status TEXT NOT NULL,
+  effective_score REAL NOT NULL,
+  last_event_at TEXT,
+  updated_at TEXT NOT NULL,
+  record_json TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_v2_reinforcement_scope_score
+ON v2_reinforcement_state(scope_key, effective_score DESC, updated_at DESC);
 """
 
 
@@ -299,8 +311,86 @@ class SQLiteMemoryStore:
     def get_recall(self, recall_id: str) -> RecallEvent | None:
         return self._get("v2_recall_events", recall_id, RecallEvent.from_dict)
 
-    def list_recalls(self, *, limit: int | None = None) -> list[RecallEvent]:
-        return self._list("v2_recall_events", RecallEvent.from_dict, order_by="created_at DESC", limit=limit)
+    def list_recalls(
+        self,
+        *,
+        scope_key: str | None = None,
+        limit: int | None = None,
+    ) -> list[RecallEvent]:
+        where = "scope_key = ?" if scope_key else None
+        params = (scope_key,) if scope_key else ()
+        return self._list(
+            "v2_recall_events",
+            RecallEvent.from_dict,
+            order_by="created_at DESC, id ASC",
+            where=where,
+            params=params,
+            limit=limit,
+        )
+
+    def upsert_reinforcement_state(self, state: dict[str, Any]) -> dict[str, Any]:
+        record_id = str(state.get("record_id") or "").strip()
+        if not record_id:
+            raise ValueError("reinforcement_state_record_id_required")
+        payload = dict(state)
+        with self._connect() as conn:
+            self._ensure_initialized(conn)
+            conn.execute(
+                """
+                INSERT INTO v2_reinforcement_state
+                    (record_id, scope_key, status, effective_score, last_event_at, updated_at, record_json)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(record_id) DO UPDATE SET
+                    scope_key = excluded.scope_key,
+                    status = excluded.status,
+                    effective_score = excluded.effective_score,
+                    last_event_at = excluded.last_event_at,
+                    updated_at = excluded.updated_at,
+                    record_json = excluded.record_json
+                """,
+                (
+                    record_id,
+                    payload.get("scope_key"),
+                    str(payload.get("status") or "neutral"),
+                    float(payload.get("effective_score") or 0.0),
+                    payload.get("last_event_at"),
+                    str(payload.get("computed_at") or payload.get("updated_at") or ""),
+                    self._dump(payload),
+                ),
+            )
+            conn.commit()
+        return payload
+
+    def get_reinforcement_state(self, record_id: str) -> dict[str, Any] | None:
+        with self._connect() as conn:
+            self._ensure_initialized(conn)
+            row = conn.execute(
+                "SELECT record_json FROM v2_reinforcement_state WHERE record_id = ? LIMIT 1",
+                (record_id,),
+            ).fetchone()
+        if row is None:
+            return None
+        return json.loads(str(row["record_json"]))
+
+    def list_reinforcement_state(
+        self,
+        *,
+        scope_key: str | None = None,
+        limit: int | None = None,
+    ) -> list[dict[str, Any]]:
+        sql = "SELECT record_json FROM v2_reinforcement_state"
+        params: list[Any] = []
+        if scope_key:
+            sql += " WHERE scope_key = ?"
+            params.append(scope_key)
+        sql += " ORDER BY effective_score DESC, record_id ASC"
+        if limit is not None:
+            sql += " LIMIT ?"
+            params.append(max(1, int(limit)))
+        with self._connect() as conn:
+            self._ensure_initialized(conn)
+            rows = conn.execute(sql, tuple(params)).fetchall()
+        return [json.loads(str(row["record_json"])) for row in rows]
 
     def create_ontology_profile(self, profile: OntologyProfile) -> OntologyProfile:
         payload = profile.to_dict()
