@@ -1,0 +1,50 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:34.910740Z",
+    "input_hash": "7bc55483d3d677b796ce75c7c30c4acae952f510f6cc89f9e1c276a9a89387fc",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "4a572da702903ab275a6ec03706022989b97d77f82ac5c4c73d9cbf00e393e5a",
+    "trace_id": "bridge_db1ab52912ba37c2"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "health",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-health",
+  "result": {
+    "adaptive_scoring_default": false,
+    "bridge_version": "muninn-v2-bridge/1.0.0",
+    "cards_available": 48,
+    "db_readable": true,
+    "index_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 47,
+      "indexed_records": 47,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "policy_consumer_id": "codex-shadow",
+    "policy_loaded": true,
+    "schema_available": true
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

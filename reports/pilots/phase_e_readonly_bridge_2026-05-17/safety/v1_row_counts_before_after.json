@@ -1,0 +1,92 @@
+{
+  "card_evidence": {
+    "after": 1418,
+    "before": 1418,
+    "changed": false
+  },
+  "card_relations": {
+    "after": 5,
+    "before": 5,
+    "changed": false
+  },
+  "card_tags": {
+    "after": 535,
+    "before": 535,
+    "changed": false
+  },
+  "card_vectors": {
+    "after": 0,
+    "before": 0,
+    "changed": false
+  },
+  "cards": {
+    "after": 519,
+    "before": 519,
+    "changed": false
+  },
+  "cards_fts": {
+    "after": 519,
+    "before": 519,
+    "changed": false
+  },
+  "cards_fts_config": {
+    "after": 1,
+    "before": 1,
+    "changed": false
+  },
+  "cards_fts_data": {
+    "after": 73,
+    "before": 73,
+    "changed": false
+  },
+  "cards_fts_docsize": {
+    "after": 519,
+    "before": 519,
+    "changed": false
+  },
+  "cards_fts_idx": {
+    "after": 71,
+    "before": 71,
+    "changed": false
+  },
+  "clients": {
+    "after": 1,
+    "before": 1,
+    "changed": false
+  },
+  "evidence": {
+    "after": 1418,
+    "before": 1418,
+    "changed": false
+  },
+  "interaction_events": {
+    "after": 2,
+    "before": 2,
+    "changed": false
+  },
+  "space_aliases": {
+    "after": 14,
+    "before": 14,
+    "changed": false
+  },
+  "spaces": {
+    "after": 33,
+    "before": 33,
+    "changed": false
+  },
+  "tags": {
+    "after": 252,
+    "before": 252,
+    "changed": false
+  },
+  "users": {
+    "after": 1,
+    "before": 1,
+    "changed": false
+  },
+  "vector_index_state": {
+    "after": 0,
+    "before": 0,
+    "changed": false
+  }
+}

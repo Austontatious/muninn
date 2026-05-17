@@ -1,0 +1,1044 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:43.712695Z",
+    "input_hash": "140458692b0133b9621d814f73a4d25c4301b8bc3adf88ae2ed34f152ebe18dd",
+    "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+    "replayable": true,
+    "response_hash": "c7e0c7e81bf13c1a616021764269ab8eb1a654a7829b4e3aa9b34f3ea9d622fb",
+    "trace_id": "bridge_7aa268c2e805ac6e"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "subsim-rehydrate",
+  "result": {
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {},
+    "operation": "rehydrate",
+    "rehydrate_response": {
+      "agent_briefing": {
+        "bullets": [
+          "Primary match: SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003 - Both repos now carry PROJECT_MEMORY campaign ledgers through Campaign 003 with Campaign 004A recommended next.",
+          "Continuity: SubSim fire_control observation contract v1 - SubSim exposes fire-control readiness and solution-state data through build_observation and sonar-console frames for ReadyPlayer1 Campaign 005A.",
+          "Continuity: Campaign 004A leaves SubSim fire-control physics unchanged - Campaign 004A was a ReadyPlayer1 policy/evaluator improvement and did not change SubSim torpedo physics, damage, range, sonar producer behavior, or scenario expectations. SubSim remains the protected producer surface for future fire-control state normalization.",
+          "Continuity: Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring - SubSim hydrophone artifacts under data/hydrophone/fixtures and data/hydrophone/manifests/splits are the fixed inputs for ReadyPlayer1 Campaign 003 acoustic clutter-binding evaluation. Promotion scoring defaults to heldout_source_eval and excludes synthetic cases unless explicitly requested.",
+          "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "method": "deterministic_card_title_summary_projection",
+        "usable": true
+      },
+      "budget": {
+        "candidate_cards": 18,
+        "duplicates_removed": 0,
+        "limit": 12,
+        "max_chars": 12000,
+        "omitted_for_budget": 0,
+        "omitted_for_limit": 0,
+        "primary_limit": 3,
+        "primary_selected": 1,
+        "recent_limit": 9,
+        "selected_total": 4,
+        "supplement_selected": 3,
+        "used_chars": 3053
+      },
+      "composition": {
+        "limit": 12,
+        "max_chars": 12000,
+        "primary_limit": 3,
+        "recent_limit": 9,
+        "retrieval_mode": "hybrid",
+        "stage_a": "primary_retrieval",
+        "stage_b": "recent_in_scope_supplement",
+        "stage_c": "evidence_attachment",
+        "stage_d": "budget_enforced",
+        "stage_e": "deterministic_agent_briefing",
+        "strategy": "hybrid_primary_plus_recent_supplement"
+      },
+      "contract_version": "1.0.0",
+      "explanations": {
+        "cards": [
+          {
+            "card_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "current",
+                  "next",
+                  "subsim"
+                ],
+                "evidence": [
+                  "project",
+                  "subsim"
+                ],
+                "summary": [
+                  "next",
+                  "project"
+                ],
+                "title": [
+                  "subsim"
+                ]
+              },
+              "matched_tokens": [
+                "current",
+                "next",
+                "project",
+                "subsim"
+              ],
+              "penalties": {},
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 9.935966,
+                "evidence_token_overlap": 1.349338,
+                "project_space_match": 3.0,
+                "recency_boost": 1.411765,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 16.955244,
+                "title_token_overlap": 6.0,
+                "vector_similarity_rescue": 1.62868
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.325736,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 1,
+            "score": 41.280993,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "campaign",
+                "control",
+                "fire",
+                "readyplayer1",
+                "sonar",
+                "subsim",
+                "through",
+                "torpedo"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 22.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_project_boundary_or_contract",
+            "retrieval_rank": null,
+            "score": 22.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "004a",
+                "campaign",
+                "control",
+                "feedback",
+                "fire",
+                "improvement",
+                "memory",
+                "next",
+                "readyplayer1",
+                "recommended",
+                "scenario",
+                "sonar",
+                "subsim",
+                "torpedo"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 17.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_token_overlap",
+            "retrieval_rank": null,
+            "score": 17.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "binding",
+                "campaign",
+                "clutter",
+                "readyplayer1",
+                "subsim"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 10.75
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_primary_domain_overlap",
+            "retrieval_rank": null,
+            "score": 10.75,
+            "stage": "recent_in_scope_supplement"
+          }
+        ],
+        "format": "muninn.v2.retrieval_explanation.v1",
+        "included": true,
+        "notes": []
+      },
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "generated_at": "2026-05-17T23:49:43.712528Z",
+      "record_type": "muninn_v2_rehydrate_response",
+      "request": {
+        "options": {
+          "include_evidence": true,
+          "include_explanations": true,
+          "limit": 12,
+          "max_chars": 12000,
+          "primary_limit": 3,
+          "recent_limit": 9,
+          "recent_supplement": true,
+          "retrieval_mode": "hybrid",
+          "strict": true
+        },
+        "query": {
+          "text": "resume SubSim project current state and next steps"
+        },
+        "source": {
+          "active_scope_keys": [
+            "repo:363c13a65e92ef58"
+          ],
+          "project_path": "/mnt/data/subsim",
+          "space_key": "repo:363c13a65e92ef58",
+          "v2_db": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db"
+        }
+      },
+      "response_id": "rehydrate_3fd07083af97ddeb",
+      "response_kind": "shadow_rehydrate_preview",
+      "retrieval_provenance": {
+        "backend": "hybrid",
+        "candidate_source": "explicit_v2_shadow_db",
+        "degradation_reasons": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "degraded": true,
+        "fallback_used": false,
+        "mode": "hybrid",
+        "provider_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 18,
+          "indexed_records": 18,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "query_profile": {
+          "campaign_tokens": [],
+          "numeric_tokens": [],
+          "phrase": "resume subsim project current state next steps",
+          "raw": "resume SubSim project current state and next steps",
+          "tokens": [
+            "resume",
+            "subsim",
+            "project",
+            "current",
+            "state",
+            "next",
+            "steps"
+          ],
+          "unique_tokens": [
+            "resume",
+            "subsim",
+            "project",
+            "current",
+            "state",
+            "next",
+            "steps"
+          ]
+        },
+        "result_count": 1,
+        "retrieval_paths": [
+          "v2_hybrid_recall"
+        ]
+      },
+      "schema": {
+        "name": "RehydrateResponseV1",
+        "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+        "schema_version": "muninn.v2.rehydrate_response.v1",
+        "version": "1.0.0"
+      },
+      "schema_version": "muninn.v2.rehydrate_response.v1",
+      "selected_memory": {
+        "cards": [
+          {
+            "body_excerpt": "The checkpoint records Preflight, Campaign 001, Campaign 002A, and Campaign 003 as promoted. Current trusted metrics include SubSim full suite 58 passed, ReadyPlayer1 focused SubSim and golden tests 28 passed, scenario suite 7 pass / 0 fail, golden regression pass, and Campaign 003 clutter binding improvement sonar_clutter_wrong_binding_rate 0.2 -> 0.0. Recommended next campaign is 004A torpedo / fire-control feedback loop.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 16:01:24",
+            "entity_ids": [
+              "v1-project:repo:363c13a65e92ef58"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 16:01:24",
+                "excerpt": null,
+                "id": "6ecbc012-2e3e-4e79-b01c-2ba883b9a180",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_003_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:01:24",
+                "excerpt": null,
+                "id": "9c83e055-b1f6-442c-9b33-64db023b8a77",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/PROJECT_MEMORY.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:01:24",
+                "excerpt": null,
+                "id": "d4dc70e3-e4be-4195-9db4-c22c0d92b1b1",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "6ecbc012-2e3e-4e79-b01c-2ba883b9a180",
+              "9c83e055-b1f6-442c-9b33-64db023b8a77",
+              "d4dc70e3-e4be-4195-9db4-c22c0d92b1b1"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "current",
+                  "next",
+                  "subsim"
+                ],
+                "evidence": [
+                  "project",
+                  "subsim"
+                ],
+                "summary": [
+                  "next",
+                  "project"
+                ],
+                "title": [
+                  "subsim"
+                ]
+              },
+              "matched_tokens": [
+                "current",
+                "next",
+                "project",
+                "subsim"
+              ],
+              "penalties": {},
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 9.935966,
+                "evidence_token_overlap": 1.349338,
+                "project_space_match": 3.0,
+                "recency_boost": 1.411765,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 16.955244,
+                "title_token_overlap": 6.0,
+                "vector_similarity_rescue": 1.62868
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.325736,
+              "vector_used": true
+            },
+            "id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:363c13a65e92ef58",
+              "project_path": "/mnt/data/subsim",
+              "project_root_path": "/mnt/data/subsim",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:363c13a65e92ef58",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 1,
+              "score": 41.280993,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Both repos now carry PROJECT_MEMORY campaign ledgers through Campaign 003 with Campaign 004A recommended next.",
+            "tags": [],
+            "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003",
+            "updated_at": "2026-05-07 16:01:24"
+          },
+          {
+            "body_excerpt": "The fire_control block includes fire_control_ready, fire_control_solution_state, fire_control_solution_quality, weapon_ready, valid_fire_opportunity, hold reason, target id, solution timing, and active_torpedo_count. This is producer/adapter visibility only; torpedo physics and firing timing were not changed.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 17:05:15",
+            "entity_ids": [
+              "v1-project:repo:363c13a65e92ef58"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 17:05:15",
+                "excerpt": null,
+                "id": "08aee04d-43f5-4dc4-8751-41f5551df312",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/subsim/game.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:15",
+                "excerpt": null,
+                "id": "4b01c177-fbbc-4629-b8c1-fd15b903c41c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/subsim/testing/sonar_console/contracts.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:15",
+                "excerpt": null,
+                "id": "6671a4fe-7674-45d8-8bb0-5866f25385fb",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/subsim/testing/sonar_console/console.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:15",
+                "excerpt": null,
+                "id": "f15f3f04-2031-465c-b2f6-d728d83e2be4",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "08aee04d-43f5-4dc4-8751-41f5551df312",
+              "4b01c177-fbbc-4629-b8c1-fd15b903c41c",
+              "6671a4fe-7674-45d8-8bb0-5866f25385fb",
+              "f15f3f04-2031-465c-b2f6-d728d83e2be4"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "campaign",
+                "control",
+                "fire",
+                "readyplayer1",
+                "sonar",
+                "subsim",
+                "through",
+                "torpedo"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 22.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "kind": "interface",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:363c13a65e92ef58",
+              "project_path": "/mnt/data/subsim",
+              "project_root_path": "/mnt/data/subsim",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:363c13a65e92ef58",
+            "selection": {
+              "reason": "recent_project_boundary_or_contract",
+              "retrieval_rank": null,
+              "score": 22.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "SubSim exposes fire-control readiness and solution-state data through build_observation and sonar-console frames for ReadyPlayer1 Campaign 005A.",
+            "tags": [],
+            "title": "SubSim fire_control observation contract v1",
+            "updated_at": "2026-05-07 17:05:15"
+          },
+          {
+            "body_excerpt": "The next recommended slice is to normalize SubSim live FireControl solution state into sonar replay/live observations so ReadyPlayer1 can distinguish solution_start, ready, fired, miss, and reacquisition feedback without approximating entirely from policy memory.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 16:43:30",
+            "entity_ids": [
+              "v1-project:repo:363c13a65e92ef58"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 16:43:30",
+                "excerpt": null,
+                "id": "59b312c3-4af9-45a6-a340-6c96804b290a",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:43:30",
+                "excerpt": null,
+                "id": "94ff25ce-e03b-48da-8f8a-048c47704986",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/subsim/game.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:43:30",
+                "excerpt": null,
+                "id": "b41f7a4f-48f8-48d4-8c01-9805f30d2f4b",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/subsim/engine/weapons.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:43:30",
+                "excerpt": null,
+                "id": "db8ab317-46c8-4a4a-ba3a-4478266a6df8",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/PROJECT_MEMORY.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "59b312c3-4af9-45a6-a340-6c96804b290a",
+              "94ff25ce-e03b-48da-8f8a-048c47704986",
+              "b41f7a4f-48f8-48d4-8c01-9805f30d2f4b",
+              "db8ab317-46c8-4a4a-ba3a-4478266a6df8"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "004a",
+                "campaign",
+                "control",
+                "feedback",
+                "fire",
+                "improvement",
+                "memory",
+                "next",
+                "readyplayer1",
+                "recommended",
+                "scenario",
+                "sonar",
+                "subsim",
+                "torpedo"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 17.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "kind": "interface",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:363c13a65e92ef58",
+              "project_path": "/mnt/data/subsim",
+              "project_root_path": "/mnt/data/subsim",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:363c13a65e92ef58",
+            "selection": {
+              "reason": "recent_query_token_overlap",
+              "retrieval_rank": null,
+              "score": 17.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Campaign 004A was a ReadyPlayer1 policy/evaluator improvement and did not change SubSim torpedo physics, damage, range, sonar producer behavior, or scenario expectations. SubSim remains the protected producer surface for future fire-control state normalization.",
+            "tags": [],
+            "title": "Campaign 004A leaves SubSim fire-control physics unchanged",
+            "updated_at": "2026-05-07 16:43:30"
+          },
+          {
+            "body_excerpt": "The fixture export commands were rerun successfully for 78 cases/fixtures after fixed splits were rebuilt with seed 1337. Runtime policy decisions should still use contact evidence, confidence, lifecycle, ambiguity, and binding quality rather than fixture labels as direct truth.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 16:33:57",
+            "entity_ids": [
+              "v1-project:repo:363c13a65e92ef58"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 16:33:57",
+                "excerpt": null,
+                "id": "1e341037-f8e8-4c77-be3d-95379bdc4357",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/data/hydrophone/manifests/splits/",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:33:57",
+                "excerpt": null,
+                "id": "62e8bde9-1366-4551-b69a-12d4ba542b7f",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/data/hydrophone/fixtures/subsim_acoustic_contacts.jsonl",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:33:57",
+                "excerpt": null,
+                "id": "7f3e9069-051c-4c6c-8b9a-1bcefbdacc75",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/subsim/data/hydrophone/fixtures/readyplayer1_acoustic_eval_cases.jsonl",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "1e341037-f8e8-4c77-be3d-95379bdc4357",
+              "62e8bde9-1366-4551-b69a-12d4ba542b7f",
+              "7f3e9069-051c-4c6c-8b9a-1bcefbdacc75"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "binding",
+                "campaign",
+                "clutter",
+                "readyplayer1",
+                "subsim"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 10.75
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "kind": "interface",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:363c13a65e92ef58",
+              "project_path": "/mnt/data/subsim",
+              "project_root_path": "/mnt/data/subsim",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:363c13a65e92ef58",
+            "selection": {
+              "reason": "recent_query_primary_domain_overlap",
+              "retrieval_rank": null,
+              "score": 10.75,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "SubSim hydrophone artifacts under data/hydrophone/fixtures and data/hydrophone/manifests/splits are the fixed inputs for ReadyPlayer1 Campaign 003 acoustic clutter-binding evaluation. Promotion scoring defaults to heldout_source_eval and excludes synthetic cases unless explicitly requested.",
+            "tags": [],
+            "title": "Hydrophone fixtures feed ReadyPlayer1 acoustic clutter scoring",
+            "updated_at": "2026-05-07 16:33:57"
+          }
+        ],
+        "events": [],
+        "evidence": [
+          {
+            "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "created_at": "2026-05-07 17:05:15",
+            "excerpt": null,
+            "id": "08aee04d-43f5-4dc4-8751-41f5551df312",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/game.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "created_at": "2026-05-07 17:05:15",
+            "excerpt": null,
+            "id": "4b01c177-fbbc-4629-b8c1-fd15b903c41c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/testing/sonar_console/contracts.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "created_at": "2026-05-07 17:05:15",
+            "excerpt": null,
+            "id": "6671a4fe-7674-45d8-8bb0-5866f25385fb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/testing/sonar_console/console.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+            "created_at": "2026-05-07 17:05:15",
+            "excerpt": null,
+            "id": "f15f3f04-2031-465c-b2f6-d728d83e2be4",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "created_at": "2026-05-07 16:33:57",
+            "excerpt": null,
+            "id": "1e341037-f8e8-4c77-be3d-95379bdc4357",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/data/hydrophone/manifests/splits/",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "created_at": "2026-05-07 16:33:57",
+            "excerpt": null,
+            "id": "62e8bde9-1366-4551-b69a-12d4ba542b7f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/data/hydrophone/fixtures/subsim_acoustic_contacts.jsonl",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "4d5faed6-e51e-4bc1-8ca1-8ebedcbc18d9",
+            "created_at": "2026-05-07 16:33:57",
+            "excerpt": null,
+            "id": "7f3e9069-051c-4c6c-8b9a-1bcefbdacc75",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/data/hydrophone/fixtures/readyplayer1_acoustic_eval_cases.jsonl",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "created_at": "2026-05-07 16:43:30",
+            "excerpt": null,
+            "id": "59b312c3-4af9-45a6-a340-6c96804b290a",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "created_at": "2026-05-07 16:43:30",
+            "excerpt": null,
+            "id": "94ff25ce-e03b-48da-8f8a-048c47704986",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/game.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "created_at": "2026-05-07 16:43:30",
+            "excerpt": null,
+            "id": "b41f7a4f-48f8-48d4-8c01-9805f30d2f4b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/engine/weapons.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "66312a31-2eca-4931-8f28-ae75a2dc7411",
+            "created_at": "2026-05-07 16:43:30",
+            "excerpt": null,
+            "id": "db8ab317-46c8-4a4a-ba3a-4478266a6df8",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/PROJECT_MEMORY.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "created_at": "2026-05-07 16:01:24",
+            "excerpt": null,
+            "id": "6ecbc012-2e3e-4e79-b01c-2ba883b9a180",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_003_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "created_at": "2026-05-07 16:01:24",
+            "excerpt": null,
+            "id": "9c83e055-b1f6-442c-9b33-64db023b8a77",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/PROJECT_MEMORY.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8d0704f3-2903-44df-937c-c80902b20f64",
+            "created_at": "2026-05-07 16:01:24",
+            "excerpt": null,
+            "id": "d4dc70e3-e4be-4195-9db4-c22c0d92b1b1",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+            "source_id": null,
+            "type": "file"
+          }
+        ]
+      },
+      "uncertainty": {
+        "context_gaps": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "usable": true,
+        "warnings": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ]
+      }
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

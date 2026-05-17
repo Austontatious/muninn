@@ -1,0 +1,46 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": true
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/deny_adaptive/bridge_audit_friday-deny-adaptive.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/deny_adaptive/bridge_response_friday-deny-adaptive.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:38.070119Z",
+  "db": {
+    "after": null,
+    "before": null,
+    "changed": {},
+    "hash": "65091684e0575e5c042b15b04cc271b14a758794bc1d266dddd047a1a6c8d081",
+    "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "adaptive_scoring_not_allowed"
+    ]
+  },
+  "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "03fd9e836d54b65899d43ab8bedb1ee9ebd0f619f32ef24f5cd5acfa857f46d6",
+  "request_id": "friday-deny-adaptive",
+  "response_hash": "3e7133240848cd122ee5a83035c939983011adc2c503fb2ca40eb729a0e0229d",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_34155428f5a67365"
+}

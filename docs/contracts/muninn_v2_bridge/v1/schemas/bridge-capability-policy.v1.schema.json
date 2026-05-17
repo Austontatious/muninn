@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn.dev/v2-bridge/v1/bridge-capability-policy.v1.schema.json",
+  "title": "Muninn v2 BridgeCapabilityPolicyV1",
+  "description": "Deny-by-default capability policy for read-only Muninn v2 bridge requests.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "consumer_id",
+    "allowed_operations",
+    "allowed_space_keys",
+    "allowed_project_paths",
+    "max_results",
+    "max_context_chars",
+    "allow_adaptive_scoring",
+    "allow_reinforcement_read",
+    "allow_reinforcement_write",
+    "allow_cross_project",
+    "require_evidence",
+    "require_explanations",
+    "audit_log_required"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "BridgeCapabilityPolicyV1"
+    },
+    "consumer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowed_operations": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ]
+      }
+    },
+    "allowed_space_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowed_project_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "max_results": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_context_chars": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "allow_adaptive_scoring": {
+      "const": false
+    },
+    "allow_reinforcement_read": {
+      "type": "boolean"
+    },
+    "allow_reinforcement_write": {
+      "const": false
+    },
+    "allow_cross_project": {
+      "const": false
+    },
+    "require_evidence": {
+      "type": "boolean"
+    },
+    "require_explanations": {
+      "type": "boolean"
+    },
+    "audit_log_required": {
+      "const": true
+    }
+  }
+}

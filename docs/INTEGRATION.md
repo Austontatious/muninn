@@ -14,19 +14,40 @@ Muninn v2 exposes a local CLI bridge for controlled read-only context
 experiments:
 
 ```bash
+PYTHONPATH=src python3 -m muninn.v2.cli bridge-request \
+  --v2-db /path/to/shadow_v2.db \
+  --policy /path/to/bridge-policy.json \
+  --request /path/to/bridge-request.json \
+  --out-dir /path/to/output
+```
+
+Legacy narrow rehydrate-only compatibility:
+
+```bash
 PYTHONPATH=src python3 -m muninn.v2.cli bridge-context \
   --request /path/to/bridge-request.json \
   --out-dir /path/to/output
 ```
 
 The request must conform to `docs/contracts/muninn_v2_bridge/v1/schemas/bridge-request.v1.schema.json`.
-The bridge emits a `RehydrateResponseV1` JSON payload, Markdown context preview,
-and bridge audit log. This bridge is v2-only and shadow/evaluation-only; it does
-not change live v1 HTTP endpoints, MCP tools, or Codex defaults.
+The policy must conform to `docs/contracts/muninn_v2_bridge/v1/schemas/bridge-capability-policy.v1.schema.json`.
+The bridge emits `BridgeResponseV1`; rehydrate responses embed the existing
+`RehydrateResponseV1` JSON payload. This bridge is v2-only and
+shadow/evaluation-only; it does not change live v1 HTTP endpoints, MCP tools, or
+Codex defaults.
 
-The only supported capability is `read_only_context`. Requests that allow
-writes, v1 access, reinforcement event recording, adaptive retrieval defaults,
-or LLM-dependent context generation are rejected before bridge execution.
+Supported operations are `health`, `search`, `rehydrate`, and `explain`.
+Requests that violate consumer, operation, space, project, budget, evidence,
+explanation, adaptive-scoring, or reinforcement-write policy are denied before
+retrieval.
+
+Common failure modes:
+
+- `InvalidBridgeRequest`: request schema/required fields failed validation.
+- `DeniedByPolicy`: consumer, operation, project, or safety setting is not
+  allowed by policy.
+- `V2DatabaseMissing`: explicit v2 DB path does not exist.
+- `BridgeExecutionFailed`: read-only bridge execution failed after policy allow.
 
 ## Endpoints (v0)
 - `POST /cards`

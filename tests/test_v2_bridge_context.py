@@ -9,7 +9,6 @@ from jsonschema import Draft202012Validator
 from muninn.v2 import EvidenceRef, MemoryCard, SQLiteMemoryStore
 from muninn.v2.bridge import (
     BRIDGE_REQUEST_CONTRACT_VERSION,
-    BRIDGE_REQUEST_SCHEMA_VERSION,
     BridgePolicyError,
     validate_bridge_request,
 )
@@ -17,13 +16,6 @@ from muninn.v2.cli import main
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-BRIDGE_REQUEST_SCHEMA_PATH = (
-    REPO_ROOT / "docs/contracts/muninn_v2_bridge/v1/schemas/bridge-request.v1.schema.json"
-)
-BRIDGE_REQUEST_FIXTURE_PATH = (
-    REPO_ROOT
-    / "docs/contracts/muninn_v2_bridge/v1/examples/valid/bridge-request.read-only-context.v1.json"
-)
 REHYDRATE_RESPONSE_SCHEMA_PATH = (
     REPO_ROOT / "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json"
 )
@@ -74,7 +66,7 @@ def _seed_v2_db(tmp_path: Path) -> Path:
 
 def _bridge_request(db_path: Path) -> dict:
     return {
-        "schema_version": BRIDGE_REQUEST_SCHEMA_VERSION,
+        "schema_version": "muninn.v2.bridge_request.v1",
         "contract_version": BRIDGE_REQUEST_CONTRACT_VERSION,
         "request_id": "test_bridge_context",
         "capability": {"name": "read_only_context", "version": BRIDGE_REQUEST_CONTRACT_VERSION},
@@ -104,14 +96,6 @@ def _bridge_request(db_path: Path) -> dict:
             "dry_run": True,
         },
     }
-
-
-def test_bridge_request_v1_fixture_matches_schema() -> None:
-    fixture = json.loads(BRIDGE_REQUEST_FIXTURE_PATH.read_text(encoding="utf-8"))
-    _validate_json(BRIDGE_REQUEST_SCHEMA_PATH, fixture)
-    assert fixture["schema_version"] == BRIDGE_REQUEST_SCHEMA_VERSION
-    assert fixture["contract_version"] == BRIDGE_REQUEST_CONTRACT_VERSION
-    assert fixture["capability"]["name"] == "read_only_context"
 
 
 def test_bridge_context_requires_explicit_args(tmp_path: Path) -> None:

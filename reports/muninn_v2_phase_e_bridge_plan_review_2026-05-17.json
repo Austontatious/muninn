@@ -1,0 +1,54 @@
+{
+  "schema_version": "muninn.v2.phase_e_bridge_plan_review.v1",
+  "date": "2026-05-17",
+  "decision": "go_v2_only_local_offline_read_only_bridge",
+  "no_go": [
+    "live_codex_context_replacement",
+    "v1_cutover",
+    "default_adaptive_retrieval",
+    "autonomous_writes",
+    "hidden_memory_mutation"
+  ],
+  "checks": {
+    "preserve_v1_safety": {
+      "result": "pass",
+      "notes": "Bridge reads explicit v2 DBs only and does not change v1 runtime/schema/MCP/defaults."
+    },
+    "prevent_uncontrolled_writes": {
+      "result": "pass",
+      "notes": "Capability policy denies writes; bridge writes only response/audit artifacts to caller output directory."
+    },
+    "prevent_cross_project_leakage": {
+      "result": "pass",
+      "notes": "Policy requires allowed space_key and project_path; missing or mismatched scope is denied."
+    },
+    "expose_provenance": {
+      "result": "pass",
+      "notes": "Search/explain include score components and evidence when requested/required; rehydrate embeds RehydrateResponseV1."
+    },
+    "support_replay": {
+      "result": "pass",
+      "notes": "Audit includes request hash, policy hash, response hash, DB hash/path, trace id, retrieval config, and adaptive config."
+    },
+    "adaptive_scoring_opt_in": {
+      "result": "pass",
+      "notes": "Adaptive scoring is disabled by default and denied unless policy explicitly allows it."
+    },
+    "mimir_out_of_muninn": {
+      "result": "pass",
+      "notes": "Bridge is retrieval/context plumbing only."
+    },
+    "rollback_cutover_gates": {
+      "result": "pass",
+      "notes": "Architecture doc lists rollback and cutover preconditions; cutover remains blocked."
+    }
+  },
+  "approved_build_scope": [
+    "bridge_request_cli",
+    "health_search_rehydrate_explain_operations",
+    "policy_file_validation_before_retrieval",
+    "structured_denial_error_responses",
+    "request_id_scoped_response_and_audit_artifacts",
+    "v1_untouched"
+  ]
+}

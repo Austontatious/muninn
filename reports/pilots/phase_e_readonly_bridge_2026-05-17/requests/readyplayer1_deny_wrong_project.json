@@ -1,0 +1,14 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "search",
+  "project_path": "/tmp/not-the-project",
+  "query": "resume ReadyPlayer1 current campaign state and next steps",
+  "request_id": "readyplayer1-deny-wrong-project",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:5059f410815720ea"
+}

@@ -1,35 +1,42 @@
 # Muninn v2 Bridge Contracts
 
-These contracts define the first controlled bridge for read-only Muninn v2
-context consumption. They are not live v1 API, MCP, or Codex defaults.
+These contracts define the Phase E read-only Muninn v2 bridge. They are not
+live v1 API, MCP, or Codex defaults.
 
-## BridgeRequestV1
+## Contracts
+
+### BridgeRequestV1
 
 - Schema: `schemas/bridge-request.v1.schema.json`
-- Valid example: `examples/valid/bridge-request.read-only-context.v1.json`
-- Capability policy: `capabilities/read-only-context.v1.json`
 - Contract version: `1.0.0`
-- Schema version: `muninn.v2.bridge_request.v1`
+- Schema version: `BridgeRequestV1`
+- Operations: `health`, `search`, `rehydrate`, `explain`
 
-`BridgeRequestV1` is intentionally capability-scoped. The only v1 capability is
-`read_only_context`, which reads an explicit v2 shadow DB and emits a
-`RehydrateResponseV1` plus a bridge audit log.
+Requests are operation-oriented and must include `consumer_id`. Search,
+rehydrate, and explain operations must include explicit project scope.
 
-The request must explicitly deny writes, v1 access, reinforcement recording,
-adaptive retrieval defaults, and LLM-dependent context generation. The bridge
-rejects requests that do not carry those safety flags.
+### BridgeResponseV1
 
-## Response
+- Schema: `schemas/bridge-response.v1.schema.json`
+- Contract version: `1.0.0`
+- Schema version: `BridgeResponseV1`
 
-The bridge emits the existing Muninn v2 `RehydrateResponseV1` contract:
+Responses carry structured status, policy decision, degradation markers, result
+payload, optional structured error, and replay audit metadata. Rehydrate results
+embed the existing `RehydrateResponseV1` envelope.
 
-- `docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json`
+### BridgeCapabilityPolicyV1
 
-Consumers must treat `RehydrateResponseV1` as the agent-facing payload. The
-bridge audit log is operational evidence for safety review, not replacement
-memory context.
+- Schema: `schemas/bridge-capability-policy.v1.schema.json`
+- Schema version: `BridgeCapabilityPolicyV1`
+- Template: `capabilities/read-only-context.v1.json`
+
+Policy is deny-by-default. A request is allowed only when the consumer,
+operation, space key, project path, result budget, adaptive setting, evidence
+requirements, and explanation requirements all satisfy the policy.
 
 ## Boundary
 
-The bridge is local/offline and v2-only. It does not change v1 runtime,
-production schemas, MCP routes, Codex defaults, or project repositories.
+The bridge may read explicit v2 canonical and derived state. It may not write
+canonical memory, create cards, record reinforcement events, read or write v1,
+or perform live Codex/MCP cutover.

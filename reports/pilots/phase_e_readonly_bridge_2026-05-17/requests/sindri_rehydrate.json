@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 12000,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/Sindri",
+  "query": "Phase 11 transfer validation sequence wrapper lane current state",
+  "recent_supplement": true,
+  "request_id": "sindri-rehydrate",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "path:316f4f67d061cbdd",
+  "strict": true
+}

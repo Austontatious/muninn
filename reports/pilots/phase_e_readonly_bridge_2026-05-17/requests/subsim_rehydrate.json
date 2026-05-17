@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 12000,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/subsim",
+  "query": "resume SubSim project current state and next steps",
+  "recent_supplement": true,
+  "request_id": "subsim-rehydrate",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:363c13a65e92ef58",
+  "strict": true
+}

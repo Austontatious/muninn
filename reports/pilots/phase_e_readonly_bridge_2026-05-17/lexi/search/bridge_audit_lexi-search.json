@@ -1,0 +1,70 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/lexi/search/bridge_audit_lexi-search.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/lexi/search/bridge_response_lexi-search.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:50.406133Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779053282289616033,
+      "path": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 577536,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779053282289616033,
+      "path": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 577536,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "40ebeefc1dd8200b284ae5c1029b786ab82d418d0dd8f681a5a553584c6f882a",
+    "path": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback",
+      "evidence_required_but_unavailable"
+    ]
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "3e6909a9bd0a4c3bf76e924f19b7450a4cf59790849f67b533427e5c1a1267e3",
+  "request_id": "lexi-search",
+  "response_hash": "e72f26e1a836713e3cb9510910485263cb1af87b67eac2c79bac26a4ffaab105",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_0afdb5e55f5850e5"
+}

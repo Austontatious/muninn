@@ -1,0 +1,38 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:50:29.338322Z",
+    "input_hash": "c75ebd20afeb000b85378023e7284eb503b6994fb02562d24496239530e0b125",
+    "policy_hash": "ab2f75110044913bcd155ad800ff1ae83c0e22d6d7a612420745f98001c5eb9c",
+    "replayable": true,
+    "response_hash": "b61cc95656119a020c4bea4d21ee086dd4acf46101127e242aacfdc2f1390296",
+    "trace_id": "bridge_fc52f434dde461be"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "adaptive_scoring_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "adaptive_scoring_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "sindri-deny-adaptive",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

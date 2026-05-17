@@ -1,0 +1,69 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/sindri/rehydrate/bridge_audit_sindri-rehydrate.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/sindri/rehydrate/bridge_response_sindri-rehydrate.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:50:27.623518Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779051264713933637,
+      "path": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 278528,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779051264713933637,
+      "path": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 278528,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "8720e0c7525c6bf834c7fb83cb4719528e61b0de7c6db3a44e82684f2a9644eb",
+    "path": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "ab2f75110044913bcd155ad800ff1ae83c0e22d6d7a612420745f98001c5eb9c",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "bc3171d6dc114fa8715bf6611e6c9796a28897eb962b610017a0b0fa7018f6a6",
+  "request_id": "sindri-rehydrate",
+  "response_hash": "5ba7fdbbdaa8fbb81dbc7be837bf65fb4e1bd849acaf7af582e81116310399fb",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 12000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_7c9bbd929d07a494"
+}

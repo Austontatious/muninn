@@ -1,0 +1,15 @@
+{
+  "allow_adaptive_scoring": false,
+  "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "explain",
+  "project_path": "/mnt/data/ReadyPlayer1",
+  "query": "resume ReadyPlayer1 current campaign state and next steps",
+  "request_id": "readyplayer1-explain",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:5059f410815720ea"
+}

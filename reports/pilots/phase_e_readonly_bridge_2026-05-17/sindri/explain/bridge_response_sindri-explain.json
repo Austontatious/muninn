@@ -1,0 +1,335 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:50:28.265170Z",
+    "input_hash": "5ce0a44ef4fa1ba9e05d64d72e3e705c141b55b9c0a8bc914bbb4ef815bd16e7",
+    "policy_hash": "ab2f75110044913bcd155ad800ff1ae83c0e22d6d7a612420745f98001c5eb9c",
+    "replayable": true,
+    "response_hash": "310426d0e307d14378126af16072a7a5f53651b509436b4145896517a08b5a8f",
+    "trace_id": "bridge_11f67e704a7b5d5b"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "sindri-explain",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "enabled": false,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "card": {
+      "body": "For adjacent-lane transfer work, run make lint/test, trust regression checks, baseline eval check surfaces, and phase11 runner check+run. Keep wrapper lane as control by preserving phase10 graduation stability and running make trust_regression_check before accepting any transfer verdict.",
+      "evidence": [
+        {
+          "created_at": "2026-04-05 02:30:26",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-05 02:30:26",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Sindri/docs/phase11_transfer_plan.md",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-05 02:30:26",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "e2be8a09-90c0-4fc4-9a4d-154c023a08e0",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/runner.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        }
+      ],
+      "id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "kind": "runbook",
+      "scope_key": "path:316f4f67d061cbdd",
+      "summary": "Phase 11 transfer proving requires full trust regression checks plus the dedicated phase11 runner check/run.",
+      "title": "Phase 11 transfer validation sequence",
+      "updated_at": "2026-04-05 02:30:26"
+    },
+    "card_found": true,
+    "card_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+    "derived_index": {
+      "eligible": true,
+      "indexed": true,
+      "record": {
+        "body": "For adjacent-lane transfer work, run make lint/test, trust regression checks, baseline eval check surfaces, and phase11 runner check+run. Keep wrapper lane as control by preserving phase10 graduation stability and running make trust_regression_check before accepting any transfer verdict.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 02:30:26",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase11_transfer_plan.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e2be8a09-90c0-4fc4-9a4d-154c023a08e0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/runner.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "path:316f4f67d061cbdd",
+        "status": "active",
+        "summary": "Phase 11 transfer proving requires full trust regression checks plus the dedicated phase11 runner check/run.",
+        "tags": [],
+        "title": "Phase 11 transfer validation sequence",
+        "updated_at": "2026-04-05 02:30:26"
+      },
+      "record_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "row": {
+        "content_hash": "f118a71898b6bc4e2844aad63ecc2e3d1a6ee65f954a5d3f78ffaf9c41bc427a",
+        "embedding_dim": 96,
+        "embedding_model": "muninn-v2-hash-v1",
+        "indexed_at": "2026-05-17T20:54:24.621042Z",
+        "record_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "record_type": "memory_card",
+        "scope_key": "path:316f4f67d061cbdd",
+        "source_updated_at": "2026-04-05 02:30:26",
+        "vector_json": "[0.0,0.0,-0.09468158428727803,0.0,0.10167978834329423,0.0,0.17474927186934575,0.0,-0.10106229975011634,0.0,-0.4322420152245301,0.08459593726537233,0.0,0.06874706337380622,0.10991296958566626,0.0,0.0,-0.15745959126036455,0.0,0.27786986693005505,-0.20871114449413025,0.0,0.0,0.0,0.015437214829447508,0.0,-0.04939908745423202,0.26881336756344587,-0.08459593726537233,0.07780356274041543,0.0,-0.004734079214363896,0.0,-0.20603536059035937,0.0,0.0,0.0,0.0,0.0,0.0,0.07348114258817011,0.0,0.030462770596776417,0.0,0.0,0.15004972814222975,0.0,0.0,0.07162867680863642,0.0,0.0,0.0,0.0,0.0,0.0,-0.06998204056016201,0.0,-0.19265644107150487,0.0,-0.17083851077921905,0.0,-0.06668876806321321,-0.309361785182128,0.0,0.0,0.0,0.13687663815443454,-0.16589860203379586,0.0,0.0,0.0,0.15807707985354244,0.0,0.05722060963448541,0.06030805260037491,0.0,0.0,0.0,0.16548694297167724,0.18112998733218405,0.0,0.0,0.10867799239931042,0.0,0.0,0.0,0.0,0.08871252788655833,0.08933001647973622,0.0,0.0,0.27087166287403885,-0.06298383650414581,0.0014408067174150952,0.0,-0.06545379087685742]"
+      },
+      "stale": false
+    },
+    "operation": "explain",
+    "retrieval_match": {
+      "backend": "hybrid",
+      "explanation": {
+        "candidate_sources": [
+          "body",
+          "evidence",
+          "summary",
+          "title",
+          "vector"
+        ],
+        "matched_fields": {
+          "body": [
+            "lane",
+            "transfer",
+            "wrapper"
+          ],
+          "evidence": [
+            "lane",
+            "transfer"
+          ],
+          "summary": [
+            "11",
+            "phase",
+            "transfer"
+          ],
+          "title": [
+            "11",
+            "phase",
+            "sequence",
+            "transfer",
+            "validation"
+          ]
+        },
+        "matched_tokens": [
+          "11",
+          "lane",
+          "phase",
+          "sequence",
+          "transfer",
+          "validation",
+          "wrapper"
+        ],
+        "penalties": {},
+        "retrieval_path": "v2_hybrid_recall",
+        "score_components": {
+          "body_token_overlap": 7.857274,
+          "campaign_token_match": 6.0,
+          "evidence_token_overlap": 1.917423,
+          "numeric_token_match": 10.0,
+          "project_space_match": 3.0,
+          "recency_boost": 2.0,
+          "salience_boost": 1.0,
+          "summary_token_overlap": 24.873685,
+          "title_coverage_boost": 10.0,
+          "title_token_overlap": 66.324299,
+          "vector_similarity_rescue": 2.02189
+        },
+        "score_semantics": "higher deterministic hybrid score is better",
+        "vector_score": 0.404378,
+        "vector_used": true
+      },
+      "rank": 1,
+      "record": {
+        "body": "For adjacent-lane transfer work, run make lint/test, trust regression checks, baseline eval check surfaces, and phase11 runner check+run. Keep wrapper lane as control by preserving phase10 graduation stability and running make trust_regression_check before accepting any transfer verdict.",
+        "confidence": 0.5,
+        "created_at": "2026-04-05 02:30:26",
+        "entity_ids": [
+          "v1-project:path:316f4f67d061cbdd"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "ba0023aa-e213-4dbb-a5bb-2d64163971df",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/scripts/run_trust_regression_check.sh",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "c60e0dc2-ae55-4fe3-b0a5-91f9c33baa6c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/docs/phase11_transfer_plan.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-05 02:30:26",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e2be8a09-90c0-4fc4-9a4d-154c023a08e0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Sindri/evals/phase11_adjacent_lane_transfer/runner.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+        "kind": "runbook",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:path:316f4f67d061cbdd",
+          "project_path": "/mnt/data/Sindri",
+          "project_root_path": "/mnt/data/Sindri",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "path:316f4f67d061cbdd",
+        "status": "active",
+        "summary": "Phase 11 transfer proving requires full trust regression checks plus the dedicated phase11 runner check/run.",
+        "tags": [],
+        "title": "Phase 11 transfer validation sequence",
+        "updated_at": "2026-04-05 02:30:26"
+      },
+      "record_id": "5dbf7a31-341b-4940-96d9-9e7c965d2c64",
+      "scope_key": "path:316f4f67d061cbdd",
+      "score": 134.994571
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

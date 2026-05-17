@@ -1,0 +1,14 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "search",
+  "project_path": "/mnt/data/Lex",
+  "query": "resume Lexi project current state and next steps",
+  "request_id": "lexi-search",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:0c321b2a6f183a95"
+}

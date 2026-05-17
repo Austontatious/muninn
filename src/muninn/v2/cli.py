@@ -14,7 +14,14 @@ from muninn.human_memory.bootstrap import DEFAULT_USER_ID
 from muninn.human_memory.cards import cards_search
 
 from .adapters import V1ReadAdapter
-from .bridge import BridgePolicyError, build_read_only_bridge_context, load_bridge_request
+from .bridge import (
+    BridgePolicyError,
+    build_read_only_bridge_context,
+    load_bridge_policy,
+    load_bridge_request,
+    run_bridge_request,
+)
+from .bridge.contracts import load_json_object
 from .core.models import (
     SCHEMA_VERSION,
     EvidenceRef,
@@ -2096,6 +2103,12 @@ def run_bridge_context(args: argparse.Namespace) -> dict[str, Any]:
     return build_read_only_bridge_context(request, out_dir=args.out_dir)
 
 
+def run_bridge_request_command(args: argparse.Namespace) -> dict[str, Any]:
+    policy = load_bridge_policy(args.policy)
+    request = load_json_object(args.request)
+    return run_bridge_request(v2_db=args.v2_db, policy=policy, request=request, out_dir=args.out_dir)
+
+
 def _id_list(values: Sequence[str] | None) -> list[str]:
     out: list[str] = []
     seen: set[str] = set()
@@ -2359,6 +2372,16 @@ def build_parser() -> argparse.ArgumentParser:
     bridge_context.add_argument("--out-dir", required=True, help="Explicit output directory for bridge artifacts.")
     bridge_context.set_defaults(func=run_bridge_context)
 
+    bridge_request = subparsers.add_parser(
+        "bridge-request",
+        help="Run a policy-scoped read-only Muninn v2 bridge request.",
+    )
+    bridge_request.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    bridge_request.add_argument("--policy", required=True, help="BridgeCapabilityPolicyV1 JSON file.")
+    bridge_request.add_argument("--request", required=True, help="BridgeRequestV1 JSON file.")
+    bridge_request.add_argument("--out-dir", required=True, help="Explicit output directory for bridge response/audit artifacts.")
+    bridge_request.set_defaults(func=run_bridge_request_command)
+
     recall_event = subparsers.add_parser(
         "recall-event-record",
         help="Dry-run or explicitly record an offline v2 recall/reinforcement event.",
@@ -2508,6 +2531,17 @@ def main(argv: Sequence[str] | None = None) -> int:
             "retrieval_mode": report["response"]["retrieval_mode"],
             "read_only_ok": report["safety"]["read_only_ok"],
             "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_bridge_response":
+        payload = {
+            "status": report["status"],
+            "mode": "bridge_request",
+            "operation": report["operation"],
+            "request_id": report["request_id"],
+            "consumer_id": report["consumer_id"],
+            "policy_allowed": report["policy_decision"]["allowed"],
+            "degraded": report["degradation"]["degraded"],
+            "trace_id": report["audit"]["trace_id"],
         }
     elif report["record_type"] == "muninn_v2_recall_event_record_report":
         payload = {

@@ -1,0 +1,143 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:43.089656Z",
+    "input_hash": "f462a1505f61b36e608dc9319b15e2732dc873e8286cb2d92b3e18f3ad90a508",
+    "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+    "replayable": true,
+    "response_hash": "a4d0bb265c3ff6aa382aade73f31fe6782b95ad8c9cf79f3fbadb476be1cbc9d",
+    "trace_id": "bridge_9dd222800cf347ec"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "subsim-search",
+  "result": {
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {},
+    "limit": 10,
+    "operation": "search",
+    "query": "resume SubSim project current state and next steps",
+    "result_count": 1,
+    "results": [
+      {
+        "backend": "hybrid",
+        "body": "The checkpoint records Preflight, Campaign 001, Campaign 002A, and Campaign 003 as promoted. Current trusted metrics include SubSim full suite 58 passed, ReadyPlayer1 focused SubSim and golden tests 28 passed, scenario suite 7 pass / 0 fail, golden regression pass, and Campaign 003 clutter binding improvement sonar_clutter_wrong_binding_rate 0.2 -> 0.0. Recommended next campaign is 004A torpedo / fire-control feedback loop.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 16:01:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "6ecbc012-2e3e-4e79-b01c-2ba883b9a180",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_003_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:01:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9c83e055-b1f6-442c-9b33-64db023b8a77",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/PROJECT_MEMORY.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:01:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "d4dc70e3-e4be-4195-9db4-c22c0d92b1b1",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "current",
+              "next",
+              "subsim"
+            ],
+            "evidence": [
+              "project",
+              "subsim"
+            ],
+            "summary": [
+              "next",
+              "project"
+            ],
+            "title": [
+              "subsim"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "next",
+            "project",
+            "subsim"
+          ],
+          "penalties": {},
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 9.935966,
+            "evidence_token_overlap": 1.349338,
+            "project_space_match": 3.0,
+            "recency_boost": 1.411765,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 16.955244,
+            "title_token_overlap": 6.0,
+            "vector_similarity_rescue": 1.62868
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.325736,
+          "vector_used": true
+        },
+        "id": "8d0704f3-2903-44df-937c-c80902b20f64",
+        "kind": "decision",
+        "rank": 1,
+        "scope_key": "repo:363c13a65e92ef58",
+        "score": 41.280993,
+        "summary": "Both repos now carry PROJECT_MEMORY campaign ledgers through Campaign 003 with Campaign 004A recommended next.",
+        "title": "SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003",
+        "updated_at": "2026-05-07 16:01:24"
+      }
+    ],
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

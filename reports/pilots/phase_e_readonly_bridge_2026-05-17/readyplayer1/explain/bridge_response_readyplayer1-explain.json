@@ -1,0 +1,367 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:40.715393Z",
+    "input_hash": "a051766c402d6b1b7a85c186fcc2ab26f13fd778b3003bffd6d2fc326f8b4a69",
+    "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+    "replayable": true,
+    "response_hash": "a082d10c4c5b02931c7fa524736bbdbde1a8ae14e869f7fd150adca019f5b2bb",
+    "trace_id": "bridge_71e9da78d7b5cee8"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "readyplayer1-explain",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "enabled": false,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "card": {
+      "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+      "evidence": [
+        {
+          "created_at": "2026-05-07 17:52:40",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:52:40",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:52:40",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "84a71d72-829d-4bf1-8214-c145269df127",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:52:40",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        }
+      ],
+      "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "kind": "decision",
+      "scope_key": "repo:5059f410815720ea",
+      "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+      "title": "Campaign 007A promoted post-reacquisition stabilization",
+      "updated_at": "2026-05-07 17:52:40"
+    },
+    "card_found": true,
+    "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+    "derived_index": {
+      "eligible": true,
+      "indexed": true,
+      "record": {
+        "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+        "confidence": 0.5,
+        "created_at": "2026-05-07 17:52:40",
+        "entity_ids": [
+          "v1-project:repo:5059f410815720ea"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "84a71d72-829d-4bf1-8214-c145269df127",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:repo:5059f410815720ea",
+          "project_path": "/mnt/data/ReadyPlayer1",
+          "project_root_path": "/mnt/data/ReadyPlayer1",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "repo:5059f410815720ea",
+        "status": "active",
+        "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+        "tags": [],
+        "title": "Campaign 007A promoted post-reacquisition stabilization",
+        "updated_at": "2026-05-07 17:52:40"
+      },
+      "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "row": {
+        "content_hash": "02f9524d847c508c1318f68ef91b7879afb444191b3dc129d74e1991d4415b8b",
+        "embedding_dim": 96,
+        "embedding_model": "muninn-v2-hash-v1",
+        "indexed_at": "2026-05-17T17:56:46.033648Z",
+        "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "record_type": "memory_card",
+        "scope_key": "repo:5059f410815720ea",
+        "source_updated_at": "2026-05-07 17:52:40",
+        "vector_json": "[0.0,0.0,0.0,0.05418937086590614,0.051479902322610835,0.04772833049343272,-0.05408516053731786,-0.04032939716366476,0.028762050690365564,0.0,0.0,-0.04741569950766787,0.04428938965001944,0.0,0.0,0.0,0.0,-0.10400190793110449,0.04272623472119523,0.04679043753613819,0.0,0.0,0.0493956957508452,0.0,0.00781577464412108,0.05158411265119912,-0.06586092766779363,0.0592956769667319,0.03532730139142728,0.0,0.06388093142461629,0.04720727885049131,0.0,-0.08420194549933109,0.07888721874132876,-0.059608307952496754,0.04991674739378662,0.0,-0.6050451677835599,0.0,-0.12130082247675912,0.03897466289201711,-0.004064202814942958,-0.10014612577333808,0.02021680374612652,0.0,-0.04355991734990147,-0.08795351732850919,0.0896208825859217,0.04772833049343271,0.14683235298088798,-0.06398514175320455,0.05908725630955535,0.0,0.0,-0.031158888247896033,-0.10900400370334196,-0.3306593726106157,-0.027719947404482758,-0.2715721163010604,-0.046373596221785066,-0.09712402624427793,-0.2088374984909152,-0.10285559431663338,0.0,0.0,-0.07023776146850141,0.0858693107567436,0.0,-0.07169670606873736,0.0,0.0401209765064882,0.0,-0.13172185533558725,-0.021675748346362458,0.0,-0.0731556506689733,-0.34389408434132746,0.043351496692724915,-0.11077557928934273,0.0,0.0,-0.08972509291450997,-0.011358925816122628,0.0,0.17997123747196134,0.0,-0.004168413143531244,0.04522728260731397,0.0,0.0,0.0,-0.031888360548014,0.0516883229797874,0.0,0.04981253706519834]"
+      },
+      "stale": false
+    },
+    "operation": "explain",
+    "retrieval_match": {
+      "backend": "hybrid",
+      "explanation": {
+        "candidate_sources": [
+          "body",
+          "evidence",
+          "summary",
+          "title",
+          "vector"
+        ],
+        "matched_fields": {
+          "body": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "evidence": [
+            "campaign",
+            "readyplayer1"
+          ],
+          "summary": [
+            "campaign",
+            "readyplayer1"
+          ],
+          "title": [
+            "campaign"
+          ]
+        },
+        "matched_tokens": [
+          "campaign",
+          "readyplayer1",
+          "state"
+        ],
+        "penalties": {
+          "broad_token_match": -2.0,
+          "low_specificity_match": -0.257143
+        },
+        "retrieval_path": "v2_hybrid_recall",
+        "score_components": {
+          "body_token_overlap": 8.07423,
+          "campaign_token_match": 6.0,
+          "evidence_token_overlap": 1.581545,
+          "numeric_token_match": 10.0,
+          "project_space_match": 3.0,
+          "recency_boost": 2.0,
+          "salience_boost": 1.0,
+          "summary_token_overlap": 12.300905,
+          "title_token_overlap": 14.96355,
+          "vector_similarity_rescue": 1.776715
+        },
+        "score_semantics": "higher deterministic hybrid score is better",
+        "vector_score": 0.355343,
+        "vector_used": true
+      },
+      "rank": 6,
+      "record": {
+        "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+        "confidence": 0.5,
+        "created_at": "2026-05-07 17:52:40",
+        "entity_ids": [
+          "v1-project:repo:5059f410815720ea"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "84a71d72-829d-4bf1-8214-c145269df127",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:repo:5059f410815720ea",
+          "project_path": "/mnt/data/ReadyPlayer1",
+          "project_root_path": "/mnt/data/ReadyPlayer1",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "repo:5059f410815720ea",
+        "status": "active",
+        "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+        "tags": [],
+        "title": "Campaign 007A promoted post-reacquisition stabilization",
+        "updated_at": "2026-05-07 17:52:40"
+      },
+      "record_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+      "scope_key": "repo:5059f410815720ea",
+      "score": 58.439803
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

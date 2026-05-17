@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn.dev/v2-bridge/v1/bridge-response.v1.schema.json",
+  "title": "Muninn v2 BridgeResponseV1",
+  "description": "Structured response envelope for read-only Muninn v2 bridge requests.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "record_type",
+    "request_id",
+    "operation",
+    "consumer_id",
+    "status",
+    "policy_decision",
+    "degradation",
+    "result",
+    "error",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "BridgeResponseV1"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "record_type": {
+      "const": "muninn_v2_bridge_response"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "enum": [
+        "health",
+        "search",
+        "rehydrate",
+        "explain",
+        "unknown"
+      ]
+    },
+    "consumer_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "denied",
+        "error"
+      ]
+    },
+    "policy_decision": {
+      "type": "object",
+      "required": [
+        "allowed",
+        "reason_codes",
+        "clamps"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "boolean"
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "clamps": {
+          "type": "object"
+        }
+      }
+    },
+    "degradation": {
+      "type": "object",
+      "required": [
+        "degraded",
+        "reason_codes"
+      ],
+      "properties": {
+        "degraded": {
+          "type": "boolean"
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "object"
+    },
+    "error": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "audit": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "created_at",
+        "replayable",
+        "input_hash",
+        "policy_hash",
+        "response_hash"
+      ],
+      "properties": {
+        "trace_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replayable": {
+          "type": "boolean"
+        },
+        "input_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "response_hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

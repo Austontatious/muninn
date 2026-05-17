@@ -1,0 +1,189 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:51.853276Z",
+    "input_hash": "dac2d3436b177a746688ba54b39c5d691c546624111580e6d71cf9b9f1b9f703",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "33c5c2dd4bfced7ed1baca7d6deb8beaa0e4b83edcb2c3418faf94d2cfa6c81d",
+    "trace_id": "bridge_1825537d821c743f"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-explain",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "enabled": false,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "card": {
+      "body": "Lexi should be presented as a deployed production-facing alpha/prototype, not production-ready, until the audit blockers are fixed: public /lexi/readyz 503, disabled avatar_edit/img2img, divergent backend source trees plus active production overrides, repo-root pytest import failure, telemetry/logging claim mismatch, streaming sanitizer NameError, and alpha session memory not recording /process under X-Lexi-Session.",
+      "evidence": [
+        {
+          "created_at": "2026-05-17 21:24:31",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "5c3a3c10-d642-420b-98d6-d866dd0051f1",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/status_matrix.md",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-17 21:24:31",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "9dd61aa5-08eb-4840-870f-db80d40eff61",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/README.md",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-17 21:24:31",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "d6e928e7-4188-49a6-88ca-6e5f8fb67521",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/risk_register.md",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        }
+      ],
+      "id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "kind": "decision",
+      "scope_key": "repo:0c321b2a6f183a95",
+      "summary": "Production audit completed for Lexi.",
+      "title": "Lexi production audit verdict 2026-05-17",
+      "updated_at": "2026-05-17 21:24:31"
+    },
+    "card_found": true,
+    "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+    "derived_index": {
+      "eligible": true,
+      "indexed": true,
+      "record": {
+        "body": "Lexi should be presented as a deployed production-facing alpha/prototype, not production-ready, until the audit blockers are fixed: public /lexi/readyz 503, disabled avatar_edit/img2img, divergent backend source trees plus active production overrides, repo-root pytest import failure, telemetry/logging claim mismatch, streaming sanitizer NameError, and alpha session memory not recording /process under X-Lexi-Session.",
+        "confidence": 0.5,
+        "created_at": "2026-05-17 21:24:31",
+        "entity_ids": [
+          "v1-project:repo:0c321b2a6f183a95"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-05-17 21:24:31",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "5c3a3c10-d642-420b-98d6-d866dd0051f1",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/status_matrix.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-17 21:24:31",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9dd61aa5-08eb-4840-870f-db80d40eff61",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/README.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-17 21:24:31",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "d6e928e7-4188-49a6-88ca-6e5f8fb67521",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/risk_register.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+          "project_path": "/mnt/data/Lex",
+          "project_root_path": "/mnt/data/Lex",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "repo:0c321b2a6f183a95",
+        "status": "active",
+        "summary": "Production audit completed for Lexi.",
+        "tags": [],
+        "title": "Lexi production audit verdict 2026-05-17",
+        "updated_at": "2026-05-17 21:24:31"
+      },
+      "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+      "row": {
+        "content_hash": "e9ef5552c170fe2eb3ddbf2f58ec66acf1f37950039e5e28fb6a0ade15e62a9d",
+        "embedding_dim": 96,
+        "embedding_model": "muninn-v2-hash-v1",
+        "indexed_at": "2026-05-17T21:28:02.152772Z",
+        "record_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+        "record_type": "memory_card",
+        "scope_key": "repo:0c321b2a6f183a95",
+        "source_updated_at": "2026-05-17 21:24:31",
+        "vector_json": "[0.0,0.08755115927336769,-0.17642598618153793,-0.06561609561092568,-0.08622749163856515,0.06599428636372641,0.051244847004498155,0.0,0.0,0.0,-0.07790729507694923,0.0,0.0,0.08452563325096189,0.0,0.4207372124908059,-0.07412538754894198,-0.05105575162809779,0.0,-0.0690198123861322,0.0,0.07431448292534233,0.05313580076850178,0.0815001072285561,0.014182153230027167,0.05824137593131155,0.0,-0.0970059280933858,0.0,0.09530406970578255,0.033469881622864114,-0.007942005808815216,0.0,0.0,0.12177742240183324,0.023826017426445637,0.0,0.0,0.0,0.0,0.12121013627263216,0.0,0.0,0.0,0.0,0.0,0.20724853253479694,-0.4352975564736338,0.0765836274421467,-0.057484994425710104,0.05332489614490214,0.0,0.06069961582451626,0.0,0.0,0.0,0.0,-0.17699327231073902,0.0,-0.0784745812061503,0.06448152335252351,-0.06126690195371735,-0.2842103507297444,0.06296876034132061,0.12423566229503796,0.3070908912741882,-0.21216501232120638,0.0,0.0,0.06958709851533329,0.0,0.0,0.0,-0.00018909537640036153,0.058619566684112286,0.0,-0.16791669424352162,0.0,0.0,0.0705325753973351,0.0,0.16848398037272272,0.0,0.0,0.0,0.0017018583876032643,0.0,0.0,0.08206739335775719,0.09133306680137493,-0.07923096271175176,-0.08509291938016299,-0.17358955553553246,-0.07223443378493835,0.0,-0.0650488094817246]"
+      },
+      "stale": false
+    },
+    "operation": "explain",
+    "retrieval_match": null
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

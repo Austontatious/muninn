@@ -1,0 +1,20 @@
+{
+  "card_evidence": 1418,
+  "card_relations": 5,
+  "card_tags": 535,
+  "card_vectors": 0,
+  "cards": 519,
+  "cards_fts": 519,
+  "cards_fts_config": 1,
+  "cards_fts_data": 73,
+  "cards_fts_docsize": 519,
+  "cards_fts_idx": 71,
+  "clients": 1,
+  "evidence": 1418,
+  "interaction_events": 2,
+  "space_aliases": 14,
+  "spaces": 33,
+  "tags": 252,
+  "users": 1,
+  "vector_index_state": 0
+}

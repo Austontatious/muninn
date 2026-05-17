@@ -1,0 +1,253 @@
+{
+  "friday": {
+    "deny_adaptive": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "deny_wrong_project": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "explain": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "health": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "rehydrate": {
+      "degraded": true,
+      "policy_allowed": true,
+      "primary": 3,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "selected_total": 8,
+      "status": "ok",
+      "supplements": 5
+    },
+    "search": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "result_count": 3,
+      "status": "ok"
+    }
+  },
+  "lexi": {
+    "deny_adaptive": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "deny_wrong_project": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "explain": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "health": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "rehydrate": {
+      "degraded": true,
+      "policy_allowed": true,
+      "primary": 3,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "selected_total": 8,
+      "status": "ok",
+      "supplements": 5
+    },
+    "search": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback",
+        "evidence_required_but_unavailable"
+      ],
+      "result_count": 5,
+      "status": "ok"
+    }
+  },
+  "readyplayer1": {
+    "deny_adaptive": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "deny_wrong_project": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "explain": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "health": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "rehydrate": {
+      "degraded": true,
+      "policy_allowed": true,
+      "primary": 3,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "selected_total": 9,
+      "status": "ok",
+      "supplements": 6
+    },
+    "search": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "result_count": 10,
+      "status": "ok"
+    }
+  },
+  "sindri": {
+    "deny_adaptive": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "deny_wrong_project": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "explain": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "health": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "rehydrate": {
+      "degraded": true,
+      "policy_allowed": true,
+      "primary": 3,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "selected_total": 8,
+      "status": "ok",
+      "supplements": 5
+    },
+    "search": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "result_count": 7,
+      "status": "ok"
+    }
+  },
+  "subsim": {
+    "deny_adaptive": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "deny_wrong_project": {
+      "degraded": false,
+      "policy_allowed": false,
+      "reason_codes": [],
+      "status": "denied"
+    },
+    "explain": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "health": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "status": "ok"
+    },
+    "rehydrate": {
+      "degraded": true,
+      "policy_allowed": true,
+      "primary": 1,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "selected_total": 4,
+      "status": "ok",
+      "supplements": 3
+    },
+    "search": {
+      "degraded": true,
+      "policy_allowed": true,
+      "reason_codes": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "result_count": 1,
+      "status": "ok"
+    }
+  }
+}

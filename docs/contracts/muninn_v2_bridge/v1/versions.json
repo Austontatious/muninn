@@ -4,13 +4,34 @@
   "contracts": [
     {
       "name": "BridgeRequestV1",
-      "schema_version": "muninn.v2.bridge_request.v1",
+      "schema_version": "BridgeRequestV1",
       "contract_version": "1.0.0",
       "schema": "schemas/bridge-request.v1.schema.json",
       "valid_examples": [
-        "examples/valid/bridge-request.read-only-context.v1.json"
+        "examples/valid/bridge-request.health.v1.json",
+        "examples/valid/bridge-request.search.v1.json",
+        "examples/valid/bridge-request.rehydrate.v1.json",
+        "examples/valid/bridge-request.explain.v1.json"
+      ]
+    },
+    {
+      "name": "BridgeResponseV1",
+      "schema_version": "BridgeResponseV1",
+      "contract_version": "1.0.0",
+      "schema": "schemas/bridge-response.v1.schema.json",
+      "valid_examples": [
+        "examples/valid/bridge-response.rehydrate-ok.v1.json"
+      ]
+    },
+    {
+      "name": "BridgeCapabilityPolicyV1",
+      "schema_version": "BridgeCapabilityPolicyV1",
+      "contract_version": "1.0.0",
+      "schema": "schemas/bridge-capability-policy.v1.schema.json",
+      "valid_examples": [
+        "examples/valid/bridge-capability-policy.codex-shadow.v1.json"
       ],
-      "capability_policy": "capabilities/read-only-context.v1.json"
+      "template": "capabilities/read-only-context.v1.json"
     }
   ]
 }

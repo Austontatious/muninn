@@ -1,0 +1,6 @@
+{
+  "schema_version": "BridgeRequestV1",
+  "request_id": "example-health",
+  "operation": "health",
+  "consumer_id": "codex-shadow"
+}

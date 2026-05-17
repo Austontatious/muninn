@@ -1,0 +1,46 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/lexi/deny_wrong_project/bridge_audit_lexi-deny-wrong-project.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/lexi/deny_wrong_project/bridge_response_lexi-deny-wrong-project.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:52.435512Z",
+  "db": {
+    "after": null,
+    "before": null,
+    "changed": {},
+    "hash": "40ebeefc1dd8200b284ae5c1029b786ab82d418d0dd8f681a5a553584c6f882a",
+    "path": "reports/pilots/lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "project_path_not_allowed"
+    ]
+  },
+  "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "121c79d244696f6c673024ca03a0cb21a079c04e162bd5598f43a37eb440e725",
+  "request_id": "lexi-deny-wrong-project",
+  "response_hash": "895f119e1a7cbadadbe7a2e05c901160f00a79d094ba5256785c4a7bd931bedc",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_15ee43191005ff87"
+}

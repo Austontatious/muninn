@@ -1,0 +1,25 @@
+{
+  "schema_version": "BridgeCapabilityPolicyV1",
+  "consumer_id": "codex-shadow",
+  "allowed_operations": [
+    "health",
+    "search",
+    "rehydrate",
+    "explain"
+  ],
+  "allowed_space_keys": [
+    "repo:f8cc7f64d3636a4e"
+  ],
+  "allowed_project_paths": [
+    "/mnt/data/friday"
+  ],
+  "max_results": 12,
+  "max_context_chars": 12000,
+  "allow_adaptive_scoring": false,
+  "allow_reinforcement_read": true,
+  "allow_reinforcement_write": false,
+  "allow_cross_project": false,
+  "require_evidence": true,
+  "require_explanations": true,
+  "audit_log_required": true
+}

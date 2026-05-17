@@ -1,0 +1,50 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:49.714552Z",
+    "input_hash": "facd1d07a8a0772de0613601766c27df8ee947fa26a96dd02add512cd700aea8",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "7ac74f7514792dca9d56a5986909947d9a9f6e67612fb4b3eaad14053aeb7755",
+    "trace_id": "bridge_3f26b7ab187b66f1"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "health",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-health",
+  "result": {
+    "adaptive_scoring_default": false,
+    "bridge_version": "muninn-v2-bridge/1.0.0",
+    "cards_available": 79,
+    "db_readable": true,
+    "index_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 77,
+      "indexed_records": 77,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "policy_consumer_id": "codex-shadow",
+    "policy_loaded": true,
+    "schema_available": true
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

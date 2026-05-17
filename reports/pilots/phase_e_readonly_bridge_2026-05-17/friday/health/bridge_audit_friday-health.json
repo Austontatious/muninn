@@ -1,0 +1,69 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/health/bridge_audit_friday-health.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/health/bridge_response_friday-health.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:34.910740Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779042899594838008,
+      "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 401408,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779042899594838008,
+      "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 401408,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "65091684e0575e5c042b15b04cc271b14a758794bc1d266dddd047a1a6c8d081",
+    "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "health",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "7bc55483d3d677b796ce75c7c30c4acae952f510f6cc89f9e1c276a9a89387fc",
+  "request_id": "friday-health",
+  "response_hash": "4a572da702903ab275a6ec03706022989b97d77f82ac5c4c73d9cbf00e393e5a",
+  "retrieval_config": {
+    "limit": null,
+    "max_context_chars": null,
+    "operation": "health",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_db1ab52912ba37c2"
+}

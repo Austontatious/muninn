@@ -1,0 +1,162 @@
+{
+  "friday": {
+    "deny_adaptive": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"friday-deny-adaptive\", \"status\": \"denied\", \"trace_id\": \"bridge_34155428f5a67365\"}"
+    },
+    "deny_wrong_project": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"friday-deny-wrong-project\", \"status\": \"denied\", \"trace_id\": \"bridge_a9a92892f72d8b6b\"}"
+    },
+    "explain": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"explain\", \"policy_allowed\": true, \"request_id\": \"friday-explain\", \"status\": \"ok\", \"trace_id\": \"bridge_a988658f01b1c458\"}"
+    },
+    "health": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"friday-health\", \"status\": \"ok\", \"trace_id\": \"bridge_db1ab52912ba37c2\"}"
+    },
+    "rehydrate": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"friday-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_c06465cb03dae393\"}"
+    },
+    "search": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"friday-search\", \"status\": \"ok\", \"trace_id\": \"bridge_88b86d07d14026b0\"}"
+    }
+  },
+  "lexi": {
+    "deny_adaptive": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"lexi-deny-adaptive\", \"status\": \"denied\", \"trace_id\": \"bridge_a8fa6da4df940bd8\"}"
+    },
+    "deny_wrong_project": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"lexi-deny-wrong-project\", \"status\": \"denied\", \"trace_id\": \"bridge_15ee43191005ff87\"}"
+    },
+    "explain": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"explain\", \"policy_allowed\": true, \"request_id\": \"lexi-explain\", \"status\": \"ok\", \"trace_id\": \"bridge_1825537d821c743f\"}"
+    },
+    "health": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"lexi-health\", \"status\": \"ok\", \"trace_id\": \"bridge_3f26b7ab187b66f1\"}"
+    },
+    "rehydrate": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"lexi-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_64345d0de618423c\"}"
+    },
+    "search": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"lexi-search\", \"status\": \"ok\", \"trace_id\": \"bridge_0afdb5e55f5850e5\"}"
+    }
+  },
+  "readyplayer1": {
+    "deny_adaptive": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"readyplayer1-deny-adaptive\", \"status\": \"denied\", \"trace_id\": \"bridge_8ef5d65d6b40e93d\"}"
+    },
+    "deny_wrong_project": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"readyplayer1-deny-wrong-project\", \"status\": \"denied\", \"trace_id\": \"bridge_f8b39652b3eb68f1\"}"
+    },
+    "explain": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"explain\", \"policy_allowed\": true, \"request_id\": \"readyplayer1-explain\", \"status\": \"ok\", \"trace_id\": \"bridge_71e9da78d7b5cee8\"}"
+    },
+    "health": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"readyplayer1-health\", \"status\": \"ok\", \"trace_id\": \"bridge_eb2e7ed362f7fcc9\"}"
+    },
+    "rehydrate": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"readyplayer1-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_09445fbe7ea81fd6\"}"
+    },
+    "search": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"readyplayer1-search\", \"status\": \"ok\", \"trace_id\": \"bridge_2b828a5d5688d80f\"}"
+    }
+  },
+  "sindri": {
+    "deny_adaptive": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"sindri-deny-adaptive\", \"status\": \"denied\", \"trace_id\": \"bridge_ad11bc8f6c65b692\"}"
+    },
+    "deny_wrong_project": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"sindri-deny-wrong-project\", \"status\": \"denied\", \"trace_id\": \"bridge_2d73d75cd87d8ddb\"}"
+    },
+    "explain": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"explain\", \"policy_allowed\": true, \"request_id\": \"sindri-explain\", \"status\": \"ok\", \"trace_id\": \"bridge_25ff7f5295f9b4bf\"}"
+    },
+    "health": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"sindri-health\", \"status\": \"ok\", \"trace_id\": \"bridge_cc05f26a02e06b48\"}"
+    },
+    "rehydrate": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"sindri-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_e4d73a10a12381e7\"}"
+    },
+    "search": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"sindri-search\", \"status\": \"ok\", \"trace_id\": \"bridge_091b9275e265240a\"}"
+    }
+  },
+  "subsim": {
+    "deny_adaptive": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"subsim-deny-adaptive\", \"status\": \"denied\", \"trace_id\": \"bridge_3b6014943f26f120\"}"
+    },
+    "deny_wrong_project": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"subsim-deny-wrong-project\", \"status\": \"denied\", \"trace_id\": \"bridge_16c4b51544d76cdf\"}"
+    },
+    "explain": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"explain\", \"policy_allowed\": true, \"request_id\": \"subsim-explain\", \"status\": \"ok\", \"trace_id\": \"bridge_0c66c727b3607520\"}"
+    },
+    "health": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"subsim-health\", \"status\": \"ok\", \"trace_id\": \"bridge_72abd1368f75a458\"}"
+    },
+    "rehydrate": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"subsim-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_7aa268c2e805ac6e\"}"
+    },
+    "search": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"consumer_id\": \"codex-shadow\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"subsim-search\", \"status\": \"ok\", \"trace_id\": \"bridge_9dd222800cf347ec\"}"
+    }
+  }
+}

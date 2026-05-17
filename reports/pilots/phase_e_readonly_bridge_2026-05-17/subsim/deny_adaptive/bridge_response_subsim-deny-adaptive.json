@@ -1,0 +1,38 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:45.491145Z",
+    "input_hash": "6f13df4100f20d91f32839b2de24b281968c0075d826b21d1140a8e3273a96c8",
+    "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+    "replayable": true,
+    "response_hash": "31538e19fe43c26782f0acd4dfca56a137a0363495c5359e2901c891ca1776b8",
+    "trace_id": "bridge_3b6014943f26f120"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "adaptive_scoring_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "adaptive_scoring_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "subsim-deny-adaptive",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

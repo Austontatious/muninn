@@ -1,0 +1,25 @@
+{
+  "allow_adaptive_scoring": false,
+  "allow_cross_project": false,
+  "allow_reinforcement_read": true,
+  "allow_reinforcement_write": false,
+  "allowed_operations": [
+    "health",
+    "search",
+    "rehydrate",
+    "explain"
+  ],
+  "allowed_project_paths": [
+    "/mnt/data/Sindri"
+  ],
+  "allowed_space_keys": [
+    "path:316f4f67d061cbdd"
+  ],
+  "audit_log_required": true,
+  "consumer_id": "codex-shadow",
+  "max_context_chars": 12000,
+  "max_results": 12,
+  "require_evidence": true,
+  "require_explanations": true,
+  "schema_version": "BridgeCapabilityPolicyV1"
+}

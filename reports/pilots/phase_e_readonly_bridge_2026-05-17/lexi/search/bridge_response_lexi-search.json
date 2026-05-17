@@ -1,0 +1,469 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:50.406133Z",
+    "input_hash": "3e6909a9bd0a4c3bf76e924f19b7450a4cf59790849f67b533427e5c1a1267e3",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "e72f26e1a836713e3cb9510910485263cb1af87b67eac2c79bac26a4ffaab105",
+    "trace_id": "bridge_0afdb5e55f5850e5"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback",
+      "evidence_required_but_unavailable"
+    ]
+  },
+  "error": null,
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-search",
+  "result": {
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {},
+    "limit": 10,
+    "operation": "search",
+    "query": "resume Lexi project current state and next steps",
+    "result_count": 5,
+    "results": [
+      {
+        "backend": "hybrid",
+        "body": "Read-only runtime checks on 2026-04-19 showed `lex-dreamerv2-gpu3-shadow` up and the latest train episode file landing at 2026-04-19T18:47:41-07:00. Historical progression is real: the first 1000 logged returns averaged about 0.4488 reward and 34.15 steps, while the last 1000 averaged about 0.949 reward and 5.44 steps, indicating the policy learned the toy MiniGrid task. The current bottleneck is replay-gated saturation, not total inactivity: the persistent config keeps `replay.capacity: 50000` and `replay.minlen: 10`, the live tail is dominated by `Skipping short episode` lines, and 9992 of the last 10000 logged episodes were shorter than 10 steps. Over that same recent slice, `loaded_episodes` only moved from 4703 to 4708, so the run is still collecting trajectories but very few recent ones are eligible to refresh the replay buffer. The repeated `ffmpeg` errors remain an observability defect for GIF summaries, but they do not explain the weak current learning signal.",
+        "evidence": [
+          {
+            "created_at": "2026-04-19 18:54:41",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "139cbb41-3c2b-4e41-8cc4-4e61895f5991",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/artifacts/local/dreamerv2_probe/minigrid_empty5_persistent_gpu3.log:15152260",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 18:54:41",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "1523f1d2-a26b-4b17-84e1-78f82d892a85",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/tmp/dreamerv2_probe/run_minigrid_persistent.py:26",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 18:54:41",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "3075d4fb-33af-435c-9082-59f8f30995ba",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/artifacts/local/dreamerv2_probe/minigrid_empty5_persistent_gpu3/config.yaml:69",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 18:54:41",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "3351b60b-cd4f-4841-a63d-0700a675f0eb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/artifacts/local/dreamerv2_probe/minigrid_empty5_persistent_gpu3.log:15152063",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 18:54:41",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "d1061a73-0319-45f4-b0fc-592b25132cc4",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/world_model_shadow_harness_report.md:15",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "current",
+              "steps"
+            ],
+            "summary": [
+              "current",
+              "steps"
+            ],
+            "title": [
+              "current"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "steps"
+          ],
+          "penalties": {
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 9.766047,
+            "project_space_match": 3.0,
+            "recency_boost": 1.623188,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 24.415118,
+            "title_token_overlap": 16.305909,
+            "vector_similarity_rescue": 0.76699
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.153398,
+          "vector_used": true
+        },
+        "id": "6e97a92a-84e7-423f-844c-927bd48a7d21",
+        "kind": "constraint",
+        "rank": 1,
+        "scope_key": "repo:0c321b2a6f183a95",
+        "score": 54.905824,
+        "summary": "The Lex DreamerV2 GPU-3 sidecar is still generating fresh MiniGrid episodes, including files written on 2026-04-19, so the experiment is not dead or fully stalled. But current learning is weak because replay requires `minlen: 10` while almost all recent episodes are only 5-9 steps and are being skipped before they can enter replay.",
+        "title": "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated plateau",
+        "updated_at": "2026-04-19 18:54:41"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Run artifacts are under /mnt/data/model_swap_eval/qwen36_27b_lexi_test/20260424_072832. Download succeeded, but candidate boot failed on the current serving stack (vLLM 0.11.2 image path) with architecture recognition failure for qwen3_5. Rollback to default compose config completed; /v1/models again reports Lexi rooted at lexi-qwen3-30b-a3b-dpo-merged, direct chat smoke passed, and Lexi/Friday app sanity endpoints responded.",
+        "evidence": [
+          {
+            "created_at": "2026-04-24 14:51:35",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "97988c64-9e13-43a8-9304-5f72422dc257",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/model_swap_eval/qwen36_27b_lexi_test/20260424_072832/post_rollback_smoke_chat.json:1",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-24 14:51:35",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9cd57699-9908-4754-bbd2-006bd999b49a",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/model_swap_eval/qwen36_27b_lexi_test/20260424_072832/qwen36_transformers_parse_check.txt:1",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-24 14:51:35",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "b649bd15-070c-48b3-8009-7af1b993999f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/models/Qwen/qwen36-27b-test/config.json:4",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-24 14:51:35",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "f9e92045-8d57-45df-89ce-d918058dc527",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/model_swap_eval/qwen36_27b_lexi_test/20260424_072832/post_rollback_models.json:1",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "current",
+              "lexi"
+            ],
+            "evidence": [
+              "lexi"
+            ],
+            "summary": [
+              "current",
+              "lexi"
+            ],
+            "title": [
+              "current",
+              "lexi"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "lexi"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 6.038424,
+            "evidence_token_overlap": 0.717979,
+            "project_space_match": 3.0,
+            "recency_boost": 1.710145,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 15.096061,
+            "title_token_overlap": 25.878961,
+            "vector_similarity_rescue": 0.722795
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.144559,
+          "vector_used": true
+        },
+        "id": "e5d3b5b9-405f-4627-a379-b883c0405a9a",
+        "kind": "decision",
+        "rank": 2,
+        "scope_key": "repo:0c321b2a6f183a95",
+        "score": 50.192937,
+        "summary": "Attempted bounded swap of Lex vLLM to /mnt/data/models/Qwen/qwen36-27b-test with served model name Lexi. Startup failed because the checkpoint reports model_type qwen3_5 that the current container stack cannot load, so the service was reverted to /mnt/data/models/Qwen/lexi-qwen3-30b-a3b-dpo-merged and validated healthy.",
+        "title": "Qwen3.6-27B swap test blocked on current Lex vLLM stack; reverted to known-good Lexi model",
+        "updated_at": "2026-04-24 14:51:35"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Findings (Apr 4, 2026): backend core mounts routes.lexi twice (root and /lexi) before mounting routes.lexi_persona (/lexi), so duplicate /lexi/persona/avatar and /lexi/persona/generate_avatar paths exist and the earlier routes.lexi handlers are first-match at runtime. Identity is resolved in session middleware from device/session/handle with auth principal override, producing request.state.user_id/auth_user_id. Avatar files are served from /lexi/static/avatars and deterministic per-IP names are derived via ip_seed helpers; process/new_look and legacy persona generate paths use IP-based base_name, then save avatar URL in per-user persona_state.json under resolve_memory_root()/users/<user_id>. Avatar Tools modal calls /lexi/gen/avatar, which is session-cookie/header based and auto-creates lex_session if missing; txt2img uses random base_name, img2img starts from IP base. Auth/account schemas currently do not include avatar columns; per-user avatar history exists only when LEXI_USER_DATA_ENABLED is on via avatars_manifest.json (first/latest + metadata) and /lexi/user/avatar/history.",
+        "evidence": [],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "lexi",
+              "state"
+            ],
+            "summary": [
+              "current",
+              "lexi",
+              "state"
+            ],
+            "title": [
+              "state"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "lexi",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 5.941834,
+            "project_space_match": 3.0,
+            "recency_boost": 0.724638,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 24.366366,
+            "title_token_overlap": 15.891952,
+            "vector_similarity_rescue": 1.441605
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.288321,
+          "vector_used": true
+        },
+        "id": "82f73be8-e791-410b-b873-05dd572d061e",
+        "kind": "runbook",
+        "rank": 3,
+        "scope_key": "repo:0c321b2a6f183a95",
+        "score": 50.109252,
+        "summary": "Current backend route order registers duplicate /lexi/persona endpoints, and the legacy routes/lexi handlers are matched before routes/lexi_persona. In effective behavior, avatar assets are mostly generated/addressed by IP/session, while user linkage is persisted as per-user persona_state and optional avatar manifest metadata.",
+        "title": "Lex avatar management currently mixes per-IP rendering with per-user state, with legacy persona routes taking precedence",
+        "updated_at": "2026-04-04 17:31:21"
+      },
+      {
+        "backend": "hybrid",
+        "body": "To avoid implicit endpoint sharing as Friday scales, reserve host vLLM ports per project: Lexi -> :8008, Friday -> :8018. Lex docs/env templates now include FRIDAY_HOST_VLLM_BASE=http://host.docker.internal:8018/v1 as reserved coexistence convention. Friday currently has legacy references to :8008; treat those as compatibility paths and migrate startup defaults toward reserved Friday port.",
+        "evidence": [],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "lexi",
+              "project"
+            ],
+            "summary": [
+              "lexi",
+              "project"
+            ],
+            "title": [
+              "lexi"
+            ]
+          },
+          "matched_tokens": [
+            "lexi",
+            "project"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 8.762698,
+            "project_space_match": 3.0,
+            "recency_boost": 0.115942,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 21.906746,
+            "title_token_overlap": 9.573052,
+            "vector_similarity_rescue": 1.219525
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.243905,
+          "vector_used": true
+        },
+        "id": "332bdc82-1c4e-43d5-ae24-5d19fcc20e72",
+        "kind": "interface",
+        "rank": 4,
+        "scope_key": "repo:0c321b2a6f183a95",
+        "score": 41.606535,
+        "summary": "Cross-project host routing must reserve separate vLLM ports: Lexi on 8008 and Friday on 8018.",
+        "title": "Lexi/Friday host vLLM port separation contract",
+        "updated_at": "2026-03-30 00:15:59"
+      },
+      {
+        "backend": "hybrid",
+        "body": "This constraint eliminates the obvious local dense fallback that was already present under `/mnt/data/models/Qwen/Qwen3-32B-AWQ`. vLLM aborts engine config creation with `The quantization method awq is not supported for the current GPU. Minimum capability: 75. Current capability: 70.` on V100/sm_70, so the next viable serving candidate on this machine must be a non-AWQ dense checkpoint or a different runtime/hardware path.",
+        "evidence": [
+          {
+            "created_at": "2026-04-07 01:35:27",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "55e3763c-72f0-4536-b35a-1b9b86033146",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docker-compose.yml:155",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-07 01:35:27",
+            "evidence_type": "log",
+            "excerpt": null,
+            "id": "622b2a90-01e1-4f43-9c85-a6840977b442",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "docker logs --tail 120 lex-vllm-qwen35-1",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "current",
+              "next"
+            ],
+            "summary": [
+              "current"
+            ],
+            "title": [
+              "current"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "next"
+          ],
+          "penalties": {
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 9.050891,
+            "project_space_match": 3.0,
+            "recency_boost": 0.84058,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 9.51178,
+            "title_token_overlap": 16.305909,
+            "vector_similarity_rescue": 0.45905
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.09181,
+          "vector_used": true
+        },
+        "id": "b56a0d1b-7eef-439a-821e-12b048fee950",
+        "kind": "constraint",
+        "rank": 5,
+        "scope_key": "repo:0c321b2a6f183a95",
+        "score": 38.196782,
+        "summary": "The local dense fallback checkpoint `Qwen3-32B-AWQ` cannot be used on the 8x V100 32 GB box with the current vLLM 0.17.0 image because AWQ requires compute capability 7.5 or newer. Switching `vllm-qwen35` to that checkpoint caused immediate startup validation failure before serving.",
+        "title": "AWQ checkpoint fallback is blocked on V100/sm_70 in current vLLM runtime",
+        "updated_at": "2026-04-07 01:35:27"
+      }
+    ],
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

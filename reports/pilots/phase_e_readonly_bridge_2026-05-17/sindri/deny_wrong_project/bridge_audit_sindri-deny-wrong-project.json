@@ -1,0 +1,46 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/sindri/deny_wrong_project/bridge_audit_sindri-deny-wrong-project.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/sindri/deny_wrong_project/bridge_response_sindri-deny-wrong-project.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:50:28.797178Z",
+  "db": {
+    "after": null,
+    "before": null,
+    "changed": {},
+    "hash": "8720e0c7525c6bf834c7fb83cb4719528e61b0de7c6db3a44e82684f2a9644eb",
+    "path": "reports/pilots/sindri_v2_shadow_2026-05-17/sindri_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "project_path_not_allowed"
+    ]
+  },
+  "policy_hash": "ab2f75110044913bcd155ad800ff1ae83c0e22d6d7a612420745f98001c5eb9c",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "7f1873bcc2ef37e00f5ca845dd4d244ff83f2f003c0fbd25e8692d94cbe07d4d",
+  "request_id": "sindri-deny-wrong-project",
+  "response_hash": "1c429450a8b5647f1df1e62c994fa5beb4d8dee80522490e414019f4fd0e7a14",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_0391916d2de8c513"
+}

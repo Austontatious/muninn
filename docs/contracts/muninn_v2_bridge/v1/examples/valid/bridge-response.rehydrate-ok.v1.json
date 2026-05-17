@@ -1,0 +1,35 @@
+{
+  "schema_version": "BridgeResponseV1",
+  "contract_version": "1.0.0",
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "example-rehydrate",
+  "operation": "rehydrate",
+  "consumer_id": "codex-shadow",
+  "status": "ok",
+  "policy_decision": {
+    "allowed": true,
+    "reason_codes": [],
+    "clamps": {}
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "result": {
+    "operation": "rehydrate",
+    "rehydrate_response": {},
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {}
+  },
+  "error": null,
+  "audit": {
+    "trace_id": "bridge_example",
+    "created_at": "2026-05-17T00:00:00Z",
+    "replayable": true,
+    "input_hash": "example-input-hash",
+    "policy_hash": "example-policy-hash",
+    "response_hash": "example-response-hash"
+  }
+}

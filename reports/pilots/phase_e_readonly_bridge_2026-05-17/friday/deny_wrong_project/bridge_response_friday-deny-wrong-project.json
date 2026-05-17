@@ -1,0 +1,38 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:37.498665Z",
+    "input_hash": "88661c0b1f82304ee6f471d7f71635661c6ec3013a29e09ee861c31ebbc93fa5",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "b40e96ca60b1f349bc6ad171536a3aaac6acc82d4f0d521b79ee322b39395037",
+    "trace_id": "bridge_a9a92892f72d8b6b"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "project_path_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "project_path_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-deny-wrong-project",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

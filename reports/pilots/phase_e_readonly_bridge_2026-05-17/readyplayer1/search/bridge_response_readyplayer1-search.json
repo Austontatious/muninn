@@ -1,0 +1,1269 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:39.334291Z",
+    "input_hash": "2bb4d63fcf4da60b138852baed19fe71a7e5d5b25056257fcd5ba59d5a6350d9",
+    "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+    "replayable": true,
+    "response_hash": "1fe36c7f493887304b97e63faac8da70e4a4bc3f7c11088fd8cf5e020260d71e",
+    "trace_id": "bridge_2b828a5d5688d80f"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "readyplayer1-search",
+  "result": {
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {},
+    "limit": 10,
+    "operation": "search",
+    "query": "resume ReadyPlayer1 current campaign state and next steps",
+    "result_count": 10,
+    "results": [
+      {
+        "backend": "hybrid",
+        "body": "Implemented canonical pointer surfaces runs/current/lane_current_state_index.json and runs/current/<lane_id>/lane_current_state.json and synced them from lane registry updates. Canonicalized lane registry onboarding semantics to keep onboarding_config_json/onboarding_template_json as current bootstrap source and preserve historical onboarding run snapshots in latest_onboarding_run_config_json/latest_onboarding_run_summary_json. Updated README, RUNBOOK, and ARCHITECTURE_CHECKPOINT to align operator default flow with the new current-state pointer strategy; added docs/tasks/repo_drift_phase2_execution_summary.{md,json}.",
+        "evidence": [
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "1c36999b-a698-4e10-b478-6f336cfbe911",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/ARCHITECTURE_CHECKPOINT.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "2a974af6-f904-4cf6-a9dc-fa91c159a5f4",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/cli.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "3fa9a3a7-f042-4222-8b12-6215610a05ab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/RUNBOOK.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "41256fa3-78ce-4dd4-8ca8-5e6e0572f10b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/README.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "4da2f574-d688-4340-8071-b56975dc224c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "bf4173ec-f4b8-4f13-af0b-991245f7a20b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/tests/test_subsim_lane_ops.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "d838aa3d-4717-4310-ab64-fda463dfdcb5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/lane_ops.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-23 17:39:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e7198c14-20ab-4a26-a266-addfc6f71905",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "current",
+              "state"
+            ],
+            "evidence": [
+              "readyplayer1"
+            ],
+            "summary": [
+              "current",
+              "readyplayer1",
+              "state"
+            ],
+            "title": [
+              "current",
+              "state"
+            ]
+          },
+          "matched_tokens": [
+            "current",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 7.278142,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 0.459279,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.234043,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 21.767523,
+            "title_token_overlap": 31.192039,
+            "vector_similarity_rescue": 2.17217
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.434434,
+          "vector_used": true
+        },
+        "id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+        "kind": "decision",
+        "rank": 1,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 81.846053,
+        "summary": "Phase 2 consolidated ReadyPlayer1 lane current-state consumption around runs/current pointer artifacts and removed stale onboarding-source ambiguity from registry defaults. Registry onboarding now points to the canonical template/source while historical onboarding run artifacts are retained as lineage fields.",
+        "title": "Phase 2 canonical current-state pointers and onboarding source consolidation",
+        "updated_at": "2026-04-23 17:39:49"
+      },
+      {
+        "backend": "hybrid",
+        "body": "SubSim now emits structured fire_control observation fields and sonar-console frames carry them. ReadyPlayer1 normalizes producer fire-control state and infer-compatible replay state, adds coverage metrics, and preserved Campaign 004A fire-control behavior plus sonar/acoustic gates. Final status CAMPAIGN_005A_PROMOTED.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:05:08",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "49016b7e-4d7c-4658-a76f-bee5e6c6d451",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:08",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "5064aa40-d2bd-4526-bda9-44c002294d5d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:08",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "b3dae469-81a5-42c8-a708-76a2bda3eee8",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/harness/subsim/sonar_adapter.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:08",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "bc04fe78-5f79-43b2-9d01-e63ef7a4b4af",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1",
+              "state"
+            ],
+            "title": [
+              "campaign",
+              "state"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 8.07423,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.914894,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 20.185575,
+            "title_token_overlap": 28.480128,
+            "vector_similarity_rescue": 2.403215
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.480643,
+          "vector_used": true
+        },
+        "id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+        "kind": "decision",
+        "rank": 2,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 80.382445,
+        "summary": "Campaign 005A promoted explicit fire-control readiness and solution-state visibility for SubSim observations consumed by ReadyPlayer1.",
+        "title": "Campaign 005A promoted fire-control state normalization",
+        "updated_at": "2026-05-07 17:05:08"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Evidence: clean_single_contact_tracking under seed 7 moved torpedo_count 2 -> 1, torpedo_duplicate_same_track_count 1 -> 0, and torpedo_wasted_shot_rate 0.5 -> 0.0. clutter_false_positive preservation metrics stayed unchanged, scenario suite remained 7 pass / 0 fail, golden regression passed, SubSim full tests passed, and ReadyPlayer1 focused SubSim tests passed. Next recommended campaign is Campaign 005A: normalize SubSim fire-control readiness/solution state into ReadyPlayer1 observations and replay traces.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 16:18:00",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "194d9ef0-d37a-48ad-be7b-e35318f9f759",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:18:00",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "7a30fa16-62a4-4b8a-a839-567f9d4435ae",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:18:00",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "7a35b654-0edc-4f34-989b-207490e27765",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign",
+              "next",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign",
+              "readyplayer1"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "next",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {},
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 12.981967,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.787234,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 21.087266,
+            "vector_similarity_rescue": 1.96432
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.392864,
+          "vector_used": true
+        },
+        "id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+        "kind": "decision",
+        "rank": 3,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 71.703236,
+        "summary": "Campaign 004A promoted after a bounded ReadyPlayer1-side change to the belief_baseline fire-control loop. The policy now emits fire-control decision rationale, suppresses duplicate same-primary torpedo commits, and adds deterministic fire-control metrics while preserving SubSim sonar gains.",
+        "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch",
+        "updated_at": "2026-05-07 16:18:00"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Campaign 006A made no SubSim torpedo physics changes. ReadyPlayer1 belief_baseline uses normalized Campaign 005A fire-control/contact state to allow earlier reacquire pings only for credible lost/recoverable tracks, while rejecting clutter-like/high-risk contacts. Metrics now report post-loss reacquisition attempt/ping/success, clutter rebind, belief drift after loss, and valid-fire ready-but-hold rate. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic heldout clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0. Taxonomy remained honest: timidity_indecision dropped, belief_drift and reacquisition_failure remain where fixed replay still does not recover contact.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:32:36",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:32:36",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "21f79e08-e73f-449d-b074-ecc10c1e69af",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:32:36",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:32:36",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "f5a27605-9617-4229-b771-ac1b93b6e0ab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 8.07423,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.957447,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 14.96355,
+            "vector_similarity_rescue": 2.356975
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.471395,
+          "vector_used": true
+        },
+        "id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+        "kind": "decision",
+        "rank": 4,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 58.97751,
+        "summary": "Campaign 006A promoted a bounded ReadyPlayer1 policy and metrics change for post-shot/post-loss reacquisition. The belief_baseline now performs an evidence-gated early active ping for credible lost tracks, improving post-loss probe behavior while preserving duplicate-shot, wasted-shot, sonar clutter, and acoustic clutter gates.",
+        "title": "Campaign 006A promoted post-loss recovery probe",
+        "updated_at": "2026-05-07 17:32:36"
+      },
+      {
+        "backend": "hybrid",
+        "body": "The refreshed Campaign 004A evidence uses suite run 20260507T163754Z-subsim_suite-bd3e2a and heldout acoustic regression scoring. Scenario suite remains 7 pass / 0 fail with regression pass; acoustic_clutter_wrong_binding_rate remains 0.0; SubSim full tests passed 65; ReadyPlayer1 full tests passed with one skipped marker. Remaining risks are not hidden: timidity_indecision, belief_drift, and reacquisition_failure remain, and SubSim fire-control state is not yet normalized into replay observations.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 16:43:23",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "2b020d6e-b554-456d-bb7f-6e5763dc027b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:43:23",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "3654a416-d532-47f0-b355-a260bcbbf15d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:43:23",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "84e5853a-d1cd-43b4-92b3-b734276eefef",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_after_runs/acoustic_regression/campaign_004a_acoustic_regression_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:43:23",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9054e34c-fe1f-4433-ab4d-156982bc6ef8",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 16:43:23",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "c93fb229-53d3-479d-8e21-a6a457a66872",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 8.07423,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.87234,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 14.96355,
+            "vector_similarity_rescue": 1.9845
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.3969,
+          "vector_used": true
+        },
+        "id": "719fafb5-b25b-4460-a549-987799432a6c",
+        "kind": "decision",
+        "rank": 5,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 58.519928,
+        "summary": "Campaign 004A is promoted. ReadyPlayer1 belief_baseline now exposes fire-control decision rationale and suppresses duplicate same-primary torpedo commits, moving clean_single_contact_tracking torpedo_count from 2 to 1 and torpedo_wasted_shot_rate from 0.5 to 0.0 while preserving sonar and acoustic clutter gates.",
+        "title": "Campaign 004A fire-control loop promoted",
+        "updated_at": "2026-05-07 16:43:23"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_recover remains honest with belief_drift and reacquisition_failure because the replay still emits no recovered contact after the probe. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_count stayed 0, and torpedo_wasted_shot_rate stayed 0.0.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "84a71d72-829d-4bf1-8214-c145269df127",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:52:40",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 8.07423,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 2.0,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 14.96355,
+            "vector_similarity_rescue": 1.776715
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.355343,
+          "vector_used": true
+        },
+        "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+        "kind": "decision",
+        "rank": 6,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 58.439803,
+        "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+        "title": "Campaign 007A promoted post-reacquisition stabilization",
+        "updated_at": "2026-05-07 17:52:40"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Implemented `readyplayer1/rl/state_space_refinement.py` and `readyplayer1/eval/scenarios/subsim/dreamer_state_space_refinement_preset_v1.json` to run deterministic state-only ablations on the existing progression ladder. Progression pathology logic now includes continuity-specific failure labels (`contact_hypothesis_instability`, `reacquisition_link_failure`, `belief_decay_miscalibration`, `transition_signal_weakness`, `state_surface_shortcutting`) plus `continuity_gain_realized` as a positive signal. The first canonical run (`runs/20260419T220932Z-subsim_rl_state_space-f48d24`) concluded `state_surface_refinement_still_blocked` with recommended next branch `deeper_recurrent_state_space_architecture_change`.",
+        "evidence": [
+          {
+            "created_at": "2026-04-19 22:11:13",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "060de2fd-8e6e-43cd-84fa-b7f8a65836f7",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/perception.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 22:11:13",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "21215b0b-02c5-439c-a114-07c01ab43f72",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/runs/20260419T220932Z-subsim_rl_state_space-f48d24/dreamer_state_space_refinement_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 22:11:13",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "366bf676-f44c-4329-9da6-453c808d8896",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/state_space_refinement.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 22:11:13",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "4d501eab-65be-49ff-b397-99ac230edbdb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/progression.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 22:11:13",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "f15aaa61-0001-452d-a309-d4cf8ce9375c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/scenarios/subsim/dreamer_state_space_refinement_preset_v1.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "next",
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "readyplayer1",
+              "state"
+            ],
+            "summary": [
+              "readyplayer1",
+              "state"
+            ],
+            "title": [
+              "state"
+            ]
+          },
+          "matched_tokens": [
+            "next",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 9.490471,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.473022,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 0.297872,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 11.456838,
+            "title_token_overlap": 13.516578,
+            "vector_similarity_rescue": 1.416665
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.283333,
+          "vector_used": true
+        },
+        "id": "6c405f42-8fb5-4735-8bad-fcd2f5b71908",
+        "kind": "decision",
+        "rank": 7,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 55.394303,
+        "summary": "ReadyPlayer1 now includes a continuity-first `state_v3_state_space` observation variant and a dedicated `rl-refine-state-space` workflow that compares state_v1/state_v2/state_v3 with reward fixed. Canonical artifacts are emitted as `dreamer_state_space_refinement_summary.json|md` under `runs/`.",
+        "title": "State-space continuity refinement v3 added as canonical RL ablation lane",
+        "updated_at": "2026-04-19 22:11:13"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Implemented and wired `rl-rssm-v2-governed-resume` plus `rl-rssm-v2-operator-view` in the CLI, added deterministic tests in `tests/test_subsim_rl_rssm_v2_governed_resume.py`, and executed a real continuation run at `runs/20260420T170022Z-subsim_rl_rssm_v2_governed_resume-026a3a/` using the latest governed expansion + clutter governance update. The consolidated output shows trust distribution validated=5/monitored=1/research_only=1, keeps clutter (`clutter_false_positive_heavy`) monitored with auto-promotion blocked, and recommends `continue_governed_curriculum_expansion` with frontier target `adversarial_or_degenerate`.",
+        "evidence": [
+          {
+            "created_at": "2026-04-20 17:03:48",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "3773f68b-1f2e-459b-bab5-0c19f6f31193",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/cli.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-20 17:03:48",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "38aad427-9739-46e2-b35d-e88250b12928",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/runs/20260420T170022Z-subsim_rl_rssm_v2_governed_resume-026a3a/rssm_v2_monitoring_consolidated_view.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-20 17:03:48",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "75c71aca-81e7-4c6c-bcd4-d08e672bc21d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/tests/test_subsim_rl_rssm_v2_governed_resume.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-20 17:03:48",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "cce8a0e6-db5f-4440-9b23-106f64fcfafe",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/rssm_v2_governed_resume.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-20 17:03:48",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "d8c1592d-69f7-4f8f-a85e-049e6c7714e3",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/runs/20260420T170022Z-subsim_rl_rssm_v2_governed_resume-026a3a/rssm_v2_lane_status_governed_refreshed.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "resume"
+            ],
+            "evidence": [
+              "readyplayer1",
+              "resume"
+            ],
+            "summary": [
+              "readyplayer1",
+              "resume"
+            ],
+            "title": [
+              "resume"
+            ]
+          },
+          "matched_tokens": [
+            "readyplayer1",
+            "resume"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 4.124274,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.784938,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 0.638298,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 13.882853,
+            "title_token_overlap": 17.675461,
+            "vector_similarity_rescue": 1.16642
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.233284,
+          "vector_used": true
+        },
+        "id": "b045f7d1-a009-4883-b194-935622d7cd12",
+        "kind": "decision",
+        "rank": 8,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 55.300816,
+        "summary": "ReadyPlayer1 now exposes a real governed-resume execution path that carries clutter forward as monitored, reruns bounded governed cycles, refreshes trust classes, and emits a consolidated monitoring/operator artifact. A compact operator-view CLI now reads that artifact for day-to-day triage.",
+        "title": "RSSM v2 governed-resume workflow is now operational with consolidated operator view",
+        "updated_at": "2026-04-20 17:03:48"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Durable outcome: SubSim sonar tracks now expose lifecycle states, ReadyPlayer1 normalizes them as contact_lifecycle_state, and metrics separate active ambiguity from terminal rejected/lost contacts. Key clutter_false_positive movement: sonar_binding_ambiguity_abandonment_rate 1.0 -> 0.0, action_thrash 4 -> 4, false_positive_rate held at 0.2857142857142857.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 15:34:44",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "001a6c4f-e107-4927-bef1-1179e008a94f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_002a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 15:34:44",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "0e848eaa-7663-42f3-9f43-b94ee4e6b919",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_002a_after.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 15:34:44",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "cb4bfca4-9f40-4ce1-ade7-2096ca796a09",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_002a_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "readyplayer1",
+              "state"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 4.582735,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.702128,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 14.96355,
+            "vector_similarity_rescue": 1.31965
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.26393,
+          "vector_used": true
+        },
+        "id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+        "kind": "decision",
+        "rank": 9,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 54.19337,
+        "summary": "Campaign 002A added explicit sonar contact lifecycle states and lifecycle-aware ReadyPlayer1 diagnostics. The belief_baseline suite stayed at 7 pass / 0 fail with golden regression pass, while clutter_false_positive removed binding_ambiguity_abandonment and preserved clutter_binding_error.",
+        "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics",
+        "updated_at": "2026-05-07 15:34:44"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Final after suite reports/campaign_001_after_runs/20260507T150834Z-subsim_suite-3e1734 passed all 7 scenario expectations and golden regression. clutter_false_positive false-positive rate improved from 0.5 to 0.2857142857142857; overconfident weak-contact rate improved from 1.0 to 0.0. Scenario expectation stayed unchanged at max 0.35; the suite golden threshold was tightened to enforce that bound. Reports written: campaign_001_after.md, campaign_001_comparison.json, campaign_001_promotion_decision.md.",
+        "evidence": [
+          {
+            "created_at": "2026-05-07 15:11:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "0b178e05-aa7d-4ef8-99c7-67ac62eaf8ef",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_001_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 15:11:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "937e7475-2643-4390-99a6-aa9c3b17a034",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_001_after.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 15:11:24",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9ae69092-4cc2-454f-b69b-e925e26a59bf",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_001_promotion_decision.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "campaign"
+            ],
+            "evidence": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "summary": [
+              "campaign",
+              "readyplayer1"
+            ],
+            "title": [
+              "campaign"
+            ]
+          },
+          "matched_tokens": [
+            "campaign",
+            "readyplayer1"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 3.491495,
+            "campaign_token_match": 6.0,
+            "evidence_token_overlap": 1.581545,
+            "numeric_token_match": 10.0,
+            "project_space_match": 3.0,
+            "recency_boost": 1.659574,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 12.300905,
+            "title_token_overlap": 14.96355,
+            "vector_similarity_rescue": 0.58537
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.117074,
+          "vector_used": true
+        },
+        "id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+        "kind": "decision",
+        "rank": 10,
+        "scope_key": "repo:5059f410815720ea",
+        "score": 50.611011,
+        "summary": "ReadyPlayer1 Campaign 001 after evaluation promoted the sonar clutter readability patch using the belief_baseline lane, not a learned/shadow lane.",
+        "title": "Campaign 001 promoted on belief_baseline clutter evidence",
+        "updated_at": "2026-05-07 15:11:24"
+      }
+    ],
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

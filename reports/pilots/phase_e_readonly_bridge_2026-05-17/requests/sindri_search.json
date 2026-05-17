@@ -1,0 +1,14 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "search",
+  "project_path": "/mnt/data/Sindri",
+  "query": "Phase 11 transfer validation sequence wrapper lane current state",
+  "request_id": "sindri-search",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "path:316f4f67d061cbdd"
+}

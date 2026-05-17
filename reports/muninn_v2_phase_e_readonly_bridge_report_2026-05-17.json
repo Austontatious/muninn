@@ -1,0 +1,307 @@
+{
+  "adaptive_retrieval_status": "disabled by default; denied unless policy explicitly allows it; no reinforcement writes are supported",
+  "architecture_summary": "Phase E now has an operation-oriented, policy-scoped, local/offline read-only bridge harness. It accepts BridgeRequestV1, enforces BridgeCapabilityPolicyV1 before retrieval, emits BridgeResponseV1, embeds RehydrateResponseV1 for rehydrate, and writes request-id scoped audit artifacts.",
+  "artifacts": {
+    "architecture_doc": "docs/muninn_v2_bridge_architecture.md",
+    "pilot_dir": "reports/pilots/phase_e_readonly_bridge_2026-05-17",
+    "plan_review_md": "reports/muninn_v2_phase_e_bridge_plan_review_2026-05-17.md"
+  },
+  "audit_replay_status": "response and audit artifacts include request hash, policy hash, response hash, DB path/hash, operation, policy decision, degradation, retrieval config, adaptive config, and trace id",
+  "contracts_implemented": [
+    "BridgeRequestV1",
+    "BridgeResponseV1",
+    "BridgeCapabilityPolicyV1",
+    "BridgeAuditV1 artifact shape"
+  ],
+  "cutover_status": {
+    "ADAPTIVE DEFAULT RETRIEVAL": "NO-GO",
+    "BRIDGE": "GO FOR SHADOW READ-ONLY USE",
+    "CUTOVER": "NO-GO",
+    "WRITES": "NO-GO"
+  },
+  "date": "2026-05-17",
+  "denial_security_tests": {
+    "adaptive_requested": "denied for all five pilots",
+    "unit_denials": [
+      "unknown operation",
+      "wrong project",
+      "adaptive scoring",
+      "evidence omitted",
+      "invalid schema"
+    ],
+    "wrong_project": "denied for all five pilots"
+  },
+  "known_limitations": [
+    "local CLI only; no production network auth/rate limiting",
+    "sqlite_vec unavailable so derived vector status is degraded to JSON/hash fallback",
+    "Lexi search includes evidence_required_but_unavailable degradation for some selected search hits",
+    "SubSim has sparse search coverage for the generic resume query but rehydrate still returns scoped context",
+    "no live integration, no cutover, no autonomous writes"
+  ],
+  "operations_implemented": [
+    "health",
+    "search",
+    "rehydrate",
+    "explain"
+  ],
+  "pilots": {
+    "friday": {
+      "deny_adaptive": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "deny_wrong_project": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "explain": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "health": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "policy_allowed": true,
+        "primary": 3,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "selected_total": 8,
+        "status": "ok",
+        "supplements": 5
+      },
+      "search": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "result_count": 3,
+        "status": "ok"
+      }
+    },
+    "lexi": {
+      "deny_adaptive": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "deny_wrong_project": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "explain": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "health": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "policy_allowed": true,
+        "primary": 3,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "selected_total": 8,
+        "status": "ok",
+        "supplements": 5
+      },
+      "search": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback",
+          "evidence_required_but_unavailable"
+        ],
+        "result_count": 5,
+        "status": "ok"
+      }
+    },
+    "readyplayer1": {
+      "deny_adaptive": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "deny_wrong_project": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "explain": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "health": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "policy_allowed": true,
+        "primary": 3,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "selected_total": 9,
+        "status": "ok",
+        "supplements": 6
+      },
+      "search": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "result_count": 10,
+        "status": "ok"
+      }
+    },
+    "sindri": {
+      "deny_adaptive": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "deny_wrong_project": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "explain": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "health": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "policy_allowed": true,
+        "primary": 3,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "selected_total": 8,
+        "status": "ok",
+        "supplements": 5
+      },
+      "search": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "result_count": 7,
+        "status": "ok"
+      }
+    },
+    "subsim": {
+      "deny_adaptive": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "deny_wrong_project": {
+        "degraded": false,
+        "policy_allowed": false,
+        "reason_codes": [],
+        "status": "denied"
+      },
+      "explain": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "health": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "status": "ok"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "policy_allowed": true,
+        "primary": 1,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "selected_total": 4,
+        "status": "ok",
+        "supplements": 3
+      },
+      "search": {
+        "degraded": true,
+        "policy_allowed": true,
+        "reason_codes": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "result_count": 1,
+        "status": "ok"
+      }
+    }
+  },
+  "policy_model": "deny_by_default_consumer_operation_space_project_budget_evidence_explanation_adaptive_policy",
+  "schema_version": "muninn.v2.phase_e_readonly_bridge_report.v1",
+  "v1_safety_status": {
+    "v1_access_from_bridge": false,
+    "v1_row_counts_changed": false,
+    "v1_runtime_schema_mcp_defaults_changed": false
+  }
+}

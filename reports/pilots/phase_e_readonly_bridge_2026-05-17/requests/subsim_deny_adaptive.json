@@ -1,0 +1,14 @@
+{
+  "allow_adaptive_scoring": true,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "search",
+  "project_path": "/mnt/data/subsim",
+  "query": "resume SubSim project current state and next steps",
+  "request_id": "subsim-deny-adaptive",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:363c13a65e92ef58"
+}

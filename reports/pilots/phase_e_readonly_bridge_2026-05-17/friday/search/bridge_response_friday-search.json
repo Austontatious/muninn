@@ -1,0 +1,367 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:35.573782Z",
+    "input_hash": "721185fb69ee934686c24f9b2c4e1e445bd463f8b0fcf84318c23f2d416c1251",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "874d41831f3ebc8b7701783462843e28cb3eb5740ac81c6bcc89118894b5063e",
+    "trace_id": "bridge_88b86d07d14026b0"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-search",
+  "result": {
+    "adaptive_scoring": {
+      "enabled": false
+    },
+    "clamps": {},
+    "limit": 10,
+    "operation": "search",
+    "query": "resume Friday project current state and next steps",
+    "result_count": 3,
+    "results": [
+      {
+        "backend": "hybrid",
+        "body": "Commands exercised: analyze_run --run-id gold_full_v1 --dry-run; heuristic-only full run to write 50-result artifact set; OpenAI smoke run with --limit 3 producing analysis_results and priority_slices; resume rerun with same analysis_run_id showing to_analyze=0 and no growth in analysis_results line count.",
+        "evidence": [
+          {
+            "created_at": "2026-04-14 16:34:57",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "17144789-09c0-4dd1-93db-23e795a1e58f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_heuristic_v2/analysis_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 16:34:57",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "1e6b94d0-aed0-477f-94e4-f4dc8b149183",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 16:34:57",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "2727e421-390a-4ced-988c-bcb5980cdd15",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis/README.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 16:34:57",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "61df0a11-0173-4b17-8571-b844735fe56d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_results.jsonl",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "resume"
+            ],
+            "evidence": [
+              "friday"
+            ],
+            "summary": [
+              "resume"
+            ],
+            "title": [
+              "friday",
+              "resume"
+            ]
+          },
+          "matched_tokens": [
+            "friday",
+            "resume"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 4.566468,
+            "evidence_token_overlap": 0.479042,
+            "project_space_match": 3.0,
+            "recency_boost": 1.363636,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 11.416171,
+            "title_token_overlap": 25.95781,
+            "vector_similarity_rescue": 2.057005
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.411401,
+          "vector_used": true
+        },
+        "id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+        "kind": "runbook",
+        "rank": 1,
+        "scope_key": "repo:f8cc7f64d3636a4e",
+        "score": 45.868704,
+        "summary": "Validated analysis phase against existing gold_full_v1 runner artifacts using dry-run, heuristic-only full pass, OpenAI smoke limit=3, and resume dedupe check.",
+        "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks",
+        "updated_at": "2026-04-14 16:34:57"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Validation commands exercised: dry-run for gold_only/generated_only/combined; live smoke run for combined limit=3 with run_id smoke_runner_v1; resume rerun with same run_id produced to_run=0 and did not append duplicates. Additional live mode checks were run for gold_only limit=1 and generated_only limit=1.",
+        "evidence": [
+          {
+            "created_at": "2026-04-14 15:03:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "4d81bbad-dfd1-4bbe-a8fb-9d4faffd11cb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_summary.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 15:03:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "a74fa9c0-8a02-42e7-af2a-6ccb8f650ba0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runner/config.example.yaml",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 15:03:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "aaaa4e39-c7cf-4615-940e-4ba29083aba2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runner/README.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-14 15:03:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "e719e25a-5bdd-40f4-863f-93ca60d2b4e2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_results.jsonl",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "resume"
+            ],
+            "evidence": [
+              "friday"
+            ],
+            "summary": [
+              "resume"
+            ],
+            "title": [
+              "friday",
+              "resume"
+            ]
+          },
+          "matched_tokens": [
+            "friday",
+            "resume"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -1.971429
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 4.566468,
+            "evidence_token_overlap": 0.479042,
+            "project_space_match": 3.0,
+            "recency_boost": 1.272727,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 11.416171,
+            "title_token_overlap": 25.95781,
+            "vector_similarity_rescue": 1.278505
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.255701,
+          "vector_used": true
+        },
+        "id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+        "kind": "runbook",
+        "rank": 2,
+        "scope_key": "repo:f8cc7f64d3636a4e",
+        "score": 44.999295,
+        "summary": "Use evals/runner/config.example.yaml to execute corpus tasks and emit run artifacts under evals/runs/<run_id>. Resume mode skips already-recorded stable IDs (task_id for gold, variant_id for generated).",
+        "title": "Run Friday corpus runner in dry-run, smoke, and resume modes",
+        "updated_at": "2026-04-14 15:03:49"
+      },
+      {
+        "backend": "hybrid",
+        "body": "Implemented Kotlin + Jetpack Compose app module (com.friday.mobile) with layered state/network/settings boundaries. Default endpoint is seeded to http://100.125.116.103:18080/ and routes map by mode to /api/althing/chat and /api/chat. Connection health probes /healthz and the UI exposes retry/error handling with Tailscale hinting.",
+        "evidence": [
+          {
+            "created_at": "2026-04-12 08:43:25",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "12b145e3-692f-4918-b59d-9c89562be555",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ChatViewModel.kt",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-12 08:43:25",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "69067d0e-b6d2-4c1d-a417-52721e89c0b6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/README.md",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-12 08:43:25",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "9e980adf-c4bb-420a-8b53-b8ff22a633fe",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ui/screens/ChatScreen.kt",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "explanation": {
+          "candidate_sources": [
+            "body",
+            "evidence",
+            "summary",
+            "title",
+            "vector"
+          ],
+          "matched_fields": {
+            "body": [
+              "friday",
+              "state"
+            ],
+            "evidence": [
+              "friday"
+            ],
+            "summary": [
+              "friday"
+            ],
+            "title": [
+              "friday",
+              "project"
+            ]
+          },
+          "matched_tokens": [
+            "friday",
+            "project",
+            "state"
+          ],
+          "penalties": {
+            "broad_token_match": -2.0,
+            "low_specificity_match": -0.257143
+          },
+          "retrieval_path": "v2_hybrid_recall",
+          "score_components": {
+            "body_token_overlap": 6.369223,
+            "evidence_token_overlap": 0.479042,
+            "project_space_match": 3.0,
+            "recency_boost": 0.772727,
+            "salience_boost": 1.0,
+            "summary_token_overlap": 3.725885,
+            "title_token_overlap": 27.296671,
+            "vector_similarity_rescue": 1.83133
+          },
+          "score_semantics": "higher deterministic hybrid score is better",
+          "vector_score": 0.366266,
+          "vector_used": true
+        },
+        "id": "c1907668-82e4-4e07-908d-69250a58e825",
+        "kind": "decision",
+        "rank": 3,
+        "scope_key": "repo:f8cc7f64d3636a4e",
+        "score": 42.217736,
+        "summary": "Friday now has a conventional native Android app at android/ as the canonical mobile frontend foundation, rather than a web-wrapper approach. The MVP ships with chat UX, mode switching, connection states, and configurable endpoint routing to existing Friday APIs.",
+        "title": "Friday mobile client uses native Android Compose project under android/",
+        "updated_at": "2026-04-12 08:43:25"
+      }
+    ],
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

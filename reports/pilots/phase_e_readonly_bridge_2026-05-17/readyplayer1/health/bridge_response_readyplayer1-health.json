@@ -1,0 +1,50 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:38.671123Z",
+    "input_hash": "c8e5a5216730577956959e98568cedda7b7092fa365a70596b7177471af44e5e",
+    "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+    "replayable": true,
+    "response_hash": "9d8baea08f390e51ee190b551e09744071f88082055657f35cbb674049ebab47",
+    "trace_id": "bridge_eb2e7ed362f7fcc9"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "health",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "readyplayer1-health",
+  "result": {
+    "adaptive_scoring_default": false,
+    "bridge_version": "muninn-v2-bridge/1.0.0",
+    "cards_available": 48,
+    "db_readable": true,
+    "index_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 48,
+      "indexed_records": 48,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "policy_consumer_id": "codex-shadow",
+    "policy_loaded": true,
+    "schema_available": true
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

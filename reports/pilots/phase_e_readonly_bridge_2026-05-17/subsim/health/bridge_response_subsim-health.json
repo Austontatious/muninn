@@ -1,0 +1,50 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:42.471715Z",
+    "input_hash": "cf63e07c831154b002895d80e9600ff951ebb71f516c9345b4a4711d013755f3",
+    "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+    "replayable": true,
+    "response_hash": "35d3ed76ff9488d681c17ab55f40850fb31bc13dff3d940de8175c41ad3aa541",
+    "trace_id": "bridge_72abd1368f75a458"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "health",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "subsim-health",
+  "result": {
+    "adaptive_scoring_default": false,
+    "bridge_version": "muninn-v2-bridge/1.0.0",
+    "cards_available": 18,
+    "db_readable": true,
+    "index_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 18,
+      "indexed_records": 18,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "policy_consumer_id": "codex-shadow",
+    "policy_loaded": true,
+    "schema_available": true
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

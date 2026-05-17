@@ -1,0 +1,69 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/subsim/search/bridge_audit_subsim-search.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/subsim/search/bridge_response_subsim-search.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:43.089656Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779051264737933405,
+      "path": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 233472,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779051264737933405,
+      "path": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 233472,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "060e8ba6758693a288a9a7e50f155b4aa2a085e774f4d16885b1ecfc081888e4",
+    "path": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "f462a1505f61b36e608dc9319b15e2732dc873e8286cb2d92b3e18f3ad90a508",
+  "request_id": "subsim-search",
+  "response_hash": "a4d0bb265c3ff6aa382aade73f31fe6782b95ad8c9cf79f3fbadb476be1cbc9d",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_9dd222800cf347ec"
+}

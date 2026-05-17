@@ -1,0 +1,15 @@
+{
+  "allow_adaptive_scoring": false,
+  "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "explain",
+  "project_path": "/mnt/data/friday",
+  "query": "resume Friday project current state and next steps",
+  "request_id": "friday-explain",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:f8cc7f64d3636a4e"
+}

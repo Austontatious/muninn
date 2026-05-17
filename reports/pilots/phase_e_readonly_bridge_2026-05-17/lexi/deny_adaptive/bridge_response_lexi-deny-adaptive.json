@@ -1,0 +1,38 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:53.020544Z",
+    "input_hash": "d426883a01269697c0d2b9c72267ae7af59cc8484f395deddb529ed4f3368c58",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "40d66ec3af64c8d5fe38047e3e67a2740470355db56978dd563045452a586f0d",
+    "trace_id": "bridge_a8fa6da4df940bd8"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "adaptive_scoring_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "adaptive_scoring_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-deny-adaptive",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

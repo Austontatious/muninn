@@ -1,0 +1,46 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": true
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/subsim/deny_adaptive/bridge_audit_subsim-deny-adaptive.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/subsim/deny_adaptive/bridge_response_subsim-deny-adaptive.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:45.491145Z",
+  "db": {
+    "after": null,
+    "before": null,
+    "changed": {},
+    "hash": "060e8ba6758693a288a9a7e50f155b4aa2a085e774f4d16885b1ecfc081888e4",
+    "path": "reports/pilots/subsim_v2_shadow_2026-05-17/subsim_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "operation": "search",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "adaptive_scoring_not_allowed"
+    ]
+  },
+  "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "6f13df4100f20d91f32839b2de24b281968c0075d826b21d1140a8e3273a96c8",
+  "request_id": "subsim-deny-adaptive",
+  "response_hash": "31538e19fe43c26782f0acd4dfca56a137a0363495c5359e2901c891ca1776b8",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "search",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_3b6014943f26f120"
+}

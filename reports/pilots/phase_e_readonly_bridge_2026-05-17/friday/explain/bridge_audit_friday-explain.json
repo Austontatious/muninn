@@ -1,0 +1,69 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/explain/bridge_audit_friday-explain.json",
+    "response": "reports/pilots/phase_e_readonly_bridge_2026-05-17/friday/explain/bridge_response_friday-explain.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-17T23:49:36.911813Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779042899594838008,
+      "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 401408,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779042899594838008,
+      "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 401408,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "65091684e0575e5c042b15b04cc271b14a758794bc1d266dddd047a1a6c8d081",
+    "path": "reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "0a79c29fd02f8b8e07770df881c15ed052750494b83a7b8c26863c3788f31dbf",
+  "request_id": "friday-explain",
+  "response_hash": "c97b6198e370496341cd49da34529c224adcab68fe33c5ea9645226a31896b0e",
+  "retrieval_config": {
+    "limit": 10,
+    "max_context_chars": null,
+    "operation": "explain",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_a988658f01b1c458"
+}

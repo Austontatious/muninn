@@ -1,0 +1,241 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:36.911813Z",
+    "input_hash": "0a79c29fd02f8b8e07770df881c15ed052750494b83a7b8c26863c3788f31dbf",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "c97b6198e370496341cd49da34529c224adcab68fe33c5ea9645226a31896b0e",
+    "trace_id": "bridge_a988658f01b1c458"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-explain",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "enabled": false,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "card": {
+      "body": "FRIDAY_FILE_SEARCH_EXTRA_ROOTS is set to /mnt/data, friday-backend mounts /mnt/data read-only, inspect_repo_path can inspect files or directories across configured read-only roots, and case-insensitive path resolution allows host-style prompts like /mnt/data/Friday or /mnt/data/Althing to resolve safely without enabling writes.",
+      "evidence": [
+        {
+          "created_at": "2026-04-19 17:54:49",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "5dc31385-9398-45e1-8b3f-3e8ed9b1f653",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/friday/backend/tools/builtins.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-19 17:54:49",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "726a558e-ab3c-4d2f-81bb-3c32cd8ea623",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/friday/backend/api/althing_chat.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-19 17:54:49",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "73535e7c-ca67-498b-8ff1-3488059b01b2",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/friday/backend/core/chat_engine.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-19 17:54:49",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "b0909751-52ec-478f-8d48-3d396c051d4e",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/friday/.env.example",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-04-19 17:54:49",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "c21d7a97-e41a-43fc-8273-b1462ee9f3a5",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/friday/docker-compose.app.yml",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        }
+      ],
+      "id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+      "kind": "decision",
+      "scope_key": "repo:f8cc7f64d3636a4e",
+      "summary": "Friday direct chat can now inspect read-only workspace paths under /mnt/data, and Althing-mode UI prompts that reference local paths fall back to that direct Friday path instead of staying on Althing-only lanes.",
+      "title": "Friday bridge and tools now expose read-only /mnt/data workspace access",
+      "updated_at": "2026-04-19 17:54:48"
+    },
+    "card_found": true,
+    "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+    "derived_index": {
+      "eligible": true,
+      "indexed": true,
+      "record": {
+        "body": "FRIDAY_FILE_SEARCH_EXTRA_ROOTS is set to /mnt/data, friday-backend mounts /mnt/data read-only, inspect_repo_path can inspect files or directories across configured read-only roots, and case-insensitive path resolution allows host-style prompts like /mnt/data/Friday or /mnt/data/Althing to resolve safely without enabling writes.",
+        "confidence": 0.5,
+        "created_at": "2026-04-19 17:54:48",
+        "entity_ids": [
+          "v1-project:repo:f8cc7f64d3636a4e"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-04-19 17:54:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "5dc31385-9398-45e1-8b3f-3e8ed9b1f653",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/tools/builtins.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 17:54:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "726a558e-ab3c-4d2f-81bb-3c32cd8ea623",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/api/althing_chat.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 17:54:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "73535e7c-ca67-498b-8ff1-3488059b01b2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/core/chat_engine.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 17:54:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "b0909751-52ec-478f-8d48-3d396c051d4e",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/.env.example",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-04-19 17:54:49",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "c21d7a97-e41a-43fc-8273-b1462ee9f3a5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docker-compose.app.yml",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+        "kind": "decision",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+          "project_path": "/mnt/data/friday",
+          "project_root_path": "/mnt/data/friday",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "repo:f8cc7f64d3636a4e",
+        "status": "active",
+        "summary": "Friday direct chat can now inspect read-only workspace paths under /mnt/data, and Althing-mode UI prompts that reference local paths fall back to that direct Friday path instead of staying on Althing-only lanes.",
+        "tags": [],
+        "title": "Friday bridge and tools now expose read-only /mnt/data workspace access",
+        "updated_at": "2026-04-19 17:54:48"
+      },
+      "record_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+      "row": {
+        "content_hash": "c20ea066534edbb4cb92d5fe5eca5e504e8558bf99e3b05531d70c24563414f3",
+        "embedding_dim": 96,
+        "embedding_model": "muninn-v2-hash-v1",
+        "indexed_at": "2026-05-17T18:34:59.520439Z",
+        "record_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+        "record_type": "memory_card",
+        "scope_key": "repo:f8cc7f64d3636a4e",
+        "source_updated_at": "2026-04-19 17:54:48",
+        "vector_json": "[0.0,0.0,0.0,-0.04565225864447695,0.0,0.0,0.04279237237208513,-0.034106791841117354,-0.03940287753073185,-0.10634540064745908,0.03961472095831643,0.0,0.0,0.0,-0.07922944191663286,0.0,0.03739036496867835,0.0,0.0,0.0,0.0,0.0,0.07658139907182561,0.0,-0.036648912972132304,0.0,0.0,0.050736500906506866,0.0,-0.05391415232027557,0.05200756147201435,-0.04491080664793092,0.036966678113509184,0.0,0.04544041521689238,-0.0567740385926674,-0.02701003701703393,-0.028810706151502857,-0.03177651413768698,-0.04046209466865475,0.0,0.0,0.0,0.0,0.0,0.0,0.33789026699740476,0.0,0.0,0.0,0.04194499866174681,0.0,0.0,0.0,-0.004872398834445343,-0.08367815389590903,0.0,-0.36352332173513896,-0.056350351737498236,-0.0966006029785684,0.0,0.08494921446141653,-0.5837345647093097,-0.1823971911503232,0.0,0.16439049980563394,0.09437624698893031,0.16926289864007932,0.0,0.022455403323965468,-0.09850719382682963,0.0,0.015146805072297459,-0.21036052359148777,0.032835731275609875,0.0,0.0,0.2102546018776955,0.0,0.0,0.0,-0.041839076947954516,0.0,0.0,0.0,0.3450929435352806,-0.006143459399952817,0.0,0.045970023785853825,0.0,0.003919103410314731,0.0,0.03453047869628651,0.0,-0.08261893675798615,0.011015858234398154]"
+      },
+      "stale": false
+    },
+    "operation": "explain",
+    "retrieval_match": null
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

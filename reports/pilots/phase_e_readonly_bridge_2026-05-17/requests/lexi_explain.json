@@ -1,0 +1,15 @@
+{
+  "allow_adaptive_scoring": false,
+  "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "explain",
+  "project_path": "/mnt/data/Lex",
+  "query": "resume Lexi project current state and next steps",
+  "request_id": "lexi-explain",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:0c321b2a6f183a95"
+}

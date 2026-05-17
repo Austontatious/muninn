@@ -1,0 +1,215 @@
+{
+  "audit": {
+    "created_at": "2026-05-17T23:49:44.342057Z",
+    "input_hash": "5a73ed035406695e8a4994bb7487e3f26dd7704239443c9e455fd4a8350a7662",
+    "policy_hash": "31b58301ecff20e6b23164be229c693f2748792f2d4f4f687f4734d2033830a2",
+    "replayable": true,
+    "response_hash": "c28b6b78d72cc49ee6f73e586d1925007097123f837d703be85c69cd9426d635",
+    "trace_id": "bridge_0c66c727b3607520"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "explain",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "subsim-explain",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "enabled": false,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "card": {
+      "body": "The fire_control block includes fire_control_ready, fire_control_solution_state, fire_control_solution_quality, weapon_ready, valid_fire_opportunity, hold reason, target id, solution timing, and active_torpedo_count. This is producer/adapter visibility only; torpedo physics and firing timing were not changed.",
+      "evidence": [
+        {
+          "created_at": "2026-05-07 17:05:15",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "08aee04d-43f5-4dc4-8751-41f5551df312",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/subsim/subsim/game.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:05:15",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "4b01c177-fbbc-4629-b8c1-fd15b903c41c",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/subsim/subsim/testing/sonar_console/contracts.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:05:15",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "6671a4fe-7674-45d8-8bb0-5866f25385fb",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/subsim/subsim/testing/sonar_console/console.py",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        },
+        {
+          "created_at": "2026-05-07 17:05:15",
+          "evidence_type": "file",
+          "excerpt": null,
+          "id": "f15f3f04-2031-465c-b2f6-d728d83e2be4",
+          "metadata": {
+            "source_system": "muninn_v1"
+          },
+          "record_type": "evidence",
+          "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+          "schema_version": "muninn.v2.foundation.v1",
+          "source_id": null
+        }
+      ],
+      "id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+      "kind": "interface",
+      "scope_key": "repo:363c13a65e92ef58",
+      "summary": "SubSim exposes fire-control readiness and solution-state data through build_observation and sonar-console frames for ReadyPlayer1 Campaign 005A.",
+      "title": "SubSim fire_control observation contract v1",
+      "updated_at": "2026-05-07 17:05:15"
+    },
+    "card_found": true,
+    "card_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+    "derived_index": {
+      "eligible": true,
+      "indexed": true,
+      "record": {
+        "body": "The fire_control block includes fire_control_ready, fire_control_solution_state, fire_control_solution_quality, weapon_ready, valid_fire_opportunity, hold reason, target id, solution timing, and active_torpedo_count. This is producer/adapter visibility only; torpedo physics and firing timing were not changed.",
+        "confidence": 0.5,
+        "created_at": "2026-05-07 17:05:15",
+        "entity_ids": [
+          "v1-project:repo:363c13a65e92ef58"
+        ],
+        "evidence": [
+          {
+            "created_at": "2026-05-07 17:05:15",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "08aee04d-43f5-4dc4-8751-41f5551df312",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/game.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:15",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "4b01c177-fbbc-4629-b8c1-fd15b903c41c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/testing/sonar_console/contracts.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:15",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "6671a4fe-7674-45d8-8bb0-5866f25385fb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/subsim/subsim/testing/sonar_console/console.py",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          },
+          {
+            "created_at": "2026-05-07 17:05:15",
+            "evidence_type": "file",
+            "excerpt": null,
+            "id": "f15f3f04-2031-465c-b2f6-d728d83e2be4",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+            "schema_version": "muninn.v2.foundation.v1",
+            "source_id": null
+          }
+        ],
+        "id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+        "kind": "interface",
+        "metadata": {
+          "muninn": {
+            "write_operation": "muninn.cards.upsert"
+          },
+          "project_entity_id": "v1-project:repo:363c13a65e92ef58",
+          "project_path": "/mnt/data/subsim",
+          "project_root_path": "/mnt/data/subsim",
+          "provenance": {
+            "evidence_count": 1,
+            "evidence_types": [
+              "file"
+            ],
+            "source_class": "tool_derived"
+          },
+          "source_system": "muninn_v1",
+          "source_table": "cards",
+          "v1_salience": 0.5
+        },
+        "provenance": {
+          "source_system": "muninn_v1",
+          "source_table": "cards"
+        },
+        "record_type": "memory_card",
+        "schema_version": "muninn.v2.foundation.v1",
+        "scope_key": "repo:363c13a65e92ef58",
+        "status": "active",
+        "summary": "SubSim exposes fire-control readiness and solution-state data through build_observation and sonar-console frames for ReadyPlayer1 Campaign 005A.",
+        "tags": [],
+        "title": "SubSim fire_control observation contract v1",
+        "updated_at": "2026-05-07 17:05:15"
+      },
+      "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+      "row": {
+        "content_hash": "e566be6e809030225600487b7bd3038299f7e6ea523934f9a3c27434352a248f",
+        "embedding_dim": 96,
+        "embedding_model": "muninn-v2-hash-v1",
+        "indexed_at": "2026-05-17T20:54:24.631416Z",
+        "record_id": "2fbc9cf8-118c-4a0d-84bc-a5ee90716adb",
+        "record_type": "memory_card",
+        "scope_key": "repo:363c13a65e92ef58",
+        "source_updated_at": "2026-05-07 17:05:15",
+        "vector_json": "[0.07287707932528507,0.0,-0.17114758855711423,0.0,0.0,0.08877377934808096,-0.0404643273307532,0.18766364052885023,0.0,-0.10343177547299667,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.09579310143606877,-0.08959958194666777,0.0,-0.09248989104172156,0.10198662092546977,0.0,0.0,0.015483798723502498,0.0,-0.08567701960338046,-0.003509661043993898,0.10405112742193677,0.09992211442900276,0.0,0.0,0.09723825598359567,0.0,0.0,-0.16309601322089295,0.0,0.0,0.0,0.13130261317530115,0.0,0.0,-0.04418043902439377,0.0,0.06317389879189017,0.0,0.0,-0.08712217415090737,0.0,0.0,0.0,0.08134155596079977,-0.45749463961708703,0.0,-0.07163837542740488,0.12861875472989406,0.0,-0.3220630134488519,0.0,-0.34270807841352185,0.016722502621382706,-0.06689001048553077,-0.4137271018919867,0.08381896375656017,0.0,0.0,0.08774152609984749,-0.11230915340780478,0.07762544426715917,-0.05780618190107598,0.0,0.0,0.0,-0.06358680009118357,0.034890159790292294,0.0,0.06379325074083027,-0.15236057943926454,0.0,0.17403789765216804,0.0,0.0,-0.05925133644860288,0.0,-0.009909631183041608,0.09042538454525458,-0.08918668064737437,-0.10301887417370327,0.08959958194666777,0.0,0.0,0.0,0.0,0.07721254296786578,0.0,0.0]"
+      },
+      "stale": false
+    },
+    "operation": "explain",
+    "retrieval_match": null
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

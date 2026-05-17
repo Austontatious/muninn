@@ -1,0 +1,14 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 10,
+  "operation": "search",
+  "project_path": "/mnt/data/friday",
+  "query": "resume Friday project current state and next steps",
+  "request_id": "friday-search",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:f8cc7f64d3636a4e"
+}
