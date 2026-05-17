@@ -1,0 +1,49 @@
+{
+  "schema_version": "muninn.v2.phase_e_bridge_plan_validation.v1",
+  "date": "2026-05-17",
+  "gate": "E2",
+  "decision": "go_local_offline_read_only_bridge_build",
+  "inputs_reviewed": [
+    "AGENTS.md",
+    "/home/unix/codex-standards/BASELINE.md",
+    "ARCHITECTURE_CHECKPOINT.md",
+    "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+    "phase_a_through_d_reports",
+    "/mnt/data/Bifrost"
+  ],
+  "accepted_scope": [
+    "BridgeRequestV1",
+    "read_only_context_capability_policy",
+    "v2_only_bridge_context_cli",
+    "RehydrateResponseV1_output",
+    "markdown_context_output",
+    "bridge_audit_log",
+    "db_before_after_snapshot",
+    "unsafe_flag_rejection"
+  ],
+  "rejected_scope": [
+    "live_mcp_route_changes",
+    "v1_runtime_schema_default_changes",
+    "v1_db_access",
+    "live_codex_context_replacement",
+    "adaptive_retrieval_default",
+    "recall_event_recording_from_bridge_reads",
+    "llm_dependent_context_generation",
+    "bifrost_topology_inside_muninn",
+    "mimir_cognition_inside_muninn"
+  ],
+  "primary_risk": "sqlite_read_only_connections_can_create_wal_shm_sidecars",
+  "mitigation": "use_immutable_read_only_connections_and_reject_non_empty_wal_files",
+  "go": [
+    "local_offline_bridge_build",
+    "fixture_tests",
+    "pilot_shadow_db_read_only_validation"
+  ],
+  "no_go": [
+    "live_agent_integration",
+    "production_api_deployment",
+    "v1_cutover",
+    "default_adaptive_retrieval",
+    "autonomous_writes"
+  ]
+}

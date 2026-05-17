@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+import pytest
 
 from muninn.v2 import MemoryCard, SQLiteMemoryStore
 from muninn.v2.indexes import SQLiteDerivedIndexProvider
@@ -61,6 +62,25 @@ def test_rebuild_dry_run_does_not_create_index_table(tmp_path) -> None:
     assert report["dry_run"] is True
     assert report["planned_upserts"] == 2
     assert report["written_upserts"] == 0
+    with sqlite3.connect(db_path) as conn:
+        row = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='v2_vector_indexes'"
+        ).fetchone()
+    assert row is None
+
+
+def test_read_only_provider_rejects_persistent_rebuild_and_does_not_create_tables(tmp_path) -> None:
+    db_path, cards = _seed_v2(tmp_path)
+    with sqlite3.connect(db_path) as conn:
+        conn.execute("PRAGMA wal_checkpoint(TRUNCATE);")
+        conn.execute("PRAGMA journal_mode=DELETE;")
+    provider = SQLiteDerivedIndexProvider(db_path, records=cards, read_only=True)
+
+    status = provider.status()
+    with pytest.raises(RuntimeError, match="derived_index_provider_read_only"):
+        provider.rebuild(cards, dry_run=False)
+
+    assert status.missing_records == 2
     with sqlite3.connect(db_path) as conn:
         row = conn.execute(
             "SELECT 1 FROM sqlite_master WHERE type='table' AND name='v2_vector_indexes'"

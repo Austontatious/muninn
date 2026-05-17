@@ -1,0 +1,36 @@
+{
+  "schema_version": "muninn.v2.bridge_request.v1",
+  "contract_version": "1.0.0",
+  "request_id": "example_read_only_context",
+  "capability": {
+    "name": "read_only_context",
+    "version": "1.0.0"
+  },
+  "source": {
+    "v2_db": "/absolute/path/to/shadow_v2.db",
+    "space_key": "repo:example",
+    "project_path": "/absolute/path/to/project"
+  },
+  "query": {
+    "text": "resume project current state and next steps"
+  },
+  "options": {
+    "limit": 12,
+    "primary_limit": 3,
+    "recent_limit": 9,
+    "retrieval_mode": "hybrid",
+    "include_evidence": true,
+    "include_explanations": true,
+    "max_chars": null,
+    "recent_supplement": true,
+    "strict": true
+  },
+  "safety": {
+    "allow_writes": false,
+    "allow_v1_access": false,
+    "allow_reinforcement_events": false,
+    "adaptive_retrieval": false,
+    "allow_llm": false,
+    "dry_run": true
+  }
+}

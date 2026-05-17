@@ -1,0 +1,36 @@
+{
+  "capability": {
+    "name": "read_only_context",
+    "version": "1.0.0"
+  },
+  "contract_version": "1.0.0",
+  "options": {
+    "include_evidence": true,
+    "include_explanations": true,
+    "limit": 12,
+    "max_chars": null,
+    "primary_limit": 3,
+    "recent_limit": 9,
+    "recent_supplement": true,
+    "retrieval_mode": "hybrid",
+    "strict": true
+  },
+  "query": {
+    "text": "resume ReadyPlayer1 current campaign state and next steps"
+  },
+  "request_id": "phase_e_readyplayer1_bridge_context",
+  "safety": {
+    "adaptive_retrieval": false,
+    "allow_llm": false,
+    "allow_reinforcement_events": false,
+    "allow_v1_access": false,
+    "allow_writes": false,
+    "dry_run": true
+  },
+  "schema_version": "muninn.v2.bridge_request.v1",
+  "source": {
+    "project_path": "/mnt/data/ReadyPlayer1",
+    "space_key": "repo:5059f410815720ea",
+    "v2_db": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db"
+  }
+}

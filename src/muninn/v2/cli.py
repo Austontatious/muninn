@@ -14,6 +14,7 @@ from muninn.human_memory.bootstrap import DEFAULT_USER_ID
 from muninn.human_memory.cards import cards_search
 
 from .adapters import V1ReadAdapter
+from .bridge import BridgePolicyError, build_read_only_bridge_context, load_bridge_request
 from .core.models import (
     SCHEMA_VERSION,
     EvidenceRef,
@@ -2090,6 +2091,11 @@ def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def run_bridge_context(args: argparse.Namespace) -> dict[str, Any]:
+    request = load_bridge_request(args.request)
+    return build_read_only_bridge_context(request, out_dir=args.out_dir)
+
+
 def _id_list(values: Sequence[str] | None) -> list[str]:
     out: list[str] = []
     seen: set[str] = set()
@@ -2345,6 +2351,14 @@ def build_parser() -> argparse.ArgumentParser:
     )
     shadow_preview.set_defaults(func=run_shadow_rehydrate_preview)
 
+    bridge_context = subparsers.add_parser(
+        "bridge-context",
+        help="Run the read-only v2 bridge context contract from a request JSON file.",
+    )
+    bridge_context.add_argument("--request", required=True, help="BridgeRequestV1 JSON file.")
+    bridge_context.add_argument("--out-dir", required=True, help="Explicit output directory for bridge artifacts.")
+    bridge_context.set_defaults(func=run_bridge_context)
+
     recall_event = subparsers.add_parser(
         "recall-event-record",
         help="Dry-run or explicitly record an offline v2 recall/reinforcement event.",
@@ -2406,7 +2420,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
     try:
         report = args.func(args)
-    except (PilotSafetyError, RecallParityError, ShadowPreviewError, AgentContextAuditError) as exc:
+    except (
+        PilotSafetyError,
+        RecallParityError,
+        ShadowPreviewError,
+        AgentContextAuditError,
+        BridgePolicyError,
+    ) as exc:
         print(f"muninn.v2 command failed: {exc}", file=sys.stderr)
         return 2
     if report["record_type"] == "muninn_v2_recall_parity_report":
@@ -2475,6 +2495,19 @@ def main(argv: Sequence[str] | None = None) -> int:
             },
             "usable": report["agent_briefing"]["usable"],
             "out_dir": report["request"]["output"]["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_bridge_context_audit":
+        payload = {
+            "status": "ok",
+            "mode": "bridge_context",
+            "contract_version": report["contract_version"],
+            "request_id": report["request_id"],
+            "decision": report["decision"],
+            "v2_db": report["source"]["v2_db"],
+            "selected_total": report["response"]["selected_total"],
+            "retrieval_mode": report["response"]["retrieval_mode"],
+            "read_only_ok": report["safety"]["read_only_ok"],
+            "out_dir": report["out_dir"],
         }
     elif report["record_type"] == "muninn_v2_recall_event_record_report":
         payload = {

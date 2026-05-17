@@ -1,0 +1,16 @@
+{
+  "contract_family": "muninn_v2_bridge",
+  "current": "1.0.0",
+  "contracts": [
+    {
+      "name": "BridgeRequestV1",
+      "schema_version": "muninn.v2.bridge_request.v1",
+      "contract_version": "1.0.0",
+      "schema": "schemas/bridge-request.v1.schema.json",
+      "valid_examples": [
+        "examples/valid/bridge-request.read-only-context.v1.json"
+      ],
+      "capability_policy": "capabilities/read-only-context.v1.json"
+    }
+  ]
+}

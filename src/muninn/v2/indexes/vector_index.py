@@ -87,10 +87,12 @@ class SQLiteDerivedIndexProvider:
         *,
         records: Sequence[MemoryCard] | None = None,
         embedding_provider: HashEmbeddingProvider | None = None,
+        read_only: bool = False,
     ) -> None:
         self.db_path = Path(db_path).expanduser()
         self.records = list(records or [])
         self.embedding_provider = embedding_provider or HashEmbeddingProvider()
+        self.read_only = bool(read_only)
 
     def status(self) -> VectorIndexStatus:
         backend = self._backend_name()
@@ -140,6 +142,8 @@ class SQLiteDerivedIndexProvider:
         written_upserts = 0
         deleted_records = 0
         if not dry_run:
+            if self.read_only:
+                raise RuntimeError("derived_index_provider_read_only")
             self._ensure_schema()
             with self._connect() as conn:
                 for card in planned_upserts:
@@ -256,6 +260,15 @@ class SQLiteDerivedIndexProvider:
         return ["sqlite_vec_unavailable_using_json_vector_fallback"]
 
     def _connect(self) -> sqlite3.Connection:
+        if self.read_only:
+            if not self.db_path.exists():
+                raise FileNotFoundError(f"v2_db_not_found:{self.db_path}")
+            uri = f"{self.db_path.resolve().as_uri()}?mode=ro&immutable=1"
+            conn = sqlite3.connect(uri, uri=True)
+            conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA query_only=ON;")
+            conn.execute("PRAGMA foreign_keys=ON;")
+            return conn
         if str(self.db_path) != ":memory:":
             self.db_path.parent.mkdir(parents=True, exist_ok=True)
         conn = sqlite3.connect(str(self.db_path))
@@ -265,6 +278,8 @@ class SQLiteDerivedIndexProvider:
         return conn
 
     def _ensure_schema(self) -> None:
+        if self.read_only:
+            raise RuntimeError("derived_index_provider_read_only")
         with self._connect() as conn:
             conn.executescript(
                 """
@@ -295,7 +310,13 @@ class SQLiteDerivedIndexProvider:
     def _table_exists(self, table_name: str) -> bool:
         if not self.db_path.exists():
             return False
-        with sqlite3.connect(str(self.db_path)) as conn:
+        if self.read_only:
+            uri = f"{self.db_path.resolve().as_uri()}?mode=ro&immutable=1"
+            conn = sqlite3.connect(uri, uri=True)
+            conn.execute("PRAGMA query_only=ON;")
+        else:
+            conn = sqlite3.connect(str(self.db_path))
+        with conn:
             row = conn.execute(
                 "SELECT 1 FROM sqlite_master WHERE type='table' AND name=? LIMIT 1",
                 (table_name,),
@@ -342,11 +363,12 @@ class SQLiteDerivedIndexProvider:
         return healthy, missing, stale
 
 
-def load_v2_cards(db_path: str | Path) -> list[MemoryCard]:
+def load_v2_cards(db_path: str | Path, *, immutable: bool = False) -> list[MemoryCard]:
     path = Path(db_path).expanduser()
     if not path.exists():
         raise FileNotFoundError(f"v2_db_not_found:{path}")
-    uri = f"{path.resolve().as_uri()}?mode=ro"
+    immutable_flag = "&immutable=1" if immutable else ""
+    uri = f"{path.resolve().as_uri()}?mode=ro{immutable_flag}"
     conn = sqlite3.connect(uri, uri=True)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA query_only=ON;")

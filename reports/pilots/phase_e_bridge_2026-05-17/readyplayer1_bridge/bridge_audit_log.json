@@ -1,0 +1,102 @@
+{
+  "artifacts": {
+    "audit": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_audit_log.json",
+    "json": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_rehydrate_response.json",
+    "markdown": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_context.md"
+  },
+  "capability_policy": {
+    "allowed_operations": [
+      "read_v2_cards",
+      "read_v2_derived_index",
+      "emit_rehydrate_response"
+    ],
+    "capability": "read_only_context",
+    "forbidden_operations": [
+      "write_v1",
+      "write_v2_canonical_memory",
+      "record_recall_event",
+      "default_adaptive_retrieval",
+      "live_mcp_or_codex_cutover",
+      "llm_required_context_generation"
+    ],
+    "schema_version": "muninn.v2.bridge_capability_policy.v1"
+  },
+  "contract_version": "1.0.0",
+  "db_snapshot": {
+    "after": {
+      "mtime_ns": 1779040606119465901,
+      "path": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 417792,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779040606119465901,
+      "path": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 417792,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "v2_db_mtime_ns": false,
+      "v2_db_size_bytes": false,
+      "v2_shm_mtime_ns": false,
+      "v2_shm_size_bytes": false,
+      "v2_wal_mtime_ns": false,
+      "v2_wal_size_bytes": false
+    }
+  },
+  "decision": "go_read_only_bridge",
+  "mode": "read_only_bridge_context",
+  "out_dir": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge",
+  "record_type": "muninn_v2_bridge_context_audit",
+  "request_id": "phase_e_readyplayer1_bridge_context",
+  "response": {
+    "artifacts": {
+      "json": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_rehydrate_response.json",
+      "markdown": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_context.md"
+    },
+    "contract_version": "1.0.0",
+    "degraded": true,
+    "fallbacks": [
+      {
+        "active": true,
+        "degraded": true,
+        "name": "derived_vector_backend",
+        "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+      },
+      {
+        "active": false,
+        "degraded": false,
+        "name": "lexical_fallback",
+        "reason": null
+      }
+    ],
+    "response_id": "rehydrate_af090caf3271902f",
+    "response_kind": "shadow_rehydrate_preview",
+    "retrieval_mode": "hybrid",
+    "schema_version": "muninn.v2.rehydrate_response.v1",
+    "selected_total": 9
+  },
+  "safety": {
+    "adaptive_retrieval_enabled_by_default": false,
+    "live_mcp_or_codex_defaults_changed": false,
+    "llm_used": false,
+    "read_only_ok": true,
+    "recall_events_recorded": false,
+    "v1_accessed": false,
+    "v1_mutated": false,
+    "v2_canonical_memory_mutated": false,
+    "v2_storage_sidecar_changed": false
+  },
+  "schema_version": "muninn.v2.bridge_audit.v1",
+  "source": {
+    "project_path": "/mnt/data/ReadyPlayer1",
+    "space_key": "repo:5059f410815720ea",
+    "v2_db": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db"
+  }
+}

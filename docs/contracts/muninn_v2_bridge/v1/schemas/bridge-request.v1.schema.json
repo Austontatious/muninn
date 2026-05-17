@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn.dev/v2-bridge/v1/bridge-request.v1.schema.json",
+  "title": "Muninn v2 BridgeRequestV1",
+  "description": "Read-only Muninn v2 bridge request envelope for controlled context consumption.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "request_id",
+    "capability",
+    "source",
+    "query",
+    "options",
+    "safety"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "muninn.v2.bridge_request.v1"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "read_only_context"
+        },
+        "version": {
+          "const": "1.0.0"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "v2_db"
+      ],
+      "properties": {
+        "v2_db": {
+          "type": "string",
+          "minLength": 1
+        },
+        "space_key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limit",
+        "primary_limit",
+        "recent_limit",
+        "retrieval_mode",
+        "include_evidence",
+        "include_explanations",
+        "max_chars",
+        "recent_supplement",
+        "strict"
+      ],
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "primary_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recent_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "retrieval_mode": {
+          "enum": [
+            "hybrid",
+            "lexical",
+            "vector"
+          ]
+        },
+        "include_evidence": {
+          "type": "boolean"
+        },
+        "include_explanations": {
+          "type": "boolean"
+        },
+        "max_chars": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "recent_supplement": {
+          "type": "boolean"
+        },
+        "strict": {
+          "type": "boolean"
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allow_writes",
+        "allow_v1_access",
+        "allow_reinforcement_events",
+        "adaptive_retrieval",
+        "allow_llm",
+        "dry_run"
+      ],
+      "properties": {
+        "allow_writes": {
+          "const": false
+        },
+        "allow_v1_access": {
+          "const": false
+        },
+        "allow_reinforcement_events": {
+          "const": false
+        },
+        "adaptive_retrieval": {
+          "const": false
+        },
+        "allow_llm": {
+          "const": false
+        },
+        "dry_run": {
+          "const": true
+        }
+      }
+    }
+  }
+}

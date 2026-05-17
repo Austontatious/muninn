@@ -1,0 +1,126 @@
+{
+  "built": [
+    "BridgeRequestV1 schema and valid request fixture",
+    "read_only_context capability policy",
+    "v2 bridge-context CLI command",
+    "read-only immutable SQLite bridge reads",
+    "bridge audit log with DB and sidecar before/after snapshots",
+    "tests for schema stability, unsafe request rejection, read-only CLI output, no v1 call, and no recall event write"
+  ],
+  "date": "2026-05-17",
+  "go_no_go": {
+    "autonomous_writes": "NO_GO",
+    "default_adaptive_retrieval": "NO_GO",
+    "future_api_or_agent_context_experiment_using_rehydrate_response_v1": "GO_WITH_REVIEW",
+    "live_codex_context_replacement": "NO_GO",
+    "local_offline_read_only_bridge": "GO",
+    "v1_production_cutover": "NO_GO"
+  },
+  "phase": "E",
+  "pilots": {
+    "friday": {
+      "artifacts": {
+        "audit": "reports/pilots/phase_e_bridge_2026-05-17/friday_bridge/bridge_audit_log.json",
+        "markdown": "reports/pilots/phase_e_bridge_2026-05-17/friday_bridge/bridge_context.md",
+        "response": "reports/pilots/phase_e_bridge_2026-05-17/friday_bridge/bridge_rehydrate_response.json"
+      },
+      "context_gaps": [
+        "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "decision": "go_read_only_bridge",
+      "degraded": true,
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "primary_selected": 3,
+      "read_only_ok": true,
+      "request_id": "phase_e_friday_bridge_context",
+      "retrieval_mode": "hybrid",
+      "selected_total": 8,
+      "supplement_selected": 5,
+      "v1_accessed": false,
+      "v1_mutated": false,
+      "v2_canonical_memory_mutated": false,
+      "v2_storage_sidecar_changed": false
+    },
+    "readyplayer1": {
+      "artifacts": {
+        "audit": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_audit_log.json",
+        "markdown": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_context.md",
+        "response": "reports/pilots/phase_e_bridge_2026-05-17/readyplayer1_bridge/bridge_rehydrate_response.json"
+      },
+      "context_gaps": [
+        "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "decision": "go_read_only_bridge",
+      "degraded": true,
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "primary_selected": 3,
+      "read_only_ok": true,
+      "request_id": "phase_e_readyplayer1_bridge_context",
+      "retrieval_mode": "hybrid",
+      "selected_total": 9,
+      "supplement_selected": 6,
+      "v1_accessed": false,
+      "v1_mutated": false,
+      "v2_canonical_memory_mutated": false,
+      "v2_storage_sidecar_changed": false
+    }
+  },
+  "recommended_next_task": "Draft Phase E cutover-readiness plan for a read-only experimental API/adapter, including auth, operator controls, rollback, and explicit non-default wiring.",
+  "remaining_unsafe": [
+    "No production network bridge/auth/rate limiting has been implemented.",
+    "No live MCP or Codex integration has been reviewed or approved.",
+    "No cutover or rollback runbook for production defaults exists yet.",
+    "Bridge currently uses local CLI request files and local report output only.",
+    "sqlite_vec remains unavailable, so vector-derived retrieval is degraded to the JSON/hash fallback."
+  ],
+  "safety": {
+    "adaptive_retrieval_enabled_by_default": false,
+    "live_mcp_or_codex_defaults_changed": false,
+    "llm_used": false,
+    "recall_events_recorded_by_bridge": false,
+    "v1_db_accessed_by_bridge": false,
+    "v1_db_mutated": false,
+    "v1_files_changed": false
+  },
+  "schema_version": "muninn.v2.phase_e_bridge_precutover_report.v1",
+  "tests": [
+    {
+      "command": "PYTHONPATH=src python3 -m pytest -q tests/test_v2_*.py",
+      "result": "72 passed"
+    },
+    {
+      "command": "python3 -m py_compile $(find src/muninn/v2 -name '*.py' | sort)",
+      "result": "passed"
+    },
+    {
+      "command": "PYTHONPATH=src python3 -m pytest -q",
+      "result": "259 passed, 2 skipped"
+    }
+  ]
+}

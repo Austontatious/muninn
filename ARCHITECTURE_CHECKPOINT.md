@@ -78,6 +78,7 @@ The v2 checkpoint currently provides:
 - `RehydrateResponseV1` as the stable v2 shadow rehydration response envelope
 - offline agent-context consumer audits for `RehydrateResponseV1` artifacts
 - offline recall/reinforcement event replay into derived reinforcement state
+- read-only bridge request/audit contracts for controlled v2 context consumption
 
 v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
 
@@ -146,6 +147,8 @@ The v2 agent-context audit command is the Phase B offline consumer harness. It v
 
 The v2 recall/reinforcement layer is offline-only adaptive retrieval metadata. It records explicit recall events and replays them into `v2_reinforcement_state` in caller-provided v2 DBs without mutating canonical card text, bodies, evidence, or v1 data. Replay is deterministic and explainable: accepted records are boosted, scoped suppressions are penalized, durable boundary/contract records receive preservation against quiet-period decay, repeated signals use deterministic diminishing returns, recalled-only exposure is capped below accepted reinforcement, and effective scores remain bounded. The optional hybrid retrieval hook can consume this state only when explicitly supplied; adaptive scoring is not a default retrieval or live context path.
 
+The v2 read-only bridge is a Phase E shadow integration harness. It accepts `BridgeRequestV1` (`muninn.v2.bridge_request.v1`, contract version `1.0.0`) for the single capability `read_only_context`, reads only an explicit v2 DB, emits `RehydrateResponseV1` plus Markdown context and a bridge audit log, and rejects requests that permit writes, v1 access, reinforcement event recording, adaptive retrieval defaults, or LLM-dependent context generation. It is not a network service, MCP route, Codex default, or cutover mechanism.
+
 ## Migration And Cutover Posture
 
 There is no live migration and no automatic cutover.
@@ -165,17 +168,12 @@ No production v1 data should be destructively migrated. Future migration must be
 
 ## Current Next Milestone
 
-The next architecture milestone is:
+The next architecture milestone is Phase E pre-cutover validation:
 
-1. record-existence parity
-2. retrieval parity measurement
-3. retrieval design
-
-Record-existence parity means v2 can account for v1 cards, evidence, associations, entities, and ontology/profile metadata without losing provenance or source identity.
-
-Retrieval parity measurement means side-by-side reports can explain overlap, missing records, extra records, ranking differences, and evidence availability.
-
-Retrieval design comes after measurement. Do not tune v2 recall to force parity before the mismatch causes are understood.
+1. keep the bridge local/offline and read-only
+2. validate bridge request/response contracts and audit logs
+3. prove bridge context is safe before any live agent-context integration
+4. write an explicit cutover and rollback plan before changing production defaults
 
 ## Documentation Boundaries
 

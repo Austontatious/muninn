@@ -1,0 +1,31 @@
+{
+  "schema_version": "muninn.v2.bridge_capability_policy.v1",
+  "capability": "read_only_context",
+  "version": "1.0.0",
+  "allowed_operations": [
+    "read_v2_cards",
+    "read_v2_derived_index",
+    "emit_rehydrate_response",
+    "emit_bridge_audit_log"
+  ],
+  "forbidden_operations": [
+    "write_v1",
+    "read_v1",
+    "write_v2_canonical_memory",
+    "record_recall_event",
+    "default_adaptive_retrieval",
+    "live_mcp_or_codex_cutover",
+    "llm_required_context_generation",
+    "autonomous_memory_creation"
+  ],
+  "required_request_safety_flags": {
+    "allow_writes": false,
+    "allow_v1_access": false,
+    "allow_reinforcement_events": false,
+    "adaptive_retrieval": false,
+    "allow_llm": false,
+    "dry_run": true
+  },
+  "response_contract": "RehydrateResponseV1",
+  "audit_contract": "muninn.v2.bridge_audit.v1"
+}
