@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -13,7 +14,10 @@ from .vector_recall import recall_with_fallback
 
 
 RETRIEVAL_MODES = {"hybrid", "lexical", "vector"}
-SHADOW_PREVIEW_SCHEMA_VERSION = "muninn.v2.shadow_rehydrate_preview.v1"
+REHYDRATE_RESPONSE_SCHEMA_NAME = "RehydrateResponseV1"
+REHYDRATE_RESPONSE_CONTRACT_VERSION = "1.0.0"
+REHYDRATE_RESPONSE_SCHEMA_VERSION = "muninn.v2.rehydrate_response.v1"
+REHYDRATE_RESPONSE_SCHEMA_URI = "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json"
 
 
 class ShadowPreviewError(RuntimeError):
@@ -102,6 +106,7 @@ def build_shadow_rehydrate_preview(
     )
     primary_results = budgeted["primary_results"]
     recent_supplements = budgeted["recent_supplements"]
+    selected_cards = [*primary_results, *recent_supplements]
     context_gaps = _context_gaps(
         retrieval=retrieval,
         filtered_cards=filtered,
@@ -112,36 +117,59 @@ def build_shadow_rehydrate_preview(
         recent_supplement_enabled=options.recent_supplement,
     )
     briefing = _agent_briefing(primary_results, recent_supplements, context_gaps)
-    counts = {
-        "primary": len(primary_results),
-        "supplements": len(recent_supplements),
-        "total": len(primary_results) + len(recent_supplements),
-        "duplicates_removed": int(duplicate_supplements),
-        "omitted_for_budget": int(budgeted["omitted_for_budget"]),
-        "omitted_for_limit": int(budgeted["omitted_for_limit"]),
-        "candidate_cards": len(filtered),
-    }
+    retrieval_provenance = _retrieval_provenance(retrieval, retrieval_mode=mode)
+    budget = _budget_payload(
+        limit=limit,
+        primary_limit=primary_limit,
+        recent_limit=recent_limit,
+        max_chars=max_chars,
+        selected_cards=selected_cards,
+        primary_results=primary_results,
+        recent_supplements=recent_supplements,
+        duplicate_supplements=duplicate_supplements,
+        omitted_for_budget=budgeted["omitted_for_budget"],
+        omitted_for_limit=budgeted["omitted_for_limit"],
+        candidate_cards=len(filtered),
+    )
+    generated_at = utc_now()
     return {
-        "schema_version": SHADOW_PREVIEW_SCHEMA_VERSION,
-        "record_type": "muninn_v2_shadow_rehydrate_preview",
-        "generated_at": utc_now(),
-        "query": query,
-        "source": {
-            "v2_db": str(options.v2_db),
-            "space_key": inferred_space_key,
-            "project_path": options.project_path,
-            "active_scope_keys": sorted({str(card.scope_key) for card in active if card.scope_key}),
+        "schema": {
+            "name": REHYDRATE_RESPONSE_SCHEMA_NAME,
+            "version": REHYDRATE_RESPONSE_CONTRACT_VERSION,
+            "schema_version": REHYDRATE_RESPONSE_SCHEMA_VERSION,
+            "schema_uri": REHYDRATE_RESPONSE_SCHEMA_URI,
         },
-        "command_args": {
-            "limit": limit,
-            "primary_limit": primary_limit,
-            "recent_limit": recent_limit,
-            "retrieval_mode": mode,
-            "include_evidence": bool(options.include_evidence),
-            "include_explanations": bool(options.include_explanations),
-            "max_chars": max_chars,
-            "recent_supplement": bool(options.recent_supplement),
-            "strict": bool(options.strict),
+        "schema_version": REHYDRATE_RESPONSE_SCHEMA_VERSION,
+        "contract_version": REHYDRATE_RESPONSE_CONTRACT_VERSION,
+        "record_type": "muninn_v2_rehydrate_response",
+        "response_kind": "shadow_rehydrate_preview",
+        "response_id": _response_id(
+            generated_at=generated_at,
+            query=query,
+            source_db=str(options.v2_db),
+        ),
+        "generated_at": generated_at,
+        "request": {
+            "query": {
+                "text": query,
+            },
+            "source": {
+                "v2_db": str(options.v2_db),
+                "space_key": inferred_space_key,
+                "project_path": options.project_path,
+                "active_scope_keys": sorted({str(card.scope_key) for card in active if card.scope_key}),
+            },
+            "options": {
+                "limit": limit,
+                "primary_limit": primary_limit,
+                "recent_limit": recent_limit,
+                "retrieval_mode": mode,
+                "include_evidence": bool(options.include_evidence),
+                "include_explanations": bool(options.include_explanations),
+                "max_chars": max_chars,
+                "recent_supplement": bool(options.recent_supplement),
+                "strict": bool(options.strict),
+            },
         },
         "composition": {
             "strategy": (
@@ -160,16 +188,27 @@ def build_shadow_rehydrate_preview(
             "stage_d": "budget_enforced" if max_chars is not None else "limit_only",
             "stage_e": "deterministic_agent_briefing",
         },
-        "retrieval": {
-            "backend": retrieval.get("backend"),
-            "fallback_used": bool(retrieval.get("fallback_used")),
-            "status": retrieval.get("status"),
-            "query_profile": retrieval.get("query_profile"),
+        "selected_memory": {
+            "cards": selected_cards,
+            "events": [],
+            "evidence": _selected_evidence(selected_cards),
         },
-        "counts": counts,
-        "primary_results": primary_results,
-        "recent_supplements": recent_supplements,
-        "context_gaps": context_gaps,
+        "explanations": _explanations(
+            primary_results,
+            recent_supplements,
+            include_explanations=options.include_explanations,
+        ),
+        "uncertainty": {
+            "usable": bool(briefing["usable"]),
+            "context_gaps": context_gaps,
+            "warnings": _uncertainty_warnings(
+                context_gaps=context_gaps,
+                retrieval_provenance=retrieval_provenance,
+            ),
+        },
+        "budget": budget,
+        "retrieval_provenance": retrieval_provenance,
+        "fallbacks": _fallback_markers(retrieval_provenance),
         "agent_briefing": briefing,
     }
 
@@ -193,24 +232,32 @@ def write_shadow_rehydrate_preview_reports(
 
 
 def render_shadow_rehydrate_preview_markdown(report: dict[str, Any]) -> str:
-    source = report["source"]
+    request = report["request"]
+    source = request["source"]
+    query = request["query"]["text"]
     composition = report["composition"]
-    counts = report["counts"]
-    retrieval = report["retrieval"]
+    budget = report["budget"]
+    retrieval = report["retrieval_provenance"]
     briefing = report["agent_briefing"]
+    primary_results = _cards_by_stage(report, "primary_retrieval")
+    recent_supplements = _cards_by_stage(report, "recent_in_scope_supplement")
     lines = [
         "# Muninn v2 Shadow Rehydration Preview",
         "",
         "## Executive Summary",
         "",
         f"- Usable: `{str(briefing['usable']).lower()}`",
-        f"- Total cards: {counts['total']} ({counts['primary']} primary, {counts['supplements']} supplements)",
+        (
+            f"- Total cards: {budget['selected_total']} "
+            f"({budget['primary_selected']} primary, {budget['supplement_selected']} supplements)"
+        ),
         f"- Retrieval backend: `{retrieval.get('backend')}`",
         f"- Fallback used: `{str(retrieval.get('fallback_used')).lower()}`",
+        f"- Degraded: `{str(retrieval.get('degraded')).lower()}`",
         "",
         "## Query / Task",
         "",
-        f"`{report['query']}`",
+        f"`{query}`",
         "",
         "## Source",
         "",
@@ -230,30 +277,32 @@ def render_shadow_rehydrate_preview_markdown(report: dict[str, Any]) -> str:
         "## Primary Retrieval Matches",
         "",
     ]
-    if report["primary_results"]:
-        for item in report["primary_results"]:
+    if primary_results:
+        for item in primary_results:
             lines.extend(_markdown_card(item, include_score=True))
     else:
         lines.append("- none")
     lines.extend(["", "## Recent In-Scope Supplements", ""])
-    if report["recent_supplements"]:
-        for item in report["recent_supplements"]:
+    if recent_supplements:
+        for item in recent_supplements:
             lines.extend(_markdown_card(item, include_score=False))
     else:
         lines.append("- none")
     lines.extend(["", "## Evidence / Provenance", ""])
     evidence_count = sum(int(item.get("evidence_count", 0)) for item in _all_items(report))
-    included = sum(len(item.get("evidence", [])) for item in _all_items(report))
+    included = len(report["selected_memory"].get("evidence", []))
     lines.append(f"- Evidence refs available on preview cards: {evidence_count}")
     lines.append(f"- Evidence refs included in report: {included}")
+    lines.append(f"- Retrieval mode: `{retrieval.get('mode')}`")
+    lines.append(f"- Degradation reasons: `{retrieval.get('degradation_reasons')}`")
     lines.extend(["", "## Explanation Notes", ""])
     lines.append(f"- Explanations included: `{str(bool(_any_explanations(report))).lower()}`")
-    lines.append(f"- Duplicates removed: {counts['duplicates_removed']}")
-    lines.append(f"- Omitted for budget: {counts['omitted_for_budget']}")
-    lines.append(f"- Omitted for limit: {counts['omitted_for_limit']}")
+    lines.append(f"- Duplicates removed: {budget['duplicates_removed']}")
+    lines.append(f"- Omitted for budget: {budget['omitted_for_budget']}")
+    lines.append(f"- Omitted for limit: {budget['omitted_for_limit']}")
     lines.extend(["", "## Context Gaps / Uncertainty", ""])
-    if report["context_gaps"]:
-        lines.extend(f"- {gap}" for gap in report["context_gaps"])
+    if report["uncertainty"]["context_gaps"]:
+        lines.extend(f"- {gap}" for gap in report["uncertainty"]["context_gaps"])
     else:
         lines.append("- none reported")
     lines.extend(["", "## Suggested Agent Briefing", ""])
@@ -360,18 +409,27 @@ def _card_entry(
 ) -> dict[str, Any]:
     entry = {
         "id": card.id,
-        "record_id": card.id,
-        "stage": stage,
-        "reason": reason,
+        "record_type": "memory_card",
         "kind": card.kind,
         "status": card.status,
         "title": card.title,
         "summary": card.summary,
         "body_excerpt": _body_excerpt(card.body),
+        "confidence": float(card.confidence),
         "scope_key": card.scope_key,
+        "entity_ids": list(card.entity_ids),
+        "tags": list(card.tags),
+        "created_at": card.created_at,
         "updated_at": card.updated_at,
-        "score": score,
-        "retrieval_rank": retrieval_rank,
+        "provenance": dict(card.provenance),
+        "metadata": dict(card.metadata),
+        "selection": {
+            "stage": stage,
+            "reason": reason,
+            "score": score,
+            "retrieval_rank": retrieval_rank,
+        },
+        "evidence_ids": [item.id for item in card.evidence],
         "evidence_count": len(card.evidence),
         "evidence": _evidence_payload(card.evidence) if include_evidence else [],
     }
@@ -494,9 +552,12 @@ def _evidence_payload(evidence: Sequence[EvidenceRef]) -> list[dict[str, Any]]:
     return [
         {
             "id": item.id,
+            "record_type": "evidence",
             "type": item.evidence_type,
             "ref": item.ref,
             "excerpt": item.excerpt,
+            "source_id": item.source_id,
+            "metadata": dict(item.metadata),
             "created_at": item.created_at,
         }
         for item in evidence
@@ -561,6 +622,160 @@ def _agent_briefing(
     }
 
 
+def _response_id(*, generated_at: str, query: str, source_db: str) -> str:
+    digest = hashlib.sha256(
+        "\n".join(
+            [
+                REHYDRATE_RESPONSE_SCHEMA_VERSION,
+                str(generated_at),
+                str(source_db),
+                str(query),
+            ]
+        ).encode("utf-8")
+    ).hexdigest()[:16]
+    return f"rehydrate_{digest}"
+
+
+def _budget_payload(
+    *,
+    limit: int,
+    primary_limit: int,
+    recent_limit: int,
+    max_chars: int | None,
+    selected_cards: Sequence[dict[str, Any]],
+    primary_results: Sequence[dict[str, Any]],
+    recent_supplements: Sequence[dict[str, Any]],
+    duplicate_supplements: int,
+    omitted_for_budget: int,
+    omitted_for_limit: int,
+    candidate_cards: int,
+) -> dict[str, Any]:
+    return {
+        "limit": int(limit),
+        "primary_limit": int(primary_limit),
+        "recent_limit": int(recent_limit),
+        "max_chars": max_chars,
+        "used_chars": sum(_item_chars(item) for item in selected_cards),
+        "candidate_cards": int(candidate_cards),
+        "selected_total": len(selected_cards),
+        "primary_selected": len(primary_results),
+        "supplement_selected": len(recent_supplements),
+        "duplicates_removed": int(duplicate_supplements),
+        "omitted_for_budget": int(omitted_for_budget),
+        "omitted_for_limit": int(omitted_for_limit),
+    }
+
+
+def _selected_evidence(cards: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for card in cards:
+        for evidence in card.get("evidence", []):
+            key = str(evidence.get("id") or f"{card.get('id')}:{evidence.get('ref')}")
+            if key in seen:
+                continue
+            seen.add(key)
+            item = dict(evidence)
+            item["card_id"] = card.get("id")
+            out.append(item)
+    out.sort(key=lambda item: (str(item.get("card_id") or ""), str(item.get("id") or "")))
+    return out
+
+
+def _explanations(
+    primary_results: Sequence[dict[str, Any]],
+    recent_supplements: Sequence[dict[str, Any]],
+    *,
+    include_explanations: bool,
+) -> dict[str, Any]:
+    cards = [*primary_results, *recent_supplements]
+    return {
+        "format": "muninn.v2.retrieval_explanation.v1",
+        "included": bool(include_explanations),
+        "notes": (
+            []
+            if include_explanations
+            else ["Run with --include-explanations to include score components and matched-field details."]
+        ),
+        "cards": [
+            {
+                "card_id": item["id"],
+                "stage": item["selection"]["stage"],
+                "reason": item["selection"]["reason"],
+                "score": item["selection"].get("score"),
+                "retrieval_rank": item["selection"].get("retrieval_rank"),
+                "details": item.get("explanation") if include_explanations else None,
+            }
+            for item in cards
+        ],
+    }
+
+
+def _retrieval_provenance(retrieval: dict[str, Any], *, retrieval_mode: str) -> dict[str, Any]:
+    status = retrieval.get("status") if isinstance(retrieval.get("status"), dict) else None
+    reasons = [str(item) for item in (status or {}).get("reason", [])]
+    fallback_used = bool(retrieval.get("fallback_used"))
+    if fallback_used and "retrieval_fallback_used" not in reasons:
+        reasons.append("retrieval_fallback_used")
+    degraded = bool(fallback_used or (status and status.get("degraded")))
+    return {
+        "mode": retrieval_mode,
+        "backend": retrieval.get("backend"),
+        "fallback_used": fallback_used,
+        "degraded": degraded,
+        "degradation_reasons": reasons,
+        "provider_status": status,
+        "query_profile": retrieval.get("query_profile"),
+        "result_count": len(retrieval.get("results", [])),
+        "candidate_source": "explicit_v2_shadow_db",
+        "retrieval_paths": _retrieval_paths(retrieval),
+    }
+
+
+def _retrieval_paths(retrieval: dict[str, Any]) -> list[str]:
+    paths: set[str] = set()
+    for result in retrieval.get("results", []):
+        explanation = result.get("explanation") if isinstance(result, dict) else None
+        if isinstance(explanation, dict) and explanation.get("retrieval_path"):
+            paths.add(str(explanation["retrieval_path"]))
+        elif isinstance(result, dict) and result.get("backend"):
+            paths.add(str(result["backend"]))
+    if not paths and retrieval.get("backend"):
+        paths.add(str(retrieval["backend"]))
+    return sorted(paths)
+
+
+def _fallback_markers(retrieval_provenance: dict[str, Any]) -> list[dict[str, Any]]:
+    reasons = [str(item) for item in retrieval_provenance.get("degradation_reasons", [])]
+    backend = str(retrieval_provenance.get("backend") or "")
+    return [
+        {
+            "name": "derived_vector_backend",
+            "active": backend in {"derived_vector_index", "hybrid"},
+            "degraded": bool(retrieval_provenance.get("degraded")),
+            "reason": "; ".join(reasons) if reasons else None,
+        },
+        {
+            "name": "lexical_fallback",
+            "active": bool(retrieval_provenance.get("fallback_used")) or backend == "lexical_fallback",
+            "degraded": False,
+            "reason": "fallback retrieval path used" if retrieval_provenance.get("fallback_used") else None,
+        },
+    ]
+
+
+def _uncertainty_warnings(
+    *,
+    context_gaps: Sequence[str],
+    retrieval_provenance: dict[str, Any],
+) -> list[str]:
+    warnings = list(context_gaps)
+    if retrieval_provenance.get("degraded"):
+        reasons = retrieval_provenance.get("degradation_reasons") or []
+        warnings.append("Retrieval/index backend degraded: " + ", ".join(str(item) for item in reasons))
+    return list(dict.fromkeys(warnings))
+
+
 def _card_project_paths(card: MemoryCard) -> set[str]:
     metadata = card.metadata if isinstance(card.metadata, dict) else {}
     values = {
@@ -578,18 +793,30 @@ def _normalize_path(value: str | None) -> str:
 
 
 def _all_items(report: dict[str, Any]) -> list[dict[str, Any]]:
-    return [*report.get("primary_results", []), *report.get("recent_supplements", [])]
+    return list(report.get("selected_memory", {}).get("cards", []))
 
 
 def _any_explanations(report: dict[str, Any]) -> bool:
-    return any("explanation" in item for item in _all_items(report))
+    return bool(report.get("explanations", {}).get("included"))
+
+
+def _cards_by_stage(report: dict[str, Any], stage: str) -> list[dict[str, Any]]:
+    return [
+        item
+        for item in _all_items(report)
+        if item.get("selection", {}).get("stage") == stage
+    ]
 
 
 def _markdown_card(item: dict[str, Any], *, include_score: bool) -> list[str]:
-    score = f" score=`{item.get('score')}`" if include_score else ""
+    selection = item.get("selection", {})
+    score = f" score=`{selection.get('score')}`" if include_score else ""
     lines = [
         f"- `{item['id']}` {item['title']}",
-        f"  - stage: `{item['stage']}` kind: `{item['kind']}` updated: `{item.get('updated_at')}`{score}",
+        (
+            f"  - stage: `{selection.get('stage')}` kind: `{item['kind']}` "
+            f"updated: `{item.get('updated_at')}`{score}"
+        ),
         f"  - summary: {item['summary']}",
     ]
     if item.get("body_excerpt"):

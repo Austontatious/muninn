@@ -1,0 +1,12 @@
+{
+  "contract_family": "muninn_v2",
+  "version": "1.0.0",
+  "schemas": {
+    "rehydrate_response": "schemas/rehydrate-response.v1.schema.json"
+  },
+  "valid_examples": {
+    "rehydrate_response": [
+      "examples/valid/rehydrate-response.shadow-preview.v1.json"
+    ]
+  }
+}

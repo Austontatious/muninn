@@ -2053,7 +2053,11 @@ def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
             strict=bool(args.strict),
         ),
     )
-    report["out_dir"] = str(out_dir)
+    report["request"]["output"] = {
+        "out_dir": str(out_dir),
+        "json_report": args.json_report,
+        "md_report": args.md_report,
+    }
     report["artifacts"] = write_shadow_rehydrate_preview_reports(
         report,
         out_dir,
@@ -2265,15 +2269,26 @@ def main(argv: Sequence[str] | None = None) -> int:
             "summary": report["summary"],
             "out_dir": report["out_dir"],
         }
-    elif report["record_type"] == "muninn_v2_shadow_rehydrate_preview":
+    elif report["record_type"] == "muninn_v2_rehydrate_response":
+        budget = report["budget"]
         payload = {
             "status": "ok",
             "mode": "shadow_rehydrate_preview",
-            "retrieval_mode": report["composition"]["retrieval_mode"],
-            "v2_db": report["source"]["v2_db"],
-            "counts": report["counts"],
+            "schema_version": report["schema_version"],
+            "contract_version": report["contract_version"],
+            "retrieval_mode": report["retrieval_provenance"]["mode"],
+            "v2_db": report["request"]["source"]["v2_db"],
+            "counts": {
+                "primary": budget["primary_selected"],
+                "supplements": budget["supplement_selected"],
+                "total": budget["selected_total"],
+                "duplicates_removed": budget["duplicates_removed"],
+                "omitted_for_budget": budget["omitted_for_budget"],
+                "omitted_for_limit": budget["omitted_for_limit"],
+                "candidate_cards": budget["candidate_cards"],
+            },
             "usable": report["agent_briefing"]["usable"],
-            "out_dir": report["out_dir"],
+            "out_dir": report["request"]["output"]["out_dir"],
         }
     else:
         payload = {

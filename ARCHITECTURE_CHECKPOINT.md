@@ -1,6 +1,6 @@
 # Architecture Checkpoint
 
-Last updated: 2026-05-13
+Last updated: 2026-05-17
 
 This document records the current architectural truth for Muninn. It is not a running diary and should not absorb every experiment, task note, or future design sketch.
 
@@ -75,6 +75,7 @@ The v2 checkpoint currently provides:
 - opt-in recall parity measurement
 - optional derived-index diagnostics and retrieval-eval helpers
 - opt-in shadow rehydration preview reports
+- `RehydrateResponseV1` as the stable v2 shadow rehydration response envelope
 
 v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
 
@@ -136,6 +137,8 @@ The v2 recall-parity command is measurement only. It can compare v1 FTS with a p
 The v2 retrieval-eval command is also measurement only. It scores fixed query fixtures, distinguishes record absence from retrieval mismatch, and writes JSON/Markdown reports without changing production routing. Its default diagnostic mode is now explainable hybrid retrieval: deterministic title/body/evidence/metric scoring with optional derived-vector rescue, explicit score components, and stable ranking. This remains shadow/evaluation infrastructure only.
 
 The v2 shadow rehydration preview command is an explicit-DB report generator only. It composes primary diagnostic retrieval matches with clearly labeled recent in-scope supplements, can include evidence and explanations, and writes JSON/Markdown artifacts without changing v1 retrieval, MCP/Codex defaults, or any live context source.
+
+Its JSON artifact is now the versioned `RehydrateResponseV1` envelope (`muninn.v2.rehydrate_response.v1`, contract version `1.0.0`). Future v2 APIs and opt-in agent-context experiments must consume that envelope instead of command-specific preview fields. The envelope carries request metadata, selected memory cards/events/evidence, explanations, uncertainty/context gaps, budget usage, retrieval provenance, and fallback/degradation markers.
 
 ## Migration And Cutover Posture
 

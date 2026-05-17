@@ -31,7 +31,11 @@ Optional inputs:
 
 ## Output Sections
 
-The command writes JSON and Markdown. Markdown includes:
+The command writes JSON and Markdown.
+
+The JSON output is the stable `RehydrateResponseV1` envelope documented in `docs/muninn_v2_rehydrate_response_v1.md` and validated by `docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json`. Future v2 APIs and agent-context experiments must consume that envelope rather than command-specific ad hoc fields.
+
+Markdown includes:
 
 - Executive summary
 - Query/task
@@ -72,6 +76,20 @@ The command enforces the overall `limit`. When `--max-chars` is provided, it app
 ### Stage E: Suggested Agent Briefing
 
 The briefing is generated deterministically from retrieved card titles and summaries. It does not use an LLM, infer hidden conclusions, or invent project state. If retrieved content is sparse, the briefing marks uncertainty.
+
+## RehydrateResponseV1 Envelope
+
+The emitted JSON includes:
+
+- `schema` and `contract_version`
+- `request` query/source/options metadata
+- `selected_memory.cards`, `selected_memory.events`, and `selected_memory.evidence`
+- `explanations` with stable card selection reasons and optional score details
+- `uncertainty.context_gaps` and warnings
+- `budget` limits, selected counts, duplicate removal, and omitted counts
+- `retrieval_provenance` for backend, mode, provider status, query profile, and retrieval paths
+- `fallbacks` for degraded vector/index or lexical fallback behavior
+- `agent_briefing` generated without an LLM
 
 ## Boundary
 

@@ -1,0 +1,843 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.muninn.dev/v2/v1/rehydrate-response.v1.schema.json",
+  "title": "Muninn v2 RehydrateResponseV1",
+  "description": "Stable v2 shadow rehydration response envelope for opt-in agent-context experiments and future API projections.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "contract_version",
+    "record_type",
+    "response_kind",
+    "response_id",
+    "generated_at",
+    "request",
+    "composition",
+    "selected_memory",
+    "explanations",
+    "uncertainty",
+    "budget",
+    "retrieval_provenance",
+    "fallbacks",
+    "agent_briefing"
+  ],
+  "properties": {
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "schema_version",
+        "schema_uri"
+      ],
+      "properties": {
+        "name": {
+          "const": "RehydrateResponseV1"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "schema_version": {
+          "const": "muninn.v2.rehydrate_response.v1"
+        },
+        "schema_uri": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "schema_version": {
+      "const": "muninn.v2.rehydrate_response.v1"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "record_type": {
+      "const": "muninn_v2_rehydrate_response"
+    },
+    "response_kind": {
+      "enum": [
+        "shadow_rehydrate_preview"
+      ]
+    },
+    "response_id": {
+      "type": "string",
+      "pattern": "^rehydrate_[a-f0-9]{16}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "$ref": "#/$defs/request"
+    },
+    "composition": {
+      "$ref": "#/$defs/composition"
+    },
+    "selected_memory": {
+      "$ref": "#/$defs/selected_memory"
+    },
+    "explanations": {
+      "$ref": "#/$defs/explanations"
+    },
+    "uncertainty": {
+      "$ref": "#/$defs/uncertainty"
+    },
+    "budget": {
+      "$ref": "#/$defs/budget"
+    },
+    "retrieval_provenance": {
+      "$ref": "#/$defs/retrieval_provenance"
+    },
+    "fallbacks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fallback_marker"
+      }
+    },
+    "agent_briefing": {
+      "$ref": "#/$defs/agent_briefing"
+    }
+  },
+  "$defs": {
+    "nullable_string": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "query",
+        "source",
+        "options"
+      ],
+      "properties": {
+        "query": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "v2_db",
+            "space_key",
+            "project_path",
+            "active_scope_keys"
+          ],
+          "properties": {
+            "v2_db": {
+              "type": "string",
+              "minLength": 1
+            },
+            "space_key": {
+              "$ref": "#/$defs/nullable_string"
+            },
+            "project_path": {
+              "$ref": "#/$defs/nullable_string"
+            },
+            "active_scope_keys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "limit",
+            "primary_limit",
+            "recent_limit",
+            "retrieval_mode",
+            "include_evidence",
+            "include_explanations",
+            "max_chars",
+            "recent_supplement",
+            "strict"
+          ],
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "primary_limit": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "recent_limit": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "retrieval_mode": {
+              "enum": [
+                "hybrid",
+                "lexical",
+                "vector"
+              ]
+            },
+            "include_evidence": {
+              "type": "boolean"
+            },
+            "include_explanations": {
+              "type": "boolean"
+            },
+            "max_chars": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "recent_supplement": {
+              "type": "boolean"
+            },
+            "strict": {
+              "type": "boolean"
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "out_dir",
+            "json_report",
+            "md_report"
+          ],
+          "properties": {
+            "out_dir": {
+              "type": "string",
+              "minLength": 1
+            },
+            "json_report": {
+              "$ref": "#/$defs/nullable_string"
+            },
+            "md_report": {
+              "$ref": "#/$defs/nullable_string"
+            }
+          }
+        }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "retrieval_mode",
+        "limit",
+        "primary_limit",
+        "recent_limit",
+        "max_chars",
+        "stage_a",
+        "stage_b",
+        "stage_c",
+        "stage_d",
+        "stage_e"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "primary_retrieval_only",
+            "hybrid_primary_plus_recent_supplement"
+          ]
+        },
+        "retrieval_mode": {
+          "enum": [
+            "hybrid",
+            "lexical",
+            "vector"
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "primary_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recent_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_chars": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "stage_a": {
+          "const": "primary_retrieval"
+        },
+        "stage_b": {
+          "enum": [
+            "recent_in_scope_supplement",
+            "disabled"
+          ]
+        },
+        "stage_c": {
+          "enum": [
+            "evidence_attachment",
+            "evidence_counts_only"
+          ]
+        },
+        "stage_d": {
+          "enum": [
+            "budget_enforced",
+            "limit_only"
+          ]
+        },
+        "stage_e": {
+          "const": "deterministic_agent_briefing"
+        }
+      }
+    },
+    "selected_memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cards",
+        "events",
+        "evidence"
+      ],
+      "properties": {
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/memory_card_selection"
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/memory_event_selection"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence_ref"
+          }
+        }
+      }
+    },
+    "memory_card_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "record_type",
+        "kind",
+        "status",
+        "title",
+        "summary",
+        "body_excerpt",
+        "confidence",
+        "scope_key",
+        "entity_ids",
+        "tags",
+        "created_at",
+        "updated_at",
+        "provenance",
+        "metadata",
+        "selection",
+        "evidence_ids",
+        "evidence_count",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_type": {
+          "const": "memory_card"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "body_excerpt": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        },
+        "scope_key": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "entity_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "type": "object"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "selection": {
+          "$ref": "#/$defs/selection"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence_ref"
+          }
+        },
+        "explanation": {
+          "type": "object"
+        },
+        "budget_note": {
+          "type": "string"
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "reason",
+        "score",
+        "retrieval_rank"
+      ],
+      "properties": {
+        "stage": {
+          "enum": [
+            "primary_retrieval",
+            "recent_in_scope_supplement"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": [
+            "number",
+            "integer",
+            "null"
+          ]
+        },
+        "retrieval_rank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "memory_event_selection": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "record_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_type": {
+          "const": "memory_event"
+        }
+      }
+    },
+    "evidence_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "record_type",
+        "type",
+        "ref",
+        "excerpt",
+        "source_id",
+        "metadata",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_type": {
+          "const": "evidence"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "excerpt": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "source_id": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "card_id": {
+          "type": "string"
+        }
+      }
+    },
+    "explanations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "included",
+        "notes",
+        "cards"
+      ],
+      "properties": {
+        "format": {
+          "const": "muninn.v2.retrieval_explanation.v1"
+        },
+        "included": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/card_explanation"
+          }
+        }
+      }
+    },
+    "card_explanation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "card_id",
+        "stage",
+        "reason",
+        "score",
+        "retrieval_rank",
+        "details"
+      ],
+      "properties": {
+        "card_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stage": {
+          "enum": [
+            "primary_retrieval",
+            "recent_in_scope_supplement"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": [
+            "number",
+            "integer",
+            "null"
+          ]
+        },
+        "retrieval_rank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "details": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "usable",
+        "context_gaps",
+        "warnings"
+      ],
+      "properties": {
+        "usable": {
+          "type": "boolean"
+        },
+        "context_gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limit",
+        "primary_limit",
+        "recent_limit",
+        "max_chars",
+        "used_chars",
+        "candidate_cards",
+        "selected_total",
+        "primary_selected",
+        "supplement_selected",
+        "duplicates_removed",
+        "omitted_for_budget",
+        "omitted_for_limit"
+      ],
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "primary_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recent_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_chars": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "used_chars": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_cards": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selected_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "primary_selected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supplement_selected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicates_removed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "omitted_for_budget": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "omitted_for_limit": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "retrieval_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "backend",
+        "fallback_used",
+        "degraded",
+        "degradation_reasons",
+        "provider_status",
+        "query_profile",
+        "result_count",
+        "candidate_source",
+        "retrieval_paths"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "hybrid",
+            "lexical",
+            "vector"
+          ]
+        },
+        "backend": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fallback_used": {
+          "type": "boolean"
+        },
+        "degraded": {
+          "type": "boolean"
+        },
+        "degradation_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provider_status": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "query_profile": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "result_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_source": {
+          "const": "explicit_v2_shadow_db"
+        },
+        "retrieval_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fallback_marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "active",
+        "degraded",
+        "reason"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "degraded": {
+          "type": "boolean"
+        },
+        "reason": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "agent_briefing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "usable",
+        "method",
+        "bullets"
+      ],
+      "properties": {
+        "usable": {
+          "type": "boolean"
+        },
+        "method": {
+          "const": "deterministic_card_title_summary_projection"
+        },
+        "bullets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "schema": {
+    "name": "RehydrateResponseV1",
+    "version": "1.0.0",
+    "schema_version": "muninn.v2.rehydrate_response.v1",
+    "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json"
+  },
+  "schema_version": "muninn.v2.rehydrate_response.v1",
+  "contract_version": "1.0.0",
+  "record_type": "muninn_v2_rehydrate_response",
+  "response_kind": "shadow_rehydrate_preview",
+  "response_id": "rehydrate_0123456789abcdef",
+  "generated_at": "2026-05-17T19:00:00Z",
+  "request": {
+    "query": {
+      "text": "resume Friday project current state and next steps"
+    },
+    "source": {
+      "v2_db": "/tmp/friday_shadow_v2.db",
+      "space_key": "repo:test",
+      "project_path": "/mnt/data/friday",
+      "active_scope_keys": [
+        "repo:test"
+      ]
+    },
+    "options": {
+      "limit": 2,
+      "primary_limit": 1,
+      "recent_limit": 1,
+      "retrieval_mode": "hybrid",
+      "include_evidence": true,
+      "include_explanations": true,
+      "max_chars": null,
+      "recent_supplement": true,
+      "strict": true
+    },
+    "output": {
+      "out_dir": "/tmp/shadow_rehydrate_preview",
+      "json_report": null,
+      "md_report": null
+    }
+  },
+  "composition": {
+    "strategy": "hybrid_primary_plus_recent_supplement",
+    "retrieval_mode": "hybrid",
+    "limit": 2,
+    "primary_limit": 1,
+    "recent_limit": 1,
+    "max_chars": null,
+    "stage_a": "primary_retrieval",
+    "stage_b": "recent_in_scope_supplement",
+    "stage_c": "evidence_attachment",
+    "stage_d": "limit_only",
+    "stage_e": "deterministic_agent_briefing"
+  },
+  "selected_memory": {
+    "cards": [
+      {
+        "id": "card_primary",
+        "record_type": "memory_card",
+        "kind": "decision",
+        "status": "active",
+        "title": "Friday coder auto route",
+        "summary": "Direct chat routes code prompts to coder with repo file context.",
+        "body_excerpt": "Primary implementation checkpoint with Friday coder routing behavior.",
+        "confidence": 0.5,
+        "scope_key": "repo:test",
+        "entity_ids": [],
+        "tags": [],
+        "created_at": "2026-05-17T18:00:00Z",
+        "updated_at": "2026-05-17T18:30:00Z",
+        "provenance": {},
+        "metadata": {},
+        "selection": {
+          "stage": "primary_retrieval",
+          "reason": "query_match",
+          "score": 123.4,
+          "retrieval_rank": 1
+        },
+        "evidence_ids": [
+          "evidence_primary"
+        ],
+        "evidence_count": 1,
+        "evidence": [
+          {
+            "id": "evidence_primary",
+            "record_type": "evidence",
+            "type": "file",
+            "ref": "/repo/backend/core/chat_engine.py:10",
+            "excerpt": null,
+            "source_id": null,
+            "metadata": {},
+            "created_at": "2026-05-17T18:00:00Z"
+          }
+        ],
+        "explanation": {
+          "retrieval_path": "v2_hybrid_recall",
+          "score_semantics": "higher deterministic hybrid score is better",
+          "candidate_sources": [
+            "title",
+            "summary"
+          ],
+          "matched_tokens": [
+            "friday",
+            "coder"
+          ],
+          "score_components": {
+            "title_token_overlap": 80.0
+          },
+          "penalties": {},
+          "vector_used": false,
+          "vector_score": null
+        }
+      },
+      {
+        "id": "card_recent",
+        "record_type": "memory_card",
+        "kind": "runbook",
+        "status": "active",
+        "title": "Friday stack start stop",
+        "summary": "Use compose scripts for explicit stack lifecycle.",
+        "body_excerpt": "",
+        "confidence": 0.5,
+        "scope_key": "repo:test",
+        "entity_ids": [],
+        "tags": [],
+        "created_at": "2026-05-17T17:00:00Z",
+        "updated_at": "2026-05-17T18:20:00Z",
+        "provenance": {},
+        "metadata": {},
+        "selection": {
+          "stage": "recent_in_scope_supplement",
+          "reason": "recent_in_scope_supplement",
+          "score": null,
+          "retrieval_rank": null
+        },
+        "evidence_ids": [],
+        "evidence_count": 0,
+        "evidence": [],
+        "explanation": {
+          "retrieval_path": "recent_in_scope_shadow_supplement",
+          "score_semantics": "continuity supplement, not query relevance",
+          "candidate_sources": [
+            "scope_key",
+            "status",
+            "updated_at"
+          ],
+          "matched_tokens": [],
+          "score_components": {
+            "recent_active_project_card": 1.0
+          },
+          "penalties": {},
+          "vector_used": false
+        }
+      }
+    ],
+    "events": [],
+    "evidence": [
+      {
+        "id": "evidence_primary",
+        "record_type": "evidence",
+        "type": "file",
+        "ref": "/repo/backend/core/chat_engine.py:10",
+        "excerpt": null,
+        "source_id": null,
+        "metadata": {},
+        "created_at": "2026-05-17T18:00:00Z",
+        "card_id": "card_primary"
+      }
+    ]
+  },
+  "explanations": {
+    "format": "muninn.v2.retrieval_explanation.v1",
+    "included": true,
+    "notes": [],
+    "cards": [
+      {
+        "card_id": "card_primary",
+        "stage": "primary_retrieval",
+        "reason": "query_match",
+        "score": 123.4,
+        "retrieval_rank": 1,
+        "details": {
+          "retrieval_path": "v2_hybrid_recall"
+        }
+      },
+      {
+        "card_id": "card_recent",
+        "stage": "recent_in_scope_supplement",
+        "reason": "recent_in_scope_supplement",
+        "score": null,
+        "retrieval_rank": null,
+        "details": {
+          "retrieval_path": "recent_in_scope_shadow_supplement"
+        }
+      }
+    ]
+  },
+  "uncertainty": {
+    "usable": true,
+    "context_gaps": [
+      "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "warnings": [
+      "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+      "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "budget": {
+    "limit": 2,
+    "primary_limit": 1,
+    "recent_limit": 1,
+    "max_chars": null,
+    "used_chars": 188,
+    "candidate_cards": 2,
+    "selected_total": 2,
+    "primary_selected": 1,
+    "supplement_selected": 1,
+    "duplicates_removed": 0,
+    "omitted_for_budget": 0,
+    "omitted_for_limit": 0
+  },
+  "retrieval_provenance": {
+    "mode": "hybrid",
+    "backend": "hybrid",
+    "fallback_used": false,
+    "degraded": true,
+    "degradation_reasons": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ],
+    "provider_status": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "eligible_records": 2,
+      "indexed_records": 2,
+      "missing_records": 0,
+      "stale_records": 0,
+      "degraded": true,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ]
+    },
+    "query_profile": {
+      "raw": "resume Friday project current state and next steps",
+      "normalized": "resume friday project current state and next steps",
+      "tokens": [
+        "resume",
+        "friday",
+        "project",
+        "current",
+        "state",
+        "next",
+        "steps"
+      ],
+      "unique_tokens": [
+        "current",
+        "friday",
+        "next",
+        "project",
+        "resume",
+        "state",
+        "steps"
+      ],
+      "numeric_tokens": [],
+      "campaign_tokens": [],
+      "phrase": "resume friday project current state and next steps"
+    },
+    "result_count": 1,
+    "candidate_source": "explicit_v2_shadow_db",
+    "retrieval_paths": [
+      "v2_hybrid_recall"
+    ]
+  },
+  "fallbacks": [
+    {
+      "name": "derived_vector_backend",
+      "active": true,
+      "degraded": true,
+      "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+    },
+    {
+      "name": "lexical_fallback",
+      "active": false,
+      "degraded": false,
+      "reason": null
+    }
+  ],
+  "agent_briefing": {
+    "usable": true,
+    "method": "deterministic_card_title_summary_projection",
+    "bullets": [
+      "Primary match: Friday coder auto route - Direct chat routes code prompts to coder with repo file context.",
+      "Continuity: Friday stack start stop - Use compose scripts for explicit stack lifecycle.",
+      "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  }
+}
