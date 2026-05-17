@@ -1,0 +1,367 @@
+{
+  "commands_run": [
+    "stat -c %s %Y %y /home/unix/.local/share/muninn/human_memory.db",
+    "sqlite3 mode=ro identity/count queries for repo:f8cc7f64d3636a4e",
+    "PYTHONPATH=src python3 -m muninn.v2.cli pilot-import --v1-db /home/unix/.local/share/muninn/human_memory.db --v2-db reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db --space-key repo:f8cc7f64d3636a4e --project-path /mnt/data/friday --out-dir reports/pilots/friday_v2_shadow_2026-05-17 --strict --write-v2",
+    "PYTHONPATH=src python3 -m muninn.v2.cli index-health --v2-db reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db --out-dir reports/pilots/friday_v2_shadow_2026-05-17/index_health_initial",
+    "PYTHONPATH=src python3 -m muninn.v2.cli index-rebuild --v2-db reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db --out-dir reports/pilots/friday_v2_shadow_2026-05-17/index_rebuild_dry_run --dry-run",
+    "PYTHONPATH=src python3 -m muninn.v2.cli index-rebuild --v2-db reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db --out-dir reports/pilots/friday_v2_shadow_2026-05-17/index_rebuild_write --write-index",
+    "PYTHONPATH=src python3 -m muninn.v2.cli index-health --v2-db reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db --out-dir reports/pilots/friday_v2_shadow_2026-05-17/index_health_post_write",
+    "PYTHONPATH=src python3 -m muninn.v2.cli retrieval-eval --retrieval-mode hybrid",
+    "PYTHONPATH=src python3 -m muninn.v2.cli retrieval-eval --retrieval-mode lexical",
+    "PYTHONPATH=src python3 -m muninn.v2.cli retrieval-eval --retrieval-mode vector",
+    "PYTHONPATH=src python3 -m muninn.v2.cli recall-parity --query-file friday_recall_queries.json --retrieval-mode lexical",
+    "PYTHONPATH=src python3 -m muninn.v2.cli recall-parity --query-file friday_recall_queries.json --retrieval-mode hybrid",
+    "PYTHONPATH=src python3 generated shadow preview script using explicit v2 DB only"
+  ],
+  "generated_date": "2026-05-17",
+  "go_no_go": {
+    "live_agent_context": "NO_GO",
+    "offline_diagnostics": "GO",
+    "reasons": [
+      "Import/fidelity passed with v1 unchanged.",
+      "Hybrid retrieval eval hit 18/18 expected records with mean recall@10 1.0 and record_absent 0.",
+      "Preview is useful only with explicit staged recent supplement; pure broad hybrid query returned 3 primary cards.",
+      "Live use still lacks formal v2 rehydration contract, review, cutover plan, and rollback plan."
+    ],
+    "v2_shadow_rehydration_preview": "GO_WITH_CONSTRAINTS"
+  },
+  "identity_confirmation": {
+    "card_count": 48,
+    "evidence_count": 152,
+    "project_git_root": "/mnt/data/friday",
+    "project_path_exists": true,
+    "project_remote": "https://github.com/Austontatious/friday.git",
+    "selector_ambiguity": "No ambiguity for requested repo space; legacy explicit space key friday exists with 0 cards and was not selected.",
+    "space_key_exists": true,
+    "space_label": "friday",
+    "space_meta_remote_norm": "https://github.com/austontatious/friday",
+    "space_meta_root_path": "/mnt/data/friday"
+  },
+  "import_fidelity": {
+    "ambiguous_records": 0,
+    "counts": {
+      "ambiguous_records": 0,
+      "created_entities": 1,
+      "created_ontology_profiles": 1,
+      "errors": 0,
+      "fidelity_failures": 0,
+      "fidelity_records_checked": 203,
+      "ledger_entries": 203,
+      "migrated_associations": 1,
+      "migrated_cards": 48,
+      "migrated_events": 0,
+      "migrated_evidence_refs": 152,
+      "scanned_cards": 48,
+      "scanned_records": 201,
+      "skipped_records": 0,
+      "unsupported_record_types": 0
+    },
+    "errors": 0,
+    "fidelity_summary": {
+      "associations_checked": 1,
+      "associations_passed": 1,
+      "cards_checked": 48,
+      "cards_passed": 48,
+      "entities_checked": 1,
+      "evidence_refs_checked": 152,
+      "evidence_refs_passed": 152,
+      "failures": 0,
+      "fidelity_passed": true,
+      "ontology_profiles_checked": 1,
+      "records_checked": 203
+    },
+    "unsupported_records": 0
+  },
+  "indexing": {
+    "dry_run": {
+      "deleted_records": 0,
+      "dry_run": true,
+      "planned_deletes": 0,
+      "planned_upserts": 47,
+      "written_upserts": 0
+    },
+    "initial_health": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 47,
+      "indexed_records": 0,
+      "missing_records": 47,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback",
+        "index_table_missing",
+        "rebuild_required"
+      ],
+      "stale_records": 0
+    },
+    "post_write_health": {
+      "backend": "json_vector_fallback",
+      "backend_available": true,
+      "degraded": true,
+      "eligible_records": 47,
+      "indexed_records": 47,
+      "missing_records": 0,
+      "reason": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "stale_records": 0
+    },
+    "sqlite_vec_status": "unavailable; json_vector_fallback is in use and degraded by design",
+    "write": {
+      "deleted_records": 0,
+      "dry_run": false,
+      "planned_deletes": 0,
+      "planned_upserts": 47,
+      "written_upserts": 47
+    }
+  },
+  "pilot": {
+    "project": "Friday",
+    "project_path": "/mnt/data/friday",
+    "run_dir": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17",
+    "space_key": "repo:f8cc7f64d3636a4e",
+    "v1_db": "/home/unix/.local/share/muninn/human_memory.db",
+    "v2_db": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db"
+  },
+  "recall_parity": {
+    "hybrid": {
+      "average_overlap_ratio": 0.07777777777777778,
+      "evidence_mismatches": 81,
+      "likely_causes_of_mismatch": [
+        "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+        "some overlapping or one-sided records have evidence availability differences"
+      ],
+      "queries_with_full_overlap": 0,
+      "queries_with_partial_overlap": 6,
+      "queries_with_zero_overlap": 6,
+      "total_extra_from_v2": 81,
+      "total_missing_from_v2": 0,
+      "total_queries": 12
+    },
+    "lexical": {
+      "average_overlap_ratio": 0.049999999999999996,
+      "evidence_mismatches": 114,
+      "likely_causes_of_mismatch": [
+        "v2 provisional matcher searches evidence/body text with different weights than v1 FTS",
+        "some overlapping or one-sided records have evidence availability differences"
+      ],
+      "queries_with_full_overlap": 0,
+      "queries_with_partial_overlap": 6,
+      "queries_with_zero_overlap": 6,
+      "total_extra_from_v2": 114,
+      "total_missing_from_v2": 0,
+      "total_queries": 12
+    },
+    "note": "Initial parity attempt with retrieval fixture schema failed safely; parity was rerun with friday_recall_queries.json because recall-parity expects a top-level queries list."
+  },
+  "recommended_next_task": "Implement a v2-only shadow-rehydrate-preview command with explicit staged hybrid plus recent fallback semantics, tests, and docs; then rerun Friday and ReadyPlayer1 previews with the same command.",
+  "record_type": "muninn_v2_friday_shadow_migration_report",
+  "retrieval_eval": {
+    "hybrid": {
+      "cases": 12,
+      "expected_records": 18,
+      "extra_result_count": 71,
+      "hit_records": 18,
+      "mean_recall_at_limit": 1.0,
+      "record_absent_count": 0,
+      "retrieval_mismatch_count": 0,
+      "scored_cases": 12
+    },
+    "lexical": {
+      "cases": 12,
+      "expected_records": 18,
+      "extra_result_count": 102,
+      "hit_records": 18,
+      "mean_recall_at_limit": 1.0,
+      "record_absent_count": 0,
+      "retrieval_mismatch_count": 0,
+      "scored_cases": 12
+    },
+    "vector": {
+      "cases": 12,
+      "expected_records": 18,
+      "extra_result_count": 103,
+      "hit_records": 17,
+      "mean_recall_at_limit": 0.958333,
+      "record_absent_count": 0,
+      "retrieval_mismatch_count": 1,
+      "scored_cases": 12
+    }
+  },
+  "retrieval_fixture": {
+    "case_summaries": [
+      {
+        "expected_card_ids": [
+          "7fcab1ba-2af2-498d-b712-d6c79520fd6e"
+        ],
+        "id": "direct-chat-coder-auto-route-repo-context",
+        "query": "Friday direct chat coder auto route repo file context read_repo_file backend image",
+        "rationale": "Recent implementation checkpoint covering coder auto-routing, repo-local file context, and backend image repo copy."
+      },
+      {
+        "expected_card_ids": [
+          "ea8d2c51-9a13-4736-8b12-45c068c6a783"
+        ],
+        "id": "workspace-readonly-access-althing-fallback",
+        "query": "read-only /mnt/data workspace access Althing bridge fallback direct Friday path",
+        "rationale": "Recent decision card on read-only workspace roots and Althing-mode path fallback."
+      },
+      {
+        "expected_card_ids": [
+          "849362c5-ed42-43a2-9084-897ecf2c7de1"
+        ],
+        "id": "mimir-repo-cognition-entrypoints",
+        "query": "Mimir repo cognition entrypoints status index query bundle Makefile Friday root",
+        "rationale": "Architecture decision separating Mimir developer navigation from Friday runtime memory."
+      },
+      {
+        "expected_card_ids": [
+          "6c7f8245-1952-4464-8998-79725736746e"
+        ],
+        "id": "althing-memory-bridge-direct-split",
+        "query": "Althing memory audit bridge direct split private whiteboard stateless default flow",
+        "rationale": "Decision card describing Althing bridge/direct memory behavior and missing private scratchpad."
+      },
+      {
+        "expected_card_ids": [
+          "c9da15a8-7aa4-4471-a717-d7379249fa7f",
+          "d5f1c931-3233-46df-96f3-5c5645bfc86c"
+        ],
+        "id": "optimizer-persisted-splits-staged-trials",
+        "query": "Friday optimizer persisted splits staged candidate trials durable trial ledger promotion gate",
+        "rationale": "Runbook plus decision for optimizer harness workflow, split discipline, candidate trials, and ledger."
+      },
+      {
+        "expected_card_ids": [
+          "f51f3e42-5ede-42fa-840c-c546c9562bb1",
+          "ed79d474-0488-4603-8a70-5a5d6a78e4bc"
+        ],
+        "id": "token-budgeting-context-errors",
+        "query": "Friday token budgeting lane aware budget context_budget_exceeded truthful context window errors",
+        "rationale": "Two runtime decisions covering adaptive lane-aware budgeting and truthful context-window failures."
+      },
+      {
+        "expected_card_ids": [
+          "d0510e00-574e-4960-87b1-ad33a99e6546",
+          "440c39d5-5839-4722-b5eb-2c7761df4781",
+          "5f79c511-c602-4b38-9c76-f4e7ebee9f95"
+        ],
+        "id": "corpus-runner-gold-generated-resume",
+        "query": "Friday corpus runner dry-run smoke resume gold generated variants analysis artifacts",
+        "rationale": "Runbook and decisions around the offline corpus runner, generated corpus, and resumable artifacts."
+      },
+      {
+        "expected_card_ids": [
+          "225899b7-75a9-462c-8e66-ade4c2a20465"
+        ],
+        "id": "althing-docker-network-base-url",
+        "query": "FRIDAY_ALTHING_BASE_URL host.docker.internal althing_router shared Docker network backend cannot reach Althing",
+        "rationale": "Operational runbook for Althing bridge networking and base URL."
+      },
+      {
+        "expected_card_ids": [
+          "fc28f323-beff-474b-a860-a76b31f8b567"
+        ],
+        "id": "frontend-althing-direct-modes",
+        "query": "Friday frontend Althing Direct Friday entry modes /api/althing/chat /api/chat fallback",
+        "rationale": "Interface card for UI mode routing and chat endpoints."
+      },
+      {
+        "expected_card_ids": [
+          "9e2eb8de-7ecf-4939-9352-ef6ed159603e",
+          "92585711-c53e-4b93-9014-034a5a596fc3"
+        ],
+        "id": "coder-runtime-readyz-fallback",
+        "query": "Friday coder runtime hardening readyz /v1/models fallback script check_friday_stack",
+        "rationale": "Runbooks for coder runtime health, fallback checks, and service stabilization."
+      },
+      {
+        "expected_card_ids": [
+          "8e0dcce0-e508-47f3-ad31-39f947f5eb09",
+          "596c1020-e868-4fc7-80a4-3d67b2893b71"
+        ],
+        "id": "stack-start-stop-compose-wrapper",
+        "query": "Friday stack docker compose up down start stop power save root compose wrapper friday-coder",
+        "rationale": "Operational runbooks for start/stop workflow and root compose wrapper with coder wiring."
+      },
+      {
+        "expected_card_ids": [
+          "5e195f61-d9fb-4a58-aed5-51596a3a5236"
+        ],
+        "id": "backend-image-core-prompts-constraint",
+        "query": "Friday backend image must include top level core prompts gunicorn ModuleNotFoundError",
+        "rationale": "Constraint card for backend image runtime imports."
+      }
+    ],
+    "cases": 12,
+    "expected_records": 18,
+    "note": "Two expected IDs were corrected after the first hybrid eval showed record_absent for typos; corrected IDs were verified in migrated_cards.jsonl.",
+    "path": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/friday_retrieval_eval_queries.json"
+  },
+  "risks_blockers": [
+    "sqlite_vec is unavailable; fallback JSON vector index is degraded but complete.",
+    "Recall parity overlap remains low because v1 FTS and v2 hybrid/lexical rank different fields and windows.",
+    "Shadow preview staging is report-only; no durable v2 CLI rehydration contract exists yet.",
+    "Generated shadow DB and pilot artifacts must remain uncommitted unless intentionally curated."
+  ],
+  "schema_version": "muninn.v2.friday_shadow_migration_report.v1",
+  "shadow_rehydrate_preview": {
+    "assessment": {
+      "adequate_for_friday_shadow_preview": true,
+      "adequate_for_live_agent_context": false,
+      "reason": "Useful offline preview with explicit staged supplement; live use requires formal v2 rehydration contract, independent repo validation, cutover plan, and rollback plan."
+    },
+    "hybrid_primary_result_count": 3,
+    "path_json": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/shadow_rehydrate_preview/shadow_rehydrate_preview.json",
+    "path_markdown": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/shadow_rehydrate_preview/shadow_rehydrate_preview.md",
+    "supplement_result_count": 9,
+    "top_cards": 12
+  },
+  "v1_immutability": {
+    "baseline": {
+      "mtime_epoch": 1779042700,
+      "mtime_iso": "2026-05-17 11:31:40.044628767 -0700",
+      "row_counts": {
+        "card_evidence": 1395,
+        "card_relations": 5,
+        "card_tags": 535,
+        "card_vectors": 0,
+        "cards": 512,
+        "clients": 1,
+        "evidence": 1395,
+        "interaction_events": 2,
+        "space_aliases": 14,
+        "spaces": 33,
+        "tags": 252,
+        "users": 1,
+        "vector_index_state": 0
+      },
+      "size_bytes": 2236416
+    },
+    "final_before_completion_card": {
+      "mtime_epoch": 1779042700,
+      "mtime_iso": "2026-05-17 11:31:40.044628767 -0700",
+      "row_counts": {
+        "card_evidence": 1395,
+        "card_relations": 5,
+        "card_tags": 535,
+        "card_vectors": 0,
+        "cards": 512,
+        "clients": 1,
+        "evidence": 1395,
+        "interaction_events": 2,
+        "space_aliases": 14,
+        "spaces": 33,
+        "tags": 252,
+        "users": 1,
+        "vector_index_state": 0
+      },
+      "size_bytes": 2236416
+    },
+    "mtime_changed": false,
+    "pilot_import_report_v1_row_counts_changed": false,
+    "row_counts_changed": false,
+    "size_changed": false
+  }
+}
