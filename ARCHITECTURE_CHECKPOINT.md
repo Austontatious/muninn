@@ -77,6 +77,7 @@ The v2 checkpoint currently provides:
 - opt-in shadow rehydration preview reports
 - `RehydrateResponseV1` as the stable v2 shadow rehydration response envelope
 - offline agent-context consumer audits for `RehydrateResponseV1` artifacts
+- offline recall/reinforcement event replay into derived reinforcement state
 
 v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
 
@@ -142,6 +143,8 @@ The v2 shadow rehydration preview command is an explicit-DB report generator onl
 Its JSON artifact is now the versioned `RehydrateResponseV1` envelope (`muninn.v2.rehydrate_response.v1`, contract version `1.0.0`). Future v2 APIs and opt-in agent-context experiments must consume that envelope instead of command-specific preview fields. The envelope carries request metadata, selected memory cards/events/evidence, explanations, uncertainty/context gaps, budget usage, retrieval provenance, and fallback/degradation markers.
 
 The v2 agent-context audit command is the Phase B offline consumer harness. It validates real `RehydrateResponseV1` artifacts, renders deterministic context blocks, compares them against fixture-defined project-state needs and optional v1-style baseline text, and emits audit reports. It is read-only evaluation infrastructure, not live MCP/Codex integration.
+
+The v2 recall/reinforcement layer is offline-only adaptive retrieval metadata. It records explicit recall events and replays them into `v2_reinforcement_state` in caller-provided v2 DBs without mutating canonical card text, bodies, evidence, or v1 data. Replay is deterministic and explainable: accepted records are boosted, scoped suppressions are penalized, durable boundary/contract records receive preservation against quiet-period decay, repeated signals use deterministic diminishing returns, recalled-only exposure is capped below accepted reinforcement, and effective scores remain bounded. The optional hybrid retrieval hook can consume this state only when explicitly supplied; adaptive scoring is not a default retrieval or live context path.
 
 ## Migration And Cutover Posture
 
