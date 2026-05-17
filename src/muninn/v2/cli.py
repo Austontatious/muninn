@@ -25,8 +25,12 @@ from .core.models import (
 )
 from .diagnostics import build_index_health_report, write_index_health_reports
 from .eval import (
+    AgentContextAuditError,
+    load_agent_context_fixture,
     load_retrieval_fixture as load_v2_retrieval_fixture,
+    run_agent_context_audit,
     run_retrieval_eval as run_v2_retrieval_eval,
+    write_agent_context_audit_reports,
     write_retrieval_eval_reports,
 )
 from .indexes import SQLiteDerivedIndexProvider, load_v2_cards
@@ -2028,6 +2032,15 @@ def run_v2_retrieval_eval_command(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def run_agent_context_audit_command(args: argparse.Namespace) -> dict[str, Any]:
+    out_dir = Path(args.out_dir).expanduser()
+    fixture = load_agent_context_fixture(args.fixture)
+    report = run_agent_context_audit(fixture, schema_path=args.schema)
+    report["out_dir"] = str(out_dir)
+    report["artifacts"] = write_agent_context_audit_reports(report, out_dir)
+    return report
+
+
 def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
     v2_db = Path(args.v2_db).expanduser()
     out_dir = Path(args.out_dir).expanduser()
@@ -2176,6 +2189,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     retrieval_eval.set_defaults(func=run_v2_retrieval_eval_command)
 
+    agent_context = subparsers.add_parser(
+        "agent-context-audit",
+        help="Validate RehydrateResponseV1 artifacts and score offline agent-context coverage.",
+    )
+    agent_context.add_argument("--fixture", required=True, help="Agent-context audit fixture JSON.")
+    agent_context.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    agent_context.add_argument(
+        "--schema",
+        help="Optional RehydrateResponseV1 JSON schema path. Defaults to the repo contract schema.",
+    )
+    agent_context.set_defaults(func=run_agent_context_audit_command)
+
     shadow_preview = subparsers.add_parser(
         "shadow-rehydrate-preview",
         help="Compose an opt-in v2 shadow rehydration preview from an explicit v2 DB.",
@@ -2228,7 +2253,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
     try:
         report = args.func(args)
-    except (PilotSafetyError, RecallParityError, ShadowPreviewError) as exc:
+    except (PilotSafetyError, RecallParityError, ShadowPreviewError, AgentContextAuditError) as exc:
         print(f"muninn.v2 command failed: {exc}", file=sys.stderr)
         return 2
     if report["record_type"] == "muninn_v2_recall_parity_report":
@@ -2266,6 +2291,14 @@ def main(argv: Sequence[str] | None = None) -> int:
             "mode": "retrieval_eval",
             "retrieval_mode": report["retrieval_mode"],
             "v2_db": report["v2_db"],
+            "summary": report["summary"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_agent_context_audit_report":
+        payload = {
+            "status": "ok",
+            "mode": "agent_context_audit",
+            "fixture": report["fixture"]["name"],
             "summary": report["summary"],
             "out_dir": report["out_dir"],
         }

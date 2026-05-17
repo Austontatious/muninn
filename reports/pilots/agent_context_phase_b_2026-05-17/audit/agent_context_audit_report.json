@@ -1,0 +1,436 @@
+{
+  "cases": [
+    {
+      "comparison": {
+        "coverage_delta_v2_minus_v1": 0.0,
+        "regressions": [],
+        "same_good_decision_supported": true,
+        "v1_context_provided": true
+      },
+      "confusing": [
+        {
+          "blocking": false,
+          "reason": "Appears only as contrast in Android card; should not imply the current frontend is a web wrapper.",
+          "term": "web-wrapper"
+        }
+      ],
+      "context_block_chars": 24964,
+      "decision": "go",
+      "id": "friday-resume-current-state",
+      "need_results": [
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "repo file context",
+            "repo-local context",
+            "file-path prompts"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Friday direct chat routes code prompts to coder with repo file context.",
+          "id": "direct-code-route",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "direct Friday",
+            "Althing-mode",
+            "workspace paths"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Friday can inspect read-only workspace paths under /mnt/data.",
+          "id": "workspace-read-access",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "without creating runtime coupling",
+            "separated from runtime memory"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Mimir is the repo-cognition path and is separated from runtime memory.",
+          "id": "mimir-navigation-boundary",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "stable IDs",
+            "evals/runs"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the Friday corpus runner and resume-mode artifact state.",
+          "id": "runner-resume-state",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        }
+      ],
+      "over_included_cards": [
+        {
+          "id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "primary_retrieval",
+          "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks"
+        },
+        {
+          "id": "c1907668-82e4-4e07-908d-69250a58e825",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "primary_retrieval",
+          "title": "Friday mobile client uses native Android Compose project under android/"
+        },
+        {
+          "id": "da270af3-a737-4ad5-a652-92751cb57de2",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Hard-gate trial for routing_001 traceback guard set to manual_review"
+        },
+        {
+          "id": "c9da15a8-7aa4-4471-a717-d7379249fa7f",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Run Friday optimizer v1 with persisted splits and staged candidate trials"
+        },
+        {
+          "id": "d5f1c931-3233-46df-96f3-5c5645bfc86c",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday now has a bounded synthetic optimizer harness v1 over safe policy surfaces"
+        },
+        {
+          "id": "ecc7842e-8058-4603-b3a0-633970ad4db5",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "V3 routing+prompt pass completed with targeted and full reruns"
+        },
+        {
+          "id": "7c366fc3-ec1f-455f-8c7a-3d2ea90ff178",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday remediation v2 rerun and delta artifacts for failed/borderline and full corpus"
+        }
+      ],
+      "project": "Friday",
+      "response_path": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/shadow_rehydrate_preview_phase_a/shadow_rehydrate_preview.json",
+      "selected_cards": [
+        {
+          "id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+          "stage": "primary_retrieval",
+          "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks"
+        },
+        {
+          "id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+          "stage": "primary_retrieval",
+          "title": "Run Friday corpus runner in dry-run, smoke, and resume modes"
+        },
+        {
+          "id": "c1907668-82e4-4e07-908d-69250a58e825",
+          "stage": "primary_retrieval",
+          "title": "Friday mobile client uses native Android Compose project under android/"
+        },
+        {
+          "id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday bridge and tools now expose read-only /mnt/data workspace access"
+        },
+        {
+          "id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday direct chat now auto-routes code prompts to coder and injects repo file context end-to-end"
+        },
+        {
+          "id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday root now has explicit Mimir repo-cognition entrypoints separated from runtime memory"
+        },
+        {
+          "id": "da270af3-a737-4ad5-a652-92751cb57de2",
+          "stage": "recent_in_scope_supplement",
+          "title": "Hard-gate trial for routing_001 traceback guard set to manual_review"
+        },
+        {
+          "id": "6c7f8245-1952-4464-8998-79725736746e",
+          "stage": "recent_in_scope_supplement",
+          "title": "Althing memory audit identifies bridge/direct split and missing private whiteboard"
+        },
+        {
+          "id": "c9da15a8-7aa4-4471-a717-d7379249fa7f",
+          "stage": "recent_in_scope_supplement",
+          "title": "Run Friday optimizer v1 with persisted splits and staged candidate trials"
+        },
+        {
+          "id": "d5f1c931-3233-46df-96f3-5c5645bfc86c",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday now has a bounded synthetic optimizer harness v1 over safe policy surfaces"
+        },
+        {
+          "id": "ecc7842e-8058-4603-b3a0-633970ad4db5",
+          "stage": "recent_in_scope_supplement",
+          "title": "V3 routing+prompt pass completed with targeted and full reruns"
+        },
+        {
+          "id": "7c366fc3-ec1f-455f-8c7a-3d2ea90ff178",
+          "stage": "recent_in_scope_supplement",
+          "title": "Friday remediation v2 rerun and delta artifacts for failed/borderline and full corpus"
+        }
+      ],
+      "stale": [],
+      "task": "resume Friday project current state and next steps",
+      "v1_style_context": {
+        "coverage_score": 1.0,
+        "covered_required": 4,
+        "missing_required": [],
+        "pass": true,
+        "provided": true,
+        "required_needs": 4
+      },
+      "v2_context": {
+        "coverage_score": 1.0,
+        "covered_required": 4,
+        "missing_required": [],
+        "pass": true,
+        "required_needs": 4
+      }
+    },
+    {
+      "comparison": {
+        "coverage_delta_v2_minus_v1": 0.0,
+        "regressions": [],
+        "same_good_decision_supported": true,
+        "v1_context_provided": true
+      },
+      "confusing": [
+        {
+          "blocking": false,
+          "reason": "Unrelated model-serving trial appears as a recent supplement and should not steer ReadyPlayer1 campaign work.",
+          "term": "Qwen3.6"
+        }
+      ],
+      "context_block_chars": 28034,
+      "decision": "go",
+      "id": "readyplayer1-resume-current-campaign",
+      "need_results": [
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows current-state consumption uses runs/current pointers.",
+          "id": "current-state-pointers",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Campaign 007A post-reacquisition stabilization state.",
+          "id": "campaign-007a",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Campaign 006A early active ping recovery state.",
+          "id": "campaign-006a",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Campaign 005A fire-control state normalization.",
+          "id": "campaign-005a",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows Campaign 004A duplicate torpedo suppression.",
+          "id": "campaign-004a",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        },
+        {
+          "any_term_hit": true,
+          "any_terms": [
+            "failure taxonomy",
+            "promotion decision"
+          ],
+          "card_id_hit": true,
+          "covered": true,
+          "description": "Agent knows the SubSim evaluation contract and failure taxonomy are present.",
+          "id": "subsim-evaluation-contract",
+          "missing_all_terms": [],
+          "missing_evidence_terms": [],
+          "required": true
+        }
+      ],
+      "over_included_cards": [
+        {
+          "id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+          "reason": "no_expected_need_terms_matched_title_summary_or_body_excerpt",
+          "stage": "recent_in_scope_supplement",
+          "title": "Qwen3.6-27B isolated vLLM trial on V100 (sm_70) parses but fails to reach API-ready state"
+        }
+      ],
+      "project": "ReadyPlayer1",
+      "response_path": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/shadow_rehydrate_preview_phase_a/shadow_rehydrate_preview.json",
+      "selected_cards": [
+        {
+          "id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+          "stage": "primary_retrieval",
+          "title": "Phase 2 canonical current-state pointers and onboarding source consolidation"
+        },
+        {
+          "id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+          "stage": "primary_retrieval",
+          "title": "Campaign 005A promoted fire-control state normalization"
+        },
+        {
+          "id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+          "stage": "primary_retrieval",
+          "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+        },
+        {
+          "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 007A promoted post-reacquisition stabilization"
+        },
+        {
+          "id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 006A promoted post-loss recovery probe"
+        },
+        {
+          "id": "719fafb5-b25b-4460-a549-987799432a6c",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 004A fire-control loop promoted"
+        },
+        {
+          "id": "8db59c21-0224-4ef0-b628-f336867bf591",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 003 acoustic clutter binding integrated"
+        },
+        {
+          "id": "2656c35f-79af-403d-9128-e98fc72663d6",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 003 promoted for SubSim clutter binding"
+        },
+        {
+          "id": "4be809aa-731f-420c-8dc1-99cb5813c0ea",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 002A promoted for SubSim sonar lifecycle diagnostics"
+        },
+        {
+          "id": "f5021943-807e-4015-a4d6-a24e1f8b8db4",
+          "stage": "recent_in_scope_supplement",
+          "title": "Campaign 001 promoted on belief_baseline clutter evidence"
+        },
+        {
+          "id": "fb80c2a4-3025-4a64-bd60-3cbf7484b2d2",
+          "stage": "recent_in_scope_supplement",
+          "title": "SubSim ReadyPlayer1 evaluation contract v1 documented"
+        },
+        {
+          "id": "c7a9d5cf-187b-4d6d-9637-f6d191b512f3",
+          "stage": "recent_in_scope_supplement",
+          "title": "Qwen3.6-27B isolated vLLM trial on V100 (sm_70) parses but fails to reach API-ready state"
+        }
+      ],
+      "stale": [],
+      "task": "resume ReadyPlayer1 current campaign state and next steps",
+      "v1_style_context": {
+        "coverage_score": 1.0,
+        "covered_required": 6,
+        "missing_required": [],
+        "pass": true,
+        "provided": true,
+        "required_needs": 6
+      },
+      "v2_context": {
+        "coverage_score": 1.0,
+        "covered_required": 6,
+        "missing_required": [],
+        "pass": true,
+        "required_needs": 6
+      }
+    }
+  ],
+  "fixture": {
+    "name": "Friday and ReadyPlayer1 Phase B agent-context audit",
+    "source_path": "/mnt/data/Muninn/reports/pilots/agent_context_phase_b_2026-05-17/agent_context_phase_b_fixture.json",
+    "version": 1
+  },
+  "generated_at": "2026-05-17T20:38:55.113850Z",
+  "out_dir": "reports/pilots/agent_context_phase_b_2026-05-17/audit",
+  "record_type": "muninn_v2_agent_context_audit_report",
+  "safety": {
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "mode": "offline_read_only",
+    "v1_writes": false
+  },
+  "schema_version": "muninn.v2.agent_context_audit.v1",
+  "summary": {
+    "average_v2_coverage_score": 1.0,
+    "cases": 2,
+    "cases_with_v1_comparison": 2,
+    "confusing_flag_total": 2,
+    "go_cases": 2,
+    "missing_required_total": 0,
+    "no_go_cases": 0,
+    "over_included_card_total": 12,
+    "same_good_decision_supported_count": 2,
+    "stale_flag_total": 0
+  }
+}

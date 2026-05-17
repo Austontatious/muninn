@@ -42,3 +42,7 @@ The selected memory is durable v2 memory projected into an agent-consumable enve
 Future APIs and agent-context experiments that consume v2 rehydration output must consume this envelope instead of relying on command-specific JSON fields. Changing the envelope requires a new version.
 
 This contract is not Mimir cognition. It does not perform motif detection, salience propagation, spreading activation, hidden-link discovery, or autonomous reasoning.
+
+## Offline Consumer
+
+The Phase B consumer harness is documented in `docs/muninn_v2_agent_context_consumer_harness.md`. It validates `RehydrateResponseV1`, renders the deterministic context block an agent would receive, and scores fixture-based context coverage before any live integration is considered.
