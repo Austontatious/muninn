@@ -1,0 +1,100 @@
+{
+  "schema_version": "muninn.v2.shadow_rehydration_preview_report.v1",
+  "record_type": "muninn_v2_shadow_rehydration_preview_report",
+  "generated_date": "2026-05-17",
+  "implementation": {
+    "command": "shadow-rehydrate-preview",
+    "v2_only": true,
+    "requires_explicit_v2_db": true,
+    "writes_v1": false,
+    "live_default_change": false,
+    "files": [
+      "src/muninn/v2/retrieval/shadow_rehydrate.py",
+      "src/muninn/v2/cli.py",
+      "docs/muninn_v2_shadow_rehydration_preview.md",
+      "tests/test_v2_shadow_rehydrate_preview.py"
+    ]
+  },
+  "composition_contract": {
+    "strategy": "primary_retrieval_plus_recent_in_scope_supplement",
+    "stages": [
+      "primary_retrieval",
+      "recent_in_scope_supplement",
+      "evidence_attachment",
+      "budgeting",
+      "deterministic_agent_briefing"
+    ],
+    "boundary": "Muninn v2 shadow/evaluation only; not Mimir cognition and not live Codex context"
+  },
+  "friday_preview": {
+    "v2_db": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/friday_shadow_v2.db",
+    "out_dir": "/mnt/data/Muninn/reports/pilots/friday_v2_shadow_2026-05-17/shadow_rehydrate_preview_command",
+    "query": "resume Friday project current state and next steps",
+    "counts": {
+      "candidate_cards": 47,
+      "duplicates_removed": 0,
+      "omitted_for_budget": 0,
+      "omitted_for_limit": 0,
+      "primary": 3,
+      "supplements": 9,
+      "total": 12
+    },
+    "usable": true,
+    "primary_titles": [
+      "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks",
+      "Run Friday corpus runner in dry-run, smoke, and resume modes",
+      "Friday mobile client uses native Android Compose project under android/"
+    ],
+    "supplement_titles_first_three": [
+      "Friday bridge and tools now expose read-only /mnt/data workspace access",
+      "Friday direct chat now auto-routes code prompts to coder and injects repo file context end-to-end",
+      "Friday root now has explicit Mimir repo-cognition entrypoints separated from runtime memory"
+    ],
+    "assessment": "usable_with_recent_supplement_required_for_broad_resume_query"
+  },
+  "readyplayer1_preview": {
+    "v2_db": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+    "out_dir": "/mnt/data/Muninn/reports/pilots/readyplayer1_v2_shadow_2026-05-17/shadow_rehydrate_preview_command",
+    "query": "resume ReadyPlayer1 current campaign state and next steps",
+    "counts": {
+      "candidate_cards": 48,
+      "duplicates_removed": 0,
+      "omitted_for_budget": 0,
+      "omitted_for_limit": 0,
+      "primary": 3,
+      "supplements": 9,
+      "total": 12
+    },
+    "usable": true,
+    "primary_titles": [
+      "Phase 2 canonical current-state pointers and onboarding source consolidation",
+      "Campaign 005A promoted fire-control state normalization",
+      "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch"
+    ],
+    "supplement_titles_first_three": [
+      "Campaign 007A promoted post-reacquisition stabilization",
+      "Campaign 006A promoted post-loss recovery probe",
+      "Campaign 004A fire-control loop promoted"
+    ],
+    "assessment": "usable_for_campaign_shadow_resume_preview"
+  },
+  "safety": {
+    "v1_runtime_schema_mcp_changed": false,
+    "project_repos_touched": false,
+    "sqlite_vec_required": false,
+    "generated_dbs_committed": false,
+    "v1_db_access_by_command": false,
+    "v1_completion_card_deferred_until_final_checks": true
+  },
+  "decision": {
+    "v2_shadow_rehydration_preview": "GO",
+    "live_agent_context": "NO_GO"
+  },
+  "remaining_gaps": [
+    "Friday broad-query primary retrieval can be less useful than the recent supplement.",
+    "Preview output is not yet a versioned shared rehydrate-response envelope.",
+    "Recall parity against v1 FTS remains low by ranking semantics.",
+    "sqlite_vec remains unavailable, so vector index status is degraded."
+  ],
+  "recommended_next_task": "Run operator review of the Friday and ReadyPlayer1 preview Markdown outputs, then define the exact v2 shadow rehydrate-response envelope for a future non-live agent-context experiment."
+}

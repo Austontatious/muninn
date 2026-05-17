@@ -74,6 +74,7 @@ The v2 checkpoint currently provides:
 - migration ledger/checksum/fidelity reporting
 - opt-in recall parity measurement
 - optional derived-index diagnostics and retrieval-eval helpers
+- opt-in shadow rehydration preview reports
 
 v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
 
@@ -133,6 +134,8 @@ Production v1 retrieval remains the live behavior:
 The v2 recall-parity command is measurement only. It can compare v1 FTS with a provisional v2 lexical matcher or the v2 hybrid matcher, but neither path is a live recall engine and neither should be tuned to fake parity.
 
 The v2 retrieval-eval command is also measurement only. It scores fixed query fixtures, distinguishes record absence from retrieval mismatch, and writes JSON/Markdown reports without changing production routing. Its default diagnostic mode is now explainable hybrid retrieval: deterministic title/body/evidence/metric scoring with optional derived-vector rescue, explicit score components, and stable ranking. This remains shadow/evaluation infrastructure only.
+
+The v2 shadow rehydration preview command is an explicit-DB report generator only. It composes primary diagnostic retrieval matches with clearly labeled recent in-scope supplements, can include evidence and explanations, and writes JSON/Markdown artifacts without changing v1 retrieval, MCP/Codex defaults, or any live context source.
 
 ## Migration And Cutover Posture
 

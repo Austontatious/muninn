@@ -222,3 +222,12 @@ Follow-up retrieval design work is recorded in `reports/muninn_v2_readyplayer1_r
 That work implemented v2-only explainable hybrid retrieval for diagnostic/eval paths. ReadyPlayer1 retrieval-eval improved from 12/22 hits and mean recall@10 `0.666667` to 22/22 hits and mean recall@10 `1.0`, with retrieval mismatches reduced from 10 to 0 and extra results reduced from 88 to 35.
 
 Updated decision: **GO with constraints** for ReadyPlayer1 v2 shadow rehydration preview/evaluation only. This remains non-production, requires explicit v2 shadow DB paths, and does not change live v1 retrieval or MCP/Codex defaults.
+
+## Formal Preview Command Addendum
+
+Follow-up work added the v2-only `shadow-rehydrate-preview` command and reran ReadyPlayer1 through it:
+
+- Output: `reports/pilots/readyplayer1_v2_shadow_2026-05-17/shadow_rehydrate_preview_command/`
+- Result: 3 primary hybrid matches, 9 recent in-scope supplements, 12 total cards, usable=true.
+- Assessment: GO for ReadyPlayer1 v2 shadow rehydration preview/evaluation. Primary matches surfaced current-state and campaign cards, while supplements provided recent Campaign 007A/006A/004A continuity.
+- Live agent context remains NO-GO without review, cutover planning, and rollback planning.

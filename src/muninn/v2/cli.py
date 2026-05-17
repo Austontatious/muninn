@@ -30,7 +30,13 @@ from .eval import (
     write_retrieval_eval_reports,
 )
 from .indexes import SQLiteDerivedIndexProvider, load_v2_cards
-from .retrieval import hybrid_recall
+from .retrieval import (
+    ShadowPreviewError,
+    ShadowPreviewOptions,
+    build_shadow_rehydrate_preview,
+    hybrid_recall,
+    write_shadow_rehydrate_preview_reports,
+)
 from .storage import SQLiteMemoryStore
 
 
@@ -2022,6 +2028,41 @@ def run_v2_retrieval_eval_command(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
+    v2_db = Path(args.v2_db).expanduser()
+    out_dir = Path(args.out_dir).expanduser()
+    _require_existing_v2_db(v2_db)
+    records = load_v2_cards(v2_db)
+    provider = SQLiteDerivedIndexProvider(v2_db, records=records)
+    report = build_shadow_rehydrate_preview(
+        records,
+        provider=provider,
+        options=ShadowPreviewOptions(
+            v2_db=str(v2_db),
+            query=str(args.query),
+            limit=int(args.limit),
+            primary_limit=int(args.primary_limit),
+            recent_limit=int(args.recent_limit),
+            retrieval_mode=str(args.retrieval_mode),
+            space_key=args.space_key,
+            project_path=args.project_path,
+            include_evidence=bool(args.include_evidence),
+            include_explanations=bool(args.include_explanations),
+            max_chars=args.max_chars,
+            recent_supplement=not bool(args.no_recent_supplement),
+            strict=bool(args.strict),
+        ),
+    )
+    report["out_dir"] = str(out_dir)
+    report["artifacts"] = write_shadow_rehydrate_preview_reports(
+        report,
+        out_dir,
+        json_report=args.json_report,
+        md_report=args.md_report,
+    )
+    return report
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m muninn.v2.cli",
@@ -2130,6 +2171,45 @@ def build_parser() -> argparse.ArgumentParser:
         help="Diagnostic v2 retrieval mode. Default is explainable hybrid retrieval.",
     )
     retrieval_eval.set_defaults(func=run_v2_retrieval_eval_command)
+
+    shadow_preview = subparsers.add_parser(
+        "shadow-rehydrate-preview",
+        help="Compose an opt-in v2 shadow rehydration preview from an explicit v2 DB.",
+    )
+    shadow_preview.add_argument("--v2-db", required=True, help="Explicit Muninn v2 SQLite DB path.")
+    shadow_preview.add_argument("--query", required=True, help="Task summary or resume query.")
+    shadow_preview.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    shadow_preview.add_argument("--limit", type=int, default=12, help="Total preview card limit.")
+    shadow_preview.add_argument("--primary-limit", type=int, default=3, help="Primary retrieval card limit.")
+    shadow_preview.add_argument("--recent-limit", type=int, default=9, help="Recent supplement card limit.")
+    shadow_preview.add_argument(
+        "--retrieval-mode",
+        choices=["hybrid", "lexical", "vector"],
+        default="hybrid",
+        help="Diagnostic v2 retrieval mode. Default is explainable hybrid retrieval.",
+    )
+    shadow_preview.add_argument("--space-key", help="Optional v2 scope key filter.")
+    shadow_preview.add_argument("--project-path", help="Optional v2 card metadata project path filter.")
+    shadow_preview.add_argument("--include-evidence", action="store_true", help="Include evidence refs.")
+    shadow_preview.add_argument(
+        "--include-explanations",
+        action="store_true",
+        help="Include retrieval and supplement explanation details.",
+    )
+    shadow_preview.add_argument("--max-chars", type=int, default=None, help="Approximate context budget.")
+    shadow_preview.add_argument("--json-report", help="Optional JSON report path.")
+    shadow_preview.add_argument("--md-report", help="Optional Markdown report path.")
+    shadow_preview.add_argument(
+        "--no-recent-supplement",
+        action="store_true",
+        help="Disable recent in-scope continuity supplements.",
+    )
+    shadow_preview.add_argument(
+        "--strict",
+        action="store_true",
+        help="Fail on ambiguous multi-space DBs or empty filtered inputs.",
+    )
+    shadow_preview.set_defaults(func=run_shadow_rehydrate_preview)
     return parser
 
 
@@ -2144,7 +2224,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
     try:
         report = args.func(args)
-    except (PilotSafetyError, RecallParityError) as exc:
+    except (PilotSafetyError, RecallParityError, ShadowPreviewError) as exc:
         print(f"muninn.v2 command failed: {exc}", file=sys.stderr)
         return 2
     if report["record_type"] == "muninn_v2_recall_parity_report":
@@ -2183,6 +2263,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             "retrieval_mode": report["retrieval_mode"],
             "v2_db": report["v2_db"],
             "summary": report["summary"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_shadow_rehydrate_preview":
+        payload = {
+            "status": "ok",
+            "mode": "shadow_rehydrate_preview",
+            "retrieval_mode": report["composition"]["retrieval_mode"],
+            "v2_db": report["source"]["v2_db"],
+            "counts": report["counts"],
+            "usable": report["agent_briefing"]["usable"],
             "out_dir": report["out_dir"],
         }
     else:

@@ -90,3 +90,12 @@
 ## Recommended Next Task
 
 Implement a v2-only `shadow-rehydrate-preview` command with explicit staged hybrid plus recent fallback semantics, tests, and docs; then rerun Friday and ReadyPlayer1 previews through the same command.
+
+## Formal Preview Command Addendum
+
+Follow-up work added the v2-only `shadow-rehydrate-preview` command and reran Friday through it:
+
+- Output: `reports/pilots/friday_v2_shadow_2026-05-17/shadow_rehydrate_preview_command/`
+- Result: 3 primary hybrid matches, 9 recent in-scope supplements, 12 total cards, usable=true.
+- Assessment: GO for Friday v2 shadow rehydration preview/evaluation. The broad resume query still depends on the recent supplement stage for the most current operational cards.
+- Live agent context remains NO-GO without review, cutover planning, and rollback planning.
