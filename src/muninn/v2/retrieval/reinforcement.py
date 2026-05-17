@@ -24,6 +24,7 @@ class ReinforcementWeights:
     suppressed: float = 3.0
     durable_preserve: float = 0.75
     evidence_preserve_cap: float = 0.5
+    recall_exposure_cap: float = 1.25
     decay: float = 0.75
     half_life_days: float = 30.0
     min_score: float = -8.0
@@ -37,6 +38,7 @@ class ReinforcementWeights:
             "suppressed": self.suppressed,
             "durable_preserve": self.durable_preserve,
             "evidence_preserve_cap": self.evidence_preserve_cap,
+            "recall_exposure_cap": self.recall_exposure_cap,
             "decay": self.decay,
             "half_life_days": self.half_life_days,
             "min_score": self.min_score,
@@ -194,26 +196,33 @@ def _state_for_card(
     suppression = 0.0
     event_ids: list[str] = []
     last_event_at: str | None = None
+    recalled_signal_count = 0
+    accepted_signal_count = 0
+    suppressed_signal_count = 0
     for event in events:
         event_weight = _time_weight(event.created_at, as_of_dt=as_of_dt, half_life_days=weights.half_life_days)
         touched = False
         if card.id in event.recalled_ids:
             recalled += 1
-            recall_boost += weights.recall * event_weight
+            recalled_signal_count += 1
+            recall_boost += weights.recall * event_weight * _diminishing_signal_weight(recalled_signal_count)
             touched = True
         if card.id in event.accepted_ids:
             accepted += 1
-            accepted_boost += weights.accepted * event_weight
+            accepted_signal_count += 1
+            accepted_boost += weights.accepted * event_weight * _diminishing_signal_weight(accepted_signal_count)
             touched = True
         if card.id in event.suppressed_ids:
             suppressed += 1
-            suppression += weights.suppressed * event_weight
+            suppressed_signal_count += 1
+            suppression += weights.suppressed * event_weight * _diminishing_signal_weight(suppressed_signal_count)
             touched = True
         if touched:
             event_ids.append(event.id)
             last_event_at = event.created_at
 
     durable = _is_durable(card)
+    recall_boost = min(recall_boost, weights.recall_exposure_cap)
     quiet_anchor = _parse_time(last_event_at) if last_event_at else _parse_time(card.updated_at or card.created_at)
     quiet_days = max(0.0, (as_of_dt - quiet_anchor).total_seconds() / 86400.0)
     raw_decay = weights.decay * (quiet_days / max(1.0, weights.half_life_days))
@@ -226,6 +235,7 @@ def _state_for_card(
         effective = weights.preserve_floor
         floor_applied = True
     effective = min(weights.max_score, max(weights.min_score, effective))
+    diminishing_returns_applied = max(recalled, accepted, suppressed) > 1
     status = _status(
         accepted=accepted,
         recalled=recalled,
@@ -259,6 +269,7 @@ def _state_for_card(
             "quiet_decay": round(-decay, 6),
             "durable_preservation": round(preservation, 6),
             "preservation_floor_applied": floor_applied,
+            "diminishing_returns_applied": diminishing_returns_applied,
         },
         "event_counts": {
             "recalled": recalled,
@@ -277,6 +288,7 @@ def _state_for_card(
             accepted=accepted,
             suppressed=suppressed,
             quiet_days=quiet_days,
+            diminishing_returns_applied=diminishing_returns_applied,
         ),
     }
 
@@ -314,6 +326,7 @@ def _explanation(
     accepted: int,
     suppressed: int,
     quiet_days: float,
+    diminishing_returns_applied: bool,
 ) -> list[str]:
     notes = [f"status={status}"]
     if accepted:
@@ -322,6 +335,8 @@ def _explanation(
         notes.append(f"recalled {recalled} time(s), producing a smaller exposure boost")
     if suppressed:
         notes.append(f"suppressed {suppressed} time(s), applying deterministic suppression")
+    if diminishing_returns_applied:
+        notes.append("repeated recall signals use deterministic diminishing returns")
     if durable:
         notes.append("durable card kind receives preservation against quiet-period decay")
     if floor_applied:
@@ -329,6 +344,10 @@ def _explanation(
     if quiet_days:
         notes.append(f"quiet for {quiet_days:.2f} day(s), decay applied from replay clock")
     return notes
+
+
+def _diminishing_signal_weight(signal_count: int) -> float:
+    return 1.0 / math.sqrt(max(1, int(signal_count)))
 
 
 def _base_salience(card: MemoryCard) -> float:

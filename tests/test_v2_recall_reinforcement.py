@@ -193,6 +193,133 @@ def test_reinforcement_replay_is_deterministic_and_explainable() -> None:
     assert first["counts"]["preserved"] == 1
 
 
+def test_repeated_recall_signals_have_diminishing_returns_and_caps() -> None:
+    useful = MemoryCard(
+        id="useful",
+        kind="runbook",
+        title="Useful repeated procedure",
+        summary="Accepted procedure for repeated work.",
+        scope_key="repo:test",
+        updated_at="2026-05-01T00:00:00Z",
+    )
+    events = [
+        RecallEvent(
+            id=f"event-{index:03d}",
+            query="resume project",
+            actor="offline",
+            scope_key="repo:test",
+            recalled_ids=[useful.id],
+            accepted_ids=[useful.id],
+            created_at="2026-05-17T00:00:00Z",
+        )
+        for index in range(1, 101)
+    ]
+
+    report = replay_reinforcement(
+        cards=[useful],
+        recall_events=events,
+        as_of="2026-05-17T00:00:00Z",
+        scope_key="repo:test",
+    )
+
+    state = report["states"][0]
+    components = state["components"]
+    assert state["status"] == "boosted"
+    assert state["effective_score"] == ReinforcementWeights().max_score
+    assert components["diminishing_returns_applied"] is True
+    assert components["recall_boost"] == ReinforcementWeights().recall_exposure_cap
+    assert components["accepted_boost"] < ReinforcementWeights().accepted * len(events)
+    assert "repeated recall signals use deterministic diminishing returns" in state["explanation"]
+
+
+def test_recall_only_exposure_is_capped_below_accepted_reinforcement() -> None:
+    recalled_only = MemoryCard(
+        id="recalled-only",
+        kind="note",
+        title="Frequently seen scratch note",
+        summary="Exposure alone should not equal accepted usefulness.",
+        scope_key="repo:test",
+        updated_at="2026-05-01T00:00:00Z",
+    )
+    accepted = MemoryCard(
+        id="accepted",
+        kind="note",
+        title="Accepted useful note",
+        summary="A single accepted hit is stronger than repeated exposure alone.",
+        scope_key="repo:test",
+        updated_at="2026-05-01T00:00:00Z",
+    )
+    events = [
+        RecallEvent(
+            id=f"recall-only-{index:03d}",
+            query="resume project",
+            actor="offline",
+            scope_key="repo:test",
+            recalled_ids=[recalled_only.id],
+            created_at="2026-05-17T00:00:00Z",
+        )
+        for index in range(1, 101)
+    ]
+    events.append(
+        RecallEvent(
+            id="accepted-once",
+            query="resume project",
+            actor="offline",
+            scope_key="repo:test",
+            recalled_ids=[accepted.id],
+            accepted_ids=[accepted.id],
+            created_at="2026-05-17T00:00:00Z",
+        )
+    )
+
+    report = replay_reinforcement(
+        cards=[recalled_only, accepted],
+        recall_events=events,
+        as_of="2026-05-17T00:00:00Z",
+        scope_key="repo:test",
+    )
+
+    by_id = {item["record_id"]: item for item in report["states"]}
+    assert by_id["recalled-only"]["components"]["recall_boost"] == ReinforcementWeights().recall_exposure_cap
+    assert by_id["recalled-only"]["components"]["accepted_boost"] == 0
+    assert by_id["accepted"]["effective_score"] > by_id["recalled-only"]["effective_score"]
+
+
+def test_adaptive_scoring_preserves_older_durable_boundary_with_recent_accepted_memory() -> None:
+    boundary = MemoryCard(
+        id="boundary",
+        kind="constraint",
+        title="Project boundary contract",
+        summary="Durable project boundary that must remain available.",
+        scope_key="repo:test",
+        evidence=[EvidenceRef(evidence_type="file", ref="/repo/AGENTS.md:1")],
+        updated_at="2026-01-01T00:00:00Z",
+    )
+    recent = MemoryCard(
+        id="recent",
+        kind="note",
+        title="Project boundary contract",
+        summary="Recent accepted operational note.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T00:00:00Z",
+    )
+
+    result = hybrid_recall(
+        [recent, boundary],
+        "project boundary contract",
+        scope_key="repo:test",
+        limit=2,
+        reinforcement_state={
+            "recent": {"record_id": "recent", "status": "boosted", "effective_score": 12.0},
+            "boundary": {"record_id": "boundary", "status": "preserved", "effective_score": 0.5},
+        },
+    )
+
+    assert {item["record_id"] for item in result["results"]} == {"recent", "boundary"}
+    boundary_result = next(item for item in result["results"] if item["record_id"] == "boundary")
+    assert "reinforcement_preservation_floor" in boundary_result["explanation"]["score_components"]
+
+
 def test_reinforcement_replay_write_state_does_not_mutate_canonical_cards(tmp_path, capsys) -> None:
     db_path, store, durable, useful, noisy = _seed_store(tmp_path)
     store.log_recall(
@@ -316,6 +443,41 @@ def test_reinforcement_suppression_can_remove_high_lexical_match() -> None:
     assert state is not None
     assert adjusted < 35.0
     assert penalties["reinforcement_suppressed_memory"] <= -140.0
+
+
+def test_suppression_state_is_scope_filtered_for_adaptive_scoring(tmp_path, capsys) -> None:
+    db_path, store, _durable, _useful, noisy = _seed_store(tmp_path)
+
+    store.log_recall(
+        RecallEvent(
+            id="scope-event",
+            query="resume project",
+            actor="offline",
+            scope_key="repo:test",
+            recalled_ids=[noisy.id],
+            suppressed_ids=[noisy.id],
+            created_at="2026-05-17T00:00:00Z",
+        )
+    )
+
+    code = main(
+        [
+            "recall-reinforcement-replay",
+            "--v2-db",
+            str(db_path),
+            "--out-dir",
+            str(tmp_path / "replay"),
+            "--scope-key",
+            "repo:test",
+            "--as-of",
+            "2026-05-17T00:00:00Z",
+            "--write-state",
+        ]
+    )
+
+    assert code == 0
+    capsys.readouterr()
+    assert store.list_reinforcement_state(scope_key="repo:other") == []
 
 
 def test_phase_d_cli_does_not_use_v1_connector(tmp_path, monkeypatch, capsys) -> None:

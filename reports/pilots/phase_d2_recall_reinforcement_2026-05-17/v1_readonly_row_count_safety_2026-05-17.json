@@ -1,0 +1,69 @@
+{
+  "after": {
+    "captured_at": "2026-05-17T22:39:22.389450Z",
+    "db_path": "/home/unix/.local/share/muninn/human_memory.db",
+    "label": "after_phase_d2_remainder_regeneration",
+    "mtime_ns": 1779056211786036595,
+    "open_mode": "sqlite_uri_mode_ro",
+    "row_counts": {
+      "card_evidence": 1411,
+      "card_relations": 5,
+      "card_tags": 535,
+      "card_vectors": 0,
+      "cards": 517,
+      "cards_fts": 517,
+      "cards_fts_config": 1,
+      "cards_fts_data": 71,
+      "cards_fts_docsize": 517,
+      "cards_fts_idx": 69,
+      "clients": 1,
+      "evidence": 1411,
+      "interaction_events": 2,
+      "space_aliases": 14,
+      "spaces": 33,
+      "tags": 252,
+      "users": 1,
+      "vector_index_state": 0
+    },
+    "size_bytes": 2281472,
+    "table_count": 18
+  },
+  "before": {
+    "captured_at": "2026-05-17T22:39:13.411431Z",
+    "db_path": "/home/unix/.local/share/muninn/human_memory.db",
+    "label": "before_phase_d2_remainder_regeneration",
+    "mtime_ns": 1779056211786036595,
+    "open_mode": "sqlite_uri_mode_ro",
+    "row_counts": {
+      "card_evidence": 1411,
+      "card_relations": 5,
+      "card_tags": 535,
+      "card_vectors": 0,
+      "cards": 517,
+      "cards_fts": 517,
+      "cards_fts_config": 1,
+      "cards_fts_data": 71,
+      "cards_fts_docsize": 517,
+      "cards_fts_idx": 69,
+      "clients": 1,
+      "evidence": 1411,
+      "interaction_events": 2,
+      "space_aliases": 14,
+      "spaces": 33,
+      "tags": 252,
+      "users": 1,
+      "vector_index_state": 0
+    },
+    "size_bytes": 2281472,
+    "table_count": 18
+  },
+  "changed": {
+    "mtime_ns": false,
+    "row_counts": false,
+    "size_bytes": false
+  },
+  "mode": "read_only_verification",
+  "record_type": "muninn_v2_phase_d2_v1_readonly_row_count_safety",
+  "safe": true,
+  "schema_version": "muninn.v2.phase_d2.v1_safety.v1"
+}

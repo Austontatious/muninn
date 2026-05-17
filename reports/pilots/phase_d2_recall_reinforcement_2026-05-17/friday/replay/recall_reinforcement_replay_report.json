@@ -40,6 +40,7 @@
       },
       "components": {
         "accepted_boost": 1.998396,
+        "diminishing_returns_applied": false,
         "durable_preservation": 1.0,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -82,6 +83,7 @@
       },
       "components": {
         "accepted_boost": 1.998396,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -124,6 +126,7 @@
       },
       "components": {
         "accepted_boost": 1.998396,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -166,6 +169,7 @@
       },
       "components": {
         "accepted_boost": 1.998396,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -208,6 +212,7 @@
       },
       "components": {
         "accepted_boost": 1.998396,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -250,6 +255,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 1.05,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -289,6 +295,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 1.0,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -328,6 +335,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -367,6 +375,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -406,6 +415,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -445,6 +455,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -484,6 +495,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -523,6 +535,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -562,6 +575,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -601,6 +615,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -640,6 +655,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -679,6 +695,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -718,6 +735,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -757,6 +775,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -796,6 +815,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -835,6 +855,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -874,6 +895,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -913,6 +935,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -952,6 +975,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -991,6 +1015,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1030,6 +1055,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1069,6 +1095,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1108,6 +1135,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1147,6 +1175,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1186,6 +1215,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1225,6 +1255,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1264,6 +1295,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1303,6 +1335,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1342,6 +1375,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1381,6 +1415,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1420,6 +1455,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1459,6 +1495,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.85,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1498,6 +1535,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.85,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1537,6 +1575,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.85,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1576,6 +1615,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.75,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1615,6 +1655,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.75,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1654,6 +1695,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.75,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1693,6 +1735,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.75,
         "preservation_floor_applied": false,
         "quiet_decay": -0.4,
@@ -1732,6 +1775,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.95,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -1775,6 +1819,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -1818,6 +1863,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.9,
         "preservation_floor_applied": false,
         "quiet_decay": -0.000868,
@@ -1861,6 +1907,7 @@
       },
       "components": {
         "accepted_boost": 0.0,
+        "diminishing_returns_applied": false,
         "durable_preservation": 0.0,
         "preservation_floor_applied": false,
         "quiet_decay": -2.173261,
@@ -1899,6 +1946,7 @@
     "min_score": -8.0,
     "preserve_floor": 0.5,
     "recall": 0.35,
+    "recall_exposure_cap": 1.25,
     "suppressed": 3.0
   },
   "write_state": true

@@ -35,6 +35,8 @@ Recall events are explicit and auditable:
 
 Accepted IDs create stronger reinforcement. Recalled-only IDs receive a smaller exposure boost. Suppressed IDs receive deterministic suppression. Durable card kinds receive preservation against quiet-period decay.
 
+Repeated signals use deterministic diminishing returns. Recalled-only exposure is capped separately from accepted/useful reinforcement so frequent appearance alone does not become durable truth.
+
 ## Replay Mechanics
 
 `recall-reinforcement-replay` computes one derived state row per active v2 card:
