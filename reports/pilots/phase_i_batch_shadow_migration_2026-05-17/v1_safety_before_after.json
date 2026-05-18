@@ -1,0 +1,92 @@
+{
+  "after": {
+    "created_at": "2026-05-18T01:31:12Z",
+    "db": {
+      "exists": true,
+      "mtime": "2026-05-18T01:25:51.484631Z",
+      "mtime_ns": 1779067551484630633,
+      "path": "/home/unix/.local/share/muninn/human_memory.db",
+      "size": 2285568
+    },
+    "row_counts": {
+      "card_evidence": 1429,
+      "card_relations": 5,
+      "card_tags": 535,
+      "card_vectors": 0,
+      "cards": 522,
+      "cards_fts": 522,
+      "cards_fts_config": 1,
+      "cards_fts_data": 76,
+      "cards_fts_docsize": 522,
+      "cards_fts_idx": 74,
+      "clients": 1,
+      "evidence": 1429,
+      "interaction_events": 2,
+      "space_aliases": 14,
+      "spaces": 33,
+      "tags": 252,
+      "users": 1,
+      "vector_index_state": 0
+    },
+    "shm": {
+      "exists": true,
+      "mtime": "2026-05-18T01:31:05.833905Z",
+      "mtime_ns": 1779067865833904532,
+      "path": "/home/unix/.local/share/muninn/human_memory.db-shm",
+      "size": 32768
+    },
+    "wal": {
+      "exists": true,
+      "mtime": "2026-05-18T01:28:53.279054Z",
+      "mtime_ns": 1779067733279054243,
+      "path": "/home/unix/.local/share/muninn/human_memory.db-wal",
+      "size": 0
+    }
+  },
+  "before": {
+    "created_at": "2026-05-18T01:28:52Z",
+    "db": {
+      "exists": true,
+      "mtime": "2026-05-18T01:25:51.484631Z",
+      "mtime_ns": 1779067551484630633,
+      "path": "/home/unix/.local/share/muninn/human_memory.db",
+      "size": 2285568
+    },
+    "row_counts": {
+      "card_evidence": 1429,
+      "card_relations": 5,
+      "card_tags": 535,
+      "card_vectors": 0,
+      "cards": 522,
+      "cards_fts": 522,
+      "cards_fts_config": 1,
+      "cards_fts_data": 76,
+      "cards_fts_docsize": 522,
+      "cards_fts_idx": 74,
+      "clients": 1,
+      "evidence": 1429,
+      "interaction_events": 2,
+      "space_aliases": 14,
+      "spaces": 33,
+      "tags": 252,
+      "users": 1,
+      "vector_index_state": 0
+    },
+    "shm": {
+      "exists": false,
+      "path": "/home/unix/.local/share/muninn/human_memory.db-shm"
+    },
+    "wal": {
+      "exists": false,
+      "path": "/home/unix/.local/share/muninn/human_memory.db-wal"
+    }
+  },
+  "mtime_changed": false,
+  "row_count_changes": {},
+  "row_counts_changed": false,
+  "shm_mtime_changed": true,
+  "shm_size_changed": true,
+  "size_changed": false,
+  "wal_mtime_changed": true,
+  "wal_size_changed": true
+}

@@ -1,0 +1,2256 @@
+{
+  "duplicate_inventory_aliases": [
+    {
+      "name": "althing",
+      "path": "/mnt/data/althing",
+      "returncode": 2,
+      "status": "failed"
+    },
+    {
+      "name": "friday",
+      "path": "/mnt/data/friday",
+      "returncode": 2,
+      "status": "failed"
+    },
+    {
+      "name": "subsim",
+      "path": "/mnt/data/subsim",
+      "returncode": 2,
+      "status": "failed"
+    }
+  ],
+  "generated_at": "2026-05-18T01:31:13Z",
+  "manifest": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/migration_manifest.json",
+  "normalization_note": "Duplicate path aliases were collapsed after raw discovery; duplicate failed imports were caused by second attempts to reuse an existing shadow DB, not by migration defects.",
+  "per_repo": [
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Accounting",
+      "path": "/mnt/data/Accounting",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "AgentPack",
+      "path": "/mnt/data/AgentPack",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/althing",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 198,
+        "ledger_entries": 198,
+        "migrated_associations": 1,
+        "migrated_cards": 44,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 151,
+        "scanned_cards": 44,
+        "scanned_records": 196,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 43
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 43,
+          "indexed_records": 43,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 43
+        }
+      },
+      "name": "Althing",
+      "path": "/mnt/data/althing",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:f2bb13bd786fd92c",
+      "status": "migrated",
+      "v1_cards": 44,
+      "v1_evidence": 151
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/aquagenesys",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 22,
+        "ledger_entries": 22,
+        "migrated_associations": 0,
+        "migrated_cards": 4,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 16,
+        "scanned_cards": 4,
+        "scanned_records": 20,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 4
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 4,
+          "indexed_records": 4,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 4
+        }
+      },
+      "name": "Aquagenesys",
+      "path": "/mnt/data/Aquagenesys",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:84e2f8323ea83b57",
+      "status": "migrated",
+      "v1_cards": 4,
+      "v1_evidence": 16
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/austontatious_dev",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 1
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 78,
+        "ledger_entries": 78,
+        "migrated_associations": 0,
+        "migrated_cards": 17,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 59,
+        "scanned_cards": 17,
+        "scanned_records": 76,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 17
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 17,
+          "indexed_records": 17,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 17
+        }
+      },
+      "name": "austontatious-dev",
+      "path": "/mnt/data/austontatious-dev",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:9b87d03cb11a90c4",
+      "status": "migrated",
+      "v1_cards": 17,
+      "v1_evidence": 59
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/bifrost",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 15,
+        "ledger_entries": 15,
+        "migrated_associations": 0,
+        "migrated_cards": 5,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 8,
+        "scanned_cards": 5,
+        "scanned_records": 13,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 5
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 5,
+          "indexed_records": 5,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 5
+        }
+      },
+      "name": "Bifrost",
+      "path": "/mnt/data/Bifrost",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:4b38992d2d9b0912",
+      "status": "migrated",
+      "v1_cards": 5,
+      "v1_evidence": 8
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/brilliant",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 10,
+        "ledger_entries": 10,
+        "migrated_associations": 0,
+        "migrated_cards": 2,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 6,
+        "scanned_cards": 2,
+        "scanned_records": 8,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 2
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 2,
+          "indexed_records": 2,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 2
+        }
+      },
+      "name": "Brilliant",
+      "path": "/mnt/data/Brilliant",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:50aa2332ed9719c7",
+      "status": "migrated",
+      "v1_cards": 2,
+      "v1_evidence": 6
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "ChefAI",
+      "path": "/mnt/data/ChefAI",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "comfy",
+      "path": "/mnt/data/comfy",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/echo",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 50,
+        "ledger_entries": 50,
+        "migrated_associations": 0,
+        "migrated_cards": 10,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 38,
+        "scanned_cards": 10,
+        "scanned_records": 48,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 10
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 10,
+          "indexed_records": 10,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 10
+        }
+      },
+      "name": "Echo",
+      "path": "/mnt/data/Echo",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:0101d9215af48be6",
+      "status": "migrated",
+      "v1_cards": 10,
+      "v1_evidence": 38
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/fenrir",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 88,
+        "ledger_entries": 88,
+        "migrated_associations": 0,
+        "migrated_cards": 17,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 69,
+        "scanned_cards": 17,
+        "scanned_records": 86,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 17
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 17,
+          "indexed_records": 17,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 17
+        }
+      },
+      "name": "Fenrir",
+      "path": "/mnt/data/Fenrir",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:7ebc0f0b97e0bdc3",
+      "status": "migrated",
+      "v1_cards": 17,
+      "v1_evidence": 69
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/friday",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 3
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 203,
+        "ledger_entries": 203,
+        "migrated_associations": 1,
+        "migrated_cards": 48,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 152,
+        "scanned_cards": 48,
+        "scanned_records": 201,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 47
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 47,
+          "indexed_records": 47,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 47
+        }
+      },
+      "name": "Friday",
+      "path": "/mnt/data/friday",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "GO",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:f8cc7f64d3636a4e",
+      "status": "migrated",
+      "v1_cards": 48,
+      "v1_evidence": 152
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Gauntlet",
+      "path": "/mnt/data/Gauntlet",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Gauntlet-005",
+      "path": "/mnt/data/Gauntlet-005",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Gauntlet-010",
+      "path": "/mnt/data/Gauntlet-010",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Guantlet001",
+      "path": "/mnt/data/Guantlet001",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/heimdall",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 18,
+        "ledger_entries": 18,
+        "migrated_associations": 0,
+        "migrated_cards": 4,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 12,
+        "scanned_cards": 4,
+        "scanned_records": 16,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 4
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 4,
+          "indexed_records": 4,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 4
+        }
+      },
+      "name": "Heimdall",
+      "path": "/mnt/data/Heimdall",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:808c403947b88ec1",
+      "status": "migrated",
+      "v1_cards": 4,
+      "v1_evidence": 12
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/hrafnar",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 14,
+        "ledger_entries": 14,
+        "migrated_associations": 0,
+        "migrated_cards": 2,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 10,
+        "scanned_cards": 2,
+        "scanned_records": 12,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 2
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 2,
+          "indexed_records": 2,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 2
+        }
+      },
+      "name": "Hrafnar",
+      "path": "/mnt/data/Hrafnar",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:08438f64e19a2dc3",
+      "status": "migrated",
+      "v1_cards": 2,
+      "v1_evidence": 10
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/laila",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 109,
+        "ledger_entries": 109,
+        "migrated_associations": 0,
+        "migrated_cards": 39,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 68,
+        "scanned_cards": 39,
+        "scanned_records": 107,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 39
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 39,
+          "indexed_records": 39,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 39
+        }
+      },
+      "name": "LAILA",
+      "path": "/mnt/data/LAILA",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:63325bc94a03e407",
+      "status": "migrated",
+      "v1_cards": 39,
+      "v1_evidence": 68
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/lex",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 4
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 265,
+        "ledger_entries": 265,
+        "migrated_associations": 2,
+        "migrated_cards": 85,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 176,
+        "scanned_cards": 85,
+        "scanned_records": 263,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 83
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 83,
+          "indexed_records": 83,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 83
+        }
+      },
+      "name": "Lex",
+      "path": "/mnt/data/Lex",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "GO",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:0c321b2a6f183a95",
+      "status": "migrated",
+      "v1_cards": 85,
+      "v1_evidence": 176
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Lexi",
+      "path": "/mnt/data/Lexi",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "MemeTrader",
+      "path": "/mnt/data/MemeTrader",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/mimir",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 3
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 252,
+        "ledger_entries": 252,
+        "migrated_associations": 1,
+        "migrated_cards": 74,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 175,
+        "scanned_cards": 74,
+        "scanned_records": 250,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 73
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 73,
+          "indexed_records": 73,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 73
+        }
+      },
+      "name": "Mimir",
+      "path": "/mnt/data/Mimir",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:06bbe8682f884cf1",
+      "status": "migrated",
+      "v1_cards": 74,
+      "v1_evidence": 175
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/muninn",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 154,
+        "ledger_entries": 154,
+        "migrated_associations": 0,
+        "migrated_cards": 44,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 108,
+        "scanned_cards": 44,
+        "scanned_records": 152,
+        "skipped_records": 2,
+        "unsupported_record_types": 1
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 44
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 44,
+          "indexed_records": 44,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 44
+        }
+      },
+      "name": "Muninn",
+      "path": "/mnt/data/Muninn",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "EXCLUDED_PENDING_SEPARATE_PLAN",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:0a6d43de03a835a0",
+      "status": "migrated",
+      "v1_cards": 44,
+      "v1_evidence": 108
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "Null_Signal",
+      "path": "/mnt/data/Null_Signal",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": "repo:8086caa7ff98deef",
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "OnHand",
+      "path": "/mnt/data/OnHand",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/portfolio",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 4,
+        "ledger_entries": 4,
+        "migrated_associations": 0,
+        "migrated_cards": 2,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 0,
+        "scanned_cards": 2,
+        "scanned_records": 2,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 2
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 2,
+          "indexed_records": 2,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 2
+        }
+      },
+      "name": "portfolio",
+      "path": "/mnt/data/portfolio",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:6b69ffc5f8046453",
+      "status": "migrated",
+      "v1_cards": 2,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "PulseTrade",
+      "path": "/mnt/data/PulseTrade",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/readyplayer1",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 10
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 247,
+        "ledger_entries": 247,
+        "migrated_associations": 0,
+        "migrated_cards": 48,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 197,
+        "scanned_cards": 48,
+        "scanned_records": 245,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 48
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 48,
+          "indexed_records": 48,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 48
+        }
+      },
+      "name": "ReadyPlayer1",
+      "path": "/mnt/data/ReadyPlayer1",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "GO",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:5059f410815720ea",
+      "status": "migrated",
+      "v1_cards": 48,
+      "v1_evidence": 197
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/sindri",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 0
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 104,
+        "ledger_entries": 104,
+        "migrated_associations": 0,
+        "migrated_cards": 26,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 76,
+        "scanned_cards": 26,
+        "scanned_records": 102,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 26
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 26,
+          "indexed_records": 26,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 26
+        }
+      },
+      "name": "Sindri",
+      "path": "/mnt/data/Sindri",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "path:316f4f67d061cbdd",
+      "status": "migrated",
+      "v1_cards": 26,
+      "v1_evidence": 76
+    },
+    {
+      "artifact_dir": null,
+      "blocker": "no_identifiable_v1_space_with_cards",
+      "bridge_summary": {},
+      "import_counts": null,
+      "index": null,
+      "name": "SNN",
+      "path": "/mnt/data/SNN",
+      "readiness": {
+        "bridge_readonly": "NO-GO",
+        "production_migration": "BLOCKED",
+        "replay_gate": "NO-GO",
+        "shadow_migration": "NO-GO"
+      },
+      "space_key": null,
+      "status": "blocked",
+      "v1_cards": 0,
+      "v1_evidence": 0
+    },
+    {
+      "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/subsim",
+      "blocker": null,
+      "bridge_summary": {
+        "adaptive_denial": {
+          "reason_codes": [
+            "adaptive_scoring_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        },
+        "explain": {
+          "reason_codes": null,
+          "result_summary": null,
+          "status": "ok"
+        },
+        "health": {
+          "reason_codes": null,
+          "result_summary": {},
+          "status": "ok"
+        },
+        "rehydrate": {
+          "reason_codes": null,
+          "result_summary": {
+            "counts": {},
+            "record_type": "muninn_v2_rehydrate_response",
+            "schema_version": "muninn.v2.rehydrate_response.v1"
+          },
+          "status": "ok"
+        },
+        "search": {
+          "reason_codes": null,
+          "result_summary": {
+            "adaptive_scoring": {
+              "boosted_cards": [],
+              "default": false,
+              "enabled": false,
+              "reason_codes": [],
+              "requested": false,
+              "state_count": 0,
+              "state_version": null,
+              "suppressed_cards": []
+            },
+            "result_count": 1
+          },
+          "status": "ok"
+        },
+        "wrong_project_denial": {
+          "reason_codes": [
+            "project_path_not_allowed"
+          ],
+          "result_summary": null,
+          "status": "denied"
+        }
+      },
+      "import_counts": {
+        "ambiguous_records": 0,
+        "created_entities": 1,
+        "created_ontology_profiles": 1,
+        "errors": 0,
+        "fidelity_failures": 0,
+        "fidelity_records_checked": 94,
+        "ledger_entries": 94,
+        "migrated_associations": 0,
+        "migrated_cards": 18,
+        "migrated_events": 0,
+        "migrated_evidence_refs": 74,
+        "scanned_cards": 18,
+        "scanned_records": 92,
+        "skipped_records": 0,
+        "unsupported_record_types": 0
+      },
+      "index": {
+        "dry_run": {
+          "planned_deletes": 0,
+          "planned_upserts": 18
+        },
+        "health_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 18,
+          "indexed_records": 18,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "write": {
+          "deleted_records": 0,
+          "written_upserts": 18
+        }
+      },
+      "name": "SubSim",
+      "path": "/mnt/data/subsim",
+      "readiness": {
+        "bridge_readonly": "GO",
+        "production_migration": "CANDIDATE",
+        "replay_gate": "LIMITED",
+        "shadow_migration": "GO"
+      },
+      "space_key": "repo:363c13a65e92ef58",
+      "status": "migrated",
+      "v1_cards": 18,
+      "v1_evidence": 74
+    }
+  ],
+  "record_type": "muninn_v2_phase_i_batch_shadow_migration_report",
+  "schema_version": "muninn.v2.phase_i.batch_shadow_migration_report.v1",
+  "statuses": {
+    "adaptive_default": "NO-GO",
+    "batch_shadow_migration": "PARTIAL-GO",
+    "bridge_readonly": "GO_FOR_PASSING_REPOS",
+    "live_cutover": "NO-GO",
+    "muninn_production_migration": "EXCLUDED_PENDING_SEPARATE_PLAN",
+    "production_migration_excluding_muninn": "NOT_READY",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "blocked": 14,
+    "bridge_readonly_go": 18,
+    "cards_imported": 489,
+    "duplicate_inventory_aliases": 3,
+    "evidence_refs_imported": 1395,
+    "failed": 0,
+    "migrated": 18,
+    "production_blocked": 14,
+    "production_candidates_excluding_muninn": 17,
+    "production_excluded": 1,
+    "replay_gate_go": 3,
+    "replay_gate_limited": 15,
+    "replay_gate_no_go": 14,
+    "shadow_candidates": 18,
+    "shadow_migration_go": 18,
+    "total_inventory": 32
+  },
+  "v1_safety": {
+    "mtime_changed": false,
+    "report_path": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+    "row_counts_changed": false,
+    "shm_mtime_changed": true,
+    "size_changed": false,
+    "wal_mtime_changed": true
+  }
+}
