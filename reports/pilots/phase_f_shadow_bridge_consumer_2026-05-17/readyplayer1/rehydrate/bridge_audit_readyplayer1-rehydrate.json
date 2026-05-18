@@ -1,0 +1,69 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/readyplayer1/rehydrate/bridge_audit_readyplayer1-rehydrate.json",
+    "response": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/readyplayer1/rehydrate/bridge_response_readyplayer1-rehydrate.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:18:51.132489Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779040606119465901,
+      "path": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 417792,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779040606119465901,
+      "path": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 417792,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "5b83bd1d02b791e1f698f29c02598de2662f375cddda654be89f933965d4f329",
+    "path": "reports/pilots/readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "a4b90d72c46b0abc5025a95d0fd66db1a0372d0182bf819f021d5f6699aa84fe",
+  "request_id": "readyplayer1-rehydrate",
+  "response_hash": "b9409972850d2c7d7b7e304eeaddf27a6096fae0a3c5d83c892b844a56530eb3",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 12000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_0a494142a673cf74"
+}

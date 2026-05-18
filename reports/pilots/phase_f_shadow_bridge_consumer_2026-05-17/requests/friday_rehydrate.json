@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 12000,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/friday",
+  "query": "resume Friday project current state and next steps",
+  "recent_supplement": true,
+  "request_id": "friday-rehydrate",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:f8cc7f64d3636a4e",
+  "strict": true
+}

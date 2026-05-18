@@ -1,0 +1,120 @@
+{
+  "artifacts": {
+    "audit_json": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/audit/bridge_consumer_eval_report.json",
+    "audit_md": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/audit/bridge_consumer_eval_report.md",
+    "fixture": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/bridge_consumer_phase_f_fixture.json",
+    "policies_dir": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/policies",
+    "rendered_context_blocks": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/audit/rendered_context_blocks",
+    "requests_dir": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/requests",
+    "v1_safety": "reports/pilots/phase_f_shadow_bridge_consumer_2026-05-17/safety/v1_row_counts_before_after.json"
+  },
+  "cases": [
+    {
+      "confusing_flags": [
+        {
+          "blocking": false,
+          "reason": "Appears only as contrast in Android card; should not imply the current frontend is a web wrapper.",
+          "term": "web-wrapper"
+        }
+      ],
+      "coverage": 1.0,
+      "decision": "go",
+      "degradation": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "evidence_refs": 31,
+      "id": "friday-shadow-bridge-consumer",
+      "missing_required": [],
+      "omissions": 0,
+      "over_included_count": 3,
+      "project": "Friday",
+      "provenance_sufficient": true,
+      "replay_verified": true,
+      "selected_cards": 8
+    },
+    {
+      "confusing_flags": [],
+      "coverage": 1.0,
+      "decision": "go",
+      "degradation": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "evidence_refs": 41,
+      "id": "readyplayer1-shadow-bridge-consumer",
+      "missing_required": [],
+      "omissions": 0,
+      "over_included_count": 0,
+      "project": "ReadyPlayer1",
+      "provenance_sufficient": true,
+      "replay_verified": true,
+      "selected_cards": 9
+    },
+    {
+      "confusing_flags": [],
+      "coverage": 1.0,
+      "decision": "go",
+      "degradation": [
+        "sqlite_vec_unavailable_using_json_vector_fallback"
+      ],
+      "evidence_refs": 25,
+      "id": "lexi-shadow-bridge-consumer",
+      "missing_required": [],
+      "omissions": 0,
+      "over_included_count": 1,
+      "project": "Lexi",
+      "provenance_sufficient": true,
+      "replay_verified": true,
+      "selected_cards": 8
+    }
+  ],
+  "go_no_go": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "writes": "NO-GO"
+  },
+  "muninn_pilot_skipped_reason": "Muninn repo was under active modification during Phase F; Lexi was used as the safer completed Phase C alternative pilot.",
+  "phase": "F",
+  "pilots": [
+    "Friday",
+    "ReadyPlayer1",
+    "Lexi"
+  ],
+  "recommended_next_task": "Phase G should run a replayable shadow bridge drill against a fresh task set with operator review of rendered context blocks before any live integration design is reopened.",
+  "remaining_gaps": [
+    "Friday still carries one non-blocking confusing term from a contrast-only Android/web-wrapper card.",
+    "Friday and Lexi include four total over-included cards; none blocked task support, but supplement precision should stay monitored.",
+    "All pilots degrade through json_vector_fallback because sqlite_vec remains unavailable; acceptable for shadow, not native vector validation."
+  ],
+  "safety": {
+    "adaptive_default": false,
+    "live_mcp_integration": false,
+    "v1_mtime_changed": false,
+    "v1_row_counts_changed": false,
+    "v1_size_changed": false,
+    "writes": false
+  },
+  "schema_version": "muninn.v2.phase_f_shadow_bridge_consumer_report.v1",
+  "status": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "adaptive_enabled_cases": 0,
+    "average_v2_coverage_score": 1.0,
+    "cases": 3,
+    "cases_with_v1_comparison": 3,
+    "confusing_flag_total": 1,
+    "go_cases": 3,
+    "missing_required_total": 0,
+    "no_go_cases": 0,
+    "omission_total": 0,
+    "over_included_card_total": 4,
+    "provenance_sufficient_count": 3,
+    "replay_verified_count": 3,
+    "same_good_decision_supported_count": 3,
+    "stale_flag_total": 0
+  }
+}

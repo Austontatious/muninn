@@ -36,11 +36,15 @@ from .core.models import (
 from .diagnostics import build_index_health_report, write_index_health_reports
 from .eval import (
     AgentContextAuditError,
+    BridgeConsumerEvalError,
+    load_bridge_consumer_fixture,
     load_agent_context_fixture,
     load_retrieval_fixture as load_v2_retrieval_fixture,
     run_agent_context_audit,
+    run_bridge_consumer_eval,
     run_retrieval_eval as run_v2_retrieval_eval,
     write_agent_context_audit_reports,
+    write_bridge_consumer_eval_reports,
     write_retrieval_eval_reports,
 )
 from .indexes import SQLiteDerivedIndexProvider, load_v2_cards
@@ -2059,6 +2063,19 @@ def run_agent_context_audit_command(args: argparse.Namespace) -> dict[str, Any]:
     return report
 
 
+def run_bridge_consumer_eval_command(args: argparse.Namespace) -> dict[str, Any]:
+    out_dir = Path(args.out_dir).expanduser()
+    fixture = load_bridge_consumer_fixture(args.fixture)
+    report = run_bridge_consumer_eval(
+        fixture,
+        bridge_schema_path=args.bridge_schema,
+        rehydrate_schema_path=args.rehydrate_schema,
+    )
+    report["out_dir"] = str(out_dir)
+    report["artifacts"] = write_bridge_consumer_eval_reports(report, out_dir)
+    return report
+
+
 def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
     v2_db = Path(args.v2_db).expanduser()
     out_dir = Path(args.out_dir).expanduser()
@@ -2325,6 +2342,22 @@ def build_parser() -> argparse.ArgumentParser:
     )
     agent_context.set_defaults(func=run_agent_context_audit_command)
 
+    bridge_consumer = subparsers.add_parser(
+        "bridge-consumer-eval",
+        help="Evaluate BridgeResponseV1 rehydrate artifacts as shadow agent context.",
+    )
+    bridge_consumer.add_argument("--fixture", required=True, help="Bridge consumer eval fixture JSON.")
+    bridge_consumer.add_argument("--out-dir", required=True, help="Explicit output directory for reports.")
+    bridge_consumer.add_argument(
+        "--bridge-schema",
+        help="Optional BridgeResponseV1 JSON schema path. Defaults to the repo bridge contract schema.",
+    )
+    bridge_consumer.add_argument(
+        "--rehydrate-schema",
+        help="Optional RehydrateResponseV1 JSON schema path. Defaults to the repo rehydrate contract schema.",
+    )
+    bridge_consumer.set_defaults(func=run_bridge_consumer_eval_command)
+
     shadow_preview = subparsers.add_parser(
         "shadow-rehydrate-preview",
         help="Compose an opt-in v2 shadow rehydration preview from an explicit v2 DB.",
@@ -2448,6 +2481,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         RecallParityError,
         ShadowPreviewError,
         AgentContextAuditError,
+        BridgeConsumerEvalError,
         BridgePolicyError,
     ) as exc:
         print(f"muninn.v2 command failed: {exc}", file=sys.stderr)
@@ -2496,6 +2530,15 @@ def main(argv: Sequence[str] | None = None) -> int:
             "mode": "agent_context_audit",
             "fixture": report["fixture"]["name"],
             "summary": report["summary"],
+            "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_bridge_consumer_eval_report":
+        payload = {
+            "status": "ok",
+            "mode": "bridge_consumer_eval",
+            "fixture": report["fixture"]["name"],
+            "summary": report["summary"],
+            "bridge_shadow_consumption": report["status"]["bridge_shadow_consumption"],
             "out_dir": report["out_dir"],
         }
     elif report["record_type"] == "muninn_v2_rehydrate_response":

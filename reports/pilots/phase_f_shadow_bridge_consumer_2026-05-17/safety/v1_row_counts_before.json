@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "card_evidence": 1422,
+    "card_relations": 5,
+    "card_tags": 535,
+    "card_vectors": 0,
+    "cards": 520,
+    "cards_fts": 520,
+    "cards_fts_config": 1,
+    "cards_fts_data": 74,
+    "cards_fts_docsize": 520,
+    "cards_fts_idx": 72,
+    "clients": 1,
+    "evidence": 1422,
+    "interaction_events": 2,
+    "space_aliases": 14,
+    "spaces": 33,
+    "tags": 252,
+    "users": 1,
+    "vector_index_state": 0
+  },
+  "mtime_ns": 1779063512686520696,
+  "path": "/home/unix/.local/share/muninn/human_memory.db",
+  "size_bytes": 2281472
+}

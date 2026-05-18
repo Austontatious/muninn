@@ -41,6 +41,20 @@ Requests that violate consumer, operation, space, project, budget, evidence,
 explanation, adaptive-scoring, or reinforcement-write policy are denied before
 retrieval.
 
+Shadow consumer evaluation for bridge artifacts is available through:
+
+```bash
+PYTHONPATH=src python3 -m muninn.v2.cli bridge-consumer-eval \
+  --fixture /path/to/bridge-consumer-fixture.json \
+  --out-dir /path/to/audit-output
+```
+
+This consumes existing `BridgeResponseV1` rehydrate artifacts, validates their
+embedded `RehydrateResponseV1`, renders deterministic context blocks, verifies
+audit replay hashes, and scores offline task coverage. It is an evaluation
+harness only; it does not call live MCP, write v1, or change default context
+selection.
+
 Common failure modes:
 
 - `InvalidBridgeRequest`: request schema/required fields failed validation.

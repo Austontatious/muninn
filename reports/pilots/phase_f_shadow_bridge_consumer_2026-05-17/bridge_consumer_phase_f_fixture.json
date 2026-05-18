@@ -1,0 +1,323 @@
+{
+  "cases": [
+    {
+      "bridge_audit_path": "friday/rehydrate/bridge_audit_friday-rehydrate.json",
+      "bridge_policy_path": "policies/friday_policy.json",
+      "bridge_request_path": "requests/friday_rehydrate.json",
+      "bridge_response_path": "friday/rehydrate/bridge_response_friday-rehydrate.json",
+      "confusing_terms": [
+        {
+          "blocking": false,
+          "reason": "Appears only as contrast in Android card; should not imply the current frontend is a web wrapper.",
+          "term": "web-wrapper"
+        }
+      ],
+      "expected_needs": [
+        {
+          "all_terms": [
+            "direct chat",
+            "coder"
+          ],
+          "any_terms": [
+            "repo file context",
+            "repo-local context",
+            "file-path prompts"
+          ],
+          "description": "Agent knows Friday direct chat routes code prompts to coder with repo file context.",
+          "id": "direct-code-route"
+        },
+        {
+          "all_terms": [
+            "read-only",
+            "/mnt/data"
+          ],
+          "any_terms": [
+            "direct Friday",
+            "Althing-mode",
+            "workspace paths"
+          ],
+          "description": "Agent knows Friday can inspect read-only workspace paths under /mnt/data.",
+          "id": "workspace-read-access"
+        },
+        {
+          "all_terms": [
+            "mimir",
+            "repo-cognition"
+          ],
+          "any_terms": [
+            "without creating runtime coupling",
+            "separated from runtime memory"
+          ],
+          "description": "Agent knows Mimir is the repo-cognition path and is separated from runtime memory.",
+          "id": "mimir-navigation-boundary"
+        },
+        {
+          "all_terms": [
+            "corpus runner",
+            "resume mode"
+          ],
+          "any_terms": [
+            "stable IDs",
+            "evals/runs"
+          ],
+          "description": "Agent knows the Friday corpus runner and resume-mode artifact state.",
+          "id": "runner-resume-state"
+        }
+      ],
+      "id": "friday-shadow-bridge-consumer",
+      "project": "Friday",
+      "require_provenance": true,
+      "require_replay_verified": true,
+      "task": "resume Friday project current state and next steps",
+      "v1_context": [
+        "Friday direct chat auto-routes code prompts to coder and injects repo file context.",
+        "Friday bridge exposes read-only /mnt/data workspace access for direct Friday and Althing-mode path prompts.",
+        "Friday root has explicit Mimir repo-cognition entrypoints separated from runtime memory without runtime coupling.",
+        "Friday corpus runner supports resume mode with stable IDs and emits evals/runs artifacts."
+      ],
+      "v2_db_path": "../friday_v2_shadow_2026-05-17/friday_shadow_v2.db"
+    },
+    {
+      "bridge_audit_path": "readyplayer1/rehydrate/bridge_audit_readyplayer1-rehydrate.json",
+      "bridge_policy_path": "policies/readyplayer1_policy.json",
+      "bridge_request_path": "requests/readyplayer1_rehydrate.json",
+      "bridge_response_path": "readyplayer1/rehydrate/bridge_response_readyplayer1-rehydrate.json",
+      "confusing_terms": [
+        {
+          "blocking": false,
+          "reason": "Unrelated model-serving trial appears as a recent supplement and should not steer ReadyPlayer1 campaign work.",
+          "term": "Qwen3.6"
+        }
+      ],
+      "expected_needs": [
+        {
+          "all_terms": [
+            "current-state",
+            "runs/current"
+          ],
+          "description": "Agent knows current-state consumption uses runs/current pointers.",
+          "id": "current-state-pointers"
+        },
+        {
+          "all_terms": [
+            "campaign 007a",
+            "post-reacquisition"
+          ],
+          "description": "Agent knows Campaign 007A post-reacquisition stabilization state.",
+          "id": "campaign-007a"
+        },
+        {
+          "all_terms": [
+            "campaign 006a",
+            "early active ping"
+          ],
+          "description": "Agent knows Campaign 006A early active ping recovery state.",
+          "id": "campaign-006a"
+        },
+        {
+          "all_terms": [
+            "campaign 005a",
+            "fire-control"
+          ],
+          "description": "Agent knows Campaign 005A fire-control state normalization.",
+          "id": "campaign-005a"
+        },
+        {
+          "all_terms": [
+            "campaign 004a",
+            "duplicate same-primary torpedo"
+          ],
+          "description": "Agent knows Campaign 004A duplicate torpedo suppression.",
+          "id": "campaign-004a"
+        },
+        {
+          "all_terms": [
+            "subsim",
+            "evaluation contract"
+          ],
+          "any_terms": [
+            "failure taxonomy",
+            "promotion decision"
+          ],
+          "description": "Agent knows the SubSim evaluation contract and failure taxonomy are present.",
+          "id": "subsim-evaluation-contract"
+        }
+      ],
+      "id": "readyplayer1-shadow-bridge-consumer",
+      "project": "ReadyPlayer1",
+      "require_provenance": true,
+      "require_replay_verified": true,
+      "task": "resume ReadyPlayer1 current campaign state and next steps",
+      "v1_context": [
+        "ReadyPlayer1 current-state consumption uses runs/current pointer artifacts.",
+        "Campaign 007A promoted post-reacquisition stabilization.",
+        "Campaign 006A promoted early active ping post-loss recovery probe.",
+        "Campaign 005A promoted fire-control readiness and solution-state visibility.",
+        "Campaign 004A suppresses duplicate same-primary torpedo commits.",
+        "SubSim evaluation contract records failure taxonomy and promotion decision."
+      ],
+      "v2_db_path": "../readyplayer1_v2_shadow_2026-05-17/readyplayer1_shadow_v2.db"
+    },
+    {
+      "bridge_audit_path": "lexi/rehydrate/bridge_audit_lexi-rehydrate.json",
+      "bridge_policy_path": "policies/lexi_policy.json",
+      "bridge_request_path": "requests/lexi_rehydrate.json",
+      "bridge_response_path": "lexi/rehydrate/bridge_response_lexi-rehydrate.json",
+      "confusing_terms": [
+        {
+          "blocking": true,
+          "reason": "Would shift the task toward a different Lexi planning thread.",
+          "term": "WorldCoder"
+        },
+        {
+          "blocking": true,
+          "reason": "This pilot is shadow-only and should not imply live integration.",
+          "term": "production cutover"
+        }
+      ],
+      "expected_needs": [
+        {
+          "all_terms": [
+            "production-facing alpha/prototype",
+            "not production-ready"
+          ],
+          "any_terms": [
+            "Production audit completed",
+            "audit blockers"
+          ],
+          "description": "Agent knows Lexi is alpha/prototype and not production-ready until blockers are fixed.",
+          "id": "production-audit-verdict"
+        },
+        {
+          "all_terms": [
+            "public /lexi/readyz 503",
+            "disabled avatar_edit/img2img"
+          ],
+          "any_terms": [
+            "divergent backend source trees",
+            "repo-root pytest import failure",
+            "streaming sanitizer NameError",
+            "alpha session memory"
+          ],
+          "description": "Agent knows the current production-audit blocker categories.",
+          "id": "production-audit-blockers"
+        },
+        {
+          "all_terms": [
+            "Phase 6",
+            "runtime preflight"
+          ],
+          "any_terms": [
+            "summarizer fallback",
+            "bounded summarizer fallback",
+            "FastAPI lifespan",
+            "lifespan startup"
+          ],
+          "description": "Agent knows the latest Lexi phase is runtime resilience work, including runtime preflight and startup lifecycle handling.",
+          "id": "phase-6-runtime-resilience"
+        },
+        {
+          "all_terms": [
+            "phases 1-5",
+            "auth/prompt/eval"
+          ],
+          "any_terms": [
+            "route uniqueness",
+            "eval runner",
+            "frontend build",
+            "Google CSRF"
+          ],
+          "description": "Agent knows the prior modernization baseline and validation gates that Phase 6 built on.",
+          "id": "phase-1-5-modernization-baseline"
+        },
+        {
+          "all_terms": [
+            "Google CSRF",
+            "untrusted-context"
+          ],
+          "any_terms": [
+            "trusted-proxy IP resolution",
+            "machine-graded eval cases",
+            "prompt trust-boundary"
+          ],
+          "description": "Agent knows Lexi's auth and prompt-trust boundary hardening work.",
+          "id": "auth-prompt-eval-boundaries"
+        },
+        {
+          "all_terms": [
+            "DreamerV2",
+            "replay-gated saturation"
+          ],
+          "any_terms": [
+            "Skipping short episode",
+            "minlen: 10"
+          ],
+          "description": "Agent knows the DreamerV2 sidecar is active but currently limited by replay gating rather than total inactivity.",
+          "id": "dreamerv2-sidecar-limitation"
+        },
+        {
+          "all_terms": [
+            "generated eval/avatar files",
+            "intentionally left uncommitted"
+          ],
+          "any_terms": [
+            "runtime artifacts",
+            "clean Phase 6 checkpoint",
+            "generated eval/avatar files"
+          ],
+          "description": "Agent knows generated runtime artifacts should remain uncommitted.",
+          "id": "generated-artifact-cleanliness"
+        }
+      ],
+      "id": "lexi-shadow-bridge-consumer",
+      "project": "Lexi",
+      "require_provenance": true,
+      "require_replay_verified": true,
+      "stale_terms": [
+        {
+          "blocking": true,
+          "reason": "Would imply the modernization state predates the current Phase 6 checkpoint.",
+          "term": "Phase 1 only"
+        }
+      ],
+      "task": "resume Lexi current production audit and runtime modernization state and next steps",
+      "v1_context": [
+        "Lexi should be presented as a deployed production-facing alpha/prototype, not production-ready, until the production audit blockers are fixed.",
+        "Current Lexi production audit blockers include public /lexi/readyz 503, disabled avatar_edit/img2img, divergent backend source trees, repo-root pytest import failure, telemetry/logging claim mismatch, streaming sanitizer NameError, and alpha session memory not recording /process.",
+        "Lex Phase 6 hardened runtime preflight with writable-path enforcement, bounded summarizer fallback behavior, and FastAPI lifespan startup handling.",
+        "Phase 6 runtime resilience checkpoint committed on top of the Phase 1-5 baseline, with generated eval/avatar files intentionally left uncommitted.",
+        "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening, route uniqueness, eval runner, frontend build, backend startup smoke, auth/session, Google CSRF behavior, and prompt trust-boundary probes.",
+        "Lex modernization phases 2A-4 added Google CSRF double-submit checks, trusted-proxy IP resolution, untrusted-context prompt framing, route inventory, and machine-graded eval cases.",
+        "DreamerV2 persistent sidecar still collects fresh episodes but current learning is near replay-gated saturation because replay minlen: 10 skips short episodes."
+      ],
+      "v2_db_path": "../lexi_v2_shadow_2026-05-17_final/lexi_shadow_v2.db"
+    }
+  ],
+  "defaults": {
+    "ignored_overinclude_terms": [
+      "friday",
+      "readyplayer1",
+      "lex",
+      "lexi",
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "campaign",
+      "resume",
+      "runtime",
+      "modernization",
+      "phase"
+    ],
+    "min_coverage": 0.85,
+    "require_all_required": true
+  },
+  "name": "Muninn v2 Phase F bridge shadow consumer evaluation",
+  "notes": [
+    "Muninn itself was not used as the third pilot because this repo is under active modification during Phase F.",
+    "Lexi is used as the safer completed Phase C alternative pilot."
+  ],
+  "schema_version": "muninn.v2.bridge_consumer_eval_fixture.v1",
+  "version": 1
+}
