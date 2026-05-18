@@ -58,6 +58,8 @@ data/cache/
 data/tmp/
 reports/pilots/**/*.db
 reports/pilots/**/*.db-*
+logs/live_trial/*.jsonl
+logs/live_trial/artifacts/
 
 # If you generate exports or recordings locally
 exports/

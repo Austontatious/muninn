@@ -25,6 +25,19 @@ Muninn v2 is adjacent, opt-in substrate work:
 - v2 should provide explicit adapters, dry-run pilots, export/import paths, and parity reports before any live adoption discussion.
 - New substrate work should bias toward v2, while v1 remains the active/live branch of use unless the task explicitly says to modify v1.
 
+### 1.1.1) Phase J Personal Local Live Trial
+Muninn v2 is active for Auston's personal/local live-trial context reads in this repo only.
+
+During the trial:
+- Prefer `python3 scripts/muninn_v2_live_context.py --cwd "$PWD" --query "<task summary>"` for task-start context reads.
+- Use the rendered v2 bridge context before implementation decisions.
+- If the v2 bridge/helper fails, log the failure under `logs/live_trial/`, state the failure, and then use the documented v1 MCP fallback path.
+- Do not silently repair a failed v2 read by switching systems without recording the failure.
+- v2 writes are disabled.
+- Completion-card writes remain on the existing v1 workflow only, unless the active task explicitly says writes are disabled.
+- Adaptive retrieval remains disabled by default.
+- General production cutover, v2 MCP replacement, and live Codex default replacement remain NO-GO.
+
 Current v2 milestone order:
 1. record-existence parity
 2. retrieval parity measurement
@@ -35,6 +48,11 @@ Current v2 milestone order:
 Repositories that integrate Muninn should use this workflow as operational policy:
 
 On task start (before substantial edits):
+- Phase J personal/local trial path for this repo:
+  - Run `python3 scripts/muninn_v2_live_context.py --cwd "$PWD" --query "<task summary>"`.
+  - The helper writes bridge audit artifacts under `logs/live_trial/artifacts/` and appends structured trial events to `logs/live_trial/muninn_v2_live_trial_events.jsonl`.
+  - If it succeeds, use that v2 context as the primary context read.
+  - If it fails, record the failure and use the compatibility sequence below.
 - Call `muninn.spaces.resolve` with current absolute `cwd`.
 - Use the returned `space.key` as `<resolved-space-key>` for retrieval calls.
 - Preferred: call `muninn.rehydrate.bundle` with:

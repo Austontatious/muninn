@@ -8,10 +8,14 @@ This document records the current architectural truth for Muninn. It is not a ru
 
 Muninn has two relevant development lines:
 
-- Muninn v1: active production memory for Codex-facing workflows.
+- Muninn v1: active production memory and rollback path for Codex-facing workflows.
 - Muninn v2: adjacent opt-in substrate work on the checkpoint branch.
 
-Muninn v1 remains the live branch of use unless a task explicitly says otherwise. New durable substrate design should bias toward v2, but that does not imply cutover, migration, or changed defaults.
+Phase J has explicitly started a personal/local live trial for Auston's context
+reads in this repo. That trial uses the v2 read-only bridge helper and explicit
+v2 shadow DBs, while v1 remains the production rollback and write path. This
+does not authorize general production cutover, v2 MCP replacement, public
+deployment, or adaptive default retrieval.
 
 ## Production v1 Boundary
 
@@ -79,8 +83,13 @@ The v2 checkpoint currently provides:
 - offline agent-context consumer audits for `RehydrateResponseV1` artifacts
 - offline recall/reinforcement event replay into derived reinforcement state
 - read-only bridge request/audit contracts for controlled v2 context consumption
+- a personal/local Phase J context helper that renders v2 bridge context and
+  logs trial evidence without replacing v1 MCP
 
-v2 is not the production recall path. It must remain opt-in until a future task explicitly approves a cutover plan.
+v2 is not the general production recall path. It is active only for the
+personal/local Phase J read trial where instructions explicitly require it; it
+must remain opt-in everywhere else until a future task explicitly approves a
+broader cutover plan.
 
 ## Non-Negotiable Safety Rules
 
@@ -89,6 +98,8 @@ v2 is not the production recall path. It must remain opt-in until a future task 
 - Do not change MCP/Codex defaults as part of v2 work.
 - Do not write to production v1 DBs from pilot, parity, or adapter code.
 - Do not make v2 the default recall path without explicit user instruction.
+- Do not treat the Phase J personal/local read trial as a public or generalized
+  production cutover.
 - Keep Mimir salience/cognition outside Muninn core.
 - Keep Hrafnar interpreter/runtime/protocol behavior outside Muninn core.
 - Treat scratch DBs and pilot output as non-production artifacts.
@@ -149,9 +160,22 @@ The v2 recall/reinforcement layer is offline-only adaptive retrieval metadata. I
 
 The v2 read-only bridge is a Phase E shadow integration harness. The narrow `bridge-context` command accepts a legacy rehydrate-only request and emits `RehydrateResponseV1` plus Markdown context and a bridge audit log. The operation-based `bridge-request` command accepts `BridgeRequestV1` under an explicit `BridgeCapabilityPolicyV1`, supports `health`, `search`, `rehydrate`, and `explain`, emits `BridgeResponseV1`, embeds `RehydrateResponseV1` for rehydrate operations, and writes request-id scoped audit artifacts. Both bridge paths read only explicit v2 DBs and reject or deny writes, v1 access, reinforcement event recording, adaptive retrieval defaults, unscoped project access, and LLM-dependent context generation. This is not a network service, MCP route, Codex default, or cutover mechanism.
 
+The Phase J personal/local live trial uses `scripts/muninn_v2_live_context.py`
+as the operator-facing context read path. The helper resolves the current repo
+against `configs/muninn_v2_live_trial.json`, calls `bridge-request rehydrate`
+against an explicit copied v2 shadow DB, writes audit artifacts under
+`logs/live_trial/artifacts/`, appends structured trial events to
+`logs/live_trial/muninn_v2_live_trial_events.jsonl`, and prints deterministic
+context. v2 writes remain disabled; existing completion-card writes remain
+v1-only unless a task disables writes.
+
 ## Migration And Cutover Posture
 
 There is no live migration and no automatic cutover.
+
+There is a personal/local read-path trial only. The trial is reversible by
+stopping use of `scripts/muninn_v2_live_context.py` and returning to the v1 MCP
+task-start context flow.
 
 Current safe migration work is limited to:
 
@@ -168,12 +192,14 @@ No production v1 data should be destructively migrated. Future migration must be
 
 ## Current Next Milestone
 
-The next architecture milestone is Phase E pre-cutover validation:
+The next architecture milestone is Phase J trial review:
 
-1. keep the bridge local/offline and read-only
-2. validate bridge request/response contracts and audit logs
-3. prove bridge context is safe before any live agent-context integration
-4. write an explicit cutover and rollback plan before changing production defaults
+1. run 24-48 hours of normal local Codex use through the v2 bridge helper
+2. review `logs/live_trial/` for read failures, fallback usage, missing context,
+   confusing context, write attempts, and degradation markers
+3. confirm v1 rollback remains available and no v2 writes occurred
+4. decide whether to continue the personal trial, roll back to v1-only reads, or
+   prepare a separate broader cutover plan
 
 ## Documentation Boundaries
 

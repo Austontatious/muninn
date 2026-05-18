@@ -106,6 +106,51 @@ Quick checks:
 
 If this sequence appears in one real task run, Codex memory usage is validated.
 
+## Phase J personal local v2 context trial
+
+Phase J is a personal/local read-path trial. It does not replace the v1 API,
+v1 MCP server, or existing completion-card write path.
+
+Task-start context read:
+
+```bash
+cd /mnt/data/Muninn
+python3 scripts/muninn_v2_live_context.py \
+  --cwd "$PWD" \
+  --query "short task summary"
+```
+
+The helper:
+- resolves the current project against `configs/muninn_v2_live_trial.json`
+- reads only the explicit project-scoped v2 shadow DB
+- calls the v2 read-only bridge `rehydrate` operation
+- writes bridge response/audit artifacts under `logs/live_trial/artifacts/`
+- appends a structured event to `logs/live_trial/muninn_v2_live_trial_events.jsonl`
+- prints deterministic context for the operator/agent
+
+If the helper fails:
+
+1. Confirm the failure was logged under `logs/live_trial/`.
+2. Record a short operator note if the failure was confusing.
+3. Fall back to the existing v1 MCP context path only after the failure is
+   visible.
+
+Rollback:
+
+1. Stop calling `scripts/muninn_v2_live_context.py`.
+2. Resume the existing v1 MCP task-start flow.
+3. Keep existing v1 completion-card writes unchanged.
+4. Use backups under
+   `reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/` only if
+   manual restore is explicitly requested.
+
+Status:
+- Personal local live trial: GO only after smoke tests pass
+- General production cutover: NO-GO
+- v2 writes: DISABLED
+- existing completion-card writes: V1_ONLY
+- adaptive default: OFF
+
 ## Codex instruction discovery
 
 - Keep `AGENTS.md` at repo root (`/mnt/data/Muninn/AGENTS.md`) so repo-scoped instructions are discoverable.

@@ -1,0 +1,161 @@
+{
+  "backup_locations": {
+    "backup_dir": "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups",
+    "config_backup_dir": "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/config",
+    "v1_core_backup": "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/muninn_v1_core_2026-05-17.db",
+    "v1_human_backup": "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/human_memory_v1_2026-05-17.db",
+    "v2_backup_examples": [
+      "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/muninn_shadow_v2_phase_i_2026-05-17.db",
+      "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/friday_shadow_v2_phase_i_2026-05-17.db",
+      "/mnt/data/Muninn/reports/pilots/phase_j_personal_live_trial_2026-05-17/backups/readyplayer1_shadow_v2_phase_i_2026-05-17.db"
+    ]
+  },
+  "cutover_path": {
+    "adaptive_default": "OFF",
+    "fallback": "logged v2 failure then v1 MCP fallback",
+    "global_codex_config_changed": false,
+    "live_mcp_replaced": false,
+    "reads": "v2_bridge_helper_scripts/muninn_v2_live_context.py",
+    "writes": "V1_ONLY existing completion-card workflow; no v2 writes"
+  },
+  "endpoints_after": {
+    "v1_api": "unchanged http://127.0.0.1:8000/health",
+    "v1_mcp": "unchanged http://127.0.0.1:8765/mcp",
+    "v2_bridge": "local helper + bridge-request CLI only"
+  },
+  "endpoints_before": {
+    "docker_friday_api": "http://127.0.0.1:18000/health",
+    "v1_api": "http://127.0.0.1:8000/health",
+    "v1_mcp": "http://127.0.0.1:8765/mcp",
+    "v2_bridge": "local CLI only: python3 -m muninn.v2.cli bridge-request"
+  },
+  "record_type": "muninn_v2_phase_j_personal_live_trial_report",
+  "schema_version": "muninn.v2.phase_j_personal_live_trial_report.v1",
+  "smoke_tests": {
+    "api_health": "ok",
+    "bridge_request": {
+      "adaptive_denial": {
+        "degraded": false,
+        "reason_codes": [
+          "adaptive_scoring_not_allowed"
+        ],
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/bridge_request_outputs/adaptive_denial/bridge_response_phase-j-adaptive-denial.json",
+        "returncode": 0,
+        "status": "denied",
+        "stderr": "",
+        "stdout": "{\"consumer_id\": \"codex-local-live-trial\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": false, \"request_id\": \"phase-j-adaptive-denial\", \"status\": \"denied\", \"trace_id\": \"bridge_985de92364cad317\"}"
+      },
+      "health": {
+        "degraded": true,
+        "reason_codes": [],
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/bridge_request_outputs/health/bridge_response_phase-j-bridge-health.json",
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": "{\"consumer_id\": \"codex-local-live-trial\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"health\", \"policy_allowed\": true, \"request_id\": \"phase-j-bridge-health\", \"status\": \"ok\", \"trace_id\": \"bridge_121406bfaeefcd04\"}"
+      },
+      "rehydrate": {
+        "degraded": true,
+        "reason_codes": [],
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/bridge_request_outputs/rehydrate/bridge_response_phase-j-bridge-rehydrate.json",
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": "{\"consumer_id\": \"codex-local-live-trial\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"rehydrate\", \"policy_allowed\": true, \"request_id\": \"phase-j-bridge-rehydrate\", \"status\": \"ok\", \"trace_id\": \"bridge_86f3014f4c0479af\"}"
+      },
+      "search": {
+        "degraded": true,
+        "reason_codes": [],
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/bridge_request_outputs/search/bridge_response_phase-j-bridge-search.json",
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": "{\"consumer_id\": \"codex-local-live-trial\", \"degraded\": true, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": true, \"request_id\": \"phase-j-bridge-search\", \"status\": \"ok\", \"trace_id\": \"bridge_e996d9bbebc7b58d\"}"
+      },
+      "wrong_project_denial": {
+        "degraded": false,
+        "reason_codes": [
+          "space_not_allowed",
+          "project_path_not_allowed"
+        ],
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/bridge_request_outputs/wrong_project_denial/bridge_response_phase-j-wrong-project-denial.json",
+        "returncode": 0,
+        "status": "denied",
+        "stderr": "",
+        "stdout": "{\"consumer_id\": \"codex-local-live-trial\", \"degraded\": false, \"mode\": \"bridge_request\", \"operation\": \"search\", \"policy_allowed\": false, \"request_id\": \"phase-j-wrong-project-denial\", \"status\": \"denied\", \"trace_id\": \"bridge_cec4d72d6272bf52\"}"
+      }
+    },
+    "helper_context": {
+      "friday": {
+        "context_md": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_friday_context.md",
+        "degradation": {
+          "degraded": true,
+          "reason_codes": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ]
+        },
+        "primary_selected": 3,
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_friday_context/bridge_response_phase-j-friday-context-smoke.json",
+        "selected_cards": 8,
+        "status": "ok",
+        "supplement_selected": 5,
+        "used_chars": 7063
+      },
+      "muninn": {
+        "context_md": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_muninn_context.md",
+        "degradation": {
+          "degraded": true,
+          "reason_codes": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ]
+        },
+        "primary_selected": 3,
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_muninn_context/bridge_response_phase-j-muninn-context-smoke.json",
+        "selected_cards": 8,
+        "status": "ok",
+        "supplement_selected": 5,
+        "used_chars": 8208
+      },
+      "readyplayer1": {
+        "context_md": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_readyplayer1_context.md",
+        "degradation": {
+          "degraded": true,
+          "reason_codes": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ]
+        },
+        "primary_selected": 3,
+        "response_path": "reports/pilots/phase_j_personal_live_trial_2026-05-17/smoke/helper_readyplayer1_context/bridge_response_phase-j-readyplayer1-context-smoke.json",
+        "selected_cards": 9,
+        "status": "ok",
+        "supplement_selected": 6,
+        "used_chars": 9748
+      }
+    },
+    "known_context_risk": "Muninn smoke context included an older ReadyPlayer1 no-go continuity supplement alongside newer go-with-constraints memory; monitor stale/conflicting supplements during trial.",
+    "known_degradation": "sqlite_vec unavailable; json_vector_fallback used",
+    "mcp_system_ping": "ok version 0.11.0 db_path /home/unix/.local/share/muninn/human_memory.db auth off"
+  },
+  "status": {
+    "adaptive_default": "OFF",
+    "general_production_cutover": "NO-GO",
+    "personal_local_live_trial": "GO_WITH_V1_CORE_AUDIT_LOG_CAVEAT",
+    "v1_rollback": "AVAILABLE",
+    "writes": "V1_ONLY"
+  },
+  "trial_review_plan": "Review logs/live_trial after 24-48 hours for failed reads/writes, missing/confusing context, fallback usage, stale supplements, and operator notes.",
+  "v1_safety": {
+    "backup_available": true,
+    "core_audit_log_rows": "434 -> 436",
+    "core_db_change_reason": "two GET /health smoke checks appended audit_log rows to /home/unix/.local/share/muninn/muninn.db",
+    "core_db_changed": true,
+    "human_memory_db_unchanged": true,
+    "v1_human_row_counts_changed": false
+  },
+  "validation": {
+    "agents_lint": "PASS=0 WARN=30 FAIL=0; Muninn warning pre-existing policy-section lint, no failures",
+    "full_pytest": "271 passed, 2 skipped, 2 warnings",
+    "py_compile_v2_and_helper": "passed",
+    "tests_test_v2": "84 passed"
+  }
+}

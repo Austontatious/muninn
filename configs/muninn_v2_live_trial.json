@@ -1,0 +1,187 @@
+{
+  "adaptive_default": false,
+  "allow_adaptive_scoring": false,
+  "allow_cross_project": false,
+  "allow_reinforcement_write": false,
+  "artifact_dir": "logs/live_trial/artifacts",
+  "consumer_id": "codex-local-live-trial",
+  "fallback": "v1_mcp_manual_after_logged_v2_failure",
+  "include_evidence": true,
+  "include_explanations": true,
+  "log_dir": "logs/live_trial",
+  "max_context_chars": 12000,
+  "max_results": 12,
+  "mode": "personal_local_live_trial_read_path",
+  "primary_limit": 3,
+  "projects": [
+    {
+      "enabled_for_live_trial": true,
+      "name": "Althing",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/althing",
+      "require_evidence": true,
+      "space_key": "path:f2bb13bd786fd92c",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/althing_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Aquagenesys",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Aquagenesys",
+      "require_evidence": true,
+      "space_key": "path:84e2f8323ea83b57",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/aquagenesys_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "austontatious-dev",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/austontatious-dev",
+      "require_evidence": true,
+      "space_key": "repo:9b87d03cb11a90c4",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/austontatious_dev_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Bifrost",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Bifrost",
+      "require_evidence": true,
+      "space_key": "path:4b38992d2d9b0912",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/bifrost_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Brilliant",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Brilliant",
+      "require_evidence": true,
+      "space_key": "path:50aa2332ed9719c7",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/brilliant_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Echo",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Echo",
+      "require_evidence": true,
+      "space_key": "path:0101d9215af48be6",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/echo_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Fenrir",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Fenrir",
+      "require_evidence": true,
+      "space_key": "path:7ebc0f0b97e0bdc3",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/fenrir_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Friday",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/friday",
+      "require_evidence": true,
+      "space_key": "repo:f8cc7f64d3636a4e",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/friday_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Heimdall",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Heimdall",
+      "require_evidence": true,
+      "space_key": "path:808c403947b88ec1",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/heimdall_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Hrafnar",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Hrafnar",
+      "require_evidence": true,
+      "space_key": "path:08438f64e19a2dc3",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/hrafnar_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "LAILA",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/LAILA",
+      "require_evidence": true,
+      "space_key": "repo:63325bc94a03e407",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/laila_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Lex",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Lex",
+      "require_evidence": true,
+      "space_key": "repo:0c321b2a6f183a95",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/lex_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Mimir",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Mimir",
+      "require_evidence": true,
+      "space_key": "repo:06bbe8682f884cf1",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/mimir_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Muninn",
+      "production_migration": "excluded_pending_separate_plan",
+      "project_path": "/mnt/data/Muninn",
+      "require_evidence": true,
+      "space_key": "repo:0a6d43de03a835a0",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/muninn_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "portfolio",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/portfolio",
+      "require_evidence": false,
+      "space_key": "path:6b69ffc5f8046453",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/portfolio_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "ReadyPlayer1",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/ReadyPlayer1",
+      "require_evidence": true,
+      "space_key": "repo:5059f410815720ea",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/readyplayer1_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "Sindri",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/Sindri",
+      "require_evidence": true,
+      "space_key": "path:316f4f67d061cbdd",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/sindri_shadow_v2.db"
+    },
+    {
+      "enabled_for_live_trial": true,
+      "name": "SubSim",
+      "production_migration": "not_cut_over",
+      "project_path": "/mnt/data/subsim",
+      "require_evidence": true,
+      "space_key": "repo:363c13a65e92ef58",
+      "v2_db": "reports/pilots/phase_j_personal_live_trial_2026-05-17/v2_trial_dbs/subsim_shadow_v2.db"
+    }
+  ],
+  "read_path": "v2_bridge_request_rehydrate",
+  "recent_limit": 9,
+  "retrieval_mode": "hybrid",
+  "schema_version": "muninn.v2.live_trial_config.v1",
+  "strict": true,
+  "trial_name": "phase_j_personal_local_live_trial_2026-05-17",
+  "write_path": "v1_only_existing_completion_card_workflow"
+}

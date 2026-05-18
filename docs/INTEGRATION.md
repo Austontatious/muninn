@@ -36,6 +36,26 @@ The bridge emits `BridgeResponseV1`; rehydrate responses embed the existing
 shadow/evaluation-only; it does not change live v1 HTTP endpoints, MCP tools, or
 Codex defaults.
 
+## Muninn v2 Personal Local Live Trial
+
+Phase J adds a local operator helper for Auston's personal context-read trial:
+
+```bash
+python3 scripts/muninn_v2_live_context.py \
+  --cwd "$PWD" \
+  --query "short task summary"
+```
+
+The helper wraps the read-only v2 bridge and renders a deterministic context
+block for the current project. It requires a configured explicit v2 DB in
+`configs/muninn_v2_live_trial.json`, writes bridge audit artifacts under
+`logs/live_trial/artifacts/`, and logs structured trial events under
+`logs/live_trial/`.
+
+This helper is local and reversible. It does not replace v1 MCP, does not expose
+a network service, does not write v2 memory, and does not enable adaptive
+retrieval by default.
+
 Supported operations are `health`, `search`, `rehydrate`, and `explain`.
 Requests that violate consumer, operation, space, project, budget, evidence,
 explanation, adaptive-scoring, or reinforcement-write policy are denied before
