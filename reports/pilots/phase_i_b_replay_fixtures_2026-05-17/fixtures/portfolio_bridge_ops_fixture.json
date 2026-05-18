@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "portfolio"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for portfolio",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "portfolio",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/portfolio"
+        ],
+        "allowed_space_keys": [
+          "path:6b69ffc5f8046453"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": false,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "portfolio",
+      "project_path": "/mnt/data/portfolio",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "d23d0268-3747-4750-b865-02938ef8d695"
+              ],
+              "description": "portfolio selected current-state memory remains visible across replay modes.",
+              "id": "portfolio-selected-card-continuity"
+            }
+          ],
+          "id": "portfolio-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:6b69ffc5f8046453",
+                    "/mnt/data/portfolio"
+                  ],
+                  "description": "portfolio replay context is scoped to the expected space and project path.",
+                  "id": "portfolio-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Canonical"
+                  ],
+                  "any_terms": [
+                    "brand",
+                    "messaging"
+                  ],
+                  "card_ids": [
+                    "d23d0268-3747-4750-b865-02938ef8d695"
+                  ],
+                  "description": "portfolio replay context includes the selected current-state memory card.",
+                  "id": "portfolio-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume portfolio project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:6b69ffc5f8046453 /mnt/data/portfolio d23d0268-3747-4750-b865-02938ef8d695 Canonical brand messaging added and wired into portfolio copy Canonical brand messaging"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:6b69ffc5f8046453",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/portfolio_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

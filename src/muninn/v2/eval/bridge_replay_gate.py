@@ -291,6 +291,8 @@ def _run_failure_drills(report: dict[str, Any], artifacts: Sequence[dict[str, An
         rehydrate = missing_evidence["response"].get("result", {}).get("rehydrate_response", {})
         if isinstance(rehydrate, dict):
             rehydrate.setdefault("selected_memory", {})["evidence"] = []
+        missing_evidence["policy"]["require_evidence"] = True
+        missing_evidence["request"]["include_evidence"] = True
         drills.append(_drill("missing_evidence", not _response_evidence_ok(missing_evidence["response"], missing_evidence["policy"], missing_evidence["request"]), "policy requires evidence but payload has none"))
 
     hash_mismatch = copy.deepcopy(artifact_sample)

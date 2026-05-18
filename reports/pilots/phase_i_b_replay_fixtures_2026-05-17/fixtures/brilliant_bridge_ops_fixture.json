@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "brilliant"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Brilliant",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "brilliant",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Brilliant"
+        ],
+        "allowed_space_keys": [
+          "path:50aa2332ed9719c7"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Brilliant",
+      "project_path": "/mnt/data/Brilliant",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "a2e74bcf-bb70-47c3-8147-dd9fde9850db"
+              ],
+              "description": "Brilliant selected current-state memory remains visible across replay modes.",
+              "id": "brilliant-selected-card-continuity"
+            }
+          ],
+          "id": "brilliant-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:50aa2332ed9719c7",
+                    "/mnt/data/Brilliant"
+                  ],
+                  "description": "Brilliant replay context is scoped to the expected space and project path.",
+                  "id": "brilliant-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Brilliant"
+                  ],
+                  "any_terms": [
+                    "sandbox",
+                    "uses"
+                  ],
+                  "card_ids": [
+                    "a2e74bcf-bb70-47c3-8147-dd9fde9850db"
+                  ],
+                  "description": "Brilliant replay context includes the selected current-state memory card.",
+                  "id": "brilliant-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Brilliant project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:50aa2332ed9719c7 /mnt/data/Brilliant a2e74bcf-bb70-47c3-8147-dd9fde9850db Brilliant sandbox uses emulator-first canonical events Brilliant sandbox uses"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:50aa2332ed9719c7",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/brilliant_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

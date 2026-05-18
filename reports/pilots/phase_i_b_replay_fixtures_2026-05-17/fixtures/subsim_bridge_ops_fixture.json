@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "subsim"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for SubSim",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "subsim",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/subsim"
+        ],
+        "allowed_space_keys": [
+          "repo:363c13a65e92ef58"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "SubSim",
+      "project_path": "/mnt/data/subsim",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "8d0704f3-2903-44df-937c-c80902b20f64"
+              ],
+              "description": "SubSim selected current-state memory remains visible across replay modes.",
+              "id": "subsim-selected-card-continuity"
+            }
+          ],
+          "id": "subsim-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "repo:363c13a65e92ef58",
+                    "/mnt/data/subsim"
+                  ],
+                  "description": "SubSim replay context is scoped to the expected space and project path.",
+                  "id": "subsim-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "SubSim"
+                  ],
+                  "any_terms": [
+                    "ReadyPlayer1",
+                    "campaign"
+                  ],
+                  "card_ids": [
+                    "8d0704f3-2903-44df-937c-c80902b20f64"
+                  ],
+                  "description": "SubSim replay context includes the selected current-state memory card.",
+                  "id": "subsim-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume SubSim project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "repo:363c13a65e92ef58 /mnt/data/subsim 8d0704f3-2903-44df-937c-c80902b20f64 SubSim x ReadyPlayer1 campaign ledger checkpoint updated through Campaign 003 SubSim ReadyPlayer1 campaign"
+            }
+          ]
+        }
+      ],
+      "space_key": "repo:363c13a65e92ef58",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/subsim_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

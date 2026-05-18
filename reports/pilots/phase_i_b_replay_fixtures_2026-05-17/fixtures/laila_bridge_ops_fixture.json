@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "laila"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for LAILA",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "laila",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/LAILA"
+        ],
+        "allowed_space_keys": [
+          "repo:63325bc94a03e407"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "LAILA",
+      "project_path": "/mnt/data/LAILA",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "82624643-28ed-4d84-a0ee-a2a050b6102d"
+              ],
+              "description": "LAILA selected current-state memory remains visible across replay modes.",
+              "id": "laila-selected-card-continuity"
+            }
+          ],
+          "id": "laila-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "repo:63325bc94a03e407",
+                    "/mnt/data/LAILA"
+                  ],
+                  "description": "LAILA replay context is scoped to the expected space and project path.",
+                  "id": "laila-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Meta"
+                  ],
+                  "any_terms": [
+                    "connector",
+                    "MVP"
+                  ],
+                  "card_ids": [
+                    "82624643-28ed-4d84-a0ee-a2a050b6102d"
+                  ],
+                  "description": "LAILA replay context includes the selected current-state memory card.",
+                  "id": "laila-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume LAILA project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "repo:63325bc94a03e407 /mnt/data/LAILA 82624643-28ed-4d84-a0ee-a2a050b6102d Meta connector MVP guide added with realistic read boundaries and phased permissions Meta connector MVP"
+            }
+          ]
+        }
+      ],
+      "space_key": "repo:63325bc94a03e407",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/laila_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

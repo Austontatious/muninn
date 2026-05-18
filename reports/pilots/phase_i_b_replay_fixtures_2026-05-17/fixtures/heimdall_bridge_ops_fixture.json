@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "heimdall"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Heimdall",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "heimdall",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Heimdall"
+        ],
+        "allowed_space_keys": [
+          "path:808c403947b88ec1"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Heimdall",
+      "project_path": "/mnt/data/Heimdall",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "f98092d3-45e3-47ee-b798-d2046cdfad74"
+              ],
+              "description": "Heimdall selected current-state memory remains visible across replay modes.",
+              "id": "heimdall-selected-card-continuity"
+            }
+          ],
+          "id": "heimdall-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:808c403947b88ec1",
+                    "/mnt/data/Heimdall"
+                  ],
+                  "description": "Heimdall replay context is scoped to the expected space and project path.",
+                  "id": "heimdall-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Heimdall"
+                  ],
+                  "any_terms": [
+                    "baseline",
+                    "uses"
+                  ],
+                  "card_ids": [
+                    "f98092d3-45e3-47ee-b798-d2046cdfad74"
+                  ],
+                  "description": "Heimdall replay context includes the selected current-state memory card.",
+                  "id": "heimdall-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Heimdall project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:808c403947b88ec1 /mnt/data/Heimdall f98092d3-45e3-47ee-b798-d2046cdfad74 Heimdall baseline uses bounded multi-lane adjudication Heimdall baseline uses"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:808c403947b88ec1",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/heimdall_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

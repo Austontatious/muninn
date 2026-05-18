@@ -62,6 +62,37 @@ def _seed_shadow_db(tmp_path: Path) -> Path:
     return db_path
 
 
+def _seed_shadow_db_without_evidence(tmp_path: Path) -> Path:
+    db_path = tmp_path / "replay_gate_no_evidence_v2.db"
+    store = SQLiteMemoryStore(db_path)
+    store.initialize()
+    card = MemoryCard(
+        id="card-current",
+        kind="decision",
+        title="Replay gate current state",
+        summary="The bridge replay gate validates audit traces for sparse projects.",
+        body="Sparse projects may lack evidence refs but still need replayable context.",
+        scope_key="repo:test",
+        updated_at="2026-05-17T12:00:00Z",
+    )
+    store.create_card(card)
+    store.upsert_reinforcement_state(
+        {
+            "schema_version": "muninn.v2.recall_reinforcement.v1",
+            "record_type": "muninn_v2_reinforcement_state",
+            "record_id": card.id,
+            "scope_key": "repo:test",
+            "status": "preserved",
+            "effective_score": 1.0,
+            "last_event_at": "2026-05-17T12:00:00Z",
+            "computed_at": "2026-05-17T12:01:00Z",
+            "explanation": ["test replay gate state"],
+        }
+    )
+    _compact_db(db_path)
+    return db_path
+
+
 def _drill_fixture(tmp_path: Path, db_path: Path) -> Path:
     fixture = {
         "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
@@ -146,6 +177,25 @@ def _drill_fixture(tmp_path: Path, db_path: Path) -> Path:
     return path
 
 
+def _drill_fixture_without_required_evidence(tmp_path: Path, db_path: Path) -> Path:
+    fixture = json.loads(_drill_fixture(tmp_path, db_path).read_text(encoding="utf-8"))
+    pilot = fixture["pilots"][0]
+    pilot["policy"]["require_evidence"] = False
+    pilot["request_defaults"]["primary_limit"] = 1
+    task = pilot["sessions"][0]["tasks"][0]
+    task["expected_needs"] = [
+        {
+            "id": "sparse-current-state",
+            "all_terms": ["sparse projects"],
+            "card_ids": ["card-current"],
+        }
+    ]
+    task["v1_context"] = "Sparse projects may lack evidence refs but still need replayable context."
+    path = tmp_path / "drill_fixture_no_evidence.json"
+    path.write_text(json.dumps(fixture, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return path
+
+
 def _write_v1_safety(tmp_path: Path) -> Path:
     path = tmp_path / "v1_safety.json"
     path.write_text(
@@ -206,6 +256,34 @@ def test_bridge_replay_gate_validates_drill_and_failure_drills(tmp_path: Path, m
     assert (tmp_path / "gate" / "bridge_replay_gate_report.md").exists()
     assert not Path(str(db_path) + "-wal").exists()
     assert not Path(str(db_path) + "-shm").exists()
+
+
+def test_bridge_replay_gate_failure_drills_cover_optional_evidence_policies(tmp_path: Path, capsys) -> None:
+    db_path = _seed_shadow_db_without_evidence(tmp_path)
+    fixture = _drill_fixture_without_required_evidence(tmp_path, db_path)
+    safety = _write_v1_safety(tmp_path)
+
+    assert main(["bridge-ops-drill", "--fixture", str(fixture), "--out-dir", str(tmp_path / "drill")]) == 0
+    capsys.readouterr()
+
+    code = main(
+        [
+            "bridge-replay-gate",
+            "--drill-report",
+            str(tmp_path / "drill" / "bridge_ops_drill_report.json"),
+            "--v1-safety",
+            str(safety),
+            "--out-dir",
+            str(tmp_path / "gate"),
+            "--run-failure-drills",
+        ]
+    )
+
+    report = json.loads((tmp_path / "gate" / "bridge_replay_gate_report.json").read_text(encoding="utf-8"))
+    assert code == 0
+    assert report["status"]["technical_replay_gate"] == "GO"
+    assert report["summary"]["failure_drills_detected"] == 7
+    assert all(item["detected"] for item in report["failure_drills"])
 
 
 def test_bridge_replay_gate_fails_when_v1_safety_missing(tmp_path: Path, capsys) -> None:

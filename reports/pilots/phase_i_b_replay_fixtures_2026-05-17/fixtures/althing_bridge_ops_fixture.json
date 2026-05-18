@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "althing"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Althing",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "althing",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/althing"
+        ],
+        "allowed_space_keys": [
+          "path:f2bb13bd786fd92c"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Althing",
+      "project_path": "/mnt/data/althing",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "e7acd902-1921-4705-a5e0-9fde8f123d04"
+              ],
+              "description": "Althing selected current-state memory remains visible across replay modes.",
+              "id": "althing-selected-card-continuity"
+            }
+          ],
+          "id": "althing-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:f2bb13bd786fd92c",
+                    "/mnt/data/althing"
+                  ],
+                  "description": "Althing replay context is scoped to the expected space and project path.",
+                  "id": "althing-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Exported"
+                  ],
+                  "any_terms": [
+                    "reusable",
+                    "Codex"
+                  ],
+                  "card_ids": [
+                    "e7acd902-1921-4705-a5e0-9fde8f123d04"
+                  ],
+                  "description": "Althing replay context includes the selected current-state memory card.",
+                  "id": "althing-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Althing project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:f2bb13bd786fd92c /mnt/data/althing e7acd902-1921-4705-a5e0-9fde8f123d04 Exported reusable Codex agent-control standards into a single portable markdown file Exported reusable Codex"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:f2bb13bd786fd92c",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/althing_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

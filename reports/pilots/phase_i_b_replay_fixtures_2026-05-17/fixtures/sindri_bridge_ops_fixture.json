@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "sindri"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Sindri",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "sindri",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Sindri"
+        ],
+        "allowed_space_keys": [
+          "path:316f4f67d061cbdd"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Sindri",
+      "project_path": "/mnt/data/Sindri",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01"
+              ],
+              "description": "Sindri selected current-state memory remains visible across replay modes.",
+              "id": "sindri-selected-card-continuity"
+            }
+          ],
+          "id": "sindri-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:316f4f67d061cbdd",
+                    "/mnt/data/Sindri"
+                  ],
+                  "description": "Sindri replay context is scoped to the expected space and project path.",
+                  "id": "sindri-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "graduation"
+                  ],
+                  "any_terms": [
+                    "validation",
+                    "sequence"
+                  ],
+                  "card_ids": [
+                    "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01"
+                  ],
+                  "description": "Sindri replay context includes the selected current-state memory card.",
+                  "id": "sindri-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Sindri project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:316f4f67d061cbdd /mnt/data/Sindri 3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01 Phase 10 graduation validation sequence for wrapper lane graduation validation sequence"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:316f4f67d061cbdd",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/sindri_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

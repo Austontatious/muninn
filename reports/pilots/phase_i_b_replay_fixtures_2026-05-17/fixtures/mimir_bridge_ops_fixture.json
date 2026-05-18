@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "mimir"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Mimir",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "mimir",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Mimir"
+        ],
+        "allowed_space_keys": [
+          "repo:06bbe8682f884cf1"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Mimir",
+      "project_path": "/mnt/data/Mimir",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "beb8b881-675e-4ddb-9747-7d07e7bc93ef"
+              ],
+              "description": "Mimir selected current-state memory remains visible across replay modes.",
+              "id": "mimir-selected-card-continuity"
+            }
+          ],
+          "id": "mimir-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "repo:06bbe8682f884cf1",
+                    "/mnt/data/Mimir"
+                  ],
+                  "description": "Mimir replay context is scoped to the expected space and project path.",
+                  "id": "mimir-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "mimir"
+                  ],
+                  "any_terms": [
+                    "index",
+                    "now"
+                  ],
+                  "card_ids": [
+                    "beb8b881-675e-4ddb-9747-7d07e7bc93ef"
+                  ],
+                  "description": "Mimir replay context includes the selected current-state memory card.",
+                  "id": "mimir-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Mimir project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "repo:06bbe8682f884cf1 /mnt/data/Mimir beb8b881-675e-4ddb-9747-7d07e7bc93ef mimir index now drives world-state current and temporal ingestion lanes mimir index now"
+            }
+          ]
+        }
+      ],
+      "space_key": "repo:06bbe8682f884cf1",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/mimir_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

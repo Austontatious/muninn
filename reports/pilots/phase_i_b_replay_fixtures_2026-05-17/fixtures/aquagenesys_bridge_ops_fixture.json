@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "aquagenesys"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Aquagenesys",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "aquagenesys",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Aquagenesys"
+        ],
+        "allowed_space_keys": [
+          "path:84e2f8323ea83b57"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Aquagenesys",
+      "project_path": "/mnt/data/Aquagenesys",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "241033f0-ad96-418e-b0d4-a2179f587503"
+              ],
+              "description": "Aquagenesys selected current-state memory remains visible across replay modes.",
+              "id": "aquagenesys-selected-card-continuity"
+            }
+          ],
+          "id": "aquagenesys-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:84e2f8323ea83b57",
+                    "/mnt/data/Aquagenesys"
+                  ],
+                  "description": "Aquagenesys replay context is scoped to the expected space and project path.",
+                  "id": "aquagenesys-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Aquagenesys"
+                  ],
+                  "any_terms": [
+                    "Sprint",
+                    "colony"
+                  ],
+                  "card_ids": [
+                    "241033f0-ad96-418e-b0d4-a2179f587503"
+                  ],
+                  "description": "Aquagenesys replay context includes the selected current-state memory card.",
+                  "id": "aquagenesys-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Aquagenesys project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:84e2f8323ea83b57 /mnt/data/Aquagenesys 241033f0-ad96-418e-b0d4-a2179f587503 Aquagenesys Sprint 2 colony and social ecology Aquagenesys Sprint colony"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:84e2f8323ea83b57",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/aquagenesys_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

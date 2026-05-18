@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "bifrost"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Bifrost",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "bifrost",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Bifrost"
+        ],
+        "allowed_space_keys": [
+          "path:4b38992d2d9b0912"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Bifrost",
+      "project_path": "/mnt/data/Bifrost",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "26cb19f8-b9bc-45d3-ad6c-76034ef81e84"
+              ],
+              "description": "Bifrost selected current-state memory remains visible across replay modes.",
+              "id": "bifrost-selected-card-continuity"
+            }
+          ],
+          "id": "bifrost-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:4b38992d2d9b0912",
+                    "/mnt/data/Bifrost"
+                  ],
+                  "description": "Bifrost replay context is scoped to the expected space and project path.",
+                  "id": "bifrost-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Bifrost"
+                  ],
+                  "any_terms": [
+                    "exports",
+                    "local_ai_ecosystem"
+                  ],
+                  "card_ids": [
+                    "26cb19f8-b9bc-45d3-ad6c-76034ef81e84"
+                  ],
+                  "description": "Bifrost replay context includes the selected current-state memory card.",
+                  "id": "bifrost-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Bifrost project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:4b38992d2d9b0912 /mnt/data/Bifrost 26cb19f8-b9bc-45d3-ad6c-76034ef81e84 Bifrost exports local_ai_ecosystem world manifest for Mimir Bifrost exports local_ai_ecosystem"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:4b38992d2d9b0912",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/bifrost_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

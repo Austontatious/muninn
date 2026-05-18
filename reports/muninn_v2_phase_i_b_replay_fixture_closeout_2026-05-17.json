@@ -1,0 +1,1605 @@
+{
+  "artifact_dir": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17",
+  "generated_at": "2026-05-18T01:52:16Z",
+  "limited_repo_results": [
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/althing_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/drill"
+          ],
+          "duration_seconds": 1.593,
+          "name": "althing_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/althing_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/althing_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.708,
+          "name": "althing_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/althing_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/althing_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/althing_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 1,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/althing_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/althing/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Althing",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "e7acd902-1921-4705-a5e0-9fde8f123d04",
+        "4b65b9bb-6c2a-4b62-a76e-0b377d2eeab5"
+      ],
+      "slug": "althing"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/aquagenesys_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/drill"
+          ],
+          "duration_seconds": 1.342,
+          "name": "aquagenesys_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/aquagenesys_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/aquagenesys_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.758,
+          "name": "aquagenesys_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/aquagenesys_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/aquagenesys_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/aquagenesys_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 1,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/aquagenesys_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/aquagenesys/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Aquagenesys",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "241033f0-ad96-418e-b0d4-a2179f587503",
+        "57ad7919-fc97-4a32-b212-042df06a084b"
+      ],
+      "slug": "aquagenesys"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/austontatious_dev_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/drill"
+          ],
+          "duration_seconds": 1.497,
+          "name": "austontatious_dev_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/austontatious_dev_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/austontatious_dev_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.688,
+          "name": "austontatious_dev_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/austontatious_dev_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/austontatious_dev_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/austontatious_dev_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 1,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/austontatious_dev_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/austontatious_dev/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "austontatious-dev",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "ac931026-5516-4356-ace4-64a6d3de8f10"
+      ],
+      "slug": "austontatious_dev"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/bifrost_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/drill"
+          ],
+          "duration_seconds": 1.233,
+          "name": "bifrost_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/bifrost_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/bifrost_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.708,
+          "name": "bifrost_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/bifrost_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/bifrost_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/bifrost_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 1,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/bifrost_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/bifrost/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Bifrost",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "26cb19f8-b9bc-45d3-ad6c-76034ef81e84",
+        "0603a0ac-cbdc-4445-a86b-88de7b5648b8"
+      ],
+      "slug": "bifrost"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/brilliant_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/drill"
+          ],
+          "duration_seconds": 1.292,
+          "name": "brilliant_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/brilliant_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/brilliant_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.658,
+          "name": "brilliant_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/brilliant_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/brilliant_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/brilliant_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/brilliant_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/brilliant/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Brilliant",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "a2e74bcf-bb70-47c3-8147-dd9fde9850db"
+      ],
+      "slug": "brilliant"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/echo_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/drill"
+          ],
+          "duration_seconds": 1.22,
+          "name": "echo_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/echo_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/echo_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.715,
+          "name": "echo_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/echo_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/echo_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/echo_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/echo_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Echo",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "07e71d4b-dfca-4c11-8080-8f29184254c7",
+        "27949876-abec-4942-9425-f9c7ea013f02"
+      ],
+      "slug": "echo"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/fenrir_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/drill"
+          ],
+          "duration_seconds": 1.418,
+          "name": "fenrir_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/fenrir_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/fenrir_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.709,
+          "name": "fenrir_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/fenrir_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/fenrir_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/fenrir_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 1,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/fenrir_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fenrir/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Fenrir",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "a2764d88-97e7-4caa-8909-9eb26d30e97e",
+        "8617a53c-f440-4638-8b5d-af608f021437"
+      ],
+      "slug": "fenrir"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/heimdall_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/drill"
+          ],
+          "duration_seconds": 1.322,
+          "name": "heimdall_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/heimdall_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/heimdall_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.708,
+          "name": "heimdall_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/heimdall_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/heimdall_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/heimdall_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/heimdall_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/heimdall/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Heimdall",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "f98092d3-45e3-47ee-b798-d2046cdfad74"
+      ],
+      "slug": "heimdall"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/hrafnar_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/drill"
+          ],
+          "duration_seconds": 1.287,
+          "name": "hrafnar_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/hrafnar_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/hrafnar_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.675,
+          "name": "hrafnar_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/hrafnar_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/hrafnar_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/hrafnar_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/hrafnar_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Hrafnar",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "e42f3d59-c580-4e2d-beb4-18c499703075",
+        "42d11444-70dc-48ea-9cf1-29cc7333fd67"
+      ],
+      "slug": "hrafnar"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/laila_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/drill"
+          ],
+          "duration_seconds": 1.349,
+          "name": "laila_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/laila_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/laila_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.616,
+          "name": "laila_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/laila_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/laila_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/laila_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/laila_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/laila/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "LAILA",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "82624643-28ed-4d84-a0ee-a2a050b6102d",
+        "deeb50b1-850e-4df2-ba75-45f93353d485"
+      ],
+      "slug": "laila"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/mimir_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/drill"
+          ],
+          "duration_seconds": 1.342,
+          "name": "mimir_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/mimir_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/mimir_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.719,
+          "name": "mimir_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/mimir_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/mimir_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/mimir_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 5,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/mimir_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/mimir/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Mimir",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "beb8b881-675e-4ddb-9747-7d07e7bc93ef",
+        "e5890be8-f406-4eda-bc22-1f441d696caa",
+        "b99a0b10-401a-40d2-878e-fff6e7cc32dc"
+      ],
+      "slug": "mimir"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/muninn_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/drill"
+          ],
+          "duration_seconds": 1.455,
+          "name": "muninn_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/muninn_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/muninn_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.636,
+          "name": "muninn_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/muninn_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/muninn_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/muninn_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/muninn_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/muninn/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Muninn",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "685fc4d6-ec46-4e15-aa99-1283c722c6bb",
+        "80287551-9bbc-4c7b-9b20-50ce6ff40fcc"
+      ],
+      "slug": "muninn"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/portfolio_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/drill"
+          ],
+          "duration_seconds": 1.27,
+          "name": "portfolio_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/portfolio_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/portfolio_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.712,
+          "name": "portfolio_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/portfolio_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/portfolio_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/portfolio_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/portfolio_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/portfolio/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "portfolio",
+      "require_evidence": false,
+      "selected_card_ids": [
+        "d23d0268-3747-4750-b865-02938ef8d695",
+        "c4ec1683-9e29-4d5b-bb90-0cb6a79dbce1"
+      ],
+      "slug": "portfolio"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/sindri_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/drill"
+          ],
+          "duration_seconds": 1.48,
+          "name": "sindri_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/sindri_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/sindri_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.704,
+          "name": "sindri_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/sindri_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/sindri_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/sindri_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/sindri_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/sindri/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "Sindri",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "3fa9a04c-b3b0-4385-b5aa-3fc4a2469a01",
+        "ed1e4d35-42c5-4824-86c4-42d06a29a95a"
+      ],
+      "slug": "sindri"
+    },
+    {
+      "commands": {
+        "drill": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-ops-drill",
+            "--fixture",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/subsim_bridge_ops_fixture.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/drill"
+          ],
+          "duration_seconds": 1.456,
+          "name": "subsim_bridge_ops_drill",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/subsim_bridge_ops_drill.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/subsim_bridge_ops_drill.out"
+        },
+        "gate": {
+          "args": [
+            "/usr/bin/python3",
+            "-m",
+            "muninn.v2.cli",
+            "bridge-replay-gate",
+            "--drill-report",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/drill/bridge_ops_drill_report.json",
+            "--out-dir",
+            "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/gate",
+            "--v1-safety",
+            "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json",
+            "--run-failure-drills"
+          ],
+          "duration_seconds": 0.699,
+          "name": "subsim_bridge_replay_gate",
+          "returncode": 0,
+          "stderr_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/subsim_bridge_replay_gate.err",
+          "stdout_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/command_logs/subsim_bridge_replay_gate.out"
+        }
+      },
+      "db_copy": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/subsim_phase_i_b_replay.db",
+      "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/drill/bridge_ops_drill_report.json",
+      "drill_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "writes": "NO-GO"
+      },
+      "drill_summary": {
+        "adaptive_default_enabled": 0,
+        "adaptive_off_go": 1,
+        "adaptive_on_enabled": 1,
+        "adaptive_on_runs": 1,
+        "audit_replay_failures": 0,
+        "audit_replay_verified": 3,
+        "budget_pressure_go": 1,
+        "budget_pressure_runs": 1,
+        "confusing_flag_total": 0,
+        "contamination_checks": 1,
+        "contamination_denied": 1,
+        "go_tasks": 1,
+        "missing_required_total": 0,
+        "mode_runs": 3,
+        "no_go_tasks": 0,
+        "over_included_card_total": 0,
+        "pilots": 1,
+        "sqlite_vec_degraded_runs": 3,
+        "stale_flag_total": 0,
+        "tasks": 1
+      },
+      "fixture": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/fixtures/subsim_bridge_ops_fixture.json",
+      "gate_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/subsim/gate/bridge_replay_gate_report.json",
+      "gate_status": {
+        "adaptive_default": "NO-GO",
+        "bridge_shadow_consumption": "GO",
+        "live_cutover": "NO-GO",
+        "live_shadow_trial": "NO-GO",
+        "technical_replay_gate": "GO",
+        "writes": "NO-GO"
+      },
+      "gate_summary": {
+        "failed": 0,
+        "failure_drills": 7,
+        "failure_drills_detected": 7,
+        "gates": 12,
+        "passed": 12
+      },
+      "replay_gate_status": "GO",
+      "repo": "SubSim",
+      "require_evidence": true,
+      "selected_card_ids": [
+        "8d0704f3-2903-44df-937c-c80902b20f64"
+      ],
+      "slug": "subsim"
+    }
+  ],
+  "no_source_classifications": [
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/Accounting",
+      "production_migration": "BLOCKED",
+      "reason": "Active dirty repo with remote; no v1 space with cards was identifiable.",
+      "repo": "Accounting"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/AgentPack",
+      "production_migration": "BLOCKED",
+      "reason": "Local tool/skill pack repo with untracked content; no v1 space with cards was identifiable.",
+      "repo": "AgentPack"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/ChefAI",
+      "production_migration": "BLOCKED",
+      "reason": "Active dirty repo; no v1 space with cards was identifiable.",
+      "repo": "ChefAI"
+    },
+    {
+      "classification": "scoped_out",
+      "path": "/mnt/data/comfy",
+      "production_migration": "SCOPED_OUT",
+      "reason": "Third-party ComfyUI checkout/runtime dependency, not a managed project memory target for this migration wave.",
+      "repo": "comfy"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/Gauntlet",
+      "production_migration": "BLOCKED",
+      "reason": "Dirty active-looking repo; no v1 space with cards was identifiable.",
+      "repo": "Gauntlet"
+    },
+    {
+      "classification": "inactive_archive",
+      "path": "/mnt/data/Gauntlet-005",
+      "production_migration": "INACTIVE_ARCHIVE",
+      "reason": "Clean Gauntlet variant with no v1 memory source; classify as archived unless reactivated.",
+      "repo": "Gauntlet-005"
+    },
+    {
+      "classification": "inactive_archive",
+      "path": "/mnt/data/Gauntlet-010",
+      "production_migration": "INACTIVE_ARCHIVE",
+      "reason": "Clean Gauntlet variant with no v1 memory source; classify as archived unless reactivated.",
+      "repo": "Gauntlet-010"
+    },
+    {
+      "classification": "inactive_archive",
+      "path": "/mnt/data/Guantlet001",
+      "production_migration": "INACTIVE_ARCHIVE",
+      "reason": "Clean legacy typo-named Gauntlet variant with no v1 memory source; classify as archived unless reactivated.",
+      "repo": "Guantlet001"
+    },
+    {
+      "classification": "duplicate_alias",
+      "path": "/mnt/data/Lexi",
+      "production_migration": "DUPLICATE_ALIAS",
+      "reason": "Non-git Lexi directory; active Lex memory is represented by /mnt/data/Lex.",
+      "repo": "Lexi"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/MemeTrader",
+      "production_migration": "BLOCKED",
+      "reason": "Active dirty repo with remote; no v1 space with cards was identifiable.",
+      "repo": "MemeTrader"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/Null_Signal",
+      "production_migration": "BLOCKED",
+      "reason": "Active dirty repo with remote; no v1 space with cards was identifiable.",
+      "repo": "Null_Signal"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/OnHand",
+      "production_migration": "BLOCKED",
+      "reason": "Explicitly requested repo and active dirty workspace; no v1 space with cards was identifiable.",
+      "repo": "OnHand"
+    },
+    {
+      "classification": "needs_memory_space_creation",
+      "path": "/mnt/data/PulseTrade",
+      "production_migration": "BLOCKED",
+      "reason": "Active dirty repo with remote; no v1 space with cards was identifiable.",
+      "repo": "PulseTrade"
+    },
+    {
+      "classification": "inactive_archive",
+      "path": "/mnt/data/SNN",
+      "production_migration": "INACTIVE_ARCHIVE",
+      "reason": "Clean repo with no remote and no v1 memory source; classify as archived unless reactivated.",
+      "repo": "SNN"
+    }
+  ],
+  "record_type": "muninn_v2_phase_i_b_replay_fixture_closeout_report",
+  "schema_version": "muninn.v2.phase_i_b.replay_fixture_closeout.v1",
+  "statuses": {
+    "adaptive_default": "NO-GO",
+    "live_cutover": "NO-GO",
+    "muninn_production_migration": "EXCLUDED_PENDING_SEPARATE_PLAN",
+    "phase_i_b_replay_fixtures": "GO",
+    "production_migration_excluding_muninn": "NOT_READY",
+    "v1_safety": "EXTERNAL_CHANGE_DETECTED",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "limited_repos_targeted": 15,
+    "no_source_duplicate_alias": 1,
+    "no_source_inactive_archive": 4,
+    "no_source_needs_memory_space_creation": 8,
+    "no_source_scoped_out": 1,
+    "no_source_total": 14,
+    "replay_gate_go": 15,
+    "replay_gate_no_go": 0
+  },
+  "updated_manifest": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/migration_manifest.json",
+  "v1_safety": {
+    "compared_to": "phase_i_after_snapshot",
+    "interpretation": "external_live_v1_change_detected_during_phase_i_b_window; latest card is Lexi-scoped and not produced by Phase I-B bridge commands",
+    "mtime_changed": true,
+    "report_path": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/v1_safety_after_phase_i_b.json",
+    "row_count_changes": {
+      "card_evidence": {
+        "after": 1432,
+        "before": 1429
+      },
+      "cards": {
+        "after": 523,
+        "before": 522
+      },
+      "cards_fts": {
+        "after": 523,
+        "before": 522
+      },
+      "cards_fts_data": {
+        "after": 77,
+        "before": 76
+      },
+      "cards_fts_docsize": {
+        "after": 523,
+        "before": 522
+      },
+      "cards_fts_idx": {
+        "after": 75,
+        "before": 74
+      },
+      "evidence": {
+        "after": 1432,
+        "before": 1429
+      }
+    },
+    "row_counts_changed": true,
+    "shm_mtime_changed": true,
+    "size_changed": true,
+    "wal_mtime_changed": true
+  }
+}

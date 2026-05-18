@@ -1,0 +1,114 @@
+{
+  "defaults": {
+    "budget_max_context_chars": 6500,
+    "budget_min_coverage": 0.5,
+    "ignored_overinclude_terms": [
+      "project",
+      "current",
+      "state",
+      "next",
+      "steps",
+      "resume",
+      "context",
+      "memory",
+      "hrafnar"
+    ],
+    "min_coverage": 1.0,
+    "require_all_required": true
+  },
+  "name": "Phase I-B replay fixture for Hrafnar",
+  "pilots": [
+    {
+      "consumer_id": "phase-i-b-shadow",
+      "id": "hrafnar",
+      "policy": {
+        "allow_adaptive_scoring": false,
+        "allow_cross_project": false,
+        "allow_reinforcement_read": true,
+        "allow_reinforcement_write": false,
+        "allowed_operations": [
+          "health",
+          "search",
+          "rehydrate",
+          "explain"
+        ],
+        "allowed_project_paths": [
+          "/mnt/data/Hrafnar"
+        ],
+        "allowed_space_keys": [
+          "path:08438f64e19a2dc3"
+        ],
+        "audit_log_required": true,
+        "consumer_id": "phase-i-b-shadow",
+        "max_context_chars": 12000,
+        "max_results": 12,
+        "require_evidence": true,
+        "require_explanations": true,
+        "schema_version": "BridgeCapabilityPolicyV1"
+      },
+      "project": "Hrafnar",
+      "project_path": "/mnt/data/Hrafnar",
+      "request_defaults": {
+        "include_evidence": true,
+        "include_explanations": true,
+        "limit": 12,
+        "max_context_chars": 12000,
+        "primary_limit": 3,
+        "recent_supplement": true,
+        "retrieval_mode": "hybrid",
+        "strict": true
+      },
+      "sessions": [
+        {
+          "continuity_needs": [
+            {
+              "card_ids": [
+                "e42f3d59-c580-4e2d-beb4-18c499703075"
+              ],
+              "description": "Hrafnar selected current-state memory remains visible across replay modes.",
+              "id": "hrafnar-selected-card-continuity"
+            }
+          ],
+          "id": "hrafnar-phase-i-b-replay",
+          "tasks": [
+            {
+              "confusing_terms": [],
+              "expected_needs": [
+                {
+                  "all_terms": [
+                    "path:08438f64e19a2dc3",
+                    "/mnt/data/Hrafnar"
+                  ],
+                  "description": "Hrafnar replay context is scoped to the expected space and project path.",
+                  "id": "hrafnar-identity-scope"
+                },
+                {
+                  "all_terms": [
+                    "Hrafnar"
+                  ],
+                  "any_terms": [
+                    "layer",
+                    "boundaries"
+                  ],
+                  "card_ids": [
+                    "e42f3d59-c580-4e2d-beb4-18c499703075"
+                  ],
+                  "description": "Hrafnar replay context includes the selected current-state memory card.",
+                  "id": "hrafnar-current-card"
+                }
+              ],
+              "id": "resume-current-state",
+              "query": "resume Hrafnar project current state and next steps",
+              "stale_terms": [],
+              "v1_context": "path:08438f64e19a2dc3 /mnt/data/Hrafnar e42f3d59-c580-4e2d-beb4-18c499703075 Hrafnar layer boundaries realigned without Muninn/Mimir merge Hrafnar layer boundaries"
+            }
+          ]
+        }
+      ],
+      "space_key": "path:08438f64e19a2dc3",
+      "v2_db": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/hrafnar/hrafnar_phase_i_b_replay.db"
+    }
+  ],
+  "schema_version": "muninn.v2.bridge_ops_drill_fixture.v1",
+  "version": 1
+}

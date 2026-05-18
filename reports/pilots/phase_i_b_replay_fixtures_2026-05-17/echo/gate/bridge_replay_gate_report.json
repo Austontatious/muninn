@@ -1,0 +1,192 @@
+{
+  "failure_drills": [
+    {
+      "detected": true,
+      "mutation": "adaptive state enabled without version/count",
+      "name": "corrupted_adaptive_state"
+    },
+    {
+      "detected": true,
+      "mutation": "cross-project request allowed",
+      "name": "contamination_attempt"
+    },
+    {
+      "detected": true,
+      "mutation": "audit trace no longer matches response",
+      "name": "stale_replay_artifact"
+    },
+    {
+      "detected": true,
+      "mutation": "denied response reports policy allowed",
+      "name": "denied_policy_bypass"
+    },
+    {
+      "detected": true,
+      "mutation": "degraded run omitted reason codes",
+      "name": "degraded_index_marker_missing"
+    },
+    {
+      "detected": true,
+      "mutation": "policy requires evidence but payload has none",
+      "name": "missing_evidence"
+    },
+    {
+      "detected": true,
+      "mutation": "response hash mismatch",
+      "name": "replay_hash_mismatch"
+    }
+  ],
+  "gates": [
+    {
+      "details": {
+        "actual": {
+          "adaptive_default": "NO-GO",
+          "bridge_shadow_consumption": "GO",
+          "live_cutover": "NO-GO",
+          "writes": "NO-GO"
+        },
+        "expected": {
+          "adaptive_default": "NO-GO",
+          "bridge_shadow_consumption": "GO",
+          "live_cutover": "NO-GO",
+          "writes": "NO-GO"
+        },
+        "failures": []
+      },
+      "name": "status_boundaries",
+      "ok": true
+    },
+    {
+      "details": {
+        "audit_replay_failures": 0,
+        "go_tasks": 1,
+        "no_go_tasks": 0
+      },
+      "name": "task_outcomes",
+      "ok": true
+    },
+    {
+      "details": {
+        "failures": [],
+        "min_required_coverage": 1.0
+      },
+      "name": "required_context_retention",
+      "ok": true
+    },
+    {
+      "details": {
+        "failures": [],
+        "min_budget_coverage": 0.5,
+        "omitted_for_budget": 0
+      },
+      "name": "budget_pressure_retention",
+      "ok": true
+    },
+    {
+      "details": {
+        "checks": 1,
+        "failures": []
+      },
+      "name": "cross_project_contamination_denied",
+      "ok": true
+    },
+    {
+      "details": {
+        "counts": {
+          "adaptive_off_enabled": 0,
+          "adaptive_on_enabled": 1,
+          "adaptive_on_runs": 1
+        },
+        "failures": []
+      },
+      "name": "adaptive_state_opt_in",
+      "ok": true
+    },
+    {
+      "details": {
+        "degraded_runs": 3,
+        "failures": []
+      },
+      "name": "degradation_markers_visible",
+      "ok": true
+    },
+    {
+      "details": {
+        "human_signoff_recorded": false,
+        "human_signoff_required": false,
+        "operator_review_notes_exists": true,
+        "review_items": 3
+      },
+      "name": "operator_review",
+      "ok": true
+    },
+    {
+      "details": {
+        "artifact_sets": 3,
+        "failures": []
+      },
+      "name": "audit_trace_replay",
+      "ok": true
+    },
+    {
+      "details": {
+        "failures": []
+      },
+      "name": "evidence_required_when_policy_requires_it",
+      "ok": true
+    },
+    {
+      "details": {
+        "failures": [],
+        "path": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json"
+      },
+      "name": "v1_untouched",
+      "ok": true
+    },
+    {
+      "details": {
+        "drills": 7,
+        "missed": []
+      },
+      "name": "failure_drills_detect_expected_failures",
+      "ok": true
+    }
+  ],
+  "generated_at": "2026-05-18T01:49:20.256425Z",
+  "mode": "offline_shadow_bridge_replay_gate",
+  "record_type": "muninn_v2_bridge_replay_gate_report",
+  "safety": {
+    "adaptive_default_enabled": false,
+    "canonical_memory_writes": false,
+    "default_context_source_changed": false,
+    "live_mcp_integration": false,
+    "offline_only": true,
+    "v1_writes": false
+  },
+  "schema_version": "muninn.v2.bridge_replay_gate.v1",
+  "source": {
+    "drill_out_dir": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/drill",
+    "drill_report": "/mnt/data/Muninn/reports/pilots/phase_i_b_replay_fixtures_2026-05-17/echo/drill/bridge_ops_drill_report.json",
+    "v1_safety_report": "/mnt/data/Muninn/reports/pilots/phase_i_batch_shadow_migration_2026-05-17/v1_safety_before_after.json"
+  },
+  "status": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "live_shadow_trial": "NO-GO",
+    "technical_replay_gate": "GO",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "failed": 0,
+    "failure_drills": 7,
+    "failure_drills_detected": 7,
+    "gates": 12,
+    "passed": 12
+  },
+  "thresholds": {
+    "min_budget_coverage": 0.5,
+    "min_required_coverage": 1.0,
+    "require_human_signoff": false
+  }
+}
