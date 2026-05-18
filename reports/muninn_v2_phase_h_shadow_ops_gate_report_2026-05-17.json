@@ -1,0 +1,97 @@
+{
+  "artifacts": {
+    "operator_runbook": "docs/muninn_v2_shadow_ops_runbook.md",
+    "phase_h_report_json": "reports/muninn_v2_phase_h_shadow_ops_gate_report_2026-05-17.json",
+    "phase_h_report_md": "reports/muninn_v2_phase_h_shadow_ops_gate_report_2026-05-17.md",
+    "replay_gate_report_json": "/mnt/data/Muninn/reports/pilots/phase_h_shadow_ops_gate_2026-05-17/gate/bridge_replay_gate_report.json",
+    "replay_gate_report_md": "/mnt/data/Muninn/reports/pilots/phase_h_shadow_ops_gate_2026-05-17/gate/bridge_replay_gate_report.md"
+  },
+  "failure_drills": [
+    {
+      "detected": true,
+      "mutation": "adaptive state enabled without version/count",
+      "name": "corrupted_adaptive_state"
+    },
+    {
+      "detected": true,
+      "mutation": "cross-project request allowed",
+      "name": "contamination_attempt"
+    },
+    {
+      "detected": true,
+      "mutation": "audit trace no longer matches response",
+      "name": "stale_replay_artifact"
+    },
+    {
+      "detected": true,
+      "mutation": "denied response reports policy allowed",
+      "name": "denied_policy_bypass"
+    },
+    {
+      "detected": true,
+      "mutation": "degraded run omitted reason codes",
+      "name": "degraded_index_marker_missing"
+    },
+    {
+      "detected": true,
+      "mutation": "policy requires evidence but payload has none",
+      "name": "missing_evidence"
+    },
+    {
+      "detected": true,
+      "mutation": "response hash mismatch",
+      "name": "replay_hash_mismatch"
+    }
+  ],
+  "human_review_workflow": {
+    "approver_required": true,
+    "blocking_without_signoff": true,
+    "current_human_signoff_recorded": false,
+    "live_shadow_trial_requires_human_signoff": true
+  },
+  "phase": "H",
+  "phase_g_baseline": {
+    "audit_replay_failures": 0,
+    "contamination_checks": 3,
+    "contamination_denied": 3,
+    "missing_required_total": 0,
+    "mode_runs": 18,
+    "pilots": 3,
+    "tasks": 6
+  },
+  "phase_h_post_validation_v1_safety": {
+    "mtime_changed": true,
+    "note": "Compared current v1 DB state to the Phase G before snapshot. Row counts and size stayed unchanged; mtime changed after task-start Muninn read activity, so this artifact is recorded as an operator-review blocker for any live shadow trial.",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_h_shadow_ops_gate_2026-05-17/safety/v1_row_counts_phase_g_before_to_phase_h_after.json",
+    "row_counts_changed": false,
+    "size_changed": false
+  },
+  "recommended_next_task": "Run a human-reviewed live-shadow-trial readiness packet using bridge-replay-gate --require-human-signoff only after operator review notes are completed and signed.",
+  "record_type": "muninn_v2_phase_h_shadow_ops_gate_report",
+  "remaining_blockers_before_live_integration": [
+    "Human operator signoff has not been recorded.",
+    "No live shadow trial approval packet exists yet.",
+    "No bridge rollout/rollback plan has been approved for live integration.",
+    "Live cutover remains explicitly out of scope.",
+    "v1 DB mtime changed relative to the Phase G baseline and must be operator-reviewed before any live shadow trial."
+  ],
+  "schema_version": "muninn.v2.phase_h_shadow_ops_gate_report.v1",
+  "status": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "live_shadow_trial": "NO-GO",
+    "technical_replay_gate": "GO",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "failure_drills_detected": 7,
+    "failure_drills_total": 7,
+    "gate_passed": 12,
+    "gate_total": 12,
+    "live_shadow_trial": "NO-GO",
+    "operator_runbook_created": true,
+    "replay_gate_created": true,
+    "technical_replay_gate": "GO"
+  }
+}

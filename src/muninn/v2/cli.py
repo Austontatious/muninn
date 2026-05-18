@@ -38,6 +38,8 @@ from .eval import (
     AgentContextAuditError,
     BridgeConsumerEvalError,
     BridgeOpsDrillError,
+    BridgeReplayGateError,
+    ReplayGateOptions,
     load_bridge_consumer_fixture,
     load_bridge_ops_drill_fixture,
     load_agent_context_fixture,
@@ -45,6 +47,7 @@ from .eval import (
     run_agent_context_audit,
     run_bridge_consumer_eval,
     run_bridge_ops_drill,
+    run_bridge_replay_gate,
     run_retrieval_eval as run_v2_retrieval_eval,
     write_agent_context_audit_reports,
     write_bridge_consumer_eval_reports,
@@ -2084,6 +2087,20 @@ def run_bridge_ops_drill_command(args: argparse.Namespace) -> dict[str, Any]:
     return run_bridge_ops_drill(fixture, out_dir=args.out_dir)
 
 
+def run_bridge_replay_gate_command(args: argparse.Namespace) -> dict[str, Any]:
+    return run_bridge_replay_gate(
+        ReplayGateOptions(
+            drill_report=str(args.drill_report),
+            out_dir=str(args.out_dir),
+            v1_safety_report=args.v1_safety,
+            min_required_coverage=float(args.min_required_coverage),
+            min_budget_coverage=float(args.min_budget_coverage),
+            run_failure_drills=bool(args.run_failure_drills),
+            require_human_signoff=bool(args.require_human_signoff),
+        )
+    )
+
+
 def run_shadow_rehydrate_preview(args: argparse.Namespace) -> dict[str, Any]:
     v2_db = Path(args.v2_db).expanduser()
     out_dir = Path(args.out_dir).expanduser()
@@ -2374,6 +2391,37 @@ def build_parser() -> argparse.ArgumentParser:
     bridge_ops.add_argument("--out-dir", required=True, help="Explicit output directory for drill artifacts.")
     bridge_ops.set_defaults(func=run_bridge_ops_drill_command)
 
+    replay_gate = subparsers.add_parser(
+        "bridge-replay-gate",
+        help="Validate replayable shadow bridge drill evidence before any live trial.",
+    )
+    replay_gate.add_argument("--drill-report", required=True, help="Phase G bridge ops drill report JSON.")
+    replay_gate.add_argument("--out-dir", required=True, help="Explicit output directory for gate reports.")
+    replay_gate.add_argument("--v1-safety", help="Optional v1 before/after safety report JSON.")
+    replay_gate.add_argument(
+        "--min-required-coverage",
+        type=float,
+        default=1.0,
+        help="Minimum adaptive-off required-context coverage. Default: 1.0.",
+    )
+    replay_gate.add_argument(
+        "--min-budget-coverage",
+        type=float,
+        default=0.5,
+        help="Minimum budget-pressure required-context coverage. Default: 0.5.",
+    )
+    replay_gate.add_argument(
+        "--run-failure-drills",
+        action="store_true",
+        help="Run in-memory failure drill simulations against the gate detectors.",
+    )
+    replay_gate.add_argument(
+        "--require-human-signoff",
+        action="store_true",
+        help="Require operator human_signoff_recorded=true before live shadow trial status can be GO.",
+    )
+    replay_gate.set_defaults(func=run_bridge_replay_gate_command)
+
     shadow_preview = subparsers.add_parser(
         "shadow-rehydrate-preview",
         help="Compose an opt-in v2 shadow rehydration preview from an explicit v2 DB.",
@@ -2499,6 +2547,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         AgentContextAuditError,
         BridgeConsumerEvalError,
         BridgeOpsDrillError,
+        BridgeReplayGateError,
         BridgePolicyError,
     ) as exc:
         print(f"muninn.v2 command failed: {exc}", file=sys.stderr)
@@ -2566,6 +2615,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             "summary": report["summary"],
             "bridge_shadow_consumption": report["status"]["bridge_shadow_consumption"],
             "out_dir": report["out_dir"],
+        }
+    elif report["record_type"] == "muninn_v2_bridge_replay_gate_report":
+        payload = {
+            "status": "ok",
+            "mode": "bridge_replay_gate",
+            "summary": report["summary"],
+            "technical_replay_gate": report["status"]["technical_replay_gate"],
+            "live_shadow_trial": report["status"]["live_shadow_trial"],
+            "bridge_shadow_consumption": report["status"]["bridge_shadow_consumption"],
+            "out_dir": str(Path(report["artifacts"]["json"]).parent),
         }
     elif report["record_type"] == "muninn_v2_rehydrate_response":
         budget = report["budget"]

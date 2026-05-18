@@ -69,6 +69,22 @@ audit hashes, cross-project contamination denials, continuity coverage, and
 rendered context blocks for operator review. It remains offline, read-only, and
 shadow-only.
 
+Pre-live replay gate validation is available through:
+
+```bash
+PYTHONPATH=src python3 -m muninn.v2.cli bridge-replay-gate \
+  --drill-report /path/to/bridge_ops_drill_report.json \
+  --v1-safety /path/to/v1_row_counts_before_after.json \
+  --out-dir /path/to/gate-output \
+  --run-failure-drills
+```
+
+The gate replays bridge audit hashes, verifies policy denial/contamination
+checks, required-context retention, budget-pressure behavior, adaptive-off
+defaults, adaptive-on state visibility, v1 untouched status, and expected
+failure drills. It is a pre-live validation gate only; it does not authorize
+cutover.
+
 Common failure modes:
 
 - `InvalidBridgeRequest`: request schema/required fields failed validation.
