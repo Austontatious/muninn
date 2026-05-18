@@ -1,0 +1,71 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false,
+    "state_count": 0,
+    "state_version": null
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/lexi/lexi-shadow-continuity/resume-production-audit/adaptive_off/bridge_audit_lexi-lexi-shadow-continuity-resume-production-audit-adaptive_off.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/lexi/lexi-shadow-continuity/resume-production-audit/adaptive_off/bridge_response_lexi-lexi-shadow-continuity-resume-production-audit-adaptive_off.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:21.305112Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779057562301776987,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 704512,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779057562301776987,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 704512,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "0bd2ffe0caf53d21da6b197769375fe981cd47adfd23b6f6223bb81902e99a13",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "c8eea697a0b7943be0127e8c064bc83c1024e477e84e900786efe3f086fe7659",
+  "request_id": "lexi-lexi-shadow-continuity-resume-production-audit-adaptive_off",
+  "response_hash": "2f9cee0808a89a66fe005cb4220b0dcda3855cc0130fa7dafdbe30ea06df21a6",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 12000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_7c41faca25467087"
+}

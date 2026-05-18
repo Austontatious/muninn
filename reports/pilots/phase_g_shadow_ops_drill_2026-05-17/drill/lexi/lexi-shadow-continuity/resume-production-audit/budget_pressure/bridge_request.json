@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 6500,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/Lex",
+  "query": "resume Lexi current production audit and runtime modernization state and next steps",
+  "recent_supplement": true,
+  "request_id": "lexi-lexi-shadow-continuity-resume-production-audit-budget_pressure",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:0c321b2a6f183a95",
+  "strict": true
+}

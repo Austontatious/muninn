@@ -1,0 +1,71 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false,
+    "state_count": 0,
+    "state_version": null
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/friday/friday-shadow-continuity/resume-current-state/adaptive_off/bridge_audit_friday-friday-shadow-continuity-resume-current-state-adaptive_off.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/friday/friday-shadow-continuity/resume-current-state/adaptive_off/bridge_response_friday-friday-shadow-continuity-resume-current-state-adaptive_off.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:16.953576Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779057555213839219,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 479232,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779057555213839219,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 479232,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "369e1cfe358c71341268e93439dafbc0f3a2d09949230b6bd48a11fa1c6b3bfb",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "040dc879a5f1820c8ec7ee7846738a86d010578d8a177fa7a99699fcccbff9c6",
+  "request_id": "friday-friday-shadow-continuity-resume-current-state-adaptive_off",
+  "response_hash": "406fa2cd52c48068ed98deef33bd987e1554adf542400f50a7486d1a13ec1863",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 12000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_6c388627ba99cd46"
+}

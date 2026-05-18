@@ -1,0 +1,71 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false,
+    "state_count": 0,
+    "state_version": null
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/budget_pressure/bridge_audit_readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-budget_pressure.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/budget_pressure/bridge_response_readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-budget_pressure.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:20.590671Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779057557093822712,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 495616,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779057557093822712,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 495616,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "131c36c6233833154ca5a3f4ed5402092691e085d33359650a5796a1e4e72ead",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "9f6a8d8bdf216b2a03603cb2d8d3d6c9fc93b217ec8c62855d8bbc12d7c4059f",
+  "request_id": "readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-budget_pressure",
+  "response_hash": "a6cbe37738de402257ecc0c4a2a11c9e425fd4a6e5b235e508bc1e100ae77e85",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 6500,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_239f78d63388482d"
+}

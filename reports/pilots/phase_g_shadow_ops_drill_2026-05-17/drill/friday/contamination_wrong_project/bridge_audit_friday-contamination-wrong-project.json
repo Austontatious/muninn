@@ -1,0 +1,49 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false,
+    "state_count": 0,
+    "state_version": null
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/friday/contamination_wrong_project/bridge_audit_friday-contamination-wrong-project.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/friday/contamination_wrong_project/bridge_response_friday-contamination-wrong-project.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:19.036947Z",
+  "db": {
+    "after": null,
+    "before": null,
+    "changed": {},
+    "hash": "369e1cfe358c71341268e93439dafbc0f3a2d09949230b6bd48a11fa1c6b3bfb",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "space_not_allowed",
+      "project_path_not_allowed"
+    ]
+  },
+  "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "eb8d3138a5f75bc4b102da7cfb1ca98b875ab6b1c394eab70d86b4495427ca13",
+  "request_id": "friday-contamination-wrong-project",
+  "response_hash": "5c4f9ebdca296e5ea333e15c7e5b9d87f5be3fb968a1010b5d7ed6b4e142eb87",
+  "retrieval_config": {
+    "limit": 6,
+    "max_context_chars": 6000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_b5aadb10649f726d"
+}

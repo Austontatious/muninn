@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": true,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 12000,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/friday",
+  "query": "continue Friday direct code route with Mimir repo-cognition boundary and read-only workspace context",
+  "recent_supplement": true,
+  "request_id": "friday-friday-shadow-continuity-continue-direct-code-route-adaptive_on",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:f8cc7f64d3636a4e",
+  "strict": true
+}

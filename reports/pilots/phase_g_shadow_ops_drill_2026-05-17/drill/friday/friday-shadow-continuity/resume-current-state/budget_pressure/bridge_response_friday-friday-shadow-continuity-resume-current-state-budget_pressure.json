@@ -1,0 +1,1811 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:17.323884Z",
+    "input_hash": "91ca703bc378be5044212570871677b99d09538351d9ae363b5da4f13e970118",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "f3f27bc824e0a15bd7c86dce9fc815be7e2b1c2796a14c1cb6fee5d9dfd80ea3",
+    "trace_id": "bridge_248dd64ff94b2494"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-friday-shadow-continuity-resume-current-state-budget_pressure",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "default": false,
+      "enabled": false,
+      "reason_codes": [],
+      "requested": false,
+      "state_count": 0,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "clamps": {},
+    "operation": "rehydrate",
+    "rehydrate_response": {
+      "agent_briefing": {
+        "bullets": [
+          "Primary match: Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks - Validated analysis phase against existing gold_full_v1 runner artifacts using dry-run, heuristic-only full pass, OpenAI smoke limit=3, and resume dedupe check.",
+          "Primary match: Run Friday corpus runner in dry-run, smoke, and resume modes - Use evals/runner/config.example.yaml to execute corpus tasks and emit run artifacts under evals/runs/<run_id>. Resume mode skips already-recorded stable IDs (task_id for gold, variant_id for generated).",
+          "Primary match: Friday mobile client uses native Android Compose project under android/ - Friday now has a conventional native Android app at android/ as the canonical mobile frontend foundation, rather than a web-wrapper approach. The MVP ships with chat UX, mode switching, connection states, and configurable endpoint routing to existing Friday APIs.",
+          "Continuity: Friday bridge and tools now expose read-only /mnt/data workspace access - Friday direct chat can now inspect read-only workspace paths under /mnt/data, and Althing-mode UI prompts that reference local paths fall back to that direct Friday path instead of staying on Althing-only lanes.",
+          "Continuity: Friday direct chat now auto-routes code prompts to coder and injects repo file context end-to-end - Friday direct chat now auto-selects the coder transport for inferred code-execution prompts and can recover repo-local context from explicit file-path prompts without enabling the broader tool plane. The backend image now carries the repo working tree into `/app`, so read-only repo file access works in the live container as well as in tests.",
+          "Continuity: Friday root now has explicit Mimir repo-cognition entrypoints separated from runtime memory - Confirmed Mimir should be used at Friday root for developer/agent navigation and added script/Makefile entrypoints for status/index/query/bundle without creating runtime coupling.",
+          "Continuity: Althing memory audit identifies bridge/direct split and missing private whiteboard - Audited Friday and adjacent Althing runtime memory behavior. Direct Friday has transcript plus provider-backed memory, while default Althing bridge flow is effectively stateless across turns unless clients send messages. No first-class private working scratchpad exists.",
+          "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "method": "deterministic_card_title_summary_projection",
+        "usable": true
+      },
+      "budget": {
+        "candidate_cards": 47,
+        "duplicates_removed": 0,
+        "limit": 12,
+        "max_chars": 6500,
+        "omitted_for_budget": 1,
+        "omitted_for_limit": 0,
+        "primary_limit": 3,
+        "primary_selected": 3,
+        "recent_limit": 9,
+        "selected_total": 7,
+        "supplement_selected": 4,
+        "used_chars": 6253
+      },
+      "composition": {
+        "limit": 12,
+        "max_chars": 6500,
+        "primary_limit": 3,
+        "recent_limit": 9,
+        "retrieval_mode": "hybrid",
+        "stage_a": "primary_retrieval",
+        "stage_b": "recent_in_scope_supplement",
+        "stage_c": "evidence_attachment",
+        "stage_d": "budget_enforced",
+        "stage_e": "deterministic_agent_briefing",
+        "strategy": "hybrid_primary_plus_recent_supplement"
+      },
+      "contract_version": "1.0.0",
+      "explanations": {
+        "cards": [
+          {
+            "card_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "resume"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "resume"
+                ],
+                "title": [
+                  "friday",
+                  "resume"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "resume"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -1.971429
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 4.566468,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 1.363636,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 11.416171,
+                "title_token_overlap": 25.95781,
+                "vector_similarity_rescue": 2.057005
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.411401,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 1,
+            "score": 45.868704,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "resume"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "resume"
+                ],
+                "title": [
+                  "friday",
+                  "resume"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "resume"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -1.971429
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 4.566468,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 1.272727,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 11.416171,
+                "title_token_overlap": 25.95781,
+                "vector_similarity_rescue": 1.278505
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.255701,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 2,
+            "score": 44.999295,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "friday",
+                  "state"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "friday"
+                ],
+                "title": [
+                  "friday",
+                  "project"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "project",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 6.369223,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 0.772727,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 3.725885,
+                "title_token_overlap": 27.296671,
+                "vector_similarity_rescue": 1.83133
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.366266,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 3,
+            "score": 42.217736,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "chat",
+                "compose",
+                "example",
+                "friday",
+                "mode",
+                "only",
+                "under"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 14.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_primary_domain_overlap",
+            "retrieval_rank": null,
+            "score": 14.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "chat",
+                "default",
+                "existing",
+                "friday",
+                "implemented",
+                "live",
+                "only",
+                "results",
+                "routes",
+                "routing",
+                "under"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 14.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_primary_domain_overlap",
+            "retrieval_rank": null,
+            "score": 14.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "friday"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 15.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_project_boundary_or_contract",
+            "retrieval_rank": null,
+            "score": 15.0,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "analysis",
+                "artifacts",
+                "chat",
+                "default",
+                "friday",
+                "next"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 23.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_project_boundary_or_contract",
+            "retrieval_rank": null,
+            "score": 23.0,
+            "stage": "recent_in_scope_supplement"
+          }
+        ],
+        "format": "muninn.v2.retrieval_explanation.v1",
+        "included": true,
+        "notes": []
+      },
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "generated_at": "2026-05-18T00:45:17.323632Z",
+      "record_type": "muninn_v2_rehydrate_response",
+      "request": {
+        "options": {
+          "include_evidence": true,
+          "include_explanations": true,
+          "limit": 12,
+          "max_chars": 6500,
+          "primary_limit": 3,
+          "recent_limit": 9,
+          "recent_supplement": true,
+          "retrieval_mode": "hybrid",
+          "strict": true
+        },
+        "query": {
+          "text": "resume Friday project current state and next steps"
+        },
+        "source": {
+          "active_scope_keys": [
+            "repo:f8cc7f64d3636a4e"
+          ],
+          "project_path": "/mnt/data/friday",
+          "space_key": "repo:f8cc7f64d3636a4e",
+          "v2_db": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/friday_phase_d2_shadow_v2.db"
+        }
+      },
+      "response_id": "rehydrate_b5560958910f5c8f",
+      "response_kind": "shadow_rehydrate_preview",
+      "retrieval_provenance": {
+        "backend": "hybrid",
+        "candidate_source": "explicit_v2_shadow_db",
+        "degradation_reasons": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "degraded": true,
+        "fallback_used": false,
+        "mode": "hybrid",
+        "provider_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 47,
+          "indexed_records": 47,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "query_profile": {
+          "campaign_tokens": [],
+          "numeric_tokens": [],
+          "phrase": "resume friday project current state next steps",
+          "raw": "resume Friday project current state and next steps",
+          "tokens": [
+            "resume",
+            "friday",
+            "project",
+            "current",
+            "state",
+            "next",
+            "steps"
+          ],
+          "unique_tokens": [
+            "resume",
+            "friday",
+            "project",
+            "current",
+            "state",
+            "next",
+            "steps"
+          ]
+        },
+        "result_count": 3,
+        "retrieval_paths": [
+          "v2_hybrid_recall"
+        ]
+      },
+      "schema": {
+        "name": "RehydrateResponseV1",
+        "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+        "schema_version": "muninn.v2.rehydrate_response.v1",
+        "version": "1.0.0"
+      },
+      "schema_version": "muninn.v2.rehydrate_response.v1",
+      "selected_memory": {
+        "cards": [
+          {
+            "body_excerpt": "Commands exercised: analyze_run --run-id gold_full_v1 --dry-run; heuristic-only full run to write 50-result artifact set; OpenAI smoke run with --limit 3 producing analysis_results and priority_slices; resume rerun with same analysis_run_id showing to_analyze=0 and no growth in analysis_results line count.",
+            "confidence": 0.5,
+            "created_at": "2026-04-14 16:34:57",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-14 16:34:57",
+                "excerpt": null,
+                "id": "17144789-09c0-4dd1-93db-23e795a1e58f",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_heuristic_v2/analysis_summary.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 16:34:57",
+                "excerpt": null,
+                "id": "1e6b94d0-aed0-477f-94e4-f4dc8b149183",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_summary.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 16:34:57",
+                "excerpt": null,
+                "id": "2727e421-390a-4ced-988c-bcb5980cdd15",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/analysis/README.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 16:34:57",
+                "excerpt": null,
+                "id": "61df0a11-0173-4b17-8571-b844735fe56d",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_results.jsonl",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "17144789-09c0-4dd1-93db-23e795a1e58f",
+              "1e6b94d0-aed0-477f-94e4-f4dc8b149183",
+              "2727e421-390a-4ced-988c-bcb5980cdd15",
+              "61df0a11-0173-4b17-8571-b844735fe56d"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "resume"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "resume"
+                ],
+                "title": [
+                  "friday",
+                  "resume"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "resume"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -1.971429
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 4.566468,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 1.363636,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 11.416171,
+                "title_token_overlap": 25.95781,
+                "vector_similarity_rescue": 2.057005
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.411401,
+              "vector_used": true
+            },
+            "id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "kind": "runbook",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 1,
+              "score": 45.868704,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Validated analysis phase against existing gold_full_v1 runner artifacts using dry-run, heuristic-only full pass, OpenAI smoke limit=3, and resume dedupe check.",
+            "tags": [],
+            "title": "Run Friday analysis phase on gold_full_v1 with dry-run, heuristic-only, OpenAI smoke, and resume checks",
+            "updated_at": "2026-04-14 16:34:57"
+          },
+          {
+            "body_excerpt": "Validation commands exercised: dry-run for gold_only/generated_only/combined; live smoke run for combined limit=3 with run_id smoke_runner_v1; resume rerun with same run_id produced to_run=0 and did not append duplicates. Additional live mode checks were run for gold_only limit=1 and generated_only limit=1.",
+            "confidence": 0.5,
+            "created_at": "2026-04-14 15:03:49",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-14 15:03:49",
+                "excerpt": null,
+                "id": "4d81bbad-dfd1-4bbe-a8fb-9d4faffd11cb",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_summary.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 15:03:49",
+                "excerpt": null,
+                "id": "a74fa9c0-8a02-42e7-af2a-6ccb8f650ba0",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/runner/config.example.yaml",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 15:03:49",
+                "excerpt": null,
+                "id": "aaaa4e39-c7cf-4615-940e-4ba29083aba2",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/runner/README.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-14 15:03:49",
+                "excerpt": null,
+                "id": "e719e25a-5bdd-40f4-863f-93ca60d2b4e2",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_results.jsonl",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "4d81bbad-dfd1-4bbe-a8fb-9d4faffd11cb",
+              "a74fa9c0-8a02-42e7-af2a-6ccb8f650ba0",
+              "aaaa4e39-c7cf-4615-940e-4ba29083aba2",
+              "e719e25a-5bdd-40f4-863f-93ca60d2b4e2"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "resume"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "resume"
+                ],
+                "title": [
+                  "friday",
+                  "resume"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "resume"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -1.971429
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 4.566468,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 1.272727,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 11.416171,
+                "title_token_overlap": 25.95781,
+                "vector_similarity_rescue": 1.278505
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.255701,
+              "vector_used": true
+            },
+            "id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "kind": "runbook",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 2,
+              "score": 44.999295,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Use evals/runner/config.example.yaml to execute corpus tasks and emit run artifacts under evals/runs/<run_id>. Resume mode skips already-recorded stable IDs (task_id for gold, variant_id for generated).",
+            "tags": [],
+            "title": "Run Friday corpus runner in dry-run, smoke, and resume modes",
+            "updated_at": "2026-04-14 15:03:49"
+          },
+          {
+            "body_excerpt": "Implemented Kotlin + Jetpack Compose app module (com.friday.mobile) with layered state/network/settings boundaries. Default endpoint is seeded to http://100.125.116.103:18080/ and routes map by mode to /api/althing/chat and /api/chat. Connection health probes /healthz and the UI exposes retry/error handling with Tailscale hinting.",
+            "confidence": 0.5,
+            "created_at": "2026-04-12 08:43:25",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-12 08:43:25",
+                "excerpt": null,
+                "id": "12b145e3-692f-4918-b59d-9c89562be555",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ChatViewModel.kt",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-12 08:43:25",
+                "excerpt": null,
+                "id": "69067d0e-b6d2-4c1d-a417-52721e89c0b6",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/android/README.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-12 08:43:25",
+                "excerpt": null,
+                "id": "9e980adf-c4bb-420a-8b53-b8ff22a633fe",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ui/screens/ChatScreen.kt",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "12b145e3-692f-4918-b59d-9c89562be555",
+              "69067d0e-b6d2-4c1d-a417-52721e89c0b6",
+              "9e980adf-c4bb-420a-8b53-b8ff22a633fe"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "friday",
+                  "state"
+                ],
+                "evidence": [
+                  "friday"
+                ],
+                "summary": [
+                  "friday"
+                ],
+                "title": [
+                  "friday",
+                  "project"
+                ]
+              },
+              "matched_tokens": [
+                "friday",
+                "project",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 6.369223,
+                "evidence_token_overlap": 0.479042,
+                "project_space_match": 3.0,
+                "recency_boost": 0.772727,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 3.725885,
+                "title_token_overlap": 27.296671,
+                "vector_similarity_rescue": 1.83133
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.366266,
+              "vector_used": true
+            },
+            "id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 3,
+              "score": 42.217736,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Friday now has a conventional native Android app at android/ as the canonical mobile frontend foundation, rather than a web-wrapper approach. The MVP ships with chat UX, mode switching, connection states, and configurable endpoint routing to existing Friday APIs.",
+            "tags": [],
+            "title": "Friday mobile client uses native Android Compose project under android/",
+            "updated_at": "2026-04-12 08:43:25"
+          },
+          {
+            "body_excerpt": "FRIDAY_FILE_SEARCH_EXTRA_ROOTS is set to /mnt/data, friday-backend mounts /mnt/data read-only, inspect_repo_path can inspect files or directories across configured read-only roots, and case-insensitive path resolution allows host-style prompts like /mnt/data/Friday or /mnt/data/Althing to resolve safely without enabling writes.",
+            "confidence": 0.5,
+            "created_at": "2026-04-19 17:54:48",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-19 17:54:49",
+                "excerpt": null,
+                "id": "5dc31385-9398-45e1-8b3f-3e8ed9b1f653",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/tools/builtins.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:54:49",
+                "excerpt": null,
+                "id": "726a558e-ab3c-4d2f-81bb-3c32cd8ea623",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/api/althing_chat.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:54:49",
+                "excerpt": null,
+                "id": "73535e7c-ca67-498b-8ff1-3488059b01b2",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/core/chat_engine.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:54:49",
+                "excerpt": null,
+                "id": "b0909751-52ec-478f-8d48-3d396c051d4e",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/.env.example",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:54:49",
+                "excerpt": null,
+                "id": "c21d7a97-e41a-43fc-8273-b1462ee9f3a5",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docker-compose.app.yml",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 5,
+            "evidence_ids": [
+              "5dc31385-9398-45e1-8b3f-3e8ed9b1f653",
+              "726a558e-ab3c-4d2f-81bb-3c32cd8ea623",
+              "73535e7c-ca67-498b-8ff1-3488059b01b2",
+              "b0909751-52ec-478f-8d48-3d396c051d4e",
+              "c21d7a97-e41a-43fc-8273-b1462ee9f3a5"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "chat",
+                "compose",
+                "example",
+                "friday",
+                "mode",
+                "only",
+                "under"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 14.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "recent_query_primary_domain_overlap",
+              "retrieval_rank": null,
+              "score": 14.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Friday direct chat can now inspect read-only workspace paths under /mnt/data, and Althing-mode UI prompts that reference local paths fall back to that direct Friday path instead of staying on Althing-only lanes.",
+            "tags": [],
+            "title": "Friday bridge and tools now expose read-only /mnt/data workspace access",
+            "updated_at": "2026-04-19 17:54:48"
+          },
+          {
+            "body_excerpt": "Implemented direct-chat coder auto-routing in `backend/core/chat_engine.py` for inferred `code_execution` routes behind `FRIDAY_CODER_AUTO_ROUTE` (default on). Added bounded repo-local `read_repo_file` in `backend/tools/builtins.py`, allowed it under the existing read-only file-tool gate in `backend/tools/engine.py`, and added runtime prompt-path extraction plus automatic repo-context injection so prompts like `README.md` or `backend/core/chat_engine.py` can succeed even when the model does not request tools correctly. Updated `Dockerfile` to copy the repo working tree into `/app` so repo-l...",
+            "confidence": 0.5,
+            "created_at": "2026-04-19 17:30:26",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-19 17:30:26",
+                "excerpt": null,
+                "id": "13f786f8-5b0b-4a83-9146-fa5a4de4f618",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/tools/engine.py:83",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:30:26",
+                "excerpt": null,
+                "id": "72aa7b50-7c2e-499a-b882-0bcbcb11005d",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/tools/builtins.py:204",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:30:26",
+                "excerpt": null,
+                "id": "852cca34-f82d-48fb-8721-df5d1628c5aa",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/Dockerfile:18",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-19 17:30:26",
+                "excerpt": null,
+                "id": "a5d6a4f4-d702-4e97-a99a-5f1f7b1c3725",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/backend/core/chat_engine.py:1311",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "13f786f8-5b0b-4a83-9146-fa5a4de4f618",
+              "72aa7b50-7c2e-499a-b882-0bcbcb11005d",
+              "852cca34-f82d-48fb-8721-df5d1628c5aa",
+              "a5d6a4f4-d702-4e97-a99a-5f1f7b1c3725"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "chat",
+                "default",
+                "existing",
+                "friday",
+                "implemented",
+                "live",
+                "only",
+                "results",
+                "routes",
+                "routing",
+                "under"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_primary_domain_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 14.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.supersede"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "recent_query_primary_domain_overlap",
+              "retrieval_rank": null,
+              "score": 14.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Friday direct chat now auto-selects the coder transport for inferred code-execution prompts and can recover repo-local context from explicit file-path prompts without enabling the broader tool plane. The backend image now carries the repo working tree into `/app`, so read-only repo file access works in the live container as well as in tests.",
+            "tags": [],
+            "title": "Friday direct chat now auto-routes code prompts to coder and injects repo file context end-to-end",
+            "updated_at": "2026-04-19 17:30:26"
+          },
+          {
+            "body_excerpt": "Mimir remains a repo cognition substrate, not runtime working memory. Added scripts/mimir_context.sh and Makefile targets (mimir-status, mimir-index, mimir-query, mimir-bundle). Documented boundary between WorkingScratchpad runtime cognition, durable conversational memory, and Mimir repo cognition.",
+            "confidence": 0.5,
+            "created_at": "2026-04-15 01:59:50",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-15 01:59:50",
+                "excerpt": null,
+                "id": "11e12b86-bebd-4b35-a3f8-271dcdd41434",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docs/ALTHING_WORKING_MEMORY_VS_MIMIR_BOUNDARY.md:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:59:50",
+                "excerpt": null,
+                "id": "6221b384-d711-4311-80c4-7faad6d5d91c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/Makefile:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:59:50",
+                "excerpt": null,
+                "id": "69b97e6f-0e36-46e1-86fb-24b1d1c11eed",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/scripts/mimir_context.sh:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:59:50",
+                "excerpt": null,
+                "id": "8bdbd300-8761-43f8-b42b-3cfb31244162",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docs/ALTHING_MIMIR_ROOT_DECISION.md:1",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "11e12b86-bebd-4b35-a3f8-271dcdd41434",
+              "6221b384-d711-4311-80c4-7faad6d5d91c",
+              "69b97e6f-0e36-46e1-86fb-24b1d1c11eed",
+              "8bdbd300-8761-43f8-b42b-3cfb31244162"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "friday"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 15.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "recent_project_boundary_or_contract",
+              "retrieval_rank": null,
+              "score": 15.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Confirmed Mimir should be used at Friday root for developer/agent navigation and added script/Makefile entrypoints for status/index/query/bundle without creating runtime coupling.",
+            "tags": [],
+            "title": "Friday root now has explicit Mimir repo-cognition entrypoints separated from runtime memory",
+            "updated_at": "2026-04-15 01:59:50"
+          },
+          {
+            "body_excerpt": "Created ALTHING memory state audit, gap analysis, and next-step recommendation docs plus machine-readable summary. Key durable finding: Muninn and transcript memory are wired in direct /api/chat path, not in /api/althing/chat default UI flow; closest substrate for whiteboard is transient ExecutionState/intermediate and tool/refinement buffers.",
+            "confidence": 0.5,
+            "created_at": "2026-04-15 01:27:02",
+            "entity_ids": [
+              "v1-project:repo:f8cc7f64d3636a4e"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-15 01:27:02",
+                "excerpt": null,
+                "id": "0b6774a3-7336-4559-b064-ec2f295ec473",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/artifacts/althing_memory_state_summary.json:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:27:02",
+                "excerpt": null,
+                "id": "0d2eae8d-53c9-45f8-a787-45afd52188ad",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_NEXT_STEP_RECOMMENDATION.md:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:27:02",
+                "excerpt": null,
+                "id": "5ceea109-4b84-451f-a9cc-e3e7cb433e4d",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_GAP_ANALYSIS.md:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-15 01:27:02",
+                "excerpt": null,
+                "id": "f631e78c-21f4-44c1-822b-79fb5062e2d9",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_STATE_AUDIT.md:1",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "0b6774a3-7336-4559-b064-ec2f295ec473",
+              "0d2eae8d-53c9-45f8-a787-45afd52188ad",
+              "5ceea109-4b84-451f-a9cc-e3e7cb433e4d",
+              "f631e78c-21f4-44c1-822b-79fb5062e2d9"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "althing",
+                "analysis",
+                "artifacts",
+                "chat",
+                "default",
+                "friday",
+                "next"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 23.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "6c7f8245-1952-4464-8998-79725736746e",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:f8cc7f64d3636a4e",
+              "project_path": "/mnt/data/friday",
+              "project_root_path": "/mnt/data/friday",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:f8cc7f64d3636a4e",
+            "selection": {
+              "reason": "recent_project_boundary_or_contract",
+              "retrieval_rank": null,
+              "score": 23.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Audited Friday and adjacent Althing runtime memory behavior. Direct Friday has transcript plus provider-backed memory, while default Althing bridge flow is effectively stateless across turns unless clients send messages. No first-class private working scratchpad exists.",
+            "tags": [],
+            "title": "Althing memory audit identifies bridge/direct split and missing private whiteboard",
+            "updated_at": "2026-04-15 01:27:02"
+          }
+        ],
+        "events": [],
+        "evidence": [
+          {
+            "card_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "created_at": "2026-04-14 16:34:57",
+            "excerpt": null,
+            "id": "17144789-09c0-4dd1-93db-23e795a1e58f",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_heuristic_v2/analysis_summary.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "created_at": "2026-04-14 16:34:57",
+            "excerpt": null,
+            "id": "1e6b94d0-aed0-477f-94e4-f4dc8b149183",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_summary.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "created_at": "2026-04-14 16:34:57",
+            "excerpt": null,
+            "id": "2727e421-390a-4ced-988c-bcb5980cdd15",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis/README.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "17beee42-c7ec-4769-9b2b-d90b395c90d7",
+            "created_at": "2026-04-14 16:34:57",
+            "excerpt": null,
+            "id": "61df0a11-0173-4b17-8571-b844735fe56d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/analysis_runs/gold_full_v1_analysis_smoke_v1/analysis_results.jsonl",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "created_at": "2026-04-15 01:27:02",
+            "excerpt": null,
+            "id": "0b6774a3-7336-4559-b064-ec2f295ec473",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/artifacts/althing_memory_state_summary.json:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "created_at": "2026-04-15 01:27:02",
+            "excerpt": null,
+            "id": "0d2eae8d-53c9-45f8-a787-45afd52188ad",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_NEXT_STEP_RECOMMENDATION.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "created_at": "2026-04-15 01:27:02",
+            "excerpt": null,
+            "id": "5ceea109-4b84-451f-a9cc-e3e7cb433e4d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_GAP_ANALYSIS.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6c7f8245-1952-4464-8998-79725736746e",
+            "created_at": "2026-04-15 01:27:02",
+            "excerpt": null,
+            "id": "f631e78c-21f4-44c1-822b-79fb5062e2d9",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docs/ALTHING_MEMORY_STATE_AUDIT.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "created_at": "2026-04-19 17:30:26",
+            "excerpt": null,
+            "id": "13f786f8-5b0b-4a83-9146-fa5a4de4f618",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/tools/engine.py:83",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "created_at": "2026-04-19 17:30:26",
+            "excerpt": null,
+            "id": "72aa7b50-7c2e-499a-b882-0bcbcb11005d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/tools/builtins.py:204",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "created_at": "2026-04-19 17:30:26",
+            "excerpt": null,
+            "id": "852cca34-f82d-48fb-8721-df5d1628c5aa",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/Dockerfile:18",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "7fcab1ba-2af2-498d-b712-d6c79520fd6e",
+            "created_at": "2026-04-19 17:30:26",
+            "excerpt": null,
+            "id": "a5d6a4f4-d702-4e97-a99a-5f1f7b1c3725",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/core/chat_engine.py:1311",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "created_at": "2026-04-15 01:59:50",
+            "excerpt": null,
+            "id": "11e12b86-bebd-4b35-a3f8-271dcdd41434",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docs/ALTHING_WORKING_MEMORY_VS_MIMIR_BOUNDARY.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "created_at": "2026-04-15 01:59:50",
+            "excerpt": null,
+            "id": "6221b384-d711-4311-80c4-7faad6d5d91c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/Makefile:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "created_at": "2026-04-15 01:59:50",
+            "excerpt": null,
+            "id": "69b97e6f-0e36-46e1-86fb-24b1d1c11eed",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/scripts/mimir_context.sh:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "849362c5-ed42-43a2-9084-897ecf2c7de1",
+            "created_at": "2026-04-15 01:59:50",
+            "excerpt": null,
+            "id": "8bdbd300-8761-43f8-b42b-3cfb31244162",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docs/ALTHING_MIMIR_ROOT_DECISION.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "created_at": "2026-04-12 08:43:25",
+            "excerpt": null,
+            "id": "12b145e3-692f-4918-b59d-9c89562be555",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ChatViewModel.kt",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "created_at": "2026-04-12 08:43:25",
+            "excerpt": null,
+            "id": "69067d0e-b6d2-4c1d-a417-52721e89c0b6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/README.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c1907668-82e4-4e07-908d-69250a58e825",
+            "created_at": "2026-04-12 08:43:25",
+            "excerpt": null,
+            "id": "9e980adf-c4bb-420a-8b53-b8ff22a633fe",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/android/app/src/main/java/com/friday/mobile/ui/screens/ChatScreen.kt",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "created_at": "2026-04-14 15:03:49",
+            "excerpt": null,
+            "id": "4d81bbad-dfd1-4bbe-a8fb-9d4faffd11cb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_summary.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "created_at": "2026-04-14 15:03:49",
+            "excerpt": null,
+            "id": "a74fa9c0-8a02-42e7-af2a-6ccb8f650ba0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runner/config.example.yaml",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "created_at": "2026-04-14 15:03:49",
+            "excerpt": null,
+            "id": "aaaa4e39-c7cf-4615-940e-4ba29083aba2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runner/README.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d0510e00-574e-4960-87b1-ad33a99e6546",
+            "created_at": "2026-04-14 15:03:49",
+            "excerpt": null,
+            "id": "e719e25a-5bdd-40f4-863f-93ca60d2b4e2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/evals/runs/smoke_runner_v1/run_results.jsonl",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "created_at": "2026-04-19 17:54:49",
+            "excerpt": null,
+            "id": "5dc31385-9398-45e1-8b3f-3e8ed9b1f653",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/tools/builtins.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "created_at": "2026-04-19 17:54:49",
+            "excerpt": null,
+            "id": "726a558e-ab3c-4d2f-81bb-3c32cd8ea623",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/api/althing_chat.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "created_at": "2026-04-19 17:54:49",
+            "excerpt": null,
+            "id": "73535e7c-ca67-498b-8ff1-3488059b01b2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/backend/core/chat_engine.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "created_at": "2026-04-19 17:54:49",
+            "excerpt": null,
+            "id": "b0909751-52ec-478f-8d48-3d396c051d4e",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/.env.example",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "ea8d2c51-9a13-4736-8b12-45c068c6a783",
+            "created_at": "2026-04-19 17:54:49",
+            "excerpt": null,
+            "id": "c21d7a97-e41a-43fc-8273-b1462ee9f3a5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/friday/docker-compose.app.yml",
+            "source_id": null,
+            "type": "file"
+          }
+        ]
+      },
+      "uncertainty": {
+        "context_gaps": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "1 candidate cards were omitted by max_chars budget."
+        ],
+        "usable": true,
+        "warnings": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "1 candidate cards were omitted by max_chars budget.",
+          "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ]
+      }
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

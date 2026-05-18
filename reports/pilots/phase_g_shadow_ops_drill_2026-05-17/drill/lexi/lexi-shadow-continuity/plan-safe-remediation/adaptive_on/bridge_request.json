@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": true,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 12,
+  "max_context_chars": 12000,
+  "operation": "rehydrate",
+  "primary_limit": 3,
+  "project_path": "/mnt/data/Lex",
+  "query": "plan Lexi safe remediation around production audit blockers Phase 6 runtime preflight auth prompt eval boundaries and generated artifact cleanliness",
+  "recent_supplement": true,
+  "request_id": "lexi-lexi-shadow-continuity-plan-safe-remediation-adaptive_on",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:0c321b2a6f183a95",
+  "strict": true
+}

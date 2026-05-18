@@ -55,6 +55,20 @@ audit replay hashes, and scores offline task coverage. It is an evaluation
 harness only; it does not call live MCP, write v1, or change default context
 selection.
 
+Replayable shadow operations drills are available through:
+
+```bash
+PYTHONPATH=src python3 -m muninn.v2.cli bridge-ops-drill \
+  --fixture /path/to/bridge-ops-drill-fixture.json \
+  --out-dir /path/to/drill-output
+```
+
+This runs multi-task shadow workflows through the v2 bridge in adaptive-off,
+budget-pressure, and explicitly allowed adaptive-on modes. It verifies replay
+audit hashes, cross-project contamination denials, continuity coverage, and
+rendered context blocks for operator review. It remains offline, read-only, and
+shadow-only.
+
 Common failure modes:
 
 - `InvalidBridgeRequest`: request schema/required fields failed validation.

@@ -1,0 +1,71 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": true,
+    "requested": true,
+    "state_count": 48,
+    "state_version": "muninn.v2.recall_reinforcement.v1"
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/adaptive_on/bridge_audit_readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-adaptive_on.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/adaptive_on/bridge_response_readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-adaptive_on.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:20.890792Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779057557093822712,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 495616,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779057557093822712,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 495616,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "131c36c6233833154ca5a3f4ed5402092691e085d33359650a5796a1e4e72ead",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "0f2129be29435b57bafbba1dd6d62e1d38a8159f3773ebea2e289c39d29debf9",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "f64d1fc830f96fcf5c5b8494dfd6575e84e6daf57570e9ce725894766e942487",
+  "request_id": "readyplayer1-readyplayer1-shadow-continuity-plan-next-campaign-adaptive_on",
+  "response_hash": "2a30d91a314b6b18abaa30f99c36f6a553d314680c9e5ef762fc0e71d2fef5f7",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 12000,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_7a25f92476584a52"
+}

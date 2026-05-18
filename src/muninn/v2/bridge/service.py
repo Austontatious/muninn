@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any, Mapping, Sequence
 
 from ..core.models import MemoryCard
 from ..indexes import SQLiteDerivedIndexProvider, load_v2_cards
 from ..retrieval import ShadowPreviewOptions, build_shadow_rehydrate_preview, hybrid_recall, lexical_recall
+from ..retrieval.reinforcement import REINFORCEMENT_SCHEMA_VERSION
 from .audit import write_bridge_artifacts
 from .contracts import (
     BRIDGE_VERSION,
@@ -120,11 +122,11 @@ def _dispatch_allowed_request(
     if operation == "health":
         result, degradation = _health_result(v2_db, records, provider, policy)
     elif operation == "search":
-        result, degradation = _search_result(request, policy, decision, records, provider)
+        result, degradation = _search_result(request, policy, decision, records, provider, v2_db)
     elif operation == "rehydrate":
         result, degradation = _rehydrate_result(request, policy, decision, records, provider, v2_db)
     elif operation == "explain":
-        result, degradation = _explain_result(request, policy, decision, records, provider)
+        result, degradation = _explain_result(request, policy, decision, records, provider, v2_db)
     else:
         result = {}
         degradation = {"degraded": True, "reason_codes": ["unsupported_operation"]}
@@ -169,11 +171,21 @@ def _search_result(
     decision: Any,
     records: Sequence[MemoryCard],
     provider: SQLiteDerivedIndexProvider,
+    v2_db: Path,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     limit = effective_limit(request, policy, decision)
     mode = str(request.get("retrieval_mode") or "hybrid")
     scope_key = str(request.get("space_key") or "")
-    results, status = _run_retrieval(records, str(request.get("query") or ""), mode=mode, limit=limit, scope_key=scope_key, provider=provider)
+    reinforcement_state, adaptive = _adaptive_context(request, policy, v2_db=v2_db, scope_key=scope_key)
+    results, status = _run_retrieval(
+        records,
+        str(request.get("query") or ""),
+        mode=mode,
+        limit=limit,
+        scope_key=scope_key,
+        provider=provider,
+        reinforcement_state=reinforcement_state,
+    )
     include_evidence = bool(request.get("include_evidence"))
     include_explanations = bool(request.get("include_explanations"))
     cards = [_result_card_payload(item, include_evidence=include_evidence, include_explanations=include_explanations) for item in results]
@@ -190,7 +202,7 @@ def _search_result(
             "clamps": dict(decision.clamps),
             "results": cards,
             "result_count": len(cards),
-            "adaptive_scoring": {"enabled": False},
+            "adaptive_scoring": adaptive,
         },
         degradation,
     )
@@ -207,6 +219,8 @@ def _rehydrate_result(
     limit = effective_limit(request, policy, decision)
     primary_limit = min(int(request.get("primary_limit") or 3), limit)
     recent_limit = max(0, limit - primary_limit)
+    scope_key = str(request.get("space_key") or "")
+    reinforcement_state, adaptive = _adaptive_context(request, policy, v2_db=v2_db, scope_key=scope_key)
     response = build_shadow_rehydrate_preview(
         records,
         provider=provider,
@@ -224,6 +238,7 @@ def _rehydrate_result(
             max_chars=effective_max_context_chars(request, policy, decision),
             recent_supplement=bool(request.get("recent_supplement", True)),
             strict=bool(request.get("strict", True)),
+            reinforcement_state=reinforcement_state,
         ),
     )
     degradation = {
@@ -237,7 +252,7 @@ def _rehydrate_result(
         {
             "operation": "rehydrate",
             "rehydrate_response": response,
-            "adaptive_scoring": {"enabled": False},
+            "adaptive_scoring": adaptive,
             "clamps": dict(decision.clamps),
         },
         degradation,
@@ -250,6 +265,7 @@ def _explain_result(
     decision: Any,
     records: Sequence[MemoryCard],
     provider: SQLiteDerivedIndexProvider,
+    v2_db: Path,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     card_id = str(request.get("card_id") or "")
     card = {card.id: card for card in records}.get(card_id)
@@ -257,14 +273,17 @@ def _explain_result(
     explanation = provider.explain(card_id)
     retrieval_match: dict[str, Any] | None = None
     status: dict[str, Any] | None = None
+    scope_key = str(request.get("space_key") or "")
+    reinforcement_state, adaptive = _adaptive_context(request, policy, v2_db=v2_db, scope_key=scope_key)
     if query:
         results, status = _run_retrieval(
             records,
             query,
             mode=str(request.get("retrieval_mode") or "hybrid"),
             limit=effective_limit(request, policy, decision),
-            scope_key=str(request.get("space_key") or ""),
+            scope_key=scope_key,
             provider=provider,
+            reinforcement_state=reinforcement_state,
         )
         retrieval_match = next((item for item in results if item.get("record_id") == card_id), None)
     degradation = _degradation_from_status(status)
@@ -279,7 +298,7 @@ def _explain_result(
             "card": _card_summary(card, include_evidence=True) if card else None,
             "derived_index": explanation,
             "retrieval_match": retrieval_match,
-            "adaptive_scoring": {"enabled": False, "state_version": None, "boosted_cards": [], "suppressed_cards": []},
+            "adaptive_scoring": adaptive,
         },
         degradation,
     )
@@ -293,13 +312,105 @@ def _run_retrieval(
     limit: int,
     scope_key: str,
     provider: SQLiteDerivedIndexProvider,
+    reinforcement_state: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
     if mode == "lexical":
         return lexical_recall(records, query, limit=limit, scope_key=scope_key), None
     if mode == "vector":
         return provider.query(query, limit=limit), provider.status().to_dict()
-    payload = hybrid_recall(records, query, provider=provider, limit=limit, scope_key=scope_key)
+    payload = hybrid_recall(
+        records,
+        query,
+        provider=provider,
+        reinforcement_state=reinforcement_state,
+        limit=limit,
+        scope_key=scope_key,
+    )
     return list(payload["results"]), payload.get("status")
+
+
+def _adaptive_context(
+    request: dict[str, Any],
+    policy: dict[str, Any],
+    *,
+    v2_db: Path,
+    scope_key: str,
+) -> tuple[dict[str, dict[str, Any]] | None, dict[str, Any]]:
+    requested = bool(request.get("allow_adaptive_scoring"))
+    if not requested:
+        return None, {
+            "requested": False,
+            "enabled": False,
+            "default": False,
+            "state_version": None,
+            "state_count": 0,
+            "boosted_cards": [],
+            "suppressed_cards": [],
+            "reason_codes": [],
+        }
+    if not bool(policy.get("allow_adaptive_scoring")):
+        return None, {
+            "requested": True,
+            "enabled": False,
+            "default": False,
+            "state_version": None,
+            "state_count": 0,
+            "boosted_cards": [],
+            "suppressed_cards": [],
+            "reason_codes": ["adaptive_scoring_not_allowed"],
+        }
+    state_map = _load_reinforcement_state_readonly(v2_db, scope_key=scope_key)
+    boosted = [
+        record_id
+        for record_id, item in sorted(state_map.items())
+        if str(item.get("status") or "") in {"boosted", "preserved"}
+    ]
+    suppressed = [
+        record_id
+        for record_id, item in sorted(state_map.items())
+        if str(item.get("status") or "") == "suppressed"
+    ]
+    enabled = bool(state_map)
+    return (
+        state_map if enabled else None,
+        {
+            "requested": True,
+            "enabled": enabled,
+            "default": False,
+            "state_version": REINFORCEMENT_SCHEMA_VERSION if enabled else None,
+            "state_count": len(state_map),
+            "boosted_cards": boosted[:25],
+            "suppressed_cards": suppressed[:25],
+            "reason_codes": [] if enabled else ["reinforcement_state_unavailable"],
+        },
+    )
+
+
+def _load_reinforcement_state_readonly(db_path: Path, *, scope_key: str | None) -> dict[str, dict[str, Any]]:
+    if not _table_exists(db_path, "v2_reinforcement_state"):
+        return {}
+    uri = f"{db_path.resolve().as_uri()}?mode=ro&immutable=1"
+    sql = "SELECT record_id, record_json FROM v2_reinforcement_state"
+    params: list[Any] = []
+    if scope_key:
+        sql += " WHERE scope_key = ?"
+        params.append(scope_key)
+    sql += " ORDER BY record_id ASC"
+    with sqlite3.connect(uri, uri=True) as conn:
+        rows = conn.execute(sql, tuple(params)).fetchall()
+    out: dict[str, dict[str, Any]] = {}
+    for record_id, record_json in rows:
+        try:
+            payload = _json_loads_object(record_json)
+        except Exception:
+            continue
+        out[str(record_id)] = payload
+    return out
+
+
+def _json_loads_object(value: Any) -> dict[str, Any]:
+    payload = json.loads(str(value))
+    return payload if isinstance(payload, dict) else {}
 
 
 def _result_card_payload(item: dict[str, Any], *, include_evidence: bool, include_explanations: bool) -> dict[str, Any]:
@@ -386,8 +497,10 @@ def _write_artifacts(
         },
         adaptive_config={
             "requested": bool(request.get("allow_adaptive_scoring")),
-            "enabled": False,
+            "enabled": bool(response.get("result", {}).get("adaptive_scoring", {}).get("enabled")),
             "default": False,
+            "state_version": response.get("result", {}).get("adaptive_scoring", {}).get("state_version"),
+            "state_count": response.get("result", {}).get("adaptive_scoring", {}).get("state_count", 0),
         },
     )
 

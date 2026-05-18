@@ -1,0 +1,367 @@
+{
+  "artifacts": {
+    "drill_json": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/bridge_ops_drill_report.json",
+    "drill_markdown": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/bridge_ops_drill_report.md",
+    "fixture": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/bridge_ops_phase_g_fixture.json",
+    "operator_review": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/operator_review_notes.md",
+    "rendered_context_blocks_dir": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks",
+    "v1_safety_before_after": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/safety/v1_row_counts_before_after.json"
+  },
+  "contamination_checks": [
+    {
+      "attempted_project": "ReadyPlayer1",
+      "decision": "go",
+      "pilot": "friday",
+      "policy_allowed": false,
+      "project": "Friday",
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ],
+      "request_id": "friday-contamination-wrong-project",
+      "status": "denied"
+    },
+    {
+      "attempted_project": "Lexi",
+      "decision": "go",
+      "pilot": "readyplayer1",
+      "policy_allowed": false,
+      "project": "ReadyPlayer1",
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ],
+      "request_id": "readyplayer1-contamination-wrong-project",
+      "status": "denied"
+    },
+    {
+      "attempted_project": "Friday",
+      "decision": "go",
+      "pilot": "lexi",
+      "policy_allowed": false,
+      "project": "Lexi",
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ],
+      "request_id": "lexi-contamination-wrong-project",
+      "status": "denied"
+    }
+  ],
+  "generated_from": "/mnt/data/Muninn/reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/bridge_ops_drill_report.json",
+  "go_no_go": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "phase_h_candidate": "GO_FOR_PLANNING_ONLY",
+    "writes": "NO-GO"
+  },
+  "operator_review": {
+    "human_signoff_recorded": false,
+    "items": [
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_resume-current-state_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/resume-current-state/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "resume-current-state"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_resume-current-state_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/resume-current-state/budget_pressure",
+        "missing_required": [],
+        "mode": "budget_pressure",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "resume-current-state"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_resume-current-state_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/resume-current-state/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "resume-current-state"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_continue-direct-code-route_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/continue-direct-code-route/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "continue-direct-code-route"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_continue-direct-code-route_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/continue-direct-code-route/budget_pressure",
+        "missing_required": [],
+        "mode": "budget_pressure",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "continue-direct-code-route"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/friday_friday-shadow-continuity_continue-direct-code-route_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "friday/friday-shadow-continuity/continue-direct-code-route/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "Friday",
+        "session": "friday-shadow-continuity",
+        "task": "continue-direct-code-route"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_resume-current-campaign_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/resume-current-campaign/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "resume-current-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_resume-current-campaign_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/resume-current-campaign/budget_pressure",
+        "missing_required": [
+          "subsim-evaluation-contract"
+        ],
+        "mode": "budget_pressure",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "resume-current-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_resume-current-campaign_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/resume-current-campaign/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "resume-current-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_plan-next-campaign_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "plan-next-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_plan-next-campaign_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/budget_pressure",
+        "missing_required": [
+          "subsim-evaluation-contract"
+        ],
+        "mode": "budget_pressure",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "plan-next-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/readyplayer1_readyplayer1-shadow-continuity_plan-next-campaign_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "readyplayer1/readyplayer1-shadow-continuity/plan-next-campaign/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "ReadyPlayer1",
+        "session": "readyplayer1-shadow-continuity",
+        "task": "plan-next-campaign"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_resume-production-audit_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/resume-production-audit/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "resume-production-audit"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_resume-production-audit_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/resume-production-audit/budget_pressure",
+        "missing_required": [
+          "auth-prompt-eval-boundaries"
+        ],
+        "mode": "budget_pressure",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "resume-production-audit"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_resume-production-audit_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/resume-production-audit/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "resume-production-audit"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_plan-safe-remediation_adaptive_off.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/plan-safe-remediation/adaptive_off",
+        "missing_required": [],
+        "mode": "adaptive_off",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "plan-safe-remediation"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_plan-safe-remediation_budget_pressure.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/plan-safe-remediation/budget_pressure",
+        "missing_required": [],
+        "mode": "budget_pressure",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "plan-safe-remediation"
+      },
+      {
+        "context_block_path": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/rendered_context_blocks/lexi_lexi-shadow-continuity_plan-safe-remediation_adaptive_on.md",
+        "decision": "go",
+        "flags": [],
+        "key": "lexi/lexi-shadow-continuity/plan-safe-remediation/adaptive_on",
+        "missing_required": [],
+        "mode": "adaptive_on",
+        "project": "Lexi",
+        "session": "lexi-shadow-continuity",
+        "task": "plan-safe-remediation"
+      }
+    ],
+    "status": "generated"
+  },
+  "per_pilot": [
+    {
+      "adaptive_default_enabled": 0,
+      "adaptive_off_go": 2,
+      "adaptive_on_enabled": 2,
+      "audit_replay_failures": 0,
+      "budget_min_coverage": 1.0,
+      "budget_omitted_for_budget_total": 2,
+      "budget_pressure_go": 2,
+      "confusing_flags_adaptive_off": 1,
+      "go_tasks": 2,
+      "missing_required_adaptive_off": 0,
+      "over_included_cards_adaptive_off": 7,
+      "pilot": "friday",
+      "project": "Friday",
+      "stale_flags_adaptive_off": 0,
+      "tasks": 2
+    },
+    {
+      "adaptive_default_enabled": 0,
+      "adaptive_off_go": 2,
+      "adaptive_on_enabled": 2,
+      "audit_replay_failures": 0,
+      "budget_min_coverage": 0.857143,
+      "budget_omitted_for_budget_total": 3,
+      "budget_pressure_go": 2,
+      "confusing_flags_adaptive_off": 0,
+      "go_tasks": 2,
+      "missing_required_adaptive_off": 0,
+      "over_included_cards_adaptive_off": 4,
+      "pilot": "lexi",
+      "project": "Lexi",
+      "stale_flags_adaptive_off": 0,
+      "tasks": 2
+    },
+    {
+      "adaptive_default_enabled": 0,
+      "adaptive_off_go": 2,
+      "adaptive_on_enabled": 2,
+      "audit_replay_failures": 0,
+      "budget_min_coverage": 0.8,
+      "budget_omitted_for_budget_total": 7,
+      "budget_pressure_go": 2,
+      "confusing_flags_adaptive_off": 0,
+      "go_tasks": 2,
+      "missing_required_adaptive_off": 0,
+      "over_included_cards_adaptive_off": 0,
+      "pilot": "readyplayer1",
+      "project": "ReadyPlayer1",
+      "stale_flags_adaptive_off": 0,
+      "tasks": 2
+    }
+  ],
+  "phase": "G",
+  "recommended_next_task": "Phase H should be an operator-reviewed shadow runbook and replay gate, or a deeper Phase G follow-up with human-reviewed context blocks before any live bridge integration.",
+  "record_type": "muninn_v2_phase_g_shadow_ops_drill_report",
+  "remaining_risks": [
+    "Operator review notes are generated but human sign-off is not recorded.",
+    "sqlite_vec remains unavailable; all drill runs used the degraded JSON-vector/hybrid fallback path.",
+    "Budget pressure passed but omitted context in all pilots; future bridge policies still need production budget thresholds.",
+    "Friday still has one non-blocking confusing contrast term and over-inclusion remains measurable."
+  ],
+  "schema_version": "muninn.v2.phase_g_shadow_ops_drill_report.v1",
+  "status": {
+    "adaptive_default": "NO-GO",
+    "bridge_shadow_consumption": "GO",
+    "live_cutover": "NO-GO",
+    "writes": "NO-GO"
+  },
+  "summary": {
+    "adaptive_default_enabled": 0,
+    "adaptive_off_go": 6,
+    "adaptive_on_enabled": 6,
+    "adaptive_on_runs": 6,
+    "audit_replay_failures": 0,
+    "audit_replay_verified": 18,
+    "budget_pressure_go": 6,
+    "budget_pressure_runs": 6,
+    "confusing_flag_total": 1,
+    "contamination_checks": 3,
+    "contamination_denied": 3,
+    "go_tasks": 6,
+    "missing_required_total": 0,
+    "mode_runs": 18,
+    "no_go_tasks": 0,
+    "over_included_card_total": 11,
+    "pilots": 3,
+    "sqlite_vec_degraded_runs": 18,
+    "stale_flag_total": 0,
+    "tasks": 6
+  },
+  "v1_safety": {
+    "cards_after": 521,
+    "cards_before": 521,
+    "mtime_changed": false,
+    "row_counts_changed": false,
+    "size_changed": false
+  }
+}

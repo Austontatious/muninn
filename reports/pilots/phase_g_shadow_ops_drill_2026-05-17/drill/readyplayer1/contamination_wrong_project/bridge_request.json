@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 6,
+  "max_context_chars": 6000,
+  "operation": "rehydrate",
+  "primary_limit": 2,
+  "project_path": "/mnt/data/Lex",
+  "query": "attempt cross project access from ReadyPlayer1 to Lexi",
+  "recent_supplement": true,
+  "request_id": "readyplayer1-contamination-wrong-project",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:0c321b2a6f183a95",
+  "strict": true
+}

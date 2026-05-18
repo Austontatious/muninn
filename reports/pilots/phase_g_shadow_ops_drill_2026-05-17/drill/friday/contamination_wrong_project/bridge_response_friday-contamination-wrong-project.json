@@ -1,0 +1,40 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:19.036947Z",
+    "input_hash": "eb8d3138a5f75bc4b102da7cfb1ca98b875ab6b1c394eab70d86b4495427ca13",
+    "policy_hash": "a5c86a2fa6834d0993d7537b9e85bcc5b2c5cb02ff29b01ab3fdc75ea7aa17b1",
+    "replayable": true,
+    "response_hash": "5c4f9ebdca296e5ea333e15c7e5b9d87f5be3fb968a1010b5d7ed6b4e142eb87",
+    "trace_id": "bridge_b5aadb10649f726d"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "space_not_allowed",
+      "project_path_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "friday-contamination-wrong-project",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

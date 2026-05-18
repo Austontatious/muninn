@@ -1,0 +1,2057 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:22.588842Z",
+    "input_hash": "7a762ec5e6f72a3dd1de1321f1358578b28c3de64fb2fcb1e17fdad34644d7ec",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "f5d0c1f62902b0243fd12df42c9703c062e3257e9bc9173bac83ead3ee9d63ff",
+    "trace_id": "bridge_19d4ec4da9f6bbd5"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-lexi-shadow-continuity-plan-safe-remediation-adaptive_off",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "default": false,
+      "enabled": false,
+      "reason_codes": [],
+      "requested": false,
+      "state_count": 0,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "clamps": {},
+    "operation": "rehydrate",
+    "rehydrate_response": {
+      "agent_briefing": {
+        "bullets": [
+          "Primary match: Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling - Lex Phase 6 adds startup runtime-path preflight with writable-path enforcement, bounded summarizer fallback behavior, and FastAPI lifespan migration to replace deprecated startup events. Session runtime directories now resolve from env at runtime to avoid stale import-time path binding.",
+          "Primary match: Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates - Implemented Google CSRF double-submit checks, trusted-proxy IP resolution, route inventory/deprecation mapping, untrusted-context prompt framing, and machine-graded eval cases without introducing import-time network writes.",
+          "Primary match: Lexi production audit verdict 2026-05-17 - Production audit completed for Lexi.",
+          "Continuity: Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline - Created a clean Phase 6 checkpoint commit containing only deployment/runtime resilience source, tests, and report updates. Runtime artifacts and generated eval/avatar files were intentionally left uncommitted.",
+          "Continuity: Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening - Created a known-good checkpoint commit for Lex modernization phases 1-5 and added a concise durable checkpoint document. Validation status records pytest, route uniqueness, eval runner, clean-shell make eval, frontend build, backend startup smoke, auth/session, Google CSRF behavior, and prompt trust-boundary probes as passing.",
+          "Continuity: Phase 5 runtime smoke proof completed for Lex modernization - Phase 5 smoke validation passed for tests, route uniqueness, eval runner, and frontend build. Runtime auth/session, Google secure CSRF, Google dev/test bypass, chat path, and route inventory parity were verified. Backend startup requires writable runtime paths in this environment.",
+          "Continuity: Lex end-to-end review: prioritize auth hardening, side-effect removal, and real eval gating - Review found high-priority risks in import-time side effects, Google login CSRF handling, and broken test collection; medium-priority gaps in route duplication, proxy-trust handling, and untrusted memory/tool text boundaries. Recommended sequence is stabilize core reliability first, then apply instruction-hierarchy and eval upgrades aligned with current published techniques.",
+          "Continuity: Count Google-login users from Lex Auth SQLite - Use auth_identities provider='google' to compute distinct Google users and users created since first Google identity timestamp.",
+          "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "method": "deterministic_card_title_summary_projection",
+        "usable": true
+      },
+      "budget": {
+        "candidate_cards": 77,
+        "duplicates_removed": 0,
+        "limit": 12,
+        "max_chars": 12000,
+        "omitted_for_budget": 0,
+        "omitted_for_limit": 0,
+        "primary_limit": 3,
+        "primary_selected": 3,
+        "recent_limit": 9,
+        "selected_total": 8,
+        "supplement_selected": 5,
+        "used_chars": 7232
+      },
+      "composition": {
+        "limit": 12,
+        "max_chars": 12000,
+        "primary_limit": 3,
+        "recent_limit": 9,
+        "retrieval_mode": "hybrid",
+        "stage_a": "primary_retrieval",
+        "stage_b": "recent_in_scope_supplement",
+        "stage_c": "evidence_attachment",
+        "stage_d": "budget_enforced",
+        "stage_e": "deterministic_agent_briefing",
+        "strategy": "hybrid_primary_plus_recent_supplement"
+      },
+      "contract_version": "1.0.0",
+      "explanations": {
+        "cards": [
+          {
+            "card_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "lexi",
+                  "preflight",
+                  "runtime"
+                ],
+                "evidence": [
+                  "lexi",
+                  "preflight",
+                  "runtime"
+                ],
+                "summary": [
+                  "6",
+                  "phase",
+                  "preflight",
+                  "runtime"
+                ],
+                "title": [
+                  "6",
+                  "phase",
+                  "preflight",
+                  "runtime"
+                ]
+              },
+              "matched_tokens": [
+                "6",
+                "lexi",
+                "phase",
+                "preflight",
+                "runtime"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -2.242105
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 9.828923,
+                "evidence_token_overlap": 3.159297,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.942029,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 37.090567,
+                "title_token_overlap": 63.583828,
+                "vector_similarity_rescue": 0.962655
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.192531,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 1,
+            "score": 126.325193,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "summary",
+                "tags",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "eval",
+                  "lexi",
+                  "phase",
+                  "runtime"
+                ],
+                "summary": [
+                  "eval",
+                  "prompt"
+                ],
+                "tags": [
+                  "lexi",
+                  "prompt"
+                ],
+                "title": [
+                  "auth",
+                  "boundaries",
+                  "eval",
+                  "prompt"
+                ]
+              },
+              "matched_tokens": [
+                "auth",
+                "boundaries",
+                "eval",
+                "lexi",
+                "phase",
+                "prompt",
+                "runtime"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.978947
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 12.350828,
+                "project_space_match": 3.0,
+                "recency_boost": 1.855072,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 20.201213,
+                "tags_token_overlap": 9.299265,
+                "title_token_overlap": 70.441565,
+                "vector_similarity_rescue": 2.055375
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.411075,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 2,
+            "score": 117.224371,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "audit",
+                  "blockers",
+                  "lexi",
+                  "production"
+                ],
+                "evidence": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ],
+                "summary": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ],
+                "title": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ]
+              },
+              "matched_tokens": [
+                "audit",
+                "blockers",
+                "lexi",
+                "production"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -2.873684
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 19.402562,
+                "evidence_token_overlap": 4.320394,
+                "project_space_match": 3.0,
+                "recency_boost": 2.0,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 33.603067,
+                "title_token_overlap": 57.605257,
+                "vector_similarity_rescue": 0.568825
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.113765,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 3,
+            "score": 116.62642,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens",
+                "numeric_tokens"
+              ],
+              "matched_tokens": [
+                "6",
+                "avatar",
+                "backend",
+                "config",
+                "core",
+                "data",
+                "degraded",
+                "enforcement",
+                "eval",
+                "evals",
+                "fallback",
+                "generated",
+                "handling",
+                "lexi",
+                "lifespan",
+                "memory",
+                "migration",
+                "modernization",
+                "only",
+                "phase",
+                "preflight",
+                "pydantic",
+                "runtime",
+                "source",
+                "startup",
+                "summarizer",
+                "tests",
+                "updates"
+              ],
+              "penalties": {},
+              "reason_code": "recent_campaign_or_numeric_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 38.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_campaign_or_numeric_token_overlap",
+            "retrieval_rank": null,
+            "score": 38.0,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens",
+                "numeric_tokens"
+              ],
+              "matched_tokens": [
+                "6",
+                "added",
+                "auth",
+                "backend",
+                "behavior",
+                "boundary",
+                "completed",
+                "csrf",
+                "data",
+                "eval",
+                "evals",
+                "fallback",
+                "fastapi",
+                "focused",
+                "google",
+                "handling",
+                "lexi",
+                "lifespan",
+                "migration",
+                "modernization",
+                "path",
+                "phase",
+                "phases",
+                "preflight",
+                "prompt",
+                "pydantic",
+                "pytest",
+                "route",
+                "runner",
+                "runtime",
+                "security",
+                "session",
+                "startup",
+                "summarizer",
+                "trust",
+                "writable"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 47.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_project_boundary_or_contract",
+            "retrieval_rank": null,
+            "score": 47.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "boundaries",
+                "bypass",
+                "chat",
+                "checks",
+                "completed",
+                "csrf",
+                "data",
+                "eval",
+                "evals",
+                "external",
+                "fail",
+                "google",
+                "inventory",
+                "lexi",
+                "memory",
+                "modernization",
+                "path",
+                "phase",
+                "prompt",
+                "pytest",
+                "route",
+                "runner",
+                "runtime",
+                "session",
+                "startup",
+                "tests",
+                "tool",
+                "trust",
+                "writable"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 37.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_token_overlap",
+            "retrieval_rank": null,
+            "score": 37.0,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "behavior",
+                "boundaries",
+                "checks",
+                "core",
+                "csrf",
+                "data",
+                "deterministic",
+                "double",
+                "eval",
+                "evals",
+                "gates",
+                "google",
+                "handling",
+                "import",
+                "lexi",
+                "login",
+                "memory",
+                "network",
+                "only",
+                "proxy",
+                "route",
+                "routes",
+                "runner",
+                "submit",
+                "time",
+                "tool",
+                "trust",
+                "trusted",
+                "untrusted"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 26.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_token_overlap",
+            "retrieval_rank": null,
+            "score": 26.5,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "2bdc82ce-a45c-4f15-bd0f-119eee1715f5",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "data",
+                "disabled",
+                "google",
+                "lexi",
+                "login",
+                "source"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 25.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_project_boundary_or_contract",
+            "retrieval_rank": null,
+            "score": 25.5,
+            "stage": "recent_in_scope_supplement"
+          }
+        ],
+        "format": "muninn.v2.retrieval_explanation.v1",
+        "included": true,
+        "notes": []
+      },
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "generated_at": "2026-05-18T00:45:22.588542Z",
+      "record_type": "muninn_v2_rehydrate_response",
+      "request": {
+        "options": {
+          "include_evidence": true,
+          "include_explanations": true,
+          "limit": 12,
+          "max_chars": 12000,
+          "primary_limit": 3,
+          "recent_limit": 9,
+          "recent_supplement": true,
+          "retrieval_mode": "hybrid",
+          "strict": true
+        },
+        "query": {
+          "text": "plan Lexi safe remediation around production audit blockers Phase 6 runtime preflight auth prompt eval boundaries and generated artifact cleanliness"
+        },
+        "source": {
+          "active_scope_keys": [
+            "repo:0c321b2a6f183a95"
+          ],
+          "project_path": "/mnt/data/Lex",
+          "space_key": "repo:0c321b2a6f183a95",
+          "v2_db": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db"
+        }
+      },
+      "response_id": "rehydrate_a2fa2d9aa4134221",
+      "response_kind": "shadow_rehydrate_preview",
+      "retrieval_provenance": {
+        "backend": "hybrid",
+        "candidate_source": "explicit_v2_shadow_db",
+        "degradation_reasons": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "degraded": true,
+        "fallback_used": false,
+        "mode": "hybrid",
+        "provider_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 77,
+          "indexed_records": 77,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "query_profile": {
+          "campaign_tokens": [],
+          "numeric_tokens": [
+            "6"
+          ],
+          "phrase": "plan lexi safe remediation around production audit blockers phase 6 runtime preflight auth prompt eval boundaries generated artifact cleanliness",
+          "raw": "plan Lexi safe remediation around production audit blockers Phase 6 runtime preflight auth prompt eval boundaries and generated artifact cleanliness",
+          "tokens": [
+            "plan",
+            "lexi",
+            "safe",
+            "remediation",
+            "around",
+            "production",
+            "audit",
+            "blockers",
+            "phase",
+            "6",
+            "runtime",
+            "preflight",
+            "auth",
+            "prompt",
+            "eval",
+            "boundaries",
+            "generated",
+            "artifact",
+            "cleanliness"
+          ],
+          "unique_tokens": [
+            "plan",
+            "lexi",
+            "safe",
+            "remediation",
+            "around",
+            "production",
+            "audit",
+            "blockers",
+            "phase",
+            "6",
+            "runtime",
+            "preflight",
+            "auth",
+            "prompt",
+            "eval",
+            "boundaries",
+            "generated",
+            "artifact",
+            "cleanliness"
+          ]
+        },
+        "result_count": 12,
+        "retrieval_paths": [
+          "v2_hybrid_recall"
+        ]
+      },
+      "schema": {
+        "name": "RehydrateResponseV1",
+        "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+        "schema_version": "muninn.v2.rehydrate_response.v1",
+        "version": "1.0.0"
+      },
+      "schema_version": "muninn.v2.rehydrate_response.v1",
+      "selected_memory": {
+        "cards": [
+          {
+            "body_excerpt": "Implemented backend/lexi/core/runtime_preflight.py and wired run_runtime_preflight() into backend lifespan startup before other startup hooks. Added per-request timeout override support in model loader and degraded summarizer fallback in utils/summarize.py so summarizer unavailability does not break chat/session continuity updates. Migrated class-based Pydantic config usage in now.py and love_loop.py to v2 model_config, and added focused tests for preflight create/fail behavior, startup guarded cache flush behavior, and summarizer degraded-mode fallback.",
+            "confidence": 0.5,
+            "created_at": "2026-05-01 17:47:21",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-01 17:47:21",
+                "excerpt": null,
+                "id": "0e374130-c5e9-4c90-a9f4-49cc848887ec",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/core/backend_core.py:80",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:47:21",
+                "excerpt": null,
+                "id": "35b43ad4-7b91-4b2c-b785-faffa22cf283",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/core/runtime_preflight.py:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:47:21",
+                "excerpt": null,
+                "id": "b01416b4-2353-4f9e-ad73-a8caadb881a2",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/docs/lexi_modernization_phase6_runtime_resilience_report.md:1",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "0e374130-c5e9-4c90-a9f4-49cc848887ec",
+              "35b43ad4-7b91-4b2c-b785-faffa22cf283",
+              "b01416b4-2353-4f9e-ad73-a8caadb881a2"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "lexi",
+                  "preflight",
+                  "runtime"
+                ],
+                "evidence": [
+                  "lexi",
+                  "preflight",
+                  "runtime"
+                ],
+                "summary": [
+                  "6",
+                  "phase",
+                  "preflight",
+                  "runtime"
+                ],
+                "title": [
+                  "6",
+                  "phase",
+                  "preflight",
+                  "runtime"
+                ]
+              },
+              "matched_tokens": [
+                "6",
+                "lexi",
+                "phase",
+                "preflight",
+                "runtime"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -2.242105
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 9.828923,
+                "evidence_token_overlap": 3.159297,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.942029,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 37.090567,
+                "title_token_overlap": 63.583828,
+                "vector_similarity_rescue": 0.962655
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.192531,
+              "vector_used": true
+            },
+            "id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 1,
+              "score": 126.325193,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Lex Phase 6 adds startup runtime-path preflight with writable-path enforcement, bounded summarizer fallback behavior, and FastAPI lifespan migration to replace deprecated startup events. Session runtime directories now resolve from env at runtime to avoid stale import-time path binding.",
+            "tags": [],
+            "title": "Phase 6 hardened runtime preflight, summarizer fallback, and startup lifecycle handling",
+            "updated_at": "2026-05-01 17:47:21"
+          },
+          {
+            "body_excerpt": "Phase 2A: Google login now validates g_csrf_token body/cookie with explicit LEXI_GOOGLE_CSRF_BYPASS dev gate, and request IP resolution now trusts forwarded headers only from configured proxy CIDRs. Phase 2B: runtime inventory documents 100 routes, 10 compatibility aliases, and no removals. Phase 3: added shared untrusted context formatter and system trust-boundary rule; retrieved memory/tool/external blocks are framed as data-only. Phase 4: replaced pending eval scaffolds with 9 machine-graded deterministic cases plus runner reporting.",
+            "confidence": 0.5,
+            "created_at": "2026-04-30 21:01:33",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [],
+            "evidence_count": 0,
+            "evidence_ids": [],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "summary",
+                "tags",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "eval",
+                  "lexi",
+                  "phase",
+                  "runtime"
+                ],
+                "summary": [
+                  "eval",
+                  "prompt"
+                ],
+                "tags": [
+                  "lexi",
+                  "prompt"
+                ],
+                "title": [
+                  "auth",
+                  "boundaries",
+                  "eval",
+                  "prompt"
+                ]
+              },
+              "matched_tokens": [
+                "auth",
+                "boundaries",
+                "eval",
+                "lexi",
+                "phase",
+                "prompt",
+                "runtime"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.978947
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 12.350828,
+                "project_space_match": 3.0,
+                "recency_boost": 1.855072,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 20.201213,
+                "tags_token_overlap": 9.299265,
+                "title_token_overlap": 70.441565,
+                "vector_similarity_rescue": 2.055375
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.411075,
+              "vector_used": true
+            },
+            "id": "650e57d3-d07d-42c5-888d-28a0160fb224",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 0,
+                "evidence_types": [],
+                "source_class": "model_inference",
+                "warning_codes": [
+                  "missing_evidence"
+                ]
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 2,
+              "score": 117.224371,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Implemented Google CSRF double-submit checks, trusted-proxy IP resolution, route inventory/deprecation mapping, untrusted-context prompt framing, and machine-graded eval cases without introducing import-time network writes.",
+            "tags": [
+              "evals",
+              "lexi",
+              "prompt-boundary",
+              "security"
+            ],
+            "title": "Lex modernization phases 2A-4 hardened auth boundaries, prompt trust blocks, and eval gates",
+            "updated_at": "2026-04-30 21:01:33"
+          },
+          {
+            "body_excerpt": "Lexi should be presented as a deployed production-facing alpha/prototype, not production-ready, until the audit blockers are fixed: public /lexi/readyz 503, disabled avatar_edit/img2img, divergent backend source trees plus active production overrides, repo-root pytest import failure, telemetry/logging claim mismatch, streaming sanitizer NameError, and alpha session memory not recording /process under X-Lexi-Session.",
+            "confidence": 0.5,
+            "created_at": "2026-05-17 21:24:31",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-17 21:24:31",
+                "excerpt": null,
+                "id": "5c3a3c10-d642-420b-98d6-d866dd0051f1",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/status_matrix.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-17 21:24:31",
+                "excerpt": null,
+                "id": "9dd61aa5-08eb-4840-870f-db80d40eff61",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/README.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-17 21:24:31",
+                "excerpt": null,
+                "id": "d6e928e7-4188-49a6-88ca-6e5f8fb67521",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/risk_register.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "5c3a3c10-d642-420b-98d6-d866dd0051f1",
+              "9dd61aa5-08eb-4840-870f-db80d40eff61",
+              "d6e928e7-4188-49a6-88ca-6e5f8fb67521"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "audit",
+                  "blockers",
+                  "lexi",
+                  "production"
+                ],
+                "evidence": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ],
+                "summary": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ],
+                "title": [
+                  "audit",
+                  "lexi",
+                  "production"
+                ]
+              },
+              "matched_tokens": [
+                "audit",
+                "blockers",
+                "lexi",
+                "production"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -2.873684
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 19.402562,
+                "evidence_token_overlap": 4.320394,
+                "project_space_match": 3.0,
+                "recency_boost": 2.0,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 33.603067,
+                "title_token_overlap": 57.605257,
+                "vector_similarity_rescue": 0.568825
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.113765,
+              "vector_used": true
+            },
+            "id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 3,
+              "score": 116.62642,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Production audit completed for Lexi.",
+            "tags": [],
+            "title": "Lexi production audit verdict 2026-05-17",
+            "updated_at": "2026-05-17 21:24:31"
+          },
+          {
+            "body_excerpt": "Checkpoint commit 072ed15db5e745b50e7c4a715b7e475913666ffb records runtime preflight enforcement, summarizer degraded fallback handling, lifespan startup migration, and low-risk Pydantic v2 config cleanup. Commit scope excludes backend/memory user manifest drift, evals/last_results outputs, and local avatar image artifacts to keep the checkpoint clean and reproducible.",
+            "confidence": 0.5,
+            "created_at": "2026-05-01 17:53:15",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-01 17:53:15",
+                "excerpt": null,
+                "id": "c0d6a763-a39b-4cfa-926b-79910c179cd1",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/docs/lexi_modernization_phase6_runtime_resilience_report.md:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:53:15",
+                "excerpt": null,
+                "id": "cf39ea9a-6852-45d9-b75f-fdf53d3edefa",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/tests/test_runtime_preflight.py:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:53:15",
+                "excerpt": null,
+                "id": "edbe6755-2aa1-4b7d-9db8-d6fd08d538e0",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/core/runtime_preflight.py:1",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "c0d6a763-a39b-4cfa-926b-79910c179cd1",
+              "cf39ea9a-6852-45d9-b75f-fdf53d3edefa",
+              "edbe6755-2aa1-4b7d-9db8-d6fd08d538e0"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens",
+                "numeric_tokens"
+              ],
+              "matched_tokens": [
+                "6",
+                "avatar",
+                "backend",
+                "config",
+                "core",
+                "data",
+                "degraded",
+                "enforcement",
+                "eval",
+                "evals",
+                "fallback",
+                "generated",
+                "handling",
+                "lexi",
+                "lifespan",
+                "memory",
+                "migration",
+                "modernization",
+                "only",
+                "phase",
+                "preflight",
+                "pydantic",
+                "runtime",
+                "source",
+                "startup",
+                "summarizer",
+                "tests",
+                "updates"
+              ],
+              "penalties": {},
+              "reason_code": "recent_campaign_or_numeric_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 38.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "recent_campaign_or_numeric_token_overlap",
+              "retrieval_rank": null,
+              "score": 38.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Created a clean Phase 6 checkpoint commit containing only deployment/runtime resilience source, tests, and report updates. Runtime artifacts and generated eval/avatar files were intentionally left uncommitted.",
+            "tags": [],
+            "title": "Phase 6 runtime resilience checkpoint committed on top of Phase 1-5 baseline",
+            "updated_at": "2026-05-01 17:53:15"
+          },
+          {
+            "body_excerpt": "Checkpoint commit fdb9d9733ee67464cdda57c5c9debcecbe681ab3 captures phase 1-5 modernization changes and docs/lexi_modernization_checkpoint.md records completed phases, security assumptions, deferred risks, and next-phase options. Recommended next lane is Phase 6 deployment/runtime resilience focused on writable-path preflight/creation, clearer unwritable-path errors, summarizer fallback handling, FastAPI lifespan migration, and Pydantic v2 warning cleanup.",
+            "confidence": 0.5,
+            "created_at": "2026-05-01 17:29:31",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-01 17:29:31",
+                "excerpt": null,
+                "id": "1e69b415-6812-439b-9453-dc081fbb52b6",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/evals/runner.py:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:29:31",
+                "excerpt": null,
+                "id": "4edd09e1-134a-41a4-af39-61b3ac241c5c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/docs/lexi_modernization_checkpoint.md:1",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-01 17:29:31",
+                "excerpt": null,
+                "id": "b469369a-b122-4ab5-bf3e-cfa3ed3b652a",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/docs/lexi_modernization_phase5_runtime_smoke_report.md:1",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "1e69b415-6812-439b-9453-dc081fbb52b6",
+              "4edd09e1-134a-41a4-af39-61b3ac241c5c",
+              "b469369a-b122-4ab5-bf3e-cfa3ed3b652a"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens",
+                "numeric_tokens"
+              ],
+              "matched_tokens": [
+                "6",
+                "added",
+                "auth",
+                "backend",
+                "behavior",
+                "boundary",
+                "completed",
+                "csrf",
+                "data",
+                "eval",
+                "evals",
+                "fallback",
+                "fastapi",
+                "focused",
+                "google",
+                "handling",
+                "lexi",
+                "lifespan",
+                "migration",
+                "modernization",
+                "path",
+                "phase",
+                "phases",
+                "preflight",
+                "prompt",
+                "pydantic",
+                "pytest",
+                "route",
+                "runner",
+                "runtime",
+                "security",
+                "session",
+                "startup",
+                "summarizer",
+                "trust",
+                "writable"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 47.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "recent_project_boundary_or_contract",
+              "retrieval_rank": null,
+              "score": 47.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Created a known-good checkpoint commit for Lex modernization phases 1-5 and added a concise durable checkpoint document. Validation status records pytest, route uniqueness, eval runner, clean-shell make eval, frontend build, backend startup smoke, auth/session, Google CSRF behavior, and prompt trust-boundary probes as passing.",
+            "tags": [],
+            "title": "Lex modernization phases 1-5 checkpointed with validated auth/prompt/eval hardening",
+            "updated_at": "2026-05-01 17:29:31"
+          },
+          {
+            "body_excerpt": "Ran PYTHONPATH=. pytest -rA (171 passed, 1 skipped), route uniqueness inspection (total=100 unique=100 duplicates=0), eval runner checks (9/9), and make eval from a clean shell. Frontend build compiled successfully. Backend startup smoke succeeded when runtime paths were explicitly set to writable temp locations; default local paths can fail with permission errors. Prompt trust boundaries remain enforced for tool/external context and for memory retrieval paths when retrieval is present.",
+            "confidence": 0.5,
+            "created_at": "2026-04-30 21:53:11",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-30 21:53:11",
+                "excerpt": null,
+                "id": "1a60774d-e194-43d2-a5ca-8c0aefac50a7",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/tests/test_phase1_stabilization.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 21:53:11",
+                "excerpt": null,
+                "id": "658aead5-2fd7-4dac-8513-a37cae81fc85",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/docs/lexi_modernization_phase5_runtime_smoke_report.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 21:53:11",
+                "excerpt": null,
+                "id": "9f9c0cfa-f182-4694-818e-a7e5bbbf693c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/evals/last_results.json",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "1a60774d-e194-43d2-a5ca-8c0aefac50a7",
+              "658aead5-2fd7-4dac-8513-a37cae81fc85",
+              "9f9c0cfa-f182-4694-818e-a7e5bbbf693c"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "boundaries",
+                "bypass",
+                "chat",
+                "checks",
+                "completed",
+                "csrf",
+                "data",
+                "eval",
+                "evals",
+                "external",
+                "fail",
+                "google",
+                "inventory",
+                "lexi",
+                "memory",
+                "modernization",
+                "path",
+                "phase",
+                "prompt",
+                "pytest",
+                "route",
+                "runner",
+                "runtime",
+                "session",
+                "startup",
+                "tests",
+                "tool",
+                "trust",
+                "writable"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 37.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "recent_query_token_overlap",
+              "retrieval_rank": null,
+              "score": 37.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Phase 5 smoke validation passed for tests, route uniqueness, eval runner, and frontend build. Runtime auth/session, Google secure CSRF, Google dev/test bypass, chat path, and route inventory parity were verified. Backend startup requires writable runtime paths in this environment.",
+            "tags": [],
+            "title": "Phase 5 runtime smoke proof completed for Lex modernization",
+            "updated_at": "2026-04-30 21:53:11"
+          },
+          {
+            "body_excerpt": "Implementation order: (1) remove import-time network/file side effects and eliminate duplicate route mounts, (2) fix test collection drift and restore deterministic gates, (3) add Google login CSRF double-submit verification and trusted-proxy IP handling, (4) label tool/memory text as untrusted and enforce instruction-priority handling, (5) upgrade eval harness from scaffold-only checks to behavior/criterion scoring over representative datasets.",
+            "confidence": 0.5,
+            "created_at": "2026-04-30 20:05:44",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-30 20:05:44",
+                "excerpt": null,
+                "id": "49dd7c2b-acb8-4b91-94c9-82876d94e420",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/__init__.py:36",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 20:05:44",
+                "excerpt": null,
+                "id": "5fe24c9e-bdc6-4a95-8e4b-bdaf9d6ae9b8",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/routes/auth.py:182",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 20:05:44",
+                "excerpt": null,
+                "id": "af166b2f-47b9-475a-97c2-34222f9d0e4c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/evals/runner.py:45",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 20:05:44",
+                "excerpt": null,
+                "id": "d7dea95a-3dd3-4b1e-bd0f-c1927240a852",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/routes/lexi.py:197",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 20:05:44",
+                "excerpt": null,
+                "id": "df90a0f6-0d7c-44ac-ad2e-acd6f1de6570",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/core/backend_core.py:203",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 5,
+            "evidence_ids": [
+              "49dd7c2b-acb8-4b91-94c9-82876d94e420",
+              "5fe24c9e-bdc6-4a95-8e4b-bdaf9d6ae9b8",
+              "af166b2f-47b9-475a-97c2-34222f9d0e4c",
+              "d7dea95a-3dd3-4b1e-bd0f-c1927240a852",
+              "df90a0f6-0d7c-44ac-ad2e-acd6f1de6570"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "behavior",
+                "boundaries",
+                "checks",
+                "core",
+                "csrf",
+                "data",
+                "deterministic",
+                "double",
+                "eval",
+                "evals",
+                "gates",
+                "google",
+                "handling",
+                "import",
+                "lexi",
+                "login",
+                "memory",
+                "network",
+                "only",
+                "proxy",
+                "route",
+                "routes",
+                "runner",
+                "submit",
+                "time",
+                "tool",
+                "trust",
+                "trusted",
+                "untrusted"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 26.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "recent_query_token_overlap",
+              "retrieval_rank": null,
+              "score": 26.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Review found high-priority risks in import-time side effects, Google login CSRF handling, and broken test collection; medium-priority gaps in route duplication, proxy-trust handling, and untrusted memory/tool text boundaries. Recommended sequence is stabilize core reliability first, then apply instruction-hierarchy and eval upgrades aligned with current published techniques.",
+            "tags": [],
+            "title": "Lex end-to-end review: prioritize auth hardening, side-effect removal, and real eval gating",
+            "updated_at": "2026-04-30 20:05:44"
+          },
+          {
+            "body_excerpt": "Canonical data source is /mnt/data/Lex/data/auth/auth.sqlite3. For current metric: COUNT(DISTINCT user_id) FROM auth_identities WHERE provider='google' AND disabled_at IS NULL for Google-linked users, and COUNT(*) FROM users WHERE created_at >= MIN(created_at for provider='google') for total users since Google login began.",
+            "confidence": 0.5,
+            "created_at": "2026-04-30 19:22:48",
+            "entity_ids": [
+              "v1-project:repo:0c321b2a6f183a95"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-30 19:22:48",
+                "excerpt": null,
+                "id": "1b837f09-6cf5-4b43-9282-8f2af2fb343e",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/backend/lexi/auth/store.py:57",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-30 19:22:48",
+                "excerpt": null,
+                "id": "8b4f00a5-a39a-4150-a5e4-19cf905d382a",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/Lex/data/auth/auth.sqlite3",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 2,
+            "evidence_ids": [
+              "1b837f09-6cf5-4b43-9282-8f2af2fb343e",
+              "8b4f00a5-a39a-4150-a5e4-19cf905d382a"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "auth",
+                "backend",
+                "data",
+                "disabled",
+                "google",
+                "lexi",
+                "login",
+                "source"
+              ],
+              "penalties": {},
+              "reason_code": "recent_project_boundary_or_contract",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 25.5
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "2bdc82ce-a45c-4f15-bd0f-119eee1715f5",
+            "kind": "runbook",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:0c321b2a6f183a95",
+              "project_path": "/mnt/data/Lex",
+              "project_root_path": "/mnt/data/Lex",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:0c321b2a6f183a95",
+            "selection": {
+              "reason": "recent_project_boundary_or_contract",
+              "retrieval_rank": null,
+              "score": 25.5,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Use auth_identities provider='google' to compute distinct Google users and users created since first Google identity timestamp.",
+            "tags": [],
+            "title": "Count Google-login users from Lex Auth SQLite",
+            "updated_at": "2026-04-30 19:22:48"
+          }
+        ],
+        "events": [],
+        "evidence": [
+          {
+            "card_id": "2bdc82ce-a45c-4f15-bd0f-119eee1715f5",
+            "created_at": "2026-04-30 19:22:48",
+            "excerpt": null,
+            "id": "1b837f09-6cf5-4b43-9282-8f2af2fb343e",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/auth/store.py:57",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "2bdc82ce-a45c-4f15-bd0f-119eee1715f5",
+            "created_at": "2026-04-30 19:22:48",
+            "excerpt": null,
+            "id": "8b4f00a5-a39a-4150-a5e4-19cf905d382a",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/data/auth/auth.sqlite3",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "created_at": "2026-05-01 17:53:15",
+            "excerpt": null,
+            "id": "c0d6a763-a39b-4cfa-926b-79910c179cd1",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/lexi_modernization_phase6_runtime_resilience_report.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "created_at": "2026-05-01 17:53:15",
+            "excerpt": null,
+            "id": "cf39ea9a-6852-45d9-b75f-fdf53d3edefa",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/tests/test_runtime_preflight.py:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "539f6130-6a78-4646-b7fe-da1d2a7d0b98",
+            "created_at": "2026-05-01 17:53:15",
+            "excerpt": null,
+            "id": "edbe6755-2aa1-4b7d-9db8-d6fd08d538e0",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/core/runtime_preflight.py:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "created_at": "2026-05-01 17:29:31",
+            "excerpt": null,
+            "id": "1e69b415-6812-439b-9453-dc081fbb52b6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/evals/runner.py:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "created_at": "2026-05-01 17:29:31",
+            "excerpt": null,
+            "id": "4edd09e1-134a-41a4-af39-61b3ac241c5c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/lexi_modernization_checkpoint.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "6f25a3c0-676d-4e64-8351-213b18040f93",
+            "created_at": "2026-05-01 17:29:31",
+            "excerpt": null,
+            "id": "b469369a-b122-4ab5-bf3e-cfa3ed3b652a",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/lexi_modernization_phase5_runtime_smoke_report.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "created_at": "2026-05-01 17:47:21",
+            "excerpt": null,
+            "id": "0e374130-c5e9-4c90-a9f4-49cc848887ec",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/core/backend_core.py:80",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "created_at": "2026-05-01 17:47:21",
+            "excerpt": null,
+            "id": "35b43ad4-7b91-4b2c-b785-faffa22cf283",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/core/runtime_preflight.py:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "8099af8a-88e6-4e88-b1c9-684c4ea5aa4e",
+            "created_at": "2026-05-01 17:47:21",
+            "excerpt": null,
+            "id": "b01416b4-2353-4f9e-ad73-a8caadb881a2",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/lexi_modernization_phase6_runtime_resilience_report.md:1",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "created_at": "2026-04-30 21:53:11",
+            "excerpt": null,
+            "id": "1a60774d-e194-43d2-a5ca-8c0aefac50a7",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/tests/test_phase1_stabilization.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "created_at": "2026-04-30 21:53:11",
+            "excerpt": null,
+            "id": "658aead5-2fd7-4dac-8513-a37cae81fc85",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/docs/lexi_modernization_phase5_runtime_smoke_report.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "c40c8b59-4e43-4e9d-976a-0c27e289596c",
+            "created_at": "2026-04-30 21:53:11",
+            "excerpt": null,
+            "id": "9f9c0cfa-f182-4694-818e-a7e5bbbf693c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/evals/last_results.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "created_at": "2026-05-17 21:24:31",
+            "excerpt": null,
+            "id": "5c3a3c10-d642-420b-98d6-d866dd0051f1",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/status_matrix.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "created_at": "2026-05-17 21:24:31",
+            "excerpt": null,
+            "id": "9dd61aa5-08eb-4840-870f-db80d40eff61",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/README.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "d61eacef-96d5-40fb-9dc4-5de8c11399c1",
+            "created_at": "2026-05-17 21:24:31",
+            "excerpt": null,
+            "id": "d6e928e7-4188-49a6-88ca-6e5f8fb67521",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/reports/lexi_production_audit_2026-05-17/risk_register.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "created_at": "2026-04-30 20:05:44",
+            "excerpt": null,
+            "id": "49dd7c2b-acb8-4b91-94c9-82876d94e420",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/__init__.py:36",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "created_at": "2026-04-30 20:05:44",
+            "excerpt": null,
+            "id": "5fe24c9e-bdc6-4a95-8e4b-bdaf9d6ae9b8",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/routes/auth.py:182",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "created_at": "2026-04-30 20:05:44",
+            "excerpt": null,
+            "id": "af166b2f-47b9-475a-97c2-34222f9d0e4c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/evals/runner.py:45",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "created_at": "2026-04-30 20:05:44",
+            "excerpt": null,
+            "id": "d7dea95a-3dd3-4b1e-bd0f-c1927240a852",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/routes/lexi.py:197",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "df2b467b-c10b-4a2f-8c2c-e1f5e34d603f",
+            "created_at": "2026-04-30 20:05:44",
+            "excerpt": null,
+            "id": "df90a0f6-0d7c-44ac-ad2e-acd6f1de6570",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/Lex/backend/lexi/core/backend_core.py:203",
+            "source_id": null,
+            "type": "file"
+          }
+        ]
+      },
+      "uncertainty": {
+        "context_gaps": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "usable": true,
+        "warnings": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ]
+      }
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

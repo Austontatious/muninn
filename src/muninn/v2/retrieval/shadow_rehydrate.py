@@ -4,7 +4,7 @@ import json
 import hashlib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any, Mapping, Sequence
 
 from ..core.models import EvidenceRef, MemoryCard, utc_now
 from ..indexes import DerivedIndexProvider
@@ -72,6 +72,7 @@ class ShadowPreviewOptions:
     max_chars: int | None = None
     recent_supplement: bool = True
     strict: bool = False
+    reinforcement_state: Mapping[str, Mapping[str, Any]] | None = None
 
 
 @dataclass(frozen=True)
@@ -117,6 +118,7 @@ def build_shadow_rehydrate_preview(
         limit=max(limit, primary_limit),
         scope_key=inferred_space_key,
         retrieval_mode=mode,
+        reinforcement_state=options.reinforcement_state,
     )
     cards_by_id = {card.id: card for card in filtered}
     primary_candidates = _primary_entries(
@@ -367,9 +369,17 @@ def _recall(
     limit: int,
     scope_key: str | None,
     retrieval_mode: str,
+    reinforcement_state: Mapping[str, Mapping[str, Any]] | None,
 ) -> dict[str, Any]:
     if retrieval_mode == "hybrid":
-        return hybrid_recall(records, query, provider=provider, limit=limit, scope_key=scope_key)
+        return hybrid_recall(
+            records,
+            query,
+            provider=provider,
+            reinforcement_state=reinforcement_state,
+            limit=limit,
+            scope_key=scope_key,
+        )
     if retrieval_mode == "lexical":
         return {
             "backend": "lexical_fallback",

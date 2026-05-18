@@ -1,0 +1,40 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:21.144409Z",
+    "input_hash": "b59f63c8643d02a13bfa7fea2b94e1c32eba02ee41a6e64b3b328f8cb4189c73",
+    "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+    "replayable": true,
+    "response_hash": "25ef0444a68c1cd1ceb0af70bdd84a0b47728c1d6a2c321a465e763afe3315d9",
+    "trace_id": "bridge_745e35eb5895fa9c"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "space_not_allowed",
+      "project_path_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "readyplayer1-contamination-wrong-project",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

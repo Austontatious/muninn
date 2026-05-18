@@ -1,0 +1,71 @@
+{
+  "adaptive_config": {
+    "default": false,
+    "enabled": false,
+    "requested": false,
+    "state_count": 0,
+    "state_version": null
+  },
+  "artifacts": {
+    "audit": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/lexi/lexi-shadow-continuity/plan-safe-remediation/budget_pressure/bridge_audit_lexi-lexi-shadow-continuity-plan-safe-remediation-budget_pressure.json",
+    "response": "reports/pilots/phase_g_shadow_ops_drill_2026-05-17/drill/lexi/lexi-shadow-continuity/plan-safe-remediation/budget_pressure/bridge_response_lexi-lexi-shadow-continuity-plan-safe-remediation-budget_pressure.json"
+  },
+  "consumer_id": "codex-shadow",
+  "created_at": "2026-05-18T00:45:23.008315Z",
+  "db": {
+    "after": {
+      "mtime_ns": 1779057562301776987,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 704512,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "before": {
+      "mtime_ns": 1779057562301776987,
+      "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db",
+      "shm_mtime_ns": null,
+      "shm_size_bytes": 0,
+      "size_bytes": 704512,
+      "wal_mtime_ns": null,
+      "wal_size_bytes": 0
+    },
+    "changed": {
+      "mtime_ns": false,
+      "shm_mtime_ns": false,
+      "shm_size_bytes": false,
+      "size_bytes": false,
+      "wal_mtime_ns": false,
+      "wal_size_bytes": false
+    },
+    "hash": "0bd2ffe0caf53d21da6b197769375fe981cd47adfd23b6f6223bb81902e99a13",
+    "path": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/lexi_phase_d2_shadow_v2.db"
+  },
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+  "record_type": "muninn_v2_bridge_audit",
+  "replayable": true,
+  "request_hash": "dac49c363e3baad06fc028dbd86cc095e42a268cb1b86a132c2a797bea2cd069",
+  "request_id": "lexi-lexi-shadow-continuity-plan-safe-remediation-budget_pressure",
+  "response_hash": "b76f55791f7f9a005c2febdd7dcfaf151b4b9caba379c0a950fa81a16f39e620",
+  "retrieval_config": {
+    "limit": 12,
+    "max_context_chars": 6500,
+    "operation": "rehydrate",
+    "retrieval_mode": "hybrid"
+  },
+  "schema_version": "BridgeAuditV1",
+  "trace_id": "bridge_786e50be9a5710f7"
+}

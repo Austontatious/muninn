@@ -1,0 +1,1659 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:19.540978Z",
+    "input_hash": "6b56436ef49851d971140d12e2551030229fb069317f274a7f033f94975e6c45",
+    "policy_hash": "88542d4af3d0cd9d6049b9fd89ac4e0c374cbcb22612f545864a13dbc1b91a21",
+    "replayable": true,
+    "response_hash": "0231d669437b29b64bb5d44c4dd3e6cecdb35a697f6814b24674b72b881b1498",
+    "trace_id": "bridge_4655f85ea45b878c"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": true,
+    "reason_codes": [
+      "sqlite_vec_unavailable_using_json_vector_fallback"
+    ]
+  },
+  "error": null,
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": true,
+    "clamps": {},
+    "reason_codes": []
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "readyplayer1-readyplayer1-shadow-continuity-resume-current-campaign-budget_pressure",
+  "result": {
+    "adaptive_scoring": {
+      "boosted_cards": [],
+      "default": false,
+      "enabled": false,
+      "reason_codes": [],
+      "requested": false,
+      "state_count": 0,
+      "state_version": null,
+      "suppressed_cards": []
+    },
+    "clamps": {},
+    "operation": "rehydrate",
+    "rehydrate_response": {
+      "agent_briefing": {
+        "bullets": [
+          "Primary match: Phase 2 canonical current-state pointers and onboarding source consolidation - Phase 2 consolidated ReadyPlayer1 lane current-state consumption around runs/current pointer artifacts and removed stale onboarding-source ambiguity from registry defaults. Registry onboarding now points to the canonical template/source while historical onboarding run artifacts are retained as lineage fields.",
+          "Primary match: Campaign 005A promoted fire-control state normalization - Campaign 005A promoted explicit fire-control readiness and solution-state visibility for SubSim observations consumed by ReadyPlayer1.",
+          "Primary match: Campaign 004A promoted with ReadyPlayer1 fire-control loop patch - Campaign 004A promoted after a bounded ReadyPlayer1-side change to the belief_baseline fire-control loop. The policy now emits fire-control decision rationale, suppresses duplicate same-primary torpedo commits, and adds deterministic fire-control metrics while preserving SubSim sonar gains.",
+          "Continuity: Campaign 007A promoted post-reacquisition stabilization - Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+          "Continuity: Campaign 006A promoted post-loss recovery probe - Campaign 006A promoted a bounded ReadyPlayer1 policy and metrics change for post-shot/post-loss reacquisition. The belief_baseline now performs an evidence-gated early active ping for credible lost tracks, improving post-loss probe behavior while preserving duplicate-shot, wasted-shot, sonar clutter, and acoustic clutter gates.",
+          "Uncertainty: Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "method": "deterministic_card_title_summary_projection",
+        "usable": true
+      },
+      "budget": {
+        "candidate_cards": 48,
+        "duplicates_removed": 0,
+        "limit": 12,
+        "max_chars": 6500,
+        "omitted_for_budget": 4,
+        "omitted_for_limit": 0,
+        "primary_limit": 3,
+        "primary_selected": 3,
+        "recent_limit": 9,
+        "selected_total": 5,
+        "supplement_selected": 2,
+        "used_chars": 5642
+      },
+      "composition": {
+        "limit": 12,
+        "max_chars": 6500,
+        "primary_limit": 3,
+        "recent_limit": 9,
+        "retrieval_mode": "hybrid",
+        "stage_a": "primary_retrieval",
+        "stage_b": "recent_in_scope_supplement",
+        "stage_c": "evidence_attachment",
+        "stage_d": "budget_enforced",
+        "stage_e": "deterministic_agent_briefing",
+        "strategy": "hybrid_primary_plus_recent_supplement"
+      },
+      "contract_version": "1.0.0",
+      "explanations": {
+        "cards": [
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "current",
+                  "state"
+                ],
+                "evidence": [
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "current",
+                  "readyplayer1",
+                  "state"
+                ],
+                "title": [
+                  "current",
+                  "state"
+                ]
+              },
+              "matched_tokens": [
+                "current",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 7.278142,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 0.459279,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.234043,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 21.767523,
+                "title_token_overlap": 31.192039,
+                "vector_similarity_rescue": 2.17217
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.434434,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 1,
+            "score": 81.846053,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "campaign",
+                  "readyplayer1",
+                  "state"
+                ],
+                "evidence": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "campaign",
+                  "readyplayer1",
+                  "state"
+                ],
+                "title": [
+                  "campaign",
+                  "state"
+                ]
+              },
+              "matched_tokens": [
+                "campaign",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 8.07423,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 1.581545,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.914894,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 20.185575,
+                "title_token_overlap": 28.480128,
+                "vector_similarity_rescue": 2.403215
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.480643,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 2,
+            "score": 80.382445,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "details": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "campaign",
+                  "next",
+                  "readyplayer1",
+                  "state"
+                ],
+                "evidence": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "title": [
+                  "campaign",
+                  "readyplayer1"
+                ]
+              },
+              "matched_tokens": [
+                "campaign",
+                "next",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {},
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 12.981967,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 1.581545,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.787234,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 12.300905,
+                "title_token_overlap": 21.087266,
+                "vector_similarity_rescue": 1.96432
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.392864,
+              "vector_used": true
+            },
+            "reason": "query_match",
+            "retrieval_rank": 3,
+            "score": 71.703236,
+            "stage": "primary_retrieval"
+          },
+          {
+            "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "acoustic",
+                "after",
+                "baseline",
+                "belief",
+                "bounded",
+                "campaign",
+                "change",
+                "clutter",
+                "compatible",
+                "contact",
+                "count",
+                "decision",
+                "drift",
+                "duplicate",
+                "emits",
+                "evidence",
+                "fail",
+                "gates",
+                "golden",
+                "json",
+                "metrics",
+                "moved",
+                "pass",
+                "passed",
+                "policy",
+                "preserved",
+                "preserving",
+                "primary",
+                "promoted",
+                "rate",
+                "readyplayer1",
+                "regression",
+                "replay",
+                "same",
+                "scenario",
+                "shot",
+                "sonar",
+                "stale",
+                "stayed",
+                "subsim",
+                "suite",
+                "torpedo",
+                "track",
+                "wasted",
+                "while"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 19.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_token_overlap",
+            "retrieval_rank": null,
+            "score": 19.0,
+            "stage": "recent_in_scope_supplement"
+          },
+          {
+            "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "details": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "005a",
+                "acoustic",
+                "after",
+                "baseline",
+                "behavior",
+                "belief",
+                "bounded",
+                "campaign",
+                "change",
+                "clutter",
+                "contact",
+                "control",
+                "count",
+                "decision",
+                "drift",
+                "duplicate",
+                "evidence",
+                "fail",
+                "fire",
+                "gates",
+                "golden",
+                "json",
+                "metrics",
+                "pass",
+                "passed",
+                "policy",
+                "preserving",
+                "promoted",
+                "rate",
+                "readyplayer1",
+                "regression",
+                "remained",
+                "replay",
+                "same",
+                "scenario",
+                "shot",
+                "sonar",
+                "stayed",
+                "subsim",
+                "suite",
+                "torpedo",
+                "track",
+                "wasted",
+                "while"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 19.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "reason": "recent_query_token_overlap",
+            "retrieval_rank": null,
+            "score": 19.0,
+            "stage": "recent_in_scope_supplement"
+          }
+        ],
+        "format": "muninn.v2.retrieval_explanation.v1",
+        "included": true,
+        "notes": []
+      },
+      "fallbacks": [
+        {
+          "active": true,
+          "degraded": true,
+          "name": "derived_vector_backend",
+          "reason": "sqlite_vec_unavailable_using_json_vector_fallback"
+        },
+        {
+          "active": false,
+          "degraded": false,
+          "name": "lexical_fallback",
+          "reason": null
+        }
+      ],
+      "generated_at": "2026-05-18T00:45:19.540682Z",
+      "record_type": "muninn_v2_rehydrate_response",
+      "request": {
+        "options": {
+          "include_evidence": true,
+          "include_explanations": true,
+          "limit": 12,
+          "max_chars": 6500,
+          "primary_limit": 3,
+          "recent_limit": 9,
+          "recent_supplement": true,
+          "retrieval_mode": "hybrid",
+          "strict": true
+        },
+        "query": {
+          "text": "resume ReadyPlayer1 current campaign state and next steps"
+        },
+        "source": {
+          "active_scope_keys": [
+            "repo:5059f410815720ea"
+          ],
+          "project_path": "/mnt/data/ReadyPlayer1",
+          "space_key": "repo:5059f410815720ea",
+          "v2_db": "/mnt/data/Muninn/reports/pilots/phase_d2_recall_reinforcement_2026-05-17/readyplayer1_phase_d2_shadow_v2.db"
+        }
+      },
+      "response_id": "rehydrate_d19b00fdf5e28c13",
+      "response_kind": "shadow_rehydrate_preview",
+      "retrieval_provenance": {
+        "backend": "hybrid",
+        "candidate_source": "explicit_v2_shadow_db",
+        "degradation_reasons": [
+          "sqlite_vec_unavailable_using_json_vector_fallback"
+        ],
+        "degraded": true,
+        "fallback_used": false,
+        "mode": "hybrid",
+        "provider_status": {
+          "backend": "json_vector_fallback",
+          "backend_available": true,
+          "degraded": true,
+          "eligible_records": 48,
+          "indexed_records": 48,
+          "missing_records": 0,
+          "reason": [
+            "sqlite_vec_unavailable_using_json_vector_fallback"
+          ],
+          "stale_records": 0
+        },
+        "query_profile": {
+          "campaign_tokens": [
+            "readyplayer1"
+          ],
+          "numeric_tokens": [
+            "readyplayer1"
+          ],
+          "phrase": "resume readyplayer1 current campaign state next steps",
+          "raw": "resume ReadyPlayer1 current campaign state and next steps",
+          "tokens": [
+            "resume",
+            "readyplayer1",
+            "current",
+            "campaign",
+            "state",
+            "next",
+            "steps"
+          ],
+          "unique_tokens": [
+            "resume",
+            "readyplayer1",
+            "current",
+            "campaign",
+            "state",
+            "next",
+            "steps"
+          ]
+        },
+        "result_count": 12,
+        "retrieval_paths": [
+          "v2_hybrid_recall"
+        ]
+      },
+      "schema": {
+        "name": "RehydrateResponseV1",
+        "schema_uri": "docs/contracts/muninn_v2/v1/schemas/rehydrate-response.v1.schema.json",
+        "schema_version": "muninn.v2.rehydrate_response.v1",
+        "version": "1.0.0"
+      },
+      "schema_version": "muninn.v2.rehydrate_response.v1",
+      "selected_memory": {
+        "cards": [
+          {
+            "body_excerpt": "Implemented canonical pointer surfaces runs/current/lane_current_state_index.json and runs/current/<lane_id>/lane_current_state.json and synced them from lane registry updates. Canonicalized lane registry onboarding semantics to keep onboarding_config_json/onboarding_template_json as current bootstrap source and preserve historical onboarding run snapshots in latest_onboarding_run_config_json/latest_onboarding_run_summary_json. Updated README, RUNBOOK, and ARCHITECTURE_CHECKPOINT to align operator default flow with the new current-state pointer strategy; added docs/tasks/repo_drift_phase2_e...",
+            "confidence": 0.5,
+            "created_at": "2026-04-23 17:39:49",
+            "entity_ids": [
+              "v1-project:repo:5059f410815720ea"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "1c36999b-a698-4e10-b478-6f336cfbe911",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/ARCHITECTURE_CHECKPOINT.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "2a974af6-f904-4cf6-a9dc-fa91c159a5f4",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/cli.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "3fa9a3a7-f042-4222-8b12-6215610a05ab",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/RUNBOOK.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "41256fa3-78ce-4dd4-8ca8-5e6e0572f10b",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/README.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "4da2f574-d688-4340-8071-b56975dc224c",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "bf4173ec-f4b8-4f13-af0b-991245f7a20b",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/tests/test_subsim_lane_ops.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "d838aa3d-4717-4310-ab64-fda463dfdcb5",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/lane_ops.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-04-23 17:39:49",
+                "excerpt": null,
+                "id": "e7198c14-20ab-4a26-a266-addfc6f71905",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 8,
+            "evidence_ids": [
+              "1c36999b-a698-4e10-b478-6f336cfbe911",
+              "2a974af6-f904-4cf6-a9dc-fa91c159a5f4",
+              "3fa9a3a7-f042-4222-8b12-6215610a05ab",
+              "41256fa3-78ce-4dd4-8ca8-5e6e0572f10b",
+              "4da2f574-d688-4340-8071-b56975dc224c",
+              "bf4173ec-f4b8-4f13-af0b-991245f7a20b",
+              "d838aa3d-4717-4310-ab64-fda463dfdcb5",
+              "e7198c14-20ab-4a26-a266-addfc6f71905"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "current",
+                  "state"
+                ],
+                "evidence": [
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "current",
+                  "readyplayer1",
+                  "state"
+                ],
+                "title": [
+                  "current",
+                  "state"
+                ]
+              },
+              "matched_tokens": [
+                "current",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 7.278142,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 0.459279,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.234043,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 21.767523,
+                "title_token_overlap": 31.192039,
+                "vector_similarity_rescue": 2.17217
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.434434,
+              "vector_used": true
+            },
+            "id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:5059f410815720ea",
+              "project_path": "/mnt/data/ReadyPlayer1",
+              "project_root_path": "/mnt/data/ReadyPlayer1",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:5059f410815720ea",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 1,
+              "score": 81.846053,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Phase 2 consolidated ReadyPlayer1 lane current-state consumption around runs/current pointer artifacts and removed stale onboarding-source ambiguity from registry defaults. Registry onboarding now points to the canonical template/source while historical onboarding run artifacts are retained as lineage fields.",
+            "tags": [],
+            "title": "Phase 2 canonical current-state pointers and onboarding source consolidation",
+            "updated_at": "2026-04-23 17:39:49"
+          },
+          {
+            "body_excerpt": "SubSim now emits structured fire_control observation fields and sonar-console frames carry them. ReadyPlayer1 normalizes producer fire-control state and infer-compatible replay state, adds coverage metrics, and preserved Campaign 004A fire-control behavior plus sonar/acoustic gates. Final status CAMPAIGN_005A_PROMOTED.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 17:05:08",
+            "entity_ids": [
+              "v1-project:repo:5059f410815720ea"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 17:05:08",
+                "excerpt": null,
+                "id": "49016b7e-4d7c-4658-a76f-bee5e6c6d451",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:08",
+                "excerpt": null,
+                "id": "5064aa40-d2bd-4526-bda9-44c002294d5d",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:08",
+                "excerpt": null,
+                "id": "b3dae469-81a5-42c8-a708-76a2bda3eee8",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/harness/subsim/sonar_adapter.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:05:08",
+                "excerpt": null,
+                "id": "bc04fe78-5f79-43b2-9d01-e63ef7a4b4af",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "49016b7e-4d7c-4658-a76f-bee5e6c6d451",
+              "5064aa40-d2bd-4526-bda9-44c002294d5d",
+              "b3dae469-81a5-42c8-a708-76a2bda3eee8",
+              "bc04fe78-5f79-43b2-9d01-e63ef7a4b4af"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "campaign",
+                  "readyplayer1",
+                  "state"
+                ],
+                "evidence": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "campaign",
+                  "readyplayer1",
+                  "state"
+                ],
+                "title": [
+                  "campaign",
+                  "state"
+                ]
+              },
+              "matched_tokens": [
+                "campaign",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {
+                "broad_token_match": -2.0,
+                "low_specificity_match": -0.257143
+              },
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 8.07423,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 1.581545,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.914894,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 20.185575,
+                "title_token_overlap": 28.480128,
+                "vector_similarity_rescue": 2.403215
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.480643,
+              "vector_used": true
+            },
+            "id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:5059f410815720ea",
+              "project_path": "/mnt/data/ReadyPlayer1",
+              "project_root_path": "/mnt/data/ReadyPlayer1",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:5059f410815720ea",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 2,
+              "score": 80.382445,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Campaign 005A promoted explicit fire-control readiness and solution-state visibility for SubSim observations consumed by ReadyPlayer1.",
+            "tags": [],
+            "title": "Campaign 005A promoted fire-control state normalization",
+            "updated_at": "2026-05-07 17:05:08"
+          },
+          {
+            "body_excerpt": "Evidence: clean_single_contact_tracking under seed 7 moved torpedo_count 2 -> 1, torpedo_duplicate_same_track_count 1 -> 0, and torpedo_wasted_shot_rate 0.5 -> 0.0. clutter_false_positive preservation metrics stayed unchanged, scenario suite remained 7 pass / 0 fail, golden regression passed, SubSim full tests passed, and ReadyPlayer1 focused SubSim tests passed. Next recommended campaign is Campaign 005A: normalize SubSim fire-control readiness/solution state into ReadyPlayer1 observations and replay traces.",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 16:18:00",
+            "entity_ids": [
+              "v1-project:repo:5059f410815720ea"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 16:18:00",
+                "excerpt": null,
+                "id": "194d9ef0-d37a-48ad-be7b-e35318f9f759",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_comparison.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:18:00",
+                "excerpt": null,
+                "id": "7a30fa16-62a4-4b8a-a839-567f9d4435ae",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 16:18:00",
+                "excerpt": null,
+                "id": "7a35b654-0edc-4f34-989b-207490e27765",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 3,
+            "evidence_ids": [
+              "194d9ef0-d37a-48ad-be7b-e35318f9f759",
+              "7a30fa16-62a4-4b8a-a839-567f9d4435ae",
+              "7a35b654-0edc-4f34-989b-207490e27765"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "body",
+                "evidence",
+                "summary",
+                "title",
+                "vector"
+              ],
+              "matched_fields": {
+                "body": [
+                  "campaign",
+                  "next",
+                  "readyplayer1",
+                  "state"
+                ],
+                "evidence": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "summary": [
+                  "campaign",
+                  "readyplayer1"
+                ],
+                "title": [
+                  "campaign",
+                  "readyplayer1"
+                ]
+              },
+              "matched_tokens": [
+                "campaign",
+                "next",
+                "readyplayer1",
+                "state"
+              ],
+              "penalties": {},
+              "retrieval_path": "v2_hybrid_recall",
+              "score_components": {
+                "body_token_overlap": 12.981967,
+                "campaign_token_match": 6.0,
+                "evidence_token_overlap": 1.581545,
+                "numeric_token_match": 10.0,
+                "project_space_match": 3.0,
+                "recency_boost": 1.787234,
+                "salience_boost": 1.0,
+                "summary_token_overlap": 12.300905,
+                "title_token_overlap": 21.087266,
+                "vector_similarity_rescue": 1.96432
+              },
+              "score_semantics": "higher deterministic hybrid score is better",
+              "vector_score": 0.392864,
+              "vector_used": true
+            },
+            "id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:5059f410815720ea",
+              "project_path": "/mnt/data/ReadyPlayer1",
+              "project_root_path": "/mnt/data/ReadyPlayer1",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:5059f410815720ea",
+            "selection": {
+              "reason": "query_match",
+              "retrieval_rank": 3,
+              "score": 71.703236,
+              "stage": "primary_retrieval"
+            },
+            "status": "active",
+            "summary": "Campaign 004A promoted after a bounded ReadyPlayer1-side change to the belief_baseline fire-control loop. The policy now emits fire-control decision rationale, suppresses duplicate same-primary torpedo commits, and adds deterministic fire-control metrics while preserving SubSim sonar gains.",
+            "tags": [],
+            "title": "Campaign 004A promoted with ReadyPlayer1 fire-control loop patch",
+            "updated_at": "2026-05-07 16:18:00"
+          },
+          {
+            "body_excerpt": "Campaign 007A made no SubSim gameplay or torpedo physics changes. ReadyPlayer1 belief_baseline now records guarded recovery probe state, stabilizes compatible recovered previous-primary evidence for a short window, and delays no-evidence stale cleanup to avoid clearing one frame before delayed recovery evidence appears. high_self_noise_degradation post_reacquisition_policy_stabilized_rate moved from 0.0 to 1.0 with sonar_action_thrash preserved at 5, previous_primary_recovered_rate preserved at 1.0, and post_reacquisition_clutter_rebind_rate preserved at 0.0. reacquisition_challenge_no_reco...",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 17:52:40",
+            "entity_ids": [
+              "v1-project:repo:5059f410815720ea"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 17:52:40",
+                "excerpt": null,
+                "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:52:40",
+                "excerpt": null,
+                "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:52:40",
+                "excerpt": null,
+                "id": "84a71d72-829d-4bf1-8214-c145269df127",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:52:40",
+                "excerpt": null,
+                "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+              "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+              "84a71d72-829d-4bf1-8214-c145269df127",
+              "e23a9e93-988f-4f92-9b83-a8b4b8849eab"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "acoustic",
+                "after",
+                "baseline",
+                "belief",
+                "bounded",
+                "campaign",
+                "change",
+                "clutter",
+                "compatible",
+                "contact",
+                "count",
+                "decision",
+                "drift",
+                "duplicate",
+                "emits",
+                "evidence",
+                "fail",
+                "gates",
+                "golden",
+                "json",
+                "metrics",
+                "moved",
+                "pass",
+                "passed",
+                "policy",
+                "preserved",
+                "preserving",
+                "primary",
+                "promoted",
+                "rate",
+                "readyplayer1",
+                "regression",
+                "replay",
+                "same",
+                "scenario",
+                "shot",
+                "sonar",
+                "stale",
+                "stayed",
+                "subsim",
+                "suite",
+                "torpedo",
+                "track",
+                "wasted",
+                "while"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 19.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:5059f410815720ea",
+              "project_path": "/mnt/data/ReadyPlayer1",
+              "project_root_path": "/mnt/data/ReadyPlayer1",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:5059f410815720ea",
+            "selection": {
+              "reason": "recent_query_token_overlap",
+              "retrieval_rank": null,
+              "score": 19.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Campaign 007A promoted a bounded ReadyPlayer1 policy and metrics change for post-reacquisition belief stabilization. The belief_baseline now tracks recovery probe outcomes and briefly stabilizes a compatible recovered previous primary while preserving torpedo, sonar clutter, acoustic clutter, scenario, and golden gates.",
+            "tags": [],
+            "title": "Campaign 007A promoted post-reacquisition stabilization",
+            "updated_at": "2026-05-07 17:52:40"
+          },
+          {
+            "body_excerpt": "Campaign 006A made no SubSim torpedo physics changes. ReadyPlayer1 belief_baseline uses normalized Campaign 005A fire-control/contact state to allow earlier reacquire pings only for credible lost/recoverable tracks, while rejecting clutter-like/high-risk contacts. Metrics now report post-loss reacquisition attempt/ping/success, clutter rebind, belief drift after loss, and valid-fire ready-but-hold rate. Scenario suite stayed 7 pass / 0 fail, golden regression passed, acoustic heldout clutter wrong binding stayed 0.0, sonar_clutter_wrong_binding_rate stayed 0.0, torpedo_duplicate_same_track_...",
+            "confidence": 0.5,
+            "created_at": "2026-05-07 17:32:36",
+            "entity_ids": [
+              "v1-project:repo:5059f410815720ea"
+            ],
+            "evidence": [
+              {
+                "created_at": "2026-05-07 17:32:36",
+                "excerpt": null,
+                "id": "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_comparison.json",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:32:36",
+                "excerpt": null,
+                "id": "21f79e08-e73f-449d-b074-ecc10c1e69af",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:32:36",
+                "excerpt": null,
+                "id": "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_promotion_decision.md",
+                "source_id": null,
+                "type": "file"
+              },
+              {
+                "created_at": "2026-05-07 17:32:36",
+                "excerpt": null,
+                "id": "f5a27605-9617-4229-b771-ac1b93b6e0ab",
+                "metadata": {
+                  "source_system": "muninn_v1"
+                },
+                "record_type": "evidence",
+                "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+                "source_id": null,
+                "type": "file"
+              }
+            ],
+            "evidence_count": 4,
+            "evidence_ids": [
+              "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+              "21f79e08-e73f-449d-b074-ecc10c1e69af",
+              "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+              "f5a27605-9617-4229-b771-ac1b93b6e0ab"
+            ],
+            "explanation": {
+              "candidate_sources": [
+                "query_tokens",
+                "title_summary_tokens",
+                "primary_result_domain_tokens"
+              ],
+              "matched_tokens": [
+                "005a",
+                "acoustic",
+                "after",
+                "baseline",
+                "behavior",
+                "belief",
+                "bounded",
+                "campaign",
+                "change",
+                "clutter",
+                "contact",
+                "control",
+                "count",
+                "decision",
+                "drift",
+                "duplicate",
+                "evidence",
+                "fail",
+                "fire",
+                "gates",
+                "golden",
+                "json",
+                "metrics",
+                "pass",
+                "passed",
+                "policy",
+                "preserving",
+                "promoted",
+                "rate",
+                "readyplayer1",
+                "regression",
+                "remained",
+                "replay",
+                "same",
+                "scenario",
+                "shot",
+                "sonar",
+                "stayed",
+                "subsim",
+                "suite",
+                "torpedo",
+                "track",
+                "wasted",
+                "while"
+              ],
+              "penalties": {},
+              "reason_code": "recent_query_token_overlap",
+              "retrieval_path": "recent_in_scope_shadow_supplement",
+              "score_components": {
+                "supplement_relevance": 19.0
+              },
+              "score_semantics": "continuity supplement relevance score; primary retrieval remains authoritative",
+              "vector_used": false
+            },
+            "id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "kind": "decision",
+            "metadata": {
+              "muninn": {
+                "write_operation": "muninn.cards.upsert"
+              },
+              "project_entity_id": "v1-project:repo:5059f410815720ea",
+              "project_path": "/mnt/data/ReadyPlayer1",
+              "project_root_path": "/mnt/data/ReadyPlayer1",
+              "provenance": {
+                "evidence_count": 1,
+                "evidence_types": [
+                  "file"
+                ],
+                "source_class": "tool_derived"
+              },
+              "source_system": "muninn_v1",
+              "source_table": "cards",
+              "v1_salience": 0.5
+            },
+            "provenance": {
+              "source_system": "muninn_v1",
+              "source_table": "cards"
+            },
+            "record_type": "memory_card",
+            "scope_key": "repo:5059f410815720ea",
+            "selection": {
+              "reason": "recent_query_token_overlap",
+              "retrieval_rank": null,
+              "score": 19.0,
+              "stage": "recent_in_scope_supplement"
+            },
+            "status": "active",
+            "summary": "Campaign 006A promoted a bounded ReadyPlayer1 policy and metrics change for post-shot/post-loss reacquisition. The belief_baseline now performs an evidence-gated early active ping for credible lost tracks, improving post-loss probe behavior while preserving duplicate-shot, wasted-shot, sonar clutter, and acoustic clutter gates.",
+            "tags": [],
+            "title": "Campaign 006A promoted post-loss recovery probe",
+            "updated_at": "2026-05-07 17:32:36"
+          }
+        ],
+        "events": [],
+        "evidence": [
+          {
+            "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "created_at": "2026-05-07 17:52:40",
+            "excerpt": null,
+            "id": "05f3edf1-a1c7-4dde-9541-ae3a37e58cc6",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "created_at": "2026-05-07 17:52:40",
+            "excerpt": null,
+            "id": "324ae219-9e11-4a8f-b12e-a9d37798ab4d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_007a_comparison.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "created_at": "2026-05-07 17:52:40",
+            "excerpt": null,
+            "id": "84a71d72-829d-4bf1-8214-c145269df127",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "0afb7524-b5b6-4e78-9a56-a08915eb895e",
+            "created_at": "2026-05-07 17:52:40",
+            "excerpt": null,
+            "id": "e23a9e93-988f-4f92-9b83-a8b4b8849eab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "created_at": "2026-05-07 16:18:00",
+            "excerpt": null,
+            "id": "194d9ef0-d37a-48ad-be7b-e35318f9f759",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_comparison.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "created_at": "2026-05-07 16:18:00",
+            "excerpt": null,
+            "id": "7a30fa16-62a4-4b8a-a839-567f9d4435ae",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/PROJECT_MEMORY.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "1eb0763c-9d10-446c-9ca0-e4ef2ac02cb0",
+            "created_at": "2026-05-07 16:18:00",
+            "excerpt": null,
+            "id": "7a35b654-0edc-4f34-989b-207490e27765",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_004a_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "created_at": "2026-05-07 17:05:08",
+            "excerpt": null,
+            "id": "49016b7e-4d7c-4658-a76f-bee5e6c6d451",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "created_at": "2026-05-07 17:05:08",
+            "excerpt": null,
+            "id": "5064aa40-d2bd-4526-bda9-44c002294d5d",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_comparison.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "created_at": "2026-05-07 17:05:08",
+            "excerpt": null,
+            "id": "b3dae469-81a5-42c8-a708-76a2bda3eee8",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/harness/subsim/sonar_adapter.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "bef388b3-b3d2-4d14-ae7c-bda5b0fb4d44",
+            "created_at": "2026-05-07 17:05:08",
+            "excerpt": null,
+            "id": "bc04fe78-5f79-43b2-9d01-e63ef7a4b4af",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_005a_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "1c36999b-a698-4e10-b478-6f336cfbe911",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/ARCHITECTURE_CHECKPOINT.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "2a974af6-f904-4cf6-a9dc-fa91c159a5f4",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/cli.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "3fa9a3a7-f042-4222-8b12-6215610a05ab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/RUNBOOK.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "41256fa3-78ce-4dd4-8ca8-5e6e0572f10b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/README.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "4da2f574-d688-4340-8071-b56975dc224c",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "bf4173ec-f4b8-4f13-af0b-991245f7a20b",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/tests/test_subsim_lane_ops.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "d838aa3d-4717-4310-ab64-fda463dfdcb5",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/rl/lane_ops.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "eed995dd-60bf-4bd6-b678-9541501d5b5d",
+            "created_at": "2026-04-23 17:39:49",
+            "excerpt": null,
+            "id": "e7198c14-20ab-4a26-a266-addfc6f71905",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/docs/tasks/repo_drift_phase2_execution_summary.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "created_at": "2026-05-07 17:32:36",
+            "excerpt": null,
+            "id": "074bd4f9-d2d4-4ae3-a7ee-075585bbf3eb",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_comparison.json",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "created_at": "2026-05-07 17:32:36",
+            "excerpt": null,
+            "id": "21f79e08-e73f-449d-b074-ecc10c1e69af",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/agents/policies/belief_baseline.py",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "created_at": "2026-05-07 17:32:36",
+            "excerpt": null,
+            "id": "b632f863-7ee8-4bd5-94b4-c4ef75b2c9fa",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/reports/campaign_006a_promotion_decision.md",
+            "source_id": null,
+            "type": "file"
+          },
+          {
+            "card_id": "fbcac688-f952-477f-87ca-ea7860c4f396",
+            "created_at": "2026-05-07 17:32:36",
+            "excerpt": null,
+            "id": "f5a27605-9617-4229-b771-ac1b93b6e0ab",
+            "metadata": {
+              "source_system": "muninn_v1"
+            },
+            "record_type": "evidence",
+            "ref": "/mnt/data/ReadyPlayer1/readyplayer1/eval/metrics.py",
+            "source_id": null,
+            "type": "file"
+          }
+        ]
+      },
+      "uncertainty": {
+        "context_gaps": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "4 candidate cards were omitted by max_chars budget."
+        ],
+        "usable": true,
+        "warnings": [
+          "Derived index backend is degraded: sqlite_vec_unavailable_using_json_vector_fallback",
+          "4 candidate cards were omitted by max_chars budget.",
+          "Retrieval/index backend degraded: sqlite_vec_unavailable_using_json_vector_fallback"
+        ]
+      }
+    }
+  },
+  "schema_version": "BridgeResponseV1",
+  "status": "ok"
+}

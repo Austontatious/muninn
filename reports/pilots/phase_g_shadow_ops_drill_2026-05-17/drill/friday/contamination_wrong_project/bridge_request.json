@@ -1,0 +1,18 @@
+{
+  "allow_adaptive_scoring": false,
+  "consumer_id": "codex-shadow",
+  "include_evidence": true,
+  "include_explanations": true,
+  "limit": 6,
+  "max_context_chars": 6000,
+  "operation": "rehydrate",
+  "primary_limit": 2,
+  "project_path": "/mnt/data/ReadyPlayer1",
+  "query": "attempt cross project access from Friday to ReadyPlayer1",
+  "recent_supplement": true,
+  "request_id": "friday-contamination-wrong-project",
+  "retrieval_mode": "hybrid",
+  "schema_version": "BridgeRequestV1",
+  "space_key": "repo:5059f410815720ea",
+  "strict": true
+}

@@ -1,0 +1,40 @@
+{
+  "audit": {
+    "created_at": "2026-05-18T00:45:23.689012Z",
+    "input_hash": "6c627c2e390661afe097a5788753538cb4ccbdf04735337517b903d0bd3253bb",
+    "policy_hash": "7de63a15dca52e82e7219940f7109aa8c8c860d120425dceb4e5b9cb94214f4f",
+    "replayable": true,
+    "response_hash": "52ad86903d740c6b96df9fba11ba16719ecd71270eaec83287ba042f47065b0c",
+    "trace_id": "bridge_3f5df52fe04c15e0"
+  },
+  "consumer_id": "codex-shadow",
+  "contract_version": "1.0.0",
+  "degradation": {
+    "degraded": false,
+    "reason_codes": []
+  },
+  "error": {
+    "code": "DeniedByPolicy",
+    "details": {
+      "reason_codes": [
+        "space_not_allowed",
+        "project_path_not_allowed"
+      ]
+    },
+    "message": "Bridge request denied by capability policy."
+  },
+  "operation": "rehydrate",
+  "policy_decision": {
+    "allowed": false,
+    "clamps": {},
+    "reason_codes": [
+      "space_not_allowed",
+      "project_path_not_allowed"
+    ]
+  },
+  "record_type": "muninn_v2_bridge_response",
+  "request_id": "lexi-contamination-wrong-project",
+  "result": {},
+  "schema_version": "BridgeResponseV1",
+  "status": "denied"
+}

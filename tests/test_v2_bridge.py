@@ -63,6 +63,34 @@ def _seed_db(tmp_path: Path) -> Path:
     return db_path
 
 
+def _compact_db(db_path: Path) -> None:
+    with sqlite3.connect(db_path) as conn:
+        conn.execute("PRAGMA wal_checkpoint(TRUNCATE);")
+        conn.execute("PRAGMA journal_mode=DELETE;")
+    for suffix in ["-wal", "-shm"]:
+        path = Path(str(db_path) + suffix)
+        if path.exists():
+            path.unlink()
+
+
+def _seed_reinforcement_state(db_path: Path) -> None:
+    store = SQLiteMemoryStore(db_path)
+    store.upsert_reinforcement_state(
+        {
+            "schema_version": "muninn.v2.recall_reinforcement.v1",
+            "record_type": "muninn_v2_reinforcement_state",
+            "record_id": "card-current",
+            "scope_key": "repo:test",
+            "status": "boosted",
+            "effective_score": 2.25,
+            "last_event_at": "2026-05-17T12:00:00Z",
+            "computed_at": "2026-05-17T12:01:00Z",
+            "explanation": ["accepted in offline shadow drill"],
+        }
+    )
+    _compact_db(db_path)
+
+
 def _policy() -> dict:
     return {
         "schema_version": "BridgeCapabilityPolicyV1",
@@ -182,6 +210,46 @@ def test_bridge_policy_denials_and_structured_errors(tmp_path: Path) -> None:
         assert response["status"] == status
         assert reason in response["policy_decision"]["reason_codes"] or reason in response["error"]["details"]["reason_codes"]
         assert list(out_dir.glob("bridge_audit_*.json"))
+
+
+def test_bridge_adaptive_scoring_is_opt_in_and_read_only(tmp_path: Path) -> None:
+    db_path = _seed_db(tmp_path)
+    _seed_reinforcement_state(db_path)
+    before = db_path.stat().st_mtime_ns
+    adaptive_policy = {**_policy(), "allow_adaptive_scoring": True}
+
+    code, response, _out_dir = _run_bridge(
+        tmp_path,
+        db_path,
+        _request("search", request_id="adaptive-on", allow_adaptive_scoring=True),
+        policy=adaptive_policy,
+    )
+
+    assert code == 0
+    assert response["status"] == "ok"
+    adaptive = response["result"]["adaptive_scoring"]
+    assert adaptive["requested"] is True
+    assert adaptive["enabled"] is True
+    assert adaptive["default"] is False
+    assert adaptive["state_count"] == 1
+    assert "card-current" in adaptive["boosted_cards"]
+    assert any(
+        "reinforcement_state" in (item.get("explanation", {}).get("candidate_sources") or [])
+        for item in response["result"]["results"]
+    )
+    assert db_path.stat().st_mtime_ns == before
+    assert not Path(str(db_path) + "-wal").exists()
+    assert not Path(str(db_path) + "-shm").exists()
+
+    code, response, _out_dir = _run_bridge(
+        tmp_path,
+        db_path,
+        _request("search", request_id="adaptive-off"),
+        policy=adaptive_policy,
+    )
+    assert code == 0
+    assert response["result"]["adaptive_scoring"]["requested"] is False
+    assert response["result"]["adaptive_scoring"]["enabled"] is False
 
 
 def test_bridge_request_does_not_access_v1_or_mutate_canonical_db(tmp_path: Path, monkeypatch) -> None:
