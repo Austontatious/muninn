@@ -69,6 +69,7 @@ recordings/
 .ngrok*
 cloudflared*
 tunnel*
+.playwright-mcp/
 
 # --- Local topology cache / enterprise artifacts ---
 .mimir/

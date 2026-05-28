@@ -1,5 +1,10 @@
 # Roadmap
 
+> Status: HISTORICAL. This roadmap reflects early product planning. Confirm
+> current v1/v2 posture against `ARCHITECTURE_CHECKPOINT.md`,
+> `docs/decisions/`, and the latest Phase J reports before treating any item
+> here as active direction.
+
 ## v0 (Scaffold + Working Slice) ✅
 
 - SQLite canonical store

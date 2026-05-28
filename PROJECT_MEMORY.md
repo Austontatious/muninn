@@ -1,5 +1,11 @@
 # Project Memory — Muninn (stateful)
 
+> Status: REVIEW_NEEDED / HISTORICAL. This file is retained as a project
+> memory log and may contain useful stable-edge records, but it is not the
+> current architecture or operating-policy source of truth. Confirm current
+> state against `AGENTS.md`, `ARCHITECTURE_CHECKPOINT.md`, `RUNBOOK.md`, and
+> `docs/CODEX_STANDARDS.md`.
+
 ## Mission
 Build a standalone, pluggable memory harness for LLM agents that supports:
 

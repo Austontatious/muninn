@@ -1,5 +1,10 @@
 # Muninn v2 Cutover Strategy
 
+> Status: SUPERSEDED. This early cutover strategy predates the Phase J
+> personal/local live trial. Confirm current trial and rollback posture against
+> `../ARCHITECTURE_CHECKPOINT.md`, `muninn_v2_personal_live_trial.md`, and
+> `../RUNBOOK.md`.
+
 Date: 2026-05-13
 
 ## Current Status

@@ -1,5 +1,9 @@
 # Muninn Architectural Assessment
 
+> Status: HISTORICAL ASSESSMENT. This document is retained as evidence for the
+> 2026-05-13 v2 direction. Current architecture truth lives in
+> `../ARCHITECTURE_CHECKPOINT.md` and later ADRs/reports.
+
 Date: 2026-05-13
 
 ## Executive Summary

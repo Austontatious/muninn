@@ -1,5 +1,10 @@
 # Muninn
 
+> Current status (2026-05-28): Muninn v1 remains the live Codex/MCP memory
+> path. Muninn v2 is adjacent, opt-in substrate work with a personal/local
+> read-only Phase J trial in this repo only. Current operating truth is in
+> `AGENTS.md`, `ARCHITECTURE_CHECKPOINT.md`, and `RUNBOOK.md`.
+
 Muninn is a **pluggable memory harness** for LLM agents.
 
 It provides:
@@ -8,12 +13,23 @@ It provides:
 - A **memory card renderer** to rehydrate retrieved records into compact, structured "conceptual recall"
 - A stable **HTTP API** so any orchestrator (ChatGPT, Claude, local agent) can plug in
 
-This repo scaffolds the first working slice:
+The current repository includes:
 - SQLite-backed store
 - FastAPI service
 - Typed schemas and a minimal card pipeline
-- Stubs for retrieval backends (vector/hybrid) and provider adapters
+- retrieval backends, vector safety fallback paths, and provider adapters
 - Namespace isolation enforced at the DB/query layer (v0.5.0)
+- human-memory MCP tools and deterministic rehydration
+- adjacent v2 shadow/pilot tooling under `src/muninn/v2`
+
+## Canonical References
+
+- `AGENTS.md`: repo policy for agents and current v1/v2 posture.
+- `ARCHITECTURE_CHECKPOINT.md`: concise current architecture truth.
+- `RUNBOOK.md`: local operations, MCP, systemd, and Phase J trial procedures.
+- `docs/CODEX_STANDARDS.md`: repo-local standards contract and validation commands.
+- `docs/README.md`: documentation map for current, historical, and generated evidence docs.
+- `reports/README.md`: generated report and pilot-evidence index.
 
 ## High-Level Structure
 
