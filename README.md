@@ -1,23 +1,75 @@
 # Muninn
 
-Muninn is a **pluggable memory harness** for LLM agents.
+Muninn explores durable, evidence-bearing memory for long-running AI agents.
 
-It provides:
-- A durable **core memory store** (entities, facts, episodes, preferences)
-- An **audit log** for every read/write decision
-- A **memory card renderer** to rehydrate retrieved records into compact, structured "conceptual recall"
-- A stable **HTTP API** so any orchestrator (ChatGPT, Claude, local agent) can plug in
+It treats memory as local-first infrastructure: scoped project/user records,
+evidence references, deterministic context rehydration, audit logs, and clear
+boundaries between storage, retrieval, and agent behavior.
 
-This repo scaffolds the first working slice:
-- SQLite-backed store
-- FastAPI service
-- Typed schemas and a minimal card pipeline
-- Stubs for retrieval backends (vector/hybrid) and provider adapters
-- Namespace isolation enforced at the DB/query layer (v0.5.0)
+## 30-second overview
+
+- Muninn stores durable project and user memory as scoped records with evidence.
+- It can rehydrate relevant context for an AI assistant or agent before work starts.
+- It is designed to avoid unstructured chat-memory sludge by keeping memory sparse, inspectable, and provenance-aware.
+- It emphasizes scoped retrieval, auditability, explicit write paths, and stable boundaries.
+- It currently targets local/self-hosted workflows, MCP clients, and Codex-style agent use.
+
+## Why this matters
+
+AI agents lose continuity across sessions, tools, and clients. Long-running
+software and research work needs context that is scoped, inspectable, and tied
+back to evidence rather than hidden inside an opaque chat transcript.
+
+Muninn treats memory as infrastructure. Reliable agent memory needs boundaries,
+audit logs, and safe rehydration before it can be trusted for project work.
+
+## Current status
+
+Muninn is an active local-first research/prototype system. It is usable in
+controlled local workflows, but it is not a polished hosted product and not a
+general-purpose production memory service.
+
+- v1 is the current operational substrate for local MCP/Codex-facing workflows.
+- The public default branch (`release/v0.1`) reflects the v1 operational substrate.
+- Writes, live integrations, and production DB paths should not be changed without explicit operator intent.
+- Some retrieval, provider-adapter, maintenance, and connector surfaces are experimental diagnostics.
+
+The current repository includes a SQLite-backed store, FastAPI service, typed
+schemas, human-memory MCP tools, deterministic rehydration, vector fallback
+paths, provider adapters, contract schemas, and local operations tooling.
+
+## Important files
+
+- [src/muninn/cli.py](src/muninn/cli.py): command-line entry point (`muninn up`, `status`, `audit`, `mcp`).
+- [src/muninn/api.py](src/muninn/api.py): FastAPI HTTP API and endpoint wiring.
+- [src/muninn/mcp_server.py](src/muninn/mcp_server.py): local MCP server for human-memory tools.
+- [src/muninn/human_memory/](src/muninn/human_memory/): v1 card, evidence, spaces, policy, and rehydration layer.
+- [src/muninn/memory/](src/muninn/memory/), [src/muninn/cardex/](src/muninn/cardex/), [src/muninn/vector/](src/muninn/vector/): legacy/core memory, Cardex, and vector retrieval components.
+- [src/muninn/adapters/](src/muninn/adapters/): provider adapter experiments.
+- [src/muninn/ops/](src/muninn/ops/), [src/muninn/middleware/](src/muninn/middleware/): operational helpers and optional API-key middleware.
+- [src/muninn/schema.sql](src/muninn/schema.sql), [migrations/0001_init.sql](migrations/0001_init.sql), [scripts/migrations/](scripts/migrations/): schema and migration surfaces.
+- [tests/](tests/): unit and contract tests.
+- [docs/contracts/muninn_mimir/v1/](docs/contracts/muninn_mimir/v1/): versioned Muninn/Mimir contract schemas and examples.
+- [docs/INTEGRATION.md](docs/INTEGRATION.md), [docs/query_contracts.md](docs/query_contracts.md), [docs/procedural_memory.md](docs/procedural_memory.md): integration and memory behavior notes.
+- [ARCHITECTURE_CHECKPOINT.md](ARCHITECTURE_CHECKPOINT.md), [RUNBOOK.md](RUNBOOK.md): current architecture truth and operator procedures.
+
+## Attribution
+
+Muninn is an original local-first memory infrastructure project. It uses
+standard open-source dependencies listed in [pyproject.toml](pyproject.toml).
+
+## Canonical References
+
+- [AGENTS.md](AGENTS.md): repo policy for agents and current operational posture.
+- [ARCHITECTURE_CHECKPOINT.md](ARCHITECTURE_CHECKPOINT.md): concise current architecture truth.
+- [RUNBOOK.md](RUNBOOK.md): local operations, MCP, systemd, and recovery procedures.
+- [docs/INTEGRATION.md](docs/INTEGRATION.md): external integration notes.
+- [docs/query_contracts.md](docs/query_contracts.md): stable lens and adaptation query contracts.
+- [docs/contracts/muninn_mimir/v1/README.md](docs/contracts/muninn_mimir/v1/README.md): Muninn/Mimir contract overview.
 
 ## High-Level Structure
 
-Muninn is organized as a small service with five layers:
+Muninn is organized as a small service with six layers:
 
 1) Ingestion and policy layer
 - Receives memory candidates from agents.
@@ -245,7 +297,7 @@ Prefer strict scope unless cross-project knowledge is intentional.
 
 ### 1) Create venv + install
 ```bash
-cd /mnt/data/Muninn
+cd muninn
 python -m venv .venv
 source .venv/bin/activate
 pip install -e .[dev]
