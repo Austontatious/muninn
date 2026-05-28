@@ -28,6 +28,7 @@ env/
 .poetry/
 .pdm-python
 .python-version
+.playwright-mcp/
 
 # --- Editors / OS ---
 .DS_Store
@@ -56,6 +57,13 @@ data/*.json
 data/*.log
 data/cache/
 data/tmp/
+
+# --- Generated pilot evidence artifacts ---
+# Pilot dumps are local generated evidence. Commit curated summaries elsewhere,
+# or force-add a specific artifact only when intentionally preserving it.
+reports/pilots/**
+!reports/pilots/
+!reports/pilots/README.md
 
 # If you generate exports or recordings locally
 exports/
