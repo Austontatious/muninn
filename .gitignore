@@ -56,8 +56,12 @@ data/*.json
 data/*.log
 data/cache/
 data/tmp/
-reports/pilots/**/*.db
-reports/pilots/**/*.db-*
+
+# Pilot dumps are local generated evidence. Existing tracked summaries stay
+# tracked; new raw pilot output should be force-added only when intentional.
+reports/pilots/**
+!reports/pilots/
+!reports/pilots/README.md
 logs/live_trial/*.jsonl
 logs/live_trial/artifacts/
 
