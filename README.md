@@ -1,39 +1,75 @@
 # Muninn
 
-> Current status (2026-05-28): Muninn v1 remains the live Codex/MCP memory
-> path. Muninn v2 is adjacent, opt-in substrate work with a personal/local
-> read-only Phase J trial in this repo only. Current operating truth is in
-> `AGENTS.md`, `ARCHITECTURE_CHECKPOINT.md`, and `RUNBOOK.md`.
+Muninn explores durable, evidence-bearing memory for long-running AI agents.
 
-Muninn is a **pluggable memory harness** for LLM agents.
+It treats memory as local-first infrastructure: scoped project/user records,
+evidence references, deterministic context rehydration, audit logs, and clear
+boundaries between storage, retrieval, and agent behavior.
 
-It provides:
-- A durable **core memory store** (entities, facts, episodes, preferences)
-- An **audit log** for every read/write decision
-- A **memory card renderer** to rehydrate retrieved records into compact, structured "conceptual recall"
-- A stable **HTTP API** so any orchestrator (ChatGPT, Claude, local agent) can plug in
+## 30-second overview
 
-The current repository includes:
-- SQLite-backed store
-- FastAPI service
-- Typed schemas and a minimal card pipeline
-- retrieval backends, vector safety fallback paths, and provider adapters
-- Namespace isolation enforced at the DB/query layer (v0.5.0)
-- human-memory MCP tools and deterministic rehydration
-- adjacent v2 shadow/pilot tooling under `src/muninn/v2`
+- Muninn stores durable project and user memory as scoped records with evidence.
+- It can rehydrate relevant context for an AI assistant or agent before work starts.
+- It is designed to avoid unstructured chat-memory sludge by keeping memory sparse, inspectable, and provenance-aware.
+- It emphasizes scoped retrieval, auditability, explicit write paths, and stable boundaries.
+- It currently targets local/self-hosted workflows, MCP clients, and Codex-style agent use.
+
+## Why this matters
+
+AI agents lose continuity across sessions, tools, and clients. Long-running
+software and research work needs context that is scoped, inspectable, and tied
+back to evidence rather than hidden inside an opaque chat transcript.
+
+Muninn treats memory as infrastructure. Reliable agent memory needs boundaries,
+audit logs, and safe rehydration before it can be trusted for project work.
+
+## Current status
+
+Muninn is an active local-first research/prototype system. It is usable in
+controlled local workflows, but it is not a polished hosted product and not a
+general-purpose production memory service.
+
+- v1 is the current operational substrate for local MCP/Codex-facing workflows.
+- v2 exists as adjacent, opt-in substrate work under `src/muninn/v2`.
+- v2 read-only bridge, shadow migration, and parity artifacts are documented in this repo, but they are not a general cutover.
+- Writes, live integrations, and production DB paths should not be changed without explicit operator intent.
+- Some retrieval, bridge, and migration surfaces are experimental diagnostics.
+
+The current repository includes a SQLite-backed store, FastAPI service, typed
+schemas, human-memory MCP tools, deterministic rehydration, vector fallback
+paths, provider adapters, and adjacent v2 shadow/pilot tooling.
+
+## Important files
+
+- [src/muninn/cli.py](src/muninn/cli.py): command-line entry point (`muninn up`, `status`, `audit`, `mcp`, v2 tooling).
+- [src/muninn/api.py](src/muninn/api.py): FastAPI HTTP API and endpoint wiring.
+- [src/muninn/mcp_server.py](src/muninn/mcp_server.py): local MCP server for human-memory tools.
+- [apps/muninn_mcp/server.py](apps/muninn_mcp/server.py): narrower MCP bridge app for external connector experiments.
+- [src/muninn/human_memory/](src/muninn/human_memory/): v1 card, evidence, spaces, policy, and rehydration layer.
+- [src/muninn/memory/](src/muninn/memory/), [src/muninn/cardex/](src/muninn/cardex/), [src/muninn/vector/](src/muninn/vector/): legacy/core memory, Cardex, and vector retrieval components.
+- [src/muninn/v2/](src/muninn/v2/): adjacent v2 substrate, bridge, retrieval, and pilot tooling.
+- [src/muninn/schema.sql](src/muninn/schema.sql), [migrations/0001_init.sql](migrations/0001_init.sql), [scripts/migrations/](scripts/migrations/): schema and migration surfaces.
+- [tests/](tests/): unit and contract tests.
+- [docs/contracts/](docs/contracts/), [docs/decisions/](docs/decisions/): versioned contracts and ADRs.
+- [ARCHITECTURE_CHECKPOINT.md](ARCHITECTURE_CHECKPOINT.md), [RUNBOOK.md](RUNBOOK.md): current architecture truth and operator procedures.
+
+## Attribution
+
+Muninn is an original local-first memory infrastructure project. It uses
+standard open-source dependencies listed in [pyproject.toml](pyproject.toml).
 
 ## Canonical References
 
-- `AGENTS.md`: repo policy for agents and current v1/v2 posture.
-- `ARCHITECTURE_CHECKPOINT.md`: concise current architecture truth.
-- `RUNBOOK.md`: local operations, MCP, systemd, and Phase J trial procedures.
-- `docs/CODEX_STANDARDS.md`: repo-local standards contract and validation commands.
-- `docs/README.md`: documentation map for current, historical, and generated evidence docs.
-- `reports/README.md`: generated report and pilot-evidence index.
+- [AGENTS.md](AGENTS.md): repo policy for agents and current v1/v2 posture.
+- [ARCHITECTURE_CHECKPOINT.md](ARCHITECTURE_CHECKPOINT.md): concise current architecture truth.
+- [RUNBOOK.md](RUNBOOK.md): local operations, MCP, systemd, and Phase J trial procedures.
+- [docs/CODEX_STANDARDS.md](docs/CODEX_STANDARDS.md): repo-local standards contract and validation commands.
+- [docs/README.md](docs/README.md): documentation map for current, historical, and generated evidence docs.
+- [reports/README.md](reports/README.md): generated report and pilot-evidence index.
 
 ## High-Level Structure
 
-Muninn is organized as a small service with five layers:
+Muninn is organized as a small service with six layers:
 
 1) Ingestion and policy layer
 - Receives memory candidates from agents.
@@ -261,7 +297,7 @@ Prefer strict scope unless cross-project knowledge is intentional.
 
 ### 1) Create venv + install
 ```bash
-cd /mnt/data/Muninn
+cd muninn
 python -m venv .venv
 source .venv/bin/activate
 pip install -e .[dev]
