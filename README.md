@@ -329,7 +329,11 @@ Install from this repository with pipx (requires Git and Python 3.11 or newer):
 
 ```bash
 pipx install "git+https://github.com/Austontatious/muninn.git@9cd37f7763e10c79609d47ea8dc5f4eda608cf40"
+pipx runpip muninn install "mcp>=1.26,<2"
 ```
+
+This revision’s MCP server uses the 1.x SDK. The second command keeps that SDK
+version in Muninn’s isolated pipx environment.
 
 The bare `muninn` package on PyPI is a different project. After installing from GitHub, start the local service:
 
