@@ -325,7 +325,13 @@ Docs: http://127.0.0.1:8000/docs
 
 ### Drop-in Local Run (After Install)
 
-Once installed (for example with `pipx install muninn`), one command starts a usable local service:
+Install from this repository with pipx (requires Git and Python 3.11 or newer):
+
+```bash
+pipx install "git+https://github.com/Austontatious/muninn.git@9cd37f7763e10c79609d47ea8dc5f4eda608cf40"
+```
+
+The bare `muninn` package on PyPI is a different project. After installing from GitHub, start the local service:
 
 ```bash
 muninn up
