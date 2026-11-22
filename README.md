@@ -295,13 +295,23 @@ Prefer strict scope unless cross-project knowledge is intentional.
 
 ## Quickstart
 
-### 1) Create venv + install
+### 1) Clone Muninn and install it locally
+
+Requires Git and Python 3.11 or newer.
+
 ```bash
+git clone https://github.com/Austontatious/muninn.git
 cd muninn
+git checkout --detach 9cd37f7763e10c79609d47ea8dc5f4eda608cf40
 python -m venv .venv
 source .venv/bin/activate
-pip install -e .[dev]
+python -m pip install -e . "mcp>=1.26,<2"
 ```
+
+Keep the source checkout: this revision reads its human-memory migration files
+from the repository. Its MCP server requires the 1.x SDK. The bare `muninn`
+package on PyPI is a different project. For development dependencies, replace
+`-e .` with `-e ".[dev]"`.
 
 ### 2) Init DB
 ```bash
@@ -325,7 +335,7 @@ Docs: http://127.0.0.1:8000/docs
 
 ### Drop-in Local Run (After Install)
 
-Once installed (for example with `pipx install muninn`), one command starts a usable local service:
+After installing from the Git checkout above, one command starts a usable local service:
 
 ```bash
 muninn up
